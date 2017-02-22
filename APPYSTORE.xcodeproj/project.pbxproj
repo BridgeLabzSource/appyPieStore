@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A656BC01E5DB76C000E5BB2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A656BBF1E5DB76C000E5BB2 /* BaseViewController.swift */; };
 		0AAD2EFD1E5C48EF00B504A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2EFC1E5C48EF00B504A3 /* AppDelegate.swift */; };
 		0AAD2F021E5C48EF00B504A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD2F001E5C48EF00B504A3 /* Main.storyboard */; };
 		0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2F031E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A656BBF1E5DB76C000E5BB2 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0AAD2EF91E5C48EF00B504A3 /* APPYSTORE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APPYSTORE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AAD2EFC1E5C48EF00B504A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AAD2F011E5C48EF00B504A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A656BBE1E5DB73F000E5BB2 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				0A656BBF1E5DB76C000E5BB2 /* BaseViewController.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
 		0AAD2EF01E5C48EF00B504A3 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +66,7 @@
 		0AAD2EFB1E5C48EF00B504A3 /* APPYSTORE */ = {
 			isa = PBXGroup;
 			children = (
+				0A656BBE1E5DB73F000E5BB2 /* common */,
 				0AD5536D1E5DA958005ECA4A /* page */,
 				0AAD2EFC1E5C48EF00B504A3 /* AppDelegate.swift */,
 				0AAD2F001E5C48EF00B504A3 /* Main.storyboard */,
@@ -164,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AD553711E5DA9D5005ECA4A /* VideoCategoryController.swift in Sources */,
+				0A656BC01E5DB76C000E5BB2 /* BaseViewController.swift in Sources */,
 				0AAD2EFD1E5C48EF00B504A3 /* AppDelegate.swift in Sources */,
 				0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */,
 			);
