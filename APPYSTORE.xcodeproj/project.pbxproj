@@ -15,6 +15,7 @@
 		0AAD2F071E5C48EF00B504A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD2F061E5C48EF00B504A3 /* Assets.xcassets */; };
 		0AAD2F0A1E5C48EF00B504A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD2F081E5C48EF00B504A3 /* LaunchScreen.storyboard */; };
 		0AD553711E5DA9D5005ECA4A /* VideoCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD553701E5DA9D5005ECA4A /* VideoCategoryController.swift */; };
+		70A36E491E614542002B9296 /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A36E481E614542002B9296 /* HistoryController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		0AAD2F091E5C48EF00B504A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AAD2F0B1E5C48EF00B504A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AD553701E5DA9D5005ECA4A /* VideoCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCategoryController.swift; sourceTree = "<group>"; };
+		70A36E481E614542002B9296 /* HistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		0AD5536D1E5DA958005ECA4A /* page */ = {
 			isa = PBXGroup;
 			children = (
+				70A36E471E6144DE002B9296 /* history */,
 				0AD5536E1E5DA958005ECA4A /* video */,
 			);
 			path = page;
@@ -103,6 +106,14 @@
 				0AD553701E5DA9D5005ECA4A /* VideoCategoryController.swift */,
 			);
 			path = category;
+			sourceTree = "<group>";
+		};
+		70A36E471E6144DE002B9296 /* history */ = {
+			isa = PBXGroup;
+			children = (
+				70A36E481E614542002B9296 /* HistoryController.swift */,
+			);
+			name = history;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +192,7 @@
 				0AD553711E5DA9D5005ECA4A /* VideoCategoryController.swift in Sources */,
 				0A656BC01E5DB76C000E5BB2 /* BaseViewController.swift in Sources */,
 				0AAD2EFD1E5C48EF00B504A3 /* AppDelegate.swift in Sources */,
+				70A36E491E614542002B9296 /* HistoryController.swift in Sources */,
 				0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
