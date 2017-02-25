@@ -1,18 +1,21 @@
-//
-//  ViewController.swift
+
+//  HistoryController.swift
 //  APPYSTORE
 //
-//  Created by BridgeLabz on 21/02/17.
+//  Created by BridgeLabz Solution LLP on 25/02/17.
 //  Copyright © 2017 MAUJ MOBILE PVT LTD. All rights reserved.
-//
+
 
 import UIKit
 
-class VideoCategoryController: BaseViewController {
+class HistoryController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-}
 
+      
+    }
+
+   
+
+}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hCO-RE-wNX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,6 +26,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="105.69715142428787"/>
+        </scene>
+        <!--History Controller-->
+        <scene sceneID="pqa-mK-uI7">
+            <objects>
+                <viewController title="History Controller" id="hCO-RE-wNX" customClass="HistoryController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FR4-bS-g4O"/>
+                        <viewControllerLayoutGuide type="bottom" id="fcg-x6-35P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ibs-x8-mVo">
+                        <rect key="frame" x="0.0" y="0.0" width="1280" height="720"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22A-1R-WvV" customClass="CommonOverlayView" customModule="APPYSTORE" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="1280" height="720"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="22A-1R-WvV" firstAttribute="leading" secondItem="ibs-x8-mVo" secondAttribute="leading" id="Kgi-FG-OW8"/>
+                            <constraint firstItem="fcg-x6-35P" firstAttribute="top" secondItem="22A-1R-WvV" secondAttribute="bottom" id="caY-ZG-2nr"/>
+                            <constraint firstItem="22A-1R-WvV" firstAttribute="top" secondItem="ibs-x8-mVo" secondAttribute="top" id="cwB-Y4-JOJ"/>
+                            <constraint firstAttribute="trailing" secondItem="22A-1R-WvV" secondAttribute="trailing" id="k7u-zD-e5x"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="1280" height="720"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Km-he-pgj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="842" y="1179"/>
         </scene>
     </scenes>
 </document>

@@ -12,10 +12,12 @@
 		0AAD2EFD1E5C48EF00B504A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2EFC1E5C48EF00B504A3 /* AppDelegate.swift */; };
 		0AAD2F021E5C48EF00B504A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD2F001E5C48EF00B504A3 /* Main.storyboard */; };
 		0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2F031E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld */; };
-		0AAD2F071E5C48EF00B504A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD2F061E5C48EF00B504A3 /* Assets.xcassets */; };
 		0AAD2F0A1E5C48EF00B504A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD2F081E5C48EF00B504A3 /* LaunchScreen.storyboard */; };
 		0AD553711E5DA9D5005ECA4A /* VideoCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD553701E5DA9D5005ECA4A /* VideoCategoryController.swift */; };
-		70A36E491E614542002B9296 /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A36E481E614542002B9296 /* HistoryController.swift */; };
+		70A36E4B1E614722002B9296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70A36E4A1E614722002B9296 /* Assets.xcassets */; };
+		70A36E4D1E6148BE002B9296 /* CommonOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A36E4C1E6148BE002B9296 /* CommonOverlayView.xib */; };
+		70A36E4F1E6149C0002B9296 /* CommonOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A36E4E1E6149C0002B9296 /* CommonOverlayView.swift */; };
+		70A36E511E614F1E002B9296 /* history in Resources */ = {isa = PBXBuildFile; fileRef = 70A36E501E614F1E002B9296 /* history */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,11 +27,13 @@
 		0AAD2EFC1E5C48EF00B504A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AAD2F011E5C48EF00B504A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0AAD2F041E5C48EF00B504A3 /* APPYSTORE.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = APPYSTORE.xcdatamodel; sourceTree = "<group>"; };
-		0AAD2F061E5C48EF00B504A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AAD2F091E5C48EF00B504A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AAD2F0B1E5C48EF00B504A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AD553701E5DA9D5005ECA4A /* VideoCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCategoryController.swift; sourceTree = "<group>"; };
-		70A36E481E614542002B9296 /* HistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
+		70A36E4A1E614722002B9296 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		70A36E4C1E6148BE002B9296 /* CommonOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonOverlayView.xib; sourceTree = "<group>"; };
+		70A36E4E1E6149C0002B9296 /* CommonOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonOverlayView.swift; sourceTree = "<group>"; };
+		70A36E501E614F1E002B9296 /* history */ = {isa = PBXFileReference; lastKnownFileType = folder; path = history; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,8 @@
 			isa = PBXGroup;
 			children = (
 				0A656BBF1E5DB76C000E5BB2 /* BaseViewController.swift */,
+				70A36E4E1E6149C0002B9296 /* CommonOverlayView.swift */,
+				70A36E4C1E6148BE002B9296 /* CommonOverlayView.xib */,
 				0A021BED1E605B1E00194B14 /* DimentionManager.swift */,
 			);
 			path = common;
@@ -74,8 +80,8 @@
 				0A656BBE1E5DB73F000E5BB2 /* common */,
 				0AD5536D1E5DA958005ECA4A /* page */,
 				0AAD2EFC1E5C48EF00B504A3 /* AppDelegate.swift */,
+				70A36E4A1E614722002B9296 /* Assets.xcassets */,
 				0AAD2F001E5C48EF00B504A3 /* Main.storyboard */,
-				0AAD2F061E5C48EF00B504A3 /* Assets.xcassets */,
 				0AAD2F081E5C48EF00B504A3 /* LaunchScreen.storyboard */,
 				0AAD2F0B1E5C48EF00B504A3 /* Info.plist */,
 				0AAD2F031E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld */,
@@ -86,7 +92,7 @@
 		0AD5536D1E5DA958005ECA4A /* page */ = {
 			isa = PBXGroup;
 			children = (
-				70A36E471E6144DE002B9296 /* history */,
+				70A36E501E614F1E002B9296 /* history */,
 				0AD5536E1E5DA958005ECA4A /* video */,
 			);
 			path = page;
@@ -106,14 +112,6 @@
 				0AD553701E5DA9D5005ECA4A /* VideoCategoryController.swift */,
 			);
 			path = category;
-			sourceTree = "<group>";
-		};
-		70A36E471E6144DE002B9296 /* history */ = {
-			isa = PBXGroup;
-			children = (
-				70A36E481E614542002B9296 /* HistoryController.swift */,
-			);
-			name = history;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,7 +174,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AAD2F0A1E5C48EF00B504A3 /* LaunchScreen.storyboard in Resources */,
-				0AAD2F071E5C48EF00B504A3 /* Assets.xcassets in Resources */,
+				70A36E4D1E6148BE002B9296 /* CommonOverlayView.xib in Resources */,
+				70A36E4B1E614722002B9296 /* Assets.xcassets in Resources */,
+				70A36E511E614F1E002B9296 /* history in Resources */,
 				0AAD2F021E5C48EF00B504A3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,8 +191,8 @@
 				0A021BEE1E605B1E00194B14 /* DimentionManager.swift in Sources */,
 				0AD553711E5DA9D5005ECA4A /* VideoCategoryController.swift in Sources */,
 				0A656BC01E5DB76C000E5BB2 /* BaseViewController.swift in Sources */,
+				70A36E4F1E6149C0002B9296 /* CommonOverlayView.swift in Sources */,
 				0AAD2EFD1E5C48EF00B504A3 /* AppDelegate.swift in Sources */,
-				70A36E491E614542002B9296 /* HistoryController.swift in Sources */,
 				0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
