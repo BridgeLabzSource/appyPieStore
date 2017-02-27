@@ -10,10 +10,10 @@ import UIKit
 
 class CustomImageCell: UICollectionViewCell {
     
-    @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var bgImage: UIImageView!
-    @IBOutlet weak var logoBtn: UIButton!
-    @IBOutlet weak var logoImage: UIImageView!
-    @IBOutlet weak var label: UILabel!
-   // @IBOutlet weak var bgLabel: UILabel!
+    //MARK: IBOutlets
+    @IBOutlet weak var mMainView: UIView!
+    @IBOutlet weak var mBgImage: UIImageView!
+    @IBOutlet weak var mLogoBtn: UIButton!
+    @IBOutlet weak var mLogoImage: UIImageView!
+    @IBOutlet weak var mLabel: UILabel!
 }
