@@ -1,0 +1,6 @@
+framework module Pods_APPYSTORE {
+  umbrella header "Pods-APPYSTORE-umbrella.h"
+
+  export *
+  module * { export * }
+}

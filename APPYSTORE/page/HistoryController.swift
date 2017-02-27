@@ -78,7 +78,7 @@ class HistoryController: UIViewController {
             do
             {
              let json = JSON(response.result.value as! NSDictionary)
-             print("\(json["Responsedetails"]["total_count"])")
+             print("\(json["Responsedetails"])")
             
                
 
