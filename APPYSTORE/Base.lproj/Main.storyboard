@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hCO-RE-wNX">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11755"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -149,44 +149,114 @@
                         <viewControllerLayoutGuide type="bottom" id="fcg-x6-35P"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ibs-x8-mVo">
-                        <rect key="frame" x="0.0" y="0.0" width="720" height="1280"/>
+                        <rect key="frame" x="0.0" y="0.0" width="666" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nhK-LL-Kd8">
-                                <rect key="frame" x="0.0" y="440" width="720" height="400"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="app_bg" translatesAutoresizingMaskIntoConstraints="NO" id="LEe-fC-Lqi">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Nqi-yM-lzc">
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nhK-LL-Kd8">
+                                <rect key="frame" x="0.0" y="162" width="1280" height="396"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.097279094827586204" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="40" minimumInteritemSpacing="40" id="Nqi-yM-lzc">
                                     <size key="itemSize" width="400" height="382"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vih-cU-pOZ">
-                                        <rect key="frame" x="160" y="0.0" width="400" height="382"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="historycell" id="vih-cU-pOZ" customClass="HistoryVideoCell" customModule="APPYSTORE" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="7" width="400" height="382"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="400" height="382"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cartton2" translatesAutoresizingMaskIntoConstraints="NO" id="Qqy-nT-xZr">
+                                                    <rect key="frame" x="12" y="12" width="376" height="236"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="236" id="Ua4-8G-7hi"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_card_play_icon_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="NGJ-Vu-qH9">
+                                                    <rect key="frame" x="8" y="184" width="72" height="72"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="72" id="OA3-h7-FS9"/>
+                                                        <constraint firstAttribute="height" constant="72" id="ZcI-ls-iVh"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="xIB-rj-m7M"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7q8-Su-wcZ">
+                                                    <rect key="frame" x="347" y="322" width="40" height="40"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="gzp-BC-5bF"/>
+                                                        <constraint firstAttribute="width" constant="40" id="js7-EH-99Q"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="download_icon"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One two buckle my shoe" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcW-Dg-jbr">
+                                                    <rect key="frame" x="16" y="280" width="322" height="82"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="7q8-Su-wcZ" secondAttribute="trailing" constant="5" id="IZw-b1-TSk"/>
+                                            <constraint firstItem="Qqy-nT-xZr" firstAttribute="leading" secondItem="vih-cU-pOZ" secondAttribute="leadingMargin" constant="4" id="Ll8-LP-SKg"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Qqy-nT-xZr" secondAttribute="trailing" constant="4" id="NTj-Vk-Xl7"/>
+                                            <constraint firstItem="NGJ-Vu-qH9" firstAttribute="top" secondItem="Qqy-nT-xZr" secondAttribute="bottom" constant="-64" id="P24-18-3cA"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="7q8-Su-wcZ" secondAttribute="bottom" constant="12" id="RQk-fA-arN"/>
+                                            <constraint firstAttribute="leadingMargin" secondItem="NGJ-Vu-qH9" secondAttribute="leading" id="Wq6-Pu-g6E"/>
+                                            <constraint firstItem="7q8-Su-wcZ" firstAttribute="leading" secondItem="dcW-Dg-jbr" secondAttribute="trailing" constant="9" id="Zj8-QZ-Eew"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="dcW-Dg-jbr" secondAttribute="bottom" constant="12" id="Zji-Bk-ShU"/>
+                                            <constraint firstItem="dcW-Dg-jbr" firstAttribute="top" secondItem="NGJ-Vu-qH9" secondAttribute="bottom" constant="24" id="Zo0-9b-uUv"/>
+                                            <constraint firstItem="Qqy-nT-xZr" firstAttribute="top" secondItem="vih-cU-pOZ" secondAttribute="topMargin" constant="4" id="hvB-Pm-ge0"/>
+                                            <constraint firstItem="dcW-Dg-jbr" firstAttribute="top" secondItem="Qqy-nT-xZr" secondAttribute="bottom" constant="32" id="ktq-Fe-WsW"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="7q8-Su-wcZ" secondAttribute="trailing" constant="5" id="zr8-SC-KQC"/>
+                                            <constraint firstItem="dcW-Dg-jbr" firstAttribute="leading" secondItem="vih-cU-pOZ" secondAttribute="leadingMargin" constant="8" id="zyq-Vr-e71"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="mDownloadButton" destination="7q8-Su-wcZ" id="WaM-fl-cdx"/>
+                                            <outlet property="mPlayImage" destination="NGJ-Vu-qH9" id="SeB-36-78Z"/>
+                                            <outlet property="mVideoDescription" destination="dcW-Dg-jbr" id="yBL-X7-7q0"/>
+                                            <outlet property="mVideoImage" destination="Qqy-nT-xZr" id="qRs-vG-uze"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="hCO-RE-wNX" id="iA0-D1-v0o"/>
+                                    <outlet property="delegate" destination="hCO-RE-wNX" id="nOW-Bu-Dny"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="720" height="1280"/>
+                    <size key="freeformSize" width="666" height="375"/>
+                    <connections>
+                        <outlet property="collectionView" destination="nhK-LL-Kd8" id="HPn-qc-LWQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Km-he-pgj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="841.60000000000002" y="1178.4107946026988"/>
+            <point key="canvasLocation" x="1917.8410794602701" y="753.60000000000002"/>
         </scene>
     </scenes>
     <resources>
         <image name="app_bg" width="960" height="540"/>
+=======
+        <image name="cartton2" width="678" height="480"/>
+>>>>>>> c97251eb71ee24a22f7e62b71c7e4ee8a4cd840a
         <image name="category_video_media_type" width="37" height="23"/>
+        <image name="download_icon" width="36" height="36"/>
         <image name="ic_launcher" width="72" height="72"/>
+        <image name="video_card_play_icon_unselected" width="56" height="56"/>
     </resources>
 </document>

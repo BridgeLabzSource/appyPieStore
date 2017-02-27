@@ -12,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommonOverlayView" customModule="APPYSTORE" customModuleProvider="target">
             <connections>
                 <outlet property="commonOverlayView" destination="iN0-l3-epB" id="nZq-ZQ-BxW"/>
-                <outlet property="fabButton" destination="hDH-0X-pRl" id="zed-Jo-T3F"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,17 +22,10 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_bg" translatesAutoresizingMaskIntoConstraints="NO" id="JcE-H5-wSz">
                     <rect key="frame" x="0.0" y="0.0" width="1280" height="720"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDH-0X-pRl">
-                    <rect key="frame" x="608" y="328" width="64" height="64"/>
-                    <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Button"/>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="hDH-0X-pRl" firstAttribute="leading" secondItem="JcE-H5-wSz" secondAttribute="trailing" constant="-672" id="53c-qu-1SX"/>
                 <constraint firstItem="JcE-H5-wSz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MH1-ry-LqJ"/>
-                <constraint firstItem="hDH-0X-pRl" firstAttribute="top" secondItem="JcE-H5-wSz" secondAttribute="bottom" constant="-392" id="Q4W-8P-Qpr"/>
                 <constraint firstAttribute="bottom" secondItem="JcE-H5-wSz" secondAttribute="bottom" id="Xp6-ua-uxt"/>
                 <constraint firstItem="JcE-H5-wSz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="o2e-jJ-mec"/>
                 <constraint firstAttribute="trailing" secondItem="JcE-H5-wSz" secondAttribute="trailing" id="r8m-Jb-3gu"/>
