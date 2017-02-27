@@ -136,6 +136,49 @@
             </objects>
             <point key="canvasLocation" x="33.283358320839582" y="27.199999999999999"/>
         </scene>
+        <!--History Controller-->
+        <scene sceneID="pqa-mK-uI7">
+            <objects>
+                <viewController id="hCO-RE-wNX" customClass="HistoryController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FR4-bS-g4O"/>
+                        <viewControllerLayoutGuide type="bottom" id="fcg-x6-35P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ibs-x8-mVo">
+                        <rect key="frame" x="0.0" y="0.0" width="720" height="1280"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nhK-LL-Kd8">
+                                <rect key="frame" x="0.0" y="440" width="720" height="400"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Nqi-yM-lzc">
+                                    <size key="itemSize" width="400" height="382"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vih-cU-pOZ">
+                                        <rect key="frame" x="160" y="0.0" width="400" height="382"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="382"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="720" height="1280"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Km-he-pgj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="841.60000000000002" y="1178.4107946026988"/>
+        </scene>
     </scenes>
     <resources>
         <image name="app_bg" width="320" height="180"/>
