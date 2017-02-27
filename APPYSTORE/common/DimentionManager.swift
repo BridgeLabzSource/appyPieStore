@@ -6,12 +6,13 @@
 //  Copyright © 2017 MAUJ MOBILE PVT LTD. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 class DimentionManager{
 
-    static func convertPixelToPoint(pixel: Int) -> Int{
-        return pixel / Int(AppDelegate.density)
+    static func convertPixelToPoint(pixel: CGFloat) -> CGFloat{
+        return pixel / CGFloat(AppDelegate.density)
     }
     
     func userDeviceName() -> String {
