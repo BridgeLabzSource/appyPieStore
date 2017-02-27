@@ -9,8 +9,15 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-class HistoryController: UIViewController {
-
+class HistoryController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+    //MARK:IBOutlet
+    
+    @IBOutlet var collectionView: UICollectionView!
+    //MARK:declaration
+    let photo = [#imageLiteral(resourceName: "cartton2"),#imageLiteral(resourceName: "cartton2"),#imageLiteral(resourceName: "cartton2"),#imageLiteral(resourceName: "cartton2"),#imageLiteral(resourceName: "cartton2"),#imageLiteral(resourceName: "cartton2")]
+    let name = ["Funny Videos","Litle Champs videos","Funny Videos","Litle Champs videos","Funny Videos","Litle Champs videos"]
+    var cellSize = CGSize()
+    //======
     let X_APPY_IMEI = "X_APPY_IMEI"
     let X_APPY_PCP_ID = "X_APPY_PCP_ID"
     let X_APPY_CAMPAIGN_ID = "X_APPY_CAMPAIGN_ID"
@@ -69,9 +76,43 @@ class HistoryController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.collectionView.delegate = self
         getHistoryData()
         
     }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return name.count
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "historycell", for: indexPath) as! HistoryVideoCell
+//        cell.layer.bounds.size.height = 200
+//        cell.layer.bounds.size.width = 200
+//        
+//        
+//        cell.layer.bounds.size.width = 200
+//        
+//        cell.layer.bounds.size.height = 200
+//        cell.layer.bounds.size.width = 200
+        
+        cell.layer.cornerRadius = 35.0
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 15.0
+        cell.layer.masksToBounds = false
+        
+        //---net
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 7, height:10)
+        cell.layer.shadowOpacity = 0.3;
+        cell.layer.shadowRadius = 1.0;
+                //set data to cells
+        cell.mVideoImage.image = photo[indexPath.row]
+        cell.mVideoDescription.text = name[indexPath.row]
+      
+        return cell
+    }
+    // get data from server
     func getHistoryData()
     {
         Alamofire.request(url123, parameters:getParameter(),headers:getHeader()).responseJSON{ (response) in
@@ -87,7 +128,7 @@ class HistoryController: UIViewController {
         }
         
     }
-    
+    //parameter
     func getParameter() -> Parameters
     {
         let param1 = ["method":"getAllHistory",
@@ -97,7 +138,7 @@ class HistoryController: UIViewController {
                       "limit":"20"]
         return param1
     }
-    
+    //header
     func getHeader() -> HTTPHeaders
     {
         let headers:HTTPHeaders = ["Content-Type":"application/x-www-from-urlencoded",

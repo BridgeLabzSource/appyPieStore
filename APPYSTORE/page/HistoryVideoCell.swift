@@ -9,5 +9,19 @@
 import UIKit
 
 class HistoryVideoCell: UICollectionViewCell {
+    //MARK:IBOutlet
+    @IBOutlet var mVideoImage: UIImageView!
     
+    @IBOutlet var mPlayImage: UIImageView!
+    
+    @IBOutlet var mDownloadButton: UIButton!
+    
+    @IBOutlet var mVideoDescription: UILabel!
+    //MARK:IBAction
+    
+    override func awakeFromNib() {
+        mVideoImage.layer.cornerRadius = 30.0
+        mVideoImage.layer.masksToBounds = true
+        
+    }
 }
