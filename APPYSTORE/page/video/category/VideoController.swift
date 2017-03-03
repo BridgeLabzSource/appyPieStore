@@ -1,55 +1,45 @@
 //
-//  ViewController.swift
+//  VideoController.swift
 //  APPYSTORE
 //
-//  Created by BridgeLabz on 21/02/17.
+//  Created by BridgeLabz on 02/03/17.
 //  Copyright © 2017 MAUJ MOBILE PVT LTD. All rights reserved.
 //
 
 import UIKit
 
-class VideoCategoryController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class VideoController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    //MARK: IBOutlets
+    //MARK: IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
-    //MARK: Declarations
-    let image = ["ic_launcher", "ic_launcher", "ic_launcher", "ic_launcher", "ic_launcher", "ic_launcher"]
-    
+    //MARK: Declaration
     var pointOfPixels: CGFloat!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
         
         // getting value in point from pixels
         pointOfPixels = DimentionManager.convertPixelToPoint(pixel: 64.0)
+        
+        self.collectionView.register(UINib(nibName: "MyCustomView", bundle: nil), forCellWithReuseIdentifier: "MyCustomView")
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return image.count
+        return 4
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as!  CustomImageCell
         
-        //call to round method of UIView class
-        // let view = UIView().round(corners: .topLeft, radius: self.pointOfPixels)
+        let cell : MyCustomView = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCustomView", for: indexPath) as! MyCustomView
         
-        // setting cornerRadius of backgroundImage
-        cell.mBgImage.layer.cornerRadius = self.pointOfPixels
-        cell.mBgImage.clipsToBounds = true
-        
-        // setting cornerRadius of logoButton
-        cell.mLogoBtn.layer.cornerRadius = self.pointOfPixels
-        cell.mLogoBtn.clipsToBounds = true
-        
-        // setting cornerRadius of view
+       //access your Cell's IBOutlets
+        cell.mInfoBtn.layer.cornerRadius = self.pointOfPixels
+        cell.mInfoBtn.clipsToBounds = true
+
         cell.mMainView.layer.cornerRadius = self.pointOfPixels
         cell.mMainView.clipsToBounds = true
         
@@ -62,7 +52,8 @@ class VideoCategoryController: BaseViewController, UICollectionViewDelegate, UIC
     
     
     // function for Plain Shadow
-    func applyPlainShadow(view: UIView) {
+    func applyPlainShadow(view: UIView)
+    {
         let layer = view.layer
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 8, height: 8)
@@ -70,4 +61,6 @@ class VideoCategoryController: BaseViewController, UICollectionViewDelegate, UIC
         layer.shadowRadius = 1.0
         layer.masksToBounds = false
     }
+
 }
+

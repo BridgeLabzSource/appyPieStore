@@ -16,4 +16,5 @@ class CustomImageCell: UICollectionViewCell {
     @IBOutlet weak var mLogoBtn: UIButton!
     @IBOutlet weak var mLogoImage: UIImageView!
     @IBOutlet weak var mLabel: UILabel!
+    
 }
