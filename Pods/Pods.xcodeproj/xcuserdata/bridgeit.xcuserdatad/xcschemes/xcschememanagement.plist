@@ -9,7 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>KCFloatingActionButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-APPYSTORE.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,7 +32,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1440BCB16E790461178DC510E1EBB411</key>
+		<key>0B73E7C4CB774F575DDE09E026169DFC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>290DB580DECE0BEE4DADC98FAE809F97</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -32,7 +47,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C61A18B3EE340EBE3649533134F4B18D</key>
+		<key>9958356B0E023F8D58126F30ED5148F1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A6E9CEC9E5ACFE69D21456CCB70BEEA0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

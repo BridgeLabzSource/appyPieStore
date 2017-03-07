@@ -1,15 +1,23 @@
 PODS:
   - Alamofire (4.1.0)
+  - KCFloatingActionButton (2.1.1)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SwiftyJSON (3.1.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - KCFloatingActionButton (~> 2.1.0)
+  - SDWebImage
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: e266cf991b933498df791e645e0d8ac294492153
+  KCFloatingActionButton: 084cfe9d16b741be33393c99757f5967296c7645
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
-PODFILE CHECKSUM: 45b97f96de6a10949c809a5586fc2b9c541c0e33
+PODFILE CHECKSUM: 0a337e32cbcd7c7ec94a6302b755ada74e36d330
 
 COCOAPODS: 1.1.1
