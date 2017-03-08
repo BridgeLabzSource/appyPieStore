@@ -30,7 +30,7 @@ class VideoCategoryParser: BaseParser
         var videoCategoryModelArray = [VideoCategoryModel]()
         for item in videoCategoryContent!
         {
-            let vc:VideoCategoryModel = VideoCategoryModel()
+            let vc = VideoCategoryModel()
             vc.categoryId = String(item["category_id"].int!)
             vc.categoryName = item["category_name"].string!
             vc.contentCount = String(item["content_count"].int!)

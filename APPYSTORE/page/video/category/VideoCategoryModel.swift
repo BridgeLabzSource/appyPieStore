@@ -10,13 +10,13 @@ import Foundation
 
 class VideoCategoryModel: BaseModel
 {
-    public var categoryId: String
-    public var categoryName: String
-    public var contentCount: String
-    public var imagePath: String
-    public var parentCategoryId: String
-    public var isCategoryBlocked: String
-    public var parentCategoryName: String
-    public var canonicalName: String
-    public var isVisible: String
+    public var categoryId: String = ""
+    public var categoryName: String = ""
+    public var contentCount: String = ""
+    public var imagePath: String = ""
+    public var parentCategoryId: String = ""
+    public var isCategoryBlocked: String = ""
+    public var parentCategoryName: String = ""
+    public var canonicalName: String = ""
+    public var isVisible: String = ""
 }
