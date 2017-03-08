@@ -25,7 +25,7 @@ class VideoController: BaseViewController, UICollectionViewDelegate, UICollectio
         // getting value in point from pixels
         pointOfPixels = DimentionManager.convertPixelToPoint(pixel: 64.0)
         
-       // self.collectionView.register(UINib(nibName: "MyCustomView", bundle: nil), forCellWithReuseIdentifier: "MyCustomView")
+        self.collectionView.register(UINib(nibName: "MyCustomView", bundle: nil), forCellWithReuseIdentifier: "MyCustomView")
         
         let dataManager = DataManager()
         dataManager.getData(pageName: PageConstants.VIDEO_PAGE, returndata: { result in

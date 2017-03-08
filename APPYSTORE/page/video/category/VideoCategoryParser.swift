@@ -25,16 +25,17 @@ class VideoCategoryParser: BaseParser
     
     
     override func parseJSONData(responseData:JSON) -> [BaseModel]?{
-        let videoCategoryContent = responseData["data_array"].array
+        let videoCategoryContent = responseData["category_id_array"].array
         
         var videoCategoryModelArray = [VideoCategoryModel]()
         for item in videoCategoryContent!
         {
             let vc = VideoCategoryModel()
-            vc.categoryId = String(item["category_id"].int!)
+            vc.categoryId = item["category_id"].string!
             vc.categoryName = item["category_name"].string!
             vc.contentCount = String(item["content_count"].int!)
-            vc.imagePath = item["image_path"].string!
+            let tempImgPath = item["image_path"].dictionary!
+            vc.imagePath = (tempImgPath["50x50"]?.string!)!
            
             videoCategoryModelArray.append(vc)
             

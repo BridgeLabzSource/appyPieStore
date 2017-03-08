@@ -49,13 +49,13 @@ class BaseViewController: UIViewController{
         fab.addItem(title: "Parenting Videos")
         fab.addItem(title: "Profile")
         fab.openAnimationType = .slideLeft
-        fabButton.addSubview(fab)
+    //    fabButton.addSubview(fab)
         self.view.bringSubview(toFront: fab)
         
         
         
-        buttonsLayout()
-        setupView()
+     //   buttonsLayout()
+      //  setupView()
     }
     
     func buttonsLayout()
