@@ -16,6 +16,8 @@ class VideoController: BaseViewController, UICollectionViewDelegate, UICollectio
     //MARK: Declaration
     var pointOfPixels: CGFloat!
     
+    var dataList = [VideoCategoryModel]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +25,22 @@ class VideoController: BaseViewController, UICollectionViewDelegate, UICollectio
         // getting value in point from pixels
         pointOfPixels = DimentionManager.convertPixelToPoint(pixel: 64.0)
         
-        self.collectionView.register(UINib(nibName: "MyCustomView", bundle: nil), forCellWithReuseIdentifier: "MyCustomView")
+       // self.collectionView.register(UINib(nibName: "MyCustomView", bundle: nil), forCellWithReuseIdentifier: "MyCustomView")
+        
+        let dataManager = DataManager()
+        dataManager.getData(pageName: PageConstants.VIDEO_PAGE, returndata: { result in
+            self.dataList = result as! [VideoCategoryModel]
+            self.collectionView.reloadData()
+        })
+        
+        self.collectionView.showsHorizontalScrollIndicator = false
+        self.collectionView.delegate = self
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+       // return 4
+        return dataList.count
     }
     
     
@@ -42,6 +54,12 @@ class VideoController: BaseViewController, UICollectionViewDelegate, UICollectio
 
         cell.mMainView.layer.cornerRadius = self.pointOfPixels
         cell.mMainView.clipsToBounds = true
+        
+        let image_path = dataList[indexPath.row].imagePath
+        let imgurl = URL(string: image_path)
+        cell.mBgImg.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
+        
+        cell.mCountLabel.text = dataList[indexPath.row].contentCount
         
         // setting shadow of view
         let plain = cell

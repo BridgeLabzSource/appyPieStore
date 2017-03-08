@@ -10,11 +10,13 @@ import UIKit
 
 class CustomImageCell: UICollectionViewCell {
     
-    //MARK: IBOutlets
+    //MARK: IBOutlets 
     @IBOutlet weak var mMainView: UIView!
     @IBOutlet weak var mBgImage: UIImageView!
     @IBOutlet weak var mLogoBtn: UIButton!
     @IBOutlet weak var mLogoImage: UIImageView!
     @IBOutlet weak var mLabel: UILabel!
+    
+    
     
 }

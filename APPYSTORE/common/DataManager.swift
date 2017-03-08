@@ -16,6 +16,14 @@ class DataManager:NSObject
                  returndata(result)
                 
              })
+            
+        case PageConstants.VIDEO_PAGE:
+            let parser = VideoCategoryParser()
+            //parser.parse(params: <#T##Parameters#>, completion: <#T##([BaseModel]) -> Void#>)
+            parser.parse(params: HttpRequestBuilder.getVideoCategoryParameters(), completion: { result in
+                returndata(result)
+                
+            })
       
         default:
             break

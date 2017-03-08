@@ -105,4 +105,14 @@ class HttpRequestBuilder: NSObject
         return params
     }
     
+    static func getVideoCategoryParameters() -> Parameters
+    {
+        let params = ["method":"getCategoryList",
+                      "limit_start":"0",
+                      "age":"3",
+                      "incl_age":"1",
+                      "content_type":"videos"]
+        return params
+    }
+    
 }
