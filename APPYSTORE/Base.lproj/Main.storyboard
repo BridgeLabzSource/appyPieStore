@@ -403,7 +403,7 @@
                                 <color key="backgroundColor" red="1" green="0.71595923100000003" blue="0.56471622610000005" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dw7-bq-qyd">
-                                <rect key="frame" x="0.0" y="123" width="736" height="205"/>
+                                <rect key="frame" x="0.0" y="115" width="736" height="220.66666666666669"/>
                                 <color key="backgroundColor" red="1" green="0.95992458579999995" blue="0.070536774529999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3IF-yV-DUU">
                                     <size key="itemSize" width="426" height="201"/>
@@ -479,11 +479,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="259" height="192"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-<<<<<<< HEAD
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DB50A3E0-CA47-4D95-ADB1-7646C3904E88" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
-=======
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9B1B5B4F-E3D8-4158-8B51-209AB6C14D0A" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
->>>>>>> 75cf87a58391eccd2c833d5da9571edee63d3d29
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0545422B-4B52-498A-A9DC-EF1F34587D93" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
                                                     <rect key="frame" x="8" y="8" width="243" height="116"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="116" id="HfT-XT-9p0"/>
@@ -564,11 +560,7 @@
         </scene>
     </scenes>
     <resources>
-<<<<<<< HEAD
-        <image name="DB50A3E0-CA47-4D95-ADB1-7646C3904E88" width="678" height="480">
-=======
-        <image name="9B1B5B4F-E3D8-4158-8B51-209AB6C14D0A" width="678" height="480">
->>>>>>> 75cf87a58391eccd2c833d5da9571edee63d3d29
+        <image name="0545422B-4B52-498A-A9DC-EF1F34587D93" width="678" height="480">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
