@@ -21,6 +21,7 @@
 		0A8F790C1E6971FD00720DB8 /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F790B1E6971FD00720DB8 /* MyCustomView.swift */; };
 		0A999C7A1E65874B005B4053 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A999C791E65874B005B4053 /* OverlayView.swift */; };
 		0A999C7C1E658766005B4053 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A999C7B1E658766005B4053 /* OverlayView.xib */; };
+		0A9B9CEE1E716DFB00505CD6 /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B9CED1E716DFB00505CD6 /* CenterCellCollectionViewFlowLayout.swift */; };
 		0AAD2EFD1E5C48EF00B504A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2EFC1E5C48EF00B504A3 /* AppDelegate.swift */; };
 		0AAD2F021E5C48EF00B504A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD2F001E5C48EF00B504A3 /* Main.storyboard */; };
 		0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2F031E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld */; };
@@ -63,6 +64,7 @@
 		0A8F790B1E6971FD00720DB8 /* MyCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
 		0A999C791E65874B005B4053 /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		0A999C7B1E658766005B4053 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
+		0A9B9CED1E716DFB00505CD6 /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		0AAD2EF91E5C48EF00B504A3 /* APPYSTORE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APPYSTORE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AAD2EFC1E5C48EF00B504A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AAD2F011E5C48EF00B504A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				0A8F79091E6971D300720DB8 /* MyCustomView.xib */,
 				0A8F790B1E6971FD00720DB8 /* MyCustomView.swift */,
 				0A5374A91E606B9700F198AD /* DimentionManager.swift */,
+				0A9B9CED1E716DFB00505CD6 /* CenterCellCollectionViewFlowLayout.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				0A5374AA1E606B9700F198AD /* DimentionManager.swift in Sources */,
 				0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */,
 				0A72615E1E6D30600023883F /* StringExtension.swift in Sources */,
+				0A9B9CEE1E716DFB00505CD6 /* CenterCellCollectionViewFlowLayout.swift in Sources */,
 				70AD5AF21E6E7360003C2536 /* SearchController.swift in Sources */,
 				70AD5AE61E6E7129003C2536 /* HttpRequestBuilder.swift in Sources */,
 				70AD5AEE1E6E71CD003C2536 /* VideoListingModel.swift in Sources */,

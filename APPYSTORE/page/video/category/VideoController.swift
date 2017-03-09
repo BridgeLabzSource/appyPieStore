@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VideoController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class VideoController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     //MARK: IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
