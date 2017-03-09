@@ -14,6 +14,11 @@
 		0A72615E1E6D30600023883F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72615C1E6D30600023883F /* StringExtension.swift */; };
 		0A72615F1E6D30600023883F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72615D1E6D30600023883F /* UIColorExtension.swift */; };
 		0A7261631E6D30AE0023883F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7261621E6D30AE0023883F /* CustomButton.swift */; };
+		0A74B98E1E71143200B7A67D /* UIViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A74B98D1E71143200B7A67D /* UIViewExtention.swift */; };
+		0A80DA201E702C5E00939443 /* TopBarOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A80DA1F1E702C5E00939443 /* TopBarOverlay.xib */; };
+		0A80DA221E702CA500939443 /* TopBarOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80DA211E702CA500939443 /* TopBarOverlay.swift */; };
+		0A80DA241E702CC100939443 /* BottomBarOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A80DA231E702CC100939443 /* BottomBarOverlay.xib */; };
+		0A80DA261E702DA700939443 /* BottomBarOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80DA251E702DA700939443 /* BottomBarOverlay.swift */; };
 		0A8A58A61E683F2100A93DD2 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8A58A51E683F2100A93DD2 /* VideoController.swift */; };
 		0A8F790A1E6971D300720DB8 /* MyCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A8F79091E6971D300720DB8 /* MyCustomView.xib */; };
 		0A8F790C1E6971FD00720DB8 /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F790B1E6971FD00720DB8 /* MyCustomView.swift */; };
@@ -54,6 +59,11 @@
 		0A72615C1E6D30600023883F /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		0A72615D1E6D30600023883F /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		0A7261621E6D30AE0023883F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		0A74B98D1E71143200B7A67D /* UIViewExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtention.swift; sourceTree = "<group>"; };
+		0A80DA1F1E702C5E00939443 /* TopBarOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopBarOverlay.xib; sourceTree = "<group>"; };
+		0A80DA211E702CA500939443 /* TopBarOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarOverlay.swift; sourceTree = "<group>"; };
+		0A80DA231E702CC100939443 /* BottomBarOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomBarOverlay.xib; sourceTree = "<group>"; };
+		0A80DA251E702DA700939443 /* BottomBarOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomBarOverlay.swift; sourceTree = "<group>"; };
 		0A8A58A51E683F2100A93DD2 /* VideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
 		0A8F79091E6971D300720DB8 /* MyCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCustomView.xib; sourceTree = "<group>"; };
 		0A8F790B1E6971FD00720DB8 /* MyCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
@@ -122,6 +132,7 @@
 		0A72615B1E6D30480023883F /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				0A74B98D1E71143200B7A67D /* UIViewExtention.swift */,
 				0A72615C1E6D30600023883F /* StringExtension.swift */,
 				0A72615D1E6D30600023883F /* UIColorExtension.swift */,
 			);
@@ -132,6 +143,10 @@
 			isa = PBXGroup;
 			children = (
 				0A7261621E6D30AE0023883F /* CustomButton.swift */,
+				0A80DA1F1E702C5E00939443 /* TopBarOverlay.xib */,
+				0A80DA211E702CA500939443 /* TopBarOverlay.swift */,
+				0A80DA231E702CC100939443 /* BottomBarOverlay.xib */,
+				0A80DA251E702DA700939443 /* BottomBarOverlay.swift */,
 			);
 			name = customView;
 			sourceTree = "<group>";
@@ -294,11 +309,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AAD2F0A1E5C48EF00B504A3 /* LaunchScreen.storyboard in Resources */,
+				0A80DA241E702CC100939443 /* BottomBarOverlay.xib in Resources */,
 				70A36E4D1E6148BE002B9296 /* CommonOverlayView.xib in Resources */,
 				0A999C7C1E658766005B4053 /* OverlayView.xib in Resources */,
 				0A8F790A1E6971D300720DB8 /* MyCustomView.xib in Resources */,
 				70A36E4B1E614722002B9296 /* Assets.xcassets in Resources */,
 				0AAD2F021E5C48EF00B504A3 /* Main.storyboard in Resources */,
+				0A80DA201E702C5E00939443 /* TopBarOverlay.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,10 +374,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A80DA221E702CA500939443 /* TopBarOverlay.swift in Sources */,
 				70AD5AED1E6E71CD003C2536 /* HistoryController.swift in Sources */,
+				0A74B98E1E71143200B7A67D /* UIViewExtention.swift in Sources */,
 				0A5374A61E6005D800F198AD /* CustomImageCell.swift in Sources */,
 				70AD5AF01E6E71CD003C2536 /* HistoryParser.swift in Sources */,
 				70AD5AE71E6E7129003C2536 /* DataManager.swift in Sources */,
+				0A80DA261E702DA700939443 /* BottomBarOverlay.swift in Sources */,
 				0A65E2601E6EC11400F538B5 /* VideoCategoryParser.swift in Sources */,
 				0A72615F1E6D30600023883F /* UIColorExtension.swift in Sources */,
 				0AD553711E5DA9D5005ECA4A /* VideoCategoryController.swift in Sources */,

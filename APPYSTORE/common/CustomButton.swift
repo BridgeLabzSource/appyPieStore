@@ -75,11 +75,16 @@ import UIKit
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initialize()
+        //initialize()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        //initialize()
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         initialize()
     }
 }
