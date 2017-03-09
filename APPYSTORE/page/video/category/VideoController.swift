@@ -51,6 +51,9 @@ class VideoController: BaseViewController, UICollectionViewDelegate, UICollectio
        //access your Cell's IBOutlets
         cell.mInfoBtn.layer.cornerRadius = self.pointOfPixels
         cell.mInfoBtn.clipsToBounds = true
+        
+        cell.mBgImg.layer.cornerRadius = self.pointOfPixels
+        cell.mBgImg.clipsToBounds = true
 
         cell.mMainView.layer.cornerRadius = self.pointOfPixels
         cell.mMainView.clipsToBounds = true
