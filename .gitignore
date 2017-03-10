@@ -29,7 +29,6 @@ xcuserdata/
 *.dSYM
 
 .DS_Store
-APPYSTORE/.DS_Store
 
 ## Playgrounds
 timeline.xctimeline
