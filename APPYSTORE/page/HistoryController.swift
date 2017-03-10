@@ -15,10 +15,21 @@ class HistoryController: UIViewController, UICollectionViewDelegate,UICollection
         super.viewDidLoad()
         
         let dataManager = DataManager()
+        
         dataManager.getData(pageName: PageConstants.HISTORY_PAGE, returndata: { result in
             self.dataList = result as! [VideoListingModel]
+            print("Ganesh result : \(result.count)")
+            print("Ganesh datalist : \(self.dataList.count)")
             self.collectionView.reloadData()
         })
+ 
+        
+        
+        let dataM = DataManager()
+        dataM.getData(pageName: PageConstants.LOGIN_PAGE, returndata: { result in
+        
+        })
+        
         
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.delegate = self

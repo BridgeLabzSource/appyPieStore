@@ -115,4 +115,23 @@ class HttpRequestBuilder: NSObject
         return params
     }
     
+    static func getLoginParams() -> Parameters{
+        /*
+        utm_medium= pageid=Splash utm_content= method=login mo= utm_term= utm_source= utm_campaign= userEmail=testmob1234@gmail.com
+        */
+        
+        let params = ["utm_medium":"",
+                      "pageid":"Splash",
+                      "utm_content":"",
+                      "offset":"0",
+                      "method":"login",
+                      "mo":"",
+                      "utm_term":"",
+                      "utm_source":"",
+                      "utm_campaign":"",
+                      "userEmail":"testmob1234@gmail.com"
+                      ]
+        return params
+    }
+    
 }

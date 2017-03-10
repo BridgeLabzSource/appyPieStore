@@ -24,7 +24,7 @@ class VideoCategoryParser: BaseParser
     private static let IS_VISIBLE = "is_visible";
     
     
-    override func parseJSONData(responseData:JSON) -> [BaseModel]?{
+    override func parseJSONData(responseData:JSON) -> AnyObject?{
         let videoCategoryContent = responseData["data_array"].array
         
         var videoCategoryModelArray = [VideoCategoryModel]()
@@ -39,7 +39,7 @@ class VideoCategoryParser: BaseParser
             videoCategoryModelArray.append(vc)
             
         }
-        return videoCategoryModelArray
+        return videoCategoryModelArray as AnyObject
         
     }
 }

@@ -19,10 +19,16 @@ class DataManager:NSObject
             
         case PageConstants.VIDEO_PAGE:
             let parser = VideoCategoryParser()
-            //parser.parse(params: <#T##Parameters#>, completion: <#T##([BaseModel]) -> Void#>)
+            //parser.parse(params: <#T##Parameters#>, completion: ([BaseModel]) -> Void)
             parser.parse(params: HttpRequestBuilder.getVideoCategoryParameters(), completion: { result in
                 returndata(result)
                 
+            })
+            
+        case PageConstants.LOGIN_PAGE:
+            let parser = LoginParser()
+            parser.parse(params: HttpRequestBuilder.getLoginParams(), completion: { result in
+                returndata(result)
             })
       
         default:

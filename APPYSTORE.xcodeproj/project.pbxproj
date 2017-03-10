@@ -40,6 +40,11 @@
 		70AD5AEF1E6E71CD003C2536 /* HistoryVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5AEB1E6E71CD003C2536 /* HistoryVideoCell.swift */; };
 		70AD5AF01E6E71CD003C2536 /* HistoryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5AEC1E6E71CD003C2536 /* HistoryParser.swift */; };
 		70AD5AF21E6E7360003C2536 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5AF11E6E7360003C2536 /* SearchController.swift */; };
+		F4165EEA1E7024EB00DB5162 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4165EE91E7024EB00DB5162 /* UserInfo.swift */; };
+		F42F686B1E700E8F00EB9F75 /* LoginParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F686A1E700E8F00EB9F75 /* LoginParser.swift */; };
+		F443E3421E7118760025E829 /* ChildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F443E3411E7118760025E829 /* ChildInfo.swift */; };
+		F443E3441E711EE20025E829 /* PreChatFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F443E3431E711EE20025E829 /* PreChatFormField.swift */; };
+		F443E3461E712E470025E829 /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F443E3451E712E470025E829 /* StringUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +89,11 @@
 		70AD5AEB1E6E71CD003C2536 /* HistoryVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVideoCell.swift; sourceTree = "<group>"; };
 		70AD5AEC1E6E71CD003C2536 /* HistoryParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryParser.swift; sourceTree = "<group>"; };
 		70AD5AF11E6E7360003C2536 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		F4165EE91E7024EB00DB5162 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		F42F686A1E700E8F00EB9F75 /* LoginParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginParser.swift; sourceTree = "<group>"; };
+		F443E3411E7118760025E829 /* ChildInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInfo.swift; sourceTree = "<group>"; };
+		F443E3431E711EE20025E829 /* PreChatFormField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreChatFormField.swift; sourceTree = "<group>"; };
+		F443E3451E712E470025E829 /* StringUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +175,11 @@
 				0AAD2F081E5C48EF00B504A3 /* LaunchScreen.storyboard */,
 				0AAD2F0B1E5C48EF00B504A3 /* Info.plist */,
 				0AAD2F031E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld */,
+				F42F686A1E700E8F00EB9F75 /* LoginParser.swift */,
+				F4165EE91E7024EB00DB5162 /* UserInfo.swift */,
+				F443E3411E7118760025E829 /* ChildInfo.swift */,
+				F443E3431E711EE20025E829 /* PreChatFormField.swift */,
+				F443E3451E712E470025E829 /* StringUtil.swift */,
 			);
 			path = APPYSTORE;
 			sourceTree = "<group>";
@@ -359,7 +374,9 @@
 			files = (
 				70AD5AED1E6E71CD003C2536 /* HistoryController.swift in Sources */,
 				0A5374A61E6005D800F198AD /* CustomImageCell.swift in Sources */,
+				F443E3441E711EE20025E829 /* PreChatFormField.swift in Sources */,
 				70AD5AF01E6E71CD003C2536 /* HistoryParser.swift in Sources */,
+				F443E3461E712E470025E829 /* StringUtil.swift in Sources */,
 				70AD5AE71E6E7129003C2536 /* DataManager.swift in Sources */,
 				0A65E2601E6EC11400F538B5 /* VideoCategoryParser.swift in Sources */,
 				0A72615F1E6D30600023883F /* UIColorExtension.swift in Sources */,
@@ -369,14 +386,17 @@
 				0A8F790C1E6971FD00720DB8 /* MyCustomView.swift in Sources */,
 				70AD5AE51E6E7129003C2536 /* PageConstants.swift in Sources */,
 				70AD5ADC1E6E710C003C2536 /* BaseViewController.swift in Sources */,
+				F4165EEA1E7024EB00DB5162 /* UserInfo.swift in Sources */,
 				0A999C7A1E65874B005B4053 /* OverlayView.swift in Sources */,
 				70A36E4F1E6149C0002B9296 /* CommonOverlayView.swift in Sources */,
+				F443E3421E7118760025E829 /* ChildInfo.swift in Sources */,
 				70AD5AEF1E6E71CD003C2536 /* HistoryVideoCell.swift in Sources */,
 				0AAD2EFD1E5C48EF00B504A3 /* AppDelegate.swift in Sources */,
 				70AD5AE41E6E7129003C2536 /* BaseModel.swift in Sources */,
 				0A5374AA1E606B9700F198AD /* DimentionManager.swift in Sources */,
 				0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */,
 				0A72615E1E6D30600023883F /* StringExtension.swift in Sources */,
+				F42F686B1E700E8F00EB9F75 /* LoginParser.swift in Sources */,
 				70AD5AF21E6E7360003C2536 /* SearchController.swift in Sources */,
 				70AD5AE61E6E7129003C2536 /* HttpRequestBuilder.swift in Sources */,
 				70AD5AEE1E6E71CD003C2536 /* VideoListingModel.swift in Sources */,

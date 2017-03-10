@@ -21,7 +21,7 @@ class HistoryParser:BaseParser
     private static let CDN_URL = "cdn_url";
     private static let GROUP_ID = "group_id";
     
-    override func parseJSONData(responseData:JSON) -> [BaseModel]?{
+    override func parseJSONData(responseData:JSON) -> AnyObject?{
         let videoContent = responseData["data_array"].array
        
         var historyModelArray = [VideoListingModel]()
@@ -44,7 +44,7 @@ class HistoryParser:BaseParser
             historyModelArray.append(videoListingModel)
             
         }
-        return historyModelArray
+        return historyModelArray as AnyObject
         
     }
     

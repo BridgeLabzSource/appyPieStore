@@ -22,15 +22,14 @@ class BaseParser: NSObject
                     self.status = true
                     let parsedResponseData = self.parseJSONData(responseData: self.ResponseDetails)
                     
-                   
-                    completion(parsedResponseData!)
+                    completion(parsedResponseData! as! [BaseModel])
                     
                 
                 }
         })
     }
     
-    func parseJSONData(responseData:JSON) -> [BaseModel]?{
+    func parseJSONData(responseData:JSON) -> AnyObject?{
         return nil
     }
     
