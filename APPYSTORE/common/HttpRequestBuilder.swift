@@ -100,7 +100,7 @@ class HttpRequestBuilder: NSObject
         let params = ["method":"getAllHistory",
                       "child_id":"29518",
                       "page_id":"History",
-                      "offset":"0",
+                      "offset":"1",
                       "limit":"20"]
         return params
     }

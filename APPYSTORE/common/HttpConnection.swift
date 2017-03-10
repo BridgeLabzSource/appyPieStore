@@ -18,7 +18,7 @@ class HttpConnection: NSObject{
             do
             {
                 self.jsonData = JSON(response.result.value as! NSDictionary)
-                print("Response: \(self.jsonData)")
+              //  print("Response: \(self.jsonData)")
                 completion(self.jsonData)
             }
         }

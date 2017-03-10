@@ -1,4 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="15G31" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="HistoryTable" representedClassName="HistoryTable" syncable="YES" codeGenerationType="class">
+        <attribute name="child_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="content_duration" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="content_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dnld_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="download_status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="downloaded_file_path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image_path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="p_cat_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pay_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seq_number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seq_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sub_cat_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sub_cat_title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="version_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="video_streaming" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="VideoTable" representedClassName="VideoTable" syncable="YES" codeGenerationType="class">
+        <attribute name="blocked_status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="canonical_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cat_thumb_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="category_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="category_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="content_count" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="parent_category_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="parent_category_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="visibility_status" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="HistoryTable" positionX="-63" positionY="-18" width="128" height="300"/>
+        <element name="VideoTable" positionX="-54" positionY="-9" width="128" height="210"/>
+    </elements>
 </model>

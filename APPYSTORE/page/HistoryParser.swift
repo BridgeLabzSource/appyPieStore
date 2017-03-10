@@ -41,11 +41,23 @@ class HistoryParser:BaseParser
             videoListingModel.subCategoryTitle = item["sub_category_title"].string!
             videoListingModel.parentCategoryId = String(item["parent_category_id"].int!)
 
+            videoListingModel.isVideoDownloadable = self.isDownloadable(value:  item["video_streaming"].string!)
+
             historyModelArray.append(videoListingModel)
             
         }
         return historyModelArray
         
+    }
+    
+    func isDownloadable(value:String) -> Bool
+    {
+          let result:ComparisonResult = value.caseInsensitiveCompare("Yes")
+          if result == .orderedSame
+          {
+            return false
+          }
+    return true
     }
     
 }

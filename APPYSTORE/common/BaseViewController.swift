@@ -89,6 +89,8 @@ class BaseViewController: UIViewController{
         }
         else if switchcontrol.selectedSegmentIndex == 1
         {
+          
+            
             print("History")
             removeFromParentViewController()
             historycontroller.view.isHidden = false

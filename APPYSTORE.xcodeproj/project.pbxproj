@@ -25,6 +25,11 @@
 		0AAD2F0A1E5C48EF00B504A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD2F081E5C48EF00B504A3 /* LaunchScreen.storyboard */; };
 		0AD553711E5DA9D5005ECA4A /* VideoCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD553701E5DA9D5005ECA4A /* VideoCategoryController.swift */; };
 		54D641501B11786A1C496324 /* Pods_APPYSTORE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E463C3A36DD3D2DE33CC294 /* Pods_APPYSTORE.framework */; };
+		705E7BC21E700AB30086BC60 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705E7BC11E700AB30086BC60 /* CoreData.framework */; };
+		706B34FA1E6FE9F4008474EA /* BaseDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706B34F91E6FE9F4008474EA /* BaseDBManager.swift */; };
+		706B34FC1E6FEA96008474EA /* HistoryDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706B34FB1E6FEA96008474EA /* HistoryDBManager.swift */; };
+		706B34FE1E6FEAF7008474EA /* VideoDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706B34FD1E6FEAF7008474EA /* VideoDBManager.swift */; };
+		707FD8181E7140A400948BEA /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FD8171E7140A400948BEA /* Util.swift */; };
 		70A36E4B1E614722002B9296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70A36E4A1E614722002B9296 /* Assets.xcassets */; };
 		70A36E4D1E6148BE002B9296 /* CommonOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A36E4C1E6148BE002B9296 /* CommonOverlayView.xib */; };
 		70A36E4F1E6149C0002B9296 /* CommonOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A36E4E1E6149C0002B9296 /* CommonOverlayView.swift */; };
@@ -69,6 +74,11 @@
 		4235255AFD5AB3DCC9C949D5 /* Pods-APPYSTORE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APPYSTORE.release.xcconfig"; path = "Pods/Target Support Files/Pods-APPYSTORE/Pods-APPYSTORE.release.xcconfig"; sourceTree = "<group>"; };
 		449AB76A8F3659A0A4381CF8 /* Pods-APPYSTORE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APPYSTORE.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APPYSTORE/Pods-APPYSTORE.debug.xcconfig"; sourceTree = "<group>"; };
 		4E463C3A36DD3D2DE33CC294 /* Pods_APPYSTORE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APPYSTORE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		705E7BC11E700AB30086BC60 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		706B34F91E6FE9F4008474EA /* BaseDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDBManager.swift; sourceTree = "<group>"; };
+		706B34FB1E6FEA96008474EA /* HistoryDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDBManager.swift; sourceTree = "<group>"; };
+		706B34FD1E6FEAF7008474EA /* VideoDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDBManager.swift; sourceTree = "<group>"; };
+		707FD8171E7140A400948BEA /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = common/Util.swift; sourceTree = "<group>"; };
 		70A36E4A1E614722002B9296 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70A36E4C1E6148BE002B9296 /* CommonOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonOverlayView.xib; sourceTree = "<group>"; };
 		70A36E4E1E6149C0002B9296 /* CommonOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonOverlayView.swift; sourceTree = "<group>"; };
@@ -91,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				705E7BC21E700AB30086BC60 /* CoreData.framework in Frameworks */,
 				54D641501B11786A1C496324 /* Pods_APPYSTORE.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +125,9 @@
 				70AD5AE21E6E7129003C2536 /* HttpConnection.swift */,
 				0A8F79091E6971D300720DB8 /* MyCustomView.xib */,
 				0A8F790B1E6971FD00720DB8 /* MyCustomView.swift */,
+				706B34F91E6FE9F4008474EA /* BaseDBManager.swift */,
+				706B34FB1E6FEA96008474EA /* HistoryDBManager.swift */,
+				706B34FD1E6FEAF7008474EA /* VideoDBManager.swift */,
 				0A5374A91E606B9700F198AD /* DimentionManager.swift */,
 			);
 			path = common;
@@ -157,6 +171,7 @@
 		0AAD2EFB1E5C48EF00B504A3 /* APPYSTORE */ = {
 			isa = PBXGroup;
 			children = (
+				707FD8171E7140A400948BEA /* Util.swift */,
 				0A656BBE1E5DB73F000E5BB2 /* common */,
 				0AD5536D1E5DA958005ECA4A /* page */,
 				0AAD2EFC1E5C48EF00B504A3 /* AppDelegate.swift */,
@@ -202,6 +217,7 @@
 		1AC432C70764F0B22613230D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				705E7BC11E700AB30086BC60 /* CoreData.framework */,
 				0A65E26A1E6EC99F00F538B5 /* SwiftyJSON.framework */,
 				0A65E2681E6EC99400F538B5 /* KCFloatingActionButton.framework */,
 				0A65E2661E6EC97E00F538B5 /* Alamofire.framework */,
@@ -364,7 +380,9 @@
 				0A65E2601E6EC11400F538B5 /* VideoCategoryParser.swift in Sources */,
 				0A72615F1E6D30600023883F /* UIColorExtension.swift in Sources */,
 				0AD553711E5DA9D5005ECA4A /* VideoCategoryController.swift in Sources */,
+				707FD8181E7140A400948BEA /* Util.swift in Sources */,
 				70AD5AE31E6E7129003C2536 /* BaseParser.swift in Sources */,
+				706B34FA1E6FE9F4008474EA /* BaseDBManager.swift in Sources */,
 				70AD5AE81E6E7129003C2536 /* HttpConnection.swift in Sources */,
 				0A8F790C1E6971FD00720DB8 /* MyCustomView.swift in Sources */,
 				70AD5AE51E6E7129003C2536 /* PageConstants.swift in Sources */,
@@ -377,9 +395,11 @@
 				0A5374AA1E606B9700F198AD /* DimentionManager.swift in Sources */,
 				0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */,
 				0A72615E1E6D30600023883F /* StringExtension.swift in Sources */,
+				706B34FE1E6FEAF7008474EA /* VideoDBManager.swift in Sources */,
 				70AD5AF21E6E7360003C2536 /* SearchController.swift in Sources */,
 				70AD5AE61E6E7129003C2536 /* HttpRequestBuilder.swift in Sources */,
 				70AD5AEE1E6E71CD003C2536 /* VideoListingModel.swift in Sources */,
+				706B34FC1E6FEA96008474EA /* HistoryDBManager.swift in Sources */,
 				0A8A58A61E683F2100A93DD2 /* VideoController.swift in Sources */,
 				0A7261631E6D30AE0023883F /* CustomButton.swift in Sources */,
 				0A65E26E1E6EDF1E00F538B5 /* VideoCategoryModel.swift in Sources */,

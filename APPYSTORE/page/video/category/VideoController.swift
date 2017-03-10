@@ -27,12 +27,7 @@ class VideoController: BaseViewController, UICollectionViewDelegate, UICollectio
         
        // self.collectionView.register(UINib(nibName: "MyCustomView", bundle: nil), forCellWithReuseIdentifier: "MyCustomView")
         
-        let dataManager = DataManager()
-        dataManager.getData(pageName: PageConstants.VIDEO_PAGE, returndata: { result in
-            self.dataList = result as! [VideoCategoryModel]
-            self.collectionView.reloadData()
-        })
-        
+                
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.delegate = self
     }
