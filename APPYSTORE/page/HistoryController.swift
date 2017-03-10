@@ -9,6 +9,7 @@ class HistoryController: UIViewController, UICollectionViewDelegate,UICollection
     @IBOutlet var collectionView: UICollectionView!
     
     var dataList = [VideoListingModel]()
+    var setLimit = 20;
     
     override func viewDidLoad()
     {
@@ -47,7 +48,7 @@ class HistoryController: UIViewController, UICollectionViewDelegate,UICollection
             let lastVisibleCellCount = lastVisibleCell.row + 1
             print("lastVisibleCellCount:  \(lastVisibleCellCount)")
             
-            if(lastVisibleCellCount == 20) {
+            if(lastVisibleCellCount == setLimit) {
                 print("loading.......")
             }
         }
