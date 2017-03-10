@@ -38,4 +38,18 @@ class HistoryController: UIViewController, UICollectionViewDelegate,UICollection
         cell2.mVideoDescription.text = dataList[indexPath.row].canonicalName
         return cell2
     }
+    
+    
+    //function to get lastVisibleCell at particular indexPath
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if var lastVisibleCell = self.collectionView.indexPathsForVisibleItems.last
+        {
+            let lastVisibleCellCount = lastVisibleCell.row + 1
+            print("lastVisibleCellCount:  \(lastVisibleCellCount)")
+            
+            if(lastVisibleCellCount == 20) {
+                print("loading.......")
+            }
+        }
+    }
 }
