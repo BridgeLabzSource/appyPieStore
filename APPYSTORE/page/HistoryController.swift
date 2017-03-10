@@ -14,7 +14,7 @@ class HistoryController: UIViewController, UICollectionViewDelegate,UICollection
     override func viewDidLoad()
     {
         super.viewDidLoad()
-       // self.loadData(offset: setOffset, limit: setLimit)
+        self.loadData(offset: setOffset, limit: setLimit)
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.delegate = self
         
@@ -73,6 +73,7 @@ class HistoryController: UIViewController, UICollectionViewDelegate,UICollection
             {
                 setLimit = setLimit + 20
                 loadData(offset: setOffset, limit: setLimit)
+                viewWillAppear(true)
             }
         }
     }

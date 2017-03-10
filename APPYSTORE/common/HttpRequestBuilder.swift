@@ -101,7 +101,7 @@ class HttpRequestBuilder: NSObject
                       "child_id":"29518",
                       "page_id":"History",
                       "offset":"1",
-                      "limit":"20"]
+                      "limit":"60"]
         return params
     }
     
