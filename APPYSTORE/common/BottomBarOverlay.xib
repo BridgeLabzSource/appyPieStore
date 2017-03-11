@@ -21,12 +21,13 @@
             <rect key="frame" x="0.0" y="0.0" width="1280" height="136"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ka-P0-8l1" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
+                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ka-P0-8l1" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
                     <rect key="frame" x="32" y="0.0" width="104" height="104"/>
                     <color key="backgroundColor" red="1" green="0.97176514250000001" blue="0.95668748169999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="4Ka-P0-8l1" secondAttribute="height" multiplier="1:1" id="Bn7-Dg-06h"/>
                     </constraints>
+                    <state key="normal" image="cart"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8U-iv-055" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
                     <rect key="frame" x="1145" y="0.0" width="104" height="104"/>
@@ -50,4 +51,7 @@
             <point key="canvasLocation" x="15.5" y="-153.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="cart" width="72" height="72"/>
+    </resources>
 </document>
