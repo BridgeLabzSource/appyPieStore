@@ -170,13 +170,13 @@ class HistoryDBManager:BaseDBManager{
     {
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HistoryTable")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.getTableName())
         do
         {
-            let results = try Context?.fetch(fetchRequest) as! [NSManagedObject]
-            for res in results
+            let records = try Context?.fetch(fetchRequest) as! [NSManagedObject]
+            for record in records
             {
-                Context?.delete(res)
+                Context?.delete(record)
             }
            
         } catch let error as NSError

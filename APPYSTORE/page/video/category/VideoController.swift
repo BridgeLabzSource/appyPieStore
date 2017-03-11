@@ -8,14 +8,15 @@
 
 import UIKit
 
-class VideoController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class VideoController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     //MARK: IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: Declaration
     var pointOfPixels: CGFloat!
-    
+    var setLimit:Int = 0
+    var setOffset:Int = 0
     var dataList = [VideoCategoryModel]()
     
     
@@ -25,8 +26,16 @@ class VideoController: BaseViewController, UICollectionViewDelegate, UICollectio
         // getting value in point from pixels
         pointOfPixels = DimentionManager.convertPixelToPoint(pixel: 64.0)
         
-       // self.collectionView.register(UINib(nibName: "MyCustomView", bundle: nil), forCellWithReuseIdentifier: "MyCustomView")
+        self.collectionView.register(UINib(nibName: "MyCustomView", bundle: nil), forCellWithReuseIdentifier: "MyCustomView")
         
+        let dataManager = DataManager()
+        dataManager.getData(pageName: PageConstants.VIDEO_PAGE, offset: setOffset, limit: setLimit, returndata: {
+        result in
+            self.dataList = result as! [VideoCategoryModel]
+            self.collectionView.reloadData()
+        
+        
+        })
                 
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.delegate = self
@@ -46,10 +55,13 @@ class VideoController: BaseViewController, UICollectionViewDelegate, UICollectio
        //access your Cell's IBOutlets
         cell.mInfoBtn.layer.cornerRadius = self.pointOfPixels
         cell.mInfoBtn.clipsToBounds = true
+        
+        cell.mBgImg.layer.cornerRadius = self.pointOfPixels
+        cell.mBgImg.clipsToBounds = true
 
         cell.mMainView.layer.cornerRadius = self.pointOfPixels
         cell.mMainView.clipsToBounds = true
-        
+        print(dataList[indexPath.row].imagePath)
         let image_path = dataList[indexPath.row].imagePath
         let imgurl = URL(string: image_path)
         cell.mBgImg.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )

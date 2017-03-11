@@ -3,30 +3,48 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import SDWebImage
-
+import NVActivityIndicatorView
 class HistoryController: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate{
     
     @IBOutlet var collectionView: UICollectionView!
+ 
+    var sw:CGFloat = 0.0
+    var sh:CGFloat = 0.0
     var setLimit:Int = 20
     var setOffset:Int = 0
     var dataList = [VideoListingModel]()
     let dataManager = DataManager()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        //inital value for animator
+        sw = self.collectionView.center.x
+        sh = self.collectionView.center.y*2
+     
+        //
         self.loadData(offset: setOffset, limit: setLimit)
+        
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.delegate = self
         
     }
-    func loadData(offset:Int,limit:Int)
+   
+    
+        func loadData(offset:Int,limit:Int)
     {
+        let frame = CGRect(x: Int(sw-25), y: Int(sh/2), width: 30, height: 30)
+        let anim = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballPulse, color: UIColor.orange, padding: CGFloat(0))
+        anim.startAnimating()
+        self.collectionView.addSubview(anim)
         dataManager.getData(pageName: PageConstants.HISTORY_PAGE, offset: offset, limit: limit, returndata: { result in
             self.dataList = result as! [VideoListingModel]
             self.view.setNeedsDisplay()
             print("Data Found:",result.count)
             self.collectionView.reloadData()
-            
+            anim.stopAnimating()
+            anim.removeFromSuperview()
+           
         })
     }
     
@@ -47,34 +65,36 @@ class HistoryController: UIViewController, UICollectionViewDelegate,UICollection
         return cell2
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-         let cell = collectionView.cellForItem(at: indexPath)
-        UIView.animate(withDuration: 0.2, delay: 0.1, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: [.allowAnimatedContent], animations: {
-            cell?.transform = CGAffineTransform(scaleX: 1.03, y: 1.03)
-        
-        }, completion: { finish in
-            UIView.animate(withDuration: 0.2, delay: 0.1, usingSpringWithDamping: 0.1, initialSpringVelocity: 0.1, options: [.transitionFlipFromRight], animations: {
-                 cell?.transform = CGAffineTransform(scaleX: 1, y: 1)
-            }, completion: { finish in
-                
-            
-            })
-        
-        
-        })
-         
-    }
-    
+    //function to get lastVisibleCell at particular indexPath
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+      
         if var lastVisibleCell = self.collectionView.indexPathsForVisibleItems.last
         {
             let lastVisibleCellCount = lastVisibleCell.row + 1
-            if lastVisibleCellCount == setLimit
+            if lastVisibleCellCount == setLimit && setLimit <= total_history_count!
             {
+            
                 setLimit = setLimit + 20
+                sw = (scrollView.contentSize.width)
+                sh = (scrollView.contentSize.height)
                 loadData(offset: setOffset, limit: setLimit)
-                viewWillAppear(true)
+                
             }
-        }
+      
+        
+        
     }
-   }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.collectionView?.removeObserver(self, forKeyPath: "contentSize")
+//    }
+//    
+//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//        if let observedObject = object as? UICollectionView, observedObject == self.collectionView {
+//            print("done loading stuff... ")
+//        }
+//    }
+    }
+}

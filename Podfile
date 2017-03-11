@@ -8,6 +8,7 @@ target 'APPYSTORE' do
   pod ‘SwiftyJSON’
   pod 'SDWebImage'
   pod 'KCFloatingActionButton', '~> 2.1.0'
+  pod 'NVActivityIndicatorView'
   # Pods for APPYSTORE
 
 end

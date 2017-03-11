@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         AppDelegate.density = (window?.screen.scale)!
+        
+        UILabel.appearance().defaultFontStyle = "KGMissKindyChunky"
         return true
     }
 

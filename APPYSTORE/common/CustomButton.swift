@@ -10,6 +10,7 @@ import UIKit
 
 @IBDesignable class CustomButton: UIButton {
     
+    let imageInset = UIEdgeInsetsMake(6, 6, 12, 12)
     let subLayercolorList = [
         ["#808080", "#666666"],
         ["#cccccc", "#b6b3b3"],
@@ -62,13 +63,8 @@ import UIKit
             layer.insertSublayer(gradient as CALayer, at: UInt32(i))
         }
         
-        
-        /*let imageSubLayer = CALayer()
-        let image = UIImage(named:"category_audio_media_type")?.cgImage
-        //layer.frame = bounds
-        imageSubLayer.contents = image
-        //layer.insertSublayer(imageSubLayer, at: 0)
-        layer.addSublayer(imageSubLayer)*/
+        bringSubview(toFront: self.imageView!)
+        self.imageEdgeInsets = imageInset;
     }
     
     func makeRoundCorner(layer: CALayer){
@@ -79,11 +75,16 @@ import UIKit
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initialize()
+        //initialize()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        //initialize()
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         initialize()
     }
 }

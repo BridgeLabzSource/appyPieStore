@@ -32,13 +32,35 @@ class DataManager:NSObject
             }
             
         case PageConstants.VIDEO_PAGE:
-            let parser = VideoCategoryParser()
-            //parser.parse(params: <#T##Parameters#>, completion: <#T##([BaseModel]) -> Void#>)
-            parser.parse(params: HttpRequestBuilder.getVideoCategoryParameters(), completion: { result in
-                returndata(result)
-                
-            })
-      
+//            let parser = VideoCategoryParser()
+//            
+//            parser.parse(params: HttpRequestBuilder.getVideoCategoryParameters(), completion: { result in
+//                returndata(result)
+//                
+//            })
+            let videoDBManager = VideoDBManager()
+            
+            if Utils.isInternetAvailable()
+            {
+                let parser = VideoCategoryParser()
+                parser.parse(params: HttpRequestBuilder.getVideoCategoryParameters(), completion: { result in
+                    //  print(result as! [VideoListingModel])
+                    videoDBManager.removeAll()
+                    let record = videoDBManager.insertBulkRecords(userId: "107105246", childId: "29518", modelList: result)
+                    print("%d Records are inserted succefully..",record!)
+                    let localdata = videoDBManager.fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: nil)
+                    returndata(localdata!)
+                    
+                })
+            }
+            else
+            {
+                let localdata = videoDBManager.fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: nil)
+                returndata(localdata!)
+            }
+
+            
+            
         default:
             break
             
