@@ -15,7 +15,8 @@ class VideoController: UIViewController, UICollectionViewDelegate, UICollectionV
     
     //MARK: Declaration
     var pointOfPixels: CGFloat!
-    
+    var setLimit:Int = 0
+    var setOffset:Int = 0
     var dataList = [VideoCategoryModel]()
     
     
@@ -28,11 +29,14 @@ class VideoController: UIViewController, UICollectionViewDelegate, UICollectionV
         self.collectionView.register(UINib(nibName: "MyCustomView", bundle: nil), forCellWithReuseIdentifier: "MyCustomView")
         
         let dataManager = DataManager()
-        dataManager.getData(pageName: PageConstants.VIDEO_PAGE, returndata: { result in
+        dataManager.getData(pageName: PageConstants.VIDEO_PAGE, offset: setOffset, limit: setLimit, returndata: {
+        result in
             self.dataList = result as! [VideoCategoryModel]
             self.collectionView.reloadData()
-        })
         
+        
+        })
+                
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.delegate = self
     }
@@ -57,7 +61,7 @@ class VideoController: UIViewController, UICollectionViewDelegate, UICollectionV
 
         cell.mMainView.layer.cornerRadius = self.pointOfPixels
         cell.mMainView.clipsToBounds = true
-        
+        print(dataList[indexPath.row].imagePath)
         let image_path = dataList[indexPath.row].imagePath
         let imgurl = URL(string: image_path)
         cell.mBgImg.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )

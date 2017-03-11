@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>NVActivityIndicatorView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>Pods-APPYSTORE.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -42,7 +47,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1F5023A9886835A51449D8CC4D7774D3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>290DB580DECE0BEE4DADC98FAE809F97</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3EDFE4052B5DE7D509935AC0774CB135</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>531A41734113B7FD6360997725AF57DB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6B57E3333E19746C0E166D48BD0A0021</key>
 		<dict>
 			<key>primary</key>
 			<true/>

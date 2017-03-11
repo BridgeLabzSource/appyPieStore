@@ -2,6 +2,7 @@
 
 import Foundation
 import SwiftyJSON
+var total_history_count:Int?
 class HistoryParser:BaseParser
 {
     private static let TOTAL_COUNT = "total_count";
@@ -22,8 +23,10 @@ class HistoryParser:BaseParser
     private static let GROUP_ID = "group_id";
     
     override func parseJSONData(responseData:JSON) -> [BaseModel]?{
+        
         let videoContent = responseData["data_array"].array
-       
+        total_history_count = Int((videoContent?.count)!)
+        
         var historyModelArray = [VideoListingModel]()
         for item in videoContent! {
             let videoListingModel = VideoListingModel()
@@ -41,11 +44,23 @@ class HistoryParser:BaseParser
             videoListingModel.subCategoryTitle = item["sub_category_title"].string!
             videoListingModel.parentCategoryId = String(item["parent_category_id"].int!)
 
+            videoListingModel.isVideoDownloadable = self.isDownloadable(value:  item["video_streaming"].string!)
+
             historyModelArray.append(videoListingModel)
             
         }
         return historyModelArray
         
+    }
+    
+    func isDownloadable(value:String) -> Bool
+    {
+          let result:ComparisonResult = value.caseInsensitiveCompare("Yes")
+          if result == .orderedSame
+          {
+            return false
+          }
+    return true
     }
     
 }
