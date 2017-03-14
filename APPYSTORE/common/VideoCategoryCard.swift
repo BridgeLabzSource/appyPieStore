@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyCustomView: UICollectionViewCell {
+class VideoCategoryCard: UICollectionViewCell {
     
     //MARK: IBOutlets
     @IBOutlet weak var mMainView: UIView!
@@ -34,6 +34,5 @@ class MyCustomView: UICollectionViewCell {
         mMainView.layer.cornerRadius = self.pointOfPixels
         mMainView.clipsToBounds = true
                 
-        //DimentionManager.setDimension1280x720(view: mMainView, width: 512, height: 384)
     }
 }

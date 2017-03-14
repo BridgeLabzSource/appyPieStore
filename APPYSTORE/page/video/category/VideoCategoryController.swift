@@ -1,57 +1,58 @@
 //
-//  ViewController.swift
+//  VideoController.swift
 //  APPYSTORE
 //
-//  Created by BridgeLabz on 21/02/17.
+//  Created by BridgeLabz on 02/03/17.
 //  Copyright © 2017 MAUJ MOBILE PVT LTD. All rights reserved.
 //
 
 import UIKit
 
-class VideoCategoryController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    //MARK: IBOutlets
+    //MARK: IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
-    //MARK: Declarations
-    let image = ["ic_launcher", "ic_launcher", "ic_launcher", "ic_launcher", "ic_launcher", "ic_launcher"]
-    
-    var pointOfPixels: CGFloat!
+    //MARK: Declaration
+    var setLimit:Int = 0
+    var setOffset:Int = 0
+    var dataList = [VideoCategoryModel]()
+    let cardWidth: CGFloat = 512 - 40
+    let cardHeight: CGFloat = 384 - 40
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
         
-        // getting value in point from pixels
-        pointOfPixels = DimentionManager.convertPixelToPoint(pixel: 64.0)
+        self.collectionView.register(UINib(nibName: "VideoCategoryCard", bundle: nil), forCellWithReuseIdentifier: "VideoCategoryCard")
+        
+        let dataManager = DataManager()
+        dataManager.getData(pageName: PageConstants.VIDEO_PAGE, offset: setOffset, limit: setLimit, returndata: {
+        result in
+            self.dataList = result as! [VideoCategoryModel]
+            self.collectionView.reloadData()
+        })
+                
+        self.collectionView.showsHorizontalScrollIndicator = false
+        self.collectionView.delegate = self
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return image.count
+        return dataList.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as!  CustomImageCell
         
-        //call to round method of UIView class
-        // let view = UIView().round(corners: .topLeft, radius: self.pointOfPixels)
+        let cell : VideoCategoryCard = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCategoryCard", for: indexPath) as! VideoCategoryCard
         
-        // setting cornerRadius of backgroundImage
-        cell.mBgImage.layer.cornerRadius = self.pointOfPixels
-        cell.mBgImage.clipsToBounds = true
+        print(dataList[indexPath.row].imagePath)
+        let image_path = dataList[indexPath.row].imagePath
+        let imgurl = URL(string: image_path)
+        cell.mBgImg.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
         
-        // setting cornerRadius of logoButton
-        cell.mLogoBtn.layer.cornerRadius = self.pointOfPixels
-        cell.mLogoBtn.clipsToBounds = true
-        
-        // setting cornerRadius of view
-        cell.mMainView.layer.cornerRadius = self.pointOfPixels
-        cell.mMainView.clipsToBounds = true
+        cell.mCountLabel.text = dataList[indexPath.row].contentCount
         
         // setting shadow of view
         let plain = cell
@@ -62,7 +63,8 @@ class VideoCategoryController: BaseViewController, UICollectionViewDelegate, UIC
     
     
     // function for Plain Shadow
-    func applyPlainShadow(view: UIView) {
+    func applyPlainShadow(view: UIView)
+    {
         let layer = view.layer
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 8, height: 8)
@@ -70,4 +72,13 @@ class VideoCategoryController: BaseViewController, UICollectionViewDelegate, UIC
         layer.shadowRadius = 1.0
         layer.masksToBounds = false
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: DimentionManager.getGeneralizedWidth1280x720(width: cardWidth), height: DimentionManager.getGeneralizedHeight1280x720(height: cardHeight));
+    }
+
 }
+

@@ -16,9 +16,9 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoController" customModule="APPYSTORE" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoCategoryController" customModule="APPYSTORE" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MyCustomView" customModule="APPYSTORE" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="VideoCategoryCard" customModule="APPYSTORE" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="274" height="189"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
