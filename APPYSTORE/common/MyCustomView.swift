@@ -22,7 +22,7 @@ class MyCustomView: UICollectionViewCell {
     
     override func awakeFromNib() {
         // getting value in point from pixels
-        pointOfPixels = DimentionManager.convertPixelToPoint(pixel: 64.0)
+        pointOfPixels = DimentionManager.convertPixelToPoint(pixel: 32.0)
       
         //access your IBOutlets
         mInfoBtn.layer.cornerRadius = self.pointOfPixels
@@ -34,6 +34,6 @@ class MyCustomView: UICollectionViewCell {
         mMainView.layer.cornerRadius = self.pointOfPixels
         mMainView.clipsToBounds = true
                 
-        DimentionManager.setDimension1280x720(view: mMainView, width: 512, height: 384)
+        //DimentionManager.setDimension1280x720(view: mMainView, width: 512, height: 384)
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VideoController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class VideoController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     //MARK: IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -17,6 +17,8 @@ class VideoController: UIViewController, UICollectionViewDelegate, UICollectionV
     var setLimit:Int = 0
     var setOffset:Int = 0
     var dataList = [VideoCategoryModel]()
+    let cardWidth: CGFloat = 512 - 40
+    let cardHeight: CGFloat = 384 - 40
     
     
     override func viewDidLoad() {
@@ -29,8 +31,6 @@ class VideoController: UIViewController, UICollectionViewDelegate, UICollectionV
         result in
             self.dataList = result as! [VideoCategoryModel]
             self.collectionView.reloadData()
-        
-        
         })
                 
         self.collectionView.showsHorizontalScrollIndicator = false
@@ -71,6 +71,13 @@ class VideoController: UIViewController, UICollectionViewDelegate, UICollectionV
         layer.shadowOpacity = 0.5
         layer.shadowRadius = 1.0
         layer.masksToBounds = false
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: DimentionManager.getGeneralizedWidth1280x720(width: cardWidth), height: DimentionManager.getGeneralizedHeight1280x720(height: cardHeight));
     }
 
 }
