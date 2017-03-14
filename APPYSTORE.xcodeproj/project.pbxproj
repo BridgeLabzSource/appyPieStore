@@ -53,6 +53,11 @@
 		70AD5AEF1E6E71CD003C2536 /* HistoryVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5AEB1E6E71CD003C2536 /* HistoryVideoCell.swift */; };
 		70AD5AF01E6E71CD003C2536 /* HistoryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5AEC1E6E71CD003C2536 /* HistoryParser.swift */; };
 		70AD5AF21E6E7360003C2536 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5AF11E6E7360003C2536 /* SearchController.swift */; };
+		F46267111E77AF0900302ACF /* LoginParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267101E77AF0900302ACF /* LoginParser.swift */; };
+		F46267131E77AF7000302ACF /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267121E77AF7000302ACF /* UserInfo.swift */; };
+		F46267151E77AFB000302ACF /* ChildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267141E77AFB000302ACF /* ChildInfo.swift */; };
+		F46267171E77B0DA00302ACF /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267161E77B0DA00302ACF /* StringUtil.swift */; };
+		F46267191E77B1A600302ACF /* PreChatFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267181E77B1A600302ACF /* PreChatFormField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +115,11 @@
 		70AD5AEB1E6E71CD003C2536 /* HistoryVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVideoCell.swift; sourceTree = "<group>"; };
 		70AD5AEC1E6E71CD003C2536 /* HistoryParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryParser.swift; sourceTree = "<group>"; };
 		70AD5AF11E6E7360003C2536 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		F46267101E77AF0900302ACF /* LoginParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginParser.swift; sourceTree = "<group>"; };
+		F46267121E77AF7000302ACF /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		F46267141E77AFB000302ACF /* ChildInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInfo.swift; sourceTree = "<group>"; };
+		F46267161E77B0DA00302ACF /* StringUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtil.swift; sourceTree = "<group>"; };
+		F46267181E77B1A600302ACF /* PreChatFormField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreChatFormField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +214,11 @@
 				0AAD2F081E5C48EF00B504A3 /* LaunchScreen.storyboard */,
 				0AAD2F0B1E5C48EF00B504A3 /* Info.plist */,
 				0AAD2F031E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld */,
+				F46267101E77AF0900302ACF /* LoginParser.swift */,
+				F46267121E77AF7000302ACF /* UserInfo.swift */,
+				F46267141E77AFB000302ACF /* ChildInfo.swift */,
+				F46267161E77B0DA00302ACF /* StringUtil.swift */,
+				F46267181E77B1A600302ACF /* PreChatFormField.swift */,
 			);
 			path = APPYSTORE;
 			sourceTree = "<group>";
@@ -402,6 +417,7 @@
 			files = (
 				0A80DA221E702CA500939443 /* TopBarOverlay.swift in Sources */,
 				70AD5AED1E6E71CD003C2536 /* HistoryController.swift in Sources */,
+				F46267111E77AF0900302ACF /* LoginParser.swift in Sources */,
 				0A74B98E1E71143200B7A67D /* UIViewExtention.swift in Sources */,
 				0A5374A61E6005D800F198AD /* CustomImageCell.swift in Sources */,
 				70AD5AF01E6E71CD003C2536 /* HistoryParser.swift in Sources */,
@@ -417,6 +433,7 @@
 				70AD5AE81E6E7129003C2536 /* HttpConnection.swift in Sources */,
 				0A8F790C1E6971FD00720DB8 /* MyCustomView.swift in Sources */,
 				0A5E1C641E701C2D00537F84 /* UILabelExtension.swift in Sources */,
+				F46267151E77AFB000302ACF /* ChildInfo.swift in Sources */,
 				70AD5AE51E6E7129003C2536 /* PageConstants.swift in Sources */,
 				70AD5ADC1E6E710C003C2536 /* BaseViewController.swift in Sources */,
 				0A999C7A1E65874B005B4053 /* OverlayView.swift in Sources */,
@@ -424,12 +441,15 @@
 				70AD5AEF1E6E71CD003C2536 /* HistoryVideoCell.swift in Sources */,
 				0AAD2EFD1E5C48EF00B504A3 /* AppDelegate.swift in Sources */,
 				70AD5AE41E6E7129003C2536 /* BaseModel.swift in Sources */,
+				F46267171E77B0DA00302ACF /* StringUtil.swift in Sources */,
 				0A5374AA1E606B9700F198AD /* DimentionManager.swift in Sources */,
 				0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */,
 				0A72615E1E6D30600023883F /* StringExtension.swift in Sources */,
 				706B34FE1E6FEAF7008474EA /* VideoDBManager.swift in Sources */,
 				70AD5AF21E6E7360003C2536 /* SearchController.swift in Sources */,
+				F46267191E77B1A600302ACF /* PreChatFormField.swift in Sources */,
 				70AD5AE61E6E7129003C2536 /* HttpRequestBuilder.swift in Sources */,
+				F46267131E77AF7000302ACF /* UserInfo.swift in Sources */,
 				70AD5AEE1E6E71CD003C2536 /* VideoListingModel.swift in Sources */,
 				706B34FC1E6FEA96008474EA /* HistoryDBManager.swift in Sources */,
 				0A8A58A61E683F2100A93DD2 /* VideoController.swift in Sources */,

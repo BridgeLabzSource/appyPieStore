@@ -10,7 +10,7 @@ class BaseParser: NSObject
      var ResponseDetails:JSON!
      var status:Bool = false
     
-    func parse(params:Parameters,completion:@escaping (_ listOfData:[BaseModel]) -> Void)
+    func parse(params:Parameters,completion:@escaping (_ listOfData:AnyObject?) -> Void)
     {
         HttpConnection.post(params: params, completion:
             {result in
@@ -23,14 +23,14 @@ class BaseParser: NSObject
                     let parsedResponseData = self.parseJSONData(responseData: self.ResponseDetails)
                     
                    
-                    completion(parsedResponseData!)
+                    completion(parsedResponseData)
                     
                 
                 }
         })
     }
     
-    func parseJSONData(responseData:JSON) -> [BaseModel]?{
+    func parseJSONData(responseData:JSON) -> AnyObject?{
         return nil
     }
     

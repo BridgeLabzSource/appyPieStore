@@ -17,11 +17,14 @@ class DataManager:NSObject
                 let parser = HistoryParser()
                 parser.parse(params: HttpRequestBuilder.getHistoryParameters(), completion: { result in
                   //  print(result as! [VideoListingModel])
-                     historyDBManager.removeAll()
-                     let record = historyDBManager.insertBulkRecords(userId: "107105246", childId: "29518", modelList: result)
-                    print("%d Records are inserted succefully..",record!)
-                    let localdata = historyDBManager.fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: nil)
-                     returndata(localdata!)
+                    
+                    if let result = result as? [BaseModel]{
+                        historyDBManager.removeAll()
+                        let record = historyDBManager.insertBulkRecords(userId: "107105246", childId: "29518", modelList: result)
+                        print("%d Records are inserted succefully..",record!)
+                        let localdata = historyDBManager.fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: nil)
+                        returndata(localdata!)
+                    }
                     
                  })
             }
@@ -45,11 +48,14 @@ class DataManager:NSObject
                 let parser = VideoCategoryParser()
                 parser.parse(params: HttpRequestBuilder.getVideoCategoryParameters(), completion: { result in
                     //  print(result as! [VideoListingModel])
-                    videoDBManager.removeAll()
-                    let record = videoDBManager.insertBulkRecords(userId: "107105246", childId: "29518", modelList: result)
-                    print("%d Records are inserted succefully..",record!)
-                    let localdata = videoDBManager.fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: nil)
-                    returndata(localdata!)
+                    
+                    if let result = result as? [BaseModel]{
+                        videoDBManager.removeAll()
+                        let record = videoDBManager.insertBulkRecords(userId: "107105246", childId: "29518", modelList: result)
+                        print("%d Records are inserted succefully..",record!)
+                        let localdata = videoDBManager.fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: nil)
+                        returndata(localdata!)
+                    }
                     
                 })
             }
