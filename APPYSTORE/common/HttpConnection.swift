@@ -42,5 +42,18 @@ class HttpConnection: NSObject{
         })
     }
     
+    static func getJSONKeyvalue(jsonObject: JSON, key: String) -> String?{
+        var value: String?
+        
+        if jsonObject[key].exists() {
+            if !StringUtil.isEmptyOrNullString(stringToCheck: String(describing: jsonObject[key].rawValue)){
+                value = String(describing: jsonObject[key].rawValue)
+                print("Ganesh \(key) : \(value)")
+            }
+        }
+        
+        return value
+    }
+    
     
 }

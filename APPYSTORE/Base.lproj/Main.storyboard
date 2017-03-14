@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0Tn-Rr-y3H">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12100" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0Tn-Rr-y3H">
     <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11755"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12072"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -134,7 +134,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyCustomView" id="6FQ-w6-XDl" customClass="MyCustomView" customModule="APPYSTORE" customModuleProvider="target">
-                                        <rect key="frame" x="32" y="6" width="274" height="189"/>
+                                        <rect key="frame" x="32" y="5.666666666666667" width="274" height="189"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="274" height="189"/>
@@ -523,7 +523,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="259" height="192"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="445DDF52-3004-40E4-B953-7D0459A93847" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AB85F92B-704D-4CA2-B9AB-5F80B32776FE" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
                                                     <rect key="frame" x="8" y="8" width="243" height="116"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="116" id="HfT-XT-9p0"/>
@@ -604,7 +604,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="445DDF52-3004-40E4-B953-7D0459A93847" width="678" height="480">
+        <image name="AB85F92B-704D-4CA2-B9AB-5F80B32776FE" width="678" height="480">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
