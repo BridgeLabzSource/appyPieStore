@@ -14,7 +14,6 @@ class VideoController: UIViewController, UICollectionViewDelegate, UICollectionV
     @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: Declaration
-    var pointOfPixels: CGFloat!
     var setLimit:Int = 0
     var setOffset:Int = 0
     var dataList = [VideoCategoryModel]()
@@ -22,9 +21,6 @@ class VideoController: UIViewController, UICollectionViewDelegate, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // getting value in point from pixels
-        pointOfPixels = DimentionManager.convertPixelToPoint(pixel: 64.0)
         
         self.collectionView.register(UINib(nibName: "MyCustomView", bundle: nil), forCellWithReuseIdentifier: "MyCustomView")
         
@@ -43,7 +39,6 @@ class VideoController: UIViewController, UICollectionViewDelegate, UICollectionV
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       // return 4
         return dataList.count
     }
     
@@ -52,15 +47,6 @@ class VideoController: UIViewController, UICollectionViewDelegate, UICollectionV
         
         let cell : MyCustomView = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCustomView", for: indexPath) as! MyCustomView
         
-       //access your Cell's IBOutlets
-        cell.mInfoBtn.layer.cornerRadius = self.pointOfPixels
-        cell.mInfoBtn.clipsToBounds = true
-        
-        cell.mBgImg.layer.cornerRadius = self.pointOfPixels
-        cell.mBgImg.clipsToBounds = true
-
-        cell.mMainView.layer.cornerRadius = self.pointOfPixels
-        cell.mMainView.clipsToBounds = true
         print(dataList[indexPath.row].imagePath)
         let image_path = dataList[indexPath.row].imagePath
         let imgurl = URL(string: image_path)
