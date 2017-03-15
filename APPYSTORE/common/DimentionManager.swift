@@ -15,6 +15,24 @@ class DimentionManager{
         return pixel / CGFloat(AppDelegate.density)
     }
     
+    
+    static func getGeneralizedWidth1280x720(width:CGFloat) -> CGFloat {
+        return AppDelegate.DEVICE_WIDTH * (width / CGFloat(1280))
+    }
+    
+    
+    static func getGeneralizedHeight1280x720(height:CGFloat) -> CGFloat {
+        return AppDelegate.DEVICE_HEIGHT * (height / CGFloat(720))
+    }
+    
+    
+    static func setDimension1280x720(view:UIView, width:CGFloat, height:CGFloat){
+        view.bounds.size.width = AppDelegate.DEVICE_WIDTH * (width / CGFloat(1280))
+        view.bounds.size.height = AppDelegate.DEVICE_HEIGHT * (height / CGFloat(720))
+        print("width:  \(width)   heigth:  \(height)  viewWidth:  \(view.bounds.size.width)  viewHeight:  \(view.bounds.size.height)")
+    }
+    
+    
     func userDeviceName() -> String {
         var name: [Int32] = [CTL_HW, HW_MACHINE]
         var size: Int = 2

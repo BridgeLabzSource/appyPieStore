@@ -14,11 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     static var density: CGFloat = 0.0
+    static var DEVICE_WIDTH: CGFloat = 0.0
+    static var DEVICE_HEIGHT: CGFloat = 0.0
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         AppDelegate.density = (window?.screen.scale)!
+        AppDelegate.DEVICE_WIDTH = (window?.screen.bounds.width)!
+        AppDelegate.DEVICE_HEIGHT = (window?.screen.bounds.height)!
         
         UILabel.appearance().defaultFontStyle = "KGMissKindyChunky"
         return true
