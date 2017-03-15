@@ -55,6 +55,7 @@ class LoginParser: BaseParser{
     private let AVATAR_IMG = "avatarIMG";
     
     override init() {
+        // get this from clone
         userInfoOld = UserInfo.getInstance()
     }
     
@@ -65,11 +66,11 @@ class LoginParser: BaseParser{
         userInfo = UserInfo.getInstance()
         
         if !StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: responseData, key: USERID), secondString: userInfo?.id) {
-            //
+            // notify the user id changed
         }
         
         if !StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: responseData, key: UTYPE), secondString: userInfo?.id) {
-            //
+            // notify user type changed
         }
         
         setUserData(inputJson: responseData)
@@ -109,13 +110,15 @@ class LoginParser: BaseParser{
             userInfo.isNewUser = StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: inputJson, key: IS_NEW_USER), secondString: "Y")
             userInfo.isUpgraded = StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: inputJson, key: IS_UPGRADED), secondString: "1")
             userInfo.isVersionUpgraded = StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: inputJson, key: IS_VERSION_UPGRADE), secondString: "true")
-            userInfo.isTrialExpired = StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: inputJson, key: IS_TRIAL_EXPIRED), secondString: "1")
+            
+            //userInfo.isTrialExpired = StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: inputJson, key: IS_TRIAL_EXPIRED), secondString: "1")
             //
             
             
         }
         
     }
+
     
     func parseChildDetail(jsonChildArray: [JSON]?) -> [ChildInfo]{
         var childList: [ChildInfo] = [];

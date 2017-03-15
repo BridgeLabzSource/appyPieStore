@@ -58,6 +58,8 @@
 		F46267151E77AFB000302ACF /* ChildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267141E77AFB000302ACF /* ChildInfo.swift */; };
 		F46267171E77B0DA00302ACF /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267161E77B0DA00302ACF /* StringUtil.swift */; };
 		F46267191E77B1A600302ACF /* PreChatFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267181E77B1A600302ACF /* PreChatFormField.swift */; };
+		F48798F21E77E9AF0060932F /* AbsPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48798F11E77E9AF0060932F /* AbsPrefs.swift */; };
+		F48798F41E77F36F0060932F /* Prefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48798F31E77F36F0060932F /* Prefs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +122,8 @@
 		F46267141E77AFB000302ACF /* ChildInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInfo.swift; sourceTree = "<group>"; };
 		F46267161E77B0DA00302ACF /* StringUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtil.swift; sourceTree = "<group>"; };
 		F46267181E77B1A600302ACF /* PreChatFormField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreChatFormField.swift; sourceTree = "<group>"; };
+		F48798F11E77E9AF0060932F /* AbsPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsPrefs.swift; sourceTree = "<group>"; };
+		F48798F31E77F36F0060932F /* Prefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prefs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +223,8 @@
 				F46267141E77AFB000302ACF /* ChildInfo.swift */,
 				F46267161E77B0DA00302ACF /* StringUtil.swift */,
 				F46267181E77B1A600302ACF /* PreChatFormField.swift */,
+				F48798F11E77E9AF0060932F /* AbsPrefs.swift */,
+				F48798F31E77F36F0060932F /* Prefs.swift */,
 			);
 			path = APPYSTORE;
 			sourceTree = "<group>";
@@ -415,6 +421,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48798F41E77F36F0060932F /* Prefs.swift in Sources */,
+				F48798F21E77E9AF0060932F /* AbsPrefs.swift in Sources */,
 				0A80DA221E702CA500939443 /* TopBarOverlay.swift in Sources */,
 				70AD5AED1E6E71CD003C2536 /* HistoryController.swift in Sources */,
 				F46267111E77AF0900302ACF /* LoginParser.swift in Sources */,

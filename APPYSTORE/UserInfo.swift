@@ -13,7 +13,9 @@ class UserInfo{
     static let USER_TYPE_OPEN = "O"
     private static var instance: UserInfo? = nil;
     
-    private init(){}
+    private init(){
+        
+    }
     
     static func getInstance() -> UserInfo{
         if instance == nil {
