@@ -56,7 +56,7 @@ class LoginParser: BaseParser{
     
     override init() {
         // get this from clone
-        userInfoOld = UserInfo.getInstance()
+        userInfoOld = UserInfo.getInstance().getClone()
     }
     
     override func parseJSONData(responseData: JSON) -> AnyObject? {

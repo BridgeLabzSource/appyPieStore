@@ -8,12 +8,12 @@
 
 import Foundation
 
-class UserInfo: NSCopying, NSCoding{
+class UserInfo: NSObject, NSCopying, NSCoding{
     static let USER_TYPE_CLOSED = "C"
     static let USER_TYPE_OPEN = "O"
     private static var instance: UserInfo? = nil;
     
-    private init(){
+    private override init(){
         
     }
     
@@ -24,12 +24,77 @@ class UserInfo: NSCopying, NSCoding{
         
         return instance!
     }
+    
     required init?(coder aDecoder: NSCoder) {
-        self.id = aDecoder.decodeObject(forKey: "id") as? String
+        id = aDecoder.decodeObject(forKey: "id") as? String
+        
+        type = aDecoder.decodeObject(forKey: "type") as? String
+        email = aDecoder.decodeObject(forKey: "email") as? String
+        childList = aDecoder.decodeObject(forKey: "childList") as? [ChildInfo]
+        selectedChild = aDecoder.decodeObject(forKey: "selectedChild") as? ChildInfo
+        childCount = aDecoder.decodeInteger(forKey: "childCount")
+        isAddressUpdated = aDecoder.decodeBool(forKey: "isAddressUpdated")
+        msisdn = aDecoder.decodeObject(forKey: "msisdn") as? String
+        smmKey = aDecoder.decodeObject(forKey: "smmKey") as? String
+        isDeviceEligibleForTrialSubscription = aDecoder.decodeBool(forKey: "isDeviceEligibleForTrialSubscription")
+        usv = aDecoder.decodeObject(forKey: "usv") as? String
+        tInfo = aDecoder.decodeObject(forKey: "tInfo") as? String
+        trialMsgPrice = aDecoder.decodeObject(forKey: "trialMsgPrice") as? String
+        numWorksheet = aDecoder.decodeObject(forKey: "numWorksheet") as? String
+        isNewUser = aDecoder.decodeBool(forKey: "isNewUser")
+        isUpgraded = aDecoder.decodeBool(forKey: "isUpgraded")
+        isVersionUpgraded = aDecoder.decodeBool(forKey: "isVersionUpgraded")
+        isSubscribed = aDecoder.decodeBool(forKey: "isSubscribed")
+        isTrialSubscribed = aDecoder.decodeBool(forKey: "isTrialSubscribed")
+        isPaidExpired = aDecoder.decodeBool(forKey: "isPaidExpired")
+        isUnsubscribed = aDecoder.decodeBool(forKey: "isUnsubscribed")
+        isTrialExpired = aDecoder.decodeBool(forKey: "isTrialExpired")
+        isPaidExpired = aDecoder.decodeBool(forKey: "isPaidExpired")
+        isGuestUser = aDecoder.decodeBool(forKey: "isGuestUser")
+        isLoggedIn = aDecoder.decodeBool(forKey: "isLoggedIn")
+        isInvalidData = aDecoder.decodeBool(forKey: "isInvalidData")
+        preChatFormField = aDecoder.decodeObject(forKey: "preChatFormField") as? PreChatFormField
+        ttr = aDecoder.decodeObject(forKey: "ttr") as? String
+        visitorId = aDecoder.decodeObject(forKey: "visitorId") as? String
+        sessionId = aDecoder.decodeObject(forKey: "sessionId") as? String
+        
+        super.init()
     }
+    
     func encode(with aCoder: NSCoder) {
         aCoder.encode(id, forKey: "id")
+        aCoder.encode(type, forKey: "type")
+        aCoder.encode(email, forKey: "email")
+        aCoder.encode(childList, forKey: "childList")
+        aCoder.encode(selectedChild, forKey: "selectedChild")
+        aCoder.encode(childCount, forKey: "childCount")
+        aCoder.encode(isAddressUpdated, forKey: "isAddressUpdated")
+        aCoder.encode(msisdn, forKey: "msisdn")
+        aCoder.encode(smmKey, forKey: "smmKey")
+        aCoder.encode(isDeviceEligibleForTrialSubscription, forKey: "isDeviceEligibleForTrialSubscription")
+        aCoder.encode(usv, forKey: "usv")
+        aCoder.encode(tInfo, forKey: "tInfo")
+        aCoder.encode(trialMsgPrice, forKey: "trialMsgPrice")
+        aCoder.encode(numWorksheet, forKey: "numWorksheet")
+        aCoder.encode(isNewUser, forKey: "isNewUser")
+        aCoder.encode(isUpgraded, forKey: "isUpgraded")
+        aCoder.encode(isVersionUpgraded, forKey: "isVersionUpgraded")
+        aCoder.encode(isSubscribed, forKey: "isSubscribed")
+        aCoder.encode(isTrialSubscribed, forKey: "isTrialSubscribed")
+        aCoder.encode(isPaidExpired, forKey: "isPaidExpired")
+        aCoder.encode(isUnsubscribed, forKey: "isUnsubscribed")
+        aCoder.encode(isTrialExpired, forKey: "isTrialExpired")
+        aCoder.encode(isPaidExpired, forKey: "isPaidExpired")
+        aCoder.encode(isGuestUser, forKey: "isGuestUser")
+        aCoder.encode(isLoggedIn, forKey: "isLoggedIn")
+        aCoder.encode(isInvalidData, forKey: "isInvalidData")
+        aCoder.encode(preChatFormField, forKey: "preChatFormField")
+        aCoder.encode(ttr, forKey: "ttr")
+        aCoder.encode(visitorId, forKey: "visitorId")
+        aCoder.encode(sessionId, forKey: "sessionId")
+        
     }
+    
     func copy(with zone: NSZone? = nil) -> Any {
         let userInfo = UserInfo()
         
@@ -38,9 +103,9 @@ class UserInfo: NSCopying, NSCoding{
         userInfo.email = email
         
         // need to make copy
-        userInfo.childList = childList
+        userInfo.childList = childList?.clone()
         // need to make copy
-        userInfo.selectedChild = selectedChild
+        userInfo.selectedChild = selectedChild?.copy() as! ChildInfo?
         userInfo.childCount = childCount
         userInfo.isAddressUpdated = isAddressUpdated
         userInfo.msisdn = msisdn
@@ -58,7 +123,7 @@ class UserInfo: NSCopying, NSCoding{
         userInfo.isTrialSubscribed = isTrialSubscribed
         userInfo.isPaidExpired = isPaidExpired
         userInfo.isUnsubscribed = isUnsubscribed
-        userInfo.isTrialSubscribed = isTrialSubscribed
+        userInfo.isTrialExpired = isTrialExpired
         userInfo.isPaidExpired = isPaidExpired
         userInfo.isGuestUser = isGuestUser
         userInfo.isLoggedIn = isLoggedIn
@@ -112,4 +177,9 @@ class UserInfo: NSCopying, NSCoding{
         return childList?.count ?? 0
     }
     
+    func getClone() -> UserInfo? {
+        Prefs.getInstance()?.setObject(key: "userInfoObject", value: self)
+        
+        return Prefs.getInstance()?.getObject(key: "userInfoObject") as? UserInfo
+    }
 }

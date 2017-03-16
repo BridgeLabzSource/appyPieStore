@@ -5,10 +5,12 @@ import SwiftyJSON
 import Alamofire
 class BaseParser: NSObject
 {
-     var ResponseCode: String!
-     var ResponseMessage: String!
-     var ResponseDetails:JSON!
-     var status:Bool = false
+    var ResponseCode: String!
+    var ResponseMessage: String!
+    var ResponseDetails:JSON!
+    var status:Bool = false
+    var parserListener: ParserListener?
+    
     
     func parse(params:Parameters,completion:@escaping (_ listOfData:AnyObject?) -> Void)
     {
@@ -22,10 +24,10 @@ class BaseParser: NSObject
                     self.status = true
                     let parsedResponseData = self.parseJSONData(responseData: self.ResponseDetails)
                     
-                   
+                    
                     completion(parsedResponseData)
                     
-                
+                    
                 }
         })
     }
@@ -34,7 +36,13 @@ class BaseParser: NSObject
         return nil
     }
     
+    func setParserListener(parserListener: ParserListener){
+        self.parserListener = parserListener
+    }
     
+    func getParserListener() -> ParserListener? {
+        return parserListener
+    }
     
     
     

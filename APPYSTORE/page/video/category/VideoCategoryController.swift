@@ -40,15 +40,25 @@ class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICol
         let u = UserInfo.getInstance()
         u.id = "123"
         u.type = "same "
+        let c = ChildInfo()
+        c.name = "Ganesh"
+        u.selectedChild = c
+        u.childList = [c]
         
         Prefs.getInstance()?.setObject(key: "user", value: u)
         u.id = "456"
         u.type = "different"
+        u.selectedChild?.name = "Rahul"
+        u.childList?[0].name = "Mahesh"
+        
         
         let u1 : UserInfo = Prefs.getInstance()?.getObject(key: "user") as! UserInfo
         
         print("Ganesh first value = \(u.id ) and the second value is \(u1.id ) ")
         print("Ganesh first value = \(u.type ) and the second value is \(u1.type ) ")
+        print("Ganesh child value = \(u.selectedChild?.name ) and the child value is \(u1.selectedChild?.name ) ")
+        
+        print("Ganesh selected value = \(u.childList?[0].name ) and the selected value is \(u1.childList?[0].name ) ")
         
     }
     
