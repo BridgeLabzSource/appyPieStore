@@ -168,7 +168,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCategoryCard" id="LgU-cj-pI0" customClass="VideoCategoryCard" customModule="APPYSTORE" customModuleProvider="target">
-                                        <rect key="frame" x="25" y="112.66666666666667" width="274" height="189"/>
+                                        <rect key="frame" x="25" y="113" width="274" height="189"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="274" height="189"/>
@@ -230,7 +230,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="259" height="192"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6FC7B60A-82B3-4831-B81E-4B8115BF0CCA" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="73CB1AB4-1EF5-4D74-8C22-D1639A311C5B" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
                                                     <rect key="frame" x="8" y="8" width="243" height="116"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="116" id="HfT-XT-9p0"/>
@@ -369,7 +369,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="6FC7B60A-82B3-4831-B81E-4B8115BF0CCA" width="678" height="480">
+        <image name="73CB1AB4-1EF5-4D74-8C22-D1639A311C5B" width="678" height="480">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
