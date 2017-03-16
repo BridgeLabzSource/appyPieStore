@@ -35,6 +35,21 @@ class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICol
                 
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.delegate = self
+        
+        
+        let u = UserInfo.getInstance()
+        u.id = "123"
+        u.type = "same "
+        
+        Prefs.getInstance()?.setObject(key: "user", value: u)
+        u.id = "456"
+        u.type = "different"
+        
+        let u1 : UserInfo = Prefs.getInstance()?.getObject(key: "user") as! UserInfo
+        
+        print("Ganesh first value = \(u.id ) and the second value is \(u1.id ) ")
+        print("Ganesh first value = \(u.type ) and the second value is \(u1.type ) ")
+        
     }
     
     

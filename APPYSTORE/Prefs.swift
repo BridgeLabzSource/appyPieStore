@@ -86,7 +86,7 @@ class Prefs: AbsPrefs {
     
     static func getInstance() -> Prefs? {
         if Prefs.instance == nil {
-            let sp = UserDefaults()
+            let sp = UserDefaults.standard
             instance = Prefs(preferences: sp)
         }
         

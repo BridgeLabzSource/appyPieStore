@@ -20,4 +20,5 @@ class ChildInfo: BaseModel{
     var month: String?
     var avatarImage: String?
     var isInValidData = false
+    
 }
