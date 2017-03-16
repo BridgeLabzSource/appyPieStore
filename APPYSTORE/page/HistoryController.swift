@@ -20,7 +20,7 @@ class HistoryController: UIViewController, UICollectionViewDelegate,UICollection
         super.viewDidLoad()
         //inital value for animator
         sw = self.collectionView.center.x
-        sh = self.collectionView.center.y*2
+        sh = self.collectionView.center.y
      
         //
         self.loadData(offset: setOffset, limit: setLimit)
@@ -86,15 +86,6 @@ class HistoryController: UIViewController, UICollectionViewDelegate,UICollection
         
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        self.collectionView?.removeObserver(self, forKeyPath: "contentSize")
-//    }
-//    
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-//        if let observedObject = object as? UICollectionView, observedObject == self.collectionView {
-//            print("done loading stuff... ")
-//        }
-//    }
+
     }
 }

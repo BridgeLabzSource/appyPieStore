@@ -9,8 +9,15 @@
 import UIKit
 
 @IBDesignable class TopBarOverlay: UIView {
-
+    
     @IBOutlet var rootView: UIView!
+    
+    @IBOutlet var videoButton : CustomButton!
+    @IBOutlet var historyButton : CustomButton!
+    @IBOutlet var songButton :CustomButton!
+    @IBOutlet var searchButton : CustomButton!
+    @IBOutlet var userButton : CustomButton!
+    
     
     func initialize()
     {
