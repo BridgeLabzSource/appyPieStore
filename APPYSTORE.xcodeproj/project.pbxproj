@@ -34,10 +34,10 @@
 		706B34FC1E6FEA96008474EA /* HistoryDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706B34FB1E6FEA96008474EA /* HistoryDBManager.swift */; };
 		706B34FE1E6FEAF7008474EA /* VideoDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706B34FD1E6FEAF7008474EA /* VideoDBManager.swift */; };
 		707FD8181E7140A400948BEA /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FD8171E7140A400948BEA /* Util.swift */; };
+		708845161E7AD0F000B91A3D /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708845151E7AD0F000B91A3D /* BaseController.swift */; };
 		70A36E4B1E614722002B9296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70A36E4A1E614722002B9296 /* Assets.xcassets */; };
 		70A36E4D1E6148BE002B9296 /* CommonOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A36E4C1E6148BE002B9296 /* CommonOverlayView.xib */; };
 		70A36E4F1E6149C0002B9296 /* CommonOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A36E4E1E6149C0002B9296 /* CommonOverlayView.swift */; };
-		70AD5ADC1E6E710C003C2536 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5ADB1E6E710C003C2536 /* BaseViewController.swift */; };
 		70AD5AE31E6E7129003C2536 /* BaseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5ADD1E6E7129003C2536 /* BaseParser.swift */; };
 		70AD5AE41E6E7129003C2536 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5ADE1E6E7129003C2536 /* BaseModel.swift */; };
 		70AD5AE51E6E7129003C2536 /* PageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5ADF1E6E7129003C2536 /* PageConstants.swift */; };
@@ -97,10 +97,10 @@
 		706B34FB1E6FEA96008474EA /* HistoryDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDBManager.swift; sourceTree = "<group>"; };
 		706B34FD1E6FEAF7008474EA /* VideoDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDBManager.swift; sourceTree = "<group>"; };
 		707FD8171E7140A400948BEA /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = common/Util.swift; sourceTree = "<group>"; };
+		708845151E7AD0F000B91A3D /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		70A36E4A1E614722002B9296 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70A36E4C1E6148BE002B9296 /* CommonOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonOverlayView.xib; sourceTree = "<group>"; };
 		70A36E4E1E6149C0002B9296 /* CommonOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonOverlayView.swift; sourceTree = "<group>"; };
-		70AD5ADB1E6E710C003C2536 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		70AD5ADD1E6E7129003C2536 /* BaseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseParser.swift; sourceTree = "<group>"; };
 		70AD5ADE1E6E7129003C2536 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		70AD5ADF1E6E7129003C2536 /* PageConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageConstants.swift; sourceTree = "<group>"; };
@@ -142,8 +142,8 @@
 			children = (
 				0A7261611E6D30880023883F /* customView */,
 				0A72615B1E6D30480023883F /* extension */,
-				70AD5ADB1E6E710C003C2536 /* BaseViewController.swift */,
 				70AD5ADD1E6E7129003C2536 /* BaseParser.swift */,
+				708845151E7AD0F000B91A3D /* BaseController.swift */,
 				70AD5ADE1E6E7129003C2536 /* BaseModel.swift */,
 				70AD5ADF1E6E7129003C2536 /* PageConstants.swift */,
 				70AD5AE01E6E7129003C2536 /* HttpRequestBuilder.swift */,
@@ -168,7 +168,6 @@
 				0A72615C1E6D30600023883F /* StringExtension.swift */,
 				0A72615D1E6D30600023883F /* UIColorExtension.swift */,
 				0A5E1C631E701C2D00537F84 /* UILabelExtension.swift */,
-				F44710801E794ADA0095CA9B /* ArrayExtension.swift */,
 			);
 			name = extension;
 			sourceTree = "<group>";
@@ -437,8 +436,8 @@
 				0A5E1C641E701C2D00537F84 /* UILabelExtension.swift in Sources */,
 				F46267151E77AFB000302ACF /* ChildInfo.swift in Sources */,
 				70AD5AE51E6E7129003C2536 /* PageConstants.swift in Sources */,
-				70AD5ADC1E6E710C003C2536 /* BaseViewController.swift in Sources */,
 				70A36E4F1E6149C0002B9296 /* CommonOverlayView.swift in Sources */,
+				708845161E7AD0F000B91A3D /* BaseController.swift in Sources */,
 				70AD5AEF1E6E71CD003C2536 /* HistoryVideoCell.swift in Sources */,
 				0AAD2EFD1E5C48EF00B504A3 /* AppDelegate.swift in Sources */,
 				70AD5AE41E6E7129003C2536 /* BaseModel.swift in Sources */,
@@ -453,7 +452,6 @@
 				F46267131E77AF7000302ACF /* UserInfo.swift in Sources */,
 				7360D8881E7A8C8400C662DE /* ParserListener.swift in Sources */,
 				70AD5AEE1E6E71CD003C2536 /* VideoListingModel.swift in Sources */,
-				F44710811E794ADA0095CA9B /* ArrayExtension.swift in Sources */,
 				706B34FC1E6FEA96008474EA /* HistoryDBManager.swift in Sources */,
 				0A8A58A61E683F2100A93DD2 /* VideoCategoryController.swift in Sources */,
 				0A7261631E6D30AE0023883F /* CustomButton.swift in Sources */,

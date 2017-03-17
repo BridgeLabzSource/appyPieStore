@@ -67,19 +67,5 @@ class AbsPrefs {
         preferences?.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
     }
     
-    func setObject(key: String, value: Any){
-        let encodeData = NSKeyedArchiver.archivedData(withRootObject: value)
-        
-        preferences?.set(encodeData, forKey: key)
-    }
-    
-    func getObject(key: String) -> AnyObject? {
-        
-        let data = preferences?.object(forKey: key) as! Data
-        let deocdeData = NSKeyedUnarchiver.unarchiveObject(with: data) as AnyObject
-        
-        return deocdeData
-    }
-    
     
 }

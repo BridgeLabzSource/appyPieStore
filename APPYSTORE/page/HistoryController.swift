@@ -20,7 +20,7 @@ class HistoryController: UIViewController, UICollectionViewDelegate,UICollection
         super.viewDidLoad()
         //inital value for animator
         sw = self.collectionView.center.x
-        sh = self.collectionView.center.y*2
+        sh = self.collectionView.center.y
      
         //
         self.loadData(offset: setOffset, limit: setLimit)
@@ -66,7 +66,8 @@ class HistoryController: UIViewController, UICollectionViewDelegate,UICollection
     }
     
     //function to get lastVisibleCell at particular indexPath
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
+    {
         
       
         if var lastVisibleCell = self.collectionView.indexPathsForVisibleItems.last
@@ -74,27 +75,14 @@ class HistoryController: UIViewController, UICollectionViewDelegate,UICollection
             let lastVisibleCellCount = lastVisibleCell.row + 1
             if lastVisibleCellCount == setLimit && setLimit <= total_history_count!
             {
-            
                 setLimit = setLimit + 20
                 sw = (scrollView.contentSize.width)
                 sh = (scrollView.contentSize.height)
                 loadData(offset: setOffset, limit: setLimit)
-                
             }
-      
         
-        
-    }
+        }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        self.collectionView?.removeObserver(self, forKeyPath: "contentSize")
-//    }
-//    
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-//        if let observedObject = object as? UICollectionView, observedObject == self.collectionView {
-//            print("done loading stuff... ")
-//        }
-//    }
+
     }
 }

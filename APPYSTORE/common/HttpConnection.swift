@@ -8,7 +8,7 @@ import SwiftyJSON
 
 class HttpConnection: NSObject{
     
-    private static var jsonData: JSON!
+    private static var jsonData: JSON?
     private static let url = "http://www.appystore.in/appy_app/appyApi_handler.php?"
     
     static func post(url: String, params: Parameters, headers: HTTPHeaders, completion:@escaping (_ getjsonData:JSON) -> Void)
@@ -18,9 +18,14 @@ class HttpConnection: NSObject{
             
             do
             {
-                self.jsonData = JSON(response.result.value as! NSDictionary)
-              //  print("Response: \(self.jsonData)")
-                completion(self.jsonData)
+              let j = JSON(response.result.value as! NSDictionary)
+              if j.isEmpty == false
+              {
+                completion(j)
+                
+              }
+
+               
             }
         }
         
