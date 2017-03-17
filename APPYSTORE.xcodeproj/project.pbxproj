@@ -33,8 +33,8 @@
 		706B34FA1E6FE9F4008474EA /* BaseDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706B34F91E6FE9F4008474EA /* BaseDBManager.swift */; };
 		706B34FC1E6FEA96008474EA /* HistoryDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706B34FB1E6FEA96008474EA /* HistoryDBManager.swift */; };
 		706B34FE1E6FEAF7008474EA /* VideoDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706B34FD1E6FEAF7008474EA /* VideoDBManager.swift */; };
-		707445931E7A5D5E009CCB4E /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707445921E7A5D5E009CCB4E /* BaseController.swift */; };
 		707FD8181E7140A400948BEA /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FD8171E7140A400948BEA /* Util.swift */; };
+		708845161E7AD0F000B91A3D /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708845151E7AD0F000B91A3D /* BaseController.swift */; };
 		70A36E4B1E614722002B9296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70A36E4A1E614722002B9296 /* Assets.xcassets */; };
 		70A36E4D1E6148BE002B9296 /* CommonOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A36E4C1E6148BE002B9296 /* CommonOverlayView.xib */; };
 		70A36E4F1E6149C0002B9296 /* CommonOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A36E4E1E6149C0002B9296 /* CommonOverlayView.swift */; };
@@ -93,8 +93,8 @@
 		706B34F91E6FE9F4008474EA /* BaseDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDBManager.swift; sourceTree = "<group>"; };
 		706B34FB1E6FEA96008474EA /* HistoryDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDBManager.swift; sourceTree = "<group>"; };
 		706B34FD1E6FEAF7008474EA /* VideoDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDBManager.swift; sourceTree = "<group>"; };
-		707445921E7A5D5E009CCB4E /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseController.swift; path = common/BaseController.swift; sourceTree = "<group>"; };
 		707FD8171E7140A400948BEA /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = common/Util.swift; sourceTree = "<group>"; };
+		708845151E7AD0F000B91A3D /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		70A36E4A1E614722002B9296 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70A36E4C1E6148BE002B9296 /* CommonOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonOverlayView.xib; sourceTree = "<group>"; };
 		70A36E4E1E6149C0002B9296 /* CommonOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonOverlayView.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 				0A7261611E6D30880023883F /* customView */,
 				0A72615B1E6D30480023883F /* extension */,
 				70AD5ADD1E6E7129003C2536 /* BaseParser.swift */,
-				707445921E7A5D5E009CCB4E /* BaseController.swift */,
+				708845151E7AD0F000B91A3D /* BaseController.swift */,
 				70AD5ADE1E6E7129003C2536 /* BaseModel.swift */,
 				70AD5ADF1E6E7129003C2536 /* PageConstants.swift */,
 				70AD5AE01E6E7129003C2536 /* HttpRequestBuilder.swift */,
@@ -429,7 +429,7 @@
 				F46267151E77AFB000302ACF /* ChildInfo.swift in Sources */,
 				70AD5AE51E6E7129003C2536 /* PageConstants.swift in Sources */,
 				70A36E4F1E6149C0002B9296 /* CommonOverlayView.swift in Sources */,
-				707445931E7A5D5E009CCB4E /* BaseController.swift in Sources */,
+				708845161E7AD0F000B91A3D /* BaseController.swift in Sources */,
 				70AD5AEF1E6E71CD003C2536 /* HistoryVideoCell.swift in Sources */,
 				0AAD2EFD1E5C48EF00B504A3 /* AppDelegate.swift in Sources */,
 				70AD5AE41E6E7129003C2536 /* BaseModel.swift in Sources */,

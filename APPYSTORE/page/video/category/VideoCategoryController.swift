@@ -7,15 +7,18 @@
 //
 
 import UIKit
-
-class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+import NVActivityIndicatorView
+class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIScrollViewDelegate{
     
     //MARK: IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: Declaration
-    var setLimit:Int = 0
+    var sw:CGFloat = 0.0
+    var sh:CGFloat = 0.0
+    var setLimit:Int = 20
     var setOffset:Int = 0
+    let dataManager = DataManager()
     var dataList = [VideoCategoryModel]()
     let cardWidth: CGFloat = 512 - 40
     let cardHeight: CGFloat = 384 - 40
@@ -26,12 +29,12 @@ class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICol
         
         self.collectionView.register(UINib(nibName: "VideoCategoryCard", bundle: nil), forCellWithReuseIdentifier: "VideoCategoryCard")
         
-        let dataManager = DataManager()
-        dataManager.getData(pageName: PageConstants.VIDEO_PAGE, offset: setOffset, limit: setLimit, returndata: {
-        result in
-            self.dataList = result as! [VideoCategoryModel]
-            self.collectionView.reloadData()
-        })
+        //inital value for animator
+        sw = self.collectionView.center.x
+        sh = self.collectionView.center.y
+        
+        //
+        self.loadData(offset: setOffset, limit: setLimit)
                 
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.delegate = self
@@ -78,6 +81,41 @@ class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICol
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: DimentionManager.getGeneralizedWidth1280x720(width: cardWidth), height: DimentionManager.getGeneralizedHeight1280x720(height: cardHeight));
+    }
+    
+    func loadData(offset:Int,limit:Int)
+    {
+        let frame = CGRect(x: Int(sw-25), y: Int(sh/2), width: 30, height: 30)
+        let anim = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballPulse, color: UIColor.orange, padding: CGFloat(0))
+        anim.startAnimating()
+        self.collectionView.addSubview(anim)
+        dataManager.getData(pageName: PageConstants.VIDEO_PAGE, offset: offset, limit: limit, returndata: { result in
+            self.dataList = result as! [VideoCategoryModel]
+            self.view.setNeedsDisplay()
+            print("Data Found:",result.count)
+            self.collectionView.reloadData()
+            anim.stopAnimating()
+            anim.removeFromSuperview()
+            
+        })
+    }
+
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
+    {
+        if var lastVisibleCell = self.collectionView.indexPathsForVisibleItems.last
+        {
+            let lastVisibleCellCount = lastVisibleCell.row + 1
+            if lastVisibleCellCount == setLimit && setLimit <= total_history_count!
+            {
+                setLimit = setLimit + 20
+                sw = (scrollView.contentSize.width)
+                sh = (scrollView.contentSize.height)
+                loadData(offset: setOffset, limit: setLimit)
+            }
+            
+        }
+
     }
 
 }

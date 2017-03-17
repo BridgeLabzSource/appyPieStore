@@ -66,7 +66,8 @@ class HistoryController: UIViewController, UICollectionViewDelegate,UICollection
     }
     
     //function to get lastVisibleCell at particular indexPath
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
+    {
         
       
         if var lastVisibleCell = self.collectionView.indexPathsForVisibleItems.last
@@ -74,17 +75,13 @@ class HistoryController: UIViewController, UICollectionViewDelegate,UICollection
             let lastVisibleCellCount = lastVisibleCell.row + 1
             if lastVisibleCellCount == setLimit && setLimit <= total_history_count!
             {
-            
                 setLimit = setLimit + 20
                 sw = (scrollView.contentSize.width)
                 sh = (scrollView.contentSize.height)
                 loadData(offset: setOffset, limit: setLimit)
-                
             }
-      
         
-        
-    }
+        }
     
 
     }
