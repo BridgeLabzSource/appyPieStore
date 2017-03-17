@@ -3,13 +3,13 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
-class BaseParser: NSObject
+class BaseParser<T>: NSObject
 {
     var ResponseCode: String!
     var ResponseMessage: String!
     var ResponseDetails:JSON!
     var status:Bool = false
-    var parserListener: ParserListener?
+    var parserListener: T?
     
     
     func parse(params:Parameters,completion:@escaping (_ listOfData:AnyObject?) -> Void)
@@ -36,11 +36,11 @@ class BaseParser: NSObject
         return nil
     }
     
-    func setParserListener(parserListener: ParserListener){
+    func setParserListener(parserListener: T){
         self.parserListener = parserListener
     }
     
-    func getParserListener() -> ParserListener? {
+    func getParserListener() -> T? {
         return parserListener
     }
     

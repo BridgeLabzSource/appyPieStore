@@ -3,24 +3,25 @@
 import Foundation
 import SwiftyJSON
 var total_history_count:Int?
-class HistoryParser:BaseParser
+
+class HistoryParser<T>: BaseParser<T>
 {
-    private static let TOTAL_COUNT = "total_count";
-    private static let DATA_ARRAY = "data_array";
-    private static let CONTENT_ID = "content_id";
-    private static let IMAGE_PATH = "image_path";
-    private static let TITLE = "title";
-    private static let CONTENT_DURATION = "content_duration";
-    private static let SUB_CATEGORY_ID = "sub_category_id";
-    private static let SUB_CATEGORY_TITLE = "sub_category_title";
-    private static let DNLD_URL = "dnld_url";
-    private static let PARENT_CATEGORY_ID = "parent_category_id";
-    private static let PAY_TYPE = "pay_type";
-    private static let VERSION_ID = "version_id";
-    private static let SEQUENCE_TYPE = "sequence_type";
-    private static let SEQUENCE_NUMBER = "sequence_number";
-    private static let CDN_URL = "cdn_url";
-    private static let GROUP_ID = "group_id";
+    private let TOTAL_COUNT = "total_count";
+    private let DATA_ARRAY = "data_array";
+    private let CONTENT_ID = "content_id";
+    private let IMAGE_PATH = "image_path";
+    private let TITLE = "title";
+    private let CONTENT_DURATION = "content_duration";
+    private let SUB_CATEGORY_ID = "sub_category_id";
+    private let SUB_CATEGORY_TITLE = "sub_category_title";
+    private let DNLD_URL = "dnld_url";
+    private let PARENT_CATEGORY_ID = "parent_category_id";
+    private let PAY_TYPE = "pay_type";
+    private let VERSION_ID = "version_id";
+    private let SEQUENCE_TYPE = "sequence_type";
+    private let SEQUENCE_NUMBER = "sequence_number";
+    private let CDN_URL = "cdn_url";
+    private let GROUP_ID = "group_id";
     
     override func parseJSONData(responseData:JSON) -> AnyObject?{
         

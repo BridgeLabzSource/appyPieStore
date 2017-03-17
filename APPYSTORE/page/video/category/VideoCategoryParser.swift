@@ -9,19 +9,19 @@
 import Foundation
 import SwiftyJSON
 
-class VideoCategoryParser: BaseParser
+class VideoCategoryParser<T: ParserListener>: BaseParser<T>
 {
-    private static let CATEGORY_COUNT = "category_count";
-    private static let CATEGORY_ID_ARRAY = "category_id_array";
-    private static let CATEGORY_ID = "category_id";
-    private static let CATEGORY_NAME = "category_name";
-    private static let PARENT_CATEGORY_ID = "parent_category_id";
-    private static let CONTENT_COUNT = "content_count";
-    private static let IMAGE_PATH = "image_path";
-    private static let IS_CATEGORY_BLOCKED = "is_category_blocked";
-    private static let PARENT_CATEGORY_NAME = "parent_category_name";
-    private static let CANONICAL_NAME = "canonical_name";
-    private static let IS_VISIBLE = "is_visible";
+    private let CATEGORY_COUNT = "category_count";
+    private let CATEGORY_ID_ARRAY = "category_id_array";
+    private let CATEGORY_ID = "category_id";
+    private let CATEGORY_NAME = "category_name";
+    private let PARENT_CATEGORY_ID = "parent_category_id";
+    private let CONTENT_COUNT = "content_count";
+    private let IMAGE_PATH = "image_path";
+    private let IS_CATEGORY_BLOCKED = "is_category_blocked";
+    private let PARENT_CATEGORY_NAME = "parent_category_name";
+    private let CANONICAL_NAME = "canonical_name";
+    private let IS_VISIBLE = "is_visible";
     
     
     override func parseJSONData(responseData:JSON) -> AnyObject?{
