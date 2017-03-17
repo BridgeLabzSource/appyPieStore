@@ -51,7 +51,7 @@
 		70AD5AF21E6E7360003C2536 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5AF11E6E7360003C2536 /* SearchController.swift */; };
 		7360D8881E7A8C8400C662DE /* ParserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360D8871E7A8C8400C662DE /* ParserListener.swift */; };
 		7360D88A1E7A947500C662DE /* LoginParserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360D8891E7A947500C662DE /* LoginParserListener.swift */; };
-		F44710811E794ADA0095CA9B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44710801E794ADA0095CA9B /* ArrayExtension.swift */; };
+		7371A2E31E7BB293009B2894 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371A2E21E7BB293009B2894 /* ArrayExtension.swift */; };
 		F46267111E77AF0900302ACF /* LoginParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267101E77AF0900302ACF /* LoginParser.swift */; };
 		F46267131E77AF7000302ACF /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267121E77AF7000302ACF /* UserInfo.swift */; };
 		F46267151E77AFB000302ACF /* ChildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267141E77AFB000302ACF /* ChildInfo.swift */; };
@@ -114,7 +114,7 @@
 		70AD5AF11E6E7360003C2536 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		7360D8871E7A8C8400C662DE /* ParserListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserListener.swift; sourceTree = "<group>"; };
 		7360D8891E7A947500C662DE /* LoginParserListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginParserListener.swift; sourceTree = "<group>"; };
-		F44710801E794ADA0095CA9B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		7371A2E21E7BB293009B2894 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		F46267101E77AF0900302ACF /* LoginParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginParser.swift; sourceTree = "<group>"; };
 		F46267121E77AF7000302ACF /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		F46267141E77AFB000302ACF /* ChildInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInfo.swift; sourceTree = "<group>"; };
@@ -168,6 +168,7 @@
 				0A72615C1E6D30600023883F /* StringExtension.swift */,
 				0A72615D1E6D30600023883F /* UIColorExtension.swift */,
 				0A5E1C631E701C2D00537F84 /* UILabelExtension.swift */,
+				7371A2E21E7BB293009B2894 /* ArrayExtension.swift */,
 			);
 			name = extension;
 			sourceTree = "<group>";
@@ -455,6 +456,7 @@
 				706B34FC1E6FEA96008474EA /* HistoryDBManager.swift in Sources */,
 				0A8A58A61E683F2100A93DD2 /* VideoCategoryController.swift in Sources */,
 				0A7261631E6D30AE0023883F /* CustomButton.swift in Sources */,
+				7371A2E31E7BB293009B2894 /* ArrayExtension.swift in Sources */,
 				7360D88A1E7A947500C662DE /* LoginParserListener.swift in Sources */,
 				0A65E26E1E6EDF1E00F538B5 /* VideoCategoryModel.swift in Sources */,
 			);

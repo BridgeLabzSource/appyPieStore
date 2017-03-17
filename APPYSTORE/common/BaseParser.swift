@@ -10,11 +10,16 @@ class BaseParser<T>: NSObject
     var ResponseDetails:JSON!
     var status:Bool = false
     var parserListener: T?
+    var url: String?
+    var params: Parameters?
     
     
-    func parse(params:Parameters,completion:@escaping (_ listOfData:AnyObject?) -> Void)
-    {
-        HttpConnection.post(params: params, completion:
+    func parse(params:Parameters,completion:@escaping (_ listOfData:AnyObject?) -> Void){
+        
+        self.url = "http://www.appystore.in/appy_app/appyApi_handler.php?"
+        self.params = params
+        
+        HttpConnection.post(url: self.url,params: params, completion:
             {result in
                 if result != nil
                 {

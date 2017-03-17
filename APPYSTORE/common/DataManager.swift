@@ -2,15 +2,6 @@
 
 import Foundation
 
-class abc: ParserListener{
-    func onSuccess(object: AnyObject?)
-    {
-    
-    }
-func onFailure(errorMessage: String?){}
-func onConnectionError(){}
-
-}
 class DataManager:NSObject
 {
     
@@ -54,7 +45,7 @@ class DataManager:NSObject
             
             if Utils.isInternetAvailable()
             {
-                let parser = VideoCategoryParser<abc>()
+                let parser = VideoCategoryParser<ParserListener>()
                 //parser.p
                 parser.parse(params: HttpRequestBuilder.getVideoCategoryParameters(), completion: { result in
                     //  print(result as! [VideoListingModel])
