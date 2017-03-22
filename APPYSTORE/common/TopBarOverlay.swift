@@ -18,6 +18,9 @@ import UIKit
     @IBOutlet var searchButton : CustomButton!
     @IBOutlet var userButton : CustomButton!
     
+    @IBOutlet weak var lblVideos: UILabel!
+    @IBOutlet weak var lblSongs: UILabel!
+    @IBOutlet weak var lblHistory: UILabel!
     
     func initialize()
     {
@@ -26,7 +29,10 @@ import UIKit
         addSubview(rootView)
         //rootView.bindFrameToSuperviewBounds()
         rootView.frame = self.bounds
-
+        
+        DimensionManager.setTextSize1280x720(label: lblVideos, size: DimensionManager.H3)
+        DimensionManager.setTextSize1280x720(label: lblSongs, size: DimensionManager.H3)
+        DimensionManager.setTextSize1280x720(label: lblHistory, size: DimensionManager.H3)
     }
     
     override init(frame: CGRect)
@@ -42,3 +48,4 @@ import UIKit
     }
 
 }
+

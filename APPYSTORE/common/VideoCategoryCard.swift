@@ -22,7 +22,7 @@ class VideoCategoryCard: UICollectionViewCell {
     
     override func awakeFromNib() {
         // getting value in point from pixels
-        pointOfPixels = DimentionManager.convertPixelToPoint(pixel: 32.0)
+        pointOfPixels = DimensionManager.convertPixelToPoint(pixel: 32.0)
       
         //access your IBOutlets
         mInfoBtn.layer.cornerRadius = self.pointOfPixels
