@@ -52,6 +52,9 @@
 		7360D8881E7A8C8400C662DE /* ParserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360D8871E7A8C8400C662DE /* ParserListener.swift */; };
 		7360D88A1E7A947500C662DE /* LoginParserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360D8891E7A947500C662DE /* LoginParserListener.swift */; };
 		7371A2E31E7BB293009B2894 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371A2E21E7BB293009B2894 /* ArrayExtension.swift */; };
+		7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */; };
+		73F43B041E82465800D4DD90 /* PageDataPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F43B031E82465800D4DD90 /* PageDataPref.swift */; };
+		73F43B061E82739D00D4DD90 /* ContentListingApiResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F43B051E82739D00D4DD90 /* ContentListingApiResponseModel.swift */; };
 		F46267111E77AF0900302ACF /* LoginParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267101E77AF0900302ACF /* LoginParser.swift */; };
 		F46267131E77AF7000302ACF /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267121E77AF7000302ACF /* UserInfo.swift */; };
 		F46267151E77AFB000302ACF /* ChildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267141E77AFB000302ACF /* ChildInfo.swift */; };
@@ -115,6 +118,9 @@
 		7360D8871E7A8C8400C662DE /* ParserListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserListener.swift; sourceTree = "<group>"; };
 		7360D8891E7A947500C662DE /* LoginParserListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginParserListener.swift; sourceTree = "<group>"; };
 		7371A2E21E7BB293009B2894 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchFramework.swift; sourceTree = "<group>"; };
+		73F43B031E82465800D4DD90 /* PageDataPref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageDataPref.swift; sourceTree = "<group>"; };
+		73F43B051E82739D00D4DD90 /* ContentListingApiResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentListingApiResponseModel.swift; sourceTree = "<group>"; };
 		F46267101E77AF0900302ACF /* LoginParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginParser.swift; sourceTree = "<group>"; };
 		F46267121E77AF7000302ACF /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		F46267141E77AFB000302ACF /* ChildInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInfo.swift; sourceTree = "<group>"; };
@@ -146,6 +152,7 @@
 				708845151E7AD0F000B91A3D /* BaseController.swift */,
 				70AD5ADE1E6E7129003C2536 /* BaseModel.swift */,
 				70AD5ADF1E6E7129003C2536 /* PageConstants.swift */,
+				7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */,
 				70AD5AE01E6E7129003C2536 /* HttpRequestBuilder.swift */,
 				70AD5AE11E6E7129003C2536 /* DataManager.swift */,
 				70AD5AE21E6E7129003C2536 /* HttpConnection.swift */,
@@ -224,6 +231,8 @@
 				F46267181E77B1A600302ACF /* PreChatFormField.swift */,
 				F48798F11E77E9AF0060932F /* AbsPrefs.swift */,
 				F48798F31E77F36F0060932F /* Prefs.swift */,
+				73F43B031E82465800D4DD90 /* PageDataPref.swift */,
+				73F43B051E82739D00D4DD90 /* ContentListingApiResponseModel.swift */,
 			);
 			path = APPYSTORE;
 			sourceTree = "<group>";
@@ -426,11 +435,14 @@
 				70AD5AF01E6E71CD003C2536 /* HistoryParser.swift in Sources */,
 				70AD5AE71E6E7129003C2536 /* DataManager.swift in Sources */,
 				0A80DA261E702DA700939443 /* BottomBarOverlay.swift in Sources */,
+				73F43B041E82465800D4DD90 /* PageDataPref.swift in Sources */,
 				0A65E2601E6EC11400F538B5 /* VideoCategoryParser.swift in Sources */,
 				0A72615F1E6D30600023883F /* UIColorExtension.swift in Sources */,
 				707FD8181E7140A400948BEA /* Util.swift in Sources */,
 				706B0B9B1E73D392006CF8CA /* AnimationView.swift in Sources */,
 				70AD5AE31E6E7129003C2536 /* BaseParser.swift in Sources */,
+				7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */,
+				73F43B061E82739D00D4DD90 /* ContentListingApiResponseModel.swift in Sources */,
 				706B34FA1E6FE9F4008474EA /* BaseDBManager.swift in Sources */,
 				70AD5AE81E6E7129003C2536 /* HttpConnection.swift in Sources */,
 				0A8F790C1E6971FD00720DB8 /* VideoCategoryCard.swift in Sources */,

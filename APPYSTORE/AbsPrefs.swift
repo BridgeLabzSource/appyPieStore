@@ -51,6 +51,18 @@ class AbsPrefs {
         return defaultInt
     }
     
+    func setInt64(key: String, value: Int64)  {
+        preferences?.setValue(value, forKey: key)
+    }
+    
+    func getInt64(key: String, defaultInt: Int64) -> Int64 {
+        if let value = preferences?.object(forKey: key) as? Int64 {
+            return value
+        }
+        
+        return defaultInt
+    }
+    
     func setDouble(key: String, value: Double) {
         preferences?.setValue(value, forKey: key)
     }

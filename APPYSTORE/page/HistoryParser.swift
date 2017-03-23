@@ -4,8 +4,8 @@ import Foundation
 import SwiftyJSON
 var total_history_count:Int?
 
-class HistoryParser<T>: BaseParser<T>
-{
+class HistoryParser: BaseParser {
+    
     private let TOTAL_COUNT = "total_count";
     private let DATA_ARRAY = "data_array";
     private let CONTENT_ID = "content_id";
@@ -23,7 +23,9 @@ class HistoryParser<T>: BaseParser<T>
     private let CDN_URL = "cdn_url";
     private let GROUP_ID = "group_id";
     
-    override func parseJSONData(responseData:JSON) -> AnyObject?{
+    override func parseJSONData(responseData:JSON) -> AnyObject? {
+        
+        let apiResponseModel = ContentListingApiResponseModel()
         
         let videoContent = responseData["data_array"].array
         total_history_count = Int((videoContent?.count)!)
@@ -50,7 +52,11 @@ class HistoryParser<T>: BaseParser<T>
             historyModelArray.append(videoListingModel)
             
         }
-        return historyModelArray as AnyObject
+        
+        apiResponseModel.contentList = historyModelArray
+        apiResponseModel.totalCount = responseData["total_count"].string!
+        
+        return apiResponseModel as AnyObject
         
     }
     

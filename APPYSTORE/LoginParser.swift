@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class LoginParser<T: LoginParserListener>: BaseParser<T>{
+class LoginParser: BaseParser{
     
     private let METHOD_NAME = "login"
     private let USERID = "UserId"
@@ -67,12 +67,12 @@ class LoginParser<T: LoginParserListener>: BaseParser<T>{
         
         if !StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: responseData, key: USERID), secondString: userInfo?.id) {
             // notify the user id changed
-            parserListener?.userIdChanged(userInfoOld: userInfoOld)
+            //parserListener?.userIdChanged(userInfoOld: userInfoOld)
         }
         
         if !StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: responseData, key: UTYPE), secondString: userInfo?.id) {
             // notify user type changed
-            parserListener?.userTypeChanged(userInfoOld: userInfoOld)
+            //parserListener?.userTypeChanged(userInfoOld: userInfoOld)
         }
         
         setUserData(inputJson: responseData)
@@ -165,10 +165,6 @@ class LoginParser<T: LoginParserListener>: BaseParser<T>{
     
     func parseGlobalConfig(){
         
-    }
-    
-    override func setParserListener(parserListener: T) {
-        super.setParserListener(parserListener: parserListener)
     }
     
     

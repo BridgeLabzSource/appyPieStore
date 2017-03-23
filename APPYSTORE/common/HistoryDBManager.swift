@@ -106,6 +106,7 @@ class HistoryDBManager:BaseDBManager{
 
      return historylist
     }
+    
     //MARK:fetch all data
     func fetchAll() -> [BaseModel]? {
         var historylist = [BaseModel]()
@@ -121,6 +122,20 @@ class HistoryDBManager:BaseDBManager{
             print("Could not fetch \(error), \(error.userInfo)")
         }
      return historylist
+    }
+    
+    func getRowCount() -> Int {
+        var count = 0
+        
+        let delegate = (UIApplication.shared.delegate as? AppDelegate)
+        let context = delegate?.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HistoryTable")
+        do {
+            count = try (context?.count(for: fetchRequest)) ?? 0
+        } catch let error as NSError {
+            print("Error : \(error)")
+        }
+        return count
     }
     
     //MARK: get array from database fetched result

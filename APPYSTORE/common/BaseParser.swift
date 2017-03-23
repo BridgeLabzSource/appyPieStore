@@ -3,52 +3,51 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
-class BaseParser<T>: NSObject
-{
-    var ResponseCode: String!
-    var ResponseMessage: String!
-    var ResponseDetails:JSON!
-    var status:Bool = false
-    var parserListener: T?
+class BaseParser: NSObject {
+    
+    var responseCode: String!
+    var responseMessage: String!
+    var responseDetails: JSON!
     var url: String?
     var params: Parameters?
     
-    
-    func parse(params:Parameters,completion:@escaping (_ listOfData:AnyObject?) -> Void){
+    func parse(params: Parameters,completion: @escaping (_ responseStatus: String, _ listOfData: AnyObject?) -> Void) {
         
         self.url = "http://www.appystore.in/appy_app/appyApi_handler.php?"
         self.params = params
         
-        HttpConnection.post(url: self.url,params: params, completion:
-            {result in
-                if result != nil
-                {
-                    self.ResponseCode = result["ResponseCode"].string
-                    self.ResponseMessage = result["ResponseMessage"].string
-                    self.ResponseDetails = result["Responsedetails"] as JSON
-                    self.status = true
-                    let parsedResponseData = self.parseJSONData(responseData: self.ResponseDetails)
+        HttpConnection.post(url: self.url, params: params,
+                            completion: { response in
+                
+            let strongSelf = self
+            if response.result.error != nil {
+                completion(DataFetchFramework.CONNECTION_ERROR, nil)
+            } else {
+                let result = JSON( response.result.value as! NSDictionary )
+                
+                print("Response Ganesh : \(result)")
+                
+                strongSelf.responseCode = String(describing: result["ResponseCode"].int ?? 0)
+                
+                strongSelf.responseMessage = result["ResponseMessage"].string
+                
+                if StringUtil.compareIgnoreCase(firstString: strongSelf.responseCode, secondString: HttpConnection.RESPONSECODE_SUCCESS){
                     
+                    strongSelf.responseDetails = result["Responsedetails"] as JSON
+                    let parsedResponseData = strongSelf.parseJSONData(responseData: strongSelf.responseDetails)
                     
-                    completion(parsedResponseData)
-                    
-                    
+                    completion(DataFetchFramework.REQUEST_SUCCESS, parsedResponseData)
+                } else {
+                    completion(DataFetchFramework.REQUEST_FAILURE, strongSelf.responseMessage as AnyObject?)
                 }
+                
+            }
+                
         })
     }
     
     func parseJSONData(responseData:JSON) -> AnyObject?{
         return nil
     }
-    
-    func setParserListener(parserListener: T){
-        self.parserListener = parserListener
-    }
-    
-    func getParserListener() -> T? {
-        return parserListener
-    }
-    
-    
     
 }

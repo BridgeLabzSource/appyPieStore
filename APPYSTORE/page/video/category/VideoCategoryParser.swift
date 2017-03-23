@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class VideoCategoryParser<T>: BaseParser<T>
+class VideoCategoryParser: BaseParser
 {
     private let CATEGORY_COUNT = "category_count";
     private let CATEGORY_ID_ARRAY = "category_id_array";

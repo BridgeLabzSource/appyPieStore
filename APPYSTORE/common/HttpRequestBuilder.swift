@@ -3,8 +3,7 @@
 import Foundation
 import Alamofire
 
-class HttpRequestBuilder: NSObject
-{
+class HttpRequestBuilder: NSObject {
     //MARK: Header Constants
     private static let X_APPY_CONTENT_TYPE = "Content-Type"
     private static let X_APPY_IMEI = "X_APPY_IMEI"
@@ -49,10 +48,15 @@ class HttpRequestBuilder: NSObject
     // let X_APPY_LAST_PAGE_NAME = "X_APPY_LAST_PAGE_NAME"
     // let X_APPY_INLINE_PLAY = "X_APPY_INLINE_PLAY"
     
+    static let METHOD = "method"
+    static let CHILD_ID = "child_id"
+    static let PAGEID = "pageid"
+    static let OFFSET = "offset"
+    static let LIMIT = "limit"
     
-   static func getHeaders() -> HTTPHeaders
-    {
-        let headers:HTTPHeaders = [
+    static func getHeaders() -> HTTPHeaders {
+        
+        let headers: HTTPHeaders = [
               X_APPY_CONTENT_TYPE:"application/x-www-from-urlencoded",
                X_APPY_IMEI:"862188036890804",
                X_APPY_PCP_ID:"999",
@@ -96,14 +100,16 @@ class HttpRequestBuilder: NSObject
         return headers
     }
     
-  static func getHistoryParameters() -> Parameters
-    {
-        let params = ["method":"getAllHistory",
-                      "child_id":"29518",
-                      "page_id":"History",
-                      "offset":"1",
-
-                      "limit":"149"]
+    static func getHistoryParameters(method: String, childId: String, pageId: String, offset: String, limit: String) -> Parameters {
+        
+        let params = [
+            METHOD: method,
+            CHILD_ID: childId,
+            PAGEID: pageId,
+            OFFSET: offset,
+            LIMIT: limit
+        ]
+        
         return params
     }
     
