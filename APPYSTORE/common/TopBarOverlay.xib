@@ -34,6 +34,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU4-UX-bvm" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
                     <rect key="frame" x="404" y="32" width="104" height="104"/>
                     <color key="backgroundColor" red="1" green="0.97176514250000001" blue="0.95668748169999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" image="video_type_1"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezb-eT-Rvp" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
                     <rect key="frame" x="588" y="32" width="104" height="104"/>
@@ -116,9 +117,10 @@
         </view>
     </objects>
     <resources>
-        <image name="audio" width="72" height="72"/>
-        <image name="history" width="72" height="72"/>
+        <image name="audio" width="48" height="48"/>
+        <image name="history" width="48" height="48"/>
         <image name="profile" width="72" height="72"/>
-        <image name="search" width="72" height="72"/>
+        <image name="search" width="48" height="48"/>
+        <image name="video_type_1" width="48" height="48"/>
     </resources>
 </document>

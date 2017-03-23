@@ -77,9 +77,9 @@ class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICol
         print(dataList[indexPath.row].imagePath)
         let image_path = dataList[indexPath.row].imagePath
         let imgurl = URL(string: image_path)
-        cell.mBgImg.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
+        cell.imgBg.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
         
-        cell.mCountLabel.text = dataList[indexPath.row].contentCount
+        cell.lblCount.text = dataList[indexPath.row].contentCount
         
         // setting shadow of view
         let plain = cell
