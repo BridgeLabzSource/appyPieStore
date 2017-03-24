@@ -54,7 +54,7 @@ class HistoryController: UIViewController, UICollectionViewDelegate, UICollectio
                 self.collectionView.reloadData()
             }
         } else if status == DataFetchFramework.END_OF_DATA {
-            isEndOfData = true
+            
         } else {
             print("Ganesh status : \(status) and response : \(result) ")
         }
