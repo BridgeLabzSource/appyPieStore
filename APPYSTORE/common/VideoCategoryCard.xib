@@ -26,24 +26,24 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azy-nr-9BI">
                     <rect key="frame" x="0.0" y="0.0" width="274" height="189"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cartton2" translatesAutoresizingMaskIntoConstraints="NO" id="jCk-SJ-3Bm">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jCk-SJ-3Bm">
                             <rect key="frame" x="8.5" y="8" width="257" height="173"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzr-ic-CEC">
-                            <rect key="frame" x="204" y="119" width="70" height="70"/>
+                            <rect key="frame" x="213" y="128" width="61" height="61"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="kzr-ic-CEC" secondAttribute="height" multiplier="1:1" id="aov-Ut-a1y"/>
                             </constraints>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="129" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujc-Nj-0GQ">
-                            <rect key="frame" x="208.5" y="123.5" width="61" height="30.5"/>
+                            <rect key="frame" x="217" y="132" width="53" height="26.5"/>
                             <fontDescription key="fontDescription" name="KGMissKindyChunky" family="KG Miss Kindy Chunky" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category_video_media_type" translatesAutoresizingMaskIntoConstraints="NO" id="u1s-cY-25I">
-                            <rect key="frame" x="223.5" y="154" width="31" height="19"/>
+                            <rect key="frame" x="230" y="158.5" width="27" height="16.5"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,7 +61,7 @@
                         <constraint firstItem="u1s-cY-25I" firstAttribute="height" secondItem="kzr-ic-CEC" secondAttribute="height" multiplier="30:114" id="l7v-cK-pZb"/>
                         <constraint firstItem="u1s-cY-25I" firstAttribute="top" secondItem="kzr-ic-CEC" secondAttribute="centerY" id="nRJ-aL-BNS"/>
                         <constraint firstItem="jCk-SJ-3Bm" firstAttribute="trailing" secondItem="azy-nr-9BI" secondAttribute="trailing" multiplier="496:512" id="pwB-0E-29u"/>
-                        <constraint firstItem="kzr-ic-CEC" firstAttribute="width" secondItem="azy-nr-9BI" secondAttribute="width" multiplier="114:512" constant="8.9921875" id="rRJ-Ef-7P4"/>
+                        <constraint firstItem="kzr-ic-CEC" firstAttribute="width" secondItem="azy-nr-9BI" secondAttribute="width" multiplier="114:512" id="rRJ-Ef-7P4"/>
                         <constraint firstItem="ujc-Nj-0GQ" firstAttribute="height" secondItem="kzr-ic-CEC" secondAttribute="height" multiplier="50:114" id="uuy-IT-1Wg"/>
                     </constraints>
                 </view>
@@ -86,7 +86,6 @@
         </view>
     </objects>
     <resources>
-        <image name="cartton2" width="678" height="480"/>
         <image name="category_video_media_type" width="37" height="23"/>
     </resources>
 </document>
