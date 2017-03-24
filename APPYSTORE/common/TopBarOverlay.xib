@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,6 +14,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopBarOverlay" customModule="APPYSTORE" customModuleProvider="target">
             <connections>
                 <outlet property="historyButton" destination="CO8-Kf-e0a" id="enn-IF-Ggt"/>
+                <outlet property="lblHistory" destination="s4O-MQ-YV6" id="5AN-Ie-Y9S"/>
+                <outlet property="lblSongs" destination="fXW-in-hVp" id="kkY-9S-OqO"/>
+                <outlet property="lblVideos" destination="vrL-Bc-S1y" id="opV-ES-p8J"/>
                 <outlet property="rootView" destination="iN0-l3-epB" id="GSy-5G-L1w"/>
                 <outlet property="searchButton" destination="df7-p0-iBS" id="DeP-r5-7NM"/>
                 <outlet property="songButton" destination="Ezb-eT-Rvp" id="OMH-0n-G44"/>
@@ -31,6 +34,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU4-UX-bvm" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
                     <rect key="frame" x="404" y="32" width="104" height="104"/>
                     <color key="backgroundColor" red="1" green="0.97176514250000001" blue="0.95668748169999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" image="video_type_1"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezb-eT-Rvp" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
                     <rect key="frame" x="588" y="32" width="104" height="104"/>
@@ -50,21 +54,54 @@
                     </constraints>
                     <state key="normal" image="search"/>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Videos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrL-Bc-S1y">
+                    <rect key="frame" x="378" y="152" width="156" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <size key="shadowOffset" width="1" height="1"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Songs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXW-in-hVp">
+                    <rect key="frame" x="562" y="152" width="156" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <size key="shadowOffset" width="1" height="1"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4O-MQ-YV6">
+                    <rect key="frame" x="746" y="152" width="156" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <size key="shadowOffset" width="1" height="1"/>
+                </label>
             </subviews>
             <constraints>
                 <constraint firstItem="SkT-Dj-8Bs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="32:1280" id="1se-JS-Tty"/>
                 <constraint firstItem="CO8-Kf-e0a" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="6TR-W7-aGG"/>
+                <constraint firstItem="s4O-MQ-YV6" firstAttribute="centerX" secondItem="CO8-Kf-e0a" secondAttribute="centerX" id="ARv-Z1-kXx"/>
+                <constraint firstItem="s4O-MQ-YV6" firstAttribute="top" secondItem="vrL-Bc-S1y" secondAttribute="top" id="DIe-u1-SJP"/>
                 <constraint firstItem="gU4-UX-bvm" firstAttribute="top" secondItem="SkT-Dj-8Bs" secondAttribute="top" id="Goz-vr-boN"/>
                 <constraint firstItem="Ezb-eT-Rvp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="588:1280" id="HDi-QJ-Pmb"/>
                 <constraint firstItem="Ezb-eT-Rvp" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="Ib9-PC-NOG"/>
                 <constraint firstItem="df7-p0-iBS" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="OPe-QG-0qo"/>
                 <constraint firstItem="df7-p0-iBS" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="1280:1312" id="PRT-Yo-hnx"/>
+                <constraint firstItem="vrL-Bc-S1y" firstAttribute="centerX" secondItem="gU4-UX-bvm" secondAttribute="centerX" id="TO9-RJ-SMV"/>
                 <constraint firstItem="df7-p0-iBS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="32:200" id="VpA-If-5H7"/>
                 <constraint firstItem="gU4-UX-bvm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="404:1280" id="WFI-vQ-p7w"/>
+                <constraint firstItem="vrL-Bc-S1y" firstAttribute="width" secondItem="gU4-UX-bvm" secondAttribute="width" multiplier="1.5" id="X4t-5V-Tdq"/>
                 <constraint firstItem="df7-p0-iBS" firstAttribute="width" secondItem="SkT-Dj-8Bs" secondAttribute="width" id="ZKe-pX-3Zi"/>
                 <constraint firstItem="CO8-Kf-e0a" firstAttribute="top" secondItem="SkT-Dj-8Bs" secondAttribute="top" id="baq-BH-iLQ"/>
+                <constraint firstItem="gU4-UX-bvm" firstAttribute="top" secondItem="vrL-Bc-S1y" secondAttribute="top" multiplier="32:152" id="fYT-JX-qJu"/>
                 <constraint firstItem="CO8-Kf-e0a" firstAttribute="width" secondItem="SkT-Dj-8Bs" secondAttribute="width" id="hUo-00-HFu"/>
+                <constraint firstItem="fXW-in-hVp" firstAttribute="top" secondItem="vrL-Bc-S1y" secondAttribute="top" id="jYD-EK-dqH"/>
+                <constraint firstItem="fXW-in-hVp" firstAttribute="centerX" secondItem="Ezb-eT-Rvp" secondAttribute="centerX" id="kRe-QI-Ahe"/>
+                <constraint firstItem="fXW-in-hVp" firstAttribute="width" secondItem="Ezb-eT-Rvp" secondAttribute="width" multiplier="1.5" id="nJ4-BF-h3R"/>
                 <constraint firstItem="df7-p0-iBS" firstAttribute="top" secondItem="SkT-Dj-8Bs" secondAttribute="top" id="nRw-8c-hAJ"/>
+                <constraint firstItem="s4O-MQ-YV6" firstAttribute="width" secondItem="CO8-Kf-e0a" secondAttribute="width" multiplier="1.5" id="ok2-6g-5BR"/>
                 <constraint firstItem="gU4-UX-bvm" firstAttribute="width" secondItem="SkT-Dj-8Bs" secondAttribute="width" id="qUc-sz-RCC"/>
                 <constraint firstItem="CO8-Kf-e0a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="772:1280" id="rrl-k1-KAi"/>
                 <constraint firstItem="Ezb-eT-Rvp" firstAttribute="width" secondItem="SkT-Dj-8Bs" secondAttribute="width" id="syv-8h-Hsl"/>
@@ -76,13 +113,14 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="36" y="-234"/>
+            <point key="canvasLocation" x="-366" y="-211"/>
         </view>
     </objects>
     <resources>
-        <image name="audio" width="72" height="72"/>
-        <image name="history" width="72" height="72"/>
+        <image name="audio" width="48" height="48"/>
+        <image name="history" width="48" height="48"/>
         <image name="profile" width="72" height="72"/>
-        <image name="search" width="72" height="72"/>
+        <image name="search" width="48" height="48"/>
+        <image name="video_type_1" width="48" height="48"/>
     </resources>
 </document>

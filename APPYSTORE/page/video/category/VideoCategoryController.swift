@@ -20,8 +20,7 @@ class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICol
     var setOffset:Int = 0
     let dataManager = DataManager.sharedInstance
     var dataList = [VideoCategoryModel]()
-    let cardWidth: CGFloat = 512 - 40
-    let cardHeight: CGFloat = 384 - 40
+    let CARD_HEIGHT: CGFloat = 384 - 32
     
     
     override func viewDidLoad() {
@@ -78,9 +77,9 @@ class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICol
         print(dataList[indexPath.row].imagePath)
         let image_path = dataList[indexPath.row].imagePath
         let imgurl = URL(string: image_path)
-        cell.mBgImg.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
+        cell.imgBg.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
         
-        cell.mCountLabel.text = dataList[indexPath.row].contentCount
+        cell.lblCount.text = dataList[indexPath.row].contentCount
         
         // setting shadow of view
         let plain = cell
@@ -95,7 +94,7 @@ class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICol
     {
         let layer = view.layer
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 8, height: 8)
+        layer.shadowOffset = CGSize(width: DimensionManager.getGeneralizedWidth1280x720(width: 8), height: DimensionManager.getGeneralizedHeight1280x720(height: 8));
         layer.shadowOpacity = 0.5
         layer.shadowRadius = 1.0
         layer.masksToBounds = false
@@ -105,7 +104,9 @@ class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: DimentionManager.getGeneralizedWidth1280x720(width: cardWidth), height: DimentionManager.getGeneralizedHeight1280x720(height: cardHeight));
+        let height = DimensionManager.getGeneralizedHeight1280x720(height: CARD_HEIGHT)
+        let width = DimensionManager.getGeneralizedWidthIn4isto3Ratio(height: height)
+        return CGSize(width: width, height: height);
     }
     
     func loadData(offset:Int,limit:Int)

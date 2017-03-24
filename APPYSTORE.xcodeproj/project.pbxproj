@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A5374AA1E606B9700F198AD /* DimentionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5374A91E606B9700F198AD /* DimentionManager.swift */; };
+		0A5374AA1E606B9700F198AD /* DimensionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5374A91E606B9700F198AD /* DimensionManager.swift */; };
 		0A5E1C641E701C2D00537F84 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E1C631E701C2D00537F84 /* UILabelExtension.swift */; };
 		0A5E1C651E7026B800537F84 /* kg_miss_kindy_chunky.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A5E1C611E701ACA00537F84 /* kg_miss_kindy_chunky.ttf */; };
 		0A65E2601E6EC11400F538B5 /* VideoCategoryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65E25F1E6EC11400F538B5 /* VideoCategoryParser.swift */; };
@@ -65,7 +65,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0A5374A91E606B9700F198AD /* DimentionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimentionManager.swift; sourceTree = "<group>"; };
+		0A5374A91E606B9700F198AD /* DimensionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimensionManager.swift; sourceTree = "<group>"; };
 		0A5E1C611E701ACA00537F84 /* kg_miss_kindy_chunky.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kg_miss_kindy_chunky.ttf; sourceTree = "<group>"; };
 		0A5E1C631E701C2D00537F84 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		0A65E25F1E6EC11400F538B5 /* VideoCategoryParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCategoryParser.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 				706B34F91E6FE9F4008474EA /* BaseDBManager.swift */,
 				706B34FB1E6FEA96008474EA /* HistoryDBManager.swift */,
 				706B34FD1E6FEAF7008474EA /* VideoDBManager.swift */,
-				0A5374A91E606B9700F198AD /* DimentionManager.swift */,
+				0A5374A91E606B9700F198AD /* DimensionManager.swift */,
 				7360D8871E7A8C8400C662DE /* ParserListener.swift */,
 				7360D8891E7A947500C662DE /* LoginParserListener.swift */,
 			);
@@ -333,6 +333,7 @@
 				TargetAttributes = {
 					0AAD2EF81E5C48EF00B504A3 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = PA2R53J5C8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -455,7 +456,7 @@
 				0AAD2EFD1E5C48EF00B504A3 /* AppDelegate.swift in Sources */,
 				70AD5AE41E6E7129003C2536 /* BaseModel.swift in Sources */,
 				F46267171E77B0DA00302ACF /* StringUtil.swift in Sources */,
-				0A5374AA1E606B9700F198AD /* DimentionManager.swift in Sources */,
+				0A5374AA1E606B9700F198AD /* DimensionManager.swift in Sources */,
 				0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */,
 				0A72615E1E6D30600023883F /* StringExtension.swift in Sources */,
 				706B34FE1E6FEAF7008474EA /* VideoDBManager.swift in Sources */,
@@ -597,6 +598,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PA2R53J5C8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -615,6 +617,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PA2R53J5C8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",

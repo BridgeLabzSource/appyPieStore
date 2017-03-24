@@ -31,4 +31,8 @@ class Utils {
         let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
         return (isReachable && !needsConnection)
     }
+    
+    static func getCurrentTimeInMilliseconds() -> Int64 {
+        return Int64(Date().timeIntervalSince1970 * 1000)
+    }
 }

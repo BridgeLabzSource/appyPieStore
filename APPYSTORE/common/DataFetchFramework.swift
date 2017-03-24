@@ -1,4 +1,3 @@
-//
 //  DataFetchFramework.swift
 //  APPYSTORE
 //
@@ -18,10 +17,10 @@ class DataFetchFramework {
     var offsetLocal = 0
     var offsetServer = 0
     var limit = 20
-    var totalCountOnServer = 0;
+    var totalCountOnServer = -1;
     var contentList: [BaseModel]
-
-    var serverHandler : (String, AnyObject) -> () = {_ in}
+    
+    var onDataReceived : (String, AnyObject) -> () = {_ in}
     var isExistingDataDirty = false
     var dataFetchTimePrefKey: String?
     var offsetServerPrefKey: String?
@@ -39,23 +38,12 @@ class DataFetchFramework {
         contentList = []
         fetchPrefsKey()
     }
-
+    
     
     func fetchPrefsKey() {
-        switch pageName {
-        case PageConstants.VIDEO_PAGE:
-            dataFetchTimePrefKey = PageConstants.KEY_VIDEO_CATEGORY_DATA_FETCH_TIME
-            offsetServerPrefKey = PageConstants.KEY_VIDEO_CATEGORY_SERVER_OFFSET
-            totalCountPrefKey = PageConstants.KEY_VIDEO_CATEGORY_TOTAL_CONTENT_COUNT
-            
-        case PageConstants.HISTORY_PAGE:
-            dataFetchTimePrefKey = PageConstants.KEY_HISTORY_DATA_FETCH_TIME
-            offsetServerPrefKey = PageConstants.KEY_HISTORY_SERVER_OFFSET
-            totalCountPrefKey = PageConstants.KEY_HISTORY_TOTAL_CONTENT_COUNT
-        default:
-            break
-        }
-        
+        dataFetchTimePrefKey = DataManager.getDataFetchTimePrefKey(pageName: pageName)
+        offsetServerPrefKey = DataManager.getOffsetServerPrefKey(pageName: pageName)
+        totalCountPrefKey = DataManager.getTotalCountPrefKey(pageName: pageName)
     }
     
     func reset() {
@@ -89,13 +77,13 @@ class DataFetchFramework {
             
             if let data = result, (result?.count)! > 0 {
                 self.offsetLocal += self.limit
-                self.contentList.append(contentsOf: data)
-                self.serverHandler(DataFetchFramework.REQUEST_SUCCESS, data as AnyObject)
+                self.addToContentList(contentList: data)
+                self.onDataReceived(DataFetchFramework.REQUEST_SUCCESS, self.contentList as AnyObject)
             } else {
                 if self.offsetServer < self.totalCountOnServer && self.dataSource != .LOCAL {
                     self.callServerApiToFetchData()
                 } else {
-                    self.serverHandler(DataFetchFramework.END_OF_DATA, "" as AnyObject)
+                    self.onDataReceived(DataFetchFramework.END_OF_DATA, "" as AnyObject)
                 }
             }
             
@@ -109,7 +97,7 @@ class DataFetchFramework {
             if isLocalDataAvailable() {
                 getDataFromLocalStorage()
             } else {
-                serverHandler(DataFetchFramework.END_OF_DATA,"" as AnyObject)
+                onDataReceived(DataFetchFramework.END_OF_DATA,"" as AnyObject)
             }
             
         case .SERVER:
@@ -130,50 +118,30 @@ class DataFetchFramework {
     
     func isLocalDataAvailable() -> Bool {
         var count = 0
-        
-        switch pageName {
-            case PageConstants.HISTORY_PAGE:
-                let historyDBManager = HistoryDBManager()
-                count = historyDBManager.getRowCount()
-            default:
-                break
-        }
-        
+        count = DataManager.sharedInstance.getRowCountForPage(pageName: pageName)
         return count > 0
-    }
-    
-    func getCurrentTimeInMilliseconds() -> Int64 {
-        return Int64(Date().timeIntervalSince1970 * 1000)
     }
     
     func callServerApiToFetchData() {
         
-        if  isTimeExpired() {
-            isExistingDataDirty = true
-            offsetServer = 0
+        if totalCountOnServer != -1 && offsetServer >= totalCountOnServer {
+            self.handleResponse(statusType: DataFetchFramework.END_OF_DATA, result: "" as AnyObject)
+        } else {
+            if  isTimeExpired() {
+                isExistingDataDirty = true
+                offsetServer = 0
+            }
+            print("Ganesh Server offsetServer : \(offsetServer) limit : \(limit)")
+            DataManager.sharedInstance.getData(pageName: pageName, offset: offsetServer, limit: limit, returndata: {
+                statusType, result in
+                
+                self.handleResponse(statusType: statusType, result: result)
+            })
         }
-        
-        DataManager.sharedInstance.getData(pageName: pageName, offset: offsetServer, limit: limit, returndata: {
-            statusType, result in
-            
-            self.handleResponse(statusType: statusType, result: result)
-        })
-        
     }
     
     func handleResponse(statusType: String, result: AnyObject) {
-        switch pageName {
-            case PageConstants.HISTORY_PAGE:
-                handleHistoryPageResponse(statusType: statusType, result: result)
-            default:
-                break
-        }
-    }
-    
-    func handleHistoryPageResponse(statusType: String, result: AnyObject) {
-        
         if statusType == DataFetchFramework.REQUEST_SUCCESS {
-            
             if let resultModel = result as? ContentListingApiResponseModel {
                 if !resultModel.contentList.isEmpty {
                     let result = resultModel.contentList
@@ -185,35 +153,39 @@ class DataFetchFramework {
                         
                         self.isExistingDataDirty = false
                     }
-                    
+                    print("Ganesh Server response count : \(result.count) ")
                     if dataSource != .SERVER {
-                        let historyDBManager = HistoryDBManager()
-                        let record = historyDBManager.insertBulkRecords(userId: "107105246", childId: "29518", modelList: result)
-                        
-                        print("%d Records are inserted succefully..",record!)
+                        saveDataToLocalStorage(dataList: result)
                     }
                     
-                    /*
-                    let localdata = historyDBManager.fetchDataWithLimit(childId: "29518", offset: self.offsetLocal, limit: self.limit, bundle: nil)
-                    */
                     self.totalCountOnServer = Int(resultModel.totalCount)!
                     self.saveTotalCountOnServer(totalCount: self.totalCountOnServer)
                     self.offsetServer += self.limit
                     self.saveOffsetServer(offsetServer: self.offsetServer)
-                    contentList.append(contentsOf: result)
+                    addToContentList(contentList: result)
                     
                     if dataSource != .SERVER && isLocalDataAvailable() {
                         getDataFromLocalStorage()
                     } else {
-                        self.serverHandler(statusType, result as AnyObject)
+                        self.onDataReceived(statusType, contentList as AnyObject)
                     }
+                } else {
+                    self.onDataReceived(DataFetchFramework.REQUEST_FAILURE , result)
                 }
             } else {
-                self.serverHandler(DataFetchFramework.END_OF_DATA , "" as AnyObject)
+                self.onDataReceived(DataFetchFramework.REQUEST_FAILURE , result)
             }
         } else {
-            self.serverHandler(statusType, result)
+            if dataSource == .BOTH && isLocalDataAvailable() {
+                getDataFromLocalStorage()
+            } else {
+                self.onDataReceived(statusType, result)
+            }
         }
+    }
+    
+    func saveDataToLocalStorage(dataList: [BaseModel]) {
+        _ = DataManager.sharedInstance.saveDataForPage(pageName: pageName, dataList: dataList)
     }
     
     func saveOffsetServer(offsetServer: Int) {
@@ -229,8 +201,7 @@ class DataFetchFramework {
     }
     
     func isTimeExpired() -> Bool {
-        //return true
-        return ( getCurrentTimeInMilliseconds() - getPreviousDataFetchTime() ) > getDataFetchInterval()
+        return ( Utils.getCurrentTimeInMilliseconds() - getPreviousDataFetchTime() ) > getDataFetchInterval()
     }
     
     func getPreviousDataFetchTime() -> Int64 {
@@ -243,7 +214,7 @@ class DataFetchFramework {
     
     func savePreviousDataFetchTime() {
         if let key = dataFetchTimePrefKey {
-            PageDataPref.getInstance()?.setPreviousDataFetchTime(key: key, value: getCurrentTimeInMilliseconds())
+            PageDataPref.getInstance()?.setPreviousDataFetchTime(key: key, value: Utils.getCurrentTimeInMilliseconds())
         }
     }
     
@@ -252,13 +223,12 @@ class DataFetchFramework {
     }
     
     func clearLocalData() {
-        switch pageName {
-        case PageConstants.HISTORY_PAGE:
-            let historyDBManager = HistoryDBManager()
-            historyDBManager.removeAll()
-        default:
-            break
-            
+        DataManager.sharedInstance.deleteDataForPage(pageName: pageName)
+    }
+    
+    func addToContentList(contentList: [BaseModel]) {
+        if contentList.count > 0 {
+            self.contentList.append(contentsOf: contentList)
         }
     }
     

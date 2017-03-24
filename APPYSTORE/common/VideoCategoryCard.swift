@@ -10,29 +10,25 @@ import UIKit
 
 class VideoCategoryCard: UICollectionViewCell {
     
-    //MARK: IBOutlets
-    @IBOutlet weak var mMainView: UIView!
-    @IBOutlet weak var mBgImg: UIImageView!
-    @IBOutlet weak var mInfoBtn: UIButton!
-    @IBOutlet weak var mLogoImg: UIImageView!
-    @IBOutlet weak var mCountLabel: UILabel!
+    @IBOutlet weak var rootView: UIView!
+    @IBOutlet weak var imgBg: UIImageView!
+    @IBOutlet weak var btnInfoContainer: UIButton!
+    @IBOutlet weak var imgLogo: UIImageView!
+    @IBOutlet weak var lblCount: UILabel!
     
-    //MARK: Declaration
-    var pointOfPixels: CGFloat!
+    var radius: CGFloat!
     
     override func awakeFromNib() {
-        // getting value in point from pixels
-        pointOfPixels = DimentionManager.convertPixelToPoint(pixel: 32.0)
+        radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 64))
       
-        //access your IBOutlets
-        mInfoBtn.layer.cornerRadius = self.pointOfPixels
-        mInfoBtn.clipsToBounds = true
+        btnInfoContainer.layer.cornerRadius = radius
         
-        mBgImg.layer.cornerRadius = self.pointOfPixels
-        mBgImg.clipsToBounds = true
+        imgBg.layer.cornerRadius = radius
+        imgBg.clipsToBounds = true
         
-        mMainView.layer.cornerRadius = self.pointOfPixels
-        mMainView.clipsToBounds = true
-                
+        rootView.layer.cornerRadius = radius
+        rootView.clipsToBounds = true
+        
+        DimensionManager.setTextSize1280x720(label: lblCount, size: DimensionManager.H3)
     }
 }

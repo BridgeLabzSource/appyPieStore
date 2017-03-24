@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "cartton2.jpg",
+      "filename" : "fab_settings-1.png",
       "scale" : "1x"
     },
     {
@@ -11,6 +11,7 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "fab_settings-2.png",
       "scale" : "3x"
     }
   ],

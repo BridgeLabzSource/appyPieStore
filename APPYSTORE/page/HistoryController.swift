@@ -11,9 +11,11 @@ class HistoryController: UIViewController, UICollectionViewDelegate, UICollectio
     var sw: CGFloat = 0.0
     var sh: CGFloat = 0.0
     var setLimit: Int = 20
-    var setOffset: Int = 0
     var dataList = [VideoListingModel]()
     var anim: NVActivityIndicatorView?
+    var isRequestInProgress = false
+    let dataFetchFramework = DataFetchFramework(pageName: PageConstants.HISTORY_PAGE)
+    let paginationThreshold = 4
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,30 +30,38 @@ class HistoryController: UIViewController, UICollectionViewDelegate, UICollectio
     }
     
     func loadData() {
+        isRequestInProgress = true
         let frame = CGRect(x: Int(sw-25), y: Int(sh/2), width: 30, height: 30)
         anim = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballPulse, color: UIColor.orange, padding: CGFloat(0))
         anim?.startAnimating()
         self.collectionView.addSubview(anim!)
         
-        
-        
-        let ft = DataFetchFramework(pageName: PageConstants.HISTORY_PAGE)
-        ft.serverHandler = serverHandler
-        ft.start(dataSource: DataSource.BOTH)
+        dataFetchFramework.onDataReceived = onDataReceived
+        dataFetchFramework.start(dataSource: DataSource.BOTH)
     }
     
-    func serverHandler( status: String, result: AnyObject){
-        if let result = result as? [BaseModel] {
-            print("Ganesh Server Data : \(result)")
-            self.dataList = result as! [VideoListingModel]
-            self.view.setNeedsDisplay()
-            print("Data Found:",result.count)
-            self.collectionView.reloadData()
-            anim?.stopAnimating()
-            anim?.removeFromSuperview()
+    func onDataReceived( status: String, result: AnyObject) {
+        isRequestInProgress = false
+        anim?.stopAnimating()
+        anim?.removeFromSuperview()
+        if status == DataFetchFramework.REQUEST_SUCCESS {
+            if let result = result as? [BaseModel] {
+                setLimit = result.count
+                print("Ganesh Server Data : \(result)")
+                self.dataList = result as! [VideoListingModel]
+                self.view.setNeedsDisplay()
+                print("Data Found:",result.count)
+                self.collectionView.reloadData()
+            }
+        } else if status == DataFetchFramework.END_OF_DATA {
+            isEndOfData = true
+        } else {
+            print("Ganesh status : \(status) and response : \(result) ")
         }
+    
         
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataList.count
     }
@@ -64,17 +74,25 @@ class HistoryController: UIViewController, UICollectionViewDelegate, UICollectio
         let imgurl = URL(string: image_path)
         
         cell2.mVideoImage.sd_setImage(with: imgurl, placeholderImage: #imageLiteral(resourceName: "profile") )
-        cell2.mVideoDescription.text = dataList[indexPath.row].title
+        cell2.mVideoDescription.text = "\(indexPath.row) " + dataList[indexPath.row].title
         
         return cell2
     }
     
     //function to get lastVisibleCell at particular indexPath
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+    }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let index: Int = (self.collectionView.indexPath(for: self.collectionView.visibleCells.last!)?.row)!
+        print("Ganesh : Last element = \(index)")
         
         if var lastVisibleCell = self.collectionView.indexPathsForVisibleItems.last {
-            let lastVisibleCellCount = lastVisibleCell.row + 1
-            if lastVisibleCellCount == setLimit && setLimit <= total_history_count! {
+            let lastVisibleCellCount = lastVisibleCell.row + paginationThreshold
+            print("Ganesh : lastVisibleCellCount = \(lastVisibleCellCount) and setLimit = \(setLimit)")
+            
+            if lastVisibleCellCount  >= setLimit && !isRequestInProgress{
                 
                 sw = (scrollView.contentSize.width)
                 sh = (scrollView.contentSize.height)
@@ -83,4 +101,5 @@ class HistoryController: UIViewController, UICollectionViewDelegate, UICollectio
             
         }
     }
+    
 }

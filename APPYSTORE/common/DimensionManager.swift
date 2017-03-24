@@ -9,29 +9,41 @@
 import UIKit
 import Foundation
 
-class DimentionManager{
+class DimensionManager{
+    static let H1: CGFloat = 40
+    static let H2: CGFloat = 32
+    static let H3: CGFloat = 24
+    static let H4: CGFloat = 20
+    
 
     static func convertPixelToPoint(pixel: CGFloat) -> CGFloat{
         return pixel / CGFloat(AppDelegate.density)
     }
     
     
-    static func getGeneralizedWidth1280x720(width:CGFloat) -> CGFloat {
+    static func getGeneralizedWidth1280x720(width: CGFloat) -> CGFloat {
         return AppDelegate.DEVICE_WIDTH * (width / CGFloat(1280))
     }
     
     
-    static func getGeneralizedHeight1280x720(height:CGFloat) -> CGFloat {
+    static func getGeneralizedHeight1280x720(height: CGFloat) -> CGFloat {
         return AppDelegate.DEVICE_HEIGHT * (height / CGFloat(720))
     }
     
+    static func getGeneralizedWidthIn4isto3Ratio(height: CGFloat) -> CGFloat {
+        return height * 4 / 3
+    }
     
-    static func setDimension1280x720(view:UIView, width:CGFloat, height:CGFloat){
+    static func setDimension1280x720(view: UIView, width:CGFloat, height:CGFloat){
         view.bounds.size.width = AppDelegate.DEVICE_WIDTH * (width / CGFloat(1280))
         view.bounds.size.height = AppDelegate.DEVICE_HEIGHT * (height / CGFloat(720))
         print("width:  \(width)   heigth:  \(height)  viewWidth:  \(view.bounds.size.width)  viewHeight:  \(view.bounds.size.height)")
     }
     
+    static func setTextSize1280x720(label: UILabel, size: CGFloat){
+        let fontSize = size * AppDelegate.DEVICE_HEIGHT / 720.0
+        label.font = label.font.withSize(fontSize)
+    }
     
     func userDeviceName() -> String {
         var name: [Int32] = [CTL_HW, HW_MACHINE]
