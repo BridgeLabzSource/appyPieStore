@@ -2,8 +2,15 @@
 
 import Foundation
 
-class PageConstants:NSObject
-{
-  static let HISTORY_PAGE = "History page"
-  static let VIDEO_PAGE = "Video page"
+class PageConstants:NSObject {
+    static let HISTORY_PAGE = "History page"
+    static let VIDEO_PAGE = "Video page"
+    
+    static let KEY_VIDEO_CATEGORY_DATA_FETCH_TIME = "KEY_VIDEO_CATEGORY_DATA_FETCH_TIME"
+    static let KEY_VIDEO_CATEGORY_SERVER_OFFSET = "KEY_VIDEO_CATEGORY_SERVER_OFFSET"
+    static let KEY_VIDEO_CATEGORY_TOTAL_CONTENT_COUNT = "KEY_VIDEO_CATEGORY_TOTAL_CONTENT_COUNT"
+    
+    static let KEY_HISTORY_DATA_FETCH_TIME = "KEY_HISTORY_DATA_FETCH_TIME"
+    static let KEY_HISTORY_SERVER_OFFSET = "KEY_HISTORY_SERVER_OFFSET"
+    static let KEY_HISTORY_TOTAL_CONTENT_COUNT = "KEY_HISTORY_TOTAL_CONTENT_COUNT"
 }

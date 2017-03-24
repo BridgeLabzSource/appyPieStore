@@ -18,7 +18,7 @@ class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICol
     var sh:CGFloat = 0.0
     var setLimit:Int = 20
     var setOffset:Int = 0
-    let dataManager = DataManager()
+    let dataManager = DataManager.sharedInstance
     var dataList = [VideoCategoryModel]()
     let CARD_HEIGHT: CGFloat = 384 - 32
     
@@ -115,7 +115,7 @@ class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICol
         let anim = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballPulse, color: UIColor.orange, padding: CGFloat(0))
         anim.startAnimating()
         self.collectionView.addSubview(anim)
-        dataManager.getData(pageName: PageConstants.VIDEO_PAGE, offset: offset, limit: limit, returndata: { result in
+        dataManager.getData(pageName: PageConstants.VIDEO_PAGE, offset: offset, limit: limit, returndata: { statusType,result in
             self.dataList = result as! [VideoCategoryModel]
             self.view.setNeedsDisplay()
             print("Data Found:",result.count)

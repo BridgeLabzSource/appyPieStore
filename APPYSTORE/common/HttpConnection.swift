@@ -11,58 +11,47 @@ class HttpConnection: NSObject{
     private static var jsonData: JSON?
     private static let url = "http://www.appystore.in/appy_app/appyApi_handler.php?"
     
-    let RESPONSECODE_SUCCESS = "200"
-    let RESPONSECODE_ERROR = "201"
-    let RESPONSECODE_INVALID_CREDENTIAL = "202"
-    let RESPONSECODE_REQUESTABORT = "210"
-    let RESPONSECODE_REQUESTFAILED = "211"
+    static let RESPONSECODE_SUCCESS = "200"
+    static let RESPONSECODE_ERROR = "201"
+    static let RESPONSECODE_INVALID_CREDENTIAL = "202"
+    static let RESPONSECODE_REQUESTABORT = "210"
+    static let RESPONSECODE_REQUESTFAILED = "211"
     
     
-    let RESPONSECODE_API_KEY_MISSING = "405"
-    let RESPONSECODE_INVALID_API_KEY = "406"
-    let RESPONSECODE_SERVER_ERROR = "500"
-    let RESPONSECODE_REQUEST_SUCCESS = "900"
-    let RESPONSECODE_CONNECTION_ERROR = "9001"
+    static let RESPONSECODE_API_KEY_MISSING = "405"
+    static let RESPONSECODE_INVALID_API_KEY = "406"
+    static let RESPONSECODE_SERVER_ERROR = "500"
+    static let RESPONSECODE_REQUEST_SUCCESS = "900"
+    static let RESPONSECODE_CONNECTION_ERROR = "9001"
     
-    let READ_TIMEOUT = 150000
-    let CONNECTION_TIMEOUT = 200000
+    static let READ_TIMEOUT = 150000
+    static let CONNECTION_TIMEOUT = 200000
     
-    let RESPONSE_REQUESTABORT = "abort"
-    let RESPONSE_REQUESTFAILED = "failed"
-    
-    
+    static let RESPONSE_REQUESTABORT = "abort"
+    static let RESPONSE_REQUESTFAILED = "failed"
     
     
-    static func post(url: String, params: Parameters, headers: HTTPHeaders, completion:@escaping (_ getjsonData:JSON) -> Void){
+    
+    
+    static func post(url: String, params: Parameters, headers: HTTPHeaders, completion:@escaping (_ response: DataResponse<Any>) -> Void) {
         
         //  print("url:\(url) \n params:\(params) \n headers:\(headers)")
+        print("Ganesh : url: \(url) \n params: \(params)")
         Alamofire.request(url, parameters: params, headers: headers).responseJSON{ (response) in
-            
-            do
-            {
-                let j = JSON(response.result.value as! NSDictionary)
-                if j.isEmpty == false
-                {
-                    completion(j)
-                    
-                }
-                
-                
-            }
+            completion(response)
         }
         
     }
     
-    static func post(params: Parameters, headers: HTTPHeaders, completion:@escaping (_ result:JSON)-> Void)
-    {
+    static func post(params: Parameters, headers: HTTPHeaders, completion:@escaping (_ result: DataResponse<Any>)-> Void) {
         post(url: self.url, params: params, headers: headers, completion:{
             result in
             completion(result)
         })
     }
     
-    static func post(url: String?, params: Parameters , completion:@escaping (_ result:JSON)->Void )
-    {
+    static func post(url: String?, params: Parameters , completion: @escaping (_ result: DataResponse<Any>) ->Void ) {
+        
         post(url: url!, params: params, headers: HttpRequestBuilder.getHeaders(), completion:{
             result in
             completion(result)
