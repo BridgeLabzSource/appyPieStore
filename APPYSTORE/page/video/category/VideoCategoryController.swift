@@ -81,23 +81,7 @@ class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICol
         
         cell.lblCount.text = dataList[indexPath.row].contentCount
         
-        // setting shadow of view
-        let plain = cell
-        applyPlainShadow(view: plain)
-        
         return cell
-    }
-    
-    
-    // function for Plain Shadow
-    func applyPlainShadow(view: UIView)
-    {
-        let layer = view.layer
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: DimensionManager.getGeneralizedWidth1280x720(width: 8), height: DimensionManager.getGeneralizedHeight1280x720(height: 8));
-        layer.shadowOpacity = 0.5
-        layer.shadowRadius = 1.0
-        layer.masksToBounds = false
     }
     
     

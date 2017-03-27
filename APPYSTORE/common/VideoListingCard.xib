@@ -27,13 +27,18 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_card_play_icon_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="y5K-y6-1DW">
-                    <rect key="frame" x="16" y="214" width="56" height="56"/>
+                    <rect key="frame" x="8" y="206.5" width="72" height="72"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="y5K-y6-1DW" secondAttribute="height" multiplier="1:1" id="Sf8-Ck-ydn"/>
+                    </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQR-Ab-2hy">
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQR-Ab-2hy">
                     <rect key="frame" x="413" y="285" width="83" height="83"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="vQR-Ab-2hy" secondAttribute="height" multiplier="1:1" id="CuP-cn-5Vb"/>
+                        <constraint firstAttribute="width" secondItem="vQR-Ab-2hy" secondAttribute="height" multiplier="1:1" id="Jb7-a8-NGx"/>
                     </constraints>
+                    <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                     <state key="normal" image="download_icon"/>
                 </button>
             </subviews>
@@ -41,15 +46,16 @@
             <constraints>
                 <constraint firstItem="yeM-on-lhJ" firstAttribute="top" secondItem="Tnx-8M-pk8" secondAttribute="bottom" multiplier="302:286" id="04r-U9-46Y"/>
                 <constraint firstItem="vQR-Ab-2hy" firstAttribute="top" secondItem="yeM-on-lhJ" secondAttribute="top" id="GEi-BC-8i0"/>
-                <constraint firstItem="y5K-y6-1DW" firstAttribute="bottom" secondItem="Tnx-8M-pk8" secondAttribute="bottom" id="GWq-xD-m4r"/>
+                <constraint firstItem="y5K-y6-1DW" firstAttribute="bottom" secondItem="Tnx-8M-pk8" secondAttribute="bottom" multiplier="262:254" id="GWq-xD-m4r"/>
                 <constraint firstItem="vQR-Ab-2hy" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="368:384" id="GYq-ww-DAo"/>
                 <constraint firstItem="yeM-on-lhJ" firstAttribute="leading" secondItem="Tnx-8M-pk8" secondAttribute="leading" id="NBO-Ah-ff2"/>
                 <constraint firstItem="vQR-Ab-2hy" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="496:512" id="Sqr-Wa-sq7"/>
                 <constraint firstItem="Tnx-8M-pk8" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="496:512" id="V6W-Ar-QE9"/>
+                <constraint firstItem="y5K-y6-1DW" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="72:512" id="YuJ-Yg-WWC"/>
                 <constraint firstItem="Tnx-8M-pk8" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="270:384" id="Z4f-eg-eRE"/>
                 <constraint firstItem="Tnx-8M-pk8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="16:384" id="del-dw-0u0"/>
                 <constraint firstItem="vQR-Ab-2hy" firstAttribute="bottom" secondItem="yeM-on-lhJ" secondAttribute="bottom" id="dga-4V-TzT"/>
-                <constraint firstItem="y5K-y6-1DW" firstAttribute="leading" secondItem="Tnx-8M-pk8" secondAttribute="leading" id="fUe-wh-IdT"/>
+                <constraint firstItem="y5K-y6-1DW" firstAttribute="leading" secondItem="Tnx-8M-pk8" secondAttribute="leading" multiplier="8:16" id="fUe-wh-IdT"/>
                 <constraint firstItem="vQR-Ab-2hy" firstAttribute="leading" secondItem="yeM-on-lhJ" secondAttribute="trailing" id="kEG-YD-BPv"/>
                 <constraint firstItem="Tnx-8M-pk8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="16:512" id="wKw-ba-tcn"/>
             </constraints>
@@ -58,8 +64,10 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="downloadButton" destination="vQR-Ab-2hy" id="dcI-le-v9h"/>
                 <outlet property="imgThumbnail" destination="Tnx-8M-pk8" id="XUK-gK-52I"/>
                 <outlet property="lblTitle" destination="yeM-on-lhJ" id="bnu-LN-kJT"/>
+                <outlet property="playIcon" destination="y5K-y6-1DW" id="Rgc-5l-4Ar"/>
             </connections>
             <point key="canvasLocation" x="-78" y="-149"/>
         </view>

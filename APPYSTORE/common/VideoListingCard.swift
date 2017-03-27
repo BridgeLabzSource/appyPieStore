@@ -12,6 +12,8 @@ import UIKit
     
     @IBOutlet weak var imgThumbnail: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var playIcon: UIImageView!
+    @IBOutlet weak var downloadButton: UIButton!
     
     override func awakeFromNib() {
         let radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 64))
@@ -23,5 +25,7 @@ import UIKit
         self.clipsToBounds = true
         
         DimensionManager.setTextSize1280x720(label: lblTitle, size: DimensionManager.H3)
+        
+        showShadowRightBottom()
     }
 }

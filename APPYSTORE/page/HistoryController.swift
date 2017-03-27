@@ -4,7 +4,7 @@ import Alamofire
 import SwiftyJSON
 import SDWebImage
 import NVActivityIndicatorView
-class HistoryController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
+class HistoryController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -16,6 +16,8 @@ class HistoryController: UIViewController, UICollectionViewDelegate, UICollectio
     var isRequestInProgress = false
     let dataFetchFramework = DataFetchFramework(pageName: PageConstants.HISTORY_PAGE)
     let paginationThreshold = 4
+    
+    let CARD_HEIGHT: CGFloat = 384 - 32
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +82,13 @@ class HistoryController: UIViewController, UICollectionViewDelegate, UICollectio
        cell2.lblTitle.text = dataList[indexPath.row].title
 
         return cell2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = DimensionManager.getGeneralizedHeight1280x720(height: CARD_HEIGHT)
+        let width = DimensionManager.getGeneralizedWidthIn4isto3Ratio(height: height)
+
+        return CGSize(width: width, height: height);
     }
     
     //function to get lastVisibleCell at particular indexPath
