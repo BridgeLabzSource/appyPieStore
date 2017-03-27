@@ -24,12 +24,15 @@ class VideoCategoryParser: BaseParser
     private let IS_VISIBLE = "is_visible";
     
     
-    override func parseJSONData(responseData:JSON) -> AnyObject?{
-        let videoCategoryContent = responseData["category_id_array"].array
+    override func parseJSONData(responseData:JSON) -> AnyObject? {
+        
+        let apiResponseModel = ContentListingApiResponseModel()
+        let videoContent = responseData["category_id_array"].array
+        
+        //let videoCategoryContent = responseData["f"].array
         
         var videoCategoryModelArray = [VideoCategoryModel]()
-        for item in videoCategoryContent!
-        {
+        for item in videoContent! {
             let vc = VideoCategoryModel()
             vc.categoryId = item["category_id"].string!
             vc.categoryName = item["category_name"].string!
@@ -40,7 +43,10 @@ class VideoCategoryParser: BaseParser
             videoCategoryModelArray.append(vc)
             
         }
-        return videoCategoryModelArray as AnyObject
+        
+        apiResponseModel.contentList = videoCategoryModelArray
+        apiResponseModel.totalCount = String(describing: responseData["category_count"])//responseData["category_count"]
+        return apiResponseModel
         
     }
 }

@@ -2,7 +2,8 @@
 import Foundation
 import CoreData
 import UIKit
-class VideoDBManager:BaseDBManager{
+
+class VideoDBManager: BaseDBManager {
     
     let TABLE_NAME = "VideoTable"
     
@@ -18,31 +19,25 @@ class VideoDBManager:BaseDBManager{
     let VIDEO_CATEGORY_CANONICAL_NAME = "canonical_name";
     let VIDEO_CATEGORY_VISIBILITY_STATUS = "visibility_status";
     let VIDEO_CATEGORY_CONTENT_COUNT = "content_count";
-
     
     //MARK: insert bulk data
-    func insertBulkRecords(userId: String?, childId: String?, modelList: [BaseModel]?) -> Int?
-    {
+    func insertBulkRecords(userId: String?, childId: String?, modelList: [BaseModel]?) -> Int? {
         var result:[VideoCategoryModel]? = (modelList as? [VideoCategoryModel])!
         var recordsInserted:Int = 0
         
-        if (userId != nil && childId != nil)
-        {
-            if (result != nil && (result?.count)!>0)
-            {
+        if (userId != nil && childId != nil) {
+            if (result != nil && (result?.count)!>0) {
                 
-                for i in stride(from: 0, to: (result?.count)!, by: 1)
-                {
+                for i in stride(from: 0, to: (result?.count)!, by: 1) {
                     let delegate = (UIApplication.shared.delegate as? AppDelegate)
                     let Context = delegate?.persistentContainer.viewContext
                     
-                    let entity =  NSEntityDescription.entity(forEntityName: self.getTableName(),
-                                                             in:Context!)
+                    let entity =  NSEntityDescription.entity(forEntityName: self.getTableName(), in:Context!)
                     
                     let object = NSManagedObject(entity: entity!,insertInto:Context)
                     
                     object.setValue(result?[i].imagePath, forKey: VIDEO_CATEGORY_CAT_THUMB)
-                    object.setValue(childId, forKey:VIDEO_CATEGORY_CHILD_ID )
+                    object.setValue(childId, forKey: VIDEO_CATEGORY_CHILD_ID )
                     object.setValue(result?[i].contentCount, forKey: VIDEO_CATEGORY_CONTENT_COUNT)
                     object.setValue(result?[i].categoryId, forKey: VIDEO_CATEGORY_CAT_ID)
                     object.setValue(result?[i].categoryName, forKey: VIDEO_CATEGORY_NAME)
@@ -55,13 +50,10 @@ class VideoDBManager:BaseDBManager{
                     object.setValue(userId, forKey: VIDEO_CATEGORY_USER_ID)
                     
                     //end
-                    do
-                    {
+                    do {
                         try Context?.save()
-                        
                     }
-                    catch let error as NSError
-                    {
+                    catch let error as NSError {
                         print("Could not save \(error), \(error.userInfo)")
                     }
                     recordsInserted += 1
@@ -71,9 +63,9 @@ class VideoDBManager:BaseDBManager{
         
         return recordsInserted
     }
+    
     //MARK:fetch data with limit
-    func fetchDataWithLimit(childId: String, offset: Int, limit: Int, bundle: Bundle?) -> [BaseModel]?
-    {
+    func fetchDataWithLimit(childId: String, offset: Int, limit: Int, bundle: Bundle?) -> [BaseModel]? {
         var videocategorylist = [BaseModel]()
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
@@ -82,50 +74,56 @@ class VideoDBManager:BaseDBManager{
         fetchRequest.fetchOffset = offset
         
         fetchRequest.predicate = NSPredicate(format: "%K = %@","child_id",childId)
-        do
-        {
-           
+        do {
             let result = try Context?.fetch(fetchRequest) as! [NSManagedObject]
             videocategorylist = getModelArrayFromFetchedResult(result: result)
-        } catch let error as NSError
-        {
+        } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
         return videocategorylist
-
+        
     }
+    
     //MARK:get table name
-    private func getTableName() -> String
-    {
+    private func getTableName() -> String {
         return TABLE_NAME
     }
+    
     //MARK:fetch all data
-    func fetchAll() -> [BaseModel]?
-    {
+    func fetchAll() -> [BaseModel]? {
         var videocategorylist = [BaseModel]()
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.getTableName())
-        do
-        {
+        do {
             let result = try Context?.fetch(fetchRequest)
             videocategorylist = getModelArrayFromFetchedResult(result: result as! [NSManagedObject])
-        } catch let error as NSError
-        {
+        } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         return videocategorylist
-
+    }
+    
+    func getRowCount() -> Int {
+        var count = 0
+        
+        let delegate = (UIApplication.shared.delegate as? AppDelegate)
+        let context = delegate?.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: getTableName())
+        do {
+            count = try (context?.count(for: fetchRequest)) ?? 0
+        } catch let error as NSError {
+            print("Error : \(error)")
+        }
+        return count
     }
     
     //MARK: get array from database fetched result
-    private func getModelArrayFromFetchedResult(result:[NSManagedObject]) -> [BaseModel]
-    {
-      
+    private func getModelArrayFromFetchedResult(result:[NSManagedObject]) -> [BaseModel] {
+        
         var videocategorylist = [VideoCategoryModel]()
-        for i in stride(from: 0, to: result.count, by: 1)
-        {
+        for i in stride(from: 0, to: result.count, by: 1) {
             let row = result[i]
             //  print(row)
             let videoModel:VideoCategoryModel = getVideoCategoryModel(row: row)
@@ -133,9 +131,9 @@ class VideoDBManager:BaseDBManager{
         }
         return videocategorylist
     }
+    
     //MARK: getVideoListingModel
-    private func getVideoCategoryModel(row:NSManagedObject) -> VideoCategoryModel
-    {
+    private func getVideoCategoryModel(row:NSManagedObject) -> VideoCategoryModel {
         let videoCategoryModel = VideoCategoryModel()
         
         videoCategoryModel.categoryId = row.value(forKey: VIDEO_CATEGORY_CAT_ID) as! String
@@ -147,27 +145,25 @@ class VideoDBManager:BaseDBManager{
         videoCategoryModel.isCategoryBlocked = row.value(forKey: VIDEO_CATEGORY_BLOCKED_STATUS) as! String
         videoCategoryModel.canonicalName = row.value(forKey: VIDEO_CATEGORY_CANONICAL_NAME) as! String
         videoCategoryModel.isVisible = row.value(forKey: VIDEO_CATEGORY_VISIBILITY_STATUS) as! String
-       
+        
         return videoCategoryModel
     }
-    func removeAll()
-    {
+    
+    func removeAll() {
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.getTableName())
-        do
-        {
+        do {
             let records = try Context?.fetch(fetchRequest) as! [NSManagedObject]
             for record in records
             {
                 Context?.delete(record)
             }
             
-        } catch let error as NSError
-        {
+        } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
     }
-
+    
     
 }

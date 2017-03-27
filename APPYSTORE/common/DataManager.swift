@@ -25,26 +25,13 @@ class DataManager: NSObject {
             })
             
         case PageConstants.VIDEO_PAGE:
-            let videoDBManager = VideoDBManager()
-            
-            if Utils.isInternetAvailable() {
-                let parser = VideoCategoryParser()
-                parser.parse(params: HttpRequestBuilder.getVideoCategoryParameters(), completion: {
-                    statusType, result in
-                    if let result = result as? [BaseModel] {
-                        videoDBManager.removeAll()
-                        let record = videoDBManager.insertBulkRecords(userId: "107105246", childId: "29518", modelList: result)
-                        print("%d Records are inserted succefully..",record!)
-                        let localdata = videoDBManager.fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: nil)
-                        returndata(statusType, localdata! as AnyObject)
-                    }
-                    
-                })
-            } else {
-                let localdata = videoDBManager.fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: nil)
-                returndata("", localdata! as AnyObject)
-            }
-            
+            let parser = VideoCategoryParser()
+            parser.parse(params: HttpRequestBuilder.getVideoCategoryParameters(), completion:{
+                statusType, result in
+                
+                returndata(statusType, result!)
+                
+            })
             
         default:
             break
@@ -63,7 +50,7 @@ class DataManager: NSObject {
             
         case PageConstants.VIDEO_PAGE:
             let videoDBManager = VideoDBManager()
-            dataList = videoDBManager.fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: nil)
+            dataList = videoDBManager.fetchAll()
             
         default:
             break
@@ -78,6 +65,9 @@ class DataManager: NSObject {
         case PageConstants.HISTORY_PAGE:
             let historyDBManager = HistoryDBManager()
             count = historyDBManager.getRowCount()
+        case PageConstants.VIDEO_PAGE:
+            let videoDBManager = VideoDBManager()
+            count = videoDBManager.getRowCount()
         default:
             break
         }
@@ -90,6 +80,9 @@ class DataManager: NSObject {
         case PageConstants.HISTORY_PAGE:
             let historyDBManager = HistoryDBManager()
             historyDBManager.removeAll()
+        case PageConstants.VIDEO_PAGE:
+            let videoDBManager = VideoDBManager()
+            videoDBManager.removeAll()
         default:
             break
         }
@@ -103,6 +96,9 @@ class DataManager: NSObject {
             count = historyDBManager.insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
             
             print("%d Records are inserted succefully..",count)
+        case PageConstants.VIDEO_PAGE:
+            let videoDBManager = VideoDBManager()
+            count = videoDBManager.insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
         default:
             break
         }
@@ -133,7 +129,7 @@ class DataManager: NSObject {
             offsetServerPrefKey = PageConstants.KEY_HISTORY_SERVER_OFFSET
             break
         case PageConstants.VIDEO_PAGE:
-            offsetServerPrefKey = PageConstants.KEY_HISTORY_DATA_FETCH_TIME
+            offsetServerPrefKey = PageConstants.KEY_VIDEO_CATEGORY_SERVER_OFFSET
             break
         default:
             break
