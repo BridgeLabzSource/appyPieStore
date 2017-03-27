@@ -74,7 +74,7 @@ class HistoryController: UIViewController, UICollectionViewDelegate, UICollectio
         let imgurl = URL(string: image_path)
         
         cell2.mVideoImage.sd_setImage(with: imgurl, placeholderImage: #imageLiteral(resourceName: "profile") )
-        cell2.mVideoDescription.text = "\(indexPath.row) " + dataList[indexPath.row].title
+        cell2.mVideoDescription.text = dataList[indexPath.row].title
         
         return cell2
     }

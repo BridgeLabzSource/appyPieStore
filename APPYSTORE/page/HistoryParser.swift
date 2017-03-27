@@ -2,7 +2,6 @@
 
 import Foundation
 import SwiftyJSON
-var total_history_count:Int?
 
 class HistoryParser: BaseParser {
     
@@ -28,7 +27,6 @@ class HistoryParser: BaseParser {
         let apiResponseModel = ContentListingApiResponseModel()
         
         let videoContent = responseData["data_array"].array
-        total_history_count = Int((videoContent?.count)!)
         
         var historyModelArray = [VideoListingModel]()
         for item in videoContent! {

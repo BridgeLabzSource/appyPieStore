@@ -2,19 +2,14 @@
 import UIKit
 
 class BaseController: UIViewController {
-
     
     @IBOutlet var topView: TopBarOverlay!
-    
     @IBOutlet var middleView: UIView!
-    
     @IBOutlet var bottomView: BottomBarOverlay!
-   
     
+    weak var currentViewController: UIViewController!
     
-    weak var currentViewController:UIViewController!
-
-    lazy var historycontroller:HistoryController = {
+    lazy var historycontroller: HistoryController = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "HistoryController") as! HistoryController
         
@@ -39,36 +34,31 @@ class BaseController: UIViewController {
         
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         
-       topView.videoButton.addTarget(self, action: #selector(video), for: .touchUpInside)
-       topView.historyButton.addTarget(self, action: #selector(history), for: .touchUpInside)
+        topView.videoButton.addTarget(self, action: #selector(video), for: .touchUpInside)
+        topView.historyButton.addTarget(self, action: #selector(history), for: .touchUpInside)
         super.viewDidLoad()
-    
+        
         
     }
-     func video()
-     {
+    
+    func video() {
         print("Video Page")
-       removeFromParentViewController()
-       historycontroller.view.alpha = 0
-       videocontroller.view.alpha = 1
-       videocontroller.view.isHidden = false
+        removeFromParentViewController()
+        historycontroller.view.alpha = 0
+        videocontroller.view.alpha = 1
+        videocontroller.view.isHidden = false
         self.view.bringSubview(toFront: historycontroller.view)
-
-     }
-    func history()
-     {
+        
+    }
+    
+    func history() {
         print("History Page")
         removeFromParentViewController()
         videocontroller.view.alpha = 0
         historycontroller.view.alpha = 1
         historycontroller.view.isHidden = false
         self.view.bringSubview(toFront: historycontroller.view)
-     }
-   
-    
-   
-   
-   
+    }
     
     private func addAsChildViewController(childView:UIViewController){
         addChildViewController(childView)
@@ -78,5 +68,5 @@ class BaseController: UIViewController {
         print(self.middleView.frame.origin.y)
         childView.didMove(toParentViewController: childView)
     }
-
+    
 }
