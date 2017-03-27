@@ -54,6 +54,6 @@
     </objects>
     <resources>
         <image name="cart" width="48" height="48"/>
-        <image name="fab_settings" width="54" height="54"/>
+        <image name="fab_settings" width="72" height="72"/>
     </resources>
 </document>

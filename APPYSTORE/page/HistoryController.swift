@@ -4,7 +4,7 @@ import Alamofire
 import SwiftyJSON
 import SDWebImage
 import NVActivityIndicatorView
-class HistoryController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
+class HistoryController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -17,8 +17,12 @@ class HistoryController: UIViewController, UICollectionViewDelegate, UICollectio
     let dataFetchFramework = DataFetchFramework(pageName: PageConstants.HISTORY_PAGE)
     let paginationThreshold = 4
     
+    let CARD_HEIGHT: CGFloat = 384 - 32
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.collectionView.register(UINib(nibName: "VideoListingCard", bundle: nil), forCellWithReuseIdentifier: "VideoListingCard")
         //inital value for animator
         sw = self.collectionView.center.x
         sh = self.collectionView.center.y
@@ -68,15 +72,23 @@ class HistoryController: UIViewController, UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "historycell", for: indexPath) as! HistoryVideoCell
-        
+
+        let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoListingCard", for: indexPath) as! VideoListingCard
+      
         let image_path = dataList[indexPath.row].imagePath
         let imgurl = URL(string: image_path)
         
-        cell2.mVideoImage.sd_setImage(with: imgurl, placeholderImage: #imageLiteral(resourceName: "profile") )
-        cell2.mVideoDescription.text = dataList[indexPath.row].title
-        
+       cell2.imgThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
+       cell2.lblTitle.text = dataList[indexPath.row].title
+
         return cell2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = DimensionManager.getGeneralizedHeight1280x720(height: CARD_HEIGHT)
+        let width = DimensionManager.getGeneralizedWidthIn4isto3Ratio(height: height)
+
+        return CGSize(width: width, height: height);
     }
     
     //function to get lastVisibleCell at particular indexPath

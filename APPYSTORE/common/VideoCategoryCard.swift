@@ -30,5 +30,7 @@ class VideoCategoryCard: UICollectionViewCell {
         rootView.clipsToBounds = true
         
         DimensionManager.setTextSize1280x720(label: lblCount, size: DimensionManager.H3)
+        
+        showShadowRightBottom()
     }
 }

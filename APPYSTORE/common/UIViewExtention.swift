@@ -22,4 +22,12 @@ extension UIView {
         superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[subview]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["subview": self]))
         superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[subview]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["subview": self]))
     }
+    
+    func showShadowRightBottom(){
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: DimensionManager.getGeneralizedWidth1280x720(width: 8), height: DimensionManager.getGeneralizedHeight1280x720(height: 8));
+        layer.shadowOpacity = 0.5
+        layer.shadowRadius = 1.0
+        layer.masksToBounds = false
+    }
 }
