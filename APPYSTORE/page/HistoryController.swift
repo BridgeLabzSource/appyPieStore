@@ -31,6 +31,8 @@ class HistoryController: UIViewController, UICollectionViewDelegate, UICollectio
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.delegate = self
         
+        self.collectionView.addSpacingBetweenCell()
+        
     }
     
     func loadData() {

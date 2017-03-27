@@ -52,14 +52,12 @@
 		7360D8881E7A8C8400C662DE /* ParserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360D8871E7A8C8400C662DE /* ParserListener.swift */; };
 		7360D88A1E7A947500C662DE /* LoginParserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360D8891E7A947500C662DE /* LoginParserListener.swift */; };
 		7371A2E31E7BB293009B2894 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371A2E21E7BB293009B2894 /* ArrayExtension.swift */; };
-
+		7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */; };
+		73967E7D1E893BF100A9A81B /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */; };
 		739F47E61E83FA2C00CEAA3E /* VideoListingCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 739F47E51E83FA2C00CEAA3E /* VideoListingCard.xib */; };
 		739F47E81E840DE300CEAA3E /* VideoListingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739F47E71E840DE300CEAA3E /* VideoListingCard.swift */; };
-
-		7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */; };
 		73F43B041E82465800D4DD90 /* PageDataPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F43B031E82465800D4DD90 /* PageDataPref.swift */; };
 		73F43B061E82739D00D4DD90 /* ContentListingApiResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F43B051E82739D00D4DD90 /* ContentListingApiResponseModel.swift */; };
-
 		F46267111E77AF0900302ACF /* LoginParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267101E77AF0900302ACF /* LoginParser.swift */; };
 		F46267131E77AF7000302ACF /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267121E77AF7000302ACF /* UserInfo.swift */; };
 		F46267151E77AFB000302ACF /* ChildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267141E77AFB000302ACF /* ChildInfo.swift */; };
@@ -123,14 +121,12 @@
 		7360D8871E7A8C8400C662DE /* ParserListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserListener.swift; sourceTree = "<group>"; };
 		7360D8891E7A947500C662DE /* LoginParserListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginParserListener.swift; sourceTree = "<group>"; };
 		7371A2E21E7BB293009B2894 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
-
+		7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchFramework.swift; sourceTree = "<group>"; };
+		73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		739F47E51E83FA2C00CEAA3E /* VideoListingCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListingCard.xib; sourceTree = "<group>"; };
 		739F47E71E840DE300CEAA3E /* VideoListingCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingCard.swift; sourceTree = "<group>"; };
-
-		7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchFramework.swift; sourceTree = "<group>"; };
 		73F43B031E82465800D4DD90 /* PageDataPref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageDataPref.swift; sourceTree = "<group>"; };
 		73F43B051E82739D00D4DD90 /* ContentListingApiResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentListingApiResponseModel.swift; sourceTree = "<group>"; };
-
 		F46267101E77AF0900302ACF /* LoginParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginParser.swift; sourceTree = "<group>"; };
 		F46267121E77AF7000302ACF /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		F46267141E77AFB000302ACF /* ChildInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildInfo.swift; sourceTree = "<group>"; };
@@ -186,6 +182,7 @@
 				0A72615D1E6D30600023883F /* UIColorExtension.swift */,
 				0A5E1C631E701C2D00537F84 /* UILabelExtension.swift */,
 				7371A2E21E7BB293009B2894 /* ArrayExtension.swift */,
+				73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */,
 			);
 			name = extension;
 			sourceTree = "<group>";
@@ -485,6 +482,7 @@
 				0A7261631E6D30AE0023883F /* CustomButton.swift in Sources */,
 				7371A2E31E7BB293009B2894 /* ArrayExtension.swift in Sources */,
 				7360D88A1E7A947500C662DE /* LoginParserListener.swift in Sources */,
+				73967E7D1E893BF100A9A81B /* UICollectionViewExtension.swift in Sources */,
 				0A65E26E1E6EDF1E00F538B5 /* VideoCategoryModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

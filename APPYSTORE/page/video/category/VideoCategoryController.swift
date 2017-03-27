@@ -38,6 +38,7 @@ class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICol
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.delegate = self
         
+        self.collectionView.addSpacingBetweenCell()
         
         let u = UserInfo.getInstance()
         u.id = "123"
