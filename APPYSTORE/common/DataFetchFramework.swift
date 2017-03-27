@@ -37,8 +37,30 @@ class DataFetchFramework {
         self.pageName = pageName
         contentList = []
         fetchPrefsKey()
+        offsetServer = getOffsetServerFromPrefs()
+        totalCountOnServer = getTotalCountOnServerFromPrefs()
     }
     
+    func getOffsetServerFromPrefs() -> Int {
+        if let key = offsetServerPrefKey {
+            return (PageDataPref.getInstance()?.getOffsetServer(key: key))!
+        }
+        
+        return 0
+    }
+    
+    func getTotalCountOnServerFromPrefs() -> Int {
+        if let key = totalCountPrefKey {
+            let value = (PageDataPref.getInstance()?.getTotalContentCount(key: key))!
+            if value == 0 {
+                return -1
+            } else {
+                return value
+            }
+        }
+        
+        return -1
+    }
     
     func fetchPrefsKey() {
         dataFetchTimePrefKey = DataManager.getDataFetchTimePrefKey(pageName: pageName)
@@ -56,7 +78,7 @@ class DataFetchFramework {
         
         offsetLocal = 0
         offsetServer = 0
-        totalCountOnServer = 0
+        totalCountOnServer = -1
         
         if let key = dataFetchTimePrefKey {
             PageDataPref.getInstance()?.setPreviousDataFetchTime(key: key, value: 0)

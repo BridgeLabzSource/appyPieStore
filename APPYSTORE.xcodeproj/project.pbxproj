@@ -51,6 +51,8 @@
 		70AD5AF21E6E7360003C2536 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5AF11E6E7360003C2536 /* SearchController.swift */; };
 		7360D8881E7A8C8400C662DE /* ParserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360D8871E7A8C8400C662DE /* ParserListener.swift */; };
 		7360D88A1E7A947500C662DE /* LoginParserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360D8891E7A947500C662DE /* LoginParserListener.swift */; };
+		736A40FC1E891A3000A4C038 /* VideoListingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736A40FA1E891A3000A4C038 /* VideoListingCard.swift */; };
+		736A40FD1E891A3000A4C038 /* VideoListingCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736A40FB1E891A3000A4C038 /* VideoListingCard.xib */; };
 		7371A2E31E7BB293009B2894 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371A2E21E7BB293009B2894 /* ArrayExtension.swift */; };
 		7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */; };
 		73F43B041E82465800D4DD90 /* PageDataPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F43B031E82465800D4DD90 /* PageDataPref.swift */; };
@@ -117,6 +119,8 @@
 		70AD5AF11E6E7360003C2536 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		7360D8871E7A8C8400C662DE /* ParserListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserListener.swift; sourceTree = "<group>"; };
 		7360D8891E7A947500C662DE /* LoginParserListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginParserListener.swift; sourceTree = "<group>"; };
+		736A40FA1E891A3000A4C038 /* VideoListingCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingCard.swift; sourceTree = "<group>"; };
+		736A40FB1E891A3000A4C038 /* VideoListingCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListingCard.xib; sourceTree = "<group>"; };
 		7371A2E21E7BB293009B2894 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchFramework.swift; sourceTree = "<group>"; };
 		73F43B031E82465800D4DD90 /* PageDataPref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageDataPref.swift; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 		0A7261611E6D30880023883F /* customView */ = {
 			isa = PBXGroup;
 			children = (
+				736A40FA1E891A3000A4C038 /* VideoListingCard.swift */,
+				736A40FB1E891A3000A4C038 /* VideoListingCard.xib */,
 				0A7261621E6D30AE0023883F /* CustomButton.swift */,
 				0A80DA1F1E702C5E00939443 /* TopBarOverlay.xib */,
 				0A80DA211E702CA500939443 /* TopBarOverlay.swift */,
@@ -363,6 +369,7 @@
 			files = (
 				0AAD2F0A1E5C48EF00B504A3 /* LaunchScreen.storyboard in Resources */,
 				0A80DA241E702CC100939443 /* BottomBarOverlay.xib in Resources */,
+				736A40FD1E891A3000A4C038 /* VideoListingCard.xib in Resources */,
 				70A36E4D1E6148BE002B9296 /* CommonOverlayView.xib in Resources */,
 				0A5E1C651E7026B800537F84 /* kg_miss_kindy_chunky.ttf in Resources */,
 				0A8F790A1E6971D300720DB8 /* VideoCategoryCard.xib in Resources */,
@@ -463,6 +470,7 @@
 				70AD5AF21E6E7360003C2536 /* SearchController.swift in Sources */,
 				F46267191E77B1A600302ACF /* PreChatFormField.swift in Sources */,
 				70AD5AE61E6E7129003C2536 /* HttpRequestBuilder.swift in Sources */,
+				736A40FC1E891A3000A4C038 /* VideoListingCard.swift in Sources */,
 				F46267131E77AF7000302ACF /* UserInfo.swift in Sources */,
 				7360D8881E7A8C8400C662DE /* ParserListener.swift in Sources */,
 				70AD5AEE1E6E71CD003C2536 /* VideoListingModel.swift in Sources */,

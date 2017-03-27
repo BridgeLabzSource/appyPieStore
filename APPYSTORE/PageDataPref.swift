@@ -37,7 +37,7 @@ class PageDataPref: AbsPrefs {
     }
     
     func getTotalContentCount(key: String) -> Int {
-        return getInt(key: key, defaultInt: 0)
+        return getInt(key: key, defaultInt: -1)
     }
     
     func setOffsetServer(key: String, value: Int) {
