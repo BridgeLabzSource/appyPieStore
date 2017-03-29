@@ -6,6 +6,7 @@ class BaseController: UIViewController {
     @IBOutlet var topView: TopBarOverlay!
     @IBOutlet var middleView: UIView!
     @IBOutlet var bottomView: BottomBarOverlay!
+    var fabButton: KCFloatingActionButton!
     
     weak var currentViewController: UIViewController!
     
@@ -38,7 +39,23 @@ class BaseController: UIViewController {
         topView.historyButton.addTarget(self, action: #selector(history), for: .touchUpInside)
         super.viewDidLoad()
         
+        fabButton = KCFloatingActionButton()
+        fabButton.buttonImage = UIImage(named: "fab_settings")
+        fabButton.size = DimensionManager.getGeneralizedWidth1280x720(width: 104)
+        fabButton.paddingX = DimensionManager.getGeneralizedWidth1280x720(width: 32)
+        fabButton.paddingY = DimensionManager.getGeneralizedWidth1280x720(width: 32)
+        makeFab()
+    }
+    
+    func makeFab() {
+        fabButton.addItem("Parenting Videos", icon: UIImage(named: "video_type_2"))
+        fabButton.addItem("Profile", icon: UIImage(named: "profile"))
+        fabButton.addItem("Share App", icon: UIImage(named: "share"))
+        fabButton.addItem("Write to us", icon: UIImage(named: "edit"))
+        fabButton.addItem("Chat", icon: UIImage(named: "icon_chat"))
+        fabButton.addItem("Request Callback", icon: UIImage(named: "icon_rcb"))
         
+        view.addSubview(fabButton)
     }
     
     func video() {
