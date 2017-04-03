@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchController: UIViewController {
+class SearchController: BaseViewController {
 
     @IBOutlet var backButton: UIButton!
     

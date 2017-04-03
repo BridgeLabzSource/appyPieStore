@@ -4,7 +4,7 @@ import Alamofire
 import SwiftyJSON
 import SDWebImage
 import NVActivityIndicatorView
-class HistoryController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
+class HistoryController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet var collectionView: UICollectionView!
     

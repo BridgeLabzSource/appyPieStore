@@ -1,7 +1,7 @@
 
 import UIKit
 
-class MainController: UIViewController {
+class MainController: UIViewController, MainControllerCommunicator {
     
     @IBOutlet var topView: TopBarOverlay!
     @IBOutlet var middleView: UIView!
@@ -9,61 +9,71 @@ class MainController: UIViewController {
     
     weak var currentViewController: UIViewController!
     
+    func addChild(controller: BaseViewController) {
+        removeChildController(childController: currentViewController)
+        addAsChildViewController(childController: controller)
+        currentViewController = controller
+    }
+    
     lazy var historyController: HistoryController = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "HistoryController") as! HistoryController
         
-        self.addAsChildViewController(childView: viewController)
-        
+        self.addAsChildViewController(childController: viewController)
         return viewController
     }()
     
-    
-    lazy var videoController: VideoCategoryController = {
+    lazy var videoCategoryController: VideoCategoryController = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "VideoCategoryController") as! VideoCategoryController
         
-        self.addAsChildViewController(childView: viewController)
-        
+        self.addAsChildViewController(childController: viewController)
         return viewController
     }()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         topView.translatesAutoresizingMaskIntoConstraints = false
         middleView.translatesAutoresizingMaskIntoConstraints = false
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         
         topView.videoButton.addTarget(self, action: #selector(showVideoCategoryPage), for: .touchUpInside)
         topView.historyButton.addTarget(self, action: #selector(showHistoryPage), for: .touchUpInside)
-        super.viewDidLoad()
-        
-        
     }
     
     func showVideoCategoryPage() {
-        removeFromParentViewController()
-        historyController.view.alpha = 0
-        videoController.view.alpha = 1
-        videoController.view.isHidden = false
-        self.view.bringSubview(toFront: historyController.view)
-        
+        removeChildController(childController: currentViewController)
+        videoCategoryController.view.isHidden = false
+        currentViewController = videoCategoryController
     }
     
     func showHistoryPage() {
-        removeFromParentViewController()
-        videoController.view.alpha = 0
-        historyController.view.alpha = 1
+        removeChildController(childController: currentViewController)
         historyController.view.isHidden = false
-        self.view.bringSubview(toFront: historyController.view)
+        currentViewController = historyController
     }
     
-    private func addAsChildViewController(childView:UIViewController){
-        addChildViewController(childView)
-        view.addSubview(childView.view)
-        childView.view.backgroundColor = UIColor.clear
-        childView.view.frame = middleView.frame
-        //print(self.middleView.frame.origin.y)
-        childView.didMove(toParentViewController: childView)
+    private func addAsChildViewController(childController: BaseViewController){
+        self.addChildViewController(childController)
+        self.view.addSubview(childController.view)
+        childController.view.frame = middleView.frame
+        //childController.view.backgroundColor = UIColor.clear
+        //self.view.bringSubview(toFront: childController.view)
+        childController.didMove(toParentViewController: childController)
+        
+        childController.mainControllerCommunicator = self
+    }
+    
+    func removeChildController(childController: UIViewController?) {
+        if  childController != nil {
+            if childController is VideoCategoryController || childController is HistoryController{
+                childController?.view.isHidden = true
+            } else {
+                childController?.willMove(toParentViewController: nil)
+                childController?.view.removeFromSuperview()
+                childController?.removeFromParentViewController()
+            }
+        }
     }
     
 }
