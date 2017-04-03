@@ -8,7 +8,8 @@
 
 import UIKit
 import NVActivityIndicatorView
-class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
+
+class VideoCategoryController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
     //MARK: IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -68,6 +69,10 @@ class VideoCategoryController: UIViewController, UICollectionViewDelegate, UICol
         let height = DimensionManager.getGeneralizedHeight1280x720(height: CARD_HEIGHT)
         let width = DimensionManager.getGeneralizedWidthIn4isto3Ratio(height: height)
         return CGSize(width: width, height: height);
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        NavigationManager.openVideoListingPage(mainControllerCommunicator: mainControllerCommunicator)
     }
     
     func loadData() {

@@ -230,7 +230,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="259" height="192"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C66A2CDF-FF16-4EF6-B6DA-10952AE9CDB7" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6251525D-BA0F-44EF-8373-AA406B6967FC" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
                                                     <rect key="frame" x="8" y="8" width="243" height="116"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="116" id="HfT-XT-9p0"/>
@@ -309,10 +309,10 @@
             </objects>
             <point key="canvasLocation" x="672" y="26"/>
         </scene>
-        <!--Base Controller-->
+        <!--Main Controller-->
         <scene sceneID="NkU-88-wYM">
             <objects>
-                <viewController id="3wt-zJ-xEi" customClass="BaseController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3wt-zJ-xEi" customClass="MainController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cHN-J0-BCr"/>
                         <viewControllerLayoutGuide type="bottom" id="KJL-Zv-inB"/>
@@ -369,7 +369,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="C66A2CDF-FF16-4EF6-B6DA-10952AE9CDB7" width="678" height="480">
+        <image name="6251525D-BA0F-44EF-8373-AA406B6967FC" width="678" height="480">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
