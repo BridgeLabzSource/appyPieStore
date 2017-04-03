@@ -1,7 +1,7 @@
 
 import UIKit
 
-class BaseController: UIViewController {
+class BaseController: UIViewController,KCFloatingActionButtonDelegate {
     
     @IBOutlet var topView: TopBarOverlay!
     @IBOutlet var middleView: UIView!
@@ -29,6 +29,17 @@ class BaseController: UIViewController {
         return viewController
     }()
     
+    func KCFABOpened(_ fab: KCFloatingActionButton) {
+        //fab.layer.isHidden = true
+        //fab.layer.opacity = 0
+        //fab.frame.origin.y += DimensionManager.getGeneralizedHeight1280x720(height: 104) + DimensionManager.getGeneralizedHeight1280x720(height: 32)
+    }
+    
+    func KCFABClosed(_ fab: KCFloatingActionButton) {
+        //fab.layer.isHidden = false
+        //fab.layer.opacity = 1
+        //fab.frame.origin.y -= DimensionManager.getGeneralizedHeight1280x720(height: 104) + DimensionManager.getGeneralizedHeight1280x720(height: 32)
+    }
     override func viewDidLoad() {
         topView.translatesAutoresizingMaskIntoConstraints = false
         middleView.translatesAutoresizingMaskIntoConstraints = false
@@ -40,21 +51,40 @@ class BaseController: UIViewController {
         super.viewDidLoad()
         
         fabButton = KCFloatingActionButton()
+        fabButton.fabDelegate = self
         fabButton.buttonImage = UIImage(named: "fab_settings")
-        fabButton.size = DimensionManager.getGeneralizedWidth1280x720(width: 104)
+        fabButton.size = DimensionManager.getGeneralizedHeight1280x720(height: 104)
         fabButton.paddingX = DimensionManager.getGeneralizedWidth1280x720(width: 32)
         fabButton.paddingY = DimensionManager.getGeneralizedWidth1280x720(width: 32)
         makeFab()
     }
     
     func makeFab() {
-        fabButton.addItem("Parenting Videos", icon: UIImage(named: "video_type_2"))
-        fabButton.addItem("Profile", icon: UIImage(named: "profile"))
-        fabButton.addItem("Share App", icon: UIImage(named: "share"))
-        fabButton.addItem("Write to us", icon: UIImage(named: "edit"))
-        fabButton.addItem("Chat", icon: UIImage(named: "icon_chat"))
-        fabButton.addItem("Request Callback", icon: UIImage(named: "icon_rcb"))
+        let f1 = fabButton.addItem("Parenting Videos", icon: UIImage(named: "video_type_2"))
+        f1.size = DimensionManager.getGeneralizedWidth1280x720(width: 104)
+        f1.layerColor = .RED
         
+        let f2 = fabButton.addItem("Profile", icon: UIImage(named: "profile"))
+        f2.layerColor = .BLUE
+        f2.size = DimensionManager.getGeneralizedWidth1280x720(width: 104)
+        
+        let f3 = fabButton.addItem("Share App", icon: UIImage(named: "share"))
+        f3.layerColor = .GREEN
+        f3.size = DimensionManager.getGeneralizedWidth1280x720(width: 104)
+        
+        let f4 = fabButton.addItem("Write to us", icon: UIImage(named: "edit"))
+        f4.layerColor = .VIOLET
+        f4.size = DimensionManager.getGeneralizedWidth1280x720(width: 104)
+        
+        let f5 = fabButton.addItem("Chat", icon: UIImage(named: "icon_chat"))
+        f5.layerColor = .PURPLE
+        f5.size = DimensionManager.getGeneralizedWidth1280x720(width: 104)
+        
+        /*
+        let f6 = fabButton.addItem("Request Callback", icon: UIImage(named: "icon_rcb"))
+        f6.layerColor = .ORANGE
+        f6.size = DimensionManager.getGeneralizedWidth1280x720(width: 104)
+        */
         view.addSubview(fabButton)
     }
     

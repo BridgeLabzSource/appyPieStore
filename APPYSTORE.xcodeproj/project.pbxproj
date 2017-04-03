@@ -58,6 +58,7 @@
 		73638FB91E8A77720089619B /* KCFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73638FB61E8A77720089619B /* KCFloatingActionButton.swift */; };
 		73638FBA1E8A77720089619B /* KCFloatingActionButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73638FB71E8A77720089619B /* KCFloatingActionButtonDelegate.swift */; };
 		73638FBB1E8A77720089619B /* KCFloatingActionButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73638FB81E8A77720089619B /* KCFloatingActionButtonItem.swift */; };
+		7366E8951E8D23BA002A09F2 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366E8941E8D23BA002A09F2 /* CustomLabel.swift */; };
 		736A40FC1E891A3000A4C038 /* VideoListingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736A40FA1E891A3000A4C038 /* VideoListingCard.swift */; };
 		736A40FD1E891A3000A4C038 /* VideoListingCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736A40FB1E891A3000A4C038 /* VideoListingCard.xib */; };
 		7371A2E31E7BB293009B2894 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371A2E21E7BB293009B2894 /* ArrayExtension.swift */; };
@@ -134,6 +135,7 @@
 		73638FB61E8A77720089619B /* KCFloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KCFloatingActionButton.swift; path = "../../../Downloads/KCFloatingActionButton-master/Sources/KCFloatingActionButton.swift"; sourceTree = "<group>"; };
 		73638FB71E8A77720089619B /* KCFloatingActionButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KCFloatingActionButtonDelegate.swift; path = "../../../Downloads/KCFloatingActionButton-master/Sources/KCFloatingActionButtonDelegate.swift"; sourceTree = "<group>"; };
 		73638FB81E8A77720089619B /* KCFloatingActionButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KCFloatingActionButtonItem.swift; path = "../../../Downloads/KCFloatingActionButton-master/Sources/KCFloatingActionButtonItem.swift"; sourceTree = "<group>"; };
+		7366E8941E8D23BA002A09F2 /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		736A40FA1E891A3000A4C038 /* VideoListingCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingCard.swift; sourceTree = "<group>"; };
 		736A40FB1E891A3000A4C038 /* VideoListingCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListingCard.xib; sourceTree = "<group>"; };
 		7371A2E21E7BB293009B2894 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				0A80DA231E702CC100939443 /* BottomBarOverlay.xib */,
 				0A80DA251E702DA700939443 /* BottomBarOverlay.swift */,
 				73638FAB1E8A57EC0089619B /* CustomViewLayer.swift */,
+				7366E8941E8D23BA002A09F2 /* CustomLabel.swift */,
 			);
 			name = customView;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				736A40FC1E891A3000A4C038 /* VideoListingCard.swift in Sources */,
 				F46267131E77AF7000302ACF /* UserInfo.swift in Sources */,
 				7360D8881E7A8C8400C662DE /* ParserListener.swift in Sources */,
+				7366E8951E8D23BA002A09F2 /* CustomLabel.swift in Sources */,
 				70AD5AEE1E6E71CD003C2536 /* VideoListingModel.swift in Sources */,
 				706B34FC1E6FEA96008474EA /* HistoryDBManager.swift in Sources */,
 				0A8A58A61E683F2100A93DD2 /* VideoCategoryController.swift in Sources */,

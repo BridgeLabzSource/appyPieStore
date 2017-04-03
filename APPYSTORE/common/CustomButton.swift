@@ -11,6 +11,9 @@ import UIKit
 @IBDesignable class CustomButton: UIButton {
     
     let imageInset = UIEdgeInsetsMake(6, 6, 12, 12)
+    var buttonImageView: UIImageView?
+    @IBInspectable var buttonImage: UIImage?
+    
     let subLayercolorList = [
         ["#808080", "#666666"],
         ["#cccccc", "#b6b3b3"],
@@ -64,7 +67,32 @@ import UIKit
         }
         
         bringSubview(toFront: self.imageView!)
-        self.imageEdgeInsets = imageInset;
+        //self.imageEdgeInsets = imageInset;
+        
+        imageView?.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: DimensionManager.getGeneralizedHeight1280x720(height: 20),
+            height: DimensionManager.getGeneralizedHeight1280x720(height: 20)
+        )
+        
+        buttonImageView?.removeFromSuperview()
+        
+        
+        buttonImageView = UIImageView(image: buttonImage)
+        
+        
+        buttonImageView?.frame = CGRect(
+            x: layer.frame.origin.x ,
+            y: layer.frame.origin.y ,
+            width: DimensionManager.getGeneralizedHeight1280x720(height: 60),
+            height: DimensionManager.getGeneralizedHeight1280x720(height: 60)
+        )
+        
+        buttonImageView?.center = CGPoint(x: layer.frame.size.width/2 - 5, y: layer.frame.height/2 - 5)
+        
+        addSubview(buttonImageView!)
+        //self.imageView?.center = CGPoint(x: self.frame.size.width/2 - 5, y: self.frame.height/2 - 5)
     }
     
     func makeRoundCorner(layer: CALayer){

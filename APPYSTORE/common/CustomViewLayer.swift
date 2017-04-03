@@ -9,12 +9,72 @@
 import Foundation
 import UIKit
 
+enum LayerColorType {
+    case RED
+    case BLUE
+    case GREEN
+    case PURPLE
+    case ORANGE
+    case VIOLET
+    case YELLOW
+    case DEFAULT
+}
+
 class CustomViewLayer {
     let imageInset = UIEdgeInsetsMake(6, 6, 12, 12)
     
-    let subLayercolorList = [
+    var subLayercolorList = [
         ["#808080", "#666666"],
         ["#cccccc", "#b6b3b3"],
+        ["#66ffffff", "#00ffffff"],
+        ["#ffffff", "#66ffffff"],
+        ]
+    
+    let redLayerColorList = [
+        ["#964050", "#9d2e43"],
+        ["#ff6b61", "#ff2e43"],
+        ["#66ffffff", "#00ffffff"],
+        ["#ffffff", "#66ffffff"],
+    ]
+    
+    let blueLayerColorList = [
+        ["#006aa7", "#0058a8"],
+        ["#29c5e2", "#0071bc"],
+        ["#66ffffff", "#00ffffff"],
+        ["#ffffff", "#66ffffff"],
+    ]
+    
+    let greenLayerColorList = [
+        ["#00652f", "#007248"],
+        ["#51cd5e", "#00a448"],
+        ["#66ffffff", "#00ffffff"],
+        ["#ffffff", "#66ffffff"],
+    ]
+    
+    let orangeLayerColorList = [
+        ["#e65f00", "#aa4024"],
+        ["#f77d1e", "#f15a24"],
+        ["#66ffffff", "#00ffffff"],
+        ["#ffffff", "#66ffffff"],
+    ]
+    
+    let violetLayerColorList = [
+        ["#2939a7", "#1a4198"],
+        ["#7763e2", "#1a4198"],
+        ["#66ffffff", "#00ffffff"],
+        ["#ffffff", "#66ffffff"],
+        ]
+    
+    let yellowLayerColorList = [
+        ["#cf5a3d", "#ce5900"],
+        ["#f1a824", "#f78e1e"],
+        ["#66ffffff", "#00ffffff"],
+        ["#ffffff", "#66ffffff"],
+        ]
+    
+    let purpleLayerColorList = [
+        ["#c39eee", "#8c26f6"],
+        ["#8715fe", "#7714bc"],
         ["#66ffffff", "#00ffffff"],
         ["#ffffff", "#66ffffff"],
         ]
@@ -34,8 +94,27 @@ class CustomViewLayer {
         2
     ]
     
-    func initialize(layer: CAShapeLayer, bounds: CGRect) {
+    func initialize(layer: CAShapeLayer, bounds: CGRect, layerColor: LayerColorType = .DEFAULT) {
         //the main layer
+        switch layerColor {
+        case .RED:
+            subLayercolorList = redLayerColorList
+        case .BLUE:
+            subLayercolorList = blueLayerColorList
+        case .GREEN:
+            subLayercolorList = greenLayerColorList
+        case .PURPLE:
+            subLayercolorList = purpleLayerColorList
+        case .ORANGE:
+            subLayercolorList = orangeLayerColorList
+        case .VIOLET:
+            subLayercolorList = violetLayerColorList
+        case .YELLOW:
+            subLayercolorList = yellowLayerColorList
+        default:
+            break
+        }
+        
         makeRoundCorner(layer: layer)
         
         //add sub layers
