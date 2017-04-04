@@ -56,6 +56,7 @@
 		736A40FD1E891A3000A4C038 /* VideoListingCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736A40FB1E891A3000A4C038 /* VideoListingCard.xib */; };
 		7371A2E31E7BB293009B2894 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371A2E21E7BB293009B2894 /* ArrayExtension.swift */; };
 		7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */; };
+		73950B411E926E0F0026A7D9 /* BaseListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73950B401E926E0F0026A7D9 /* BaseListingViewController.swift */; };
 		73967E7D1E893BF100A9A81B /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */; };
 		7399063C1E8E38CE009501AD /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399063B1E8E38CE009501AD /* NavigationManager.swift */; };
 		73B657521E8BCFAD00E7D582 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B657511E8BCFAD00E7D582 /* BaseViewController.swift */; };
@@ -129,6 +130,7 @@
 		736A40FB1E891A3000A4C038 /* VideoListingCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListingCard.xib; sourceTree = "<group>"; };
 		7371A2E21E7BB293009B2894 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchFramework.swift; sourceTree = "<group>"; };
+		73950B401E926E0F0026A7D9 /* BaseListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseListingViewController.swift; sourceTree = "<group>"; };
 		73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		7399063B1E8E38CE009501AD /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		73B657511E8BCFAD00E7D582 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				7360D8891E7A947500C662DE /* LoginParserListener.swift */,
 				73B657531E8BD9C500E7D582 /* MainControllerCommunicator.swift */,
 				7399063B1E8E38CE009501AD /* NavigationManager.swift */,
+				73950B401E926E0F0026A7D9 /* BaseListingViewController.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				706B0B9B1E73D392006CF8CA /* AnimationView.swift in Sources */,
 				70AD5AE31E6E7129003C2536 /* BaseParser.swift in Sources */,
 				7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */,
+				73950B411E926E0F0026A7D9 /* BaseListingViewController.swift in Sources */,
 				73F43B061E82739D00D4DD90 /* ContentListingApiResponseModel.swift in Sources */,
 				706B34FA1E6FE9F4008474EA /* BaseDBManager.swift in Sources */,
 				70AD5AE81E6E7129003C2536 /* HttpConnection.swift in Sources */,

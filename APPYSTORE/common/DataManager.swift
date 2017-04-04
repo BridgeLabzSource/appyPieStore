@@ -24,7 +24,7 @@ class DataManager: NSObject {
                 
             })
             
-        case PageConstants.VIDEO_PAGE:
+        case PageConstants.VIDEO_CATEGORY_PAGE:
             let parser = VideoCategoryParser()
             parser.parse(params: HttpRequestBuilder.getVideoCategoryParameters(), completion:{
                 statusType, result in
@@ -48,7 +48,7 @@ class DataManager: NSObject {
             let historyDBManager = HistoryDBManager()
             dataList = historyDBManager.fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: nil)
             
-        case PageConstants.VIDEO_PAGE:
+        case PageConstants.VIDEO_CATEGORY_PAGE:
             let videoDBManager = VideoDBManager()
             dataList = videoDBManager.fetchAll()
             
@@ -65,7 +65,7 @@ class DataManager: NSObject {
         case PageConstants.HISTORY_PAGE:
             let historyDBManager = HistoryDBManager()
             count = historyDBManager.getRowCount()
-        case PageConstants.VIDEO_PAGE:
+        case PageConstants.VIDEO_CATEGORY_PAGE:
             let videoDBManager = VideoDBManager()
             count = videoDBManager.getRowCount()
         default:
@@ -80,7 +80,7 @@ class DataManager: NSObject {
         case PageConstants.HISTORY_PAGE:
             let historyDBManager = HistoryDBManager()
             historyDBManager.removeAll()
-        case PageConstants.VIDEO_PAGE:
+        case PageConstants.VIDEO_CATEGORY_PAGE:
             let videoDBManager = VideoDBManager()
             videoDBManager.removeAll()
         default:
@@ -96,7 +96,7 @@ class DataManager: NSObject {
             count = historyDBManager.insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
             
             print("%d Records are inserted succefully..",count)
-        case PageConstants.VIDEO_PAGE:
+        case PageConstants.VIDEO_CATEGORY_PAGE:
             let videoDBManager = VideoDBManager()
             count = videoDBManager.insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
         default:
@@ -112,7 +112,7 @@ class DataManager: NSObject {
         case PageConstants.HISTORY_PAGE:
             dataFetchTimePrefKey = PageConstants.KEY_HISTORY_DATA_FETCH_TIME
             break
-        case PageConstants.VIDEO_PAGE:
+        case PageConstants.VIDEO_CATEGORY_PAGE:
             dataFetchTimePrefKey = PageConstants.KEY_VIDEO_CATEGORY_DATA_FETCH_TIME
             break
         default:
@@ -128,7 +128,7 @@ class DataManager: NSObject {
         case PageConstants.HISTORY_PAGE:
             offsetServerPrefKey = PageConstants.KEY_HISTORY_SERVER_OFFSET
             break
-        case PageConstants.VIDEO_PAGE:
+        case PageConstants.VIDEO_CATEGORY_PAGE:
             offsetServerPrefKey = PageConstants.KEY_VIDEO_CATEGORY_SERVER_OFFSET
             break
         default:
@@ -144,7 +144,7 @@ class DataManager: NSObject {
         case PageConstants.HISTORY_PAGE:
             totalCountPrefKey = PageConstants.KEY_HISTORY_TOTAL_CONTENT_COUNT
             break
-        case PageConstants.VIDEO_PAGE:
+        case PageConstants.VIDEO_CATEGORY_PAGE:
             totalCountPrefKey = PageConstants.KEY_VIDEO_CATEGORY_TOTAL_CONTENT_COUNT
             break
         default:

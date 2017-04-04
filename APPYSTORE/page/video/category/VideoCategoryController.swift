@@ -19,9 +19,8 @@ class VideoCategoryController: BaseViewController, UICollectionViewDelegate, UIC
     var sh:CGFloat = 0.0
     var dataList = [VideoCategoryModel]()
     let CARD_HEIGHT: CGFloat = 384 - 32
-    let dataFetchFramework = DataFetchFramework(pageName: PageConstants.VIDEO_PAGE)
+    let dataFetchFramework = DataFetchFramework(pageName: PageConstants.VIDEO_CATEGORY_PAGE)
     var anim: NVActivityIndicatorView?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

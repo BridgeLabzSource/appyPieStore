@@ -8,10 +8,10 @@
 
 import UIKit
 
-class VideoListingController: BaseViewController {
+class VideoListingController: BaseListingViewController {
 
     override func viewDidLoad() {
+        dataFetchFramework = DataFetchFramework(pageName: PageConstants.VIDEO_LISTING_PAGE)
         super.viewDidLoad()
     }
-
 }

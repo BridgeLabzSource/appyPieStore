@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 @IBDesignable class VideoListingCard: UICollectionViewCell {
     
@@ -14,6 +15,7 @@ import UIKit
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var playIcon: UIImageView!
     @IBOutlet weak var downloadButton: UIButton!
+    
     
     override func awakeFromNib() {
         let radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 64))
@@ -27,5 +29,12 @@ import UIKit
         DimensionManager.setTextSize1280x720(label: lblTitle, size: DimensionManager.H3)
         
         showShadowRightBottom()
+    }
+    
+    func fillCard(videoListingModel: VideoListingModel) {
+        let image_path = videoListingModel.imagePath
+        let imgurl = URL(string: image_path)
+        imgThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
+        lblTitle.text = videoListingModel.title
     }
 }
