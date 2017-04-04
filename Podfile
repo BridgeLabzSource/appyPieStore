@@ -7,7 +7,7 @@ target 'APPYSTORE' do
   pod 'Alamofire', '~> 4.0’
   pod ‘SwiftyJSON’
   pod 'SDWebImage'
-  pod 'KCFloatingActionButton', '~> 2.1.0'
+  #pod 'KCFloatingActionButton', '~> 2.1.0'
   pod 'NVActivityIndicatorView'
   # Pods for APPYSTORE
 

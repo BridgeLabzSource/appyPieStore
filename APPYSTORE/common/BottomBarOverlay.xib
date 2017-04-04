@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,23 +27,16 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="4Ka-P0-8l1" secondAttribute="height" multiplier="1:1" id="Bn7-Dg-06h"/>
                     </constraints>
-                    <state key="normal" image="cart"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8U-iv-055" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
-                    <rect key="frame" x="1145" y="0.0" width="104" height="104"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" image="fab_settings"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="cart"/>
+                    </userDefinedRuntimeAttributes>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="4Ka-P0-8l1" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="104:136" id="9F9-FX-zF1"/>
-                <constraint firstItem="t8U-iv-055" firstAttribute="height" secondItem="4Ka-P0-8l1" secondAttribute="height" id="PV8-d6-Emx"/>
                 <constraint firstItem="4Ka-P0-8l1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="32:1280" id="byb-Gs-Wf3"/>
-                <constraint firstItem="t8U-iv-055" firstAttribute="top" secondItem="4Ka-P0-8l1" secondAttribute="top" id="cId-zj-mbe"/>
                 <constraint firstItem="4Ka-P0-8l1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ftk-ef-B15"/>
-                <constraint firstItem="t8U-iv-055" firstAttribute="width" secondItem="4Ka-P0-8l1" secondAttribute="width" id="huf-vO-Yzg"/>
-                <constraint firstAttribute="trailing" secondItem="t8U-iv-055" secondAttribute="trailing" multiplier="1312:1280" id="jFb-UR-U8s"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -54,6 +47,5 @@
     </objects>
     <resources>
         <image name="cart" width="48" height="48"/>
-        <image name="fab_settings" width="72" height="72"/>
     </resources>
 </document>

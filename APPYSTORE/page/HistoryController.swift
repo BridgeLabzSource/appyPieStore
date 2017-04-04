@@ -1,9 +1,5 @@
 
 import UIKit
-import Alamofire
-import SwiftyJSON
-import SDWebImage
-import NVActivityIndicatorView
 
 class HistoryController: BaseListingViewController {
     override func viewDidLoad() {
