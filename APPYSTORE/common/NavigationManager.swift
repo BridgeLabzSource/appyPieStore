@@ -18,9 +18,10 @@ class NavigationManager {
         mainControllerCommunicator.addChild(controller: viewController)
     }
     
-    static func openVideoListingPage(mainControllerCommunicator: MainControllerCommunicator?) {
+    static func openVideoListingPage(mainControllerCommunicator: MainControllerCommunicator?, bundle : AndroidBundle) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "VideoListingController") as! VideoListingController
+        viewController.bundle = bundle
         mainControllerCommunicator?.addChild(controller: viewController)
     }
     

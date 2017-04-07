@@ -19,7 +19,7 @@ class VideoCategoryController: BaseViewController, UICollectionViewDelegate, UIC
     var sh:CGFloat = 0.0
     var dataList = [VideoCategoryModel]()
     let CARD_HEIGHT: CGFloat = 384 - 32
-    let dataFetchFramework = DataFetchFramework(pageName: PageConstants.VIDEO_CATEGORY_PAGE)
+    let dataFetchFramework = DataFetchFramework(pageName: PageConstants.VIDEO_CATEGORY_PAGE, pageUniqueId: "", bundle: nil)
     var anim: NVActivityIndicatorView?
     
     override func viewDidLoad() {
@@ -71,7 +71,12 @@ class VideoCategoryController: BaseViewController, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        NavigationManager.openVideoListingPage(mainControllerCommunicator: mainControllerCommunicator)
+        var bundle = [String: Any]()
+        let videoCategoryModel = dataFetchFramework.contentList[indexPath.row] as! VideoCategoryModel
+        bundle[BundleConstants.CATEGORY_ID] = videoCategoryModel.categoryId
+        bundle[BundleConstants.PARENT_CATEGORY_ID] = videoCategoryModel.parentCategoryId
+        bundle[BundleConstants.CATEGORY_NAME] = videoCategoryModel.categoryName
+        NavigationManager.openVideoListingPage(mainControllerCommunicator: mainControllerCommunicator, bundle: bundle)
     }
     
     func loadData() {

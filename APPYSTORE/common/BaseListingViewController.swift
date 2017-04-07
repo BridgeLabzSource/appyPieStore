@@ -53,11 +53,8 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         progressView?.removeFromSuperview()
         if status == DataFetchFramework.REQUEST_SUCCESS {
             if let result = result as? [BaseModel] {
-                //setLimit = result.count
-                print("Ganesh Server Data : \(result)")
-                //self.dataList = result as! [VideoListingModel]
                 self.view.setNeedsDisplay()
-                print("Data Found:",result.count)
+                print("onDataReceived called",result.count)
                 self.collectionView.reloadData()
             }
         } else if status == DataFetchFramework.END_OF_DATA {

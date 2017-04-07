@@ -121,7 +121,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dw7-bq-qyd">
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
-                                <color key="backgroundColor" red="1" green="0.95992458579999995" blue="0.070536774529999999" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="3IF-yV-DUU">
                                     <size key="itemSize" width="274" height="189"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -145,7 +145,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HFS-KX-mCc" firstAttribute="top" secondItem="dw7-bq-qyd" secondAttribute="bottom" id="9zH-cU-HXG"/>
                             <constraint firstItem="dw7-bq-qyd" firstAttribute="leading" secondItem="anD-zC-wCC" secondAttribute="leading" id="LXZ-mE-k1O"/>
@@ -176,7 +176,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qtD-GQ-eYn">
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
-                                <color key="backgroundColor" red="0.47063600954419588" green="0.68477564102564104" blue="0.32069662930233728" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wps-EC-LMH">
                                     <size key="itemSize" width="285" height="162"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -199,7 +199,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qtD-GQ-eYn" firstAttribute="top" secondItem="e5v-xP-f60" secondAttribute="bottom" id="8Yu-vt-mlf"/>
                             <constraint firstItem="Ts7-1v-avS" firstAttribute="top" secondItem="qtD-GQ-eYn" secondAttribute="bottom" id="Atd-VT-fbR"/>
@@ -246,7 +246,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="259" height="192"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2E2A8178-ACAC-4CE5-A007-3957218CE19F" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E86D82BE-959B-447B-89C5-D15090DB1807" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
                                                     <rect key="frame" x="8" y="8" width="243" height="116"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="116" id="HfT-XT-9p0"/>
@@ -385,7 +385,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2E2A8178-ACAC-4CE5-A007-3957218CE19F" width="678" height="480">
+        <image name="E86D82BE-959B-447B-89C5-D15090DB1807" width="678" height="480">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

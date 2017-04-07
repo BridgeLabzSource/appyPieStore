@@ -27,25 +27,28 @@ class VideoCategoryParser: BaseParser
     override func parseJSONData(responseData:JSON) -> AnyObject? {
         
         let apiResponseModel = ContentListingApiResponseModel()
-        let videoContent = responseData["category_id_array"].array
-        
-        //let videoCategoryContent = responseData["f"].array
+        let videoContent = responseData[CATEGORY_ID_ARRAY].array
         
         var videoCategoryModelArray = [VideoCategoryModel]()
         for item in videoContent! {
-            let vc = VideoCategoryModel()
-            vc.categoryId = item["category_id"].string!
-            vc.categoryName = item["category_name"].string!
-            vc.contentCount = String(item["content_count"].int!)
-            let tempImgPath = item["image_path"].dictionary!
-            vc.imagePath = (tempImgPath["50x50"]?.string!)!
-           
-            videoCategoryModelArray.append(vc)
+            let videoCategoryModel = VideoCategoryModel()
+            videoCategoryModel.categoryId = item[CATEGORY_ID].string!
+            videoCategoryModel.categoryName = item[CATEGORY_NAME].string!
+            videoCategoryModel.parentCategoryId = item[PARENT_CATEGORY_ID].string!
+            videoCategoryModel.contentCount = String(item[CONTENT_COUNT].int!)
+            videoCategoryModel.isCategoryBlocked = String(item[IS_CATEGORY_BLOCKED].int!)
+            videoCategoryModel.parentCategoryName = item[PARENT_CATEGORY_NAME].string!
+            videoCategoryModel.canonicalName = item[CANONICAL_NAME].string!
+            videoCategoryModel.isVisible = String(item[IS_VISIBLE].int!)
             
+            let tempImgPath = item[IMAGE_PATH].dictionary!
+            videoCategoryModel.imagePath = (tempImgPath["50x50"]?.string!)!
+           
+            videoCategoryModelArray.append(videoCategoryModel)
         }
         
         apiResponseModel.contentList = videoCategoryModelArray
-        apiResponseModel.totalCount = String(describing: responseData["category_count"])//responseData["category_count"]
+        apiResponseModel.totalCount = String(describing: responseData[CATEGORY_COUNT])
         return apiResponseModel
         
     }
