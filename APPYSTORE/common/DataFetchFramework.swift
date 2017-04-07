@@ -254,7 +254,7 @@ class DataFetchFramework {
     }
     
     func clearLocalData() {
-        DataManager.sharedInstance.deleteDataForPage(pageName: pageName)
+        DataManager.sharedInstance.deleteDataForPage(pageName: pageName, bundle: bundle)
     }
     
     func addToContentList(contentList: [BaseModel]) {

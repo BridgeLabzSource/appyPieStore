@@ -9,4 +9,6 @@ protocol BaseDBManager {
     
     func fetchAll() -> [BaseModel]?
     
+    func removeAll(bundle: AndroidBundle)
+    
 }

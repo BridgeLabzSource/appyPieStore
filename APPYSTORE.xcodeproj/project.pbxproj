@@ -61,6 +61,7 @@
 		7371FA001E936898009241FF /* KCFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371F9FA1E936898009241FF /* KCFloatingActionButton.swift */; };
 		7371FA011E936898009241FF /* KCFloatingActionButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371F9FB1E936898009241FF /* KCFloatingActionButtonDelegate.swift */; };
 		7371FA021E936898009241FF /* KCFloatingActionButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371F9FC1E936898009241FF /* KCFloatingActionButtonItem.swift */; };
+		73754E061E975969001DD942 /* MainControllerUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73754E051E975969001DD942 /* MainControllerUIDelegate.swift */; };
 		7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */; };
 		738C72F61E93E34400A1B4E0 /* VideoListingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C72F51E93E34400A1B4E0 /* VideoListingParser.swift */; };
 		7392A7841E94C95900A6ED32 /* HistoryDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392A7831E94C95900A6ED32 /* HistoryDBManager.swift */; };
@@ -148,6 +149,7 @@
 		7371F9FA1E936898009241FF /* KCFloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButton.swift; sourceTree = "<group>"; };
 		7371F9FB1E936898009241FF /* KCFloatingActionButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButtonDelegate.swift; sourceTree = "<group>"; };
 		7371F9FC1E936898009241FF /* KCFloatingActionButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButtonItem.swift; sourceTree = "<group>"; };
+		73754E051E975969001DD942 /* MainControllerUIDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainControllerUIDelegate.swift; sourceTree = "<group>"; };
 		7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchFramework.swift; sourceTree = "<group>"; };
 		738C72F51E93E34400A1B4E0 /* VideoListingParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingParser.swift; sourceTree = "<group>"; };
 		7392A7831E94C95900A6ED32 /* HistoryDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDBManager.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				7399063B1E8E38CE009501AD /* NavigationManager.swift */,
 				73950B401E926E0F0026A7D9 /* BaseListingViewController.swift */,
 				73A3BB201E960AEF00D2487A /* AppConstants.swift */,
+				73754E051E975969001DD942 /* MainControllerUIDelegate.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				7371F9FE1E936898009241FF /* KCFABViewController.swift in Sources */,
 				0A5E1C641E701C2D00537F84 /* UILabelExtension.swift in Sources */,
 				738C72F61E93E34400A1B4E0 /* VideoListingParser.swift in Sources */,
+				73754E061E975969001DD942 /* MainControllerUIDelegate.swift in Sources */,
 				F46267151E77AFB000302ACF /* ChildInfo.swift in Sources */,
 				70AD5AE51E6E7129003C2536 /* PageConstants.swift in Sources */,
 				70A36E4F1E6149C0002B9296 /* CommonOverlayView.swift in Sources */,

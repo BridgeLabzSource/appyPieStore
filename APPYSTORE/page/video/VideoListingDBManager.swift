@@ -125,20 +125,20 @@ class VideoListingDBManager: BaseDBManager{
         return historylist
     }
     
-    func getRowCount() -> Int {
-        var count = 0
-        
-        let delegate = (UIApplication.shared.delegate as? AppDelegate)
-        let context = delegate?.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TABLE_NAME)
-        
-        do {
-            count = try (context?.count(for: fetchRequest)) ?? 0
-        } catch let error as NSError {
-            print("Error : \(error)")
-        }
-        return count
-    }
+//    func getRowCount() -> Int {
+//        var count = 0
+//        
+//        let delegate = (UIApplication.shared.delegate as? AppDelegate)
+//        let context = delegate?.persistentContainer.viewContext
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TABLE_NAME)
+//        
+//        do {
+//            count = try (context?.count(for: fetchRequest)) ?? 0
+//        } catch let error as NSError {
+//            print("Error : \(error)")
+//        }
+//        return count
+//    }
 
     func getRowCount(bundle: AndroidBundle) -> Int {
         var count = 0
@@ -192,11 +192,12 @@ class VideoListingDBManager: BaseDBManager{
         return videoListingModel
     }
     
-    func removeAll()
+    func removeAll(bundle: AndroidBundle)
     {
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TABLE_NAME)
+        fetchRequest.predicate = NSPredicate(format: "\(SUB_CAT_ID) == %@", bundle?[BundleConstants.CATEGORY_ID] as! String)
         do {
             let records = try Context?.fetch(fetchRequest) as! [NSManagedObject]
             for record in records {

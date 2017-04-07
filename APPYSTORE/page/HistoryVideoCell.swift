@@ -9,18 +9,13 @@
 import UIKit
 
 class HistoryVideoCell: UICollectionViewCell {
-    //MARK:IBOutlet
+
     @IBOutlet var mVideoImage: UIImageView!
-    
     @IBOutlet var mPlayImage: UIImageView!
-    
     @IBOutlet var mDownloadButton: UIButton!
-    
     @IBOutlet var mVideoDescription: UILabel!
-    //MARK:IBAction
     
     override func awakeFromNib() {
-        
         mVideoImage.layer.cornerRadius = 30.0
         mVideoImage.layer.masksToBounds = true
         layer.cornerRadius = 35.0
@@ -31,7 +26,5 @@ class HistoryVideoCell: UICollectionViewCell {
         layer.shadowOffset = CGSize(width: 7, height:10)
         layer.shadowOpacity = 0.3;
         layer.shadowRadius = 1.0;
-
-        
     }
 }

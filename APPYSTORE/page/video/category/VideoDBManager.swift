@@ -136,7 +136,7 @@ class VideoDBManager: BaseDBManager {
         return videoCategoryModel
     }
     
-    func removeAll() {
+    func removeAll(bundle: AndroidBundle) {
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TABLE_NAME)

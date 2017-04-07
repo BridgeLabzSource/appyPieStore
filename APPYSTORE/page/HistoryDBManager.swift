@@ -167,7 +167,7 @@ class HistoryDBManager: BaseDBManager{
         return TABLE_NAME
     }
     
-    func removeAll()
+    func removeAll(bundle: AndroidBundle)
     {
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext

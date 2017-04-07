@@ -77,14 +77,14 @@ class DataManager: NSObject {
         return count
     }
     
-    func deleteDataForPage(pageName: String) {
+    func deleteDataForPage(pageName: String, bundle: AndroidBundle) {
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            HistoryDBManager().removeAll()
+            HistoryDBManager().removeAll(bundle: bundle)
         case PageConstants.VIDEO_CATEGORY_PAGE:
-            VideoDBManager().removeAll()
+            VideoDBManager().removeAll(bundle: bundle)
         case PageConstants.VIDEO_LISTING_PAGE:
-            VideoListingDBManager().removeAll()
+            VideoListingDBManager().removeAll(bundle: bundle)
         default:
             break
         }
