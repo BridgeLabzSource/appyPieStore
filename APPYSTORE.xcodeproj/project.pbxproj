@@ -63,7 +63,12 @@
 		7371FA001E936898009241FF /* KCFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371F9FA1E936898009241FF /* KCFloatingActionButton.swift */; };
 		7371FA011E936898009241FF /* KCFloatingActionButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371F9FB1E936898009241FF /* KCFloatingActionButtonDelegate.swift */; };
 		7371FA021E936898009241FF /* KCFloatingActionButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371F9FC1E936898009241FF /* KCFloatingActionButtonItem.swift */; };
+		7371FA041E936B7B009241FF /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371FA031E936B7B009241FF /* VideoPlayerViewController.swift */; };
+		7371FA061E939F1D009241FF /* VideoPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7371FA051E939F1D009241FF /* VideoPlayer.xib */; };
+		7371FA081E93AC53009241FF /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371FA071E93AC53009241FF /* VideoPlayer.swift */; };
+		7371FA0A1E93D454009241FF /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371FA091E93D454009241FF /* SampleViewController.swift */; };
 		7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */; };
+		737E28281E94F409008CEC26 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737E28271E94F409008CEC26 /* PlayerModel.swift */; };
 		73950B411E926E0F0026A7D9 /* BaseListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73950B401E926E0F0026A7D9 /* BaseListingViewController.swift */; };
 		73967E7D1E893BF100A9A81B /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */; };
 		7399063C1E8E38CE009501AD /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399063B1E8E38CE009501AD /* NavigationManager.swift */; };
@@ -146,7 +151,12 @@
 		7371F9FA1E936898009241FF /* KCFloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButton.swift; sourceTree = "<group>"; };
 		7371F9FB1E936898009241FF /* KCFloatingActionButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButtonDelegate.swift; sourceTree = "<group>"; };
 		7371F9FC1E936898009241FF /* KCFloatingActionButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButtonItem.swift; sourceTree = "<group>"; };
+		7371FA031E936B7B009241FF /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		7371FA051E939F1D009241FF /* VideoPlayer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoPlayer.xib; sourceTree = "<group>"; };
+		7371FA071E93AC53009241FF /* VideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
+		7371FA091E93D454009241FF /* SampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
 		7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchFramework.swift; sourceTree = "<group>"; };
+		737E28271E94F409008CEC26 /* PlayerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		73950B401E926E0F0026A7D9 /* BaseListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseListingViewController.swift; sourceTree = "<group>"; };
 		73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		7399063B1E8E38CE009501AD /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
@@ -201,6 +211,9 @@
 				73B657531E8BD9C500E7D582 /* MainControllerCommunicator.swift */,
 				7399063B1E8E38CE009501AD /* NavigationManager.swift */,
 				73950B401E926E0F0026A7D9 /* BaseListingViewController.swift */,
+				7371FA031E936B7B009241FF /* VideoPlayerViewController.swift */,
+				7371FA091E93D454009241FF /* SampleViewController.swift */,
+				737E28271E94F409008CEC26 /* PlayerModel.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -231,6 +244,8 @@
 				0A80DA251E702DA700939443 /* BottomBarOverlay.swift */,
 				73638FAB1E8A57EC0089619B /* CustomViewLayer.swift */,
 				7366E8941E8D23BA002A09F2 /* CustomLabel.swift */,
+				7371FA051E939F1D009241FF /* VideoPlayer.xib */,
+				7371FA071E93AC53009241FF /* VideoPlayer.swift */,
 			);
 			name = customView;
 			sourceTree = "<group>";
@@ -433,6 +448,7 @@
 				70A36E4D1E6148BE002B9296 /* CommonOverlayView.xib in Resources */,
 				0A5E1C651E7026B800537F84 /* kg_miss_kindy_chunky.ttf in Resources */,
 				0A8F790A1E6971D300720DB8 /* VideoCategoryCard.xib in Resources */,
+				7371FA061E939F1D009241FF /* VideoPlayer.xib in Resources */,
 				70A36E4B1E614722002B9296 /* Assets.xcassets in Resources */,
 				0AAD2F021E5C48EF00B504A3 /* Main.storyboard in Resources */,
 				0A80DA201E702C5E00939443 /* TopBarOverlay.xib in Resources */,
@@ -500,9 +516,11 @@
 				0A80DA221E702CA500939443 /* TopBarOverlay.swift in Sources */,
 				7365F3951E92612D006B3C75 /* MainController.swift in Sources */,
 				7371FA001E936898009241FF /* KCFloatingActionButton.swift in Sources */,
+				7371FA081E93AC53009241FF /* VideoPlayer.swift in Sources */,
 				70AD5AED1E6E71CD003C2536 /* HistoryController.swift in Sources */,
 				F46267111E77AF0900302ACF /* LoginParser.swift in Sources */,
 				0A74B98E1E71143200B7A67D /* UIViewExtention.swift in Sources */,
+				737E28281E94F409008CEC26 /* PlayerModel.swift in Sources */,
 				73B657541E8BD9C500E7D582 /* MainControllerCommunicator.swift in Sources */,
 				7371F9FF1E936898009241FF /* KCFABWindow.swift in Sources */,
 				70AD5AF01E6E71CD003C2536 /* HistoryParser.swift in Sources */,
@@ -518,6 +536,7 @@
 				706B0B9B1E73D392006CF8CA /* AnimationView.swift in Sources */,
 				70AD5AE31E6E7129003C2536 /* BaseParser.swift in Sources */,
 				7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */,
+				7371FA041E936B7B009241FF /* VideoPlayerViewController.swift in Sources */,
 				73950B411E926E0F0026A7D9 /* BaseListingViewController.swift in Sources */,
 				73F43B061E82739D00D4DD90 /* ContentListingApiResponseModel.swift in Sources */,
 				706B34FA1E6FE9F4008474EA /* BaseDBManager.swift in Sources */,
@@ -554,6 +573,7 @@
 				7360D88A1E7A947500C662DE /* LoginParserListener.swift in Sources */,
 				73967E7D1E893BF100A9A81B /* UICollectionViewExtension.swift in Sources */,
 				0A65E26E1E6EDF1E00F538B5 /* VideoCategoryModel.swift in Sources */,
+				7371FA0A1E93D454009241FF /* SampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

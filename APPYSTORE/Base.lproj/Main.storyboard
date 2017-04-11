@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3wt-zJ-xEi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="glJ-SI-2l4">
     <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -106,6 +106,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ip-2u-NsN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="672" y="735"/>
+        </scene>
+        <!--Sample View Controller-->
+        <scene sceneID="MdH-bD-5fJ">
+            <objects>
+                <viewController id="glJ-SI-2l4" customClass="SampleViewController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MTd-T4-nId"/>
+                        <viewControllerLayoutGuide type="bottom" id="nQL-Rg-7Kg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EHJ-9K-n8J">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d5n-xp-pMK" customClass="VideoPlayer" customModule="APPYSTORE" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="736" height="394"/>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5TZ-NK-ulv">
+                                <rect key="frame" x="168" y="57" width="400" height="300"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5TZ-NK-ulv" firstAttribute="top" secondItem="MTd-T4-nId" secondAttribute="bottom" id="ADc-P2-oL5"/>
+                            <constraint firstItem="nQL-Rg-7Kg" firstAttribute="top" secondItem="5TZ-NK-ulv" secondAttribute="bottom" constant="57" id="DyQ-7V-0Sk"/>
+                            <constraint firstItem="d5n-xp-pMK" firstAttribute="top" secondItem="MTd-T4-nId" secondAttribute="bottom" id="E2j-z7-WGb"/>
+                            <constraint firstItem="5TZ-NK-ulv" firstAttribute="centerY" secondItem="EHJ-9K-n8J" secondAttribute="centerY" id="LgS-Jt-ocS"/>
+                            <constraint firstAttribute="bottom" secondItem="d5n-xp-pMK" secondAttribute="bottom" id="bdc-7Q-jcu"/>
+                            <constraint firstItem="5TZ-NK-ulv" firstAttribute="centerX" secondItem="EHJ-9K-n8J" secondAttribute="centerX" id="dbM-4u-qY7"/>
+                            <constraint firstItem="5TZ-NK-ulv" firstAttribute="leading" secondItem="EHJ-9K-n8J" secondAttribute="leadingMargin" constant="148" id="hkt-Wu-XBc"/>
+                            <constraint firstItem="d5n-xp-pMK" firstAttribute="leading" secondItem="EHJ-9K-n8J" secondAttribute="leading" id="lUQ-dz-KLZ"/>
+                            <constraint firstAttribute="trailing" secondItem="d5n-xp-pMK" secondAttribute="trailing" id="u6U-n1-e6C"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5TZ-NK-ulv" secondAttribute="trailing" constant="148" id="wf0-9U-ARZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="miniFrame" destination="5TZ-NK-ulv" id="tgK-44-Z9S"/>
+                        <outlet property="rootView" destination="EHJ-9K-n8J" id="Qab-ia-ptz"/>
+                        <outlet property="videoPlayer" destination="d5n-xp-pMK" id="Yys-uL-1Jf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nWS-Ag-vLO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="423" y="1828"/>
         </scene>
         <!--Video Category Controller-->
         <scene sceneID="vDr-gZ-heH">
@@ -246,7 +289,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="259" height="192"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2E2A8178-ACAC-4CE5-A007-3957218CE19F" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D96829A6-CD4D-4CFD-803B-31B8E22D77E5" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
                                                     <rect key="frame" x="8" y="8" width="243" height="116"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="116" id="HfT-XT-9p0"/>
@@ -345,11 +388,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BKU-RW-8N4">
-                                <rect key="frame" x="0.0" y="115" width="736" height="221"/>
+                                <rect key="frame" x="0.0" y="115" width="736" height="220.66666666666669"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QR4-9E-sU8" customClass="BottomBarOverlay" customModule="APPYSTORE" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="336" width="736" height="78"/>
+                                <rect key="frame" x="0.0" y="335.66666666666674" width="736" height="78.333333333333314"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -385,7 +428,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2E2A8178-ACAC-4CE5-A007-3957218CE19F" width="678" height="480">
+        <image name="D96829A6-CD4D-4CFD-803B-31B8E22D77E5" width="678" height="480">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
