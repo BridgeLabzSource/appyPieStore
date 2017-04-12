@@ -67,6 +67,7 @@
 		73754E0B1E97B027001DD942 /* SearchTagsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73754E0A1E97B027001DD942 /* SearchTagsController.swift */; };
 		7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */; };
 		738C72F61E93E34400A1B4E0 /* VideoListingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C72F51E93E34400A1B4E0 /* VideoListingParser.swift */; };
+		7392672B1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392672A1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift */; };
 		7392A7841E94C95900A6ED32 /* HistoryDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392A7831E94C95900A6ED32 /* HistoryDBManager.swift */; };
 		7392A7861E94C96200A6ED32 /* VideoDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392A7851E94C96200A6ED32 /* VideoDBManager.swift */; };
 		7392A7881E94CEC700A6ED32 /* VideoListingDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392A7871E94CEC700A6ED32 /* VideoListingDBManager.swift */; };
@@ -158,6 +159,7 @@
 		73754E0A1E97B027001DD942 /* SearchTagsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTagsController.swift; sourceTree = "<group>"; };
 		7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchFramework.swift; sourceTree = "<group>"; };
 		738C72F51E93E34400A1B4E0 /* VideoListingParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingParser.swift; sourceTree = "<group>"; };
+		7392672A1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewControllerProtocol.swift; sourceTree = "<group>"; };
 		7392A7831E94C95900A6ED32 /* HistoryDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDBManager.swift; sourceTree = "<group>"; };
 		7392A7851E94C96200A6ED32 /* VideoDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDBManager.swift; sourceTree = "<group>"; };
 		7392A7871E94CEC700A6ED32 /* VideoListingDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingDBManager.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				73A3BB201E960AEF00D2487A /* AppConstants.swift */,
 				73754E051E975969001DD942 /* MainControllerUIDelegate.swift */,
 				73754E071E978474001DD942 /* ComponentProperties.swift */,
+				7392672A1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				7371F9FD1E936898009241FF /* KCFABManager.swift in Sources */,
 				F48798F21E77E9AF0060932F /* AbsPrefs.swift in Sources */,
 				0A80DA221E702CA500939443 /* TopBarOverlay.swift in Sources */,
+				7392672B1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift in Sources */,
 				7365F3951E92612D006B3C75 /* MainController.swift in Sources */,
 				7371FA001E936898009241FF /* KCFloatingActionButton.swift in Sources */,
 				70AD5AED1E6E71CD003C2536 /* HistoryController.swift in Sources */,

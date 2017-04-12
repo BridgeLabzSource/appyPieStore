@@ -6,4 +6,7 @@
 //  Copyright © 2017 MAUJ MOBILE PVT LTD. All rights reserved.
 //
 
-import Foundation
+protocol BaseViewControllerProtocol {
+    func getPageName() -> String
+    func getPageNameUniqueIdentifier() -> String
+}
