@@ -59,6 +59,9 @@ class HttpRequestBuilder: NSObject {
     static let PCATID = "pcatid"
     static let AGE = "age"
     static let INCL_AGE = "incl_age"
+    static let KEYWORD = "keyword"
+    static let IGNORE_CAT_ID = "ignore_cat_id"
+    static let IS_POPULAR = "is_popular"
     
     
     static func getHeaders() -> HTTPHeaders {
@@ -137,6 +140,21 @@ class HttpRequestBuilder: NSObject {
                 AGE: age,
                 INCL_AGE: inclAge,
                 PAGEID: pageId
+        ]
+    }
+    
+    static func getSearchResultParameters(method: String, keyword: String, contentType: String, offset: String, limit: String, age: String, inclAge: String, ignoreCatId: String, pageId: String, isPopular: String) -> Parameters
+    {
+        return [METHOD: method,
+                KEYWORD: keyword,
+                CONTENT_TYPE: contentType,
+                OFFSET: offset,
+                LIMIT: limit,
+                AGE: age,
+                INCL_AGE: inclAge,
+                IGNORE_CAT_ID: ignoreCatId,
+                PAGEID: pageId,
+                IS_POPULAR: isPopular
         ]
     }
     

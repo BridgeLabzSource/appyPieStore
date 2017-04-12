@@ -45,9 +45,10 @@
 		70AD5AEE1E6E71CD003C2536 /* VideoListingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5AEA1E6E71CD003C2536 /* VideoListingModel.swift */; };
 		70AD5AEF1E6E71CD003C2536 /* HistoryVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5AEB1E6E71CD003C2536 /* HistoryVideoCell.swift */; };
 		70AD5AF01E6E71CD003C2536 /* HistoryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5AEC1E6E71CD003C2536 /* HistoryParser.swift */; };
-		70AD5AF21E6E7360003C2536 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5AF11E6E7360003C2536 /* SearchController.swift */; };
+		70AD5AF21E6E7360003C2536 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD5AF11E6E7360003C2536 /* SearchResultController.swift */; };
 		7360D8881E7A8C8400C662DE /* ParserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360D8871E7A8C8400C662DE /* ParserListener.swift */; };
 		7360D88A1E7A947500C662DE /* LoginParserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360D8891E7A947500C662DE /* LoginParserListener.swift */; };
+		7362A5E81E9C99E300DA4C91 /* SearchResultParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7362A5E71E9C99E300DA4C91 /* SearchResultParser.swift */; };
 		73638FAC1E8A57EC0089619B /* CustomViewLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73638FAB1E8A57EC0089619B /* CustomViewLayer.swift */; };
 		7365F3931E92603A006B3C75 /* VideoListingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7365F3921E92603A006B3C75 /* VideoListingController.swift */; };
 		7365F3951E92612D006B3C75 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7365F3941E92612D006B3C75 /* MainController.swift */; };
@@ -62,6 +63,8 @@
 		7371FA011E936898009241FF /* KCFloatingActionButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371F9FB1E936898009241FF /* KCFloatingActionButtonDelegate.swift */; };
 		7371FA021E936898009241FF /* KCFloatingActionButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371F9FC1E936898009241FF /* KCFloatingActionButtonItem.swift */; };
 		73754E061E975969001DD942 /* MainControllerUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73754E051E975969001DD942 /* MainControllerUIDelegate.swift */; };
+		73754E081E978474001DD942 /* ComponentProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73754E071E978474001DD942 /* ComponentProperties.swift */; };
+		73754E0B1E97B027001DD942 /* SearchTagsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73754E0A1E97B027001DD942 /* SearchTagsController.swift */; };
 		7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */; };
 		738C72F61E93E34400A1B4E0 /* VideoListingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C72F51E93E34400A1B4E0 /* VideoListingParser.swift */; };
 		7392A7841E94C95900A6ED32 /* HistoryDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392A7831E94C95900A6ED32 /* HistoryDBManager.swift */; };
@@ -132,9 +135,10 @@
 		70AD5AEA1E6E71CD003C2536 /* VideoListingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingModel.swift; sourceTree = "<group>"; };
 		70AD5AEB1E6E71CD003C2536 /* HistoryVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVideoCell.swift; sourceTree = "<group>"; };
 		70AD5AEC1E6E71CD003C2536 /* HistoryParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryParser.swift; sourceTree = "<group>"; };
-		70AD5AF11E6E7360003C2536 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		70AD5AF11E6E7360003C2536 /* SearchResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
 		7360D8871E7A8C8400C662DE /* ParserListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserListener.swift; sourceTree = "<group>"; };
 		7360D8891E7A947500C662DE /* LoginParserListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginParserListener.swift; sourceTree = "<group>"; };
+		7362A5E71E9C99E300DA4C91 /* SearchResultParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultParser.swift; sourceTree = "<group>"; };
 		73638FAB1E8A57EC0089619B /* CustomViewLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewLayer.swift; sourceTree = "<group>"; };
 		7365F3921E92603A006B3C75 /* VideoListingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingController.swift; sourceTree = "<group>"; };
 		7365F3941E92612D006B3C75 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 		7371F9FB1E936898009241FF /* KCFloatingActionButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButtonDelegate.swift; sourceTree = "<group>"; };
 		7371F9FC1E936898009241FF /* KCFloatingActionButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButtonItem.swift; sourceTree = "<group>"; };
 		73754E051E975969001DD942 /* MainControllerUIDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainControllerUIDelegate.swift; sourceTree = "<group>"; };
+		73754E071E978474001DD942 /* ComponentProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentProperties.swift; sourceTree = "<group>"; };
+		73754E0A1E97B027001DD942 /* SearchTagsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTagsController.swift; sourceTree = "<group>"; };
 		7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchFramework.swift; sourceTree = "<group>"; };
 		738C72F51E93E34400A1B4E0 /* VideoListingParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingParser.swift; sourceTree = "<group>"; };
 		7392A7831E94C95900A6ED32 /* HistoryDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDBManager.swift; sourceTree = "<group>"; };
@@ -212,6 +218,7 @@
 				73950B401E926E0F0026A7D9 /* BaseListingViewController.swift */,
 				73A3BB201E960AEF00D2487A /* AppConstants.swift */,
 				73754E051E975969001DD942 /* MainControllerUIDelegate.swift */,
+				73754E071E978474001DD942 /* ComponentProperties.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -294,7 +301,7 @@
 		0AD5536D1E5DA958005ECA4A /* page */ = {
 			isa = PBXGroup;
 			children = (
-				70AD5AF11E6E7360003C2536 /* SearchController.swift */,
+				73754E091E9795F3001DD942 /* search */,
 				70A36E521E6160BD002B9296 /* history */,
 				0AD5536E1E5DA958005ECA4A /* video */,
 			);
@@ -377,6 +384,16 @@
 				7371F9FC1E936898009241FF /* KCFloatingActionButtonItem.swift */,
 			);
 			name = fab;
+			sourceTree = "<group>";
+		};
+		73754E091E9795F3001DD942 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				70AD5AF11E6E7360003C2536 /* SearchResultController.swift */,
+				73754E0A1E97B027001DD942 /* SearchTagsController.swift */,
+				7362A5E71E9C99E300DA4C91 /* SearchResultParser.swift */,
+			);
+			name = search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -525,6 +542,7 @@
 				70AD5AE71E6E7129003C2536 /* DataManager.swift in Sources */,
 				7371FA011E936898009241FF /* KCFloatingActionButtonDelegate.swift in Sources */,
 				0A80DA261E702DA700939443 /* BottomBarOverlay.swift in Sources */,
+				73754E0B1E97B027001DD942 /* SearchTagsController.swift in Sources */,
 				73F43B041E82465800D4DD90 /* PageDataPref.swift in Sources */,
 				7392A7881E94CEC700A6ED32 /* VideoListingDBManager.swift in Sources */,
 				7371FA021E936898009241FF /* KCFloatingActionButtonItem.swift in Sources */,
@@ -533,6 +551,7 @@
 				0A72615F1E6D30600023883F /* UIColorExtension.swift in Sources */,
 				707FD8181E7140A400948BEA /* Util.swift in Sources */,
 				706B0B9B1E73D392006CF8CA /* AnimationView.swift in Sources */,
+				7362A5E81E9C99E300DA4C91 /* SearchResultParser.swift in Sources */,
 				70AD5AE31E6E7129003C2536 /* BaseParser.swift in Sources */,
 				7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */,
 				73950B411E926E0F0026A7D9 /* BaseListingViewController.swift in Sources */,
@@ -558,13 +577,14 @@
 				0A5374AA1E606B9700F198AD /* DimensionManager.swift in Sources */,
 				0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */,
 				0A72615E1E6D30600023883F /* StringExtension.swift in Sources */,
-				70AD5AF21E6E7360003C2536 /* SearchController.swift in Sources */,
+				70AD5AF21E6E7360003C2536 /* SearchResultController.swift in Sources */,
 				F46267191E77B1A600302ACF /* PreChatFormField.swift in Sources */,
 				73638FAC1E8A57EC0089619B /* CustomViewLayer.swift in Sources */,
 				70AD5AE61E6E7129003C2536 /* HttpRequestBuilder.swift in Sources */,
 				7392A7841E94C95900A6ED32 /* HistoryDBManager.swift in Sources */,
 				736A40FC1E891A3000A4C038 /* VideoListingCard.swift in Sources */,
 				F46267131E77AF7000302ACF /* UserInfo.swift in Sources */,
+				73754E081E978474001DD942 /* ComponentProperties.swift in Sources */,
 				7360D8881E7A8C8400C662DE /* ParserListener.swift in Sources */,
 				7366E8951E8D23BA002A09F2 /* CustomLabel.swift in Sources */,
 				70AD5AEE1E6E71CD003C2536 /* VideoListingModel.swift in Sources */,

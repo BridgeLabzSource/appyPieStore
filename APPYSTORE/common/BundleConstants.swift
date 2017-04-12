@@ -21,7 +21,7 @@ class BundleConstants: NSObject {
     
     static let CATEGORY_ID = "CATEGORY_ID";
     static let PARENT_CATEGORY_ID = "PARENT_CATEGORY_ID";
-    static let ET_SEARCH_KEYWORD = "ET_SEARCH_KEYWORD";
+    static let SEARCH_KEYWORD = "SEARCH_KEYWORD";
     static let VIDEO_LIST_MODEL_KEY = "VIDEO_LIST_MODEL_KEY";
     static let AUDIO_LIST_MODEL_KEY = "AUDIO_LIST_MODEL_KEY";
     static let CATEGORY_NAME = "CATEGORY_NAME";

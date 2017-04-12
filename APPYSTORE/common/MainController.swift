@@ -9,72 +9,55 @@ class MainController: UIViewController, MainControllerCommunicator {
     
     var uiDelegate: MainControllerUIDelegate? = nil
     
-    weak var currentViewController: UIViewController!
+    var childControllersList: [BaseViewController]? = []
     
-    func addChild(controller: BaseViewController) {
-        removeChildController(childController: currentViewController)
-        addAsChildViewController(childController: controller)
-        currentViewController = controller
+    func getCurrentViewController() -> BaseViewController? {
+        if childControllersList != nil && (childControllersList?.count)! > 0 {
+            return (childControllersList?[(childControllersList?.count)! - 1])!
+        }
+        return nil
     }
     
-    lazy var historyController: HistoryController = {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "HistoryController") as! HistoryController
-        
-        self.addAsChildViewController(childController: viewController)
-        return viewController
-    }()
-    
-    lazy var videoCategoryController: VideoCategoryController = {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "VideoCategoryController") as! VideoCategoryController
-        
-        self.addAsChildViewController(childController: viewController)
-        return viewController
-    }()
+    func addChild(controller: BaseViewController) {
+        uiDelegate?.addChild(controller: controller)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         uiDelegate = MainControllerUIDelegate(mainController: self)
         uiDelegate?.viewDidLoad()
-        
-        topView.videoButton.addTarget(self, action: #selector(showVideoCategoryPage), for: .touchUpInside)
-        topView.historyButton.addTarget(self, action: #selector(showHistoryPage), for: .touchUpInside)
-
-        super.viewDidLoad()
-        
     }
     
-    func showVideoCategoryPage() {
-        removeChildController(childController: currentViewController)
-        videoCategoryController.view.isHidden = false
-        currentViewController = videoCategoryController
+    // Called when the view is about to made visible. Default does nothing
+    override open func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear called")
     }
     
-    func showHistoryPage() {
-        removeChildController(childController: currentViewController)
-        historyController.view.isHidden = false
-        currentViewController = historyController
+    // Called when the view has been fully transitioned onto the screen. Default does nothing
+    override open func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear called")
     }
     
-    private func addAsChildViewController(childController: BaseViewController){
-        self.addChildViewController(childController)
-        self.view.addSubview(childController.view)
-        childController.view.frame = middleView.frame
-        childController.didMove(toParentViewController: childController)
-        childController.mainControllerCommunicator = self
+    // Called just before the view controller's view's layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
+    override open func viewWillLayoutSubviews(){
+        print("viewWillLayoutSubviews called")
     }
     
-    func removeChildController(childController: UIViewController?) {
-        if  childController != nil {
-            if childController is VideoCategoryController || childController is HistoryController{
-                childController?.view.isHidden = true
-            } else {
-                childController?.willMove(toParentViewController: nil)
-                childController?.view.removeFromSuperview()
-                childController?.removeFromParentViewController()
-            }
-        }
+    // Called just after the view controller's view's layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
+    override open func viewDidLayoutSubviews() {
+        print("viewDidLayoutSubviews called")
+    }
+    
+    override func beginAppearanceTransition(_ isAppearing: Bool, animated: Bool) {
+        print("beginAppearanceTransition called")
+    }
+    
+    func onBackPressed() {
+        getCurrentViewController()?.viewWillAppear(false)
+    }
+    
+    internal func setUIComponents(components: ComponentProperties) {
+        uiDelegate?.setUIComponents(components: components)
     }
     
 }

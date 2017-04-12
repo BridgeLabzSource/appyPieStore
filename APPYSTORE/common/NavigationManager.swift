@@ -10,7 +10,6 @@ import UIKit
 
 class NavigationManager {
     
-    
     static func openVideoCategoryPage(mainControllerCommunicator: MainControllerCommunicator) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "VideoCategoryController") as! VideoCategoryController
@@ -29,6 +28,22 @@ class NavigationManager {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "HistoryController") as! HistoryController
         viewController.mainControllerCommunicator = mainControllerCommunicator
+        mainControllerCommunicator.addChild(controller: viewController)
+    }
+    
+    static func openSearchTagsPage(mainControllerCommunicator: MainControllerCommunicator) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "SearchTagsController") as! SearchTagsController
+        viewController.mainControllerCommunicator = mainControllerCommunicator
+        mainControllerCommunicator.addChild(controller: viewController)
+        
+    }
+    
+    static func openSearchResultPage(mainControllerCommunicator: MainControllerCommunicator, bundle : AndroidBundle) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "SearchResultController") as! SearchResultController
+        viewController.mainControllerCommunicator = mainControllerCommunicator
+        viewController.bundle = bundle
         mainControllerCommunicator.addChild(controller: viewController)
     }
     

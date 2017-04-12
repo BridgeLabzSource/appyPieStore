@@ -12,11 +12,13 @@ import UIKit
     
     @IBOutlet var rootView: UIView!
     
-    @IBOutlet var videoButton : CustomButton!
-    @IBOutlet var historyButton : CustomButton!
-    @IBOutlet var songButton :CustomButton!
-    @IBOutlet var searchButton : CustomButton!
-    @IBOutlet var userButton : CustomButton!
+    @IBOutlet var btnBack : CustomButton!
+    @IBOutlet var imgChild : UIImageView!
+    @IBOutlet var btnVideo : CustomButton!
+    @IBOutlet var btnHistory : CustomButton!
+    @IBOutlet var btnAudio :CustomButton!
+    @IBOutlet var btnSearch : CustomButton!
+    @IBOutlet weak var tfSearch: UITextField!
     
     @IBOutlet weak var lblVideos: UILabel!
     @IBOutlet weak var lblSongs: UILabel!

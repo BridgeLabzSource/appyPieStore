@@ -36,6 +36,10 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         loadData()
     }
     
+    func getDataSource() -> DataSource{
+        return DataSource.BOTH
+    }
+    
     func loadData() {
         isRequestInProgress = true
         let frame = CGRect(x: Int(collectionViewCentreX - 25), y: Int(collectionViewCentreY / 2), width: 30, height: 30)
@@ -44,7 +48,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         self.collectionView.addSubview(progressView!)
         
         dataFetchFramework?.onDataReceived = onDataReceived
-        dataFetchFramework?.start(dataSource: DataSource.BOTH)
+        dataFetchFramework?.start(dataSource: getDataSource())
     }
 
     func onDataReceived( status: String, result: AnyObject) {
@@ -54,7 +58,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         if status == DataFetchFramework.REQUEST_SUCCESS {
             if let result = result as? [BaseModel] {
                 self.view.setNeedsDisplay()
-                print("onDataReceived called",result.count)
+                print("onDataReceived called", result.count)
                 self.collectionView.reloadData()
             }
         } else if status == DataFetchFramework.END_OF_DATA {

@@ -34,7 +34,11 @@ class DataManager: NSObject {
                 
                 returndata(statusType, result!)
             })
-            
+        case PageConstants.SEARCH_RESULT_PAGE:
+            SearchResultParser().parse(params: HttpRequestBuilder.getSearchResultParameters(method: "search", keyword: bundle?[BundleConstants.SEARCH_KEYWORD] as! String, contentType: "videos", offset: String(offset), limit: String(limit), age: "1", inclAge: "", ignoreCatId: "", pageId: "SearchFragment", isPopular: "0"), completion: {
+                statusType, result in
+                returndata(statusType, result!)
+            })
         default:
             break
             
@@ -108,8 +112,8 @@ class DataManager: NSObject {
         return count
     }
     
-    static func getDataFetchTimePrefKey(pageName: String, pageUniqueId: String) -> String {
-        var dataFetchTimePrefKey = ""
+    static func getDataFetchTimePrefKey(pageName: String, pageUniqueId: String) -> String? {
+        var dataFetchTimePrefKey: String? = nil
         switch pageName {
         case PageConstants.HISTORY_PAGE:
             dataFetchTimePrefKey = PageConstants.KEY_HISTORY_DATA_FETCH_TIME + pageUniqueId
@@ -124,8 +128,8 @@ class DataManager: NSObject {
         return dataFetchTimePrefKey
     }
     
-    static func getOffsetServerPrefKey(pageName: String, pageUniqueId: String) -> String {
-        var offsetServerPrefKey = ""
+    static func getOffsetServerPrefKey(pageName: String, pageUniqueId: String) -> String? {
+        var offsetServerPrefKey: String? = nil
         switch pageName {
         case PageConstants.HISTORY_PAGE:
             offsetServerPrefKey = PageConstants.KEY_HISTORY_SERVER_OFFSET + pageUniqueId
@@ -140,8 +144,8 @@ class DataManager: NSObject {
         return offsetServerPrefKey
     }
     
-    static func getTotalCountPrefKey(pageName: String, pageUniqueId: String) -> String {
-        var totalCountPrefKey = ""
+    static func getTotalCountPrefKey(pageName: String, pageUniqueId: String) -> String? {
+        var totalCountPrefKey: String? = nil
         switch pageName {
         case PageConstants.HISTORY_PAGE:
             totalCountPrefKey = PageConstants.KEY_HISTORY_TOTAL_CONTENT_COUNT + pageUniqueId
