@@ -14,6 +14,7 @@ enum DataSource {
 
 class DataFetchFramework {
     var pageName: String
+    var pageUniqueId: String
     var offsetLocal = 0
     var offsetServer = 0
     var limit = 20
@@ -30,11 +31,14 @@ class DataFetchFramework {
     static let REQUEST_SUCCESS = "REQUEST_SUCCESS"
     static let CONNECTION_ERROR = "CONNECTION_ERROR"
     static let END_OF_DATA = "END_OF_DATA"
+    
     var dataSource: DataSource?
+    var bundle: AndroidBundle
     
-    
-    init(pageName: String) {
+    init(pageName: String, pageUniqueId: String, bundle: AndroidBundle) {
         self.pageName = pageName
+        self.pageUniqueId = pageUniqueId
+        self.bundle = bundle
         contentList = []
         fetchPrefsKey()
         offsetServer = getOffsetServerFromPrefs()
@@ -63,9 +67,9 @@ class DataFetchFramework {
     }
     
     func fetchPrefsKey() {
-        dataFetchTimePrefKey = DataManager.getDataFetchTimePrefKey(pageName: pageName)
-        offsetServerPrefKey = DataManager.getOffsetServerPrefKey(pageName: pageName)
-        totalCountPrefKey = DataManager.getTotalCountPrefKey(pageName: pageName)
+        dataFetchTimePrefKey = DataManager.getDataFetchTimePrefKey(pageName: pageName, pageUniqueId: pageUniqueId)
+        offsetServerPrefKey = DataManager.getOffsetServerPrefKey(pageName: pageName, pageUniqueId: pageUniqueId)
+        totalCountPrefKey = DataManager.getTotalCountPrefKey(pageName: pageName, pageUniqueId: pageUniqueId)
     }
     
     func reset() {
@@ -94,7 +98,8 @@ class DataFetchFramework {
     }
     
     func getDataFromLocalStorage() {
-        DataManager.sharedInstance.getLocalData(pageName: pageName, offset: offsetLocal, limit: limit, completion: {
+        print("getDataFromLocalStorage called offsetLocal: \(offsetLocal)")
+        DataManager.sharedInstance.getLocalData(pageName: pageName, offset: offsetLocal, limit: limit, bundle: bundle, completion: {
             result in
             
             if let data = result, (result?.count)! > 0 {
@@ -140,21 +145,22 @@ class DataFetchFramework {
     
     func isLocalDataAvailable() -> Bool {
         var count = 0
-        count = DataManager.sharedInstance.getRowCountForPage(pageName: pageName)
+        count = DataManager.sharedInstance.getRowCountForPage(pageName: pageName, bundle: bundle)
+        print("isLocalDataAvailable count \(count)")
         return count > 0
     }
     
     func callServerApiToFetchData() {
-        
+        print("callServerApiToFetchData called offsetServer: \(offsetServer)")
         if totalCountOnServer != -1 && offsetServer >= totalCountOnServer {
             self.handleResponse(statusType: DataFetchFramework.END_OF_DATA, result: "" as AnyObject)
         } else {
             if  isTimeExpired() {
                 isExistingDataDirty = true
                 offsetServer = 0
+                print("TimeExpired hence offsetServer: \(offsetServer)")
             }
-            print("Ganesh Server offsetServer : \(offsetServer) limit : \(limit)")
-            DataManager.sharedInstance.getData(pageName: pageName, offset: offsetServer, limit: limit, returndata: {
+            DataManager.sharedInstance.getData(pageName: pageName, offset: offsetServer, limit: limit, bundle: bundle, returndata: {
                 statusType, result in
                 
                 self.handleResponse(statusType: statusType, result: result)
@@ -175,7 +181,7 @@ class DataFetchFramework {
                         
                         self.isExistingDataDirty = false
                     }
-                    print("Ganesh Server response count : \(result.count) ")
+                    print("handleResponse Server data count : \(result.count) ")
                     if dataSource != .SERVER {
                         saveDataToLocalStorage(dataList: result)
                     }
@@ -184,11 +190,12 @@ class DataFetchFramework {
                     self.saveTotalCountOnServer(totalCount: self.totalCountOnServer)
                     self.offsetServer += self.limit
                     self.saveOffsetServer(offsetServer: self.offsetServer)
-                    addToContentList(contentList: result)
+                    //addToContentList(contentList: result)
                     
                     if dataSource != .SERVER && isLocalDataAvailable() {
                         getDataFromLocalStorage()
                     } else {
+                        addToContentList(contentList: result)
                         self.onDataReceived(statusType, contentList as AnyObject)
                     }
                 } else {
@@ -223,7 +230,9 @@ class DataFetchFramework {
     }
     
     func isTimeExpired() -> Bool {
-        return ( Utils.getCurrentTimeInMilliseconds() - getPreviousDataFetchTime() ) > getDataFetchInterval()
+        let isTimeExpired = ( Utils.getCurrentTimeInMilliseconds() - getPreviousDataFetchTime() ) > getDataFetchInterval()
+        print("isTimeExpired \(isTimeExpired)")
+        return isTimeExpired
     }
     
     func getPreviousDataFetchTime() -> Int64 {
@@ -245,7 +254,7 @@ class DataFetchFramework {
     }
     
     func clearLocalData() {
-        DataManager.sharedInstance.deleteDataForPage(pageName: pageName)
+        DataManager.sharedInstance.deleteDataForPage(pageName: pageName, bundle: bundle)
     }
     
     func addToContentList(contentList: [BaseModel]) {

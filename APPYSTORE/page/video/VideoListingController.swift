@@ -9,9 +9,15 @@
 import UIKit
 
 class VideoListingController: BaseListingViewController {
+    var catId: String = ""
+    var catName: String = ""
+    var pCatId: String = ""
 
     override func viewDidLoad() {
-        dataFetchFramework = DataFetchFramework(pageName: PageConstants.VIDEO_LISTING_PAGE)
+        self.catId = bundle?[BundleConstants.CATEGORY_ID] as! String
+        self.pCatId = bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String
+        self.catName = bundle?[BundleConstants.CATEGORY_NAME] as! String
+        dataFetchFramework = DataFetchFramework(pageName: PageConstants.VIDEO_LISTING_PAGE, pageUniqueId: catName, bundle: bundle)
         super.viewDidLoad()
     }
 }

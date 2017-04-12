@@ -14,6 +14,7 @@ class SampleViewController: UIViewController, VideoDelegate {
     @IBOutlet weak var miniFrame: UIView!
     @IBOutlet var rootView: UIView!
     
+    @IBOutlet weak var recommendedContainer: UIView!
     @IBOutlet weak var videoPlayer: VideoPlayer!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +37,13 @@ class SampleViewController: UIViewController, VideoDelegate {
     func onVideoMaximize() {
         videoPlayer.rootView.frame = rootView.frame
         videoPlayer.avPlayerLayer.frame = videoPlayer.rootView.bounds
+        
         /*
         videoPlayer.rootView.frame.size = CGSize(width: AppDelegate.DEVICE_WIDTH, height: AppDelegate.DEVICE_HEIGHT)
         
         videoPlayer.avPlayerLayer.frame = videoPlayer.rootView.frame
         */
+        recommendedContainer.isHidden = true
     }
     
     func onVideoMinimize() {
@@ -50,6 +53,7 @@ class SampleViewController: UIViewController, VideoDelegate {
         videoPlayer.rootView.frame.size = CGSize(width: AppDelegate.DEVICE_WIDTH*2/3, height: (AppDelegate.DEVICE_WIDTH*2/3)*3/4 )
         videoPlayer.avPlayerLayer.frame = videoPlayer.rootView.frame
         */
+        recommendedContainer.isHidden = false
     }
     /*
     // MARK: - Navigation

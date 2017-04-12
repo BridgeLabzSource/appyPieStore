@@ -52,7 +52,19 @@ class HttpRequestBuilder: NSObject {
     static let CHILD_ID = "child_id"
     static let PAGEID = "pageid"
     static let OFFSET = "offset"
+    static let LIMIT_START = "limit_start"
     static let LIMIT = "limit"
+    static let CONTENT_TYPE = "content_type"
+    static let CATID = "catid"
+    static let PCATID = "pcatid"
+    static let AGE = "age"
+    static let INCL_AGE = "incl_age"
+    static let CONTENT_ID = "content_id"
+    static let FLAG_AT_ITEM_AT_FIRST_POSITION = "flag"
+    static let SEQUENCE_TYPE = "sequence_type"
+    static let SEQUENCE_NUMBER = "sequence_number"
+    static let RETURN_CONTENT_TYPE = "return_content_type"
+    
     
     static func getHeaders() -> HTTPHeaders {
         
@@ -102,25 +114,55 @@ class HttpRequestBuilder: NSObject {
     
     static func getHistoryParameters(method: String, childId: String, pageId: String, offset: String, limit: String) -> Parameters {
         
-        let params = [
-            METHOD: method,
-            CHILD_ID: childId,
-            PAGEID: pageId,
-            OFFSET: offset,
-            LIMIT: limit
+        return [METHOD: method,
+                CHILD_ID: childId,
+                PAGEID: pageId,
+                OFFSET: offset,
+                LIMIT: limit
         ]
-        
-        return params
     }
     
     static func getVideoCategoryParameters() -> Parameters
     {
-        let params = ["method":"getCategoryList",
-                      "limit_start":"0",
-                      "age":"3",
-                      "incl_age":"1",
-                      "content_type":"videos"]
-        return params
+        return [METHOD:"getCategoryList",
+                LIMIT_START:"0",
+                AGE:"3",
+                INCL_AGE:"1",
+                CONTENT_TYPE:"videos"]
+    }
+    
+    static func getVideoListingParameters(method: String, contentType: String, offset: String, limit: String, catId: String, pCatId: String, age: String, inclAge: String, pageId: String) -> Parameters
+    {
+        return [METHOD: method,
+                CONTENT_TYPE: contentType,
+                OFFSET: offset,
+                LIMIT: limit,
+                CATID: catId,
+                PCATID: pCatId,
+                AGE: age,
+                INCL_AGE: inclAge,
+                PAGEID: pageId
+        ]
+    }
+    
+    static func getRecommendedVideoListingParameters(method: String, contentType: String, offset: String, limit: String, catId: String, pCatId: String, contentId: String, sequenceType: String, sequenceNumber: String, age: String, inclAge: String, returnedContentType: String, pageId: String, flagItemAtFirstPosition: String) -> Parameters {
+        
+        return [
+            METHOD: method,
+            CONTENT_TYPE: contentType,
+            OFFSET: offset,
+            LIMIT: limit,
+            CATID: catId,
+            PCATID: pCatId,
+            CONTENT_ID: contentId,
+            SEQUENCE_TYPE: sequenceType,
+            SEQUENCE_NUMBER: sequenceNumber,
+            AGE: age,
+            INCL_AGE: inclAge,
+            RETURN_CONTENT_TYPE: returnedContentType,
+            PAGEID: pageId,
+            FLAG_AT_ITEM_AT_FIRST_POSITION: flagItemAtFirstPosition
+        ]
     }
     
 }

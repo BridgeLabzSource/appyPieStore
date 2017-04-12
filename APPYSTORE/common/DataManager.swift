@@ -10,47 +10,55 @@ class DataManager: NSObject {
         
     }
     
-    func getData(pageName: String, offset: Int, limit: Int,
+    func getData(pageName: String, offset: Int, limit: Int, bundle: AndroidBundle,
                  returndata: @escaping (_ statusType: String, _ result:AnyObject)->Void) {
         
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            
-            let parser = HistoryParser()
-            parser.parse(params: HttpRequestBuilder.getHistoryParameters(method: "getAllHistory", childId: "29518", pageId: "History", offset: String(offset), limit: String(limit)), completion:{
+            HistoryParser().parse(params: HttpRequestBuilder.getHistoryParameters(method: "getAllHistory", childId: "29518", pageId: "History", offset: String(offset), limit: String(limit)), completion:{
                 statusType, result in
                 
                 returndata(statusType, result!)
-                
             })
             
         case PageConstants.VIDEO_CATEGORY_PAGE:
-            let parser = VideoCategoryParser()
-            parser.parse(params: HttpRequestBuilder.getVideoCategoryParameters(), completion:{
+            VideoCategoryParser().parse(params: HttpRequestBuilder.getVideoCategoryParameters(), completion:{
                 statusType, result in
                 
                 returndata(statusType, result!)
-                
             })
             
+        case PageConstants.VIDEO_LISTING_PAGE:
+            VideoListingParser().parse(params: HttpRequestBuilder.getVideoListingParameters(method: "getContentList", contentType: "videos", offset: String(offset), limit: String(limit), catId: bundle?[BundleConstants.CATEGORY_ID] as! String, pCatId: bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String, age: "1", inclAge: "1", pageId: "videos"), completion:{
+                statusType, result in
+                
+                returndata(statusType, result!)
+            })
+        
+        case PageConstants.RECOMMENDED_VIDEO_LISTING_PAGE:
+            RecommendedVideoParser().parse(params: HttpRequestBuilder.getRecommendedVideoListingParameters(method: "getRecommendation", contentType: "videos", offset: String(offset), limit: String(limit), catId: "193", pCatId: "191", contentId: "20087824", sequenceType: "a", sequenceNumber: "501", age: "8", inclAge: "", returnedContentType: "videos", pageId: "videoRecommendation", flagItemAtFirstPosition: "1"), completion: {
+                statusType, result in
+                
+                returndata(statusType, result!)
+            })
         default:
             break
             
         }
     }
     
-    func getLocalData(pageName: String, offset: Int, limit: Int,
-                      completion: @escaping ([BaseModel]?) -> Void ) {
+    func getLocalData(pageName: String, offset: Int, limit: Int, bundle: AndroidBundle, completion: @escaping ([BaseModel]?) -> Void ) {
         var dataList: [BaseModel]?
         
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            let historyDBManager = HistoryDBManager()
-            dataList = historyDBManager.fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: nil)
+            dataList = HistoryDBManager().fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: nil)
             
         case PageConstants.VIDEO_CATEGORY_PAGE:
-            let videoDBManager = VideoDBManager()
-            dataList = videoDBManager.fetchAll()
+            dataList = VideoDBManager().fetchAll()
+            
+        case PageConstants.VIDEO_LISTING_PAGE:
+            dataList = VideoListingDBManager().fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: bundle)
             
         default:
             break
@@ -59,15 +67,15 @@ class DataManager: NSObject {
         completion(dataList)
     }
     
-    func getRowCountForPage(pageName: String) -> Int {
+    func getRowCountForPage(pageName: String, bundle: AndroidBundle) -> Int {
         var count: Int = -1
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            let historyDBManager = HistoryDBManager()
-            count = historyDBManager.getRowCount()
+            count = HistoryDBManager().getRowCount()
         case PageConstants.VIDEO_CATEGORY_PAGE:
-            let videoDBManager = VideoDBManager()
-            count = videoDBManager.getRowCount()
+            count = VideoDBManager().getRowCount()
+        case PageConstants.VIDEO_LISTING_PAGE:
+            count = VideoListingDBManager().getRowCount(bundle: bundle)
         default:
             break
         }
@@ -75,14 +83,14 @@ class DataManager: NSObject {
         return count
     }
     
-    func deleteDataForPage(pageName: String) {
+    func deleteDataForPage(pageName: String, bundle: AndroidBundle) {
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            let historyDBManager = HistoryDBManager()
-            historyDBManager.removeAll()
+            HistoryDBManager().removeAll(bundle: bundle)
         case PageConstants.VIDEO_CATEGORY_PAGE:
-            let videoDBManager = VideoDBManager()
-            videoDBManager.removeAll()
+            VideoDBManager().removeAll(bundle: bundle)
+        case PageConstants.VIDEO_LISTING_PAGE:
+            VideoListingDBManager().removeAll(bundle: bundle)
         default:
             break
         }
@@ -90,31 +98,31 @@ class DataManager: NSObject {
     
     func saveDataForPage(pageName: String, dataList: [BaseModel]) ->Int {
         var count = -1
+        
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            let historyDBManager = HistoryDBManager()
-            count = historyDBManager.insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
-            
-            print("%d Records are inserted succefully..",count)
+            count = HistoryDBManager().insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
         case PageConstants.VIDEO_CATEGORY_PAGE:
-            let videoDBManager = VideoDBManager()
-            count = videoDBManager.insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
+            count = VideoDBManager().insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
+        case PageConstants.VIDEO_LISTING_PAGE:
+            count = VideoListingDBManager().insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
         default:
             break
         }
         
+        print(" \(count) records inserted succesfully... \(pageName) ")
         return count
     }
     
-    static func getDataFetchTimePrefKey(pageName: String) -> String {
+    static func getDataFetchTimePrefKey(pageName: String, pageUniqueId: String) -> String {
         var dataFetchTimePrefKey = ""
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            dataFetchTimePrefKey = PageConstants.KEY_HISTORY_DATA_FETCH_TIME
-            break
+            dataFetchTimePrefKey = PageConstants.KEY_HISTORY_DATA_FETCH_TIME + pageUniqueId
         case PageConstants.VIDEO_CATEGORY_PAGE:
-            dataFetchTimePrefKey = PageConstants.KEY_VIDEO_CATEGORY_DATA_FETCH_TIME
-            break
+            dataFetchTimePrefKey = PageConstants.KEY_VIDEO_CATEGORY_DATA_FETCH_TIME + pageUniqueId
+        case PageConstants.VIDEO_LISTING_PAGE:
+            dataFetchTimePrefKey = PageConstants.KEY_VIDEO_LISTING_DATA_FETCH_TIME + pageUniqueId
         default:
             break
         }
@@ -122,15 +130,15 @@ class DataManager: NSObject {
         return dataFetchTimePrefKey
     }
     
-    static func getOffsetServerPrefKey(pageName: String) -> String {
+    static func getOffsetServerPrefKey(pageName: String, pageUniqueId: String) -> String {
         var offsetServerPrefKey = ""
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            offsetServerPrefKey = PageConstants.KEY_HISTORY_SERVER_OFFSET
-            break
+            offsetServerPrefKey = PageConstants.KEY_HISTORY_SERVER_OFFSET + pageUniqueId
         case PageConstants.VIDEO_CATEGORY_PAGE:
-            offsetServerPrefKey = PageConstants.KEY_VIDEO_CATEGORY_SERVER_OFFSET
-            break
+            offsetServerPrefKey = PageConstants.KEY_VIDEO_CATEGORY_SERVER_OFFSET + pageUniqueId
+        case PageConstants.VIDEO_LISTING_PAGE:
+            offsetServerPrefKey = PageConstants.KEY_VIDEO_LISTING_SERVER_OFFSET + pageUniqueId
         default:
             break
         }
@@ -138,15 +146,19 @@ class DataManager: NSObject {
         return offsetServerPrefKey
     }
     
-    static func getTotalCountPrefKey(pageName: String) -> String {
+    static func getTotalCountPrefKey(pageName: String, pageUniqueId: String) -> String {
         var totalCountPrefKey = ""
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            totalCountPrefKey = PageConstants.KEY_HISTORY_TOTAL_CONTENT_COUNT
+            totalCountPrefKey = PageConstants.KEY_HISTORY_TOTAL_CONTENT_COUNT + pageUniqueId
             break
         case PageConstants.VIDEO_CATEGORY_PAGE:
-            totalCountPrefKey = PageConstants.KEY_VIDEO_CATEGORY_TOTAL_CONTENT_COUNT
+            totalCountPrefKey = PageConstants.KEY_VIDEO_CATEGORY_TOTAL_CONTENT_COUNT + pageUniqueId
             break
+        case PageConstants.VIDEO_LISTING_PAGE:
+            totalCountPrefKey = PageConstants.KEY_VIDEO_LISTING_TOTAL_CONTENT_COUNT + pageUniqueId
+            break
+
         default:
             break
         }

@@ -11,6 +11,7 @@ import UIKit
 class BaseViewController: UIViewController {
 
     var mainControllerCommunicator: MainControllerCommunicator?
+    var bundle: AndroidBundle = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
