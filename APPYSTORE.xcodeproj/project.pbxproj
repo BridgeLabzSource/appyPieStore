@@ -55,6 +55,10 @@
 		7366E8951E8D23BA002A09F2 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366E8941E8D23BA002A09F2 /* CustomLabel.swift */; };
 		736A40FC1E891A3000A4C038 /* VideoListingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736A40FA1E891A3000A4C038 /* VideoListingCard.swift */; };
 		736A40FD1E891A3000A4C038 /* VideoListingCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736A40FB1E891A3000A4C038 /* VideoListingCard.xib */; };
+
+		736D42871E9F544F00ACDD0F /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D42861E9F544F00ACDD0F /* UITextFieldExtension.swift */; };
+		736D42891E9F57DC00ACDD0F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D42881E9F57DC00ACDD0F /* CustomTextField.swift */; };
+
 		7370B81D1E9DE2A400D91ABA /* RecommendedVideoCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7370B81C1E9DE2A400D91ABA /* RecommendedVideoCard.xib */; };
 		7370B81F1E9DE99100D91ABA /* RecommendedVideoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7370B81E1E9DE99100D91ABA /* RecommendedVideoCard.swift */; };
 		7370B8211E9DED3B00D91ABA /* RecommendedVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7370B8201E9DED3B00D91ABA /* RecommendedVideoViewController.swift */; };
@@ -156,11 +160,16 @@
 		7366E8941E8D23BA002A09F2 /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		736A40FA1E891A3000A4C038 /* VideoListingCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingCard.swift; sourceTree = "<group>"; };
 		736A40FB1E891A3000A4C038 /* VideoListingCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListingCard.xib; sourceTree = "<group>"; };
+
+		736D42861E9F544F00ACDD0F /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		736D42881E9F57DC00ACDD0F /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+
 		7370B81C1E9DE2A400D91ABA /* RecommendedVideoCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedVideoCard.xib; sourceTree = "<group>"; };
 		7370B81E1E9DE99100D91ABA /* RecommendedVideoCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedVideoCard.swift; sourceTree = "<group>"; };
 		7370B8201E9DED3B00D91ABA /* RecommendedVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedVideoViewController.swift; sourceTree = "<group>"; };
 		7370B8221E9DF4F600D91ABA /* RecommendedVideoParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedVideoParser.swift; sourceTree = "<group>"; };
 		7370B8241E9E421300D91ABA /* BaseCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCard.swift; sourceTree = "<group>"; };
+
 		7371A2E21E7BB293009B2894 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		7371F9F61E936898009241FF /* KCFABManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFABManager.swift; sourceTree = "<group>"; };
 		7371F9F71E936898009241FF /* KCFABViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFABViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +270,7 @@
 				0A5E1C631E701C2D00537F84 /* UILabelExtension.swift */,
 				7371A2E21E7BB293009B2894 /* ArrayExtension.swift */,
 				73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */,
+				736D42861E9F544F00ACDD0F /* UITextFieldExtension.swift */,
 			);
 			name = extension;
 			sourceTree = "<group>";
@@ -278,10 +288,14 @@
 				0A80DA251E702DA700939443 /* BottomBarOverlay.swift */,
 				73638FAB1E8A57EC0089619B /* CustomViewLayer.swift */,
 				7366E8941E8D23BA002A09F2 /* CustomLabel.swift */,
+
+				736D42881E9F57DC00ACDD0F /* CustomTextField.swift */,
+
 				7371FA051E939F1D009241FF /* VideoPlayer.xib */,
 				7371FA071E93AC53009241FF /* VideoPlayer.swift */,
 				7370B81C1E9DE2A400D91ABA /* RecommendedVideoCard.xib */,
 				7370B81E1E9DE99100D91ABA /* RecommendedVideoCard.swift */,
+
 			);
 			name = customView;
 			sourceTree = "<group>";
@@ -631,7 +645,9 @@
 				7366E8951E8D23BA002A09F2 /* CustomLabel.swift in Sources */,
 				70AD5AEE1E6E71CD003C2536 /* VideoListingModel.swift in Sources */,
 				0A8A58A61E683F2100A93DD2 /* VideoCategoryController.swift in Sources */,
+				736D42891E9F57DC00ACDD0F /* CustomTextField.swift in Sources */,
 				0A7261631E6D30AE0023883F /* CustomButton.swift in Sources */,
+				736D42871E9F544F00ACDD0F /* UITextFieldExtension.swift in Sources */,
 				7371A2E31E7BB293009B2894 /* ArrayExtension.swift in Sources */,
 				7360D88A1E7A947500C662DE /* LoginParserListener.swift in Sources */,
 				73967E7D1E893BF100A9A81B /* UICollectionViewExtension.swift in Sources */,

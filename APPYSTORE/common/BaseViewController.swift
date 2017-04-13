@@ -9,7 +9,8 @@
 import UIKit
 
 class BaseViewController: UIViewController, BaseViewControllerProtocol {
-
+    var pageName: String?
+    var pageNameUniqueIdentifier: String?
     internal func getPageName() -> String {
         assert(false, "This method must be overriden by the subclass")
     }

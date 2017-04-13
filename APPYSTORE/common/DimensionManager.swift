@@ -41,12 +41,17 @@ class DimensionManager{
     static func setDimension1280x720(view: UIView, width:CGFloat, height:CGFloat){
         view.bounds.size.width = AppDelegate.DEVICE_WIDTH * (width / CGFloat(1280))
         view.bounds.size.height = AppDelegate.DEVICE_HEIGHT * (height / CGFloat(720))
-        print("width:  \(width)   heigth:  \(height)  viewWidth:  \(view.bounds.size.width)  viewHeight:  \(view.bounds.size.height)")
+        print("width:  \(width)   height:  \(height)  viewWidth:  \(view.bounds.size.width)  viewHeight:  \(view.bounds.size.height)")
     }
     
     static func setTextSize1280x720(label: UILabel, size: CGFloat){
         let fontSize = size * AppDelegate.DEVICE_HEIGHT / 720.0
         label.font = label.font.withSize(fontSize)
+    }
+    
+    static func setTextSize1280x720(textField: UITextField, size: CGFloat){
+        let fontSize = size * AppDelegate.DEVICE_HEIGHT / 720.0
+        textField.font = textField.font?.withSize(fontSize)
     }
     
     func userDeviceName() -> String {

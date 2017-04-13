@@ -50,7 +50,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="noR-lp-Jwd" secondAttribute="trailing" id="NWF-PB-tlH"/>
                             <constraint firstItem="noR-lp-Jwd" firstAttribute="leading" secondItem="onx-kR-mpG" secondAttribute="leading" id="SY9-Hc-Knx"/>
@@ -351,7 +351,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="259" height="192"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="94AE770E-7AB0-4D4E-992D-E725312E70B1" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
+
                                                     <rect key="frame" x="8" y="8" width="243" height="116"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="116" id="HfT-XT-9p0"/>
@@ -490,7 +492,9 @@
         </scene>
     </scenes>
     <resources>
+
         <image name="94AE770E-7AB0-4D4E-992D-E725312E70B1" width="678" height="480">
+
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

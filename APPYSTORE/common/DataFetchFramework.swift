@@ -34,6 +34,7 @@ class DataFetchFramework {
     
     var dataSource: DataSource?
     var bundle: AndroidBundle
+    var isConnectionError = false
     
     init(pageName: String, pageUniqueId: String, bundle: AndroidBundle) {
         self.pageName = pageName
@@ -205,6 +206,10 @@ class DataFetchFramework {
                 self.onDataReceived(DataFetchFramework.REQUEST_FAILURE , result)
             }
         } else {
+            if statusType == DataFetchFramework.CONNECTION_ERROR{
+                isConnectionError = true
+            }
+            
             if dataSource == .BOTH && isLocalDataAvailable() {
                 getDataFromLocalStorage()
             } else {
