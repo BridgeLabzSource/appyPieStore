@@ -80,29 +80,9 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         
         let cell = getCell(indexPath: indexPath)
         
-        if let castCell = cell as? RecommendedVideoCard {
-            /*
-            let singleTapPlay = UITapGestureRecognizer(target: self, action: #selector(BaseListingViewController.imageClick))
-            
-            singleTapPlay.numberOfTapsRequired = 1 // you can change this value
-            castCell.imgThumbnail.isUserInteractionEnabled = true
-            castCell.imgThumbnail.addGestureRecognizer(singleTapPlay)
- */
-            let singleTapPlay = UITapGestureRecognizer(target: self, action: #selector(BaseListingViewController.imageClick))
-            
-            singleTapPlay.numberOfTapsRequired = 1
-            castCell.imgThumbnail.isUserInteractionEnabled = true
-            castCell.isUserInteractionEnabled = false
-            castCell.imgThumbnail.addGestureRecognizer(singleTapPlay)
-        }
-        
         cell.fillCard(model: dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel)
         
         return cell
-    }
-    
-    func imageClick() {
-        print("Recommended Controller image click")
     }
     
     func getCell(indexPath: IndexPath) -> BaseCard {

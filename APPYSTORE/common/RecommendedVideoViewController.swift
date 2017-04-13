@@ -24,12 +24,22 @@ class RecommendedVideoViewController: BaseListingViewController {
     }
     
     override func getCell(indexPath: IndexPath) -> BaseCard {
-        let videoCard = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendedVideoCard", for: indexPath) as! RecommendedVideoCard
-        
-        return videoCard as BaseCard
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendedVideoCard", for: indexPath) as! BaseCard
     }
     
-    
+    /*
+     
+     let singleTapPlay = UITapGestureRecognizer(target: self, action: #selector(RecommendedVideoViewController.imageClick))
+     
+     singleTapPlay.numberOfTapsRequired = 1
+     videoCard.imgThumbnail.isUserInteractionEnabled = true
+     videoCard.bringSubview(toFront: videoCard.imgThumbnail)
+     videoCard.imgThumbnail.addGestureRecognizer(singleTapPlay)
+     singleTapPlay.view?.tag = indexPath.row
+    func imageClick(sender: UITapGestureRecognizer) {
+        print("Recommended section + \(sender.view?.tag)")
+    }
+ */
     
     override func registerCard() {
         self.collectionView.register(UINib(nibName: "RecommendedVideoCard", bundle: nil), forCellWithReuseIdentifier: "RecommendedVideoCard")
