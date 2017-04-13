@@ -8,15 +8,15 @@
 
 import UIKit
 
-    extension UILabel {
+extension UILabel {
         
-        var defaultFontStyle : String {
-            get {
-                return self.font.fontName
-            }
+    var defaultFontStyle : String {
+        get {
+            return self.font.fontName
+        }
             
-            set {
-                self.font = UIFont(name: newValue, size: self.font.pointSize)
-            }
+        set {
+            self.font = UIFont(name: newValue, size: self.font.pointSize)
         }
     }
+}

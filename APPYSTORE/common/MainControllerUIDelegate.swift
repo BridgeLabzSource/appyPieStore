@@ -138,14 +138,18 @@ class MainControllerUIDelegate {
         if components != nil {
             setAllItemsVisibility(state: false)
             makeItemsVisible(components: components)
+            mainController.topView.tfSearch.text = components.searchKeyword
         }
     }
     
     func setAllItemsVisibility(state: Bool) {
         mainController.topView.btnBack.isHidden = !state
         mainController.topView.btnVideo.isHidden = !state
+        mainController.topView.lblVideos.isHidden = !state
         mainController.topView.btnAudio.isHidden = !state
+        mainController.topView.lblSongs.isHidden = !state
         mainController.topView.btnHistory.isHidden = !state
+        mainController.topView.lblHistory.isHidden = !state
         mainController.topView.tfSearch.isHidden = !state
         mainController.topView.btnSearch.isHidden = !state
     }
@@ -158,10 +162,13 @@ class MainControllerUIDelegate {
                 break
             case Item.BTN_VIDEO:
                 mainController.topView.btnVideo.isHidden = false
+                mainController.topView.lblVideos.isHidden = false
             case Item.BTN_AUDIO:
                 mainController.topView.btnAudio.isHidden = false
+                mainController.topView.lblSongs.isHidden = false
             case Item.BTN_HISTORY:
                 mainController.topView.btnHistory.isHidden = false
+                mainController.topView.lblHistory.isHidden = false
             case Item.TF_SEARCH:
                 mainController.topView.tfSearch.isHidden = false
             case Item.BTN_SEARCH:

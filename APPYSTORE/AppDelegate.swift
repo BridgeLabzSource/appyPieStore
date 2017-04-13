@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppDelegate.DEVICE_HEIGHT = (window?.screen.bounds.height)!
         
         UILabel.appearance().defaultFontStyle = "KGMissKindyChunky"
+        UITextField.appearance().defaultFontStyle = "KGMissKindyChunky"
         return true
     }
 
