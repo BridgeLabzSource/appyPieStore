@@ -11,7 +11,7 @@ class DataManager: NSObject {
     }
     
     func getData(pageName: String, offset: Int, limit: Int, bundle: AndroidBundle,
-                 returndata: @escaping (_ statusType: String, _ result:AnyObject)->Void) {
+                 returndata: @escaping (_ statusType: String, _ result:AnyObject) -> Void ) {
         
         switch pageName {
         case PageConstants.HISTORY_PAGE:
@@ -34,14 +34,24 @@ class DataManager: NSObject {
                 
                 returndata(statusType, result!)
             })
+            
+            
+        case PageConstants.RECOMMENDED_VIDEO_LISTING_PAGE:
+            RecommendedVideoParser().parse(params: HttpRequestBuilder.getRecommendedVideoListingParameters(method: "getRecommendation", contentType: "videos", offset: String(offset), limit: String(limit), catId: "193", pCatId: "191", contentId: "20087824", sequenceType: "a", sequenceNumber: "501", age: "8", inclAge: "", returnedContentType: "videos", pageId: "videoRecommendation", flagItemAtFirstPosition: "1"), completion: {
+                statusType, result in
+                
+                returndata(statusType, result!)
+            })
+            
+            
         case PageConstants.SEARCH_RESULT_PAGE:
             SearchResultParser().parse(params: HttpRequestBuilder.getSearchResultParameters(method: "search", keyword: bundle?[BundleConstants.SEARCH_KEYWORD] as! String, contentType: "videos", offset: String(offset), limit: String(limit), age: "1", inclAge: "", ignoreCatId: "", pageId: "SearchFragment", isPopular: "0"), completion: {
                 statusType, result in
+                
                 returndata(statusType, result!)
             })
         default:
             break
-            
         }
     }
     
@@ -156,7 +166,7 @@ class DataManager: NSObject {
         case PageConstants.VIDEO_LISTING_PAGE:
             totalCountPrefKey = PageConstants.KEY_VIDEO_LISTING_TOTAL_CONTENT_COUNT + pageUniqueId
             break
-
+            
         default:
             break
         }

@@ -1,21 +1,17 @@
 //
-//  VideoListingCard.swift
+//  RecommendedVideo.swift
 //  APPYSTORE
 //
-//  Created by ios_dev on 23/03/17.
+//  Created by ios_dev on 12/04/17.
 //  Copyright © 2017 MAUJ MOBILE PVT LTD. All rights reserved.
 //
 
+import Foundation
 import UIKit
-import SDWebImage
 
-@IBDesignable class VideoListingCard: BaseCard {
-    
+class RecommendedVideoCard: BaseCard {
+
     @IBOutlet weak var imgThumbnail: UIImageView!
-    @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var playIcon: UIImageView!
-    @IBOutlet weak var downloadButton: UIButton!
-    
     
     override func awakeFromNib() {
         let radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 64))
@@ -26,8 +22,6 @@ import SDWebImage
         self.layer.cornerRadius = radius
         self.clipsToBounds = true
         
-        DimensionManager.setTextSize1280x720(label: lblTitle, size: DimensionManager.H3)
-        
         showShadowRightBottom()
     }
     
@@ -36,6 +30,10 @@ import SDWebImage
         let image_path = videoListingModel.imagePath
         let imgurl = URL(string: image_path)
         imgThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
-        lblTitle.text = videoListingModel.title
+        
+        
     }
+    
+    
+    
 }

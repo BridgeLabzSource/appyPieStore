@@ -156,7 +156,7 @@ class DataFetchFramework {
         if totalCountOnServer != -1 && offsetServer >= totalCountOnServer {
             self.handleResponse(statusType: DataFetchFramework.END_OF_DATA, result: "" as AnyObject)
         } else {
-            if  isTimeExpired() {
+            if self.dataSource != DataSource.SERVER && isTimeExpired() {
                 isExistingDataDirty = true
                 offsetServer = 0
                 print("TimeExpired hence offsetServer: \(offsetServer)")

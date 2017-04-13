@@ -34,6 +34,10 @@ class DimensionManager{
         return height * 4 / 3
     }
     
+    static func getGeneralizedWidthIn16isto9Ratio(height: CGFloat) -> CGFloat {
+        return height * 16 / 9
+    }
+    
     static func setDimension1280x720(view: UIView, width:CGFloat, height:CGFloat){
         view.bounds.size.width = AppDelegate.DEVICE_WIDTH * (width / CGFloat(1280))
         view.bounds.size.height = AppDelegate.DEVICE_HEIGHT * (height / CGFloat(720))
