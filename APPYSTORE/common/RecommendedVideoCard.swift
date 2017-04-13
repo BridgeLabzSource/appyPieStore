@@ -9,10 +9,9 @@
 import Foundation
 import UIKit
 
-class RecommendedVideo: UICollectionViewCell {
+class RecommendedVideoCard: BaseCard {
 
     @IBOutlet weak var imgThumbnail: UIImageView!
-    @IBOutlet var rootView: UIView!
     
     override func awakeFromNib() {
         let radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 64))
@@ -26,10 +25,15 @@ class RecommendedVideo: UICollectionViewCell {
         showShadowRightBottom()
     }
     
-    func fillCard(videoListingModel: VideoListingModel) {
+    override func fillCard(model: BaseModel) {
+        let videoListingModel = model as! VideoListingModel
         let image_path = videoListingModel.imagePath
         let imgurl = URL(string: image_path)
         imgThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
+        
+        
     }
+    
+    
     
 }

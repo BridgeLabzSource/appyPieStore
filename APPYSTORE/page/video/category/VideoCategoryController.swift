@@ -22,6 +22,10 @@ class VideoCategoryController: BaseViewController, UICollectionViewDelegate, UIC
     let dataFetchFramework = DataFetchFramework(pageName: PageConstants.VIDEO_CATEGORY_PAGE, pageUniqueId: "", bundle: nil)
     var anim: NVActivityIndicatorView?
     
+    override internal func getPageName() -> String {
+        return PageConstants.VIDEO_CATEGORY_PAGE
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,5 +135,11 @@ class VideoCategoryController: BaseViewController, UICollectionViewDelegate, UIC
          print("Ganesh selected value = \(u.childList?[0].name ) and the selected value is \(u1.childList?[0].name ) ")
     }
 
+    override func getComponentProperties() -> ComponentProperties {
+        let components = ComponentProperties()
+        components.visibleIconsSet = [Item.IV_CHILD, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_SEARCH]
+        
+        return components
+    }
 }
 

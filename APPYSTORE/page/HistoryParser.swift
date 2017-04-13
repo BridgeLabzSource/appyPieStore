@@ -23,7 +23,7 @@ class HistoryParser: BaseParser {
     private let GROUP_ID = "group_id";
     
     override func parseJSONData(responseData:JSON) -> AnyObject? {
-        
+        //print("HistoryParser parseJSONData : \(responseData)")
         let apiResponseModel = ContentListingApiResponseModel()
         
         let videoContent = responseData["data_array"].array

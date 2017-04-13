@@ -9,28 +9,36 @@
 import UIKit
 
 class RecommendedVideoViewController: BaseListingViewController {
-
+    
     override func viewDidLoad() {
         dataFetchFramework = DataFetchFramework(pageName: PageConstants.RECOMMENDED_VIDEO_LISTING_PAGE, pageUniqueId: "20087824", bundle: bundle)
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func getPageName() -> String {
+        return PageConstants.RECOMMENDED_VIDEO_LISTING_PAGE
     }
-    */
-
+    
+    override func getDataSource() -> DataSource {
+        return DataSource.SERVER
+    }
+    
+    override func getCell(indexPath: IndexPath) -> BaseCard {
+        let videoCard = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendedVideoCard", for: indexPath) as! RecommendedVideoCard
+        
+        return videoCard as BaseCard
+    }
+    
+    
+    
+    override func registerCard() {
+        self.collectionView.register(UINib(nibName: "RecommendedVideoCard", bundle: nil), forCellWithReuseIdentifier: "RecommendedVideoCard")
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = collectionView.frame.size.height - DimensionManager.getGeneralizedHeight1280x720(height: 48)
+        let width = DimensionManager.getGeneralizedWidthIn16isto9Ratio(height: height)
+        
+        return CGSize(width: width, height: height);
+    }
 }

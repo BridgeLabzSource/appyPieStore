@@ -8,4 +8,5 @@
 
 protocol MainControllerCommunicator {
     func addChild(controller: BaseViewController)
+    func setUIComponents(components: ComponentProperties)
 }

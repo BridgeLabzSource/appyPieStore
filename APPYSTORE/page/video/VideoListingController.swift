@@ -13,6 +13,10 @@ class VideoListingController: BaseListingViewController {
     var catName: String = ""
     var pCatId: String = ""
 
+    override internal func getPageName() -> String {
+        return PageConstants.VIDEO_LISTING_PAGE
+    }
+    
     override func viewDidLoad() {
         self.catId = bundle?[BundleConstants.CATEGORY_ID] as! String
         self.pCatId = bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String

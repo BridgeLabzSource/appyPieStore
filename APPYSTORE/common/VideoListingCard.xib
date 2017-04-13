@@ -27,7 +27,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_card_play_icon_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="y5K-y6-1DW">
-                    <rect key="frame" x="8" y="206.5" width="72" height="72"/>
+                    <rect key="frame" x="8" y="207" width="72" height="72"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="y5K-y6-1DW" secondAttribute="height" multiplier="1:1" id="Sf8-Ck-ydn"/>
                     </constraints>

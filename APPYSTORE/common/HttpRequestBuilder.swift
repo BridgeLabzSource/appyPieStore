@@ -59,11 +59,17 @@ class HttpRequestBuilder: NSObject {
     static let PCATID = "pcatid"
     static let AGE = "age"
     static let INCL_AGE = "incl_age"
+
     static let CONTENT_ID = "content_id"
     static let FLAG_AT_ITEM_AT_FIRST_POSITION = "flag"
     static let SEQUENCE_TYPE = "sequence_type"
     static let SEQUENCE_NUMBER = "sequence_number"
     static let RETURN_CONTENT_TYPE = "return_content_type"
+
+    static let KEYWORD = "keyword"
+    static let IGNORE_CAT_ID = "ignore_cat_id"
+    static let IS_POPULAR = "is_popular"
+
     
     
     static func getHeaders() -> HTTPHeaders {
@@ -90,7 +96,7 @@ class HttpRequestBuilder: NSObject {
                X_APPY_OST:"",
                X_APPY_USV:"",
                X_APPY_REG_KEY:"abcd",
-               X_APPY_VERSION:"11",
+               X_APPY_VERSION:"18",
                X_APPY_VERSION_NAME:"1.0.7xx",
                X_APPY_TTR:"10800000",
                X_APPY_SESSION_ID:"abcd",
@@ -145,6 +151,7 @@ class HttpRequestBuilder: NSObject {
         ]
     }
     
+
     static func getRecommendedVideoListingParameters(method: String, contentType: String, offset: String, limit: String, catId: String, pCatId: String, contentId: String, sequenceType: String, sequenceNumber: String, age: String, inclAge: String, returnedContentType: String, pageId: String, flagItemAtFirstPosition: String) -> Parameters {
         
         return [
@@ -162,6 +169,22 @@ class HttpRequestBuilder: NSObject {
             RETURN_CONTENT_TYPE: returnedContentType,
             PAGEID: pageId,
             FLAG_AT_ITEM_AT_FIRST_POSITION: flagItemAtFirstPosition
+        ]
+    }
+
+    static func getSearchResultParameters(method: String, keyword: String, contentType: String, offset: String, limit: String, age: String, inclAge: String, ignoreCatId: String, pageId: String, isPopular: String) -> Parameters
+    {
+        return [METHOD: method,
+                KEYWORD: keyword,
+                CONTENT_TYPE: contentType,
+                OFFSET: offset,
+                LIMIT: limit,
+                AGE: age,
+                INCL_AGE: inclAge,
+                IGNORE_CAT_ID: ignoreCatId,
+                PAGEID: pageId,
+                IS_POPULAR: isPopular
+
         ]
     }
     

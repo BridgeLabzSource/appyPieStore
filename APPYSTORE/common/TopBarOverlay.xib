@@ -13,14 +13,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopBarOverlay" customModule="APPYSTORE" customModuleProvider="target">
             <connections>
-                <outlet property="historyButton" destination="CO8-Kf-e0a" id="enn-IF-Ggt"/>
+                <outlet property="btnAudio" destination="Ezb-eT-Rvp" id="WGQ-Ra-fTA"/>
+                <outlet property="btnBack" destination="7Fb-N5-zdH" id="pAZ-lB-xMy"/>
+                <outlet property="btnHistory" destination="CO8-Kf-e0a" id="45P-SG-3aI"/>
+                <outlet property="btnSearch" destination="df7-p0-iBS" id="WgU-3P-dcO"/>
+                <outlet property="btnVideo" destination="gU4-UX-bvm" id="ixF-MK-p1H"/>
+                <outlet property="imgChild" destination="SkT-Dj-8Bs" id="gfC-Dh-vv6"/>
                 <outlet property="lblHistory" destination="s4O-MQ-YV6" id="5AN-Ie-Y9S"/>
                 <outlet property="lblSongs" destination="fXW-in-hVp" id="kkY-9S-OqO"/>
                 <outlet property="lblVideos" destination="vrL-Bc-S1y" id="opV-ES-p8J"/>
                 <outlet property="rootView" destination="iN0-l3-epB" id="GSy-5G-L1w"/>
-                <outlet property="searchButton" destination="df7-p0-iBS" id="DeP-r5-7NM"/>
-                <outlet property="songButton" destination="Ezb-eT-Rvp" id="OMH-0n-G44"/>
-                <outlet property="videoButton" destination="gU4-UX-bvm" id="JTP-Tt-18g"/>
+                <outlet property="tfSearch" destination="UEm-NH-YbS" id="LXq-Bt-r4X"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -86,15 +89,27 @@
                     <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <size key="shadowOffset" width="1" height="1"/>
                 </label>
+                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UEm-NH-YbS">
+                    <rect key="frame" x="168" y="32" width="944" height="104"/>
+                    <accessibility key="accessibilityConfiguration" hint="Enter your text here" label="Search"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Fb-N5-zdH" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
+                    <rect key="frame" x="32" y="32" width="104" height="104"/>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="SkT-Dj-8Bs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="32:1280" id="1se-JS-Tty"/>
+                <constraint firstItem="7Fb-N5-zdH" firstAttribute="leading" secondItem="SkT-Dj-8Bs" secondAttribute="leading" id="2jP-us-zPw"/>
                 <constraint firstItem="CO8-Kf-e0a" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="6TR-W7-aGG"/>
                 <constraint firstItem="s4O-MQ-YV6" firstAttribute="centerX" secondItem="CO8-Kf-e0a" secondAttribute="centerX" id="ARv-Z1-kXx"/>
                 <constraint firstItem="s4O-MQ-YV6" firstAttribute="top" secondItem="vrL-Bc-S1y" secondAttribute="top" id="DIe-u1-SJP"/>
                 <constraint firstItem="gU4-UX-bvm" firstAttribute="top" secondItem="SkT-Dj-8Bs" secondAttribute="top" id="Goz-vr-boN"/>
                 <constraint firstItem="Ezb-eT-Rvp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="588:1280" id="HDi-QJ-Pmb"/>
                 <constraint firstItem="Ezb-eT-Rvp" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="Ib9-PC-NOG"/>
+                <constraint firstItem="UEm-NH-YbS" firstAttribute="height" secondItem="df7-p0-iBS" secondAttribute="height" id="KvV-NZ-Vps"/>
                 <constraint firstItem="df7-p0-iBS" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="OPe-QG-0qo"/>
                 <constraint firstItem="df7-p0-iBS" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="1248:1280" id="PRT-Yo-hnx"/>
                 <constraint firstItem="vrL-Bc-S1y" firstAttribute="centerX" secondItem="gU4-UX-bvm" secondAttribute="centerX" id="TO9-RJ-SMV"/>
@@ -112,6 +127,7 @@
                 <constraint firstItem="s4O-MQ-YV6" firstAttribute="width" secondItem="CO8-Kf-e0a" secondAttribute="width" multiplier="1.5" id="ok2-6g-5BR"/>
                 <constraint firstItem="gU4-UX-bvm" firstAttribute="width" secondItem="SkT-Dj-8Bs" secondAttribute="width" id="qUc-sz-RCC"/>
                 <constraint firstItem="CO8-Kf-e0a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="772:1280" id="rrl-k1-KAi"/>
+                <constraint firstItem="7Fb-N5-zdH" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="rwO-li-c2O"/>
                 <constraint firstItem="Ezb-eT-Rvp" firstAttribute="width" secondItem="SkT-Dj-8Bs" secondAttribute="width" id="syv-8h-Hsl"/>
                 <constraint firstItem="df7-p0-iBS" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="104:200" id="ugI-xe-uXZ"/>
                 <constraint firstItem="gU4-UX-bvm" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="yQL-WQ-HnS"/>

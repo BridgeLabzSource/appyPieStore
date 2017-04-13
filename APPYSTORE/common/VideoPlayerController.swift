@@ -9,13 +9,30 @@
 import UIKit
 import AVFoundation
 
-class SampleViewController: UIViewController, VideoDelegate {
+class VideoPlayerController: BaseViewController, VideoDelegate {
     
     @IBOutlet weak var miniFrame: UIView!
     @IBOutlet var rootView: UIView!
     
     @IBOutlet weak var recommendedContainer: UIView!
     @IBOutlet weak var videoPlayer: VideoPlayer!
+    
+    lazy var recommendedController: RecommendedVideoViewController = {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "RecommendedVideoViewController") as! RecommendedVideoViewController
+        
+        self.addAsChildViewController(childController: viewController)
+        return viewController
+    }()
+    
+    func addAsChildViewController(childController: BaseViewController){
+        self.addChildViewController(childController)
+        self.view.addSubview(childController.view)
+        //recommendedContainer.clipsToBounds = true
+        childController.didMove(toParentViewController: childController)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -24,9 +41,19 @@ class SampleViewController: UIViewController, VideoDelegate {
         videoPlayer.delegate = self
         videoPlayer.replaceVideo(playerModel: playerModel)
         
+        addAsChildViewController(childController: recommendedController)
+        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         videoPlayer.play()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        recommendedController.view.frame = self.recommendedContainer.frame
+        recommendedController.view.bounds = self.recommendedContainer.bounds
+            
+        onVideoMaximize()
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,31 +65,13 @@ class SampleViewController: UIViewController, VideoDelegate {
         videoPlayer.rootView.frame = rootView.frame
         videoPlayer.avPlayerLayer.frame = videoPlayer.rootView.bounds
         
-        /*
-        videoPlayer.rootView.frame.size = CGSize(width: AppDelegate.DEVICE_WIDTH, height: AppDelegate.DEVICE_HEIGHT)
-        
-        videoPlayer.avPlayerLayer.frame = videoPlayer.rootView.frame
-        */
-        recommendedContainer.isHidden = true
+        rootView.bringSubview(toFront: videoPlayer)
     }
     
     func onVideoMinimize() {
         videoPlayer.rootView.frame = miniFrame.frame
         videoPlayer.avPlayerLayer.frame = videoPlayer.rootView.bounds
-        /*
-        videoPlayer.rootView.frame.size = CGSize(width: AppDelegate.DEVICE_WIDTH*2/3, height: (AppDelegate.DEVICE_WIDTH*2/3)*3/4 )
-        videoPlayer.avPlayerLayer.frame = videoPlayer.rootView.frame
-        */
-        recommendedContainer.isHidden = false
+        
+        rootView.bringSubview(toFront: recommendedController.view)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -24,7 +24,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.register(UINib(nibName: "VideoListingCard", bundle: nil), forCellWithReuseIdentifier: "VideoListingCard")
+        registerCard()
         collectionViewCentreX = self.collectionView.center.x
         collectionViewCentreY = self.collectionView.center.y
 
@@ -36,6 +36,14 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         loadData()
     }
     
+    func registerCard() {
+        self.collectionView.register(UINib(nibName: "VideoListingCard", bundle: nil), forCellWithReuseIdentifier: "VideoListingCard")
+    }
+    
+    func getDataSource() -> DataSource{
+        return DataSource.BOTH
+    }
+    
     func loadData() {
         isRequestInProgress = true
         let frame = CGRect(x: Int(collectionViewCentreX - 25), y: Int(collectionViewCentreY / 2), width: 30, height: 30)
@@ -44,7 +52,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         self.collectionView.addSubview(progressView!)
         
         dataFetchFramework?.onDataReceived = onDataReceived
-        dataFetchFramework?.start(dataSource: DataSource.BOTH)
+        dataFetchFramework?.start(dataSource: getDataSource())
     }
 
     func onDataReceived( status: String, result: AnyObject) {
@@ -54,7 +62,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         if status == DataFetchFramework.REQUEST_SUCCESS {
             if let result = result as? [BaseModel] {
                 self.view.setNeedsDisplay()
-                print("onDataReceived called",result.count)
+                print("onDataReceived called", result.count)
                 self.collectionView.reloadData()
             }
         } else if status == DataFetchFramework.END_OF_DATA {
@@ -70,10 +78,35 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoListingCard", for: indexPath) as! VideoListingCard
-        cell.fillCard(videoListingModel: dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel)
+        let cell = getCell(indexPath: indexPath)
+        
+        if let castCell = cell as? RecommendedVideoCard {
+            /*
+            let singleTapPlay = UITapGestureRecognizer(target: self, action: #selector(BaseListingViewController.imageClick))
+            
+            singleTapPlay.numberOfTapsRequired = 1 // you can change this value
+            castCell.imgThumbnail.isUserInteractionEnabled = true
+            castCell.imgThumbnail.addGestureRecognizer(singleTapPlay)
+ */
+            let singleTapPlay = UITapGestureRecognizer(target: self, action: #selector(BaseListingViewController.imageClick))
+            
+            singleTapPlay.numberOfTapsRequired = 1
+            castCell.imgThumbnail.isUserInteractionEnabled = true
+            castCell.isUserInteractionEnabled = false
+            castCell.imgThumbnail.addGestureRecognizer(singleTapPlay)
+        }
+        
+        cell.fillCard(model: dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel)
         
         return cell
+    }
+    
+    func imageClick() {
+        print("Recommended Controller image click")
+    }
+    
+    func getCell(indexPath: IndexPath) -> BaseCard {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "VideoListingCard", for: indexPath) as! BaseCard
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

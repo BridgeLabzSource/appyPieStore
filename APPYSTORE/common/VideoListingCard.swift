@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-@IBDesignable class VideoListingCard: UICollectionViewCell {
+@IBDesignable class VideoListingCard: BaseCard {
     
     @IBOutlet weak var imgThumbnail: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
@@ -31,7 +31,8 @@ import SDWebImage
         showShadowRightBottom()
     }
     
-    func fillCard(videoListingModel: VideoListingModel) {
+    override func fillCard(model: BaseModel) {
+        let videoListingModel = model as! VideoListingModel
         let image_path = videoListingModel.imagePath
         let imgurl = URL(string: image_path)
         imgThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
