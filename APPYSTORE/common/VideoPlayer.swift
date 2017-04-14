@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import SwiftyJSON
+
 enum PlayerState {
     case PLAY
     case PAUSE
@@ -19,6 +21,7 @@ enum PlayerState {
 protocol VideoDelegate {
     func onVideoMinimize()
     func onVideoMaximize()
+    func onVideoCompleted()
 }
 
 @IBDesignable class VideoPlayer: UIView {
@@ -42,6 +45,7 @@ protocol VideoDelegate {
     var playerRateBeforeSeek: Float = 0
     var isMinimize = false
     var delegate: VideoDelegate?
+    var task: URLSessionDataTask!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,19 +57,77 @@ protocol VideoDelegate {
         initialize()
     }
     
-    func replaceVideo(playerModel: PlayerModel) {
-        if let stringUrl = playerModel.url {
-            let url = NSURL(string: stringUrl)
-            let playerItem = AVPlayerItem(url: url! as URL)
-            avPlayer.replaceCurrentItem(with: playerItem)
-            
-            NotificationCenter.default.addObserver(self, selector: #selector(VideoPlayer.playerDidFinish(note:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: avPlayer.currentItem)
-            
-            avPlayer.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
-            avPlayer.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
-            avPlayer.currentItem?.addObserver(self, forKeyPath: "playbackBufferFull", options: .new, context: nil)
+    func replaceVideo(playerModel: VideoListingModel) {
+        if task != nil {
+            task.cancel()
+        }
+    
+        print("VideoPlayer content change")
+        pause()
+        self.unregisteredPlayerItemListener()
+        resetPlayerItem()
+        
+        updateState(state: .BUFFERING_START)
+    
+        if playerModel.downloadUrl.isEmpty {
+            playerModel.downloadUrl = "http://www.appystore.in/Be-Dead-To-The-World--Idiom/dw/G1171Z191E193T9C20087824S1/20087824"
         }
         
+        var request = URLRequest(url: URL(string: playerModel.downloadUrl)!)
+        
+        print("Request url : \(request.url)")
+        let session = URLSession.shared
+        request.httpMethod = "GET"
+        task = session.dataTask(with: request, completionHandler: {
+            data, response, error in
+            
+            print("VideoPlayer content response")
+            print("Error: \(error)")
+            print("Response: \(response) ")
+            self.updateState(state: .BUFFERING_END)
+            if response != nil {
+                if let value = response {
+                    print("Description = \(value.description)")
+                }
+                
+                print("replaceVideo = \(response?.url)")
+                
+                self.unregisteredPlayerItemListener()
+                //let url = NSURL(string: stringUrl)
+                let url = response?.url
+                let playerItem = AVPlayerItem(url: url! as URL)
+                self.avPlayer.replaceCurrentItem(with: playerItem)
+                self.avPlayer.play()
+                self.registerPlayerItemListener()
+            }
+            
+        })
+        
+        task.resume()
+        print("cdn url = \(playerModel.downloadUrl)")
+    
+    }
+    
+    func resetPlayerItem() {
+        avPlayer.replaceCurrentItem(with: nil)
+        setTotalDuration(duration: 0)
+        setPlayTime(timePlayed: 0)
+        setSeekValue(seekValue: 0)
+    }
+    
+    func registerPlayerItemListener() {
+        NotificationCenter.default.addObserver(self, selector: #selector(VideoPlayer.playerDidFinish(note:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.avPlayer.currentItem)
+        
+        self.avPlayer.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
+        self.avPlayer.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
+        self.avPlayer.currentItem?.addObserver(self, forKeyPath: "playbackBufferFull", options: .new, context: nil)
+    }
+    
+    func unregisteredPlayerItemListener() {
+        NotificationCenter.default.removeObserver(self)
+        self.avPlayer.currentItem?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
+        self.avPlayer.currentItem?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
+        self.avPlayer.currentItem?.removeObserver(self, forKeyPath: "playbackBufferFull")
     }
     
     func initialize() {
@@ -120,19 +182,21 @@ protocol VideoDelegate {
         bottomView.isUserInteractionEnabled = true
         bottomView.addGestureRecognizer(singleTapBottom)
         
+        updateState(state: .BUFFERING_START)
+        
     }
+    
     func bottomContainerClick() {
         print("bottomContainerClick")
     }
+    
     func containerClick() {
         print("containerClick")
         
         if isMinimize {
             delegate?.onVideoMaximize()
-            //containerView.frame.size = CGSize(width: AppDelegate.DEVICE_WIDTH, height: AppDelegate.DEVICE_HEIGHT)
         } else {
             delegate?.onVideoMinimize()
-            //containerView.frame.size = CGSize(width: AppDelegate.DEVICE_WIDTH/3, height: (AppDelegate.DEVICE_WIDTH/3)*3/4 )
         }
         
         isMinimize = !isMinimize
@@ -173,7 +237,7 @@ protocol VideoDelegate {
                 print("XXXXX Ganesh show loader playbackBufferEmpty")
                 updateState(state: .BUFFERING_START)
             case "playbackLikelyToKeepUp":
-                print("XXXXX Ganesh hide loader playbackLikelyToKeepUp")
+                print("XXXXX Ganesh hide loader playbackLikelyToKeepUp = \(avPlayer.currentItem?.isPlaybackLikelyToKeepUp)")
                 updateState(state: .BUFFERING_END)
             case "playbackBufferFull":
                 print("XXXXX Ganesh hide loader playbackBufferFull")
@@ -212,25 +276,32 @@ protocol VideoDelegate {
             hidePauseIcon()
             hideLoader()
             break
-        default:
-            break
         }
     }
+    
     func playerDidFinish(note: NSNotification) {
         print("Ganesh Video Finished")
+        delegate?.onVideoCompleted()
     }
     
     func play() {
         avPlayer.play()
     }
     
+    func pause() {
+        avPlayer.pause()
+    }
+    
     func trackVideoSeekbar() {
         let videoDuration = CMTimeGetSeconds(avPlayer.currentItem!.duration)
         
         let normalizedTime = Float(CMTimeGetSeconds(avPlayer.currentItem!.currentTime()) * 1.0 / videoDuration)
-        seekbar.value = normalizedTime
+        setSeekValue(seekValue: normalizedTime)
     }
     
+    private func setSeekValue(seekValue: Float) {
+        seekbar.value = seekValue
+    }
     func playIconClick() {
         print("playIcon Clicked")
         //invisibleButtonTapped()
@@ -302,21 +373,31 @@ protocol VideoDelegate {
     }
     
     private func observeTime(elapsedTime: CMTime) {
-        let duration = CMTimeGetSeconds(avPlayer.currentItem!.duration)
-        let elapsedTime = CMTimeGetSeconds(elapsedTime)
-        updateTimeLabel(elapsedTime: elapsedTime, duration: duration)
-        trackVideoSeekbar()
+        if avPlayer.currentItem != nil {
+            let duration = CMTimeGetSeconds(avPlayer.currentItem!.duration)
+            let elapsedTime = CMTimeGetSeconds(elapsedTime)
+            updateTimeLabel(elapsedTime: elapsedTime, duration: duration)
+            trackVideoSeekbar()
+        }
     }
     
     private func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
         let timePlayed: Float64 = elapsedTime
-        playTimeLabel.text = String(format: "%02d:%02d", ((lround(timePlayed) / 60) % 60), lround(timePlayed) % 60)
         
+        setPlayTime(timePlayed: timePlayed)
         updateTotalDuration()
+    }
+    
+    private func setPlayTime(timePlayed: Double) {
+        playTimeLabel.text = String(format: "%02d:%02d", ((lround(timePlayed) / 60) % 60), lround(timePlayed) % 60)
     }
     
     private func updateTotalDuration() {
         let duration = CMTimeGetSeconds(avPlayer.currentItem!.duration)
+        setTotalDuration(duration: duration)
+    }
+    
+    private func setTotalDuration(duration: Double) {
         totalTimeLabel.text = String(format: "%02d:%02d", ((lround(duration) / 60) % 60), lround(duration) % 60)
     }
     
@@ -324,4 +405,19 @@ protocol VideoDelegate {
         avPlayer.removeTimeObserver(timeObserver)
         //avPlayer.removeObserver(self, forKeyPath: "currentItem.playbackLikelyToKeepUp")
     }
+    
+    /*
+     let url = URL(string: playerModel.downloadUrl)
+     let task = URLSession.shared.dataTask(with: url!) {
+     (data, response, error ) in
+     
+     
+     print("replaceVideo = \(response)")
+     //print("replaceVideo Data \(data)")
+     //print("replaceVideo Response \(response)")
+     //print("replaceVideo Error \(error)")
+     }
+     
+     task.resume()
+     */
 }
