@@ -8,11 +8,23 @@
 
 import UIKit
 
-class TagsCard: UICollectionViewCell {
+class TagsCard: BaseCard {
 
+    @IBOutlet weak var lblTag: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.clipsToBounds = true
+        DimensionManager.setTextSize1280x720(label: lblTag, size: DimensionManager.H3)
     }
 
+    override func fillCard(model: BaseModel) {
+        let searchTagsModel = model as! SearchTagsModel
+        
+        lblTag.text = searchTagsModel.searchName
+        
+    }
+    
+    override func draw(_ rect: CGRect) {
+        self.layer.cornerRadius = self.bounds.size.height / 2.0
+    }
 }

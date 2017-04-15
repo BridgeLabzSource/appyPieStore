@@ -9,3 +9,7 @@
 import Foundation
 
 typealias AndroidBundle = [String: Any?]?
+
+class AppConstants {
+    static let APP_FONT_NAME = "KGMissKindyChunky"
+}

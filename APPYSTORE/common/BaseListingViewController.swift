@@ -32,14 +32,22 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         //self.collectionView.delegate = self
         
         self.collectionView.addSpacingBetweenCell()
+        setScrollDirection()
         
         loadData()
     }
     
+    //to be overridden if required
+    func setScrollDirection() {
+        self.collectionView.setScrollDirectionHorizontal()
+    }
+    
+    //to be overridden if required
     func registerCard() {
         self.collectionView.register(UINib(nibName: "VideoListingCard", bundle: nil), forCellWithReuseIdentifier: "VideoListingCard")
     }
     
+    //to be overridden if required
     func getDataSource() -> DataSource{
         return DataSource.BOTH
     }
@@ -79,32 +87,12 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = getCell(indexPath: indexPath)
-        
-        if let castCell = cell as? RecommendedVideoCard {
-            /*
-            let singleTapPlay = UITapGestureRecognizer(target: self, action: #selector(BaseListingViewController.imageClick))
-            
-            singleTapPlay.numberOfTapsRequired = 1 // you can change this value
-            castCell.imgThumbnail.isUserInteractionEnabled = true
-            castCell.imgThumbnail.addGestureRecognizer(singleTapPlay)
- */
-            let singleTapPlay = UITapGestureRecognizer(target: self, action: #selector(BaseListingViewController.imageClick))
-            
-            singleTapPlay.numberOfTapsRequired = 1
-            castCell.imgThumbnail.isUserInteractionEnabled = true
-            castCell.isUserInteractionEnabled = false
-            castCell.imgThumbnail.addGestureRecognizer(singleTapPlay)
-        }
-        
-        cell.fillCard(model: dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel)
+        cell.fillCard(model: (dataFetchFramework?.contentList[indexPath.row])!)
         
         return cell
     }
     
-    func imageClick() {
-        print("Recommended Controller image click")
-    }
-    
+    //to be overridden if required
     func getCell(indexPath: IndexPath) -> BaseCard {
         return collectionView.dequeueReusableCell(withReuseIdentifier: "VideoListingCard", for: indexPath) as! BaseCard
     }

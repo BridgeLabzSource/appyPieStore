@@ -62,7 +62,7 @@ class VideoListingParser: BaseParser {
         }
         
         apiResponseModel.contentList = listingModelArray
-        apiResponseModel.totalCount = String(responseData["total_count"].int!)
+        apiResponseModel.totalCount = String(responseData[TOTAL_COUNT].int!)
         
         return apiResponseModel as AnyObject
         

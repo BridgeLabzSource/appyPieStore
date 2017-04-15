@@ -7,3 +7,24 @@
 //
 
 import Foundation
+import SwiftyJSON
+
+class SearchTagsParser: BaseParser {
+    
+    private let SEARCH_NAME = "searchname"
+    private let SEARCH_RANK = "searchrank"
+    
+    override func parseJSONData(responseData: JSON) -> AnyObject? {
+        let apiResponseModel = ContentListingApiResponseModel()
+        var searchTagsList = [SearchTagsModel]()
+        for item in responseData.arrayValue {
+            let tagsModel = SearchTagsModel()
+            tagsModel.searchName = item[SEARCH_NAME].string!
+            tagsModel.searchRank = item[SEARCH_RANK].string!
+            searchTagsList.append(tagsModel)
+        }
+        apiResponseModel.contentList = searchTagsList
+        apiResponseModel.totalCount = String(responseData.arrayValue.count)
+        return apiResponseModel as AnyObject
+    }
+}

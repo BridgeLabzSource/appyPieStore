@@ -50,6 +50,12 @@ class DataManager: NSObject {
                 
                 returndata(statusType, result!)
             })
+        case PageConstants.SEARCH_TAGS_PAGE:
+            SearchTagsParser().parse(params: HttpRequestBuilder.getSearchTagsParameters(method: "getPopularSearch", pageId: "SearchFragment"), completion: {
+                statusType, result in
+                
+                returndata(statusType, result!)
+            })
         default:
             break
         }
@@ -67,7 +73,8 @@ class DataManager: NSObject {
             
         case PageConstants.VIDEO_LISTING_PAGE:
             dataList = VideoListingDBManager().fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: bundle)
-            
+        case PageConstants.SEARCH_TAGS_PAGE:
+            dataList = Prefs.getInstance()?.getSearchTags()
         default:
             break
         }
@@ -84,6 +91,9 @@ class DataManager: NSObject {
             count = VideoDBManager().getRowCount()
         case PageConstants.VIDEO_LISTING_PAGE:
             count = VideoListingDBManager().getRowCount(bundle: bundle)
+        case PageConstants.SEARCH_TAGS_PAGE:
+            let tagsList = Prefs.getInstance()?.getSearchTags()
+            count = (tagsList?.count)!
         default:
             break
         }
@@ -99,6 +109,9 @@ class DataManager: NSObject {
             VideoDBManager().removeAll(bundle: bundle)
         case PageConstants.VIDEO_LISTING_PAGE:
             VideoListingDBManager().removeAll(bundle: bundle)
+        case PageConstants.SEARCH_TAGS_PAGE:
+            Prefs.getInstance()?.setSearchTags(value: [])
+            break
         default:
             break
         }
@@ -114,6 +127,10 @@ class DataManager: NSObject {
             count = VideoDBManager().insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
         case PageConstants.VIDEO_LISTING_PAGE:
             count = VideoListingDBManager().insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
+        case PageConstants.SEARCH_TAGS_PAGE:
+            Prefs.getInstance()?.setSearchTags(value: dataList as! [SearchTagsModel])
+            count = 1
+            break
         default:
             break
         }
@@ -131,6 +148,9 @@ class DataManager: NSObject {
             dataFetchTimePrefKey = PageConstants.KEY_VIDEO_CATEGORY_DATA_FETCH_TIME + pageUniqueId
         case PageConstants.VIDEO_LISTING_PAGE:
             dataFetchTimePrefKey = PageConstants.KEY_VIDEO_LISTING_DATA_FETCH_TIME + pageUniqueId
+        case PageConstants.SEARCH_TAGS_PAGE:
+            dataFetchTimePrefKey = PageConstants.KEY_SEARCH_TAGS_DATA_FETCH_TIME + pageUniqueId
+            
         default:
             break
         }
@@ -147,6 +167,8 @@ class DataManager: NSObject {
             offsetServerPrefKey = PageConstants.KEY_VIDEO_CATEGORY_SERVER_OFFSET + pageUniqueId
         case PageConstants.VIDEO_LISTING_PAGE:
             offsetServerPrefKey = PageConstants.KEY_VIDEO_LISTING_SERVER_OFFSET + pageUniqueId
+        case PageConstants.SEARCH_TAGS_PAGE:
+            offsetServerPrefKey = PageConstants.KEY_SEARCH_TAGS_SERVER_OFFSET + pageUniqueId
         default:
             break
         }
@@ -159,13 +181,12 @@ class DataManager: NSObject {
         switch pageName {
         case PageConstants.HISTORY_PAGE:
             totalCountPrefKey = PageConstants.KEY_HISTORY_TOTAL_CONTENT_COUNT + pageUniqueId
-            break
         case PageConstants.VIDEO_CATEGORY_PAGE:
             totalCountPrefKey = PageConstants.KEY_VIDEO_CATEGORY_TOTAL_CONTENT_COUNT + pageUniqueId
-            break
         case PageConstants.VIDEO_LISTING_PAGE:
             totalCountPrefKey = PageConstants.KEY_VIDEO_LISTING_TOTAL_CONTENT_COUNT + pageUniqueId
-            break
+        case PageConstants.SEARCH_TAGS_PAGE:
+            totalCountPrefKey = PageConstants.KEY_SEARCH_TAGS_TOTAL_CONTENT_COUNT + pageUniqueId
             
         default:
             break

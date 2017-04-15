@@ -21,6 +21,7 @@ class NavigationManager {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "VideoListingController") as! VideoListingController
         viewController.bundle = bundle
+        viewController.mainControllerCommunicator = mainControllerCommunicator
         mainControllerCommunicator?.addChild(controller: viewController)
     }
     
@@ -39,11 +40,15 @@ class NavigationManager {
         
     }
     
-    static func openSearchResultPage(mainControllerCommunicator: MainControllerCommunicator, bundle : AndroidBundle) {
+    static func openSearchResultPage(mainControllerCommunicator: MainControllerCommunicator, keyword : String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "SearchResultController") as! SearchResultController
-        viewController.mainControllerCommunicator = mainControllerCommunicator
+        
+        var bundle = [String: Any]()
+        bundle[BundleConstants.SEARCH_KEYWORD] = keyword
         viewController.bundle = bundle
+        
+        viewController.mainControllerCommunicator = mainControllerCommunicator
         mainControllerCommunicator.addChild(controller: viewController)
     }
     

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     func substring(from: Int?, to: Int?) -> String {
@@ -81,5 +82,31 @@ extension String {
         }
         
         return self.substring(from: start, to: to)
+    }
+    
+//    func height(withConstrainedWidth width: CGFloat) -> CGFloat {
+//        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+//        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, context: nil)
+//        
+//        return boundingBox.height
+//    }
+//    
+//    func width(withConstrainedHeight height: CGFloat) -> CGFloat {
+//        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
+//        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, context: nil)
+//        
+//        return boundingBox.width
+//    }
+    
+    func widthOfString(usingFont font: UIFont) -> CGFloat {
+        let fontAttributes = [NSFontAttributeName: font]
+        let size = self.size(attributes: fontAttributes)
+        return size.width
+    }
+    
+    func heightOfString(usingFont font: UIFont) -> CGFloat {
+        let fontAttributes = [NSFontAttributeName: font]
+        let size = self.size(attributes: fontAttributes)
+        return size.height
     }
 }

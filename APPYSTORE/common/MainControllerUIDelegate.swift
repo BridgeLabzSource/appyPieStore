@@ -42,6 +42,13 @@ class MainControllerUIDelegate {
         fabButton.paddingY = DimensionManager.getGeneralizedHeight1280x720(height: 32)
         makeFab()
         
+        Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(self.firstPageLoaderTask), userInfo: nil, repeats: false);
+        
+    }
+    
+    //for proper alignment of child controller in middleView
+    @objc func firstPageLoaderTask() {
+        showVideoCategoryPage()
     }
     
     func setButtonsClickLstener() {
@@ -56,15 +63,14 @@ class MainControllerUIDelegate {
         mainController.childControllersList?.removeLast()
         removeChildController(childController: currentViewController)
         mainController.onBackPressed()
+        printBackStack()
     }
     
     @objc func handleSearchButtonClick() {
         if mainController.topView.tfSearch.isHidden {
             NavigationManager.openSearchTagsPage(mainControllerCommunicator: mainController)
         } else {
-            var bundle = [String: Any]()
-            bundle[BundleConstants.SEARCH_KEYWORD] = mainController.topView.tfSearch.text
-            NavigationManager.openSearchResultPage(mainControllerCommunicator: mainController, bundle: bundle)
+            NavigationManager.openSearchResultPage(mainControllerCommunicator: mainController, keyword: mainController.topView.tfSearch.text!)
         }
     }
     
@@ -112,9 +118,11 @@ class MainControllerUIDelegate {
     func addChild(controller: BaseViewController) {
         addAsChildViewController(childController: controller)
         mainController.childControllersList?.append(controller)
+        printBackStack()
     }
     
     func addAsChildViewController(childController: BaseViewController){
+        mainController.getCurrentViewController()?.view.isHidden = true
         mainController.addChildViewController(childController)
         mainController.view.addSubview(childController.view)
         childController.view.frame = mainController.middleView.frame
@@ -134,11 +142,11 @@ class MainControllerUIDelegate {
         }
     }
     
-    internal func setUIComponents(components: ComponentProperties) {
+    internal func setUIComponents(components: ComponentProperties?) {
         if components != nil {
             setAllItemsVisibility(state: false)
-            makeItemsVisible(components: components)
-            mainController.topView.tfSearch.text = components.searchKeyword
+            makeItemsVisible(components: components!)
+            mainController.topView.tfSearch.text = components?.searchKeyword
         }
     }
     
@@ -179,5 +187,10 @@ class MainControllerUIDelegate {
         }
     }
     
+    func printBackStack() {
+        for childController in mainController.childControllersList! {
+            print("printBackStack \(childController.getPageName())")
+        }
+    }
     
 }

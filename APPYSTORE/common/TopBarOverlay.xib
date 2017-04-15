@@ -96,8 +96,12 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Fb-N5-zdH" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Fb-N5-zdH" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
                     <rect key="frame" x="32" y="32" width="104" height="104"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="back"/>
+                    </userDefinedRuntimeAttributes>
                 </button>
             </subviews>
             <constraints>
@@ -147,6 +151,7 @@
     </objects>
     <resources>
         <image name="audio" width="48" height="48"/>
+        <image name="back" width="48" height="48"/>
         <image name="history" width="48" height="48"/>
         <image name="profile" width="72" height="72"/>
         <image name="search" width="48" height="48"/>
