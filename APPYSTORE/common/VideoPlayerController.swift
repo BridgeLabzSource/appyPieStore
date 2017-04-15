@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class VideoPlayerController: BaseViewController, VideoDelegate {
+class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideoDelegate {
     
     @IBOutlet weak var miniFrame: UIView!
     @IBOutlet var rootView: UIView!
@@ -36,13 +36,22 @@ class VideoPlayerController: BaseViewController, VideoDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let playerModel = PlayerModel()
-        playerModel.url = "https://content.jwplatform.com/manifests/vM7nH0Kl.m3u8"
+        let playerModel = VideoListingModel()
+        playerModel.cdnUrl = "https://content.jwplatform.com/manifests/vM7nH0Kl.m3u8"
         videoPlayer.delegate = self
-        videoPlayer.replaceVideo(playerModel: playerModel)
+        //playVideoContent(content: playerModel)
         
         addAsChildViewController(childController: recommendedController)
+        recommendedController.delegate = self
         
+    }
+    
+    func onContentChange(content: VideoListingModel) {
+        playVideoContent(content: content)
+    }
+    
+    func playVideoContent(content: VideoListingModel) {
+        videoPlayer.replaceVideo(playerModel: content)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,5 +82,10 @@ class VideoPlayerController: BaseViewController, VideoDelegate {
         videoPlayer.avPlayerLayer.frame = videoPlayer.rootView.bounds
         
         rootView.bringSubview(toFront: recommendedController.view)
+    }
+    
+    
+    func onVideoCompleted() {
+        recommendedController.nextVideo()
     }
 }

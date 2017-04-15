@@ -31,6 +31,11 @@ class RecommendedVideoCard: BaseCard {
         let imgurl = URL(string: image_path)
         imgThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
         
+        if videoListingModel.isSelected {
+            self.backgroundColor = UIColor.green
+        } else {
+            self.backgroundColor = UIColor.white
+        }
         
     }
     

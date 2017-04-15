@@ -36,7 +36,6 @@ class VideoListingModel: BaseModel{
     public var isVideoDownloadable:Bool = true
     public var isSelected:Bool = false
     public var canonicalName = ""
-
     
     
 }

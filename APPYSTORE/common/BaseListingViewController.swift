@@ -87,6 +87,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = getCell(indexPath: indexPath)
+
         cell.fillCard(model: (dataFetchFramework?.contentList[indexPath.row])!)
         
         return cell
