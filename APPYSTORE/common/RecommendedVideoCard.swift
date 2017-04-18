@@ -37,6 +37,12 @@ class RecommendedVideoCard: BaseCard {
             self.backgroundColor = UIColor.white
         }
         
+        if videoListingModel.payType == "paid" {
+            self.alpha = 0.5
+        } else {
+            self.alpha = 1
+        }
+        
     }
     
     
