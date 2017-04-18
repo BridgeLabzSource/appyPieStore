@@ -55,10 +55,12 @@
 		7366E8951E8D23BA002A09F2 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366E8941E8D23BA002A09F2 /* CustomLabel.swift */; };
 		736A40FC1E891A3000A4C038 /* VideoListingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736A40FA1E891A3000A4C038 /* VideoListingCard.swift */; };
 		736A40FD1E891A3000A4C038 /* VideoListingCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736A40FB1E891A3000A4C038 /* VideoListingCard.xib */; };
-
 		736D42871E9F544F00ACDD0F /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D42861E9F544F00ACDD0F /* UITextFieldExtension.swift */; };
 		736D42891E9F57DC00ACDD0F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D42881E9F57DC00ACDD0F /* CustomTextField.swift */; };
-
+		736D428B1E9FA45700ACDD0F /* SearchTagsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D428A1E9FA45700ACDD0F /* SearchTagsParser.swift */; };
+		736D428D1E9FAB2F00ACDD0F /* SearchTagsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D428C1E9FAB2F00ACDD0F /* SearchTagsModel.swift */; };
+		736D42901E9FC2F100ACDD0F /* TagsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D428E1E9FC2F100ACDD0F /* TagsCard.swift */; };
+		736D42911E9FC2F100ACDD0F /* TagsCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736D428F1E9FC2F100ACDD0F /* TagsCard.xib */; };
 		7370B81D1E9DE2A400D91ABA /* RecommendedVideoCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7370B81C1E9DE2A400D91ABA /* RecommendedVideoCard.xib */; };
 		7370B81F1E9DE99100D91ABA /* RecommendedVideoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7370B81E1E9DE99100D91ABA /* RecommendedVideoCard.swift */; };
 		7370B8211E9DED3B00D91ABA /* RecommendedVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7370B8201E9DED3B00D91ABA /* RecommendedVideoViewController.swift */; };
@@ -160,16 +162,17 @@
 		7366E8941E8D23BA002A09F2 /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		736A40FA1E891A3000A4C038 /* VideoListingCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingCard.swift; sourceTree = "<group>"; };
 		736A40FB1E891A3000A4C038 /* VideoListingCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListingCard.xib; sourceTree = "<group>"; };
-
 		736D42861E9F544F00ACDD0F /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		736D42881E9F57DC00ACDD0F /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-
+		736D428A1E9FA45700ACDD0F /* SearchTagsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTagsParser.swift; sourceTree = "<group>"; };
+		736D428C1E9FAB2F00ACDD0F /* SearchTagsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTagsModel.swift; sourceTree = "<group>"; };
+		736D428E1E9FC2F100ACDD0F /* TagsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsCard.swift; sourceTree = "<group>"; };
+		736D428F1E9FC2F100ACDD0F /* TagsCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagsCard.xib; sourceTree = "<group>"; };
 		7370B81C1E9DE2A400D91ABA /* RecommendedVideoCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedVideoCard.xib; sourceTree = "<group>"; };
 		7370B81E1E9DE99100D91ABA /* RecommendedVideoCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedVideoCard.swift; sourceTree = "<group>"; };
 		7370B8201E9DED3B00D91ABA /* RecommendedVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedVideoViewController.swift; sourceTree = "<group>"; };
 		7370B8221E9DF4F600D91ABA /* RecommendedVideoParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedVideoParser.swift; sourceTree = "<group>"; };
 		7370B8241E9E421300D91ABA /* BaseCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCard.swift; sourceTree = "<group>"; };
-
 		7371A2E21E7BB293009B2894 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		7371F9F61E936898009241FF /* KCFABManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFABManager.swift; sourceTree = "<group>"; };
 		7371F9F71E936898009241FF /* KCFABViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFABViewController.swift; sourceTree = "<group>"; };
@@ -288,14 +291,13 @@
 				0A80DA251E702DA700939443 /* BottomBarOverlay.swift */,
 				73638FAB1E8A57EC0089619B /* CustomViewLayer.swift */,
 				7366E8941E8D23BA002A09F2 /* CustomLabel.swift */,
-
 				736D42881E9F57DC00ACDD0F /* CustomTextField.swift */,
-
 				7371FA051E939F1D009241FF /* VideoPlayer.xib */,
 				7371FA071E93AC53009241FF /* VideoPlayer.swift */,
 				7370B81C1E9DE2A400D91ABA /* RecommendedVideoCard.xib */,
 				7370B81E1E9DE99100D91ABA /* RecommendedVideoCard.swift */,
-
+				736D428F1E9FC2F100ACDD0F /* TagsCard.xib */,
+				736D428E1E9FC2F100ACDD0F /* TagsCard.swift */,
 			);
 			name = customView;
 			sourceTree = "<group>";
@@ -439,6 +441,8 @@
 				70AD5AF11E6E7360003C2536 /* SearchResultController.swift */,
 				73754E0A1E97B027001DD942 /* SearchTagsController.swift */,
 				7362A5E71E9C99E300DA4C91 /* SearchResultParser.swift */,
+				736D428A1E9FA45700ACDD0F /* SearchTagsParser.swift */,
+				736D428C1E9FAB2F00ACDD0F /* SearchTagsModel.swift */,
 			);
 			name = search;
 			sourceTree = "<group>";
@@ -512,6 +516,7 @@
 				736A40FD1E891A3000A4C038 /* VideoListingCard.xib in Resources */,
 				70A36E4D1E6148BE002B9296 /* CommonOverlayView.xib in Resources */,
 				0A5E1C651E7026B800537F84 /* kg_miss_kindy_chunky.ttf in Resources */,
+				736D42911E9FC2F100ACDD0F /* TagsCard.xib in Resources */,
 				0A8F790A1E6971D300720DB8 /* VideoCategoryCard.xib in Resources */,
 				7371FA061E939F1D009241FF /* VideoPlayer.xib in Resources */,
 				70A36E4B1E614722002B9296 /* Assets.xcassets in Resources */,
@@ -584,6 +589,7 @@
 				7365F3951E92612D006B3C75 /* MainController.swift in Sources */,
 				7371FA001E936898009241FF /* KCFloatingActionButton.swift in Sources */,
 				7371FA081E93AC53009241FF /* VideoPlayer.swift in Sources */,
+				736D428D1E9FAB2F00ACDD0F /* SearchTagsModel.swift in Sources */,
 				70AD5AED1E6E71CD003C2536 /* HistoryController.swift in Sources */,
 				F46267111E77AF0900302ACF /* LoginParser.swift in Sources */,
 				0A74B98E1E71143200B7A67D /* UIViewExtention.swift in Sources */,
@@ -626,6 +632,7 @@
 				70A36E4F1E6149C0002B9296 /* CommonOverlayView.swift in Sources */,
 				70AD5AEF1E6E71CD003C2536 /* HistoryVideoCell.swift in Sources */,
 				7370B8231E9DF4F600D91ABA /* RecommendedVideoParser.swift in Sources */,
+				736D428B1E9FA45700ACDD0F /* SearchTagsParser.swift in Sources */,
 				0AAD2EFD1E5C48EF00B504A3 /* AppDelegate.swift in Sources */,
 				70AD5AE41E6E7129003C2536 /* BaseModel.swift in Sources */,
 				7365F3931E92603A006B3C75 /* VideoListingController.swift in Sources */,
@@ -635,6 +642,7 @@
 				0A72615E1E6D30600023883F /* StringExtension.swift in Sources */,
 				70AD5AF21E6E7360003C2536 /* SearchResultController.swift in Sources */,
 				F46267191E77B1A600302ACF /* PreChatFormField.swift in Sources */,
+				736D42901E9FC2F100ACDD0F /* TagsCard.swift in Sources */,
 				73638FAC1E8A57EC0089619B /* CustomViewLayer.swift in Sources */,
 				70AD5AE61E6E7129003C2536 /* HttpRequestBuilder.swift in Sources */,
 				7392A7841E94C95900A6ED32 /* HistoryDBManager.swift in Sources */,

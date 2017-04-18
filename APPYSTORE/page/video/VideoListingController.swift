@@ -24,4 +24,11 @@ class VideoListingController: BaseListingViewController {
         dataFetchFramework = DataFetchFramework(pageName: PageConstants.VIDEO_LISTING_PAGE, pageUniqueId: catName, bundle: bundle)
         super.viewDidLoad()
     }
+    
+    override func getComponentProperties() -> ComponentProperties {
+        let components = ComponentProperties()
+        components.visibleIconsSet = [Item.BTN_BACK, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_SEARCH]
+        
+        return components
+    }
 }

@@ -188,4 +188,10 @@ class HttpRequestBuilder: NSObject {
         ]
     }
     
+    static func getSearchTagsParameters(method: String, pageId: String) -> Parameters {
+        return [METHOD: method,
+                PAGEID: pageId
+        ]
+    }
+    
 }

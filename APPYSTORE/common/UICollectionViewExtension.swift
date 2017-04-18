@@ -13,9 +13,19 @@ extension UICollectionView {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let margin = DimensionManager.getGeneralizedWidth1280x720(width: 32)
         layout.sectionInset = UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin)
-        //layout.minimumInteritemSpacing = margin
         layout.minimumLineSpacing = margin
-        layout.scrollDirection = UICollectionViewScrollDirection.horizontal
+        //layout.scrollDirection = UICollectionViewScrollDirection.horizontal
         setCollectionViewLayout(layout, animated: false)
+    }
+    
+    func setScrollDirectionHorizontal() {
+        if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = UICollectionViewScrollDirection.horizontal
+        }
+    }
+    func setScrollDirectionVertical() {
+        if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = UICollectionViewScrollDirection.vertical
+        }
     }
 }

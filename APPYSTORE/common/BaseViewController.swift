@@ -28,7 +28,7 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
     
     // Called when the view is about to made visible. Default does nothing
     override open func viewWillAppear(_ animated: Bool) {
-        mainControllerCommunicator?.setUIComponents(components: getComponentProperties()!)
+        mainControllerCommunicator?.setUIComponents(components: getComponentProperties())
         print("viewWillAppear called: " + getPageName())
     }
     

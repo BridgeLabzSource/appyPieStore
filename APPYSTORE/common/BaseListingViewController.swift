@@ -32,14 +32,22 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         //self.collectionView.delegate = self
         
         self.collectionView.addSpacingBetweenCell()
+        setScrollDirection()
         
         loadData()
     }
     
+    //to be overridden if required
+    func setScrollDirection() {
+        self.collectionView.setScrollDirectionHorizontal()
+    }
+    
+    //to be overridden if required
     func registerCard() {
         self.collectionView.register(UINib(nibName: "VideoListingCard", bundle: nil), forCellWithReuseIdentifier: "VideoListingCard")
     }
     
+    //to be overridden if required
     func getDataSource() -> DataSource{
         return DataSource.BOTH
     }
@@ -79,12 +87,13 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = getCell(indexPath: indexPath)
-        
-        cell.fillCard(model: dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel)
+
+        cell.fillCard(model: (dataFetchFramework?.contentList[indexPath.row])!)
         
         return cell
     }
     
+    //to be overridden if required
     func getCell(indexPath: IndexPath) -> BaseCard {
         return collectionView.dequeueReusableCell(withReuseIdentifier: "VideoListingCard", for: indexPath) as! BaseCard
     }

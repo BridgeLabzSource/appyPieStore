@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VideoCategoryCard: UICollectionViewCell {
+class VideoCategoryCard: BaseCard {
     
     @IBOutlet weak var rootView: UIView!
     @IBOutlet weak var imgBg: UIImageView!
@@ -20,7 +20,7 @@ class VideoCategoryCard: UICollectionViewCell {
     
     override func awakeFromNib() {
         radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 64))
-      
+        
         btnInfoContainer.layer.cornerRadius = radius
         
         imgBg.layer.cornerRadius = radius
@@ -32,5 +32,12 @@ class VideoCategoryCard: UICollectionViewCell {
         DimensionManager.setTextSize1280x720(label: lblCount, size: DimensionManager.H3)
         
         showShadowRightBottom()
+    }
+    
+    override func fillCard(model: BaseModel) {
+        let videoCategoryModel = model as! VideoCategoryModel
+        let imageUrl = URL(string: videoCategoryModel.imagePath)
+        imgBg.sd_setImage(with: imageUrl, placeholderImage:#imageLiteral(resourceName: "profile") )
+        lblCount.text = videoCategoryModel.contentCount
     }
 }
