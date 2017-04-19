@@ -38,7 +38,7 @@ import UIKit
     
     func initialize() {
         //the main layer
-        backgroundColor = .white
+        self.layer.backgroundColor = UIColor.white.cgColor
         makeRoundCorner(layer: self.layer)
         
         //add sub layers

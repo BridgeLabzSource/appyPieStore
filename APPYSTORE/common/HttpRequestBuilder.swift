@@ -69,7 +69,9 @@ class HttpRequestBuilder: NSObject {
     static let KEYWORD = "keyword"
     static let IGNORE_CAT_ID = "ignore_cat_id"
     static let IS_POPULAR = "is_popular"
-
+    
+    static let MSISDN = "mo"
+    static let EMAILID = "userEmail"
     
     
     static func getHeaders() -> HTTPHeaders {
@@ -116,6 +118,14 @@ class HttpRequestBuilder: NSObject {
                X_APPY_SCREEN_NAME:"",
                                    ]
         return headers
+    }
+    
+    static func getLoginParameters(method: String, msisdn: String, pageId: String, emailId: String) -> Parameters {
+        return [METHOD: method,
+                MSISDN: msisdn,
+                PAGEID: pageId,
+                EMAILID: emailId
+        ]
     }
     
     static func getHistoryParameters(method: String, childId: String, pageId: String, offset: String, limit: String) -> Parameters {

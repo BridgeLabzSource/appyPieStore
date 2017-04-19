@@ -92,7 +92,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="afN-Yg-KDn" customClass="TagsCard" customModule="APPYSTORE" customModuleProvider="target">
-                                        <rect key="frame" x="181.66666666666666" y="0.0" width="373" height="100"/>
+                                        <rect key="frame" x="182" y="0.0" width="373" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="373" height="100"/>
@@ -201,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWS-Ag-vLO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="629" y="1901"/>
+            <point key="canvasLocation" x="672" y="1454"/>
         </scene>
         <!--Video Category Controller-->
         <scene sceneID="vDr-gZ-heH">
@@ -366,7 +366,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kzw-Yc-ItE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="200" y="2755"/>
+            <point key="canvasLocation" x="-87" y="2200"/>
         </scene>
         <!--History Controller-->
         <scene sceneID="Ukg-1M-wqy">

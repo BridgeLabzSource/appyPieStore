@@ -6,12 +6,12 @@ class PageConstants: NSObject {
 
     static let RECOMMENDED_VIDEO_LISTING_PAGE = "Recommended Video Listing Page"
 
-    static let SEARCH_TAGS_PAGE = "search tags page"
+    static let SEARCH_TAGS_PAGE = "Search tags page"
     static let KEY_SEARCH_TAGS_DATA_FETCH_TIME = "KEY_SEARCH_TAGS_DATA_FETCH_TIME"
     static let KEY_SEARCH_TAGS_SERVER_OFFSET = "KEY_SEARCH_TAGS_SERVER_OFFSET"
     static let KEY_SEARCH_TAGS_TOTAL_CONTENT_COUNT = "KEY_SEARCH_TAGS_TOTAL_CONTENT_COUNT"
     
-    static let SEARCH_RESULT_PAGE = "search result page"
+    static let SEARCH_RESULT_PAGE = "Search result page"
     
     static let VIDEO_CATEGORY_PAGE = "Video category page"
     static let KEY_VIDEO_CATEGORY_DATA_FETCH_TIME = "KEY_VIDEO_CATEGORY_DATA_FETCH_TIME"
@@ -27,4 +27,7 @@ class PageConstants: NSObject {
     static let KEY_HISTORY_DATA_FETCH_TIME = "KEY_HISTORY_DATA_FETCH_TIME"
     static let KEY_HISTORY_SERVER_OFFSET = "KEY_HISTORY_SERVER_OFFSET"
     static let KEY_HISTORY_TOTAL_CONTENT_COUNT = "KEY_HISTORY_TOTAL_CONTENT_COUNT"
+    
+    static let REGISTRATION_PAGE = "Register page"
+    static let LOGIN_PAGE = "Login page"
 }

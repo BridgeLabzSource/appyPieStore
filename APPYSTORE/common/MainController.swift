@@ -18,6 +18,10 @@ class MainController: UIViewController, MainControllerCommunicator {
         return nil
     }
     
+    func getContext() -> MainController {
+        return self
+    }
+    
     func addChild(controller: BaseViewController) {
         uiDelegate?.addChild(controller: controller)
     }
@@ -25,6 +29,7 @@ class MainController: UIViewController, MainControllerCommunicator {
     override func viewDidLoad() {
         super.viewDidLoad()
         uiDelegate = MainControllerUIDelegate(mainController: self)
+        //AppNavigationHandler(mainControllerCommunicator: self).NavigateAtAppOpen()
         uiDelegate?.viewDidLoad()
     }
     

@@ -7,6 +7,7 @@
 //
 
 protocol MainControllerCommunicator {
+    func getContext() -> MainController
     func addChild(controller: BaseViewController)
     func setUIComponents(components: ComponentProperties?)
 }
