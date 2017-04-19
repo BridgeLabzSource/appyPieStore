@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3wt-zJ-xEi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3wt-zJ-xEi">
     <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -82,7 +82,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="svO-5q-R8Z">
-                                <rect key="frame" x="0.0" y="32" width="736" height="382"/>
+                                <rect key="frame" x="0.0" y="33" width="736" height="381"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6BA-Zw-sku">
                                     <size key="itemSize" width="373" height="100"/>
@@ -106,7 +106,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular searches" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwZ-8o-9Cq">
-                                <rect key="frame" x="18" y="0.0" width="718" height="21.333333333333332"/>
+                                <rect key="frame" x="18" y="0.0" width="718" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -137,10 +137,74 @@
             </objects>
             <point key="canvasLocation" x="-87.228260869565219" y="1466.6666666666667"/>
         </scene>
+        <!--Payment Page Controller-->
+        <scene sceneID="jnl-F0-e0K">
+            <objects>
+                <viewController id="a6A-nk-adG" customClass="PaymentPageController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dT5-Si-4vo"/>
+                        <viewControllerLayoutGuide type="bottom" id="seA-ws-PjS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WjK-HS-Rkr">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="0.17648168103448275" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lMC-qT-B5a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="962" y="2810"/>
+        </scene>
+        <!--Free Trial Controller-->
+        <scene sceneID="WNX-Cs-49c">
+            <objects>
+                <viewController id="v5h-f2-Xdi" customClass="FreeTrialController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eqe-2v-5ZD"/>
+                        <viewControllerLayoutGuide type="bottom" id="kaR-bs-LNh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cq2-yU-ET3">
+                        <rect key="frame" x="0.0" y="0.0" width="1280" height="720"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2o-k5-P1A">
+                                <rect key="frame" x="32" y="32" width="1216" height="656"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FLh-Sr-XCq" customClass="CrossButton" customModule="APPYSTORE" customModuleProvider="target">
+                                        <rect key="frame" x="583" y="303" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.44944507220000002" green="0.47961148710000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f2o-k5-P1A" firstAttribute="bottom" secondItem="cq2-yU-ET3" secondAttribute="bottom" multiplier="688:720" id="4IU-dw-afF"/>
+                            <constraint firstItem="f2o-k5-P1A" firstAttribute="top" secondItem="kaR-bs-LNh" secondAttribute="top" multiplier="32:720" id="GuN-67-KbJ"/>
+                            <constraint firstItem="f2o-k5-P1A" firstAttribute="leading" secondItem="cq2-yU-ET3" secondAttribute="trailing" multiplier="32:1280" id="Jfn-dH-Trf"/>
+                            <constraint firstItem="f2o-k5-P1A" firstAttribute="trailing" secondItem="cq2-yU-ET3" secondAttribute="trailing" multiplier="1248:1280" id="fhp-NC-zxy"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="1280" height="720"/>
+                    <connections>
+                        <outlet property="containerView" destination="f2o-k5-P1A" id="Ifl-Ib-2Ms"/>
+                        <outlet property="rootView" destination="cq2-yU-ET3" id="YYr-wa-kKc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZUJ-w5-k8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="610.59782608695662" y="3766.666666666667"/>
+        </scene>
         <!--Video Player Controller-->
         <scene sceneID="MdH-bD-5fJ">
             <objects>
-                <viewController id="glJ-SI-2l4" customClass="VideoPlayerController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoPlayerController" id="glJ-SI-2l4" customClass="VideoPlayerController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MTd-T4-nId"/>
                         <viewControllerLayoutGuide type="bottom" id="nQL-Rg-7Kg"/>
@@ -397,15 +461,14 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="259" height="192"/>
                                             <autoresizingMask key="autoresizingMask"/>
-
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0F11E153-B915-4D26-BF4D-3B55B43603E8" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="0E15EDF4-E6C8-4F3D-B892-5ABC28E0D91D" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
                                                     <rect key="frame" x="8" y="8" width="243" height="116"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="116" id="HfT-XT-9p0"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKj-Ns-yCG">
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKj-Ns-yCG">
                                                     <rect key="frame" x="231" y="148" width="20" height="20"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -414,14 +477,15 @@
                                                     </constraints>
                                                     <state key="normal" backgroundImage="download_icon"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One two buckle my shoe" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NL-BP-D4B">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="One two buckle my shoe" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NL-BP-D4B">
                                                     <rect key="frame" x="8" y="138" width="215" height="46"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_card_play_icon_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="gbi-zM-K7h">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="video_card_play_icon_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="gbi-zM-K7h">
                                                     <rect key="frame" x="4" y="93" width="36" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="36" id="Uxy-De-tLG"/>
@@ -430,7 +494,6 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
-
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <size key="customSize" width="259" height="192"/>
@@ -518,8 +581,7 @@
         </scene>
     </scenes>
     <resources>
-
-        <image name="0F11E153-B915-4D26-BF4D-3B55B43603E8" width="678" height="480">
+        <image name="0E15EDF4-E6C8-4F3D-B892-5ABC28E0D91D" width="678" height="480">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -22270,8 +22332,9 @@ ABPnZAAT52kAE+dxABPndAAT53kAE+eBABPnhAAT55YAE+eZABPnngAAAAAAAAQBAAAAAAAAAEEAAAAA
 AAAAAAAAAAAAE+egA
 </mutableData>
         </image>
-
         <image name="app_bg" width="960" height="540"/>
+        <image name="download_icon" width="36" height="36"/>
         <image name="profile" width="72" height="72"/>
+        <image name="video_card_play_icon_unselected" width="56" height="56"/>
     </resources>
 </document>

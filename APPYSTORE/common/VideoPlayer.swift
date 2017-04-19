@@ -55,6 +55,10 @@ protocol VideoDelegate {
     
     @IBOutlet weak var lockIcon: UIImageView!
     @IBOutlet weak var videoThumbnail: UIImageView!
+    var currentState: PlayerState!
+    var showControls = true
+    var isParenting = true
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
@@ -240,14 +244,26 @@ protocol VideoDelegate {
     
     func containerClick() {
         print("containerClick")
-        
-        if isMinimize {
-            delegate?.onVideoMaximize()
+        if isParenting {
+            if currentState != PlayerState.BUFFERING_START {
+                showControls = !showControls
+                if showControls {
+                    showParentingControls()
+                } else {
+                    hideParentingControls()
+                }
+            }
+            
         } else {
-            delegate?.onVideoMinimize()
+            if isMinimize {
+                delegate?.onVideoMaximize()
+            } else {
+                delegate?.onVideoMinimize()
+            }
+            
+            isMinimize = !isMinimize
         }
         
-        isMinimize = !isMinimize
     }
     
     func makeDefaultVisibility() {
@@ -323,6 +339,8 @@ protocol VideoDelegate {
     }
     
     func updateState(state: PlayerState) {
+        showControls = true
+        currentState = state
         switch state {
         case .PLAY:
             print("updateState: PLAY")
@@ -339,6 +357,9 @@ protocol VideoDelegate {
             hideLoader()
             hideLockIcon()
         case .BUFFERING_START:
+            if isParenting {
+                bottomView.isHidden = false
+            }
             print("updateState: BUFFERING_START")
             showLoader()
             hidePlayIcon()
@@ -357,6 +378,9 @@ protocol VideoDelegate {
             hidePauseIcon()
             hideLoader()
             hideLockIcon()
+            self.unregisteredPlayerItemListener()
+            resetPlayerItem()
+            showVideoThumbnail()
             //hideVideoThumbnail()
             break
         case .LOCK:
@@ -418,6 +442,7 @@ protocol VideoDelegate {
     }
     func playerDidFinish(note: NSNotification) {
         print("Ganesh Video Finished")
+        updateState(state: .STOP)
         delegate?.onVideoCompleted()
     }
     
@@ -569,6 +594,19 @@ protocol VideoDelegate {
     
     private func setTotalDuration(duration: Double) {
         totalTimeLabel.text = String(format: "%02d:%02d", ((lround(duration) / 60) % 60), lround(duration) % 60)
+    }
+    
+    func showParentingControls() {
+        bottomView.isHidden = false
+        updateState(state: currentState)
+    }
+    
+    func hideParentingControls() {
+        bottomView.isHidden = true
+        hideLockIcon()
+        hideLoader()
+        hidePlayIcon()
+        hidePauseIcon()
     }
     
     deinit {

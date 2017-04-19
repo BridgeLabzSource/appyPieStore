@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import WebKit
 
 class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideoDelegate {
     
@@ -86,7 +87,7 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
     
     
     func onVideoCompleted() {
-        recommendedController.nextVideo()
+        //recommendedController.nextVideo()
     }
     
     func onTaskStarted() {

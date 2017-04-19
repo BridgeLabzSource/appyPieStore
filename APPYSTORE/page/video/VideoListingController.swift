@@ -31,4 +31,9 @@ class VideoListingController: BaseListingViewController {
         
         return components
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let videoListingModel = dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel
+        print("VideoListingController : select video \(videoListingModel.title)")
+    }
 }
