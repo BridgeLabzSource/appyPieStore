@@ -16,12 +16,15 @@ enum PlayerState {
     case BUFFERING_START
     case BUFFERING_END
     case STOP
+    case LOCK
 }
 
 protocol VideoDelegate {
     func onVideoMinimize()
     func onVideoMaximize()
     func onVideoCompleted()
+    func onTaskStarted()
+    func onTaskCompleted()
 }
 
 @IBDesignable class VideoPlayer: UIView {
@@ -46,7 +49,12 @@ protocol VideoDelegate {
     var isMinimize = false
     var delegate: VideoDelegate?
     var task: URLSessionDataTask!
+    var session: URLSession!
+    var videoModel: VideoListingModel!
+    let operationQueue = OperationQueue()
     
+    @IBOutlet weak var lockIcon: UIImageView!
+    @IBOutlet weak var videoThumbnail: UIImageView!
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
@@ -58,17 +66,40 @@ protocol VideoDelegate {
     }
     
     func replaceVideo(playerModel: VideoListingModel) {
-        if task != nil {
-            task.cancel()
-        }
-    
+        videoModel = playerModel
+        print("replaceVideo type = \(playerModel.payType)")
+        
         print("VideoPlayer content change")
         pause()
         self.unregisteredPlayerItemListener()
         resetPlayerItem()
         
+        if task != nil {
+            task.cancel()
+            var state = ""
+            switch task.state {
+            case .canceling:
+                state = " canceling"
+            case .completed:
+                state = " completed"
+            case .running:
+                state = " running"
+            case .suspended:
+                state = " suspended"
+            }
+            print("Task State : \(state)")
+        }
+        
+        
+        showVideoThumbnail()
+        if playerModel.payType == "paid" {
+            updateState(state: .LOCK)
+            return
+        }
+        
         updateState(state: .BUFFERING_START)
-    
+        print("BUFFERING_START replaceVideo")
+        delegate?.onTaskStarted()
         if playerModel.downloadUrl.isEmpty {
             playerModel.downloadUrl = "http://www.appystore.in/Be-Dead-To-The-World--Idiom/dw/G1171Z191E193T9C20087824S1/20087824"
         }
@@ -76,29 +107,40 @@ protocol VideoDelegate {
         var request = URLRequest(url: URL(string: playerModel.downloadUrl)!)
         
         print("Request url : \(request.url)")
-        let session = URLSession.shared
+        session = URLSession.shared
         request.httpMethod = "GET"
+        request.timeoutInterval = 5
         task = session.dataTask(with: request, completionHandler: {
             data, response, error in
             
-            print("VideoPlayer content response")
-            print("Error: \(error)")
-            print("Response: \(response) ")
-            self.updateState(state: .BUFFERING_END)
-            if response != nil {
-                if let value = response {
-                    print("Description = \(value.description)")
+            DispatchQueue.main.async {
+                self.delegate?.onTaskCompleted()
+                self.hideVideoThumbnail()
+                print("VideoPlayer content response")
+                print("Task Error: \(error)")
+                print("Response: \(response) ")
+                self.updateState(state: .BUFFERING_END)
+                if response != nil {
+                    print("Api request success")
+                    if let value = response {
+                        print("Description = \(value.description)")
+                    }
+                    
+                    print("replaceVideo = \(response?.url)")
+                    
+                    self.unregisteredPlayerItemListener()
+                    //let url = NSURL(string: stringUrl)
+                    let url = response?.url
+                    let playerItem = AVPlayerItem(url: url! as URL)
+                    self.avPlayer.replaceCurrentItem(with: playerItem)
+                    self.play()
+                    self.registerPlayerItemListener()
+                    self.updateTotalDuration()
+                } else if error != nil {
+                    print("Api request error")
+                    self.showVideoThumbnail()
+                    self.updateState(state: .PAUSE)
                 }
-                
-                print("replaceVideo = \(response?.url)")
-                
-                self.unregisteredPlayerItemListener()
-                //let url = NSURL(string: stringUrl)
-                let url = response?.url
-                let playerItem = AVPlayerItem(url: url! as URL)
-                self.avPlayer.replaceCurrentItem(with: playerItem)
-                self.avPlayer.play()
-                self.registerPlayerItemListener()
             }
             
         })
@@ -121,6 +163,8 @@ protocol VideoDelegate {
         self.avPlayer.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
         self.avPlayer.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
         self.avPlayer.currentItem?.addObserver(self, forKeyPath: "playbackBufferFull", options: .new, context: nil)
+        
+        self.avPlayer.currentItem?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
     }
     
     func unregisteredPlayerItemListener() {
@@ -128,6 +172,7 @@ protocol VideoDelegate {
         self.avPlayer.currentItem?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
         self.avPlayer.currentItem?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
         self.avPlayer.currentItem?.removeObserver(self, forKeyPath: "playbackBufferFull")
+        self.avPlayer.currentItem?.removeObserver(self, forKeyPath: "status")
     }
     
     func initialize() {
@@ -182,7 +227,10 @@ protocol VideoDelegate {
         bottomView.isUserInteractionEnabled = true
         bottomView.addGestureRecognizer(singleTapBottom)
         
+        avPlayer.automaticallyWaitsToMinimizeStalling = false
+        hideLockIcon()
         updateState(state: .BUFFERING_START)
+        print("BUFFERING_START initialize")
         
     }
     
@@ -209,13 +257,29 @@ protocol VideoDelegate {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "status" {
+        if keyPath == "status" && object is AVPlayer {
             if avPlayer.status == .readyToPlay {
-                print("Ganesh status readyToPlay")
+                print("Ganesh status observer readyToPlay")
             } else if avPlayer.status == .failed {
-                print("Ganesh status failed")
+                print("Ganesh status observer failed")
             } else if avPlayer.status == .unknown {
-                print("Ganesh status unknown")
+                print("Ganesh status observer unknown")
+            }
+        }
+        
+        if keyPath == "status" && object is AVPlayerItem {
+            if avPlayer.currentItem?.status == .readyToPlay {
+                print("Ganesh status currentItem observer readyToPlay")
+                
+            } else if avPlayer.currentItem?.status == .failed {
+                print("Ganesh status currentItem observer failed")
+                showVideoThumbnail()
+                updateState(state: .PAUSE)
+                if videoModel != nil {
+                    replaceVideo(playerModel: videoModel)
+                }
+            } else if avPlayer.currentItem?.status == .unknown {
+                print("Ganesh status currentItem observer unknown")
             }
         }
         
@@ -235,7 +299,14 @@ protocol VideoDelegate {
             switch keyPath! {
             case "playbackBufferEmpty":
                 print("XXXXX Ganesh show loader playbackBufferEmpty")
-                updateState(state: .BUFFERING_START)
+                if avPlayer.currentItem?.status != AVPlayerItemStatus.readyToPlay {
+                    updateState(state: .PAUSE)
+                } else {
+                    updateState(state: .BUFFERING_START)
+                    print("BUFFERING_START observeValue ")
+                }
+                print("XXXXX Ganesh show loader \(getCurrentItemStatus())")
+                
             case "playbackLikelyToKeepUp":
                 print("XXXXX Ganesh hide loader playbackLikelyToKeepUp = \(avPlayer.currentItem?.isPlaybackLikelyToKeepUp)")
                 updateState(state: .BUFFERING_END)
@@ -254,38 +325,111 @@ protocol VideoDelegate {
     func updateState(state: PlayerState) {
         switch state {
         case .PLAY:
+            print("updateState: PLAY")
+            //hideVideoThumbnail()
             showPauseIcon()
             hidePlayIcon()
             hideLoader()
+            hideLockIcon()
         case .PAUSE:
+            print("updateState: PAUSE")
+            //hideVideoThumbnail()
             showPlayIcon()
             hidePauseIcon()
             hideLoader()
+            hideLockIcon()
         case .BUFFERING_START:
+            print("updateState: BUFFERING_START")
             showLoader()
             hidePlayIcon()
             hidePauseIcon()
+            
         case .BUFFERING_END:
+            print("updateState: BUFFERING_END")
             if avPlayer.rate == 0 {
                 updateState(state: .PAUSE)
             } else {
                 updateState(state: .PLAY)
             }
         case .STOP:
+            print("updateState: STOP")
             showPlayIcon()
             hidePauseIcon()
             hideLoader()
+            hideLockIcon()
+            //hideVideoThumbnail()
+            break
+        case .LOCK:
+            print("updateState: LOCK")
+            showLockIcon()
+            hideLoader()
+            hidePlayIcon()
+            hidePauseIcon()
             break
         }
+        
+        if avPlayer.status == .readyToPlay {
+            print("Ganesh status readyToPlay")
+        } else if avPlayer.status == .failed {
+            print("Ganesh status failed")
+        } else if avPlayer.status == .unknown {
+            print("Ganesh status unknown")
+        }
+        
+        if avPlayer.currentItem?.status == .readyToPlay {
+            print("Ganesh status currentItem readyToPlay")
+        } else if avPlayer.currentItem?.status == .failed {
+            print("Ganesh status currentItem failed")
+        } else if avPlayer.currentItem?.status == .unknown {
+            print("Ganesh status currentItem unknown")
+        }
+        
+        print("Ganesh status player rate \(avPlayer.rate)")
+        print("Ganesh status error \(avPlayer.error)")
+        print("Ganesh status timeControlStatus \(getTimeStatus())")
+        
     }
     
+    func getCurrentItemStatus() -> String {
+        var s = ""
+        if avPlayer.currentItem?.status == .readyToPlay {
+            s = "readyToPlay"
+        } else if avPlayer.currentItem?.status == .failed {
+            s = "failed"
+        } else if avPlayer.currentItem?.status == .unknown {
+            s = "unknown"
+        }
+        
+        return s
+    }
+    
+    func getTimeStatus() -> String {
+        var s = ""
+        switch avPlayer.timeControlStatus {
+        case .paused:
+            s = "paused"
+        case .playing:
+            s = "playing"
+        case .waitingToPlayAtSpecifiedRate:
+            s = "waitingToPlayAtSpecifiedRate"
+        }
+        
+        return s
+    }
     func playerDidFinish(note: NSNotification) {
         print("Ganesh Video Finished")
         delegate?.onVideoCompleted()
     }
     
     func play() {
-        avPlayer.play()
+        if avPlayer.currentItem != nil {
+            avPlayer.play()
+            print("play() func \(getCurrentItemStatus())")
+        } else {
+            if videoModel != nil {
+                replaceVideo(playerModel: videoModel)
+            }
+        }
     }
     
     func pause() {
@@ -305,7 +449,8 @@ protocol VideoDelegate {
     func playIconClick() {
         print("playIcon Clicked")
         //invisibleButtonTapped()
-        avPlayer.play()
+        play()
+        
     }
     
     func pauseIconClick() {
@@ -319,7 +464,7 @@ protocol VideoDelegate {
         if playerIsPlaying {
             avPlayer.pause()
         } else {
-            avPlayer.play()
+            play()
         }
     }
     
@@ -328,6 +473,7 @@ protocol VideoDelegate {
     }
     
     func showPlayIcon() {
+        playIcon.layer.zPosition = 1
         playIcon.isHidden = false
     }
     
@@ -336,10 +482,34 @@ protocol VideoDelegate {
     }
     
     func showPauseIcon() {
+        pauseIcon.layer.zPosition = 1
         pauseIcon.isHidden = false
     }
     
+    func showLockIcon() {
+        lockIcon.isHidden = false
+    }
+    
+    func hideLockIcon() {
+        lockIcon.isHidden = true
+    }
+    
+    func showVideoThumbnail() {
+        if videoModel != nil {
+            print("updateState : showVideoThumbnail")
+            let imgurl = URL(string: videoModel.imagePath)
+            videoThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
+            videoThumbnail.isHidden = false
+        }
+    }
+    
+    func hideVideoThumbnail() {
+        print("updateState : hideVideoThumbnail")
+        videoThumbnail.isHidden = true
+    }
+    
     func showLoader() {
+        loader.layer.zPosition = 1
         loader.isHidden = false
         loader.startAnimating()
     }
@@ -361,7 +531,7 @@ protocol VideoDelegate {
         
         avPlayer.seek(to: CMTimeMakeWithSeconds(elapsedTime, 100)) { (completed: Bool) -> Void in
             if self.playerRateBeforeSeek > 0 {
-                self.avPlayer.play()
+                self.play()
             }
         }
     }
@@ -385,7 +555,7 @@ protocol VideoDelegate {
         let timePlayed: Float64 = elapsedTime
         
         setPlayTime(timePlayed: timePlayed)
-        updateTotalDuration()
+        //updateTotalDuration()
     }
     
     private func setPlayTime(timePlayed: Double) {
@@ -393,7 +563,7 @@ protocol VideoDelegate {
     }
     
     private func updateTotalDuration() {
-        let duration = CMTimeGetSeconds(avPlayer.currentItem!.duration)
+        let duration = CMTimeGetSeconds(avPlayer.currentItem!.asset.duration)
         setTotalDuration(duration: duration)
     }
     

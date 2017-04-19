@@ -88,4 +88,12 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
     func onVideoCompleted() {
         recommendedController.nextVideo()
     }
+    
+    func onTaskStarted() {
+        recommendedController.isClickedEnable = false
+    }
+    
+    func onTaskCompleted() {
+        recommendedController.isClickedEnable = true
+    }
 }

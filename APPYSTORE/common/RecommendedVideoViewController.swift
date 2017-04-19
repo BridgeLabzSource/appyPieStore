@@ -15,6 +15,7 @@ protocol RecommendedVideoDelegate {
 class RecommendedVideoViewController: BaseListingViewController {
     var delegate: RecommendedVideoDelegate?
     var currentIndex = -1
+    var isClickedEnable = true
     
     override func viewDidLoad() {
         dataFetchFramework = DataFetchFramework(pageName: PageConstants.RECOMMENDED_VIDEO_LISTING_PAGE, pageUniqueId: "20087824", bundle: bundle)
@@ -59,12 +60,15 @@ class RecommendedVideoViewController: BaseListingViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let videoListingModel = dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel
-        (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = false
-        currentIndex = indexPath.row
-        (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = true
-        delegate?.onContentChange(content: videoListingModel)
-        collectionView.reloadData()
+        if isClickedEnable {
+            let videoListingModel = dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel
+            (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = false
+            currentIndex = indexPath.row
+            (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = true
+            delegate?.onContentChange(content: videoListingModel)
+            collectionView.reloadData()
+        }
+        
     }
     
     override func onDataReceived(status: String, result: AnyObject) {
@@ -78,12 +82,35 @@ class RecommendedVideoViewController: BaseListingViewController {
     
     func nextVideo() {
         (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = false
-        currentIndex += 1
+        
+        if (dataFetchFramework?.contentList[currentIndex + 1] as! VideoListingModel).payType == "paid" {
+            currentIndex = getPreferredIndex()
+        } else {
+            currentIndex += 1
+        }
+        print("nextVideo currentIndex = \(currentIndex)")
         (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = true
         delegate?.onContentChange(content: dataFetchFramework?.contentList[currentIndex ] as! VideoListingModel)
         collectionView.reloadData()
     }
     
-    
+    func getPreferredIndex() -> Int {
+        var index = currentIndex
+        var valueIndex = -1
+        print("getPreferredIndex start index \(index)")
+        while index >= 0 {
+            let model = (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel);
+            if model.payType == "paid" {
+                print("getPreferredIndex index = \(index) pay type = \(model.payType)")
+                break
+            } else {
+                valueIndex = index
+            }
+            index -= 1
+        }
+        print("getPreferredIndex end index \(index)")
+        
+        return valueIndex
+    }
     
 }

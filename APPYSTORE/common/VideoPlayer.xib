@@ -17,6 +17,7 @@
                 <outlet property="containerView" destination="ZOG-TN-WWb" id="ksR-ui-YuY"/>
                 <outlet property="leftSeek" destination="HUC-Hm-ezC" id="vhe-mw-Car"/>
                 <outlet property="loader" destination="YxJ-qZ-FOk" id="FqL-Y3-Aa0"/>
+                <outlet property="lockIcon" destination="BBc-QU-cz4" id="Avy-uo-zp7"/>
                 <outlet property="pauseIcon" destination="rDD-qN-VNg" id="rsp-WF-VkH"/>
                 <outlet property="playIcon" destination="zQe-47-0E4" id="xBf-vk-M1A"/>
                 <outlet property="playTimeLabel" destination="IvY-yo-njV" id="T8b-RQ-pMj"/>
@@ -24,6 +25,7 @@
                 <outlet property="rootView" destination="iN0-l3-epB" id="vRF-Cs-rru"/>
                 <outlet property="seekbar" destination="nKf-aM-nqe" id="7Jx-FB-nZD"/>
                 <outlet property="totalTimeLabel" destination="cPe-pM-dYX" id="zPX-7Q-Fxu"/>
+                <outlet property="videoThumbnail" destination="mF4-9L-6e6" id="sZo-cJ-JGd"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -99,20 +101,34 @@
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="YxJ-qZ-FOk">
                             <rect key="frame" x="363" y="188" width="75" height="75"/>
                         </activityIndicatorView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mF4-9L-6e6">
+                            <rect key="frame" x="0.0" y="0.0" width="800" height="450"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock_icon" translatesAutoresizingMaskIntoConstraints="NO" id="BBc-QU-cz4">
+                            <rect key="frame" x="363" y="188" width="75" height="75"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="zQe-47-0E4" firstAttribute="width" secondItem="ZOG-TN-WWb" secondAttribute="height" multiplier="1:6" id="1RG-DD-7za"/>
+                        <constraint firstItem="BBc-QU-cz4" firstAttribute="height" secondItem="rDD-qN-VNg" secondAttribute="height" id="4Oa-00-Js7"/>
                         <constraint firstItem="YxJ-qZ-FOk" firstAttribute="centerY" secondItem="zQe-47-0E4" secondAttribute="centerY" id="6gi-0J-8W6"/>
                         <constraint firstItem="1FR-eh-jFf" firstAttribute="height" secondItem="ZOG-TN-WWb" secondAttribute="height" multiplier="1:6" id="9H3-ot-PCJ"/>
                         <constraint firstAttribute="bottom" secondItem="1FR-eh-jFf" secondAttribute="bottom" id="D5O-fR-j8c"/>
                         <constraint firstItem="zQe-47-0E4" firstAttribute="centerY" secondItem="ZOG-TN-WWb" secondAttribute="centerY" id="DMv-Ue-Ao8"/>
+                        <constraint firstItem="mF4-9L-6e6" firstAttribute="top" secondItem="ZOG-TN-WWb" secondAttribute="top" id="E1B-vW-Ity"/>
+                        <constraint firstAttribute="bottom" secondItem="mF4-9L-6e6" secondAttribute="bottom" id="IiE-yl-2px"/>
                         <constraint firstItem="rDD-qN-VNg" firstAttribute="centerY" secondItem="zQe-47-0E4" secondAttribute="centerY" id="PvC-ro-USB"/>
                         <constraint firstItem="YxJ-qZ-FOk" firstAttribute="width" secondItem="zQe-47-0E4" secondAttribute="width" id="RFf-3q-zKx"/>
                         <constraint firstItem="rDD-qN-VNg" firstAttribute="centerX" secondItem="zQe-47-0E4" secondAttribute="centerX" id="Wa8-xa-rnG"/>
+                        <constraint firstItem="BBc-QU-cz4" firstAttribute="centerX" secondItem="rDD-qN-VNg" secondAttribute="centerX" id="WdL-MJ-mJq"/>
                         <constraint firstItem="rDD-qN-VNg" firstAttribute="height" secondItem="zQe-47-0E4" secondAttribute="height" id="ZJ4-N5-U9r"/>
+                        <constraint firstItem="BBc-QU-cz4" firstAttribute="width" secondItem="rDD-qN-VNg" secondAttribute="width" id="Zie-2e-isE"/>
                         <constraint firstItem="YxJ-qZ-FOk" firstAttribute="height" secondItem="zQe-47-0E4" secondAttribute="height" id="dKb-4p-WaF"/>
+                        <constraint firstItem="mF4-9L-6e6" firstAttribute="leading" secondItem="ZOG-TN-WWb" secondAttribute="leading" id="ffs-x1-YrE"/>
                         <constraint firstItem="zQe-47-0E4" firstAttribute="centerX" secondItem="ZOG-TN-WWb" secondAttribute="centerX" id="iga-xu-OJn"/>
+                        <constraint firstAttribute="trailing" secondItem="mF4-9L-6e6" secondAttribute="trailing" id="opA-at-InU"/>
+                        <constraint firstItem="BBc-QU-cz4" firstAttribute="centerY" secondItem="rDD-qN-VNg" secondAttribute="centerY" id="sNr-qK-zUD"/>
                         <constraint firstItem="1FR-eh-jFf" firstAttribute="leading" secondItem="ZOG-TN-WWb" secondAttribute="leading" id="uzL-0E-irE"/>
                         <constraint firstItem="rDD-qN-VNg" firstAttribute="width" secondItem="zQe-47-0E4" secondAttribute="width" id="wCG-ds-59L"/>
                         <constraint firstItem="YxJ-qZ-FOk" firstAttribute="centerX" secondItem="zQe-47-0E4" secondAttribute="centerX" id="x7P-ni-Zt7"/>
@@ -134,6 +150,7 @@
         </view>
     </objects>
     <resources>
+        <image name="lock_icon" width="70" height="70"/>
         <image name="pause" width="105" height="105"/>
         <image name="play" width="105" height="105"/>
         <image name="video_control_backward" width="41" height="41"/>
