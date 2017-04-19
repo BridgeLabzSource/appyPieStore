@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class LoginParser: BaseParser{
     
-    private let METHOD_NAME = "login"
+    static let METHOD_NAME = "login"
     private let USERID = "UserId"
     private let UTYPE = "Utype"
     
@@ -102,7 +102,6 @@ class LoginParser: BaseParser{
                 let isEligibleForTrial = StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: inputJson, key: IS_ELIGIBLE_FOR_TRIAL_SUBSCRIPTION), secondString: "1")
                 
                 userInfo.isDeviceEligibleForTrialSubscription = isEligibleForTrial
-                //
             }
             
             userInfo.tInfo = getValueForKey(inputJson: inputJson, key: TINFO)

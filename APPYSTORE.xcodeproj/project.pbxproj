@@ -77,12 +77,17 @@
 		7371FA061E939F1D009241FF /* VideoPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7371FA051E939F1D009241FF /* VideoPlayer.xib */; };
 		7371FA081E93AC53009241FF /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371FA071E93AC53009241FF /* VideoPlayer.swift */; };
 		7371FA0A1E93D454009241FF /* VideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7371FA091E93D454009241FF /* VideoPlayerController.swift */; };
+		7372320A1EA64B4E001A3106 /* UIToolbarExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737232091EA64B4E001A3106 /* UIToolbarExtention.swift */; };
 		73754E061E975969001DD942 /* MainControllerUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73754E051E975969001DD942 /* MainControllerUIDelegate.swift */; };
 		73754E081E978474001DD942 /* ComponentProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73754E071E978474001DD942 /* ComponentProperties.swift */; };
 		73754E0B1E97B027001DD942 /* SearchTagsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73754E0A1E97B027001DD942 /* SearchTagsController.swift */; };
 		7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */; };
 		737E28281E94F409008CEC26 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737E28271E94F409008CEC26 /* PlayerModel.swift */; };
 		738C72F61E93E34400A1B4E0 /* VideoListingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C72F51E93E34400A1B4E0 /* VideoListingParser.swift */; };
+		738C89CE1EA5D12C001C9724 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 738C89CD1EA5D12C001C9724 /* Login.storyboard */; };
+		738EEE6E1EA4BF3000A50038 /* AppNavigationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EEE6D1EA4BF3000A50038 /* AppNavigationHandler.swift */; };
+		738EEE701EA4DD5300A50038 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EEE6F1EA4DD5300A50038 /* NavigationUtil.swift */; };
+		738EEE731EA4FF5300A50038 /* ChildRegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EEE721EA4FF5300A50038 /* ChildRegistrationController.swift */; };
 		7392672B1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392672A1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift */; };
 		7392A7841E94C95900A6ED32 /* HistoryDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392A7831E94C95900A6ED32 /* HistoryDBManager.swift */; };
 		7392A7861E94C96200A6ED32 /* VideoDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392A7851E94C96200A6ED32 /* VideoDBManager.swift */; };
@@ -189,12 +194,17 @@
 		7371FA051E939F1D009241FF /* VideoPlayer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoPlayer.xib; sourceTree = "<group>"; };
 		7371FA071E93AC53009241FF /* VideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		7371FA091E93D454009241FF /* VideoPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerController.swift; sourceTree = "<group>"; };
+		737232091EA64B4E001A3106 /* UIToolbarExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIToolbarExtention.swift; sourceTree = "<group>"; };
 		73754E051E975969001DD942 /* MainControllerUIDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainControllerUIDelegate.swift; sourceTree = "<group>"; };
 		73754E071E978474001DD942 /* ComponentProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentProperties.swift; sourceTree = "<group>"; };
 		73754E0A1E97B027001DD942 /* SearchTagsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTagsController.swift; sourceTree = "<group>"; };
 		7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchFramework.swift; sourceTree = "<group>"; };
 		737E28271E94F409008CEC26 /* PlayerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		738C72F51E93E34400A1B4E0 /* VideoListingParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingParser.swift; sourceTree = "<group>"; };
+		738C89CD1EA5D12C001C9724 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		738EEE6D1EA4BF3000A50038 /* AppNavigationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationHandler.swift; sourceTree = "<group>"; };
+		738EEE6F1EA4DD5300A50038 /* NavigationUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
+		738EEE721EA4FF5300A50038 /* ChildRegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildRegistrationController.swift; sourceTree = "<group>"; };
 		7392672A1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewControllerProtocol.swift; sourceTree = "<group>"; };
 		7392A7831E94C95900A6ED32 /* HistoryDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDBManager.swift; sourceTree = "<group>"; };
 		7392A7851E94C96200A6ED32 /* VideoDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDBManager.swift; sourceTree = "<group>"; };
@@ -268,8 +278,13 @@
 				73754E071E978474001DD942 /* ComponentProperties.swift */,
 				7392672A1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift */,
 				7370B8241E9E421300D91ABA /* BaseCard.swift */,
+
 				73DA44691EA60CF600EF2C00 /* PaymentPageController.swift */,
 				73DA446B1EA61DFF00EF2C00 /* FreeTrialController.swift */,
+
+				738EEE6D1EA4BF3000A50038 /* AppNavigationHandler.swift */,
+				738EEE6F1EA4DD5300A50038 /* NavigationUtil.swift */,
+
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -284,6 +299,7 @@
 				7371A2E21E7BB293009B2894 /* ArrayExtension.swift */,
 				73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */,
 				736D42861E9F544F00ACDD0F /* UITextFieldExtension.swift */,
+				737232091EA64B4E001A3106 /* UIToolbarExtention.swift */,
 			);
 			name = extension;
 			sourceTree = "<group>";
@@ -355,6 +371,7 @@
 				F48798F31E77F36F0060932F /* Prefs.swift */,
 				73F43B031E82465800D4DD90 /* PageDataPref.swift */,
 				73F43B051E82739D00D4DD90 /* ContentListingApiResponseModel.swift */,
+				738C89CD1EA5D12C001C9724 /* Login.storyboard */,
 			);
 			path = APPYSTORE;
 			sourceTree = "<group>";
@@ -362,6 +379,7 @@
 		0AD5536D1E5DA958005ECA4A /* page */ = {
 			isa = PBXGroup;
 			children = (
+				738EEE711EA4FEEF00A50038 /* loginAndRegistration */,
 				73754E091E9795F3001DD942 /* search */,
 				70A36E521E6160BD002B9296 /* history */,
 				0AD5536E1E5DA958005ECA4A /* video */,
@@ -459,6 +477,14 @@
 			name = search;
 			sourceTree = "<group>";
 		};
+		738EEE711EA4FEEF00A50038 /* loginAndRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				738EEE721EA4FF5300A50038 /* ChildRegistrationController.swift */,
+			);
+			name = loginAndRegistration;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -535,6 +561,7 @@
 				70A36E4B1E614722002B9296 /* Assets.xcassets in Resources */,
 				0AAD2F021E5C48EF00B504A3 /* Main.storyboard in Resources */,
 				0A80DA201E702C5E00939443 /* TopBarOverlay.xib in Resources */,
+				738C89CE1EA5D12C001C9724 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +634,7 @@
 				73DA44701EA63BA500EF2C00 /* CrossButton.swift in Sources */,
 				F46267111E77AF0900302ACF /* LoginParser.swift in Sources */,
 				0A74B98E1E71143200B7A67D /* UIViewExtention.swift in Sources */,
+				738EEE731EA4FF5300A50038 /* ChildRegistrationController.swift in Sources */,
 				737E28281E94F409008CEC26 /* PlayerModel.swift in Sources */,
 				73B657541E8BD9C500E7D582 /* MainControllerCommunicator.swift in Sources */,
 				7371F9FF1E936898009241FF /* KCFABWindow.swift in Sources */,
@@ -623,6 +651,7 @@
 				7399063C1E8E38CE009501AD /* NavigationManager.swift in Sources */,
 				0A65E2601E6EC11400F538B5 /* VideoCategoryParser.swift in Sources */,
 				0A72615F1E6D30600023883F /* UIColorExtension.swift in Sources */,
+				738EEE701EA4DD5300A50038 /* NavigationUtil.swift in Sources */,
 				707FD8181E7140A400948BEA /* Util.swift in Sources */,
 				706B0B9B1E73D392006CF8CA /* AnimationView.swift in Sources */,
 				7362A5E81E9C99E300DA4C91 /* SearchResultParser.swift in Sources */,
@@ -637,6 +666,7 @@
 				70AD5AE81E6E7129003C2536 /* HttpConnection.swift in Sources */,
 				73B657521E8BCFAD00E7D582 /* BaseViewController.swift in Sources */,
 				7392A7861E94C96200A6ED32 /* VideoDBManager.swift in Sources */,
+				738EEE6E1EA4BF3000A50038 /* AppNavigationHandler.swift in Sources */,
 				0A8F790C1E6971FD00720DB8 /* VideoCategoryCard.swift in Sources */,
 				7371F9FE1E936898009241FF /* KCFABViewController.swift in Sources */,
 				0A5E1C641E701C2D00537F84 /* UILabelExtension.swift in Sources */,
@@ -676,7 +706,11 @@
 				73967E7D1E893BF100A9A81B /* UICollectionViewExtension.swift in Sources */,
 				0A65E26E1E6EDF1E00F538B5 /* VideoCategoryModel.swift in Sources */,
 				7371FA0A1E93D454009241FF /* VideoPlayerController.swift in Sources */,
+
 				73DA446C1EA61DFF00EF2C00 /* FreeTrialController.swift in Sources */,
+
+				7372320A1EA64B4E001A3106 /* UIToolbarExtention.swift in Sources */,
+
 				7370B81F1E9DE99100D91ABA /* RecommendedVideoCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
