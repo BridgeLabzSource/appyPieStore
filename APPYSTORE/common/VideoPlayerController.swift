@@ -32,6 +32,14 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
         return viewController
     }()
     
+    override func getPageName() -> String {
+        return PageConstants.VIDEO_PLAYER_PAGE
+    }
+    
+    override func getPageNameUniqueIdentifier() -> String {
+        return ""
+    }
+    
     func addAsChildViewController(childController: BaseViewController){
         print("VideoPlayerController addAsChildViewController")
         addChildViewController(childController)
@@ -42,7 +50,14 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
         childController.didMove(toParentViewController: self)
         
     }
- 
+    
+    override func getComponentProperties() -> ComponentProperties {
+        let components = ComponentProperties()
+        components.visibleIconsSet = [Item.BTN_BACK]
+        
+        return components
+    }
+    
     override func viewDidLoad() {
         print("VideoPlayerController viewDidLoad")
         super.viewDidLoad()
@@ -61,7 +76,8 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
         videoPlayer.avPlayer?.pause()
         videoPlayer.avPlayerLayer.removeFromSuperlayer()
         videoPlayer.avPlayer = nil
-        self.dismiss(animated: false, completion: nil)
+        //self.dismiss(animated: false, completion: nil)
+        mainControllerCommunicator?.performBackButtonClick()
     }
     
     func onContentChange(content: VideoListingModel) {
@@ -74,11 +90,13 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
         videoPlayer.replaceVideo(playerModel: content)
     }
     
+    /*
     override func viewWillAppear(_ animated: Bool) {
         print("VideoPlayerController viewWillAppear")
         super.viewWillAppear(animated)
         videoPlayer.play()
     }
+ */
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -89,6 +107,7 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
         super.beginAppearanceTransition(isAppearing, animated: animated)
     }
     
+    /*
     override func endAppearanceTransition() {
         super.endAppearanceTransition()
         print("VideoPlayerController endAppearanceTransition")
@@ -97,15 +116,19 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
         onVideoMinimize()
         playVideoContent(content: defaultModel!)
     }
+ */
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         print("VideoPlayerController viewDidAppear")
-        /*
+        
         recommendedController.view.frame = self.recommendedContainer.frame
         recommendedController.view.bounds = self.recommendedContainer.bounds
-        */
+        
+        playVideoContent(content: defaultModel!)
+        onVideoMinimize()
         /*
         videoPlayer.frame = view.frame
         videoPlayer.avPlayerLayer.frame = videoPlayer.frame
@@ -114,6 +137,7 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
         */
         
     }
+ 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

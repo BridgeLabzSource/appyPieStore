@@ -10,21 +10,32 @@ import UIKit
 
 class NavigationManager {
     
+
     static func openVideoPlayerPage(mainControllerCommunicator: MainControllerCommunicator, model: VideoListingModel) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "VideoPlayerController") as! VideoPlayerController
         viewController.mainControllerCommunicator = mainControllerCommunicator
         viewController.defaultModel = model
-        //mainControllerCommunicator.addChild(controller: viewController)
-        mainControllerCommunicator.getContext().present(viewController, animated: false, completion: nil)
+        mainControllerCommunicator.addChild(controller: viewController, area: .FULL)
+        //mainControllerCommunicator.getContext().present(viewController, animated: false, completion: nil)
+    }
+
+    static func openAvatarSelectionPage(mainControllerCommunicator: MainControllerCommunicator, pageType: Int) {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ChildRegistrationController") as! ChildRegistrationController
+        viewController.mainControllerCommunicator = mainControllerCommunicator
+        mainControllerCommunicator.addChild(controller: viewController, area: .FULL)
+        //mainControllerCommunicator.getContext().present(viewController, animated: false, completion: nil)
+
     }
     
     static func openRegistrationPage(mainControllerCommunicator: MainControllerCommunicator, pageType: Int) {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "ChildRegistrationController") as! ChildRegistrationController
         viewController.mainControllerCommunicator = mainControllerCommunicator
-        //mainControllerCommunicator.addChild(controller: viewController)
-        mainControllerCommunicator.getContext().present(viewController, animated: true, completion: nil)
+
+        mainControllerCommunicator.addChild(controller: viewController, area: Area.FULL)
+        //mainControllerCommunicator.getContext().present(viewController, animated: true, completion: nil)
 
     }
     
@@ -32,7 +43,7 @@ class NavigationManager {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "VideoCategoryController") as! VideoCategoryController
         viewController.mainControllerCommunicator = mainControllerCommunicator
-        mainControllerCommunicator.addChild(controller: viewController)
+        mainControllerCommunicator.addChild(controller: viewController, area: nil)
     }
     
     static func openVideoListingPage(mainControllerCommunicator: MainControllerCommunicator?, bundle : AndroidBundle) {
@@ -40,21 +51,21 @@ class NavigationManager {
         let viewController = storyboard.instantiateViewController(withIdentifier: "VideoListingController") as! VideoListingController
         viewController.bundle = bundle
         viewController.mainControllerCommunicator = mainControllerCommunicator
-        mainControllerCommunicator?.addChild(controller: viewController)
+        mainControllerCommunicator?.addChild(controller: viewController, area: nil)
     }
     
     static func openHistoryPage(mainControllerCommunicator: MainControllerCommunicator) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "HistoryController") as! HistoryController
         viewController.mainControllerCommunicator = mainControllerCommunicator
-        mainControllerCommunicator.addChild(controller: viewController)
+        mainControllerCommunicator.addChild(controller: viewController, area: nil)
     }
     
     static func openSearchTagsPage(mainControllerCommunicator: MainControllerCommunicator) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "SearchTagsController") as! SearchTagsController
         viewController.mainControllerCommunicator = mainControllerCommunicator
-        mainControllerCommunicator.addChild(controller: viewController)
+        mainControllerCommunicator.addChild(controller: viewController, area: nil)
         
     }
     
@@ -67,7 +78,7 @@ class NavigationManager {
         viewController.bundle = bundle
         
         viewController.mainControllerCommunicator = mainControllerCommunicator
-        mainControllerCommunicator.addChild(controller: viewController)
+        mainControllerCommunicator.addChild(controller: viewController, area: nil)
     }
     
 }

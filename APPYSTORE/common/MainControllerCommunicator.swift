@@ -8,6 +8,7 @@
 
 protocol MainControllerCommunicator {
     func getContext() -> MainController
-    func addChild(controller: BaseViewController)
+    func addChild(controller: BaseViewController, area: Area?)
     func setUIComponents(components: ComponentProperties?)
+    func performBackButtonClick()
 }

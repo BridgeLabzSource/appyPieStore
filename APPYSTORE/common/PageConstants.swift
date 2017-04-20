@@ -23,6 +23,8 @@ class PageConstants: NSObject {
     static let KEY_VIDEO_LISTING_SERVER_OFFSET = "KEY_VIDEO_LISTING_SERVER_OFFSET"
     static let KEY_VIDEO_LISTING_TOTAL_CONTENT_COUNT = "KEY_VIDEO_LISTING_TOTAL_CONTENT_COUNT"
     
+    static let VIDEO_PLAYER_PAGE = "Video player page"
+    
     static let HISTORY_PAGE = "History page"
     static let KEY_HISTORY_DATA_FETCH_TIME = "KEY_HISTORY_DATA_FETCH_TIME"
     static let KEY_HISTORY_SERVER_OFFSET = "KEY_HISTORY_SERVER_OFFSET"
@@ -30,4 +32,11 @@ class PageConstants: NSObject {
     
     static let REGISTRATION_PAGE = "Register page"
     static let LOGIN_PAGE = "Login page"
+    
+    static let  SELECT_AVATAR_PAGE_NEW = "Select avatar page New Registration"
+    static let  SELECT_AVATAR_PAGE_ADD = "Select avatar page Add Child"
+    static let  SELECT_AVATAR_PAGE_EDIT = "Select avatar page Edit Child"
+    static let  KEY_SELECT_AVATAR_DATA_FETCH_TIME = "KEY_SELECT_AVATAR_DATA_FETCH_TIME"
+    static let  KEY_SELECT_AVATAR_TOTAL_CONTENT_COUNT = "KEY_SELECT_AVATAR_TOTAL_CONTENT_COUNT"
+    static let  KEY_SELECT_AVATAR_SERVER_OFFSET = "KEY_SELECT_AVATAR_SERVER_OFFSET"
 }

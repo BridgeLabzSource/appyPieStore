@@ -98,6 +98,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         return collectionView.dequeueReusableCell(withReuseIdentifier: "VideoListingCard", for: indexPath) as! BaseCard
     }
     
+    //to be overridden if required
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = DimensionManager.getGeneralizedHeight1280x720(height: CARD_HEIGHT)
         let width = DimensionManager.getGeneralizedWidthIn4isto3Ratio(height: height)

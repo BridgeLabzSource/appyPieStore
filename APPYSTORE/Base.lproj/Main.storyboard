@@ -233,7 +233,7 @@
                                 </constraints>
                             </view>
                             <view multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5TZ-NK-ulv">
-                                <rect key="frame" x="138" y="0.0" width="460" height="288"/>
+                                <rect key="frame" x="112.66666666666666" y="0.0" width="510.66666666666674" height="288"/>
                             </view>
                             <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99h-iQ-Uir">
                                 <rect key="frame" x="0.0" y="288" width="736" height="126"/>
@@ -241,6 +241,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="d5n-xp-pMK" firstAttribute="top" secondItem="MTd-T4-nId" secondAttribute="bottom" id="3rs-gR-ve3"/>
                             <constraint firstItem="5TZ-NK-ulv" firstAttribute="trailing" secondItem="EHJ-9K-n8J" secondAttribute="trailing" multiplier="1084:1280" id="7YY-pu-uKs"/>
@@ -543,6 +544,7 @@
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="QR4-9E-sU8" id="xPb-mG-CxD"/>
+                        <outlet property="imgFullBgView" destination="fLU-1v-evw" id="Smg-LS-LRd"/>
                         <outlet property="middleView" destination="BKU-RW-8N4" id="vAG-Qt-rIb"/>
                         <outlet property="topView" destination="xrX-m1-4aK" id="MX0-5M-1se"/>
                     </connections>

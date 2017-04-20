@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum Area {
+    case FULL
+    case MIDDLE
+}
+
 class MainControllerUIDelegate {
     let mainController: MainController
     var fabButton: KCFloatingActionButton!
@@ -16,7 +21,7 @@ class MainControllerUIDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "HistoryController") as! HistoryController
         
-        self.addAsChildViewController(childController: viewController)
+        self.addAsChildViewController(childController: viewController, area: nil)
         return viewController
     }()
     
@@ -24,7 +29,7 @@ class MainControllerUIDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "VideoCategoryController") as! VideoCategoryController
         
-        self.addAsChildViewController(childController: viewController)
+        self.addAsChildViewController(childController: viewController, area: nil)
         return viewController
     }()
     
@@ -41,14 +46,6 @@ class MainControllerUIDelegate {
         fabButton.paddingX = DimensionManager.getGeneralizedWidth1280x720(width: 32)
         fabButton.paddingY = DimensionManager.getGeneralizedHeight1280x720(height: 32)
         makeFab()
-        
-        Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(self.firstPageLoaderTask), userInfo: nil, repeats: false);
-        
-    }
-    
-    //for proper alignment of child controller in middleView
-    @objc func firstPageLoaderTask() {
-        showVideoCategoryPage()
     }
     
     func setButtonsClickLstener() {
@@ -115,17 +112,23 @@ class MainControllerUIDelegate {
         mainController.view.addSubview(fabButton)
     }
     
-    func addChild(controller: BaseViewController) {
-        addAsChildViewController(childController: controller)
+    func addChild(controller: BaseViewController, area: Area?) {
+        addAsChildViewController(childController: controller, area: area)
         mainController.childControllersList?.append(controller)
         printBackStack()
     }
     
-    func addAsChildViewController(childController: BaseViewController){
+    func addAsChildViewController(childController: BaseViewController, area: Area?){
         mainController.getCurrentViewController()?.view.isHidden = true
         mainController.addChildViewController(childController)
         mainController.view.addSubview(childController.view)
-        childController.view.frame = mainController.middleView.frame
+        
+        if(area == nil || area == Area.MIDDLE) {
+            childController.view.frame = mainController.middleView.frame
+        } else {
+            childController.view.frame = mainController.imgFullBgView.frame
+        }
+        
         childController.didMove(toParentViewController: childController)
         childController.mainControllerCommunicator = mainController
     }
@@ -147,6 +150,8 @@ class MainControllerUIDelegate {
             setAllItemsVisibility(state: false)
             makeItemsVisible(components: components!)
             mainController.topView.tfSearch.text = components?.searchKeyword
+            
+            //mainController.view.bringSubview(toFront: mainController.topView)
         }
     }
     
