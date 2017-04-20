@@ -9,8 +9,9 @@
 import UIKit
 
 class BaseViewController: UIViewController, BaseViewControllerProtocol {
-    var pageName: String?
-    var pageNameUniqueIdentifier: String?
+    private var pageName: String?
+    private var pageNameUniqueIdentifier: String?
+    
     internal func getPageName() -> String {
         assert(false, "This method must be overriden by the subclass")
     }
@@ -23,32 +24,35 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
     var bundle: AndroidBundle = nil
     
     override func viewDidLoad() {
+        print("BaseViewController viewDidLoad called: " + getPageName())
         super.viewDidLoad()
     }
     
     // Called when the view is about to made visible. Default does nothing
     override open func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         mainControllerCommunicator?.setUIComponents(components: getComponentProperties())
-        print("viewWillAppear called: " + getPageName())
+        print("BaseViewController viewWillAppear called: " + getPageName())
     }
     
     // Called when the view has been fully transitioned onto the screen. Default does nothing
     override open func viewDidAppear(_ animated: Bool) {
-        print("viewDidAppear called")
+        super.viewDidAppear(animated)
+        print("BaseViewController  viewDidAppear called: " + getPageName())
     }
     
     // Called just before the view controller's view's layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
     override open func viewWillLayoutSubviews(){
-        print("viewWillLayoutSubviews called")
+        print("BaseViewController  viewWillLayoutSubviews called " + getPageName())
     }
     
     // Called just after the view controller's view's layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
     override open func viewDidLayoutSubviews() {
-        print("viewDidLayoutSubviews called")
+        print("BaseViewController  viewDidLayoutSubviews called " + getPageName())
     }
     
     override func beginAppearanceTransition(_ isAppearing: Bool, animated: Bool) {
-        print("beginAppearanceTransition called")
+        print("BaseViewController  beginAppearanceTransition called " + getPageName())
     }
     
     override func didReceiveMemoryWarning() {

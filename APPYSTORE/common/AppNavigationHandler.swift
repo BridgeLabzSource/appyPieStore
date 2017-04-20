@@ -40,6 +40,9 @@ class AppNavigationHandler {
             statusType, result in
             if statusType == DataFetchFramework.REQUEST_SUCCESS {
                 NavigationUtil.navigateAsPerChildSize(mainControllerCommunicator: self.mainControllerCommunicator)
+                
+                //self.mainControllerCommunicator.getContext().uiDelegate?.showVideoCategoryPage()
+
             } else if statusType == DataFetchFramework.REQUEST_FAILURE {
                 
             } else if statusType == DataFetchFramework.CONNECTION_ERROR {

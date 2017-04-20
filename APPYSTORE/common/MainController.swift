@@ -6,6 +6,7 @@ class MainController: UIViewController, MainControllerCommunicator {
     @IBOutlet var topView: TopBarOverlay!
     @IBOutlet var middleView: UIView!
     @IBOutlet var bottomView: BottomBarOverlay!
+    @IBOutlet weak var imgFullBgView: UIImageView!
     
     var uiDelegate: MainControllerUIDelegate? = nil
     
@@ -22,14 +23,15 @@ class MainController: UIViewController, MainControllerCommunicator {
         return self
     }
     
-    func addChild(controller: BaseViewController) {
-        uiDelegate?.addChild(controller: controller)
+    func addChild(controller: BaseViewController, area: Area?) {
+        uiDelegate?.addChild(controller: controller, area: area)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("MainController viewDidLoad called")
         uiDelegate = MainControllerUIDelegate(mainController: self)
-        //AppNavigationHandler(mainControllerCommunicator: self).NavigateAtAppOpen()
+        AppNavigationHandler(mainControllerCommunicator: self).NavigateAtAppOpen()
         uiDelegate?.viewDidLoad()
     }
     
@@ -102,26 +104,28 @@ class MainController: UIViewController, MainControllerCommunicator {
     
     // Called when the view is about to made visible. Default does nothing
     override open func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear called")
+        super.viewWillAppear(animated)
+        print("MainController viewWillAppear called")
     }
     
     // Called when the view has been fully transitioned onto the screen. Default does nothing
     override open func viewDidAppear(_ animated: Bool) {
-        print("viewDidAppear called")
+        super.viewDidAppear(animated)
+        print("MainController viewDidAppear called")
     }
     
     // Called just before the view controller's view's layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
     override open func viewWillLayoutSubviews(){
-        print("viewWillLayoutSubviews called")
+        print("MainController viewWillLayoutSubviews called")
     }
     
     // Called just after the view controller's view's layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
     override open func viewDidLayoutSubviews() {
-        print("viewDidLayoutSubviews called")
+        print("MainController viewDidLayoutSubviews called")
     }
     
     override func beginAppearanceTransition(_ isAppearing: Bool, animated: Bool) {
-        print("beginAppearanceTransition called")
+        print("MainController beginAppearanceTransition called")
     }
     
     func onBackPressed() {

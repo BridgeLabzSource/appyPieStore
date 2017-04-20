@@ -95,6 +95,7 @@
 		7392A78A1E951EAF00A6ED32 /* BundleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392A7891E951EAF00A6ED32 /* BundleConstants.swift */; };
 		73950B411E926E0F0026A7D9 /* BaseListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73950B401E926E0F0026A7D9 /* BaseListingViewController.swift */; };
 		73967E7D1E893BF100A9A81B /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */; };
+		7397BD9D1EA748C80048E177 /* AvatarSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7397BD9C1EA748C80048E177 /* AvatarSelectionController.swift */; };
 		7399063C1E8E38CE009501AD /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399063B1E8E38CE009501AD /* NavigationManager.swift */; };
 		73A3BB211E960AEF00D2487A /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3BB201E960AEF00D2487A /* AppConstants.swift */; };
 		73B657521E8BCFAD00E7D582 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B657511E8BCFAD00E7D582 /* BaseViewController.swift */; };
@@ -208,6 +209,7 @@
 		7392A7891E951EAF00A6ED32 /* BundleConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleConstants.swift; sourceTree = "<group>"; };
 		73950B401E926E0F0026A7D9 /* BaseListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseListingViewController.swift; sourceTree = "<group>"; };
 		73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
+		7397BD9C1EA748C80048E177 /* AvatarSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSelectionController.swift; sourceTree = "<group>"; };
 		7399063B1E8E38CE009501AD /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		73A3BB201E960AEF00D2487A /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		73B657511E8BCFAD00E7D582 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				738EEE721EA4FF5300A50038 /* ChildRegistrationController.swift */,
+				7397BD9C1EA748C80048E177 /* AvatarSelectionController.swift */,
 			);
 			name = loginAndRegistration;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */,
 				7371FA041E936B7B009241FF /* VideoPlayerViewController.swift in Sources */,
 				73950B411E926E0F0026A7D9 /* BaseListingViewController.swift in Sources */,
+				7397BD9D1EA748C80048E177 /* AvatarSelectionController.swift in Sources */,
 				7392A78A1E951EAF00A6ED32 /* BundleConstants.swift in Sources */,
 				73F43B061E82739D00D4DD90 /* ContentListingApiResponseModel.swift in Sources */,
 				706B34FA1E6FE9F4008474EA /* BaseDBManager.swift in Sources */,
