@@ -34,6 +34,7 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
     
     // Called when the view has been fully transitioned onto the screen. Default does nothing
     override open func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         print("viewDidAppear called")
     }
     

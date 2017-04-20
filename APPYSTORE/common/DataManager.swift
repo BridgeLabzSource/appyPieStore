@@ -37,7 +37,10 @@ class DataManager: NSObject {
             
             
         case PageConstants.RECOMMENDED_VIDEO_LISTING_PAGE:
-            RecommendedVideoParser().parse(params: HttpRequestBuilder.getRecommendedVideoListingParameters(method: "getRecommendation", contentType: "videos", offset: String(offset), limit: String(limit), catId: "193", pCatId: "191", contentId: "20087824", sequenceType: "a", sequenceNumber: "501", age: "8", inclAge: "", returnedContentType: "videos", pageId: "videoRecommendation", flagItemAtFirstPosition: "1"), completion: {
+            print("Recommended data \(bundle?.count)")
+            print("Recommended data \(bundle?.keys)")
+            print("Recommended data \(bundle?.values)")
+            RecommendedVideoParser().parse(params: HttpRequestBuilder.getRecommendedVideoListingParameters(method: "getRecommendation", contentType: "videos", offset: String(offset), limit: String(limit), catId: bundle?[BundleConstants.CATEGORY_ID] as! String, pCatId: bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String, contentId: bundle?[BundleConstants.CONTENT_ID] as! String, sequenceType: bundle?[BundleConstants.SEQUENCE_TYPE] as! String, sequenceNumber: bundle?[BundleConstants.SEQUENCE_NUMBER] as! String, age: "1", inclAge: "", returnedContentType: "videos", pageId: "videoRecommendation", flagItemAtFirstPosition: "1"), completion: {
                 statusType, result in
                 
                 returndata(statusType, result!)

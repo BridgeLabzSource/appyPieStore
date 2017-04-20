@@ -10,14 +10,15 @@ import UIKit
 
 class NavigationManager {
     
-
-    static func openVideoPlayerPage(mainControllerCommunicator: MainControllerCommunicator) {
+    static func openVideoPlayerPage(mainControllerCommunicator: MainControllerCommunicator, model: VideoListingModel) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "VideoPlayerController") as! VideoPlayerController
         viewController.mainControllerCommunicator = mainControllerCommunicator
+        viewController.defaultModel = model
         //mainControllerCommunicator.addChild(controller: viewController)
-        //mainControllerCommunicator.getContext().present(viewController, animated: false, completion: nil)
-
+        mainControllerCommunicator.getContext().present(viewController, animated: false, completion: nil)
+    }
+    
     static func openRegistrationPage(mainControllerCommunicator: MainControllerCommunicator, pageType: Int) {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "ChildRegistrationController") as! ChildRegistrationController
