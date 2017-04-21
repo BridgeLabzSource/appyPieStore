@@ -37,7 +37,7 @@ class VideoCategoryCard: BaseCard {
     override func fillCard(model: BaseModel) {
         let videoCategoryModel = model as! VideoCategoryModel
         let imageUrl = URL(string: videoCategoryModel.imagePath)
-        imgBg.sd_setImage(with: imageUrl, placeholderImage:#imageLiteral(resourceName: "profile") )
+        imgBg.sd_setImage(with: imageUrl, placeholderImage:#imageLiteral(resourceName: "category_place_holder_cards") )
         lblCount.text = videoCategoryModel.contentCount
     }
 }

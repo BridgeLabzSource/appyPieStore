@@ -96,7 +96,7 @@ class DataManager: NSObject {
             count = VideoListingDBManager().getRowCount(bundle: bundle)
         case PageConstants.SEARCH_TAGS_PAGE:
             let tagsList = Prefs.getInstance()?.getSearchTags()
-            count = (tagsList?.count)!
+            count = tagsList?.count ?? 0
         default:
             break
         }

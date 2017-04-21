@@ -92,7 +92,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="afN-Yg-KDn" customClass="TagsCard" customModule="APPYSTORE" customModuleProvider="target">
-                                        <rect key="frame" x="182" y="0.0" width="373" height="100"/>
+                                        <rect key="frame" x="181.66666666666666" y="0.0" width="373" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="373" height="100"/>
