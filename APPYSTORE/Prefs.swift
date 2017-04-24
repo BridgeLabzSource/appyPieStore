@@ -646,8 +646,8 @@ class Prefs: AbsPrefs {
         return getString(key: Prefs.SUBSCRIPTION_VALIDITY_JSON, defaultString: "")
     }
     
-    func getSearchTags() -> [SearchTagsModel] {
-        return getObject(key: Prefs.SEARCH_TAGS) as! [SearchTagsModel]
+    func getSearchTags() -> [SearchTagsModel]? {
+        return getObject(key: Prefs.SEARCH_TAGS) as? [SearchTagsModel]
     }
     
     func setSearchTags(value: [SearchTagsModel]){

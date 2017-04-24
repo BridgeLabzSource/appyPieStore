@@ -108,7 +108,7 @@
                             <rect key="frame" x="363" y="188" width="75" height="75"/>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="zQe-47-0E4" firstAttribute="width" secondItem="ZOG-TN-WWb" secondAttribute="height" multiplier="1:6" id="1RG-DD-7za"/>
                         <constraint firstItem="BBc-QU-cz4" firstAttribute="height" secondItem="rDD-qN-VNg" secondAttribute="height" id="4Oa-00-Js7"/>
@@ -136,7 +136,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.37198963754527525" blue="0.46911798684912664" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ZOG-TN-WWb" secondAttribute="trailing" id="3rZ-Th-5L1"/>
                 <constraint firstAttribute="bottom" secondItem="ZOG-TN-WWb" secondAttribute="bottom" id="VeI-2q-MpM"/>

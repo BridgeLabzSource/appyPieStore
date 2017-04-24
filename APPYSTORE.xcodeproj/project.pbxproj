@@ -61,6 +61,7 @@
 		736D428D1E9FAB2F00ACDD0F /* SearchTagsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D428C1E9FAB2F00ACDD0F /* SearchTagsModel.swift */; };
 		736D42901E9FC2F100ACDD0F /* TagsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D428E1E9FC2F100ACDD0F /* TagsCard.swift */; };
 		736D42911E9FC2F100ACDD0F /* TagsCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736D428F1E9FC2F100ACDD0F /* TagsCard.xib */; };
+		736DC0C21EA9CDC700347CBA /* LayerColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736DC0C11EA9CDC700347CBA /* LayerColor.swift */; };
 		7370B81D1E9DE2A400D91ABA /* RecommendedVideoCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7370B81C1E9DE2A400D91ABA /* RecommendedVideoCard.xib */; };
 		7370B81F1E9DE99100D91ABA /* RecommendedVideoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7370B81E1E9DE99100D91ABA /* RecommendedVideoCard.swift */; };
 		7370B8211E9DED3B00D91ABA /* RecommendedVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7370B8201E9DED3B00D91ABA /* RecommendedVideoViewController.swift */; };
@@ -105,6 +106,10 @@
 		73A3BB211E960AEF00D2487A /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3BB201E960AEF00D2487A /* AppConstants.swift */; };
 		73B657521E8BCFAD00E7D582 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B657511E8BCFAD00E7D582 /* BaseViewController.swift */; };
 		73B657541E8BD9C500E7D582 /* MainControllerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B657531E8BD9C500E7D582 /* MainControllerCommunicator.swift */; };
+		73DA446A1EA60CF600EF2C00 /* PaymentPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DA44691EA60CF600EF2C00 /* PaymentPageController.swift */; };
+		73DA446C1EA61DFF00EF2C00 /* FreeTrialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DA446B1EA61DFF00EF2C00 /* FreeTrialController.swift */; };
+		73DA446E1EA6378500EF2C00 /* CrossButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73DA446D1EA6378500EF2C00 /* CrossButton.xib */; };
+		73DA44701EA63BA500EF2C00 /* CrossButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DA446F1EA63BA500EF2C00 /* CrossButton.swift */; };
 		73F43B041E82465800D4DD90 /* PageDataPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F43B031E82465800D4DD90 /* PageDataPref.swift */; };
 		73F43B061E82739D00D4DD90 /* ContentListingApiResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F43B051E82739D00D4DD90 /* ContentListingApiResponseModel.swift */; };
 		F46267111E77AF0900302ACF /* LoginParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267101E77AF0900302ACF /* LoginParser.swift */; };
@@ -179,6 +184,7 @@
 		736D428C1E9FAB2F00ACDD0F /* SearchTagsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTagsModel.swift; sourceTree = "<group>"; };
 		736D428E1E9FC2F100ACDD0F /* TagsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsCard.swift; sourceTree = "<group>"; };
 		736D428F1E9FC2F100ACDD0F /* TagsCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagsCard.xib; sourceTree = "<group>"; };
+		736DC0C11EA9CDC700347CBA /* LayerColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerColor.swift; sourceTree = "<group>"; };
 		7370B81C1E9DE2A400D91ABA /* RecommendedVideoCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedVideoCard.xib; sourceTree = "<group>"; };
 		7370B81E1E9DE99100D91ABA /* RecommendedVideoCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedVideoCard.swift; sourceTree = "<group>"; };
 		7370B8201E9DED3B00D91ABA /* RecommendedVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedVideoViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +230,10 @@
 		73A3BB201E960AEF00D2487A /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		73B657511E8BCFAD00E7D582 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		73B657531E8BD9C500E7D582 /* MainControllerCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainControllerCommunicator.swift; sourceTree = "<group>"; };
+		73DA44691EA60CF600EF2C00 /* PaymentPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentPageController.swift; sourceTree = "<group>"; };
+		73DA446B1EA61DFF00EF2C00 /* FreeTrialController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeTrialController.swift; sourceTree = "<group>"; };
+		73DA446D1EA6378500EF2C00 /* CrossButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CrossButton.xib; sourceTree = "<group>"; };
+		73DA446F1EA63BA500EF2C00 /* CrossButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossButton.swift; sourceTree = "<group>"; };
 		73F43B031E82465800D4DD90 /* PageDataPref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageDataPref.swift; sourceTree = "<group>"; };
 		73F43B051E82739D00D4DD90 /* ContentListingApiResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentListingApiResponseModel.swift; sourceTree = "<group>"; };
 		F46267101E77AF0900302ACF /* LoginParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginParser.swift; sourceTree = "<group>"; };
@@ -282,8 +292,11 @@
 				73754E071E978474001DD942 /* ComponentProperties.swift */,
 				7392672A1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift */,
 				7370B8241E9E421300D91ABA /* BaseCard.swift */,
+				73DA44691EA60CF600EF2C00 /* PaymentPageController.swift */,
+				73DA446B1EA61DFF00EF2C00 /* FreeTrialController.swift */,
 				738EEE6D1EA4BF3000A50038 /* AppNavigationHandler.swift */,
 				738EEE6F1EA4DD5300A50038 /* NavigationUtil.swift */,
+				736DC0C11EA9CDC700347CBA /* LayerColor.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -324,6 +337,8 @@
 				7370B81E1E9DE99100D91ABA /* RecommendedVideoCard.swift */,
 				736D428F1E9FC2F100ACDD0F /* TagsCard.xib */,
 				736D428E1E9FC2F100ACDD0F /* TagsCard.swift */,
+				73DA446D1EA6378500EF2C00 /* CrossButton.xib */,
+				73DA446F1EA63BA500EF2C00 /* CrossButton.swift */,
 			);
 			name = customView;
 			sourceTree = "<group>";
@@ -563,6 +578,7 @@
 				7370B81D1E9DE2A400D91ABA /* RecommendedVideoCard.xib in Resources */,
 				739A82551EA9DF7B008F9001 /* ChildCard.xib in Resources */,
 				0A80DA241E702CC100939443 /* BottomBarOverlay.xib in Resources */,
+				73DA446E1EA6378500EF2C00 /* CrossButton.xib in Resources */,
 				736A40FD1E891A3000A4C038 /* VideoListingCard.xib in Resources */,
 				70A36E4D1E6148BE002B9296 /* CommonOverlayView.xib in Resources */,
 				0A5E1C651E7026B800537F84 /* kg_miss_kindy_chunky.ttf in Resources */,
@@ -643,6 +659,7 @@
 				7371FA081E93AC53009241FF /* VideoPlayer.swift in Sources */,
 				736D428D1E9FAB2F00ACDD0F /* SearchTagsModel.swift in Sources */,
 				70AD5AED1E6E71CD003C2536 /* HistoryController.swift in Sources */,
+				73DA44701EA63BA500EF2C00 /* CrossButton.swift in Sources */,
 				F46267111E77AF0900302ACF /* LoginParser.swift in Sources */,
 				0A74B98E1E71143200B7A67D /* UIViewExtention.swift in Sources */,
 				738EEE731EA4FF5300A50038 /* ChildRegistrationController.swift in Sources */,
@@ -672,11 +689,13 @@
 				7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */,
 				7371FA041E936B7B009241FF /* VideoPlayerViewController.swift in Sources */,
 				73950B411E926E0F0026A7D9 /* BaseListingViewController.swift in Sources */,
+				73DA446A1EA60CF600EF2C00 /* PaymentPageController.swift in Sources */,
 				7397BD9D1EA748C80048E177 /* AvatarSelectionController.swift in Sources */,
 				7392A78A1E951EAF00A6ED32 /* BundleConstants.swift in Sources */,
 				73F43B061E82739D00D4DD90 /* ContentListingApiResponseModel.swift in Sources */,
 				706B34FA1E6FE9F4008474EA /* BaseDBManager.swift in Sources */,
 				70AD5AE81E6E7129003C2536 /* HttpConnection.swift in Sources */,
+				736DC0C21EA9CDC700347CBA /* LayerColor.swift in Sources */,
 				73B657521E8BCFAD00E7D582 /* BaseViewController.swift in Sources */,
 				7392A7861E94C96200A6ED32 /* VideoDBManager.swift in Sources */,
 				738EEE6E1EA4BF3000A50038 /* AppNavigationHandler.swift in Sources */,
@@ -720,6 +739,7 @@
 				73967E7D1E893BF100A9A81B /* UICollectionViewExtension.swift in Sources */,
 				0A65E26E1E6EDF1E00F538B5 /* VideoCategoryModel.swift in Sources */,
 				7371FA0A1E93D454009241FF /* VideoPlayerController.swift in Sources */,
+				73DA446C1EA61DFF00EF2C00 /* FreeTrialController.swift in Sources */,
 				7372320A1EA64B4E001A3106 /* UIToolbarExtention.swift in Sources */,
 				7370B81F1E9DE99100D91ABA /* RecommendedVideoCard.swift in Sources */,
 			);

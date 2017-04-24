@@ -23,61 +23,21 @@ enum LayerColorType {
 class CustomViewLayer {
     let imageInset = UIEdgeInsetsMake(6, 6, 12, 12)
     
-    var subLayercolorList = [
-        ["#808080", "#666666"],
-        ["#cccccc", "#b6b3b3"],
-        ["#66ffffff", "#00ffffff"],
-        ["#ffffff", "#66ffffff"],
-        ]
+    var subLayercolorList = LayerColor.getLayerColor(colorName: "grey")
     
-    let redLayerColorList = [
-        ["#964050", "#9d2e43"],
-        ["#ff6b61", "#ff2e43"],
-        ["#66ffffff", "#00ffffff"],
-        ["#ffffff", "#66ffffff"],
-    ]
+    let redLayerColorList = LayerColor.getLayerColor(colorName: "red")
     
-    let blueLayerColorList = [
-        ["#006aa7", "#0058a8"],
-        ["#29c5e2", "#0071bc"],
-        ["#66ffffff", "#00ffffff"],
-        ["#ffffff", "#66ffffff"],
-    ]
+    let blueLayerColorList = LayerColor.getLayerColor(colorName: "blue")
     
-    let greenLayerColorList = [
-        ["#00652f", "#007248"],
-        ["#51cd5e", "#00a448"],
-        ["#66ffffff", "#00ffffff"],
-        ["#ffffff", "#66ffffff"],
-    ]
+    let greenLayerColorList = LayerColor.getLayerColor(colorName: "green")
     
-    let orangeLayerColorList = [
-        ["#e65f00", "#aa4024"],
-        ["#f77d1e", "#f15a24"],
-        ["#66ffffff", "#00ffffff"],
-        ["#ffffff", "#66ffffff"],
-    ]
+    let orangeLayerColorList = LayerColor.getLayerColor(colorName: "orange")
     
-    let violetLayerColorList = [
-        ["#2939a7", "#1a4198"],
-        ["#7763e2", "#1a4198"],
-        ["#66ffffff", "#00ffffff"],
-        ["#ffffff", "#66ffffff"],
-        ]
+    let violetLayerColorList = LayerColor.getLayerColor(colorName: "violet")
     
-    let yellowLayerColorList = [
-        ["#cf5a3d", "#ce5900"],
-        ["#f1a824", "#f78e1e"],
-        ["#66ffffff", "#00ffffff"],
-        ["#ffffff", "#66ffffff"],
-        ]
+    let yellowLayerColorList = LayerColor.getLayerColor(colorName: "yellow")
     
-    let purpleLayerColorList = [
-        ["#c39eee", "#8c26f6"],
-        ["#8715fe", "#7714bc"],
-        ["#66ffffff", "#00ffffff"],
-        ["#ffffff", "#66ffffff"],
-        ]
+    let purpleLayerColorList = LayerColor.getLayerColor(colorName: "purple")
     
     //Note: try to keep even numbers only otherwise leyers won't be complete round
     let subLayerSizeTruncation: [CGFloat] = [

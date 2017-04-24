@@ -16,10 +16,23 @@ class RecommendedVideoViewController: BaseListingViewController {
     var delegate: RecommendedVideoDelegate?
     var currentIndex = -1
     var isClickedEnable = true
+    var listingModel: VideoListingModel!
     
     override func viewDidLoad() {
-        dataFetchFramework = DataFetchFramework(pageName: PageConstants.RECOMMENDED_VIDEO_LISTING_PAGE, pageUniqueId: "20087824", bundle: bundle)
+        var bundle1 = [String: Any]()
+        
+            bundle1[BundleConstants.CATEGORY_ID] = listingModel.subCategoryId
+            bundle1[BundleConstants.PARENT_CATEGORY_ID] = listingModel.parentCategoryId
+            bundle1[BundleConstants.CONTENT_ID] = listingModel.contentId
+            bundle1[BundleConstants.SEQUENCE_TYPE] = listingModel.sequenceType
+            bundle1[BundleConstants.SEQUENCE_NUMBER] = listingModel.sequenceNumber
+        
+        
+        
+        dataFetchFramework = DataFetchFramework(pageName: PageConstants.RECOMMENDED_VIDEO_LISTING_PAGE, pageUniqueId: "20087824", bundle: bundle1)
+        
         super.viewDidLoad()
+        
     }
     
     override func getPageName() -> String {
@@ -76,7 +89,7 @@ class RecommendedVideoViewController: BaseListingViewController {
         currentIndex = 0
         let model = dataFetchFramework?.contentList[0] as! VideoListingModel
         model.isSelected = true
-        delegate?.onContentChange(content: model)
+        //delegate?.onContentChange(content: model)
         collectionView.reloadData()
     }
     

@@ -133,8 +133,14 @@ class MainController: UIViewController, MainControllerCommunicator {
         getCurrentViewController()?.viewWillAppear(false)
     }
     
+    func performBackButtonClick() {
+        uiDelegate?.handleBackButtonClick()
+    }
+    
     internal func setUIComponents(components: ComponentProperties?) {
         uiDelegate?.setUIComponents(components: components)
     }
+    
+    
     
 }

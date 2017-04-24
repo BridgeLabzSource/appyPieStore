@@ -150,6 +150,8 @@ class MainControllerUIDelegate {
             setAllItemsVisibility(state: false)
             makeItemsVisible(components: components!)
             mainController.topView.tfSearch.text = components?.searchKeyword
+            
+            //mainController.view.bringSubview(toFront: mainController.topView)
         }
     }
     

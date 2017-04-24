@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3wt-zJ-xEi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3wt-zJ-xEi">
     <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -82,7 +82,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="svO-5q-R8Z">
-                                <rect key="frame" x="0.0" y="32" width="736" height="382"/>
+                                <rect key="frame" x="0.0" y="33" width="736" height="381"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6BA-Zw-sku">
                                     <size key="itemSize" width="373" height="100"/>
@@ -106,7 +106,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular searches" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwZ-8o-9Cq">
-                                <rect key="frame" x="18" y="0.0" width="718" height="21.333333333333332"/>
+                                <rect key="frame" x="18" y="0.0" width="718" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -137,10 +137,74 @@
             </objects>
             <point key="canvasLocation" x="-87.228260869565219" y="1466.6666666666667"/>
         </scene>
+        <!--Payment Page Controller-->
+        <scene sceneID="jnl-F0-e0K">
+            <objects>
+                <viewController id="a6A-nk-adG" customClass="PaymentPageController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dT5-Si-4vo"/>
+                        <viewControllerLayoutGuide type="bottom" id="seA-ws-PjS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WjK-HS-Rkr">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="0.17648168103448275" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lMC-qT-B5a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1001" y="3080"/>
+        </scene>
+        <!--Free Trial Controller-->
+        <scene sceneID="WNX-Cs-49c">
+            <objects>
+                <viewController id="v5h-f2-Xdi" customClass="FreeTrialController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eqe-2v-5ZD"/>
+                        <viewControllerLayoutGuide type="bottom" id="kaR-bs-LNh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cq2-yU-ET3">
+                        <rect key="frame" x="0.0" y="0.0" width="1280" height="720"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2o-k5-P1A">
+                                <rect key="frame" x="32" y="32" width="1216" height="656"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FLh-Sr-XCq" customClass="CrossButton" customModule="APPYSTORE" customModuleProvider="target">
+                                        <rect key="frame" x="583" y="303" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.44944507220000002" green="0.47961148710000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f2o-k5-P1A" firstAttribute="bottom" secondItem="cq2-yU-ET3" secondAttribute="bottom" multiplier="688:720" id="4IU-dw-afF"/>
+                            <constraint firstItem="f2o-k5-P1A" firstAttribute="top" secondItem="kaR-bs-LNh" secondAttribute="top" multiplier="32:720" id="GuN-67-KbJ"/>
+                            <constraint firstItem="f2o-k5-P1A" firstAttribute="leading" secondItem="cq2-yU-ET3" secondAttribute="trailing" multiplier="32:1280" id="Jfn-dH-Trf"/>
+                            <constraint firstItem="f2o-k5-P1A" firstAttribute="trailing" secondItem="cq2-yU-ET3" secondAttribute="trailing" multiplier="1248:1280" id="fhp-NC-zxy"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="1280" height="720"/>
+                    <connections>
+                        <outlet property="containerView" destination="f2o-k5-P1A" id="Ifl-Ib-2Ms"/>
+                        <outlet property="rootView" destination="cq2-yU-ET3" id="YYr-wa-kKc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZUJ-w5-k8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="610.59782608695662" y="3766.666666666667"/>
+        </scene>
         <!--Video Player Controller-->
         <scene sceneID="MdH-bD-5fJ">
             <objects>
-                <viewController id="glJ-SI-2l4" customClass="VideoPlayerController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoPlayerController" id="glJ-SI-2l4" customClass="VideoPlayerController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MTd-T4-nId"/>
                         <viewControllerLayoutGuide type="bottom" id="nQL-Rg-7Kg"/>
@@ -153,11 +217,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chE-MQ-1bn" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
-                                        <rect key="frame" x="18.333333333333329" y="18.333333333333329" width="60" height="60"/>
+                                        <rect key="frame" x="18" y="19" width="59.666666666666671" height="59.666666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="chE-MQ-1bn" secondAttribute="height" multiplier="1:1" id="ZLN-DN-Zqr"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="profile"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="back"/>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -167,21 +233,23 @@
                                 </constraints>
                             </view>
                             <view multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5TZ-NK-ulv">
-                                <rect key="frame" x="138" y="0.0" width="460" height="288"/>
+                                <rect key="frame" x="112.66666666666666" y="0.0" width="510.66666666666674" height="288"/>
                             </view>
                             <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99h-iQ-Uir">
                                 <rect key="frame" x="0.0" y="288" width="736" height="126"/>
+                                <color key="backgroundColor" red="0.44944507220000002" green="0.47961148710000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="d5n-xp-pMK" firstAttribute="top" secondItem="MTd-T4-nId" secondAttribute="bottom" id="3rs-gR-ve3"/>
-                            <constraint firstItem="5TZ-NK-ulv" firstAttribute="trailing" secondItem="EHJ-9K-n8J" secondAttribute="trailing" multiplier="1040:1280" id="7YY-pu-uKs"/>
+                            <constraint firstItem="5TZ-NK-ulv" firstAttribute="trailing" secondItem="EHJ-9K-n8J" secondAttribute="trailing" multiplier="1084:1280" id="7YY-pu-uKs"/>
                             <constraint firstItem="99h-iQ-Uir" firstAttribute="top" secondItem="5TZ-NK-ulv" secondAttribute="bottom" id="NC9-S4-7rz"/>
                             <constraint firstItem="5TZ-NK-ulv" firstAttribute="bottom" secondItem="nQL-Rg-7Kg" secondAttribute="top" multiplier="500:720" id="SIu-NE-5tR"/>
                             <constraint firstAttribute="bottom" secondItem="99h-iQ-Uir" secondAttribute="bottom" id="SWy-aU-saK"/>
                             <constraint firstAttribute="trailing" secondItem="99h-iQ-Uir" secondAttribute="trailing" id="TDX-kL-D4k"/>
-                            <constraint firstItem="5TZ-NK-ulv" firstAttribute="leading" secondItem="EHJ-9K-n8J" secondAttribute="trailing" multiplier="240:1280" id="Y2k-fD-Qfj"/>
+                            <constraint firstItem="5TZ-NK-ulv" firstAttribute="leading" secondItem="EHJ-9K-n8J" secondAttribute="trailing" multiplier="196:1280" id="Y2k-fD-Qfj"/>
                             <constraint firstAttribute="bottom" secondItem="d5n-xp-pMK" secondAttribute="bottom" id="bdc-7Q-jcu"/>
                             <constraint firstItem="5TZ-NK-ulv" firstAttribute="top" secondItem="MTd-T4-nId" secondAttribute="bottom" id="ktL-9e-qJp"/>
                             <constraint firstItem="d5n-xp-pMK" firstAttribute="leading" secondItem="EHJ-9K-n8J" secondAttribute="leading" id="lUQ-dz-KLZ"/>
@@ -193,6 +261,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backButton" destination="chE-MQ-1bn" id="lHw-0g-Mlg"/>
                         <outlet property="miniFrame" destination="5TZ-NK-ulv" id="tgK-44-Z9S"/>
                         <outlet property="recommendedContainer" destination="99h-iQ-Uir" id="tKq-Ej-rtC"/>
                         <outlet property="rootView" destination="EHJ-9K-n8J" id="Qab-ia-ptz"/>
@@ -201,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWS-Ag-vLO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="672" y="1454"/>
+            <point key="canvasLocation" x="655" y="2274"/>
         </scene>
         <!--Video Category Controller-->
         <scene sceneID="vDr-gZ-heH">
@@ -306,11 +375,12 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="qtD-GQ-eYn" id="pGL-Mb-PLP"/>
+                        <segue destination="glJ-SI-2l4" kind="show" identifier="same" id="auk-c7-k3A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9n-bz-XfK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-87" y="735"/>
+            <point key="canvasLocation" x="655" y="1430"/>
         </scene>
         <!--Recommended Video View Controller-->
         <scene sceneID="UiZ-aS-4yH">
@@ -444,11 +514,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BKU-RW-8N4">
-                                <rect key="frame" x="0.0" y="115" width="736" height="220.66666666666669"/>
+                                <rect key="frame" x="0.0" y="115" width="736" height="221"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QR4-9E-sU8" customClass="BottomBarOverlay" customModule="APPYSTORE" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="335.66666666666674" width="736" height="78.333333333333314"/>
+                                <rect key="frame" x="0.0" y="336" width="736" height="78"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -486,6 +556,6 @@
     </scenes>
     <resources>
         <image name="app_bg" width="960" height="540"/>
-        <image name="profile" width="72" height="72"/>
+        <image name="back" width="48" height="48"/>
     </resources>
 </document>

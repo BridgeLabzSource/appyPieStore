@@ -87,10 +87,15 @@ class AbsPrefs {
     
     func getObject(key: String) -> AnyObject? {
         
-        let data = preferences?.object(forKey: key) as! Data
-        let deocdeData = NSKeyedUnarchiver.unarchiveObject(with: data) as AnyObject
+        let data = preferences?.object(forKey: key)
+        if data != nil {
+            let deocdeData = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as AnyObject
+            
+            return deocdeData
+        }
         
-        return deocdeData
+        return nil
+        
     }
     
 }
