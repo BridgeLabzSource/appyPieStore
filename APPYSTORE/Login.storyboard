@@ -101,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="407" y="2202"/>
         </scene>
-        <!--View Controller-->
+        <!--Avatar Selection Controller-->
         <scene sceneID="qTI-qd-oWH">
             <objects>
-                <viewController id="Cyj-ww-Xw5" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AvatarSelectionController" id="Cyj-ww-Xw5" customClass="AvatarSelectionController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lzp-lb-3W7"/>
                         <viewControllerLayoutGuide type="bottom" id="9oL-8v-sJd"/>
@@ -112,12 +112,74 @@
                     <view key="view" contentMode="scaleToFill" id="ZaB-Di-ddl">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JCI-4b-RiD">
+                                <rect key="frame" x="54" y="33.5" width="559" height="308"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select avatar for xxx" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5Y-6q-6tp">
+                                        <rect key="frame" x="201.5" y="33.5" width="155.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f0T-7n-2dY">
+                                        <rect key="frame" x="0.0" y="92.5" width="559" height="123"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uAU-t1-npp">
+                                            <size key="itemSize" width="123" height="73"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wsT-PK-gIh" customClass="ChildCard" customModule="APPYSTORE" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="123" height="73"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="123" height="73"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Cyj-ww-Xw5" id="XR4-C6-Dr1"/>
+                                            <outlet property="delegate" destination="Cyj-ww-Xw5" id="Gzs-Gm-idj"/>
+                                        </connections>
+                                    </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tg5-d7-mzp" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
+                                        <rect key="frame" x="256.5" y="255" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.80641073890000003" blue="0.18819782390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="tg5-d7-mzp" secondAttribute="bottom" constant="23" id="9kK-5B-ucn"/>
+                                    <constraint firstItem="f0T-7n-2dY" firstAttribute="top" secondItem="JCI-4b-RiD" secondAttribute="bottom" multiplier="3:10" id="CTG-PH-bha"/>
+                                    <constraint firstItem="f0T-7n-2dY" firstAttribute="bottom" secondItem="JCI-4b-RiD" secondAttribute="bottom" multiplier="7:10" id="CoR-qV-MZd"/>
+                                    <constraint firstAttribute="trailing" secondItem="f0T-7n-2dY" secondAttribute="trailing" id="Cr3-e8-oHi"/>
+                                    <constraint firstItem="f0T-7n-2dY" firstAttribute="leading" secondItem="JCI-4b-RiD" secondAttribute="leading" id="KpE-zo-psm"/>
+                                    <constraint firstItem="tg5-d7-mzp" firstAttribute="centerX" secondItem="JCI-4b-RiD" secondAttribute="centerX" id="TcE-TE-pms"/>
+                                    <constraint firstItem="U5Y-6q-6tp" firstAttribute="centerX" secondItem="JCI-4b-RiD" secondAttribute="centerX" id="eUi-Wk-cJ8"/>
+                                    <constraint firstItem="U5Y-6q-6tp" firstAttribute="top" secondItem="JCI-4b-RiD" secondAttribute="bottom" multiplier="64:592" id="gv2-GJ-naR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JCI-4b-RiD" firstAttribute="leading" secondItem="ZaB-Di-ddl" secondAttribute="trailing" multiplier="104:1280" id="4kl-lW-3kH"/>
+                            <constraint firstItem="JCI-4b-RiD" firstAttribute="trailing" secondItem="ZaB-Di-ddl" secondAttribute="trailing" multiplier="1176:1280" id="6C7-0d-nbs"/>
+                            <constraint firstItem="JCI-4b-RiD" firstAttribute="bottom" secondItem="9oL-8v-sJd" secondAttribute="top" multiplier="656:720" id="NGB-oD-4y8"/>
+                            <constraint firstItem="JCI-4b-RiD" firstAttribute="top" secondItem="9oL-8v-sJd" secondAttribute="top" multiplier="64:720" id="ZUh-2r-0jm"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="f0T-7n-2dY" id="eVD-pd-ac3"/>
+                        <outlet property="lblTitle" destination="U5Y-6q-6tp" id="eto-Tt-ziK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j8Z-qK-FrL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1066" y="2201"/>
+            <point key="canvasLocation" x="1065.5172413793105" y="2200.8000000000002"/>
         </scene>
     </scenes>
 </document>

@@ -97,6 +97,11 @@
 		73967E7D1E893BF100A9A81B /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */; };
 		7397BD9D1EA748C80048E177 /* AvatarSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7397BD9C1EA748C80048E177 /* AvatarSelectionController.swift */; };
 		7399063C1E8E38CE009501AD /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399063B1E8E38CE009501AD /* NavigationManager.swift */; };
+		739A82551EA9DF7B008F9001 /* ChildCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 739A82541EA9DF7A008F9001 /* ChildCard.xib */; };
+		739A82571EA9DFD2008F9001 /* ChildCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739A82561EA9DFD2008F9001 /* ChildCard.swift */; };
+		739A82591EA9EE92008F9001 /* AvatarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739A82581EA9EE92008F9001 /* AvatarModel.swift */; };
+		739A825B1EAA0FA3008F9001 /* AvatarParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739A825A1EAA0FA3008F9001 /* AvatarParser.swift */; };
+		739A825D1EAA19B8008F9001 /* AvatarDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739A825C1EAA19B8008F9001 /* AvatarDBManager.swift */; };
 		73A3BB211E960AEF00D2487A /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3BB201E960AEF00D2487A /* AppConstants.swift */; };
 		73B657521E8BCFAD00E7D582 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B657511E8BCFAD00E7D582 /* BaseViewController.swift */; };
 		73B657541E8BD9C500E7D582 /* MainControllerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B657531E8BD9C500E7D582 /* MainControllerCommunicator.swift */; };
@@ -211,6 +216,11 @@
 		73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		7397BD9C1EA748C80048E177 /* AvatarSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSelectionController.swift; sourceTree = "<group>"; };
 		7399063B1E8E38CE009501AD /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		739A82541EA9DF7A008F9001 /* ChildCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildCard.xib; sourceTree = "<group>"; };
+		739A82561EA9DFD2008F9001 /* ChildCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildCard.swift; sourceTree = "<group>"; };
+		739A82581EA9EE92008F9001 /* AvatarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarModel.swift; sourceTree = "<group>"; };
+		739A825A1EAA0FA3008F9001 /* AvatarParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarParser.swift; sourceTree = "<group>"; };
+		739A825C1EAA19B8008F9001 /* AvatarDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarDBManager.swift; sourceTree = "<group>"; };
 		73A3BB201E960AEF00D2487A /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		73B657511E8BCFAD00E7D582 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		73B657531E8BD9C500E7D582 /* MainControllerCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainControllerCommunicator.swift; sourceTree = "<group>"; };
@@ -296,6 +306,7 @@
 		0A7261611E6D30880023883F /* customView */ = {
 			isa = PBXGroup;
 			children = (
+				739A82531EA9DF36008F9001 /* cards */,
 				7371F9F51E936866009241FF /* fab */,
 				736A40FA1E891A3000A4C038 /* VideoListingCard.swift */,
 				736A40FB1E891A3000A4C038 /* VideoListingCard.xib */,
@@ -469,8 +480,20 @@
 			children = (
 				738EEE721EA4FF5300A50038 /* ChildRegistrationController.swift */,
 				7397BD9C1EA748C80048E177 /* AvatarSelectionController.swift */,
+				739A82581EA9EE92008F9001 /* AvatarModel.swift */,
+				739A825A1EAA0FA3008F9001 /* AvatarParser.swift */,
+				739A825C1EAA19B8008F9001 /* AvatarDBManager.swift */,
 			);
 			name = loginAndRegistration;
+			sourceTree = "<group>";
+		};
+		739A82531EA9DF36008F9001 /* cards */ = {
+			isa = PBXGroup;
+			children = (
+				739A82541EA9DF7A008F9001 /* ChildCard.xib */,
+				739A82561EA9DFD2008F9001 /* ChildCard.swift */,
+			);
+			name = cards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -538,6 +561,7 @@
 			files = (
 				0AAD2F0A1E5C48EF00B504A3 /* LaunchScreen.storyboard in Resources */,
 				7370B81D1E9DE2A400D91ABA /* RecommendedVideoCard.xib in Resources */,
+				739A82551EA9DF7B008F9001 /* ChildCard.xib in Resources */,
 				0A80DA241E702CC100939443 /* BottomBarOverlay.xib in Resources */,
 				736A40FD1E891A3000A4C038 /* VideoListingCard.xib in Resources */,
 				70A36E4D1E6148BE002B9296 /* CommonOverlayView.xib in Resources */,
@@ -610,6 +634,7 @@
 				F48798F41E77F36F0060932F /* Prefs.swift in Sources */,
 				7371F9FD1E936898009241FF /* KCFABManager.swift in Sources */,
 				F48798F21E77E9AF0060932F /* AbsPrefs.swift in Sources */,
+				739A825D1EAA19B8008F9001 /* AvatarDBManager.swift in Sources */,
 				7370B8251E9E421300D91ABA /* BaseCard.swift in Sources */,
 				0A80DA221E702CA500939443 /* TopBarOverlay.swift in Sources */,
 				7392672B1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift in Sources */,
@@ -623,6 +648,7 @@
 				738EEE731EA4FF5300A50038 /* ChildRegistrationController.swift in Sources */,
 				737E28281E94F409008CEC26 /* PlayerModel.swift in Sources */,
 				73B657541E8BD9C500E7D582 /* MainControllerCommunicator.swift in Sources */,
+				739A82571EA9DFD2008F9001 /* ChildCard.swift in Sources */,
 				7371F9FF1E936898009241FF /* KCFABWindow.swift in Sources */,
 				7370B8211E9DED3B00D91ABA /* RecommendedVideoViewController.swift in Sources */,
 				73A3BB211E960AEF00D2487A /* AppConstants.swift in Sources */,
@@ -631,6 +657,7 @@
 				7371FA011E936898009241FF /* KCFloatingActionButtonDelegate.swift in Sources */,
 				0A80DA261E702DA700939443 /* BottomBarOverlay.swift in Sources */,
 				73754E0B1E97B027001DD942 /* SearchTagsController.swift in Sources */,
+				739A825B1EAA0FA3008F9001 /* AvatarParser.swift in Sources */,
 				73F43B041E82465800D4DD90 /* PageDataPref.swift in Sources */,
 				7392A7881E94CEC700A6ED32 /* VideoListingDBManager.swift in Sources */,
 				7371FA021E936898009241FF /* KCFloatingActionButtonItem.swift in Sources */,
@@ -655,6 +682,7 @@
 				738EEE6E1EA4BF3000A50038 /* AppNavigationHandler.swift in Sources */,
 				0A8F790C1E6971FD00720DB8 /* VideoCategoryCard.swift in Sources */,
 				7371F9FE1E936898009241FF /* KCFABViewController.swift in Sources */,
+				739A82591EA9EE92008F9001 /* AvatarModel.swift in Sources */,
 				0A5E1C641E701C2D00537F84 /* UILabelExtension.swift in Sources */,
 				738C72F61E93E34400A1B4E0 /* VideoListingParser.swift in Sources */,
 				73754E061E975969001DD942 /* MainControllerUIDelegate.swift in Sources */,

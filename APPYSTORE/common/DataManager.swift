@@ -56,6 +56,16 @@ class DataManager: NSObject {
                 
                 returndata(statusType, result!)
             })
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            AvatarParser().parse(params: HttpRequestBuilder.getAvatarParameters(method: AvatarParser.METHOD_NAME, pageId: "SelectAvatar"), completion: {
+                statusType, result in
+                
+                returndata(statusType, result!)
+            })
         default:
             break
         }
@@ -75,6 +85,12 @@ class DataManager: NSObject {
             dataList = VideoListingDBManager().fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: bundle)
         case PageConstants.SEARCH_TAGS_PAGE:
             dataList = Prefs.getInstance()?.getSearchTags()
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            dataList = AvatarDBManager().fetchAll()
         default:
             break
         }
@@ -86,14 +102,20 @@ class DataManager: NSObject {
         var count: Int = -1
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            count = HistoryDBManager().getRowCount()
+            count = HistoryDBManager().getRowCount(bundle: bundle)
         case PageConstants.VIDEO_CATEGORY_PAGE:
-            count = VideoDBManager().getRowCount()
+            count = VideoDBManager().getRowCount(bundle: bundle)
         case PageConstants.VIDEO_LISTING_PAGE:
             count = VideoListingDBManager().getRowCount(bundle: bundle)
         case PageConstants.SEARCH_TAGS_PAGE:
             let tagsList = Prefs.getInstance()?.getSearchTags()
             count = (tagsList?.count)!
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            count = AvatarDBManager().getRowCount(bundle: bundle)
         default:
             break
         }
@@ -111,7 +133,12 @@ class DataManager: NSObject {
             VideoListingDBManager().removeAll(bundle: bundle)
         case PageConstants.SEARCH_TAGS_PAGE:
             Prefs.getInstance()?.setSearchTags(value: [])
-            break
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            AvatarDBManager().removeAll(bundle: bundle)
         default:
             break
         }
@@ -130,7 +157,12 @@ class DataManager: NSObject {
         case PageConstants.SEARCH_TAGS_PAGE:
             Prefs.getInstance()?.setSearchTags(value: dataList as! [SearchTagsModel])
             count = 1
-            break
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            count = AvatarDBManager().insertBulkRecords(userId: UserInfo.getInstance().id, childId: UserInfo.getInstance().selectedChild?.id, modelList: dataList)!
         default:
             break
         }
@@ -150,7 +182,12 @@ class DataManager: NSObject {
             dataFetchTimePrefKey = PageConstants.KEY_VIDEO_LISTING_DATA_FETCH_TIME + pageUniqueId
         case PageConstants.SEARCH_TAGS_PAGE:
             dataFetchTimePrefKey = PageConstants.KEY_SEARCH_TAGS_DATA_FETCH_TIME + pageUniqueId
-            
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            dataFetchTimePrefKey = PageConstants.KEY_SELECT_AVATAR_DATA_FETCH_TIME + pageUniqueId
         default:
             break
         }
@@ -169,6 +206,12 @@ class DataManager: NSObject {
             offsetServerPrefKey = PageConstants.KEY_VIDEO_LISTING_SERVER_OFFSET + pageUniqueId
         case PageConstants.SEARCH_TAGS_PAGE:
             offsetServerPrefKey = PageConstants.KEY_SEARCH_TAGS_SERVER_OFFSET + pageUniqueId
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            offsetServerPrefKey = PageConstants.KEY_SELECT_AVATAR_SERVER_OFFSET + pageUniqueId
         default:
             break
         }
@@ -187,7 +230,12 @@ class DataManager: NSObject {
             totalCountPrefKey = PageConstants.KEY_VIDEO_LISTING_TOTAL_CONTENT_COUNT + pageUniqueId
         case PageConstants.SEARCH_TAGS_PAGE:
             totalCountPrefKey = PageConstants.KEY_SEARCH_TAGS_TOTAL_CONTENT_COUNT + pageUniqueId
-            
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            totalCountPrefKey = PageConstants.KEY_SELECT_AVATAR_TOTAL_CONTENT_COUNT + pageUniqueId
         default:
             break
         }

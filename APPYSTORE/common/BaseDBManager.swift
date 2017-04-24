@@ -9,6 +9,8 @@ protocol BaseDBManager {
     
     func fetchAll() -> [BaseModel]?
     
+    func getRowCount(bundle: AndroidBundle) -> Int
+    
     func removeAll(bundle: AndroidBundle)
     
 }

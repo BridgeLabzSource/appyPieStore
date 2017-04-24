@@ -204,4 +204,10 @@ class HttpRequestBuilder: NSObject {
         ]
     }
     
+    static func getAvatarParameters(method: String, pageId: String) -> Parameters {
+        return [METHOD: method,
+                PAGEID: pageId
+        ]
+    }
+    
 }

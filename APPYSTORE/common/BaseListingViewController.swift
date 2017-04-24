@@ -69,8 +69,8 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         progressView?.removeFromSuperview()
         if status == DataFetchFramework.REQUEST_SUCCESS {
             if let result = result as? [BaseModel] {
-                self.view.setNeedsDisplay()
                 print("onDataReceived called", result.count)
+                self.view.setNeedsDisplay()
                 self.collectionView.reloadData()
             }
         } else if status == DataFetchFramework.END_OF_DATA {

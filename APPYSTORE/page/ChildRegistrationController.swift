@@ -12,6 +12,7 @@ class ChildRegistrationController: BaseViewController {
     
     @IBOutlet weak var tfBirthDate: UITextField!
     
+    var pageType: Int!
     
     override func getPageName() -> String {
         return PageConstants.REGISTRATION_PAGE
@@ -43,6 +44,6 @@ class ChildRegistrationController: BaseViewController {
     }
     
     @IBAction func saveTouchUpInside(_ sender: CustomButton) {
-        //open avatar selection page
+        NavigationManager.openAvatarSelectionPage(mainControllerCommunicator: mainControllerCommunicator!, pageType: pageType)
     }
 }

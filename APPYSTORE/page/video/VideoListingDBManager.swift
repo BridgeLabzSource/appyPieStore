@@ -14,6 +14,7 @@ import UIKit
 //var data = [NSManagedObject]()
 
 class VideoListingDBManager: BaseDBManager{
+    
     let TABLE_NAME = "VideoListingTable";
     
     let USER_ID = "user_id";
@@ -124,21 +125,6 @@ class VideoListingDBManager: BaseDBManager{
         }
         return historylist
     }
-    
-//    func getRowCount() -> Int {
-//        var count = 0
-//        
-//        let delegate = (UIApplication.shared.delegate as? AppDelegate)
-//        let context = delegate?.persistentContainer.viewContext
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TABLE_NAME)
-//        
-//        do {
-//            count = try (context?.count(for: fetchRequest)) ?? 0
-//        } catch let error as NSError {
-//            print("Error : \(error)")
-//        }
-//        return count
-//    }
 
     func getRowCount(bundle: AndroidBundle) -> Int {
         var count = 0

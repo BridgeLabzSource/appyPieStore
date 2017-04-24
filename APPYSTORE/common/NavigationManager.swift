@@ -12,18 +12,17 @@ class NavigationManager {
     
     static func openAvatarSelectionPage(mainControllerCommunicator: MainControllerCommunicator, pageType: Int) {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "ChildRegistrationController") as! ChildRegistrationController
+        let viewController = storyboard.instantiateViewController(withIdentifier: "AvatarSelectionController") as! AvatarSelectionController
         viewController.mainControllerCommunicator = mainControllerCommunicator
         mainControllerCommunicator.addChild(controller: viewController, area: .FULL)
-        //mainControllerCommunicator.getContext().present(viewController, animated: false, completion: nil)
     }
     
     static func openRegistrationPage(mainControllerCommunicator: MainControllerCommunicator, pageType: Int) {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "ChildRegistrationController") as! ChildRegistrationController
         viewController.mainControllerCommunicator = mainControllerCommunicator
+        viewController.pageType = pageType
         mainControllerCommunicator.addChild(controller: viewController, area: Area.FULL)
-        //mainControllerCommunicator.getContext().present(viewController, animated: true, completion: nil)
     }
     
     static func openVideoCategoryPage(mainControllerCommunicator: MainControllerCommunicator) {

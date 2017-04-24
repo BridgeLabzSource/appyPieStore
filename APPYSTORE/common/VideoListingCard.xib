@@ -57,6 +57,7 @@
                 <constraint firstItem="vQR-Ab-2hy" firstAttribute="bottom" secondItem="yeM-on-lhJ" secondAttribute="bottom" id="dga-4V-TzT"/>
                 <constraint firstItem="y5K-y6-1DW" firstAttribute="leading" secondItem="Tnx-8M-pk8" secondAttribute="leading" multiplier="8:16" id="fUe-wh-IdT"/>
                 <constraint firstItem="vQR-Ab-2hy" firstAttribute="leading" secondItem="yeM-on-lhJ" secondAttribute="trailing" id="kEG-YD-BPv"/>
+                <constraint firstItem="yeM-on-lhJ" firstAttribute="trailing" secondItem="Tnx-8M-pk8" secondAttribute="trailing" priority="750" id="tTP-AK-SYe"/>
                 <constraint firstItem="Tnx-8M-pk8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="16:512" id="wKw-ba-tcn"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -68,6 +69,7 @@
                 <outlet property="imgThumbnail" destination="Tnx-8M-pk8" id="XUK-gK-52I"/>
                 <outlet property="lblTitle" destination="yeM-on-lhJ" id="bnu-LN-kJT"/>
                 <outlet property="playIcon" destination="y5K-y6-1DW" id="Rgc-5l-4Ar"/>
+                <outlet property="titleAndDownloadBtnConstraint" destination="kEG-YD-BPv" id="dK6-Sv-VIJ"/>
             </connections>
             <point key="canvasLocation" x="-78" y="-149"/>
         </view>

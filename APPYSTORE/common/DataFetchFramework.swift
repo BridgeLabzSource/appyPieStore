@@ -18,7 +18,7 @@ class DataFetchFramework {
     var offsetLocal = 0
     var offsetServer = 0
     var limit = 20
-    var totalCountOnServer = -1;
+    var totalCountOnServer = -1
     var contentList: [BaseModel]
     
     var onDataReceived : (String, AnyObject) -> () = {_ in}
@@ -34,7 +34,6 @@ class DataFetchFramework {
     
     var dataSource: DataSource?
     var bundle: AndroidBundle
-    var isConnectionError = false
     
     init(pageName: String, pageUniqueId: String, bundle: AndroidBundle) {
         self.pageName = pageName
@@ -100,22 +99,26 @@ class DataFetchFramework {
     
     func getDataFromLocalStorage() {
         print("getDataFromLocalStorage called offsetLocal: \(offsetLocal)")
-        DataManager.sharedInstance.getLocalData(pageName: pageName, offset: offsetLocal, limit: limit, bundle: bundle, completion: {
-            result in
-            
-            if let data = result, (result?.count)! > 0 {
-                self.offsetLocal += self.limit
-                self.addToContentList(contentList: data)
-                self.onDataReceived(DataFetchFramework.REQUEST_SUCCESS, self.contentList as AnyObject)
-            } else {
-                if self.offsetServer < self.totalCountOnServer && self.dataSource != .LOCAL {
-                    self.callServerApiToFetchData()
+        if(DataManager.sharedInstance.getRowCountForPage(pageName: pageName, bundle: bundle) >= offsetLocal) {
+            DataManager.sharedInstance.getLocalData(pageName: pageName, offset: offsetLocal, limit: limit, bundle: bundle, completion: {
+                result in
+                
+                if let data = result, (result?.count)! > 0 {
+                    self.offsetLocal += self.limit
+                    self.addToContentList(contentList: data)
+                    self.onDataReceived(DataFetchFramework.REQUEST_SUCCESS, self.contentList as AnyObject)
                 } else {
-                    self.onDataReceived(DataFetchFramework.END_OF_DATA, "" as AnyObject)
+                    if self.offsetServer < self.totalCountOnServer && self.dataSource != .LOCAL {
+                        self.callServerApiToFetchData()
+                    } else {
+                        self.onDataReceived(DataFetchFramework.END_OF_DATA, "" as AnyObject)
+                    }
                 }
-            }
-            
-        })
+                
+            })
+        } else {
+            self.onDataReceived(DataFetchFramework.END_OF_DATA, "" as AnyObject)
+        }
     }
     
     func start(dataSource: DataSource) {
@@ -206,14 +209,15 @@ class DataFetchFramework {
                 self.onDataReceived(DataFetchFramework.REQUEST_FAILURE , result)
             }
         } else {
-            if statusType == DataFetchFramework.CONNECTION_ERROR{
-                isConnectionError = true
-            }
-            
-            if dataSource == .BOTH && isLocalDataAvailable() {
-                getDataFromLocalStorage()
+            //if due to some reason server fails to repond data, atleast show data from local storage if available
+            if statusType == DataFetchFramework.CONNECTION_ERROR || statusType == DataFetchFramework.REQUEST_FAILURE {
+                if dataSource == .BOTH && isLocalDataAvailable() {
+                    getDataFromLocalStorage()
+                } else {
+                    self.onDataReceived(statusType, result)
+                }
             } else {
-                self.onDataReceived(statusType, result)
+                //handle end of data
             }
         }
     }
@@ -259,6 +263,7 @@ class DataFetchFramework {
     }
     
     func clearLocalData() {
+        print("clearLocalData called")
         DataManager.sharedInstance.deleteDataForPage(pageName: pageName, bundle: bundle)
     }
     
