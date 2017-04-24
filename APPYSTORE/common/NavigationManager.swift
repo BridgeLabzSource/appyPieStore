@@ -31,15 +31,8 @@ class NavigationManager {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "ChildRegistrationController") as! ChildRegistrationController
         viewController.mainControllerCommunicator = mainControllerCommunicator
-<<<<<<< HEAD
         viewController.pageType = pageType
         mainControllerCommunicator.addChild(controller: viewController, area: Area.FULL)
-=======
-
-        mainControllerCommunicator.addChild(controller: viewController, area: Area.FULL)
-        //mainControllerCommunicator.getContext().present(viewController, animated: true, completion: nil)
-
->>>>>>> ce59623eb1fa7c7741431b8c3c54ad331ba020a9
     }
     
     static func openVideoCategoryPage(mainControllerCommunicator: MainControllerCommunicator) {
