@@ -16,8 +16,16 @@ import SDWebImage
     @IBOutlet weak var playIcon: UIImageView!
     @IBOutlet weak var downloadButton: UIButton!
     
+    @IBOutlet weak var titleAndDownloadBtnConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
+        
+        //made hidden in first release
+        downloadButton.isHidden = true
+        titleAndDownloadBtnConstraint.isActive = false
+        layoutIfNeeded()
+        
+        
         let radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 64))
         
         imgThumbnail.layer.cornerRadius = radius

@@ -94,7 +94,7 @@ class VideoDBManager: BaseDBManager {
         return videocategorylist
     }
     
-    func getRowCount() -> Int {
+    func getRowCount(bundle: AndroidBundle) -> Int {
         var count = 0
         
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
