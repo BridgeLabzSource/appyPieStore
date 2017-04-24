@@ -53,6 +53,7 @@
 		7365F3931E92603A006B3C75 /* VideoListingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7365F3921E92603A006B3C75 /* VideoListingController.swift */; };
 		7365F3951E92612D006B3C75 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7365F3941E92612D006B3C75 /* MainController.swift */; };
 		7366E8951E8D23BA002A09F2 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366E8941E8D23BA002A09F2 /* CustomLabel.swift */; };
+		7368B41F1EADB40C00EFAF06 /* CustomUiSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368B41E1EADB40C00EFAF06 /* CustomUiSlider.swift */; };
 		736A40FC1E891A3000A4C038 /* VideoListingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736A40FA1E891A3000A4C038 /* VideoListingCard.swift */; };
 		736A40FD1E891A3000A4C038 /* VideoListingCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736A40FB1E891A3000A4C038 /* VideoListingCard.xib */; };
 		736D42871E9F544F00ACDD0F /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D42861E9F544F00ACDD0F /* UITextFieldExtension.swift */; };
@@ -171,6 +172,7 @@
 		7365F3921E92603A006B3C75 /* VideoListingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingController.swift; sourceTree = "<group>"; };
 		7365F3941E92612D006B3C75 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		7366E8941E8D23BA002A09F2 /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		7368B41E1EADB40C00EFAF06 /* CustomUiSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUiSlider.swift; sourceTree = "<group>"; };
 		736A40FA1E891A3000A4C038 /* VideoListingCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingCard.swift; sourceTree = "<group>"; };
 		736A40FB1E891A3000A4C038 /* VideoListingCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListingCard.xib; sourceTree = "<group>"; };
 		736D42861E9F544F00ACDD0F /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				736D428E1E9FC2F100ACDD0F /* TagsCard.swift */,
 				73DA446D1EA6378500EF2C00 /* CrossButton.xib */,
 				73DA446F1EA63BA500EF2C00 /* CrossButton.swift */,
+				7368B41E1EADB40C00EFAF06 /* CustomUiSlider.swift */,
 			);
 			name = customView;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				0A5374AA1E606B9700F198AD /* DimensionManager.swift in Sources */,
 				0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */,
 				0A72615E1E6D30600023883F /* StringExtension.swift in Sources */,
+				7368B41F1EADB40C00EFAF06 /* CustomUiSlider.swift in Sources */,
 				70AD5AF21E6E7360003C2536 /* SearchResultController.swift in Sources */,
 				F46267191E77B1A600302ACF /* PreChatFormField.swift in Sources */,
 				736D42901E9FC2F100ACDD0F /* TagsCard.swift in Sources */,

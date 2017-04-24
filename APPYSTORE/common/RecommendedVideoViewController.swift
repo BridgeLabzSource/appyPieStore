@@ -107,6 +107,22 @@ class RecommendedVideoViewController: BaseListingViewController {
         collectionView.reloadData()
     }
     
+    func previousVideo() {
+        if (currentIndex - 1) >= 0 {
+            (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = false
+            
+            if (dataFetchFramework?.contentList[currentIndex - 1] as! VideoListingModel).payType == "paid" {
+                currentIndex = getPreferredIndex()
+            } else {
+                currentIndex -= 1
+            }
+            print("previousVideo currentIndex = \(currentIndex)")
+            (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = true
+            delegate?.onContentChange(content: dataFetchFramework?.contentList[currentIndex ] as! VideoListingModel)
+            collectionView.reloadData()
+        }
+    }
+    
     func getPreferredIndex() -> Int {
         var index = currentIndex
         var valueIndex = -1

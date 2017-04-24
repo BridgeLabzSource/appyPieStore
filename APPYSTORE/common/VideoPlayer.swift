@@ -24,6 +24,8 @@ protocol VideoDelegate {
     func onVideoCompleted()
     func onTaskStarted()
     func onTaskCompleted()
+    func onNext()
+    func onPrevious()
 }
 
 @IBDesignable class VideoPlayer: UIView {
@@ -207,6 +209,10 @@ protocol VideoDelegate {
         seekbar.addTarget(self, action: #selector(sliderValueChanged),
                              for: .valueChanged)
         
+        let singleTapSeekbar = UITapGestureRecognizer(target: self, action: #selector(VideoPlayer.seekBarClicked))
+        singleTapSeekbar.numberOfTapsRequired = 1 // you can change this value
+        seekbar.addGestureRecognizer(singleTapSeekbar)
+        
         let singleTapPlay = UITapGestureRecognizer(target: self, action: #selector(VideoPlayer.playIconClick))
         singleTapPlay.numberOfTapsRequired = 1 // you can change this value
         playIcon.isUserInteractionEnabled = true
@@ -230,11 +236,42 @@ protocol VideoDelegate {
         bottomView.isUserInteractionEnabled = true
         bottomView.addGestureRecognizer(singleTapBottom)
         
+        let singleTapNext = UITapGestureRecognizer(target: self, action: #selector(VideoPlayer.nextIconClick))
+        singleTapNext.numberOfTapsRequired = 1 // you can change this value
+        rightSeek.isUserInteractionEnabled = true
+        rightSeek.addGestureRecognizer(singleTapNext)
+        
+        let singleTapPrevious = UITapGestureRecognizer(target: self, action: #selector(VideoPlayer.previousIconClick))
+        singleTapPrevious.numberOfTapsRequired = 1 // you can change this value
+        leftSeek.isUserInteractionEnabled = true
+        leftSeek.addGestureRecognizer(singleTapPrevious)
+        
         avPlayer?.automaticallyWaitsToMinimizeStalling = false
         hideLockIcon()
         updateState(state: .BUFFERING_START)
         print("BUFFERING_START initialize")
         
+    }
+    
+    func seekBarClicked(gesture: UITapGestureRecognizer) {
+        print("seekBarClicked called")
+        playerRateBeforeSeek = (avPlayer?.rate)!
+        avPlayer?.pause()
+        let pointTapped = gesture.location(in: self.rootView)
+        let positionOfSlider = seekbar.frame.origin
+        let sliderWidth = seekbar.frame.size.width
+        let newValue = (pointTapped.x - positionOfSlider.x) * CGFloat(seekbar.maximumValue)/sliderWidth
+        seekbar.setValue(Float(newValue), animated: true)
+        
+        let videoDuration = CMTimeGetSeconds((avPlayer?.currentItem!.duration)!)
+        let elapsedTime: Float64 = videoDuration * Float64(seekbar.value)
+        updateTimeLabel(elapsedTime: elapsedTime, duration: videoDuration)
+        
+        avPlayer?.seek(to: CMTimeMakeWithSeconds(elapsedTime, 100)) { (completed: Bool) -> Void in
+            if self.playerRateBeforeSeek > 0 {
+                self.play()
+            }
+        }
     }
     
     func bottomContainerClick() {
@@ -436,6 +473,7 @@ protocol VideoDelegate {
         
         return s
     }
+    
     func playerDidFinish(note: NSNotification) {
         print("Ganesh Video Finished")
         updateState(state: .STOP)
@@ -465,8 +503,10 @@ protocol VideoDelegate {
     }
     
     private func setSeekValue(seekValue: Float) {
+        print("VideoPlayer setSeekValue value: \(seekValue)")
         seekbar.value = seekValue
     }
+    
     func playIconClick() {
         print("playIcon Clicked")
         //invisibleButtonTapped()
@@ -478,6 +518,14 @@ protocol VideoDelegate {
         print("pauseIcon Clicked")
         //invisibleButtonTapped()
         avPlayer?.pause()
+    }
+    
+    func nextIconClick() {
+        delegate?.onNext()
+    }
+    
+    func previousIconClick() {
+        delegate?.onPrevious()
     }
     
     func invisibleButtonTapped() {
