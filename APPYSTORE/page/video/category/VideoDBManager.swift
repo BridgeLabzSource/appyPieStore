@@ -5,7 +5,16 @@ import UIKit
 
 class VideoDBManager: BaseDBManager {
     
-    let TABLE_NAME = "VideoCategoryTable"
+    static let sharedInstance = VideoDBManager()
+    
+    private override init() {
+        
+    }
+
+    override var TABLE_NAME: String {
+        get {return "VideoCategoryTable"}
+        set{}
+    }
     
     let USER_ID = "user_id";
     let CHILD_ID = "child_id";
@@ -19,7 +28,7 @@ class VideoDBManager: BaseDBManager {
     let VISIBILITY_STATUS = "visibility_status";
     let CONTENT_COUNT = "content_count";
     
-    func insertBulkRecords(userId: String?, childId: String?, modelList: [BaseModel]?) -> Int? {
+    override func insertBulkRecords(userId: String?, childId: String?, modelList: [BaseModel]?) -> Int? {
         var result:[VideoCategoryModel]? = (modelList as? [VideoCategoryModel])!
         var recordsInserted:Int = 0
         
@@ -60,7 +69,7 @@ class VideoDBManager: BaseDBManager {
         return recordsInserted
     }
     
-    func fetchDataWithLimit(childId: String, offset: Int, limit: Int, bundle: AndroidBundle) -> [BaseModel]? {
+    override func fetchDataWithLimit(childId: String, offset: Int, limit: Int, bundle: AndroidBundle) -> [BaseModel]? {
         var videocategorylist = [BaseModel]()
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
@@ -80,7 +89,7 @@ class VideoDBManager: BaseDBManager {
         
     }
     
-    func fetchAll() -> [BaseModel]? {
+    override func fetchAll() -> [BaseModel]? {
         var videocategorylist = [BaseModel]()
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
@@ -94,7 +103,7 @@ class VideoDBManager: BaseDBManager {
         return videocategorylist
     }
     
-    func getRowCount(bundle: AndroidBundle) -> Int {
+    override func getRowCount(bundle: AndroidBundle) -> Int {
         var count = 0
         
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
@@ -136,21 +145,21 @@ class VideoDBManager: BaseDBManager {
         return videoCategoryModel
     }
     
-    func removeAll(bundle: AndroidBundle) {
-        let delegate = (UIApplication.shared.delegate as? AppDelegate)
-        let Context = delegate?.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TABLE_NAME)
-        do {
-            let records = try Context?.fetch(fetchRequest) as! [NSManagedObject]
-            for record in records
-            {
-                Context?.delete(record)
-            }
-            
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-    }
+//    func clearTable(bundle: AndroidBundle) {
+//        let delegate = (UIApplication.shared.delegate as? AppDelegate)
+//        let Context = delegate?.persistentContainer.viewContext
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TABLE_NAME)
+//        do {
+//            let records = try Context?.fetch(fetchRequest) as! [NSManagedObject]
+//            for record in records
+//            {
+//                Context?.delete(record)
+//            }
+//            
+//        } catch let error as NSError {
+//            print("Could not fetch \(error), \(error.userInfo)")
+//        }
+//    }
     
     
 }

@@ -75,7 +75,7 @@ class AbsPrefs {
         return defaultDouble
     }
     
-    func clearPreferences(){
+    func clearPreferences() {
         preferences?.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
     }
     

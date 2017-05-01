@@ -37,15 +37,5 @@ class VideoListingController: BaseListingViewController {
         print("VideoListingController : select video \(videoListingModel.title)")
         
         NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: videoListingModel)
-        
-        /*
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "VideoPlayerController") as! VideoPlayerController
-        
-        //mainControllerCommunicator.addChild(controller: viewController)
-        mainControllerCommunicator?.getContext().present(viewController, animated: false, completion: nil)
-        //performSegue(withIdentifier: "same", sender: nil)
-        */
-        
     }
 }

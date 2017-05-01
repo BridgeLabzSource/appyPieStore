@@ -93,12 +93,12 @@ class Prefs: AbsPrefs {
         return instance
     }
     
-    func getUserInfo() -> String? {
-        return getString(key: Prefs.USER_INFO, defaultString: nil)
+    func getUserInfo() -> UserInfo? {
+        return getObject(key: Prefs.USER_INFO) as? UserInfo
     }
     
-    func setUserInfo(value: String) {
-        setString(key: Prefs.USER_INFO, value: value)
+    func setUserInfo(value: UserInfo) {
+        setObject(key: Prefs.USER_INFO, value: value)
     }
     
     func setIsFirstAppOpen(value: Bool){

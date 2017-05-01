@@ -10,6 +10,7 @@ import UIKit
 
 class ChildRegistrationController: BaseViewController {
     
+    @IBOutlet weak var tfName: UITextField!
     @IBOutlet weak var tfBirthDate: UITextField!
     
     var pageType: Int!
@@ -44,6 +45,9 @@ class ChildRegistrationController: BaseViewController {
     }
     
     @IBAction func saveTouchUpInside(_ sender: CustomButton) {
-        NavigationManager.openAvatarSelectionPage(mainControllerCommunicator: mainControllerCommunicator!, pageType: pageType)
+        let givenChild = ChildInfo()
+        givenChild.name = tfName.text
+            givenChild.dob = tfBirthDate.text
+        NavigationManager.openAvatarSelectionPage(mainControllerCommunicator: mainControllerCommunicator!, pageType: pageType, givenChild: givenChild)
     }
 }

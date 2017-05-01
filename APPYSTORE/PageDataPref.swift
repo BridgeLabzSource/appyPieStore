@@ -17,8 +17,8 @@ class PageDataPref: AbsPrefs {
     
     static func getInstance() -> PageDataPref? {
         if PageDataPref.instance == nil {
-            let sp = UserDefaults()
-            instance = PageDataPref(preferences: sp)
+            let sp = UserDefaults(suiteName: "pageSpecificData")
+            instance = PageDataPref(preferences: sp!)
         }
         
         return instance

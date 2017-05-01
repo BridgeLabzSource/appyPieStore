@@ -93,7 +93,7 @@ class DataFetchFramework {
         }
         
         if let key = totalCountPrefKey {
-            PageDataPref.getInstance()?.setTotalContentCount(key: key, value: 0)
+            PageDataPref.getInstance()?.setTotalContentCount(key: key, value: -1)
         }
     }
     
@@ -156,14 +156,15 @@ class DataFetchFramework {
     
     func callServerApiToFetchData() {
         print("callServerApiToFetchData called offsetServer: \(offsetServer)")
+        if self.dataSource != DataSource.SERVER && isTimeExpired() {
+            isExistingDataDirty = true
+            offsetServer = 0
+            print("TimeExpired hence offsetServer: \(offsetServer)")
+        }
+        
         if totalCountOnServer != -1 && offsetServer >= totalCountOnServer {
             self.handleResponse(statusType: DataFetchFramework.END_OF_DATA, result: "" as AnyObject)
         } else {
-            if self.dataSource != DataSource.SERVER && isTimeExpired() {
-                isExistingDataDirty = true
-                offsetServer = 0
-                print("TimeExpired hence offsetServer: \(offsetServer)")
-            }
             DataManager.sharedInstance.getData(pageName: pageName, offset: offsetServer, limit: limit, bundle: bundle, returndata: {
                 statusType, result in
                 

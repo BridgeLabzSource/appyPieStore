@@ -15,6 +15,7 @@ class DimensionManager{
     static let H3: CGFloat = 24
     static let H4: CGFloat = 20
     
+    static let DEFAULT: CGFloat = -0.1
 
     static func convertPixelToPoint(pixel: CGFloat) -> CGFloat{
         return pixel / CGFloat(AppDelegate.density)
@@ -39,9 +40,12 @@ class DimensionManager{
     }
     
     static func setDimension1280x720(view: UIView, width:CGFloat, height:CGFloat){
-        view.bounds.size.width = AppDelegate.DEVICE_WIDTH * (width / CGFloat(1280))
-        view.bounds.size.height = AppDelegate.DEVICE_HEIGHT * (height / CGFloat(720))
-        print("width:  \(width)   height:  \(height)  viewWidth:  \(view.bounds.size.width)  viewHeight:  \(view.bounds.size.height)")
+        if(width != DEFAULT) {
+            view.bounds.size.width = AppDelegate.DEVICE_WIDTH * (width / CGFloat(1280))
+        }
+        if(height != DEFAULT) {
+            view.bounds.size.height = AppDelegate.DEVICE_HEIGHT * (height / CGFloat(720))
+        }
     }
     
     static func setTextSize1280x720(label: UILabel, size: CGFloat){

@@ -19,11 +19,11 @@ class ChildCard: BaseCard {
     }
     
     override func fillCard(model: BaseModel) {
-        let avatarModel = model as! AvatarModel
-        let image_path = avatarModel.imagePath
-        let imgurl = URL(string: image_path)
+        let childModel = model as! ChildInfo
+        let image_path = childModel.avatarImage
+        let imgurl = URL(string: image_path!)
         imgAvatar.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
-        lblName.text = avatarModel.name
+        lblName.text = childModel.name
     }
     
     

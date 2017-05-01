@@ -2,7 +2,7 @@
 
 import Foundation
 import SwiftyJSON
-import Alamofire
+
 class BaseParser: NSObject {
     
     var responseCode: String!
@@ -13,7 +13,8 @@ class BaseParser: NSObject {
     
     func parse(params: Parameters,completion: @escaping (_ responseStatus: String, _ listOfData: AnyObject?) -> Void) {
         
-        self.url = "http://www.appystore.in/appy_app/appyApi_handler.php?"
+        self.url = AppConstants.BASE_URL
+        
         self.params = params
         
         HttpConnection.post(url: self.url, params: params,
@@ -34,7 +35,9 @@ class BaseParser: NSObject {
                 if StringUtil.compareIgnoreCase(firstString: strongSelf.responseCode, secondString: HttpConnection.RESPONSECODE_SUCCESS){
                     
                     strongSelf.responseDetails = result["Responsedetails"] as JSON
-                    let parsedResponseData = strongSelf.parseJSONData(responseData: strongSelf.responseDetails)
+                    
+                    //let parsedResponseData = strongSelf.parseJSONData(responseData: strongSelf.responseDetails)
+                    let parsedResponseData = strongSelf.getResponseData(wholeData: result, responseDetail: strongSelf.responseDetails)
                     
                     completion(DataFetchFramework.REQUEST_SUCCESS, parsedResponseData)
                 } else {
@@ -46,7 +49,11 @@ class BaseParser: NSObject {
         })
     }
     
-    func parseJSONData(responseData:JSON) -> AnyObject?{
+    func getResponseData(wholeData: JSON, responseDetail: JSON) -> AnyObject? {
+        return parseJSONData(responseData: responseDetail)
+    }
+    
+    func parseJSONData(responseData:JSON) -> AnyObject? {
         return nil
     }
     

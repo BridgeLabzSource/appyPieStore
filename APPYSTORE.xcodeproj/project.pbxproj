@@ -86,6 +86,8 @@
 		737E28281E94F409008CEC26 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737E28271E94F409008CEC26 /* PlayerModel.swift */; };
 		738C72F61E93E34400A1B4E0 /* VideoListingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C72F51E93E34400A1B4E0 /* VideoListingParser.swift */; };
 		738C89CE1EA5D12C001C9724 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 738C89CD1EA5D12C001C9724 /* Login.storyboard */; };
+		738EC39C1EAE2CCE001575C2 /* ChildRegistrationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EC39B1EAE2CCE001575C2 /* ChildRegistrationParser.swift */; };
+		738EC39E1EAE3058001575C2 /* RegisterApiResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EC39D1EAE3058001575C2 /* RegisterApiResponseModel.swift */; };
 		738EEE6E1EA4BF3000A50038 /* AppNavigationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EEE6D1EA4BF3000A50038 /* AppNavigationHandler.swift */; };
 		738EEE701EA4DD5300A50038 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EEE6F1EA4DD5300A50038 /* NavigationUtil.swift */; };
 		738EEE731EA4FF5300A50038 /* ChildRegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EEE721EA4FF5300A50038 /* ChildRegistrationController.swift */; };
@@ -94,6 +96,7 @@
 		7392A7861E94C96200A6ED32 /* VideoDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392A7851E94C96200A6ED32 /* VideoDBManager.swift */; };
 		7392A7881E94CEC700A6ED32 /* VideoListingDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392A7871E94CEC700A6ED32 /* VideoListingDBManager.swift */; };
 		7392A78A1E951EAF00A6ED32 /* BundleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392A7891E951EAF00A6ED32 /* BundleConstants.swift */; };
+		739402821EB081E400AEDB5E /* ChildSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739402811EB081E400AEDB5E /* ChildSelectionController.swift */; };
 		73950B411E926E0F0026A7D9 /* BaseListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73950B401E926E0F0026A7D9 /* BaseListingViewController.swift */; };
 		73967E7D1E893BF100A9A81B /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */; };
 		7397BD9D1EA748C80048E177 /* AvatarSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7397BD9C1EA748C80048E177 /* AvatarSelectionController.swift */; };
@@ -210,6 +213,8 @@
 		737E28271E94F409008CEC26 /* PlayerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		738C72F51E93E34400A1B4E0 /* VideoListingParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingParser.swift; sourceTree = "<group>"; };
 		738C89CD1EA5D12C001C9724 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		738EC39B1EAE2CCE001575C2 /* ChildRegistrationParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildRegistrationParser.swift; sourceTree = "<group>"; };
+		738EC39D1EAE3058001575C2 /* RegisterApiResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterApiResponseModel.swift; sourceTree = "<group>"; };
 		738EEE6D1EA4BF3000A50038 /* AppNavigationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationHandler.swift; sourceTree = "<group>"; };
 		738EEE6F1EA4DD5300A50038 /* NavigationUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		738EEE721EA4FF5300A50038 /* ChildRegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildRegistrationController.swift; sourceTree = "<group>"; };
@@ -218,6 +223,7 @@
 		7392A7851E94C96200A6ED32 /* VideoDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDBManager.swift; sourceTree = "<group>"; };
 		7392A7871E94CEC700A6ED32 /* VideoListingDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingDBManager.swift; sourceTree = "<group>"; };
 		7392A7891E951EAF00A6ED32 /* BundleConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleConstants.swift; sourceTree = "<group>"; };
+		739402811EB081E400AEDB5E /* ChildSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildSelectionController.swift; sourceTree = "<group>"; };
 		73950B401E926E0F0026A7D9 /* BaseListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseListingViewController.swift; sourceTree = "<group>"; };
 		73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		7397BD9C1EA748C80048E177 /* AvatarSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSelectionController.swift; sourceTree = "<group>"; };
@@ -498,6 +504,9 @@
 				739A82581EA9EE92008F9001 /* AvatarModel.swift */,
 				739A825A1EAA0FA3008F9001 /* AvatarParser.swift */,
 				739A825C1EAA19B8008F9001 /* AvatarDBManager.swift */,
+				738EC39B1EAE2CCE001575C2 /* ChildRegistrationParser.swift */,
+				738EC39D1EAE3058001575C2 /* RegisterApiResponseModel.swift */,
+				739402811EB081E400AEDB5E /* ChildSelectionController.swift */,
 			);
 			name = loginAndRegistration;
 			sourceTree = "<group>";
@@ -651,6 +660,8 @@
 				7371F9FD1E936898009241FF /* KCFABManager.swift in Sources */,
 				F48798F21E77E9AF0060932F /* AbsPrefs.swift in Sources */,
 				739A825D1EAA19B8008F9001 /* AvatarDBManager.swift in Sources */,
+				738EC39C1EAE2CCE001575C2 /* ChildRegistrationParser.swift in Sources */,
+				739402821EB081E400AEDB5E /* ChildSelectionController.swift in Sources */,
 				7370B8251E9E421300D91ABA /* BaseCard.swift in Sources */,
 				0A80DA221E702CA500939443 /* TopBarOverlay.swift in Sources */,
 				7392672B1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift in Sources */,
@@ -660,6 +671,7 @@
 				736D428D1E9FAB2F00ACDD0F /* SearchTagsModel.swift in Sources */,
 				70AD5AED1E6E71CD003C2536 /* HistoryController.swift in Sources */,
 				73DA44701EA63BA500EF2C00 /* CrossButton.swift in Sources */,
+				738EC39E1EAE3058001575C2 /* RegisterApiResponseModel.swift in Sources */,
 				F46267111E77AF0900302ACF /* LoginParser.swift in Sources */,
 				0A74B98E1E71143200B7A67D /* UIViewExtention.swift in Sources */,
 				738EEE731EA4FF5300A50038 /* ChildRegistrationController.swift in Sources */,

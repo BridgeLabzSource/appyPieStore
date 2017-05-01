@@ -17,13 +17,21 @@ class NavigationManager {
         viewController.mainControllerCommunicator = mainControllerCommunicator
         viewController.defaultModel = model
         mainControllerCommunicator.addChild(controller: viewController, area: .FULL)
-        //mainControllerCommunicator.getContext().present(viewController, animated: false, completion: nil)
+    }
+    
+    static func openChildSelectionPage(mainControllerCommunicator: MainControllerCommunicator) {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ChildSelectionController") as! ChildSelectionController
+        viewController.mainControllerCommunicator = mainControllerCommunicator
+        mainControllerCommunicator.addChild(controller: viewController, area: .FULL)
     }
 
-    static func openAvatarSelectionPage(mainControllerCommunicator: MainControllerCommunicator, pageType: Int) {
+    static func openAvatarSelectionPage(mainControllerCommunicator: MainControllerCommunicator, pageType: Int, givenChild: ChildInfo) {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "AvatarSelectionController") as! AvatarSelectionController
         viewController.mainControllerCommunicator = mainControllerCommunicator
+        viewController.pageType = pageType
+        viewController.givenChild = givenChild
         mainControllerCommunicator.addChild(controller: viewController, area: .FULL)
     }
     
