@@ -9,12 +9,72 @@
 import UIKit
 
 class AvatarSelectionController: BaseListingViewController {
-
+    
     @IBOutlet weak var lblTitle: UILabel!
-    var pageName: String?
+    @IBOutlet weak var btnSave: CustomButton!
+    
+    var givenChild: ChildInfo!
+    
+    var pageType: Int!
+    
+    let ACTION_SAVE = 0
+    let ACTION_ADD = 1
+    var btnAction: Int = 0
+    
+    
+    
+    @IBAction func onSaveContinueTouchUp(_ sender: CustomButton) {
+        btnAction = ACTION_SAVE
+        callRegistrationApiAndNavigate()
+    }
+    
+    func callRegistrationApiAndNavigate() {
+        let dob = givenChild.dob!.formatDate(originalFormat: "MMM d, yyyy", destinationFormat: "yyyy-MM-dd")
+        ChildRegistrationParser().parse(params: HttpRequestBuilder.getChildRegistrationParameters(method: ChildRegistrationParser.METHOD_NAME, childName: givenChild.name!, childDob: dob!, avatarId: getValidAvatarId(childInfo: givenChild), pageId: "AvatarSelection"), completion: {
+            statusType, result in
+            
+            if statusType == DataFetchFramework.REQUEST_SUCCESS {
+                let registerApiResponseModel = result as! RegisterApiResponseModel
+                UserInfo.getInstance().id = registerApiResponseModel.userId
+                
+                //Note: registration api returns currently added child only, not the all childs
+                if registerApiResponseModel.childInfoList != nil && (registerApiResponseModel.childInfoList?.count)! > 0 {
+                    var storedChildList: [ChildInfo] = UserInfo.getInstance().childList ?? []
+                    storedChildList.append((registerApiResponseModel.childInfoList?[0])!)
+                    UserInfo.getInstance().saveUserInfoToUserDefaults()
+                }
+                // Navigate to appropriate page
+                if self.btnAction == self.ACTION_SAVE {
+                    if (self.pageType == BundleConstants.PAGE_TYPE_REGISTER || self.pageType == BundleConstants.PAGE_TYPE_REGISTER_ADD) {
+                        NavigationUtil.navigateAsPerChildSize(mainControllerCommunicator: self.mainControllerCommunicator!)
+                    } else if self.pageType == BundleConstants.PAGE_TYPE_ADD{
+                        //todo open child progress page
+                    }
+                } else if self.btnAction == self.ACTION_ADD {
+                    NavigationManager.openRegistrationPage(mainControllerCommunicator: self.mainControllerCommunicator!, pageType: BundleConstants.PAGE_TYPE_REGISTER_ADD)
+                }
+                
+            }
+        })
+    }
     
     internal override func getPageName() -> String {
-        return pageName!
+        var pageName = PageConstants.SELECT_AVATAR_PAGE_NEW
+        
+        switch pageType {
+        case BundleConstants.PAGE_TYPE_REGISTER:
+            pageName = PageConstants.SELECT_AVATAR_PAGE_NEW
+        case BundleConstants.PAGE_TYPE_REGISTER_ADD:
+            pageName = PageConstants.SELECT_AVATAR_PAGE_NEW
+        case BundleConstants.PAGE_TYPE_ADD:
+            pageName = PageConstants.SELECT_AVATAR_PAGE_ADD
+        case BundleConstants.PAGE_TYPE_EDIT:
+            pageName = PageConstants.SELECT_AVATAR_PAGE_EDIT
+        default:
+            assert(false, "Illegal Page type")
+        }
+        
+        return pageName
     }
     
     internal override func getPageNameUniqueIdentifier() -> String {
@@ -22,16 +82,18 @@ class AvatarSelectionController: BaseListingViewController {
     }
     
     override func viewDidLoad() {
-        readBundle()
         initializeView()
         dataFetchFramework = DataFetchFramework(pageName: getPageName(), pageUniqueId: "",  bundle: bundle)
         super.viewDidLoad()
-
+        
     }
     
-    func readBundle() {
-        //todo
-        pageName = PageConstants.SELECT_AVATAR_PAGE_NEW
+    func getValidAvatarId(childInfo: ChildInfo?) -> String {
+        var avatarId = "1"
+        if childInfo != nil && childInfo?.avatarId != nil && childInfo?.avatarId != "0" {
+            avatarId = (childInfo?.avatarId)!
+        }
+        return avatarId
     }
     
     func initializeView() {
