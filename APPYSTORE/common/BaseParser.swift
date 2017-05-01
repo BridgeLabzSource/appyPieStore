@@ -2,6 +2,7 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 class BaseParser: NSObject {
     
