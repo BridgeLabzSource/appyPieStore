@@ -29,8 +29,17 @@ class CrossButton: UIView {
         super.init(coder: aDecoder)
         nibSetup()
     }
-    
+
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        layer.cornerRadius = layer.frame.height/2
+        clipsToBounds = true
+        rootView.clipsToBounds = true
+        containerView.clipsToBounds = true
+        containerView.layer.cornerRadius = containerView.frame.width/2
+    }
     private func nibSetup() {
+        /*
         let nibView: UIView = UINib(nibName: "CrossButton", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! UIView
         
         nibView.frame = bounds
@@ -41,12 +50,43 @@ class CrossButton: UIView {
         self.layoutIfNeeded()
         //containerView.layer.backgroundColor = UIColor.red.cgColor
         //containerView.layer.cornerRadius = min(containerView.layer.frame.size.height, containerView.layer.frame.size.width) / 2.0
+        
         nibView.layer.cornerRadius = nibView.frame.width/2
         containerView.layer.masksToBounds = true
         containerView.clipsToBounds = true
         
         containerView.layer.cornerRadius = containerView.frame.width/2
- 
+    */
+        b()
+    }
+    
+    func a() {
+        let nibView: UIView = UINib(nibName: "CrossButton", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! UIView
+        
+        nibView.frame = bounds
+        nibView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        addSubview(rootView)
+        
+        self.layoutIfNeeded()
+        //containerView.layer.backgroundColor = UIColor.red.cgColor
+        //containerView.layer.cornerRadius = min(containerView.layer.frame.size.height, containerView.layer.frame.size.width) / 2.0
+        
+        nibView.layer.cornerRadius = nibView.frame.width/2
+        containerView.layer.masksToBounds = true
+        containerView.clipsToBounds = true
+        containerView.layoutIfNeeded()
+        containerView.layer.cornerRadius = containerView.frame.width/2
+        
+    }
+    
+    func b() {
+        
+        let nibView: UIView = UINib(nibName: "CrossButton", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! UIView
+        
+        nibView.frame = bounds
+        nibView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(rootView)
     }
     
 

@@ -36,7 +36,11 @@ class VideoListingController: BaseListingViewController {
         let videoListingModel = dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel
         print("VideoListingController : select video \(videoListingModel.title)")
         
-        NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: videoListingModel)
+        if videoListingModel.payType == "paid" {
+            NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!)
+        } else {
+            NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: videoListingModel)
+        }
         
         /*
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

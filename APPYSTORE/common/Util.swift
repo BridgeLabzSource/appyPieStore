@@ -2,6 +2,7 @@
 
 import Foundation
 import SystemConfiguration
+import UIKit
 
 class Utils {
     static let MILLIS = 1
@@ -34,5 +35,13 @@ class Utils {
     
     static func getCurrentTimeInMilliseconds() -> Int64 {
         return Int64(Date().timeIntervalSince1970 * 1000)
+    }
+    
+    static func addFilterToView(_ viewToFilter: UIView) {
+        viewToFilter.alpha = 0.5
+    }
+    
+    static func removeFilterFromView(_ viewToFilter: UIView) {
+        viewToFilter.alpha = 1
     }
 }

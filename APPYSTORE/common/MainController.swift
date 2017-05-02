@@ -30,6 +30,7 @@ class MainController: UIViewController, MainControllerCommunicator {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("MainController viewDidLoad called")
+        print("MainController vendor id : \(UIDevice.current.identifierForVendor?.uuidString)")
         uiDelegate = MainControllerUIDelegate(mainController: self)
         AppNavigationHandler(mainControllerCommunicator: self).NavigateAtAppOpen()
         uiDelegate?.viewDidLoad()

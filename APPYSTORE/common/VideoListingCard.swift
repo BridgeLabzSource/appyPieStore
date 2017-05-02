@@ -45,5 +45,15 @@ import SDWebImage
         let imgurl = URL(string: image_path)
         imgThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "place_holder_cards") )
         lblTitle.text = videoListingModel.title
+        
+        if videoListingModel.payType == "paid" {
+            playIcon.image = UIImage(named: "lock_icon")
+            Utils.addFilterToView(imgThumbnail)
+            Utils.addFilterToView(playIcon)
+        } else {
+            playIcon.image = UIImage(named: "video_card_play_icon_unselected")
+            Utils.removeFilterFromView(imgThumbnail)
+            Utils.removeFilterFromView(playIcon)
+        }
     }
 }
