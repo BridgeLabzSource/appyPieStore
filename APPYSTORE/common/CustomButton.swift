@@ -90,6 +90,8 @@ import UIKit
         
         addSubview(buttonImageView!)
         //self.imageView?.center = CGPoint(x: self.frame.size.width/2 - 5, y: self.frame.height/2 - 5)
+        
+        DimensionManager.setTextSize1280x720(label: self.titleLabel!, size: DimensionManager.H3)
     }
     
     func makeRoundCorner(layer: CALayer){

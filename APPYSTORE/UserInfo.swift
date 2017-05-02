@@ -182,4 +182,12 @@ class UserInfo: NSObject, NSCopying, NSCoding{
         
         return Prefs.getInstance()?.getObject(key: "userInfoObject") as? UserInfo
     }
+    
+    func saveUserInfoToUserDefaults() {
+        Prefs.getInstance()?.setUserInfo(value: self)
+    }
+    
+    func getUserInfoFromUserDefaultsAndUpdateInstance() {
+        UserInfo.instance = Prefs.getInstance()?.getUserInfo()
+    }
 }

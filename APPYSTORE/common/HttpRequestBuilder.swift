@@ -73,10 +73,15 @@ class HttpRequestBuilder: NSObject {
     static let MSISDN = "msisdn"
     static let EMAILID = "userEmail"
     
+
     static let SMM_KEY = "smm_key"
     static let ANDROID_ID = "android_id"
     static let IMEI = "imei"
     
+
+    static let CHILD_NAME = "child_name"
+    static let CHILD_DOB = "child_dob"
+    static let CHILD_AVATAR_ID = "child_avtarid"
     
     static func getHeaders() -> HTTPHeaders {
         
@@ -214,6 +219,7 @@ class HttpRequestBuilder: NSObject {
         ]
     }
     
+
     static func getOtpRequestParameters(method: String, msisdn: String, smmKey: String, androidId: String, imei: String) -> Parameters {
         
         return [
@@ -222,6 +228,16 @@ class HttpRequestBuilder: NSObject {
             SMM_KEY: smmKey,
             ANDROID_ID: androidId,
             IMEI: imei
+        ]
+    }
+
+    static func getChildRegistrationParameters(method: String, childName: String, childDob: String, avatarId: String, pageId: String) -> Parameters {
+        return [METHOD: method,
+                PAGEID: pageId,
+                CHILD_NAME: childName,
+                CHILD_DOB: childDob,
+                CHILD_AVATAR_ID: avatarId
+
         ]
     }
     

@@ -84,20 +84,6 @@ extension String {
         return self.substring(from: start, to: to)
     }
     
-//    func height(withConstrainedWidth width: CGFloat) -> CGFloat {
-//        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-//        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, context: nil)
-//        
-//        return boundingBox.height
-//    }
-//    
-//    func width(withConstrainedHeight height: CGFloat) -> CGFloat {
-//        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-//        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, context: nil)
-//        
-//        return boundingBox.width
-//    }
-    
     func widthOfString(usingFont font: UIFont) -> CGFloat {
         let fontAttributes = [NSFontAttributeName: font]
         let size = self.size(attributes: fontAttributes)
@@ -109,4 +95,25 @@ extension String {
         let size = self.size(attributes: fontAttributes)
         return size.height
     }
+    
+    func formatDate(originalFormat: String, destinationFormat: String) -> String! {
+        
+        // Orginal format :
+        let dateOriginalFormat = DateFormatter()
+        dateOriginalFormat.dateFormat = originalFormat
+        
+        // Destination format :
+        let dateDestinationFormat = DateFormatter()
+        dateDestinationFormat.dateFormat = destinationFormat
+        
+        // Convert current String Date to NSDate
+        let dateFromString = dateOriginalFormat.date(from: self)
+        
+        // Convert new NSDate created above to String with the good format
+        let dateFormated = dateDestinationFormat.string(from: dateFromString!)
+        
+        return dateFormated
+        
+    }
+
 }

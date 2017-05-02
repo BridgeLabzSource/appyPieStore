@@ -5,7 +5,17 @@ import UIKit
 var data = [NSManagedObject]()
 
 class HistoryDBManager: BaseDBManager{
-    let TABLE_NAME = "HistoryTable"
+    
+    static let sharedInstance = HistoryDBManager()
+    
+    private override init() {
+        
+    }
+    
+    override var TABLE_NAME: String {
+        get {return "HistoryTable"}
+        set{}
+    }
     
     let USER_ID = "user_id"
     let CHILD_ID = "child_id"
@@ -26,7 +36,7 @@ class HistoryDBManager: BaseDBManager{
     let IS_VIDEO_DOWNLOADABLE = "video_streaming"
     
     
-    func insertBulkRecords(userId: String?, childId: String?, modelList: [BaseModel]?) -> Int?
+    override func insertBulkRecords(userId: String?, childId: String?, modelList: [BaseModel]?) -> Int?
     {
         var result:[VideoListingModel]? = (modelList as? [VideoListingModel])!
         var recordsInserted: Int = 0
@@ -77,7 +87,7 @@ class HistoryDBManager: BaseDBManager{
         return recordsInserted
     }
     
-    func fetchDataWithLimit(childId: String, offset: Int, limit: Int, bundle: AndroidBundle) -> [BaseModel]?
+    override func fetchDataWithLimit(childId: String, offset: Int, limit: Int, bundle: AndroidBundle) -> [BaseModel]?
     {
         var historylist = [BaseModel]()
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
@@ -97,7 +107,7 @@ class HistoryDBManager: BaseDBManager{
         return historylist
     }
     
-    func fetchAll() -> [BaseModel]? {
+    override func fetchAll() -> [BaseModel]? {
         var historylist = [BaseModel]()
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
@@ -111,7 +121,7 @@ class HistoryDBManager: BaseDBManager{
         return historylist
     }
     
-    func getRowCount(bundle: AndroidBundle) -> Int {
+    override func getRowCount(bundle: AndroidBundle) -> Int {
         var count = 0
         
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
@@ -161,20 +171,20 @@ class HistoryDBManager: BaseDBManager{
         return historyModel
     }
     
-    func removeAll(bundle: AndroidBundle)
-    {
-        let delegate = (UIApplication.shared.delegate as? AppDelegate)
-        let Context = delegate?.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.TABLE_NAME)
-        do {
-            let records = try Context?.fetch(fetchRequest) as! [NSManagedObject]
-            for record in records {
-                Context?.delete(record)
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-    }
+//    override func clearTable(bundle: AndroidBundle)
+//    {
+//        let delegate = (UIApplication.shared.delegate as? AppDelegate)
+//        let Context = delegate?.persistentContainer.viewContext
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.TABLE_NAME)
+//        do {
+//            let records = try Context?.fetch(fetchRequest) as! [NSManagedObject]
+//            for record in records {
+//                Context?.delete(record)
+//            }
+//        } catch let error as NSError {
+//            print("Could not fetch \(error), \(error.userInfo)")
+//        }
+//    }
     
 }
 

@@ -59,6 +59,11 @@ class LoginParser: BaseParser{
         userInfoOld = UserInfo.getInstance().getClone()
     }
     
+    //this api response is not well formed. The required data is not present in "Responsedetails" key, hence overriding
+    override func getResponseData(wholeData: JSON, responseDetail: JSON) -> AnyObject? {
+        return parseJSONData(responseData: wholeData)
+    }
+    
     override func parseJSONData(responseData: JSON) -> AnyObject? {
         
         
