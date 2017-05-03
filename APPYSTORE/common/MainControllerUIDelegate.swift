@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 enum Area {
     case FULL
@@ -16,6 +17,7 @@ enum Area {
 class MainControllerUIDelegate {
     let mainController: MainController
     var fabButton: KCFloatingActionButton!
+    var progressView: NVActivityIndicatorView?
     
     lazy var historyController: HistoryController = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -46,6 +48,27 @@ class MainControllerUIDelegate {
         fabButton.paddingX = DimensionManager.getGeneralizedWidth1280x720(width: 32)
         fabButton.paddingY = DimensionManager.getGeneralizedHeight1280x720(height: 32)
         makeFab()
+        initProgressBar()
+    }
+    
+    private func initProgressBar() {
+        print("initProgressBar x = \(mainController.view.center.x) y = \(mainController.view.center.y)")
+        let width = DimensionManager.getGeneralizedWidth1280x720(width: 210)
+        let height = DimensionManager.getGeneralizedHeight1280x720(height: 70)
+        let frame = CGRect(x: CGFloat(mainController.view.center.x - width / 2), y: CGFloat(mainController.view.center.y - height / 2), width: width, height: height)
+        progressView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballPulse, color: UIColor.orange, padding: CGFloat(0))
+        
+    }
+    
+    func showProgressBar() {
+        progressView?.startAnimating()
+        mainController.view.addSubview(progressView!)
+        mainController.view.bringSubview(toFront: progressView!)
+    }
+    
+    func hideProgressBar() {
+        progressView?.stopAnimating()
+        progressView?.removeFromSuperview()
     }
     
     func setButtonsClickLstener() {
@@ -150,8 +173,6 @@ class MainControllerUIDelegate {
             setAllItemsVisibility(state: false)
             makeItemsVisible(components: components!)
             mainController.topView.tfSearch.text = components?.searchKeyword
-            
-            //mainController.view.bringSubview(toFront: mainController.topView)
         }
     }
     

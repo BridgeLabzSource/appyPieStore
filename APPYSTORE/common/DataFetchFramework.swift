@@ -218,7 +218,7 @@ class DataFetchFramework {
                     self.onDataReceived(statusType, result)
                 }
             } else {
-                //handle end of data
+                self.onDataReceived(DataFetchFramework.END_OF_DATA, result)
             }
         }
     }
