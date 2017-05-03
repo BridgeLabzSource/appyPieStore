@@ -50,6 +50,7 @@
 		7360D88A1E7A947500C662DE /* LoginParserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360D8891E7A947500C662DE /* LoginParserListener.swift */; };
 		7362A5E81E9C99E300DA4C91 /* SearchResultParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7362A5E71E9C99E300DA4C91 /* SearchResultParser.swift */; };
 		73638FAC1E8A57EC0089619B /* CustomViewLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73638FAB1E8A57EC0089619B /* CustomViewLayer.swift */; };
+		7364BD541EB89D070032271F /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7364BD531EB89D070032271F /* UIViewControllerExtension.swift */; };
 		7365F3931E92603A006B3C75 /* VideoListingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7365F3921E92603A006B3C75 /* VideoListingController.swift */; };
 		7365F3951E92612D006B3C75 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7365F3941E92612D006B3C75 /* MainController.swift */; };
 		7366E8951E8D23BA002A09F2 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366E8941E8D23BA002A09F2 /* CustomLabel.swift */; };
@@ -182,6 +183,7 @@
 		7360D8891E7A947500C662DE /* LoginParserListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginParserListener.swift; sourceTree = "<group>"; };
 		7362A5E71E9C99E300DA4C91 /* SearchResultParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultParser.swift; sourceTree = "<group>"; };
 		73638FAB1E8A57EC0089619B /* CustomViewLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewLayer.swift; sourceTree = "<group>"; };
+		7364BD531EB89D070032271F /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		7365F3921E92603A006B3C75 /* VideoListingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingController.swift; sourceTree = "<group>"; };
 		7365F3941E92612D006B3C75 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		7366E8941E8D23BA002A09F2 /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */,
 				736D42861E9F544F00ACDD0F /* UITextFieldExtension.swift */,
 				737232091EA64B4E001A3106 /* UIToolbarExtention.swift */,
+				7364BD531EB89D070032271F /* UIViewControllerExtension.swift */,
 			);
 			name = extension;
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				7362A5E81E9C99E300DA4C91 /* SearchResultParser.swift in Sources */,
 				70AD5AE31E6E7129003C2536 /* BaseParser.swift in Sources */,
 				7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */,
+				7364BD541EB89D070032271F /* UIViewControllerExtension.swift in Sources */,
 				7371FA041E936B7B009241FF /* VideoPlayerViewController.swift in Sources */,
 				73950B411E926E0F0026A7D9 /* BaseListingViewController.swift in Sources */,
 				73DA446A1EA60CF600EF2C00 /* PaymentPageController.swift in Sources */,

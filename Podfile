@@ -9,6 +9,7 @@ target 'APPYSTORE' do
   pod 'SDWebImage'
   #pod 'KCFloatingActionButton', '~> 2.1.0'
   pod 'NVActivityIndicatorView'
+  pod 'Toast-Swift', '~> 2.0.0'
   # Pods for APPYSTORE
 
 end
