@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "Toaster.h"
 
-FOUNDATION_EXPORT double Toast_SwiftVersionNumber;
-FOUNDATION_EXPORT const unsigned char Toast_SwiftVersionString[];
+FOUNDATION_EXPORT double ToasterVersionNumber;
+FOUNDATION_EXPORT const unsigned char ToasterVersionString[];
 

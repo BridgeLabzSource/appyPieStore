@@ -11,13 +11,18 @@ import UIKit
 class BuySubscriptionPopUp: BasePopUpController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideTitleImage()
-        hideSubTitleStackView()
-        hideCenterStackView()
-        hideBottomStackView()
+        
+        showTitleStackView()
+        showTitleLabel()
+        showContentStackView()
+        showContentImage()
+        showContentLabel()
+        showButtonStackView()
+        showFirstButton()
+        showSecondButton()
+        
         
         setValues()
-        setSpacing()
         setFontSize()
     }
     
@@ -28,19 +33,6 @@ class BuySubscriptionPopUp: BasePopUpController {
         setSecondButtonTextLabel("Buy Now")
         
         setImageContent(UIImage(named: "subscription_open_user")!)
-    }
-    
-    func setSpacing() {
-        setContentTopSpacing()
-        setButtonTopSpacing()
-    }
-    
-    func setFontSize() {
-        setTitleFont()
-        setContentFont()
-        setContentImageHeight()
-        setFirstButtonSize()
-        setSecondButtonSize()
     }
     
     override func crossButtonClick() {

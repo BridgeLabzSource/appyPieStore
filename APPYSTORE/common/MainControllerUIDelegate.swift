@@ -87,6 +87,8 @@ class MainControllerUIDelegate {
     }
     
     @objc func handleSearchButtonClick() {
+        //NavigationManager.openTrialPopUp(mainControllerCommunicator: mainController)
+        
         if mainController.topView.tfSearch.isHidden {
             NavigationManager.openSearchTagsPage(mainControllerCommunicator: mainController)
         } else {

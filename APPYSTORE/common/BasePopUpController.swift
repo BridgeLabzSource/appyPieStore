@@ -10,27 +10,38 @@ import UIKit
 
 class BasePopUpController: BaseViewController {
     let spacingConstant = AppDelegate.DEVICE_HEIGHT/25
-    
-    @IBOutlet weak var crossButton: UIImageView!
-    @IBOutlet weak var firstButton: CustomButton!
-    @IBOutlet weak var bottomStackView: UIStackView!
-    @IBOutlet weak var buttonStackView: UIStackView!
-    @IBOutlet weak var secondButton: CustomButton!
-    @IBOutlet weak var centerStackView: UIStackView!
-    @IBOutlet weak var subTitleStackView: UIStackView!
-    @IBOutlet weak var titleStackView: UIStackView!
-    @IBOutlet weak var rootStackView: UIStackView!
     @IBOutlet var rootView: UIView!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var contentStackView: UIStackView!
+    @IBOutlet weak var rootStackView: UIStackView!
     
+    @IBOutlet weak var crossButton: UIImageView!
+    
+    @IBOutlet weak var titleStackView: UIStackView!
     @IBOutlet weak var titleImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var subTitleStackView: UIStackView!
     @IBOutlet weak var subtitleLabel: UILabel!
+    
+    @IBOutlet weak var centerStackView: UIStackView!
+    @IBOutlet weak var centerEditText: UITextField!
+    
+    @IBOutlet weak var errorStackView: UIStackView!
+    @IBOutlet weak var errorImage: UIImageView!
+    @IBOutlet weak var errorLabel: UILabel!
+    
+    @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var contentImage: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var centerEditText: UITextField!
-    @IBOutlet weak var bottomLabel: UILabel!
+    
+    @IBOutlet weak var buttonStackView: UIStackView!
+    @IBOutlet weak var firstButton: CustomButton!
+    @IBOutlet weak var secondButton: CustomButton!
+    
+    
+    @IBOutlet weak var bottomStackView: UIStackView!
+    @IBOutlet weak var bottomLabelOne: UILabel!
+    @IBOutlet weak var bottomLabelTwo: UILabel!
     
     override internal func getPageName() -> String {
         return ""
@@ -46,18 +57,9 @@ class BasePopUpController: BaseViewController {
         // Do any additional setup after loading the view.
         let radius = DimensionManager.getGeneralizedHeight1280x720(height: 20)
         containerView.layer.cornerRadius = radius
-        
-        //titleStackView.layoutMargins = UIEdgeInsets(top: 30, left:0, bottom:0, right:0)
-        //titleStackView.isLayoutMarginsRelativeArrangement = true
-        //subTitleStackView.layoutMargins = UIEdgeInsets(top: 30, left:0, bottom:0, right:0)
-        //subTitleStackView.isLayoutMarginsRelativeArrangement = true
-        
-        
-        //firstButton.heightAnchor.constraint(equalToConstant: DimensionManager.getGeneralizedHeight1280x720(height: 104)).isActive = true
-        
-        //firstButton.widthAnchor.constraint(equalToConstant: DimensionManager.getGeneralizedWidth1280x720(width: 400)).isActive = true
         setListeners()
-        
+        setFontSize()
+        setTopSpacing()
     }
     
     func setListeners() {
@@ -68,6 +70,27 @@ class BasePopUpController: BaseViewController {
         
         firstButton.addTarget(self, action: #selector(firstButtonClick), for: .touchDown)
         secondButton.addTarget(self, action: #selector(secondButtonClick), for: .touchDown)
+    }
+    
+    func setFontSize() {
+        setTitleFont()
+        setSubTitleFont()
+        setErrorFontSize()
+        setBottomTitleFont()
+        setContentFont()
+        setFirstButtonSize()
+        setSecondButtonSize()
+        setCenterTextSize()
+        setContentImageHeight()
+    }
+    
+    func setTopSpacing() {
+        setSubTitleTopSpacing()
+        setCenterTopSpacing()
+        setContentTopSpacing()
+        setErrorTopSpacing()
+        setButtonTopSpacing()
+        setBottomTopSpacing()
     }
     
     func crossButtonClick() {
@@ -85,41 +108,97 @@ class BasePopUpController: BaseViewController {
         assert(false, "must override method secondButtonClick")
     }
     
-    // MARK: - Hiding viewa
-    func hideTitleStackView() {
-        titleStackView.isHidden = true
+    // MARK: - Showing viewa
+    func showCrossButton() {
+        crossButton.isHidden = false
     }
     
-    func hideTitleImage() {
-        titleImage.isHidden = true
+    func showTitleStackView() {
+        titleStackView.isHidden = false
     }
     
-    func hideSubTitleStackView() {
-        subTitleStackView.isHidden = true
+    func showTitleImage() {
+        showTitleStackView()
+        titleImage.isHidden = false
     }
     
-    func hideContentStackView() {
-        contentStackView.isHidden = true
+    func showTitleLabel() {
+        showTitleStackView()
+        titleLabel.isHidden = false
     }
     
-    func hideCenterStackView() {
-        centerStackView.isHidden = true
+    func showSubTitleStackView() {
+        subTitleStackView.isHidden = false
     }
     
-    func hideButtonStackView() {
-        buttonStackView.isHidden = true
+    func showSubTitleLabel() {
+        showSubTitleStackView()
+        subtitleLabel.isHidden = false
     }
     
-    func hideBottomStackView() {
-        bottomStackView.isHidden = true
+    func showContentStackView() {
+        contentStackView.isHidden = false
     }
     
-    func hideContentLabel() {
-        contentLabel.isHidden = true
+    func showContentImage() {
+        showContentStackView()
+        contentImage.isHidden = false
     }
     
-    func hideFirstButton() {
-        firstButton.isHidden = true
+    func showContentLabel() {
+        showContentStackView()
+        contentLabel.isHidden = false
+    }
+    
+    func showCenterStackView() {
+        centerStackView.isHidden = false
+    }
+    
+    func showCenterEditText() {
+        showCenterStackView()
+        centerEditText.isHidden = false
+    }
+    
+    func showErrorStackView() {
+        errorStackView.isHidden = false
+    }
+    
+    func showErrorImage() {
+        showErrorStackView()
+        errorImage.isHidden = false
+    }
+    
+    func showErrorLabel() {
+        showErrorStackView()
+        errorLabel.isHidden = false
+    }
+    
+    func showButtonStackView() {
+        buttonStackView.isHidden = false
+    }
+    
+    func showFirstButton() {
+        showButtonStackView()
+        firstButton.isHidden = false
+    }
+    
+    func showSecondButton() {
+        showButtonStackView()
+        secondButton.isHidden = false
+    }
+    
+    func showBottomStackView() {
+        bottomStackView.isHidden = false
+    }
+    
+    func showBottomLabelOne() {
+        showBottomStackView()
+        bottomLabelOne.isHidden = false
+    }
+    
+    func showBottomLabelTwo() {
+        showBottomStackView()
+        bottomLabelTwo.isHidden = false
     }
     
     // MARK: - Setting values
@@ -139,6 +218,14 @@ class BasePopUpController: BaseViewController {
         contentImage.image = image
     }
     
+    func setImageError(_ image: UIImage) {
+        errorImage.image = image
+    }
+    
+    func setErrorTextLabel(_ title: String) {
+        errorLabel.text = title
+    }
+    
     func setFirstButtonTextLabel(_ title: String) {
         firstButton.setTitle(title, for: .normal)
     }
@@ -147,24 +234,34 @@ class BasePopUpController: BaseViewController {
         secondButton.setTitle(title, for: .normal)
     }
     
-    func setBottomTextLabel(_ title: String) {
-        bottomLabel.text = title
+    func setBottomTextLabelOne(_ title: String) {
+        bottomLabelOne.text = title
+    }
+    
+    func setBottomTextLabelTwo(_ title: String) {
+        bottomLabelTwo.text = title
     }
     
     // MARK: - Setting spacing
-    func setContentTopSpacing() {
-        contentStackView.layoutMargins.top = spacingConstant
-        contentStackView.isLayoutMarginsRelativeArrangement = true
-    }
     
     func setSubTitleTopSpacing() {
         subTitleStackView.layoutMargins.top = spacingConstant
         subTitleStackView.isLayoutMarginsRelativeArrangement = true
     }
     
+    func setContentTopSpacing() {
+        contentStackView.layoutMargins.top = spacingConstant
+        contentStackView.isLayoutMarginsRelativeArrangement = true
+    }
+    
     func setCenterTopSpacing() {
         centerStackView.layoutMargins.top = spacingConstant
         centerStackView.isLayoutMarginsRelativeArrangement = true
+    }
+    
+    func setErrorTopSpacing() {
+        errorStackView.layoutMargins.top = spacingConstant
+        errorStackView.isLayoutMarginsRelativeArrangement = true
     }
     
     func setButtonTopSpacing() {
@@ -187,7 +284,8 @@ class BasePopUpController: BaseViewController {
     }
     
     func setBottomTitleFont() {
-        DimensionManager.setTextSize1280x720(label: bottomLabel, size: DimensionManager.H4)
+        DimensionManager.setTextSize1280x720(label: bottomLabelOne, size: DimensionManager.H3)
+        DimensionManager.setTextSize1280x720(label: bottomLabelTwo, size: DimensionManager.H3)
     }
     
     func setContentFont() {
@@ -214,6 +312,10 @@ class BasePopUpController: BaseViewController {
         centerEditText.layoutIfNeeded()
         centerEditText.layer.cornerRadius = centerEditText.frame.height/2
         
+    }
+    
+    func setErrorFontSize() {
+        DimensionManager.setTextSize1280x720(label: errorLabel, size: DimensionManager.H3)
     }
     
     func setContentImageHeight() {

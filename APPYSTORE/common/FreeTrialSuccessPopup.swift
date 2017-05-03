@@ -13,13 +13,7 @@ class FreeTrialSuccessPopup: BasePopUpController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hideSubTitleStackView()
-        hideCenterStackView()
-        hideButtonStackView()
-        hideBottomStackView()
-        
-        hideTitleImage()
-        hideContentLabel()
+        showTitleStackView()
         
         setValues()
         setSpacing()
@@ -32,9 +26,5 @@ class FreeTrialSuccessPopup: BasePopUpController {
     
     func setSpacing() {
         setContentTopSpacing()
-    }
-    
-    func setFontSize() {
-        setTitleFont()
     }
 }

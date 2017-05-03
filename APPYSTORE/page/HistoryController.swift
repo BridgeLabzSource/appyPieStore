@@ -28,8 +28,11 @@ class HistoryController: BaseListingViewController {
         let videoListingModel = dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel
         print("HistoryController : select video \(videoListingModel.title)")
         
-        if videoListingModel.payType == "paid" {
-            NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!)
+        if !AuthenticationUtil.isSubscribedUser() && videoListingModel.payType == "paid" {
+            if UserInfo.getInstance().isDeviceEligibleForTrialSubscription {
+                NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!)
+            }
+            
         } else {
             NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: videoListingModel)
         }

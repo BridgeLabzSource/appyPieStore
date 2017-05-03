@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Toast_Swift
+import Toaster
 
 class ChildRegistrationController: BaseViewController {
     let spacingConstant = AppDelegate.DEVICE_HEIGHT/25
@@ -96,26 +96,17 @@ class ChildRegistrationController: BaseViewController {
     }
     
     @IBAction func saveTouchUpInside(_ sender: CustomButton) {
-        ToastManager.shared.style.titleNumberOfLines = 2
+        
         if StringUtil.isEmptyOrNullString(stringToCheck: tfName.text) {
-            var style = ToastStyle()
-            style.messageColor = UIColor.blue
-            style.messageNumberOfLines = 2
-            //self.view.makeToast(message: "Please Enter Your Child's Name Please Enter Your Child's Name Please Enter Your Child's Name")
-            //self.view.makeToast("Please Enter Your Child's Name", duration: 3.0, position: .top,title: "",image: nil, style: style)
-            //self.view.makeToast("Please Enter Your Child's Name")
-            //showToast(message: "Please Enter Your Child's Name")
+            Toast(text: "Please Enter Your Child's Name").show()
         } else if StringUtil.isEmptyOrNullString(stringToCheck: tfBirthDate.text) {
-            self.view.makeToast("Please Select Your Child's Birth Date")
+            Toast(text: "Please Select Your Child's Birth Date").show()
         } else {
             let givenChild = ChildInfo()
             givenChild.name = tfName.text
             givenChild.dob = tfBirthDate.text
             NavigationManager.openAvatarSelectionPage(mainControllerCommunicator: mainControllerCommunicator!, pageType: pageType, givenChild: givenChild)
         }
-       
-        
-        
     }
     
     // MARK: - Setting spacing
