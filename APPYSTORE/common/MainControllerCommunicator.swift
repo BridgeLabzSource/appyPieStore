@@ -11,4 +11,6 @@ protocol MainControllerCommunicator {
     func addChild(controller: BaseViewController, area: Area?)
     func setUIComponents(components: ComponentProperties?)
     func performBackButtonClick()
+    func showProgressBar()
+    func hideProgressBar()
 }

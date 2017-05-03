@@ -147,6 +147,12 @@ class MainController: UIViewController, MainControllerCommunicator {
         uiDelegate?.setUIComponents(components: components)
     }
     
+    func showProgressBar() {
+        uiDelegate?.showProgressBar()
+    }
     
+    func hideProgressBar() {
+        uiDelegate?.hideProgressBar()
+    }
     
 }

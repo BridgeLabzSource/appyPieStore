@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 
 class BaseListingViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -17,7 +16,6 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     
     var collectionViewCentreX: CGFloat = 0.0
     var collectionViewCentreY: CGFloat = 0.0
-    var progressView: NVActivityIndicatorView?
     var isRequestInProgress = false
     
     let paginationThreshold = 4
@@ -54,10 +52,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     
     func loadData() {
         isRequestInProgress = true
-        let frame = CGRect(x: Int(collectionViewCentreX - 25), y: Int(collectionViewCentreY / 2), width: 30, height: 30)
-        progressView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballPulse, color: UIColor.orange, padding: CGFloat(0))
-        progressView?.startAnimating()
-        self.collectionView.addSubview(progressView!)
+        mainControllerCommunicator?.showProgressBar()
         
         dataFetchFramework?.onDataReceived = onDataReceived
         dataFetchFramework?.start(dataSource: getDataSource())
@@ -65,8 +60,8 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
 
     func onDataReceived( status: String, result: AnyObject) {
         isRequestInProgress = false
-        progressView?.stopAnimating()
-        progressView?.removeFromSuperview()
+        mainControllerCommunicator?.hideProgressBar()
+        
         if status == DataFetchFramework.REQUEST_SUCCESS {
             if let result = result as? [BaseModel] {
                 print("onDataReceived called", result.count)
@@ -122,6 +117,4 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
             }
         }
     }
-
-
 }
