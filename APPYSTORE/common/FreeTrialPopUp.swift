@@ -12,12 +12,15 @@ class FreeTrialPopUp: BasePopUpController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideTitleImage()
-        hideContentStackView()
+        
+        showTitleLabel()
+        showSubTitleLabel()
+        showCenterEditText()
+        showFirstButton()
+        showSecondButton()
+        showBottomLabelOne()
         
         setValues()
-        setSpacing()
-        setFontSize()
     }
     
     func setValues() {
@@ -25,22 +28,7 @@ class FreeTrialPopUp: BasePopUpController {
         setSubTitleTextLabel("Give your mobile number to unlock all videos")
         setFirstButtonTextLabel("No Thanks")
         setSecondButtonTextLabel("Start Trial")
-        setBottomTextLabel("privacy statement: We don't share your mobile number with anyone")
-    }
-    
-    func setSpacing() {
-        setSubTitleTopSpacing()
-        setCenterTopSpacing()
-        setButtonTopSpacing()
-        setBottomTopSpacing()
-    }
-    
-    func setFontSize() {
-        setSubTitleFont()
-        setBottomTitleFont()
-        setFirstButtonSize()
-        setSecondButtonSize()
-        setCenterTextSize()
+        setBottomTextLabelOne("privacy statement: We don't share your mobile number with anyone")
     }
     
     override func crossButtonClick() {
