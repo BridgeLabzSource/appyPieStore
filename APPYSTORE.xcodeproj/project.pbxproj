@@ -85,6 +85,7 @@
 		73754E081E978474001DD942 /* ComponentProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73754E071E978474001DD942 /* ComponentProperties.swift */; };
 		73754E0B1E97B027001DD942 /* SearchTagsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73754E0A1E97B027001DD942 /* SearchTagsController.swift */; };
 		7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */; };
+		737850511EB9E6F700ADE792 /* AuthenticationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737850501EB9E6F700ADE792 /* AuthenticationUtil.swift */; };
 		737E28281E94F409008CEC26 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737E28271E94F409008CEC26 /* PlayerModel.swift */; };
 		738586BF1EB06FC6008C4F8C /* FreeTrialPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738586BE1EB06FC6008C4F8C /* FreeTrialPopUp.swift */; };
 		738586C11EB0A7C9008C4F8C /* BuySubscriptionPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738586C01EB0A7C9008C4F8C /* BuySubscriptionPopUp.swift */; };
@@ -221,6 +222,7 @@
 		73754E071E978474001DD942 /* ComponentProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentProperties.swift; sourceTree = "<group>"; };
 		73754E0A1E97B027001DD942 /* SearchTagsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTagsController.swift; sourceTree = "<group>"; };
 		7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchFramework.swift; sourceTree = "<group>"; };
+		737850501EB9E6F700ADE792 /* AuthenticationUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationUtil.swift; sourceTree = "<group>"; };
 		737E28271E94F409008CEC26 /* PlayerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		738586BE1EB06FC6008C4F8C /* FreeTrialPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeTrialPopUp.swift; sourceTree = "<group>"; };
 		738586C01EB0A7C9008C4F8C /* BuySubscriptionPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuySubscriptionPopUp.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				738586C01EB0A7C9008C4F8C /* BuySubscriptionPopUp.swift */,
 				739DE0CE1EB1B40F00C4B73C /* FreeTrialParser.swift */,
 				739DE0D01EB2003600C4B73C /* TrialResponseModel.swift */,
+				737850501EB9E6F700ADE792 /* AuthenticationUtil.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -776,6 +779,7 @@
 				F46267131E77AF7000302ACF /* UserInfo.swift in Sources */,
 				73754E081E978474001DD942 /* ComponentProperties.swift in Sources */,
 				7360D8881E7A8C8400C662DE /* ParserListener.swift in Sources */,
+				737850511EB9E6F700ADE792 /* AuthenticationUtil.swift in Sources */,
 				7366E8951E8D23BA002A09F2 /* CustomLabel.swift in Sources */,
 				70AD5AEE1E6E71CD003C2536 /* VideoListingModel.swift in Sources */,
 				0A8A58A61E683F2100A93DD2 /* VideoCategoryController.swift in Sources */,

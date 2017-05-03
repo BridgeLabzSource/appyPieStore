@@ -29,6 +29,7 @@ class MainController: UIViewController, MainControllerCommunicator {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        printUserAgent()
         print("MainController viewDidLoad called")
         print("MainController vendor id : \(UIDevice.current.identifierForVendor?.uuidString)")
         uiDelegate = MainControllerUIDelegate(mainController: self)
@@ -36,6 +37,10 @@ class MainController: UIViewController, MainControllerCommunicator {
         uiDelegate?.viewDidLoad()
     }
     
+    func printUserAgent() {
+        let userAgent = UIWebView().stringByEvaluatingJavaScript(from: "navigator.userAgent")!
+        print("Maintroller userAgent : \(userAgent)")
+    }
     func getC1() -> ChildInfo {
         let c1 = ChildInfo()
         c1.age = "2"

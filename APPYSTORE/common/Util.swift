@@ -44,4 +44,8 @@ class Utils {
     static func removeFilterFromView(_ viewToFilter: UIView) {
         viewToFilter.alpha = 1
     }
+    
+    static func getNetworkConnectionType() -> String {
+        return "w"
+    }
 }
