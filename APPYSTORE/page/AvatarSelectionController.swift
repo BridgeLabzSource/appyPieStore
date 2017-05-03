@@ -114,4 +114,11 @@ class AvatarSelectionController: BaseListingViewController {
         
         return CGSize(width: width, height: height);
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let avatarModel = dataFetchFramework?.contentList[indexPath.row] as! AvatarModel
+        givenChild.avatarId = avatarModel.id
+        avatarModel.isSelected = true
+    }
+
 }

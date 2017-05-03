@@ -23,14 +23,25 @@ class ChildCard: BaseCard {
         let imgurl = URL(string: imagePath)
         imgAvatar.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
         lblName.text = childModel.name
+        setCardSelection(childModel: childModel)
     }
 
+    func setCardSelection(childModel: AvatarModel) {
+        if(childModel.isSelected) {
+            imgAvatar.layer.borderColor = UIColor.red.cgColor
+        } else {
+            imgAvatar.layer.borderColor = UIColor.white.cgColor
+        }
+    }
+    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let radius = imgAvatar.bounds.size.height / 2.0
         imgAvatar.layer.cornerRadius = radius
         imgAvatar.clipsToBounds = true
         
+        imgAvatar.layer.borderWidth = 2
+        imgAvatar.layer.borderColor = UIColor.white.cgColor
     }
 
 }

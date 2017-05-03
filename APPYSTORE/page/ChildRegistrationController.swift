@@ -40,6 +40,20 @@ class ChildRegistrationController: BaseViewController {
         containerView.layer.cornerRadius = radius
         setSpacing()
         setSize()
+        
+        setClickListener()
+    }
+    
+    func setClickListener() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(handleLoginClick))
+        gesture.numberOfTapsRequired = 1
+        bottomLabelTwo.isUserInteractionEnabled = true
+        bottomLabelTwo.addGestureRecognizer(gesture)
+    }
+    
+    func handleLoginClick() {
+        print("handleLoginClick")
+        NavigationManager.openLoginPage(mainControllerCommunicator: mainControllerCommunicator!)
     }
     
     func setSpacing() {
@@ -93,17 +107,15 @@ class ChildRegistrationController: BaseViewController {
             //showToast(message: "Please Enter Your Child's Name")
         } else if StringUtil.isEmptyOrNullString(stringToCheck: tfBirthDate.text) {
             self.view.makeToast("Please Select Your Child's Birth Date")
-            //showToast(message: "Please Select Your Child's Birth Date")
         } else {
-            self.view.makeToast("Success")
-            //showToast(message: "Success")
-        }
-        /*(
-        let givenChild = ChildInfo()
-        givenChild.name = tfName.text
+            let givenChild = ChildInfo()
+            givenChild.name = tfName.text
             givenChild.dob = tfBirthDate.text
-        NavigationManager.openAvatarSelectionPage(mainControllerCommunicator: mainControllerCommunicator!, pageType: pageType, givenChild: givenChild)
-        */
+            NavigationManager.openAvatarSelectionPage(mainControllerCommunicator: mainControllerCommunicator!, pageType: pageType, givenChild: givenChild)
+        }
+       
+        
+        
     }
     
     // MARK: - Setting spacing
@@ -140,7 +152,7 @@ class ChildRegistrationController: BaseViewController {
         tfName.widthAnchor.constraint(equalToConstant: DimensionManager.getGeneralizedWidth1280x720(width: 450)).isActive = true
         //tfName.layer.cornerRadius = DimensionManager.getGeneralizedHeight1280x720(height: 52)
         
-        DimensionManager.setTextSize1280x720(textField: tfName, size: DimensionManager.H4)
+        DimensionManager.setTextSize1280x720(textField: tfName, size: DimensionManager.H3)
         
     }
     
@@ -162,7 +174,7 @@ class ChildRegistrationController: BaseViewController {
         tfBirthDate.widthAnchor.constraint(equalToConstant: DimensionManager.getGeneralizedWidth1280x720(width: 450)).isActive = true
         //tfBirthDate.layer.cornerRadius = DimensionManager.getGeneralizedHeight1280x720(height: 52)
         
-        DimensionManager.setTextSize1280x720(textField: tfBirthDate, size: DimensionManager.H4)
+        DimensionManager.setTextSize1280x720(textField: tfBirthDate, size: DimensionManager.H3)
         
     }
     
@@ -175,8 +187,9 @@ class ChildRegistrationController: BaseViewController {
     }
     
     func setBottomTitleFont() {
-        DimensionManager.setTextSize1280x720(label: bottomLabelOne, size: DimensionManager.H4)
+        DimensionManager.setTextSize1280x720(label: bottomLabelOne, size: DimensionManager.H3)
         
-        DimensionManager.setTextSize1280x720(label: bottomLabelTwo, size: DimensionManager.H4)
+        DimensionManager.setTextSize1280x720(label: bottomLabelTwo, size: DimensionManager.H3)
     }
+    
 }
