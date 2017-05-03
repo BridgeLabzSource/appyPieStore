@@ -12,21 +12,19 @@ class ChildCard: BaseCard {
     
     @IBOutlet weak var imgAvatar: UIImageView!
     @IBOutlet weak var lblName: UILabel!
+    
     override func awakeFromNib() {
-        
-        
         DimensionManager.setTextSize1280x720(label: lblName, size: DimensionManager.H3)
     }
     
     override func fillCard(model: BaseModel) {
-        let childModel = model as! ChildInfo
-        let image_path = childModel.avatarImage
-        let imgurl = URL(string: image_path!)
+        let childModel = model as! AvatarModel
+        let imagePath = childModel.imagePath
+        let imgurl = URL(string: imagePath)
         imgAvatar.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
         lblName.text = childModel.name
     }
-    
-    
+
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let radius = imgAvatar.bounds.size.height / 2.0

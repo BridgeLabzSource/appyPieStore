@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,10 +17,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G29-fa-WtJ">
-                    <rect key="frame" x="0.0" y="0.0" width="100" height="143.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="G29-fa-WtJ" secondAttribute="height" multiplier="1:1" id="1C8-yC-87t"/>
+                    </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ashish" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMc-f9-3Qn">
-                    <rect key="frame" x="0.0" y="143.5" width="100" height="20.5"/>
+                    <rect key="frame" x="0.0" y="100" width="100" height="64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -27,11 +31,11 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="cMc-f9-3Qn" secondAttribute="bottom" id="0FT-lx-AEi"/>
+                <constraint firstItem="cMc-f9-3Qn" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="0FT-lx-AEi"/>
                 <constraint firstItem="G29-fa-WtJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4nR-au-srW"/>
                 <constraint firstAttribute="trailing" secondItem="G29-fa-WtJ" secondAttribute="trailing" id="AHd-q1-h41"/>
-                <constraint firstAttribute="trailing" secondItem="cMc-f9-3Qn" secondAttribute="trailing" id="QA5-fM-8C0"/>
-                <constraint firstItem="cMc-f9-3Qn" firstAttribute="top" secondItem="G29-fa-WtJ" secondAttribute="bottom" id="Tx7-fE-cSS"/>
+                <constraint firstItem="cMc-f9-3Qn" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="QA5-fM-8C0"/>
+                <constraint firstItem="G29-fa-WtJ" firstAttribute="bottom" secondItem="cMc-f9-3Qn" secondAttribute="top" id="Tx7-fE-cSS"/>
                 <constraint firstItem="cMc-f9-3Qn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cqx-3k-Xew"/>
                 <constraint firstItem="G29-fa-WtJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zGl-3q-LTA"/>
             </constraints>
