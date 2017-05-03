@@ -135,7 +135,7 @@ class MainControllerUIDelegate {
     
     func removeChildController(childController: UIViewController?) {
         if  childController != nil {
-            if childController is VideoCategoryController || childController is HistoryController{
+            if childController is VideoCategoryController || childController is HistoryController {
                 childController?.view.isHidden = true
             } else {
                 childController?.willMove(toParentViewController: nil)

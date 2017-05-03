@@ -38,9 +38,9 @@ class RecommendedVideoCard: BaseCard {
         }
         
         if videoListingModel.payType == "paid" {
-            self.alpha = 0.5
+            Utils.addFilterToView(imgThumbnail)
         } else {
-            self.alpha = 1
+            Utils.removeFilterFromView(imgThumbnail)
         }
         
     }

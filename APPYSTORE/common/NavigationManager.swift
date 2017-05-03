@@ -85,4 +85,34 @@ class NavigationManager {
         mainControllerCommunicator.addChild(controller: viewController, area: nil)
     }
     
+    static func openTrialSuccess(mainControllerCommunicator: MainControllerCommunicator) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "FreeTrialController") as! BasePopUpController
+        
+        object_setClass(viewController, FreeTrialSuccessPopup.self)
+        viewController.mainControllerCommunicator = mainControllerCommunicator
+        let subclassObject = viewController as! FreeTrialSuccessPopup
+        mainControllerCommunicator.addChild(controller: subclassObject, area: .FULL)
+    }
+    
+    static func openTrialPopUp(mainControllerCommunicator: MainControllerCommunicator) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "FreeTrialController") as! BasePopUpController
+        
+        object_setClass(viewController, FreeTrialPopUp.self)
+        viewController.mainControllerCommunicator = mainControllerCommunicator
+        let subclassObject = viewController as! FreeTrialPopUp
+        mainControllerCommunicator.addChild(controller: subclassObject, area: .FULL)
+    }
+    
+    static func openBuySubscriptionPopUp(mainControllerCommunicator: MainControllerCommunicator) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "FreeTrialController") as! BasePopUpController
+        
+        object_setClass(viewController, BuySubscriptionPopUp.self)
+        viewController.mainControllerCommunicator = mainControllerCommunicator
+        let subclassObject = viewController as! BuySubscriptionPopUp
+        mainControllerCommunicator.addChild(controller: subclassObject, area: .FULL)
+    }
+    
 }
