@@ -88,9 +88,14 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         
         let cell = getCell(indexPath: indexPath)
 
-        cell.fillCard(model: (dataFetchFramework?.contentList[indexPath.row])!)
+        cell.fillCard(model: getModelToFillCard(index: indexPath))
         
         return cell
+    }
+    
+    //to be overridden if required
+    func getModelToFillCard(index: IndexPath) -> BaseModel {
+        return (dataFetchFramework?.contentList[index.row])!
     }
     
     //to be overridden if required

@@ -34,7 +34,7 @@ class NavigationUtil {
     }
     
     static func clearChildSpecificData() {
-        PageDataPref.getInstance()?.clearPreferences()
+        PageDataPlist.getInstance()?.clearAll()
         
         VideoDBManager.sharedInstance.clearTable(bundle: nil)
         VideoListingDBManager.sharedInstance.clearTable(bundle: nil)

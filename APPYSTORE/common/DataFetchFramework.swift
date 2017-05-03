@@ -47,7 +47,7 @@ class DataFetchFramework {
     
     func getOffsetServerFromPrefs() -> Int {
         if let key = offsetServerPrefKey {
-            return (PageDataPref.getInstance()?.getOffsetServer(key: key))!
+            return (PageDataPlist.getInstance()?.getOffsetServer(key: key))!
         }
         
         return 0
@@ -55,7 +55,7 @@ class DataFetchFramework {
     
     func getTotalCountOnServerFromPrefs() -> Int {
         if let key = totalCountPrefKey {
-            let value = (PageDataPref.getInstance()?.getTotalContentCount(key: key))!
+            let value = (PageDataPlist.getInstance()?.getTotalContentCount(key: key))!
             if value == 0 {
                 return -1
             } else {
@@ -85,15 +85,15 @@ class DataFetchFramework {
         totalCountOnServer = -1
         
         if let key = dataFetchTimePrefKey {
-            PageDataPref.getInstance()?.setPreviousDataFetchTime(key: key, value: 0)
+            PageDataPlist.getInstance()?.setPreviousDataFetchTime(key: key, value: 0)
         }
         
         if let key = offsetServerPrefKey {
-            PageDataPref.getInstance()?.setOffsetServer(key: key, value: 0)
+            PageDataPlist.getInstance()?.setOffsetServer(key: key, value: 0)
         }
         
         if let key = totalCountPrefKey {
-            PageDataPref.getInstance()?.setTotalContentCount(key: key, value: -1)
+            PageDataPlist.getInstance()?.setTotalContentCount(key: key, value: -1)
         }
     }
     
@@ -229,13 +229,13 @@ class DataFetchFramework {
     
     func saveOffsetServer(offsetServer: Int) {
         if let key = offsetServerPrefKey {
-            PageDataPref.getInstance()?.setOffsetServer(key: key, value: offsetServer)
+            PageDataPlist.getInstance()?.setOffsetServer(key: key, value: offsetServer)
         }
     }
     
     func saveTotalCountOnServer(totalCount: Int) {
         if let key = totalCountPrefKey {
-            PageDataPref.getInstance()?.setTotalContentCount(key: key, value: totalCount)
+            PageDataPlist.getInstance()?.setTotalContentCount(key: key, value: totalCount)
         }
     }
     
@@ -247,7 +247,7 @@ class DataFetchFramework {
     
     func getPreviousDataFetchTime() -> Int64 {
         if let key = dataFetchTimePrefKey {
-            return PageDataPref.getInstance()?.getPreviousDataFetchTime(key: key) ?? 0
+            return PageDataPlist.getInstance()?.getPreviousDataFetchTime(key: key) ?? 0
         }
         
         return 0
@@ -255,7 +255,7 @@ class DataFetchFramework {
     
     func savePreviousDataFetchTime() {
         if let key = dataFetchTimePrefKey {
-            PageDataPref.getInstance()?.setPreviousDataFetchTime(key: key, value: Utils.getCurrentTimeInMilliseconds())
+            PageDataPlist.getInstance()?.setPreviousDataFetchTime(key: key, value: Utils.getCurrentTimeInMilliseconds())
         }
     }
     

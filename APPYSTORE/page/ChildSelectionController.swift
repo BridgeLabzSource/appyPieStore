@@ -32,13 +32,19 @@ class ChildSelectionController: BaseListingViewController {
         self.collectionView.register(UINib(nibName: "ChildCard", bundle: nil), forCellWithReuseIdentifier: "ChildCard")
     }
     
+    override func getModelToFillCard(index: IndexPath) -> BaseModel {
+        let childModel = (dataFetchFramework?.contentList[index.row])! as! ChildInfo
+        let avatarModel: AvatarModel = ChildInfoToAvatarModelAdapter(childInfo: childModel)
+        return avatarModel
+    }
+    
     override func getCell(indexPath: IndexPath) -> BaseCard {
         return collectionView.dequeueReusableCell(withReuseIdentifier: "ChildCard", for: indexPath) as! BaseCard
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = collectionView.bounds.size.height
-        let width = height /// 1.7
+        let width = height / 1.7
         
         return CGSize(width: width, height: height);
     }
