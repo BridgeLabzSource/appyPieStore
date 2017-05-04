@@ -6,6 +6,11 @@ import Alamofire
 
 class BaseParser: NSObject {
     
+    static let USER_ALREADY_SUBSCRIBED = "USER_ALREADY_SUBSCRIBED"
+    static let REQUEST_FAILURE = "REQUEST_FAILURE"
+    static let REQUEST_SUCCESS = "REQUEST_SUCCESS"
+    static let CONNECTION_ERROR = "CONNECTION_ERROR"
+    
     var responseCode: String!
     var responseMessage: String!
     var responseDetails: JSON!
@@ -23,7 +28,7 @@ class BaseParser: NSObject {
                 
             let strongSelf = self
             if response.result.error != nil {
-                completion(DataFetchFramework.CONNECTION_ERROR, nil)
+                completion(BaseParser.CONNECTION_ERROR, nil)
             } else {
                 let result = JSON( response.result.value as! NSDictionary )
                 
@@ -40,14 +45,21 @@ class BaseParser: NSObject {
                     //let parsedResponseData = strongSelf.parseJSONData(responseData: strongSelf.responseDetails)
                     let parsedResponseData = strongSelf.getResponseData(wholeData: result, responseDetail: strongSelf.responseDetails)
                     
-                    completion(DataFetchFramework.REQUEST_SUCCESS, parsedResponseData)
+                    self.callback(BaseParser.REQUEST_SUCCESS, strongSelf.responseCode, parsedResponseData, completion)
+                    //completion(DataFetchFramework.REQUEST_SUCCESS, parsedResponseData)
                 } else {
-                    completion(DataFetchFramework.REQUEST_FAILURE, strongSelf.responseMessage as AnyObject?)
+                    self.callback(BaseParser.REQUEST_FAILURE, strongSelf.responseCode, strongSelf.responseMessage as AnyObject?, completion)
+                    //completion(DataFetchFramework.REQUEST_FAILURE, strongSelf.responseMessage as AnyObject?)
                 }
                 
             }
                 
         })
+    }
+    
+    func callback(_ status: String, _ code: String, _ data: AnyObject?,_ completion: @escaping (_ responseStatus: String, _ listOfData: AnyObject?) -> Void  ){
+        
+        completion(status, data)
     }
     
     func getResponseData(wholeData: JSON, responseDetail: JSON) -> AnyObject? {

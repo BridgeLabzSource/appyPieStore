@@ -78,12 +78,16 @@ class MainControllerUIDelegate {
         mainController.topView.btnSearch.addTarget(self, action: #selector(handleSearchButtonClick), for: .touchUpInside)
     }
     
-    @objc func handleBackButtonClick() {
+    @objc func handleBackButtonClick(_ controller: BaseViewController) {
         let currentViewController = mainController.getCurrentViewController()
-        mainController.childControllersList?.removeLast()
-        removeChildController(childController: currentViewController)
-        mainController.onBackPressed()
-        printBackStack()
+        
+        if currentViewController?.getPageName() == controller.getPageName() {
+            mainController.childControllersList?.removeLast()
+            removeChildController(childController: currentViewController)
+            mainController.onBackPressed()
+            printBackStack()
+        }
+        
     }
     
     @objc func handleSearchButtonClick() {

@@ -77,7 +77,7 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
         videoPlayer.avPlayerLayer.removeFromSuperlayer()
         videoPlayer.avPlayer = nil
         //self.dismiss(animated: false, completion: nil)
-        mainControllerCommunicator?.performBackButtonClick()
+        mainControllerCommunicator?.performBackButtonClick(self)
     }
     
     func onContentChange(content: VideoListingModel) {

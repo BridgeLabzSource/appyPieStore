@@ -27,9 +27,6 @@ class DataFetchFramework {
     var offsetServerPrefKey: String?
     var totalCountPrefKey: String?
     
-    static let REQUEST_FAILURE = "REQUEST_FAILURE"
-    static let REQUEST_SUCCESS = "REQUEST_SUCCESS"
-    static let CONNECTION_ERROR = "CONNECTION_ERROR"
     static let END_OF_DATA = "END_OF_DATA"
     
     var dataSource: DataSource?
@@ -106,7 +103,7 @@ class DataFetchFramework {
                 if let data = result, (result?.count)! > 0 {
                     self.offsetLocal += self.limit
                     self.addToContentList(contentList: data)
-                    self.onDataReceived(DataFetchFramework.REQUEST_SUCCESS, self.contentList as AnyObject)
+                    self.onDataReceived(BaseParser.REQUEST_SUCCESS, self.contentList as AnyObject)
                 } else {
                     if self.offsetServer < self.totalCountOnServer && self.dataSource != .LOCAL {
                         self.callServerApiToFetchData()
@@ -174,7 +171,7 @@ class DataFetchFramework {
     }
     
     func handleResponse(statusType: String, result: AnyObject) {
-        if statusType == DataFetchFramework.REQUEST_SUCCESS {
+        if statusType == BaseParser.REQUEST_SUCCESS {
             if let resultModel = result as? ContentListingApiResponseModel {
                 if !resultModel.contentList.isEmpty {
                     let result = resultModel.contentList
@@ -204,14 +201,14 @@ class DataFetchFramework {
                         self.onDataReceived(statusType, contentList as AnyObject)
                     }
                 } else {
-                    self.onDataReceived(DataFetchFramework.REQUEST_FAILURE , result)
+                    self.onDataReceived(BaseParser.REQUEST_FAILURE , result)
                 }
             } else {
-                self.onDataReceived(DataFetchFramework.REQUEST_FAILURE , result)
+                self.onDataReceived(BaseParser.REQUEST_FAILURE , result)
             }
         } else {
             //if due to some reason server fails to repond data, atleast show data from local storage if available
-            if statusType == DataFetchFramework.CONNECTION_ERROR || statusType == DataFetchFramework.REQUEST_FAILURE {
+            if statusType == BaseParser.CONNECTION_ERROR || statusType == BaseParser.REQUEST_FAILURE {
                 if dataSource == .BOTH && isLocalDataAvailable() {
                     getDataFromLocalStorage()
                 } else {

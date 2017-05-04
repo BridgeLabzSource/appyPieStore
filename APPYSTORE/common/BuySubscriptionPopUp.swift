@@ -37,7 +37,7 @@ class BuySubscriptionPopUp: BasePopUpController {
     
     override func crossButtonClick() {
         print("BuySubscriptionPopUp crossButtonClick")
-        mainControllerCommunicator?.performBackButtonClick()
+        mainControllerCommunicator?.performBackButtonClick(self)
     }
     
     override func firstButtonClick() {

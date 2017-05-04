@@ -38,14 +38,14 @@ class AppNavigationHandler {
         //todo proper params
         LoginParser().parse(params: HttpRequestBuilder.getLoginParameters(method: LoginParser.METHOD_NAME, msisdn: "", pageId: "login", emailId: ""), completion: {
             statusType, result in
-            if statusType == DataFetchFramework.REQUEST_SUCCESS {
+            if statusType == BaseParser.REQUEST_SUCCESS {
                 NavigationUtil.navigateAsPerChildSize(mainControllerCommunicator: self.mainControllerCommunicator)
                 
                 //self.mainControllerCommunicator.getContext().uiDelegate?.showVideoCategoryPage()
 
-            } else if statusType == DataFetchFramework.REQUEST_FAILURE {
+            } else if statusType == BaseParser.REQUEST_FAILURE {
                 
-            } else if statusType == DataFetchFramework.CONNECTION_ERROR {
+            } else if statusType == BaseParser.CONNECTION_ERROR {
                 
             }
         })
