@@ -11,8 +11,6 @@ import UIKit
 class LoginPage: BasePopUpController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideTitleImage()
-        hideContentStackView()
         
         setSubTitle()
     }
