@@ -95,7 +95,8 @@ class BasePopUpController: BaseViewController {
     
     func crossButtonClick() {
         print("Basepopup crossButtonClick")
-        assert(false, "must override method crossButtonClick")
+        //assert(false, "must override method crossButtonClick")
+        mainControllerCommunicator?.performBackButtonClick(self)
     }
     
     func firstButtonClick() {

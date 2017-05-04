@@ -25,14 +25,16 @@ class LoginPage: BasePopUpController {
     }
     
     override func firstButtonClick() {
+        self.mainControllerCommunicator?.showProgressBar()
         //todo email id
         LoginParser().parse(params: HttpRequestBuilder.getLoginParameters(method: LoginParser.METHOD_NAME, msisdn: centerEditText.text!, pageId: "login", emailId: ""), completion: {
             statusType, result in
-            if statusType == DataFetchFramework.REQUEST_SUCCESS {
+            self.mainControllerCommunicator?.hideProgressBar()
+            if statusType == BaseParser.REQUEST_SUCCESS {
                 NavigationUtil.navigateAsPerChildSize(mainControllerCommunicator: self.mainControllerCommunicator!)
-            } else if statusType == DataFetchFramework.REQUEST_FAILURE {
+            } else if statusType == BaseParser.REQUEST_FAILURE {
                 NavigationManager.openLoginFailurePage(mainControllerCommunicator: self.mainControllerCommunicator!)
-            } else if statusType == DataFetchFramework.CONNECTION_ERROR {
+            } else if statusType == BaseParser.CONNECTION_ERROR {
                 
             }
         })
