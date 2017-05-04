@@ -70,6 +70,7 @@ class HttpRequestBuilder: NSObject {
     static let IGNORE_CAT_ID = "ignore_cat_id"
     static let IS_POPULAR = "is_popular"
     
+    static let MO = "mo"
     static let MSISDN = "msisdn"
     static let EMAILID = "userEmail"
     
@@ -141,7 +142,7 @@ class HttpRequestBuilder: NSObject {
     
     static func getLoginParameters(method: String, msisdn: String, pageId: String, emailId: String) -> Parameters {
         return [METHOD: method,
-                MSISDN: msisdn,
+                MO: msisdn,
                 PAGEID: pageId,
                 EMAILID: emailId
         ]

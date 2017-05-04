@@ -103,6 +103,7 @@
 		7392A78A1E951EAF00A6ED32 /* BundleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392A7891E951EAF00A6ED32 /* BundleConstants.swift */; };
 		739402821EB081E400AEDB5E /* ChildSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739402811EB081E400AEDB5E /* ChildSelectionController.swift */; };
 		7394B6E31EB9A8F00044074E /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7394B6E21EB9A8F00044074E /* LoginPage.swift */; };
+		7394B6E51EBA203A0044074E /* LoginFailurePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7394B6E41EBA203A0044074E /* LoginFailurePage.swift */; };
 		73950B411E926E0F0026A7D9 /* BaseListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73950B401E926E0F0026A7D9 /* BaseListingViewController.swift */; };
 		73967E7D1E893BF100A9A81B /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */; };
 		7397BD9D1EA748C80048E177 /* AvatarSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7397BD9C1EA748C80048E177 /* AvatarSelectionController.swift */; };
@@ -241,6 +242,7 @@
 		7392A7891E951EAF00A6ED32 /* BundleConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleConstants.swift; sourceTree = "<group>"; };
 		739402811EB081E400AEDB5E /* ChildSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildSelectionController.swift; sourceTree = "<group>"; };
 		7394B6E21EB9A8F00044074E /* LoginPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
+		7394B6E41EBA203A0044074E /* LoginFailurePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFailurePage.swift; sourceTree = "<group>"; };
 		73950B401E926E0F0026A7D9 /* BaseListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseListingViewController.swift; sourceTree = "<group>"; };
 		73967E7C1E893BF000A9A81B /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		7397BD9C1EA748C80048E177 /* AvatarSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSelectionController.swift; sourceTree = "<group>"; };
@@ -540,6 +542,7 @@
 				739402811EB081E400AEDB5E /* ChildSelectionController.swift */,
 				73E0BA1C1EB85F9300E2E34F /* ChildInfoToAvatarModelAdapter.swift */,
 				7394B6E21EB9A8F00044074E /* LoginPage.swift */,
+				7394B6E41EBA203A0044074E /* LoginFailurePage.swift */,
 			);
 			name = loginAndRegistration;
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				7392A7841E94C95900A6ED32 /* HistoryDBManager.swift in Sources */,
 				736A40FC1E891A3000A4C038 /* VideoListingCard.swift in Sources */,
 				F46267131E77AF7000302ACF /* UserInfo.swift in Sources */,
+				7394B6E51EBA203A0044074E /* LoginFailurePage.swift in Sources */,
 				73754E081E978474001DD942 /* ComponentProperties.swift in Sources */,
 				7360D8881E7A8C8400C662DE /* ParserListener.swift in Sources */,
 				737850511EB9E6F700ADE792 /* AuthenticationUtil.swift in Sources */,

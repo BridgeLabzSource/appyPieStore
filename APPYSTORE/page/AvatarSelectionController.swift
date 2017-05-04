@@ -21,6 +21,7 @@ class AvatarSelectionController: BaseListingViewController {
     let ACTION_ADD = 1
     var btnAction: Int = 0
     
+    var lastSelectedIndex = 0
     
     
     @IBAction func onSaveContinueTouchUp(_ sender: CustomButton) {
@@ -116,9 +117,17 @@ class AvatarSelectionController: BaseListingViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let avatarModel = dataFetchFramework?.contentList[indexPath.row] as! AvatarModel
-        givenChild.avatarId = avatarModel.id
-        avatarModel.isSelected = true
+        //deselect previous card
+        let previousSelectedModel = dataFetchFramework?.contentList[lastSelectedIndex] as! AvatarModel
+        previousSelectedModel.isSelected = false
+        
+        let currentModel = dataFetchFramework?.contentList[indexPath.row] as! AvatarModel
+        givenChild.avatarId = currentModel.id
+        currentModel.isSelected = true
+        
+        collectionView.reloadData()
+        
+        lastSelectedIndex = indexPath.row
     }
 
 }
