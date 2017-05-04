@@ -41,7 +41,7 @@ class BasePopUpController: BaseViewController {
     
     @IBOutlet weak var bottomStackView: UIStackView!
     @IBOutlet weak var bottomLabelOne: UILabel!
-    @IBOutlet weak var bottomLabelTwo: UILabel!
+    @IBOutlet weak var bottomLabelTwo: UITextView!
     
     override internal func getPageName() -> String {
         return ""
@@ -225,6 +225,10 @@ class BasePopUpController: BaseViewController {
     
     func setErrorTextLabel(_ title: String) {
         errorLabel.text = title
+    }
+    
+    func setCenterEditTextValue(_ title: String) {
+        centerEditText.text = title
     }
     
     func setFirstButtonTextLabel(_ title: String) {

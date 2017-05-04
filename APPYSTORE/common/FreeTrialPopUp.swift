@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Toaster
 
 class FreeTrialPopUp: BasePopUpController {
-
+    let trialAlreadySubscribedMessage = "Dear User, you are already a subscriber."
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,15 +42,33 @@ class FreeTrialPopUp: BasePopUpController {
     
     override func secondButtonClick() {
         // show otp screen
-        FreeTrialParser().parse(params: HttpRequestBuilder.getOtpRequestParameters(method: FreeTrialParser.METHOD_NAME, msisdn: centerEditText.text!, smmKey: "appyt-f", androidId: HttpRequestBuilder.ANDROID_ID_VALUE, imei: HttpRequestBuilder.IMEI_VALUE), completion: {
+        let mobileNo = centerEditText.text!
+        FreeTrialParser().parse(params: HttpRequestBuilder.getOtpRequestParameters(method: FreeTrialParser.METHOD_NAME, msisdn: mobileNo, smmKey: "appyt-f", androidId: HttpRequestBuilder.ANDROID_ID_VALUE, imei: HttpRequestBuilder.IMEI_VALUE), completion: {
             statusType, result in
             
             print("FreeTrialPopUp \(result)")
             
             let model = result as! TrialResponseModel
             print("FreeTrialPopUp user_id  \(model.userId)")
-            print("FreeTrialPopUp msisdn  \(model.userId)")
-            print("FreeTrialPopUp otp  \(model.msisdn)")
+            print("FreeTrialPopUp msisdn  \(model.msisdn)")
+            print("FreeTrialPopUp otp  \(model.otp)")
+            if statusType == BaseParser.REQUEST_SUCCESS {
+                // open the otp dialog
+                
+                var bundle = [String: Any]()
+                bundle[BundleConstants.MOBILE_NUMBER] = mobileNo
+                bundle[BundleConstants.OTP] = model.otp
+                NavigationManager.openOtpPopUp(mainControllerCommunicator: self.mainControllerCommunicator, bundle: bundle)
+                Toast(text: "Success").show()
+            } else if statusType == BaseParser.USER_ALREADY_SUBSCRIBED {
+                self.mainControllerCommunicator?.performBackButtonClick(self)
+                // call login api
+                Toast(text: self.trialAlreadySubscribedMessage).show()
+            } else if statusType == BaseParser.REQUEST_FAILURE {
+                Toast(text: "Request Failure").show()
+            } else if statusType == BaseParser.CONNECTION_ERROR  {
+                Toast(text: "Connection Error").show()
+            }
         })
     }
     
