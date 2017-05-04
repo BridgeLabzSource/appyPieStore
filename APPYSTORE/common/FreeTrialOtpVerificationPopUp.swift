@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Toaster
 
 class FreeTrialOtpVerificationPopUp: BasePopUpController {
     var mobileNumber = ""
@@ -32,6 +33,15 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
     }
     
     override func crossButtonClick() {
-        <#code#>
+        mainControllerCommunicator?.performBackButtonClick(self)
+    }
+    
+    override func secondButtonClick() {
+        let otp = centerEditText.text
+        if otp != nil {
+            
+        } else {
+            Toast(text: "Request Failure").show()
+        }
     }
 }
