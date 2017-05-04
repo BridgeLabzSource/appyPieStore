@@ -58,6 +58,11 @@ class DimensionManager{
         textField.font = textField.font?.withSize(fontSize)
     }
     
+    static func setTextSize1280x720(textView: UITextView, size: CGFloat){
+        let fontSize = size * AppDelegate.DEVICE_HEIGHT / 720.0
+        textView.font = textView.font?.withSize(fontSize)
+    }
+    
     func userDeviceName() -> String {
         var name: [Int32] = [CTL_HW, HW_MACHINE]
         var size: Int = 2

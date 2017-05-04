@@ -290,7 +290,7 @@ class BasePopUpController: BaseViewController {
     
     func setBottomTitleFont() {
         DimensionManager.setTextSize1280x720(label: bottomLabelOne, size: DimensionManager.H3)
-        DimensionManager.setTextSize1280x720(label: bottomLabelTwo, size: DimensionManager.H3)
+        DimensionManager.setTextSize1280x720(textView: bottomLabelTwo, size: DimensionManager.H3)
     }
     
     func setContentFont() {

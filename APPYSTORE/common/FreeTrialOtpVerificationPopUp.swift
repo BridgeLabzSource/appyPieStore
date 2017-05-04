@@ -30,8 +30,4 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
         setSecondButtonTextLabel("Submit")
         setBottomTextLabelTwo("Resend OTP")
     }
-    
-    override func crossButtonClick() {
-        <#code#>
-    }
 }
