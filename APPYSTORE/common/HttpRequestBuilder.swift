@@ -241,6 +241,17 @@ class HttpRequestBuilder: NSObject {
             IMEI: imei
         ]
     }
+    
+    static func getOtpVerificationParameters(method: String, userId: String, msisdn: String, otp: String, smmKey: String, androidId: String, imei: String) -> Parameters {
+        
+        return [
+            METHOD: method,
+            MSISDN: msisdn,
+            SMM_KEY: smmKey,
+            ANDROID_ID: androidId,
+            IMEI: imei
+        ]
+    }
 
     static func getChildRegistrationParameters(method: String, childName: String, childDob: String, avatarId: String, pageId: String) -> Parameters {
         return [METHOD: method,

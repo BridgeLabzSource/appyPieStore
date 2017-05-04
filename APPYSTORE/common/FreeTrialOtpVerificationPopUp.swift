@@ -21,7 +21,7 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
         showTitleLabel()
         showCenterEditText()
         showSecondButton()
-        showBottomLabelTwo()
+        showBottomTextView()
         setValues()
     }
     
@@ -29,7 +29,7 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
         setTitleTextLabel("Enter the One Time Password sent to \(mobileNumber)")
         setCenterEditTextValue(otp)
         setSecondButtonTextLabel("Submit")
-        setBottomTextLabelTwo("Resend OTP")
+        setBottomTextView("Resend OTP")
     }
 
     

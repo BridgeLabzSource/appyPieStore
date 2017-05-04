@@ -38,10 +38,8 @@ class BasePopUpController: BaseViewController {
     @IBOutlet weak var firstButton: CustomButton!
     @IBOutlet weak var secondButton: CustomButton!
     
-    
     @IBOutlet weak var bottomStackView: UIStackView!
-    @IBOutlet weak var bottomLabelOne: UILabel!
-    @IBOutlet weak var bottomLabelTwo: UITextView!
+    @IBOutlet weak var tvBottom: UITextView!
     
     override internal func getPageName() -> String {
         return ""
@@ -192,14 +190,10 @@ class BasePopUpController: BaseViewController {
         bottomStackView.isHidden = false
     }
     
-    func showBottomLabelOne() {
+    func showBottomTextView() {
         showBottomStackView()
-        bottomLabelOne.isHidden = false
-    }
-    
-    func showBottomLabelTwo() {
-        showBottomStackView()
-        bottomLabelTwo.isHidden = false
+        tvBottom.isHidden = false
+        tvBottom.widthAnchor.constraint(equalToConstant: AppDelegate.DEVICE_WIDTH*0.8).isActive = true
     }
     
     // MARK: - Setting values
@@ -239,12 +233,8 @@ class BasePopUpController: BaseViewController {
         secondButton.setTitle(title, for: .normal)
     }
     
-    func setBottomTextLabelOne(_ title: String) {
-        bottomLabelOne.text = title
-    }
-    
-    func setBottomTextLabelTwo(_ title: String) {
-        bottomLabelTwo.text = title
+    func setBottomTextView(_ title: String) {
+        tvBottom.text = title
     }
     
     // MARK: - Setting spacing
@@ -289,9 +279,7 @@ class BasePopUpController: BaseViewController {
     }
     
     func setBottomTitleFont() {
-        DimensionManager.setTextSize1280x720(label: bottomLabelOne, size: DimensionManager.H3)
-
-        DimensionManager.setTextSize1280x720(textView: bottomLabelTwo, size: DimensionManager.H3)
+        DimensionManager.setTextSize1280x720(textView: tvBottom, size: DimensionManager.H3)
     }
     
     func setContentFont() {
