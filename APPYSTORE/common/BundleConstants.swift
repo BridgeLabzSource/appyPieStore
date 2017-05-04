@@ -47,5 +47,9 @@ class BundleConstants: NSObject {
     static let SHOULD_RESET_LOCAL_DATA = "SHOULD_RESET_LOCAL_DATA"
     static let UNABLE_TO_FETCH_FIRST_DATA = "UNABLE_TO_FETCH_FIRST_DATA"
     
+    /*Trial PopUP*/
+    static let OTP = "otp"
+    static let MOBILE_NUMBER = "mobile_number"
+    
     static let PAGE_SOURCE = "PAGE_SOURCE"
 }

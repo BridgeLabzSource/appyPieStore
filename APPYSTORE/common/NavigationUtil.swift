@@ -23,7 +23,7 @@ class NavigationUtil {
             break
         }
         
-        NavigationManager.openRegistrationPage(mainControllerCommunicator: mainControllerCommunicator, pageType: BundleConstants.PAGE_TYPE_REGISTER)
+        //NavigationManager.openRegistrationPage(mainControllerCommunicator: mainControllerCommunicator, pageType: BundleConstants.PAGE_TYPE_REGISTER)
     }
     
     // if a child is upadated or changed, all pages data must be reset

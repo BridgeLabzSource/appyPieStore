@@ -105,6 +105,16 @@ class NavigationManager {
         mainControllerCommunicator.addChild(controller: subclassObject, area: .FULL)
     }
     
+    static func openOtpPopUp(mainControllerCommunicator: MainControllerCommunicator?, bundle : AndroidBundle) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "FreeTrialController") as! BasePopUpController
+        
+        object_setClass(viewController, FreeTrialOtpVerificationPopUp.self)
+        viewController.bundle = bundle
+        viewController.mainControllerCommunicator = mainControllerCommunicator
+        mainControllerCommunicator?.addChild(controller: viewController, area: .FULL)
+    }
+    
     static func openBuySubscriptionPopUp(mainControllerCommunicator: MainControllerCommunicator) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "FreeTrialController") as! BasePopUpController
