@@ -220,6 +220,14 @@
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WcJ-V9-wQ6" userLabel="playerView">
                                 <rect key="frame" x="0.0" y="0.0" width="469" height="414"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="height">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trackHeight">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="giz-uL-U0J" kind="embed" id="ite-VJ-1gc"/>
                                 </connections>
@@ -451,7 +459,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="259" height="192"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="5D00790E-93BA-4F04-937B-661890638F99" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="FD297F0B-6A0A-423B-90D4-87151AA62E0D" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
                                                     <rect key="frame" x="8" y="8" width="243" height="116"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="116" id="HfT-XT-9p0"/>
@@ -640,6 +648,10 @@
         <scene sceneID="Xog-BL-4OB">
             <objects>
                 <viewController id="giz-uL-U0J" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xyq-o3-DsT"/>
+                        <viewControllerLayoutGuide type="bottom" id="pU9-1L-BBS"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dOC-tZ-nRz">
                         <rect key="frame" x="0.0" y="0.0" width="469" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -660,12 +672,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FxB-Zq-Wqs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="531.929347826087" y="3247.826086956522"/>
+            <point key="canvasLocation" x="563" y="3025"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="j1G-Jq-GMc">
             <objects>
                 <viewController id="WNl-Hx-kQ8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cx1-Ac-sGu"/>
+                        <viewControllerLayoutGuide type="bottom" id="RLZ-qv-Ahk"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bge-Ho-uZS">
                         <rect key="frame" x="0.0" y="0.0" width="267" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -674,11 +690,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKL-PX-H86" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="997" y="3026"/>
+            <point key="canvasLocation" x="882" y="3025"/>
         </scene>
     </scenes>
     <resources>
-        <image name="5D00790E-93BA-4F04-937B-661890638F99" width="678" height="480">
+        <image name="FD297F0B-6A0A-423B-90D4-87151AA62E0D" width="678" height="480">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

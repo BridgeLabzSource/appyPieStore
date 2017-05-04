@@ -12,7 +12,6 @@ import UIKit
     
     @IBOutlet var rootView: UIView!
     
-    
     @IBOutlet weak var audioImage: UIImageView!
     
     @IBOutlet weak var audioTitle: UILabel!
@@ -38,7 +37,7 @@ import UIKit
     
     @IBOutlet weak var playView: UIView!
     
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialise()
