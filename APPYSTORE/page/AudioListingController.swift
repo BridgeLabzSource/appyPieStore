@@ -1,22 +1,21 @@
 //
-//  AudioCategoryController.swift
+//  AudioListingController.swift
 //  APPYSTORE
 //
-//  Created by BridgeLabz Solutions LLP  on 5/3/17.
+//  Created by BridgeLabz Solutions LLP  on 5/4/17.
 //  Copyright © 2017 MAUJ MOBILE PVT LTD. All rights reserved.
 //
 
 import UIKit
 
-class AudioCategoryController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
-    var array = [#imageLiteral(resourceName: "search"),#imageLiteral(resourceName: "cartoon"),#imageLiteral(resourceName: "cartoon"),#imageLiteral(resourceName: "cartoon")]
+class AudioListingController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    var array1 = [#imageLiteral(resourceName: "search"),#imageLiteral(resourceName: "cartoon"),#imageLiteral(resourceName: "cartoon"),#imageLiteral(resourceName: "cartoon")]
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        let nib = UINib(nibName: "AudioCategoryCard", bundle: nil)
-        collectionView?.register(nib, forCellWithReuseIdentifier: "Cell")
+        let nib = UINib(nibName: "AudioListingCard", bundle: nil)
+        collectionView?.register(nib, forCellWithReuseIdentifier: "Cell1")
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -24,13 +23,12 @@ class AudioCategoryController: UICollectionViewController, UICollectionViewDeleg
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return array.count
+        return array1.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! AudioCategoryCard
-    //   cell.imgLogo.image = array[indexPath.row]
- 
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell1", for: indexPath) as! AudioListingCard
+        
         return cell
     }
     
@@ -41,4 +39,6 @@ class AudioCategoryController: UICollectionViewController, UICollectionViewDeleg
         
         return CGSize(width: width, height: height)
     }
+
+
 }

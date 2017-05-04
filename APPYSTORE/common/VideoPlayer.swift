@@ -55,6 +55,7 @@ protocol VideoDelegate {
     
     @IBOutlet weak var lockIcon: UIImageView!
     @IBOutlet weak var videoThumbnail: UIImageView!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()

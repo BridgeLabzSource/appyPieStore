@@ -16,9 +16,9 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AudioCategoryController" customModule="APPYSTORE" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="AudioCategoryCard">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="AudioCategoryCard" customClass="AudioCategoryCard" customModule="APPYSTORE" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="303" height="363"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -78,6 +78,13 @@
                 <constraint firstAttribute="trailing" secondItem="ROv-wA-tOm" secondAttribute="trailing" id="lGp-76-q4y"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imgAudio" destination="ECO-n1-Ngg" id="wXG-9W-NG9"/>
+                <outlet property="imgLogo" destination="kYG-9F-rdP" id="SAD-Sp-wy7"/>
+                <outlet property="lblCount" destination="7DK-nT-71G" id="PDR-8j-L2b"/>
+                <outlet property="rootView" destination="ROv-wA-tOm" id="f0a-dO-uUQ"/>
+                <outlet property="viewInfoContainer" destination="5tQ-j8-sSn" id="mpw-ao-CKV"/>
+            </connections>
             <point key="canvasLocation" x="-509.5" y="-296.5"/>
         </view>
     </objects>

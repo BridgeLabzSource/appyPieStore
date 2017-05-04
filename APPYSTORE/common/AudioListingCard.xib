@@ -11,9 +11,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AudioPlayer" customModule="APPYSTORE" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AudioListingController" customModule="APPYSTORE" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AudioListingCard" customModule="APPYSTORE" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="Root View" customClass="AudioListingCard" customModule="APPYSTORE" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="156" height="158"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -49,6 +49,11 @@
                 <constraint firstItem="vUW-rn-cMb" firstAttribute="bottom" secondItem="5RY-Jc-Gog" secondAttribute="bottom" multiplier="250:238" id="rtz-GT-CuT"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="audioTitle" destination="bxi-04-Vid" id="xwJ-PO-A7b"/>
+                <outlet property="imgThumbnail" destination="5RY-Jc-Gog" id="4qe-xG-O3c"/>
+                <outlet property="songIcon" destination="vUW-rn-cMb" id="Bnr-iG-dy3"/>
+            </connections>
             <point key="canvasLocation" x="-192" y="-484"/>
         </view>
     </objects>

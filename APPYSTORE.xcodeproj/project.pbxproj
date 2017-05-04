@@ -33,6 +33,8 @@
 		0AF26F041EBA027500BC7EF9 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF26F031EBA027500BC7EF9 /* AudioPlayer.swift */; };
 		0AF26F071EBA0CED00BC7EF9 /* AudioPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF26F061EBA0CED00BC7EF9 /* AudioPlayerController.swift */; };
 		0AF47EAC1EBAFE630061FD8B /* MyCustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF47EAB1EBAFE630061FD8B /* MyCustomSlider.swift */; };
+		0AF47EB01EBB3E4D0061FD8B /* AudioCategoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF47EAF1EBB3E4D0061FD8B /* AudioCategoryCard.swift */; };
+		0AF47EB21EBB59350061FD8B /* AudioListingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF47EB11EBB59340061FD8B /* AudioListingController.swift */; };
 		0AF812661EB1BC33005C6E14 /* AudioPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF812651EB1BC33005C6E14 /* AudioPlayer.xib */; };
 		0AF812681EB20EB4005C6E14 /* AudioCategoryCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF812671EB20EB4005C6E14 /* AudioCategoryCard.xib */; };
 		54D641501B11786A1C496324 /* Pods_APPYSTORE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E463C3A36DD3D2DE33CC294 /* Pods_APPYSTORE.framework */; };
@@ -151,6 +153,8 @@
 		0AF26F031EBA027500BC7EF9 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		0AF26F061EBA0CED00BC7EF9 /* AudioPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerController.swift; sourceTree = "<group>"; };
 		0AF47EAB1EBAFE630061FD8B /* MyCustomSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomSlider.swift; sourceTree = "<group>"; };
+		0AF47EAF1EBB3E4D0061FD8B /* AudioCategoryCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCategoryCard.swift; sourceTree = "<group>"; };
+		0AF47EB11EBB59340061FD8B /* AudioListingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioListingController.swift; sourceTree = "<group>"; };
 		0AF812651EB1BC33005C6E14 /* AudioPlayer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioPlayer.xib; sourceTree = "<group>"; };
 		0AF812671EB20EB4005C6E14 /* AudioCategoryCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioCategoryCard.xib; sourceTree = "<group>"; };
 		4235255AFD5AB3DCC9C949D5 /* Pods-APPYSTORE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APPYSTORE.release.xcconfig"; path = "Pods/Target Support Files/Pods-APPYSTORE/Pods-APPYSTORE.release.xcconfig"; sourceTree = "<group>"; };
@@ -414,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				0AF26F061EBA0CED00BC7EF9 /* AudioPlayerController.swift */,
+				0AF47EB11EBB59340061FD8B /* AudioListingController.swift */,
 			);
 			name = player;
 			sourceTree = "<group>";
@@ -447,10 +452,11 @@
 			isa = PBXGroup;
 			children = (
 				0AF812671EB20EB4005C6E14 /* AudioCategoryCard.xib */,
+				0AF47EAF1EBB3E4D0061FD8B /* AudioCategoryCard.swift */,
 				0A82CF561EB0BC0900987E6D /* AudioListingCard.xib */,
+				0A82CF581EB0DDDA00987E6D /* AudioListingCard.swift */,
 				0AF812651EB1BC33005C6E14 /* AudioPlayer.xib */,
 				0AF26F031EBA027500BC7EF9 /* AudioPlayer.swift */,
-				0A82CF581EB0DDDA00987E6D /* AudioListingCard.swift */,
 				0AF47EAB1EBAFE630061FD8B /* MyCustomSlider.swift */,
 			);
 			name = audio;
@@ -695,6 +701,7 @@
 				7371FA011E936898009241FF /* KCFloatingActionButtonDelegate.swift in Sources */,
 				0A80DA261E702DA700939443 /* BottomBarOverlay.swift in Sources */,
 				0A82CF591EB0DDDA00987E6D /* AudioListingCard.swift in Sources */,
+				0AF47EB21EBB59350061FD8B /* AudioListingController.swift in Sources */,
 				0AF47EAC1EBAFE630061FD8B /* MyCustomSlider.swift in Sources */,
 				73754E0B1E97B027001DD942 /* SearchTagsController.swift in Sources */,
 				73F43B041E82465800D4DD90 /* PageDataPref.swift in Sources */,
@@ -739,6 +746,7 @@
 				0A5374AA1E606B9700F198AD /* DimensionManager.swift in Sources */,
 				0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */,
 				0A72615E1E6D30600023883F /* StringExtension.swift in Sources */,
+				0AF47EB01EBB3E4D0061FD8B /* AudioCategoryCard.swift in Sources */,
 				70AD5AF21E6E7360003C2536 /* SearchResultController.swift in Sources */,
 				F46267191E77B1A600302ACF /* PreChatFormField.swift in Sources */,
 				736D42901E9FC2F100ACDD0F /* TagsCard.swift in Sources */,

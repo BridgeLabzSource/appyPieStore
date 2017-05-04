@@ -30,7 +30,6 @@ import UIKit
     
     @IBOutlet weak var audioPlayPrevButton: UIButton!
     
-    
     @IBOutlet weak var titleView: UIView!
     
     @IBOutlet weak var seekerView: UIView!
