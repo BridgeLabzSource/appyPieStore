@@ -19,8 +19,8 @@ class FreeTrialPopUp: BasePopUpController {
         showCenterEditText()
         showFirstButton()
         showSecondButton()
-        showBottomLabelOne()
-        
+        //showBottomLabelOne()
+        showBottomTextView()
         setValues()
     }
     
@@ -29,7 +29,8 @@ class FreeTrialPopUp: BasePopUpController {
         setSubTitleTextLabel("Give your mobile number to unlock all videos")
         setFirstButtonTextLabel("No Thanks")
         setSecondButtonTextLabel("Start Trial")
-        setBottomTextLabelOne("privacy statement: We don't share your mobile number with anyone")
+        setBottomTextView("privacy statement: We don't share your mobile number with anyone")
+
     }
     
     override func crossButtonClick() {

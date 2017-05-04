@@ -17,8 +17,7 @@ class LoginFailurePage: BasePopUpController, UITextViewDelegate {
         showErrorImage()
         showErrorLabel()
         showFirstButton()
-        showBottomLabelOne()
-        showBottomLabelTwo()
+        showBottomTextView()
         
         //showContentImage()
         
@@ -50,7 +49,7 @@ class LoginFailurePage: BasePopUpController, UITextViewDelegate {
         bottomLabelTwo.linkTextAttributes = [NSForegroundColorAttributeName:UIColor.black, NSFontAttributeName: UIFont.systemFont(ofSize: 12)]
         
         // Set the text view to contain the attributed text
-        bottomLabelTwo.attributedText = text
+        tvBottom.attributedText = text
         // Disable editing, but enable selectable so that the link can be selected
         bottomLabelTwo.isEditable = false
         bottomLabelTwo.isSelectable = true
