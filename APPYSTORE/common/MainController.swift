@@ -2,7 +2,7 @@
 import UIKit
 
 class MainController: UIViewController, MainControllerCommunicator {
-    
+
     @IBOutlet var topView: TopBarOverlay!
     @IBOutlet var middleView: UIView!
     @IBOutlet var bottomView: BottomBarOverlay!
@@ -139,8 +139,8 @@ class MainController: UIViewController, MainControllerCommunicator {
         getCurrentViewController()?.viewWillAppear(false)
     }
     
-    func performBackButtonClick() {
-        uiDelegate?.handleBackButtonClick()
+    func performBackButtonClick(_ controller: BaseViewController) {
+        uiDelegate?.handleBackButtonClick(controller)
     }
     
     internal func setUIComponents(components: ComponentProperties?) {

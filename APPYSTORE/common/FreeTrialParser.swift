@@ -11,6 +11,17 @@ import SwiftyJSON
 
 class FreeTrialParser: BaseParser {
     static let METHOD_NAME = "sendOtp"
+    
+    override func callback(_ status: String, _ code: String, _ data: AnyObject?,_ completion: @escaping (_ responseStatus: String, _ listOfData: AnyObject?) -> Void  ){
+        
+        if StringUtil.compareIgnoreCase(firstString: code, secondString: HttpConnection.RESPONSECODE_ERROR) {
+            completion(BaseParser.USER_ALREADY_SUBSCRIBED, data)
+        } else {
+            completion(status, data)
+        }
+        
+        
+    }
     override func parseJSONData(responseData: JSON) -> AnyObject? {
         print("FreeTrialParser \(responseData)")
         

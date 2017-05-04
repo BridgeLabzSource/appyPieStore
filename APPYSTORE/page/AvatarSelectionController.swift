@@ -34,7 +34,7 @@ class AvatarSelectionController: BaseListingViewController {
         ChildRegistrationParser().parse(params: HttpRequestBuilder.getChildRegistrationParameters(method: ChildRegistrationParser.METHOD_NAME, childName: givenChild.name!, childDob: dob!, avatarId: getValidAvatarId(childInfo: givenChild), pageId: "AvatarSelection"), completion: {
             statusType, result in
             
-            if statusType == DataFetchFramework.REQUEST_SUCCESS {
+            if statusType == BaseParser.REQUEST_SUCCESS {
                 let registerApiResponseModel = result as! RegisterApiResponseModel
                 UserInfo.getInstance().id = registerApiResponseModel.userId
                 

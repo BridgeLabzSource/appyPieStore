@@ -62,7 +62,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         isRequestInProgress = false
         mainControllerCommunicator?.hideProgressBar()
         
-        if status == DataFetchFramework.REQUEST_SUCCESS {
+        if status == BaseParser.REQUEST_SUCCESS {
             if let result = result as? [BaseModel] {
                 print("onDataReceived called", result.count)
                 self.view.setNeedsDisplay()

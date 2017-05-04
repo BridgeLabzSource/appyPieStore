@@ -310,7 +310,7 @@ class BasePopUpController: BaseViewController {
         
         centerEditText.widthAnchor.constraint(equalToConstant: DimensionManager.getGeneralizedWidth1280x720(width: 600)).isActive = true
         centerEditText.layoutIfNeeded()
-        centerEditText.layer.cornerRadius = centerEditText.frame.height/2
+        centerEditText.layer.cornerRadius = DimensionManager.getGeneralizedHeight1280x720(height: 52)
         
     }
     

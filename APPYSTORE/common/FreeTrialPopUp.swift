@@ -32,18 +32,24 @@ class FreeTrialPopUp: BasePopUpController {
     }
     
     override func crossButtonClick() {
-        mainControllerCommunicator?.performBackButtonClick()
+        mainControllerCommunicator?.performBackButtonClick(self)
     }
     
     override func firstButtonClick() {
-        mainControllerCommunicator?.performBackButtonClick()
+        mainControllerCommunicator?.performBackButtonClick(self)
     }
     
     override func secondButtonClick() {
-        FreeTrialParser().parse(params: HttpRequestBuilder.getOtpRequestParameters(method: FreeTrialParser.METHOD_NAME, msisdn: centerEditText.text!, smmKey: "appyt-f", androidId: "a5b9d7b7fe1425ea", imei: "865980023857656"), completion: {
+        // show otp screen
+        FreeTrialParser().parse(params: HttpRequestBuilder.getOtpRequestParameters(method: FreeTrialParser.METHOD_NAME, msisdn: centerEditText.text!, smmKey: "appyt-f", androidId: HttpRequestBuilder.ANDROID_ID_VALUE, imei: HttpRequestBuilder.IMEI_VALUE), completion: {
             statusType, result in
             
             print("FreeTrialPopUp \(result)")
+            
+            let model = result as! TrialResponseModel
+            print("FreeTrialPopUp user_id  \(model.userId)")
+            print("FreeTrialPopUp msisdn  \(model.userId)")
+            print("FreeTrialPopUp otp  \(model.msisdn)")
         })
     }
     
