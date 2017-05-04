@@ -47,21 +47,21 @@ class LoginFailurePage: BasePopUpController, UITextViewDelegate {
         text.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, text.length))
         
         // To set the link text color (optional)
-        //bottomLabelTwo.linkTextAttributes = [NSForegroundColorAttributeName:UIColor.blackColor(), NSFontAttributeName: UIFont.systemFontOfSize(12)]
+        bottomLabelTwo.linkTextAttributes = [NSForegroundColorAttributeName:UIColor.black, NSFontAttributeName: UIFont.systemFont(ofSize: 12)]
         
         // Set the text view to contain the attributed text
         bottomLabelTwo.attributedText = text
         // Disable editing, but enable selectable so that the link can be selected
-        //bottomLabelTwo.editable = false
-        //bottomLabelTwo.selectable = true
+        bottomLabelTwo.isEditable = false
+        bottomLabelTwo.isSelectable = true
         // Set the delegate in order to use textView(_:shouldInteractWithURL:inRange)
-        //bottomLabelTwo.delegate = self
+        bottomLabelTwo.delegate = self
+        
+        bottomLabelTwo.isUserInteractionEnabled = true
     }
     
-    func textView(bottomLabelTwo: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
-        
-        // **Perform sign in action here**
-        
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        print("BottomLabelTwo clicked")
         return false
     }
     
@@ -70,8 +70,8 @@ class LoginFailurePage: BasePopUpController, UITextViewDelegate {
         setImageError(UIImage(named: "cart")!)
         setErrorTextLabel("We are unable to recognize your number")
         setFirstButtonTextLabel("Try Again")
-        //setBottomTextLabelOne("OR")
-        //setBottomTextLabelTwo("Register with xxxxxxxxx")
+        setBottomTextLabelOne("number")
+        setBottomTextLabelTwo("hello are unable to recognize your")
     }
     
     override func firstButtonClick() {

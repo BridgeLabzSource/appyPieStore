@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UILabel.appearance().defaultFontStyle = AppConstants.APP_FONT_NAME
         UITextField.appearance().defaultFontStyle = AppConstants.APP_FONT_NAME
+        UITextView.appearance().defaultFontStyle = AppConstants.APP_FONT_NAME
         return true
     }
 
