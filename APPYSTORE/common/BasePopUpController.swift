@@ -95,7 +95,8 @@ class BasePopUpController: BaseViewController {
     
     func crossButtonClick() {
         print("Basepopup crossButtonClick")
-        assert(false, "must override method crossButtonClick")
+        //assert(false, "must override method crossButtonClick")
+        mainControllerCommunicator?.performBackButtonClick(self)
     }
     
     func firstButtonClick() {
@@ -289,6 +290,8 @@ class BasePopUpController: BaseViewController {
     
     func setBottomTitleFont() {
         DimensionManager.setTextSize1280x720(label: bottomLabelOne, size: DimensionManager.H3)
+
+        DimensionManager.setTextSize1280x720(textView: bottomLabelTwo, size: DimensionManager.H3)
     }
     
     func setContentFont() {

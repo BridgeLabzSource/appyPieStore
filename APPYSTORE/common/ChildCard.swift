@@ -40,7 +40,7 @@ class ChildCard: BaseCard {
         imgAvatar.layer.cornerRadius = radius
         imgAvatar.clipsToBounds = true
         
-        imgAvatar.layer.borderWidth = 2
+        imgAvatar.layer.borderWidth = 3
         imgAvatar.layer.borderColor = UIColor.white.cgColor
     }
 

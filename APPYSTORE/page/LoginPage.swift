@@ -12,14 +12,32 @@ class LoginPage: BasePopUpController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setSubTitle()
+        showSubTitleLabel()
+        showCenterEditText()
+        showFirstButton()
+        
+        setLabels()
     }
 
-    func setSubTitle() {
-        //setTitleTextLabel("Start 15 day FREE Trial")
+    func setLabels() {
         setSubTitleTextLabel("Please enter your registered mobile number")
-        //setFirstButtonTextLabel("No Thanks")
-        //setSecondButtonTextLabel("Start Trial")
-        //setBottomTextLabel("privacy statement: We don't share your mobile number with anyone")
+        setFirstButtonTextLabel("Login")
+    }
+    
+    override func firstButtonClick() {
+        self.mainControllerCommunicator?.showProgressBar()
+        //todo email id
+        LoginParser().parse(params: HttpRequestBuilder.getLoginParameters(method: LoginParser.METHOD_NAME, msisdn: centerEditText.text!, pageId: "login", emailId: ""), completion: {
+            statusType, result in
+            self.mainControllerCommunicator?.hideProgressBar()
+            if statusType == BaseParser.REQUEST_SUCCESS {
+                NavigationUtil.navigateAsPerChildSize(mainControllerCommunicator: self.mainControllerCommunicator!)
+            } else if statusType == BaseParser.REQUEST_FAILURE {
+                NavigationManager.openLoginFailurePage(mainControllerCommunicator: self.mainControllerCommunicator!)
+            } else if statusType == BaseParser.CONNECTION_ERROR {
+                
+            }
+        })
+
     }
 }

@@ -135,5 +135,13 @@ class NavigationManager {
         mainControllerCommunicator.addChild(controller: subclassObject, area: .FULL)
     }
 
-    
+    static func openLoginFailurePage(mainControllerCommunicator: MainControllerCommunicator) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "FreeTrialController") as! BasePopUpController
+        
+        object_setClass(viewController, LoginFailurePage.self)
+        viewController.mainControllerCommunicator = mainControllerCommunicator
+        let subclassObject = viewController as! LoginFailurePage
+        mainControllerCommunicator.addChild(controller: subclassObject, area: .FULL)
+    }
 }

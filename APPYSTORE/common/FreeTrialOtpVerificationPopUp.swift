@@ -31,6 +31,7 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
         setSecondButtonTextLabel("Submit")
         setBottomTextLabelTwo("Resend OTP")
     }
+
     
     override func crossButtonClick() {
         mainControllerCommunicator?.performBackButtonClick(self)
@@ -44,4 +45,5 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
             Toast(text: "Request Failure").show()
         }
     }
+
 }
