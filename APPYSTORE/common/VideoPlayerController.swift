@@ -30,7 +30,6 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
         self.view.addSubview(childController.view)
         //recommendedContainer.clipsToBounds = true
         childController.didMove(toParentViewController: childController)
-        
     }
     
     override func viewDidLoad() {

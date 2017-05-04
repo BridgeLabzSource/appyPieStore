@@ -18,7 +18,7 @@ class RecommendedVideoCard: BaseCard {
         
         imgThumbnail.layer.cornerRadius = radius
         imgThumbnail.clipsToBounds = true
-        
+         
         self.layer.cornerRadius = radius
         self.clipsToBounds = true
         

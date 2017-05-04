@@ -12,6 +12,16 @@ class MainControllerUIDelegate {
     let mainController: MainController
     var fabButton: KCFloatingActionButton!
     
+//    
+//    lazy var AudioCategoryController: AudioCategoryController = {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let viewController = storyboard.instantiateViewController(withIdentifier: "AudioCategoryController") as! AudioCategoryController
+//        
+//        self.addAsChildViewController(childController: viewController)
+//        return viewController
+//    }()
+//    
+    
     lazy var historyController: HistoryController = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "HistoryController") as! HistoryController

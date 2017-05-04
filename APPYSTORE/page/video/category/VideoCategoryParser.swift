@@ -23,13 +23,13 @@ class VideoCategoryParser: BaseParser
     private let CANONICAL_NAME = "canonical_name";
     private let IS_VISIBLE = "is_visible";
     
-    
     override func parseJSONData(responseData:JSON) -> AnyObject? {
         
         let apiResponseModel = ContentListingApiResponseModel()
         let videoContent = responseData[CATEGORY_ID_ARRAY].array
         
         var videoCategoryModelArray = [VideoCategoryModel]()
+        
         for item in videoContent! {
             let videoCategoryModel = VideoCategoryModel()
             videoCategoryModel.categoryId = item[CATEGORY_ID].string!
