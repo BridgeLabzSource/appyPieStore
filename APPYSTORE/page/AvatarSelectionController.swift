@@ -12,6 +12,7 @@ class AvatarSelectionController: BaseListingViewController {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var btnSave: CustomButton!
+    @IBOutlet weak var btnAdd: CustomButton!
     
     var givenChild: ChildInfo!
     
@@ -23,6 +24,12 @@ class AvatarSelectionController: BaseListingViewController {
     
     var lastSelectedIndex = 0
     
+    
+
+    @IBAction func onAddChildTouchUp(_ sender: CustomButton) {
+        btnAction = ACTION_ADD
+        callRegistrationApiAndNavigate()
+    }
     
     @IBAction func onSaveContinueTouchUp(_ sender: CustomButton) {
         btnAction = ACTION_SAVE
@@ -40,8 +47,7 @@ class AvatarSelectionController: BaseListingViewController {
                 
                 //Note: registration api returns currently added child only, not the all childs
                 if registerApiResponseModel.childInfoList != nil && (registerApiResponseModel.childInfoList?.count)! > 0 {
-                    var storedChildList: [ChildInfo] = UserInfo.getInstance().childList ?? []
-                    storedChildList.append((registerApiResponseModel.childInfoList?[0])!)
+                    UserInfo.getInstance().childList.append((registerApiResponseModel.childInfoList?[0])!)
                     UserInfo.getInstance().saveUserInfoToUserDefaults()
                 }
                 // Navigate to appropriate page

@@ -29,7 +29,7 @@ class FreeTrialPopUp: BasePopUpController {
         setSubTitleTextLabel("Give your mobile number to unlock all videos")
         setFirstButtonTextLabel("No Thanks")
         setSecondButtonTextLabel("Start Trial")
-        setBottomTextView("privacy statement: We don't share your mobile number with anyone")
+        setBottomTextView("privacy statement: We don't share your mobile number with anyone", "")
 
     }
     
@@ -84,14 +84,14 @@ class FreeTrialPopUp: BasePopUpController {
                 var childList = UserInfo.getInstance().childList
                 let selectedChild = UserInfo.getInstance().selectedChild
                 
-                if childList == nil || (childList?.isEmpty)! {
+                if childList == nil || (childList.isEmpty) {
                     print("FreeTrialPopUp child count 0")
                 } else if selectedChild == nil {
                     print("FreeTrialPopUp no selected child")
                 } else {
                     var portedSelectedChild: ChildInfo? = nil
                     
-                    for child in childList! {
+                    for child in childList {
                         if child.name == selectedChild?.name {
                             portedSelectedChild = child
                             break
@@ -100,7 +100,7 @@ class FreeTrialPopUp: BasePopUpController {
                     
                     if portedSelectedChild == nil {
                         print("FreeTrialPopUp no selected child, 0th selected")
-                        portedSelectedChild = childList?[0]
+                        portedSelectedChild = childList[0]
                         UserInfo.getInstance().selectedChild = portedSelectedChild
                         print("FreeTrialPopUp ported child selected \(portedSelectedChild?.id)  \(portedSelectedChild?.name)")
                         

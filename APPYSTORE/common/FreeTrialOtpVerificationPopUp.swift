@@ -32,7 +32,7 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
         setTitleTextLabel("Enter the One Time Password sent to \(mobileNumber)")
         setCenterEditTextValue(trialResponseModel.otp)
         setSecondButtonTextLabel("Submit")
-        setBottomTextView("Resend OTP")
+        setBottomTextView("Resend OTP", nil)
     }
 
     
@@ -78,14 +78,14 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
                 var childList = UserInfo.getInstance().childList
                 let selectedChild = UserInfo.getInstance().selectedChild
                 
-                if childList == nil || (childList?.isEmpty)! {
+                if childList.isEmpty {
                     print("FreeTrialPopUp child count 0")
                 } else if selectedChild == nil {
                     print("FreeTrialPopUp no selected child")
                 } else {
                     var portedSelectedChild: ChildInfo? = nil
                     
-                    for child in childList! {
+                    for child in childList {
                         if child.name == selectedChild?.name {
                             portedSelectedChild = child
                             break
@@ -94,7 +94,7 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
                     
                     if portedSelectedChild == nil {
                         print("FreeTrialPopUp no selected child, 0th selected")
-                        portedSelectedChild = childList?[0]
+                        portedSelectedChild = childList[0]
                         UserInfo.getInstance().selectedChild = portedSelectedChild
                         print("FreeTrialPopUp ported child selected \(portedSelectedChild?.id)  \(portedSelectedChild?.name)")
                         

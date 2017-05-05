@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BasePopUpController: BaseViewController {
+class BasePopUpController: BaseViewController, UITextViewDelegate {
     let spacingConstant = AppDelegate.DEVICE_HEIGHT/25
     @IBOutlet var rootView: UIView!
     @IBOutlet weak var containerView: UIView!
@@ -51,13 +51,57 @@ class BasePopUpController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         let radius = DimensionManager.getGeneralizedHeight1280x720(height: 20)
         containerView.layer.cornerRadius = radius
         setListeners()
         setFontSize()
         setTopSpacing()
+    }
+    
+    func setLabelTwoWithAttributedString(_ text: String, _ clickablePart: String?) {
+        let text = NSMutableAttributedString(string: text)
+        text.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 12), range: NSMakeRange(0, text.length))
+        
+        if(clickablePart != nil && (clickablePart?.characters.count)! > 0) {
+            let selectablePart = NSMutableAttributedString(string: clickablePart!)
+            selectablePart.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 12), range: NSMakeRange(0, selectablePart.length))
+            // Add an underline to indicate this portion of text is selectable (optional)
+            selectablePart.addAttribute(NSUnderlineStyleAttributeName, value: 1, range: NSMakeRange(0,selectablePart.length))
+            selectablePart.addAttribute(NSUnderlineColorAttributeName, value: UIColor.blue, range: NSMakeRange(0, selectablePart.length))
+            // Add an NSLinkAttributeName with a value of an url or anything else
+            selectablePart.addAttribute(NSLinkAttributeName, value: "click", range: NSMakeRange(0, selectablePart.length))
+            
+            // Combine the non-selectable string with the selectable string
+            text.append(selectablePart)
+        }
+        // Center the text (optional)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.center
+        text.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, text.length))
+        
+        // To set the link text color (optional)
+        tvBottom.linkTextAttributes = [NSForegroundColorAttributeName:UIColor.blue, NSFontAttributeName: UIFont.systemFont(ofSize: 12)]
+        
+        // Set the text view to contain the attributed text
+        tvBottom.attributedText = text
+        // Disable editing, but enable selectable so that the link can be selected
+        tvBottom.isEditable = false
+        tvBottom.isSelectable = true
+        // Set the delegate in order to use textView(_:shouldInteractWithURL:inRange)
+        tvBottom.delegate = self
+        
+        //tvBottom.isUserInteractionEnabled = true
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        onBottomTextClick()
+        return false
+    }
+    
+    func onBottomTextClick() {
+        
     }
     
     func setListeners() {
@@ -233,8 +277,8 @@ class BasePopUpController: BaseViewController {
         secondButton.setTitle(title, for: .normal)
     }
     
-    func setBottomTextView(_ title: String) {
-        tvBottom.text = title
+    func setBottomTextView(_ text: String, _ clickablePart: String?) {
+        setLabelTwoWithAttributedString(text, clickablePart)
     }
     
     // MARK: - Setting spacing
@@ -314,38 +358,5 @@ class BasePopUpController: BaseViewController {
     
     func setContentImageHeight() {
         contentImage.heightAnchor.constraint(equalToConstant: DimensionManager.getGeneralizedHeight1280x720(height: 200)).isActive = true
-        //contentImage.clipsToBounds = true
-        //contentImage.layoutIfNeeded()
     }
-    /*
-     //buttonStackView.layoutMargins = UIEdgeInsets(top: 0, left:50, bottom:0, right:50)
-     //buttonStackView.isLayoutMarginsRelativeArrangement = true
-     //buttonStackView.heightAnchor.constraint(equalToConstant: 200)
-     /*
-     DimensionManager.setDimension1280x720(view: firstButton, width: DimensionManager.getGeneralizedWidth1280x720(width: 400), height: DimensionManager.getGeneralizedHeight1280x720(height: 104))
-     */
-     /*
-     let topConstraint = NSLayoutConstraint(
-     item: titleStackView,
-     attribute: .topMargin,
-     relatedBy: .equal,
-     toItem: rootStackView,
-     attribute: .topMargin,
-     multiplier:1,
-     constant: 0)
-     titleStackView.translatesAutoresizingMaskIntoConstraints = true
-     titleStackView.addConstraint(topConstraint)
-     */
-     */
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -10,20 +10,18 @@ import Foundation
 
 class NavigationUtil {
     static func navigateAsPerChildSize(mainControllerCommunicator: MainControllerCommunicator) {
-        let x = (UserInfo.getInstance().childList?.count)!
+        let x = UserInfo.getInstance().childList.count
         switch x {
         case 0:
             NavigationManager.openRegistrationPage(mainControllerCommunicator: mainControllerCommunicator, pageType: BundleConstants.PAGE_TYPE_REGISTER)
         case 1:
             NavigationManager.openVideoCategoryPage(mainControllerCommunicator: mainControllerCommunicator)
-        case _ where x > 2:
+        case _ where x >= 2:
             NavigationManager.openChildSelectionPage(mainControllerCommunicator: mainControllerCommunicator)
             break
         default:
             break
         }
-        
-        //NavigationManager.openRegistrationPage(mainControllerCommunicator: mainControllerCommunicator, pageType: BundleConstants.PAGE_TYPE_REGISTER)
     }
     
     // if a child is upadated or changed, all pages data must be reset

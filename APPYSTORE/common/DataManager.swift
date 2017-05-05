@@ -15,7 +15,7 @@ class DataManager: NSObject {
         
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            HistoryParser().parse(params: HttpRequestBuilder.getHistoryParameters(method: "getAllHistory", childId: "29518", pageId: "History", offset: String(offset), limit: String(limit)), completion:{
+            HistoryParser().parse(params: HttpRequestBuilder.getHistoryParameters(offset: String(offset), limit: String(limit)), completion:{
                 statusType, result in
                 
                 returndata(statusType, result!)
@@ -29,7 +29,7 @@ class DataManager: NSObject {
             })
             
         case PageConstants.VIDEO_LISTING_PAGE:
-            VideoListingParser().parse(params: HttpRequestBuilder.getVideoListingParameters(method: "getContentList", contentType: "videos", offset: String(offset), limit: String(limit), catId: bundle?[BundleConstants.CATEGORY_ID] as! String, pCatId: bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String, age: "1", inclAge: "1", pageId: "videos"), completion:{
+            VideoListingParser().parse(params: HttpRequestBuilder.getVideoListingParameters(offset: String(offset), limit: String(limit), catId: bundle?[BundleConstants.CATEGORY_ID] as! String, pCatId: bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String), completion:{
                 statusType, result in
                 
                 returndata(statusType, result!)
@@ -40,7 +40,7 @@ class DataManager: NSObject {
             print("Recommended data \(bundle?.count)")
             print("Recommended data \(bundle?.keys)")
             print("Recommended data \(bundle?.values)")
-            RecommendedVideoParser().parse(params: HttpRequestBuilder.getRecommendedVideoListingParameters(method: "getRecommendation", contentType: "videos", offset: String(offset), limit: String(limit), catId: bundle?[BundleConstants.CATEGORY_ID] as! String, pCatId: bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String, contentId: bundle?[BundleConstants.CONTENT_ID] as! String, sequenceType: bundle?[BundleConstants.SEQUENCE_TYPE] as! String, sequenceNumber: bundle?[BundleConstants.SEQUENCE_NUMBER] as! String, age: "1", inclAge: "", returnedContentType: "videos", pageId: "videoRecommendation", flagItemAtFirstPosition: "1"), completion: {
+            RecommendedVideoParser().parse(params: HttpRequestBuilder.getRecommendedVideoListingParameters(offset: String(offset), limit: String(limit), catId: bundle?[BundleConstants.CATEGORY_ID] as! String, pCatId: bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String, contentId: bundle?[BundleConstants.CONTENT_ID] as! String, sequenceType: bundle?[BundleConstants.SEQUENCE_TYPE] as! String, sequenceNumber: bundle?[BundleConstants.SEQUENCE_NUMBER] as! String), completion: {
                 statusType, result in
                 
                 returndata(statusType, result!)
@@ -48,13 +48,13 @@ class DataManager: NSObject {
             
             
         case PageConstants.SEARCH_RESULT_PAGE:
-            SearchResultParser().parse(params: HttpRequestBuilder.getSearchResultParameters(method: "search", keyword: bundle?[BundleConstants.SEARCH_KEYWORD] as! String, contentType: "videos", offset: String(offset), limit: String(limit), age: "1", inclAge: "", ignoreCatId: "", pageId: "SearchFragment", isPopular: "0"), completion: {
+            SearchResultParser().parse(params: HttpRequestBuilder.getSearchResultParameters(keyword: bundle?[BundleConstants.SEARCH_KEYWORD] as! String, offset: String(offset), limit: String(limit), ignoreCatId: "", isPopular: "0"), completion: {
                 statusType, result in
                 
                 returndata(statusType, result!)
             })
         case PageConstants.SEARCH_TAGS_PAGE:
-            SearchTagsParser().parse(params: HttpRequestBuilder.getSearchTagsParameters(method: "getPopularSearch", pageId: "SearchFragment"), completion: {
+            SearchTagsParser().parse(params: HttpRequestBuilder.getSearchTagsParameters(), completion: {
                 statusType, result in
                 
                 returndata(statusType, result!)
@@ -64,7 +64,7 @@ class DataManager: NSObject {
         case PageConstants.SELECT_AVATAR_PAGE_ADD:
             fallthrough
         case PageConstants.SELECT_AVATAR_PAGE_EDIT:
-            AvatarParser().parse(params: HttpRequestBuilder.getAvatarParameters(method: AvatarParser.METHOD_NAME, pageId: "SelectAvatar"), completion: {
+            AvatarParser().parse(params: HttpRequestBuilder.getAvatarParameters(), completion: {
                 statusType, result in
                 
                 returndata(statusType, result!)
@@ -126,7 +126,7 @@ class DataManager: NSObject {
         case PageConstants.SELECT_AVATAR_PAGE_EDIT:
             count = AvatarDBManager.sharedInstance.getRowCount(bundle: bundle)
         case PageConstants.CHILD_SELECTION_PAGE:
-            count = (UserInfo.getInstance().childList?.count)!
+            count = UserInfo.getInstance().childList.count
             break
         default:
             break

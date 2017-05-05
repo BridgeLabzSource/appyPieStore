@@ -99,6 +99,7 @@
 		738EEE6E1EA4BF3000A50038 /* AppNavigationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EEE6D1EA4BF3000A50038 /* AppNavigationHandler.swift */; };
 		738EEE701EA4DD5300A50038 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EEE6F1EA4DD5300A50038 /* NavigationUtil.swift */; };
 		738EEE731EA4FF5300A50038 /* ChildRegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EEE721EA4FF5300A50038 /* ChildRegistrationController.swift */; };
+		7390A72F1EBB4BE400133745 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7390A72E1EBB4BE300133745 /* UITextViewExtension.swift */; };
 		7392672B1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392672A1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift */; };
 		7392A7841E94C95900A6ED32 /* HistoryDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392A7831E94C95900A6ED32 /* HistoryDBManager.swift */; };
 		7392A7861E94C96200A6ED32 /* VideoDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7392A7851E94C96200A6ED32 /* VideoDBManager.swift */; };
@@ -241,6 +242,7 @@
 		738EEE6D1EA4BF3000A50038 /* AppNavigationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationHandler.swift; sourceTree = "<group>"; };
 		738EEE6F1EA4DD5300A50038 /* NavigationUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		738EEE721EA4FF5300A50038 /* ChildRegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildRegistrationController.swift; sourceTree = "<group>"; };
+		7390A72E1EBB4BE300133745 /* UITextViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		7392672A1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewControllerProtocol.swift; sourceTree = "<group>"; };
 		7392A7831E94C95900A6ED32 /* HistoryDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDBManager.swift; sourceTree = "<group>"; };
 		7392A7851E94C96200A6ED32 /* VideoDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDBManager.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				736D42861E9F544F00ACDD0F /* UITextFieldExtension.swift */,
 				737232091EA64B4E001A3106 /* UIToolbarExtention.swift */,
 				7364BD531EB89D070032271F /* UIViewControllerExtension.swift */,
+				7390A72E1EBB4BE300133745 /* UITextViewExtension.swift */,
 			);
 			name = extension;
 			sourceTree = "<group>";
@@ -775,6 +778,7 @@
 				F46267151E77AFB000302ACF /* ChildInfo.swift in Sources */,
 				70AD5AE51E6E7129003C2536 /* PageConstants.swift in Sources */,
 				70A36E4F1E6149C0002B9296 /* CommonOverlayView.swift in Sources */,
+				7390A72F1EBB4BE400133745 /* UITextViewExtension.swift in Sources */,
 				70AD5AEF1E6E71CD003C2536 /* HistoryVideoCell.swift in Sources */,
 				7370B8231E9DF4F600D91ABA /* RecommendedVideoParser.swift in Sources */,
 				736D428B1E9FA45700ACDD0F /* SearchTagsParser.swift in Sources */,
