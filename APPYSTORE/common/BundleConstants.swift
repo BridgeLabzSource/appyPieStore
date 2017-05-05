@@ -50,6 +50,7 @@ class BundleConstants: NSObject {
     /*Trial PopUP*/
     static let OTP = "otp"
     static let MOBILE_NUMBER = "mobile_number"
+    static let TRIAL_RESPONSE_MODEL = "trial_response_model"
     
     static let PAGE_SOURCE = "PAGE_SOURCE"
 }

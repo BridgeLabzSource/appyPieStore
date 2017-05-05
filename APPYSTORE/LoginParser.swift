@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class LoginParser: BaseParser{
+class LoginParser: BaseParser {
     
     static let METHOD_NAME = "login"
     private let USERID = "UserId"
@@ -100,7 +100,11 @@ class LoginParser: BaseParser{
             userInfo.msisdn = getValueForKey(inputJson: inputJson, key: MSISDN)
             userInfo.smmKey = getValueForKey(inputJson: inputJson, key: SMM_KEY)
             userInfo.childList = parseChildDetail(jsonChildArray: inputJson[CHILD_LIST].array)
-            
+
+            if (userInfo.childList.count) > 0 {
+                userInfo.selectedChild = userInfo.childList[0]
+            }
+
             userInfo.isAddressUpdated = StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: inputJson, key: IS_ADDRESS_UPDATED), secondString: "true")
             userInfo.usv = getValueForKey(inputJson: inputJson, key: USV)
             if inputJson[IS_ELIGIBLE_FOR_TRIAL_SUBSCRIPTION].exists(){

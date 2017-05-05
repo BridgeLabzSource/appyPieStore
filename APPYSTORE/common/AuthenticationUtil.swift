@@ -13,4 +13,9 @@ class AuthenticationUtil {
     static func isSubscribedUser() -> Bool {
         return UserInfo.USER_TYPE_CLOSED == UserInfo.getInstance().type
     }
+    
+    static func clearDataAfterSubscription() {
+        
+    }
+
 }

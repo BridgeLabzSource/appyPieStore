@@ -117,4 +117,10 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
             }
         }
     }
+    
+    override func resetPage() {
+        print("resetPage \(getPageName())")
+        dataFetchFramework?.reset()
+        dataFetchFramework?.start(dataSource: getDataSource())
+    }
 }
