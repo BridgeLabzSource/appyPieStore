@@ -29,7 +29,7 @@ class FreeTrialPopUp: BasePopUpController {
         setSubTitleTextLabel("Give your mobile number to unlock all videos")
         setFirstButtonTextLabel("No Thanks")
         setSecondButtonTextLabel("Start Trial")
-        setBottomTextView("privacy statement: We don't share your mobile number with anyone")
+        setBottomTextView("privacy statement: We don't share your mobile number with anyone", "")
 
     }
     

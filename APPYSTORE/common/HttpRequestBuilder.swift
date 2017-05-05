@@ -84,10 +84,11 @@ class HttpRequestBuilder: NSObject {
     static let CHILD_DOB = "child_dob"
     static let CHILD_AVATAR_ID = "child_avtarid"
     
+    //dummy values
     static let IMEI_VALUE = "a5b9d7b7fe1425ea"
     static let PCP_VALUE = "999"
     static let CAMPAIGN_VALUE = "8700441600"
-    static let ANDROID_ID_VALUE = "a5b9d7b7fe1425ea"
+    static let ANDROID_ID_VALUE = "a5b9d7b7fe1425ea5"
     static let API_KEY_VALUE = "gh610rt23eqwpll"
     
     static func getHeaders() -> HTTPHeaders {
@@ -148,11 +149,11 @@ class HttpRequestBuilder: NSObject {
         ]
     }
     
-    static func getHistoryParameters(method: String, childId: String, pageId: String, offset: String, limit: String) -> Parameters {
+    static func getHistoryParameters(offset: String, limit: String) -> Parameters {
         
-        return [METHOD: method,
-                CHILD_ID: childId,
-                PAGEID: pageId,
+        return [METHOD: "getAllHistory",
+                CHILD_ID: (UserInfo.getInstance().selectedChild?.id)!,
+                PAGEID: "History",
                 OFFSET: offset,
                 LIMIT: limit
         ]
@@ -160,33 +161,32 @@ class HttpRequestBuilder: NSObject {
     
     static func getVideoCategoryParameters() -> Parameters
     {
-        return [METHOD:"getCategoryList",
-                LIMIT_START:"0",
-                AGE:"3",
-                INCL_AGE:"1",
+        return [METHOD: "getCategoryList",
+                LIMIT_START: "0",
+                AGE: (UserInfo.getInstance().selectedChild?.age)!,
+                INCL_AGE: "",
                 CONTENT_TYPE:"videos"]
     }
     
-    static func getVideoListingParameters(method: String, contentType: String, offset: String, limit: String, catId: String, pCatId: String, age: String, inclAge: String, pageId: String) -> Parameters
+    static func getVideoListingParameters(offset: String, limit: String, catId: String, pCatId: String) -> Parameters
     {
-        return [METHOD: method,
-                CONTENT_TYPE: contentType,
+        return [METHOD: "getContentList",
+                CONTENT_TYPE: "videos",
                 OFFSET: offset,
                 LIMIT: limit,
                 CATID: catId,
                 PCATID: pCatId,
-                AGE: age,
-                INCL_AGE: inclAge,
-                PAGEID: pageId
+                AGE: (UserInfo.getInstance().selectedChild?.age)!,
+                INCL_AGE: "",
+                PAGEID: "videos"
         ]
     }
-    
 
-    static func getRecommendedVideoListingParameters(method: String, contentType: String, offset: String, limit: String, catId: String, pCatId: String, contentId: String, sequenceType: String, sequenceNumber: String, age: String, inclAge: String, returnedContentType: String, pageId: String, flagItemAtFirstPosition: String) -> Parameters {
+    static func getRecommendedVideoListingParameters(offset: String, limit: String, catId: String, pCatId: String, contentId: String, sequenceType: String, sequenceNumber: String) -> Parameters {
         
         return [
-            METHOD: method,
-            CONTENT_TYPE: contentType,
+            METHOD: "getRecommendation",
+            CONTENT_TYPE: "videos",
             OFFSET: offset,
             LIMIT: limit,
             CATID: catId,
@@ -194,42 +194,41 @@ class HttpRequestBuilder: NSObject {
             CONTENT_ID: contentId,
             SEQUENCE_TYPE: sequenceType,
             SEQUENCE_NUMBER: sequenceNumber,
-            AGE: age,
-            INCL_AGE: inclAge,
-            RETURN_CONTENT_TYPE: returnedContentType,
-            PAGEID: pageId,
-            FLAG_AT_ITEM_AT_FIRST_POSITION: flagItemAtFirstPosition
+            AGE: (UserInfo.getInstance().selectedChild?.age)!,
+            INCL_AGE: "",
+            RETURN_CONTENT_TYPE: "videos",
+            PAGEID: "videoRecommendation",
+            FLAG_AT_ITEM_AT_FIRST_POSITION: "1"
         ]
     }
-
-    static func getSearchResultParameters(method: String, keyword: String, contentType: String, offset: String, limit: String, age: String, inclAge: String, ignoreCatId: String, pageId: String, isPopular: String) -> Parameters
+    
+    static func getSearchResultParameters(keyword: String, offset: String, limit: String, ignoreCatId: String, isPopular: String) -> Parameters
     {
-        return [METHOD: method,
+        return [METHOD: "search",
                 KEYWORD: keyword,
-                CONTENT_TYPE: contentType,
+                CONTENT_TYPE: "videos",
                 OFFSET: offset,
                 LIMIT: limit,
-                AGE: age,
-                INCL_AGE: inclAge,
+                AGE: (UserInfo.getInstance().selectedChild?.age)!,
+                INCL_AGE: "",
                 IGNORE_CAT_ID: ignoreCatId,
-                PAGEID: pageId,
+                PAGEID: "SearchFragment",
                 IS_POPULAR: isPopular
 
         ]
     }
     
-    static func getSearchTagsParameters(method: String, pageId: String) -> Parameters {
-        return [METHOD: method,
-                PAGEID: pageId
+    static func getSearchTagsParameters() -> Parameters {
+        return [METHOD: "getPopularSearch",
+                PAGEID: "SearchFragment"
         ]
     }
     
-    static func getAvatarParameters(method: String, pageId: String) -> Parameters {
-        return [METHOD: method,
-                PAGEID: pageId
+    static func getAvatarParameters() -> Parameters {
+        return [METHOD: AvatarParser.METHOD_NAME,
+                PAGEID: "SelectAvatar"
         ]
     }
-    
 
     static func getOtpRequestParameters(method: String, msisdn: String, smmKey: String, androidId: String, imei: String) -> Parameters {
         

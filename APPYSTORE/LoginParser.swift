@@ -100,7 +100,7 @@ class LoginParser: BaseParser{
             userInfo.msisdn = getValueForKey(inputJson: inputJson, key: MSISDN)
             userInfo.smmKey = getValueForKey(inputJson: inputJson, key: SMM_KEY)
             userInfo.childList = parseChildDetail(jsonChildArray: inputJson[CHILD_LIST].array)
-            userInfo.childCount = UserInfo.getChildCount(childList: userInfo.childList)
+            
             userInfo.isAddressUpdated = StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: inputJson, key: IS_ADDRESS_UPDATED), secondString: "true")
             userInfo.usv = getValueForKey(inputJson: inputJson, key: USV)
             if inputJson[IS_ELIGIBLE_FOR_TRIAL_SUBSCRIPTION].exists(){

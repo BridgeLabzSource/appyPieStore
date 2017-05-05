@@ -29,7 +29,7 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
         setTitleTextLabel("Enter the One Time Password sent to \(mobileNumber)")
         setCenterEditTextValue(otp)
         setSecondButtonTextLabel("Submit")
-        setBottomTextView("Resend OTP")
+        setBottomTextView("Resend OTP", nil)
     }
 
     
