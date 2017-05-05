@@ -36,8 +36,9 @@ class AppNavigationHandler {
     
     func handleDefaultLoginFlow() {
         //todo proper params
-        LoginParser().parse(params: HttpRequestBuilder.getLoginParameters(method: LoginParser.METHOD_NAME, msisdn: "", pageId: "login", emailId: ""), completion: {
+        LoginParser().parse(params: HttpRequestBuilder.getLoginParameters(method: LoginParser.METHOD_NAME, msisdn: UserInfo.getInstance().msisdn ?? "", pageId: "login", emailId: ""), completion: {
             statusType, result in
+            
             if statusType == BaseParser.REQUEST_SUCCESS {
                 NavigationUtil.navigateAsPerChildSize(mainControllerCommunicator: self.mainControllerCommunicator)
                 

@@ -13,4 +13,5 @@ protocol MainControllerCommunicator {
     func performBackButtonClick(_ controller: BaseViewController)
     func showProgressBar()
     func hideProgressBar()
+    func refreshAllPages()
 }

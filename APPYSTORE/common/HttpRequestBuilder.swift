@@ -89,6 +89,8 @@ class HttpRequestBuilder: NSObject {
     static let CAMPAIGN_VALUE = "8700441600"
     static let ANDROID_ID_VALUE = "a5b9d7b7fe1425ea"
     static let API_KEY_VALUE = "gh610rt23eqwpll"
+    static let USER_ID = "user_id"
+    static let OTP = "otp"
     
     static func getHeaders() -> HTTPHeaders {
         
@@ -104,7 +106,7 @@ class HttpRequestBuilder: NSObject {
                X_APPY_DEVICE_HEIGHT: "\(AppDelegate.DEVICE_HEIGHT)",
                X_APPY_ANDROID_ID: ANDROID_ID_VALUE,
                X_APPY_API_KEY: API_KEY_VALUE,
-               X_APPY_CHILD_ID: getChildId(),//29518
+               X_APPY_CHILD_ID: UserInfo.getInstance().selectedChild?.id ?? "",//29518
                ACCEPT: "text/html,application/xhtml+xml,application/xml;q=0.9,*;q=0.8",
                ACCEPT_ENCODING: "",
                ACCEPT_LANGUAGE: "en-US,en;q=0.5",
@@ -134,10 +136,6 @@ class HttpRequestBuilder: NSObject {
                X_APPY_SCREEN_NAME: "",
                                    ]
         return headers
-    }
-    
-    static func getChildId() -> String {
-        return ""
     }
     
     static func getLoginParameters(method: String, msisdn: String, pageId: String, emailId: String) -> Parameters {
@@ -246,7 +244,9 @@ class HttpRequestBuilder: NSObject {
         
         return [
             METHOD: method,
+            USER_ID: userId,
             MSISDN: msisdn,
+            OTP: otp,
             SMM_KEY: smmKey,
             ANDROID_ID: androidId,
             IMEI: imei

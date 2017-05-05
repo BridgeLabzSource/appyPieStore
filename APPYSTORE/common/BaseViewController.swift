@@ -63,4 +63,8 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
     func getComponentProperties() -> ComponentProperties?{
         return nil
     }
+    
+    func resetPage() {
+        
+    }
 }

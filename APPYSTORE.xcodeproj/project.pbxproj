@@ -88,6 +88,8 @@
 		737850511EB9E6F700ADE792 /* AuthenticationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737850501EB9E6F700ADE792 /* AuthenticationUtil.swift */; };
 		737E28281E94F409008CEC26 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737E28271E94F409008CEC26 /* PlayerModel.swift */; };
 		7381F7091EBB2AC80073F12A /* FreeTrialOtpVerificationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381F7081EBB2AC80073F12A /* FreeTrialOtpVerificationPopUp.swift */; };
+		7381F70B1EBB5B220073F12A /* FreeTrialOtpVerificationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381F70A1EBB5B220073F12A /* FreeTrialOtpVerificationParser.swift */; };
+		7381F70D1EBB5C610073F12A /* TrialOtpVerificatioResponsenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381F70C1EBB5C610073F12A /* TrialOtpVerificatioResponsenModel.swift */; };
 		738586BF1EB06FC6008C4F8C /* FreeTrialPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738586BE1EB06FC6008C4F8C /* FreeTrialPopUp.swift */; };
 		738586C11EB0A7C9008C4F8C /* BuySubscriptionPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738586C01EB0A7C9008C4F8C /* BuySubscriptionPopUp.swift */; };
 		738C72F61E93E34400A1B4E0 /* VideoListingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C72F51E93E34400A1B4E0 /* VideoListingParser.swift */; };
@@ -228,6 +230,8 @@
 		737850501EB9E6F700ADE792 /* AuthenticationUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationUtil.swift; sourceTree = "<group>"; };
 		737E28271E94F409008CEC26 /* PlayerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		7381F7081EBB2AC80073F12A /* FreeTrialOtpVerificationPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeTrialOtpVerificationPopUp.swift; sourceTree = "<group>"; };
+		7381F70A1EBB5B220073F12A /* FreeTrialOtpVerificationParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeTrialOtpVerificationParser.swift; sourceTree = "<group>"; };
+		7381F70C1EBB5C610073F12A /* TrialOtpVerificatioResponsenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialOtpVerificatioResponsenModel.swift; sourceTree = "<group>"; };
 		738586BE1EB06FC6008C4F8C /* FreeTrialPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeTrialPopUp.swift; sourceTree = "<group>"; };
 		738586C01EB0A7C9008C4F8C /* BuySubscriptionPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuySubscriptionPopUp.swift; sourceTree = "<group>"; };
 		738C72F51E93E34400A1B4E0 /* VideoListingParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingParser.swift; sourceTree = "<group>"; };
@@ -336,6 +340,8 @@
 				739DE0D01EB2003600C4B73C /* TrialResponseModel.swift */,
 				737850501EB9E6F700ADE792 /* AuthenticationUtil.swift */,
 				7381F7081EBB2AC80073F12A /* FreeTrialOtpVerificationPopUp.swift */,
+				7381F70A1EBB5B220073F12A /* FreeTrialOtpVerificationParser.swift */,
+				7381F70C1EBB5C610073F12A /* TrialOtpVerificatioResponsenModel.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -757,6 +763,7 @@
 				736DC0C21EA9CDC700347CBA /* LayerColor.swift in Sources */,
 				73B657521E8BCFAD00E7D582 /* BaseViewController.swift in Sources */,
 				7392A7861E94C96200A6ED32 /* VideoDBManager.swift in Sources */,
+				7381F70D1EBB5C610073F12A /* TrialOtpVerificatioResponsenModel.swift in Sources */,
 				738EEE6E1EA4BF3000A50038 /* AppNavigationHandler.swift in Sources */,
 				0A8F790C1E6971FD00720DB8 /* VideoCategoryCard.swift in Sources */,
 				7371F9FE1E936898009241FF /* KCFABViewController.swift in Sources */,
@@ -771,6 +778,7 @@
 				70AD5AEF1E6E71CD003C2536 /* HistoryVideoCell.swift in Sources */,
 				7370B8231E9DF4F600D91ABA /* RecommendedVideoParser.swift in Sources */,
 				736D428B1E9FA45700ACDD0F /* SearchTagsParser.swift in Sources */,
+				7381F70B1EBB5B220073F12A /* FreeTrialOtpVerificationParser.swift in Sources */,
 				0AAD2EFD1E5C48EF00B504A3 /* AppDelegate.swift in Sources */,
 				70AD5AE41E6E7129003C2536 /* BaseModel.swift in Sources */,
 				7365F3931E92603A006B3C75 /* VideoListingController.swift in Sources */,

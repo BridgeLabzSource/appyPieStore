@@ -155,4 +155,9 @@ class MainController: UIViewController, MainControllerCommunicator {
         uiDelegate?.hideProgressBar()
     }
     
+    func refreshAllPages() {
+        for childController in childControllersList! {
+            childController.resetPage()
+        }
+    }
 }
