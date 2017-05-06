@@ -14,17 +14,14 @@ class DimensionManager{
     static let H2: CGFloat = 32
     static let H3: CGFloat = 24
     static let H4: CGFloat = 20
-    
 
     static func convertPixelToPoint(pixel: CGFloat) -> CGFloat{
         return pixel / CGFloat(AppDelegate.density)
     }
     
-    
     static func getGeneralizedWidth1280x720(width: CGFloat) -> CGFloat {
         return AppDelegate.DEVICE_WIDTH * (width / CGFloat(1280))
     }
-    
     
     static func getGeneralizedHeight1280x720(height: CGFloat) -> CGFloat {
         return AppDelegate.DEVICE_HEIGHT * (height / CGFloat(720))

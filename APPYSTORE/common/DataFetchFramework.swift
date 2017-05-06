@@ -153,9 +153,9 @@ class DataFetchFramework {
     
     func callServerApiToFetchData() {
         print("callServerApiToFetchData called offsetServer: \(offsetServer)")
-        if totalCountOnServer != -1 && offsetServer >= totalCountOnServer {
-            self.handleResponse(statusType: DataFetchFramework.END_OF_DATA, result: "" as AnyObject)
-        } else {
+//        if totalCountOnServer != -1 && offsetServer >= totalCountOnServer {
+//            self.handleResponse(statusType: DataFetchFramework.END_OF_DATA, result: "" as AnyObject)
+//        } else {
             if self.dataSource != DataSource.SERVER && isTimeExpired() {
                 isExistingDataDirty = true
                 offsetServer = 0
@@ -166,7 +166,7 @@ class DataFetchFramework {
                 
                 self.handleResponse(statusType: statusType, result: result)
             })
-        }
+    //    }
     }
     
     func handleResponse(statusType: String, result: AnyObject) {

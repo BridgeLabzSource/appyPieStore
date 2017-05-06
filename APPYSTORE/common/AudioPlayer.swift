@@ -36,7 +36,6 @@ import UIKit
     
     @IBOutlet weak var playView: UIView!
     
-        
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialise()
@@ -53,5 +52,22 @@ import UIKit
         addSubview(rootView)
         rootView.frame = self.bounds
     }
-
+    
+    @IBAction func audioPlayPrev(_ sender: Any)
+    {
+        
+        
+    }
+    
+    @IBAction func audioPlayPause(_ sender: Any)
+    {
+        
+        
+    }
+    
+    @IBAction func audioPlayNext(_ sender: Any)
+    {
+        
+        
+    }
 }

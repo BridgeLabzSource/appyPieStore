@@ -147,6 +147,15 @@ class HttpRequestBuilder: NSObject {
                 CONTENT_TYPE:"videos"]
     }
     
+    static func getAudioCategoryParameters() -> Parameters
+    {
+        return [METHOD:"getCategoryList",
+                LIMIT_START:"20",
+                AGE:"2",
+                INCL_AGE:"0",
+                CONTENT_TYPE:"audio"]
+    }
+
     static func getVideoListingParameters(method: String, contentType: String, offset: String, limit: String, catId: String, pCatId: String, age: String, inclAge: String, pageId: String) -> Parameters
     {
         return [METHOD: method,
@@ -161,6 +170,20 @@ class HttpRequestBuilder: NSObject {
         ]
     }
     
+    static func getAudioListingParameters(method: String, contentType: String, offset: String, limit: String, catId: String, pCatId: String, age: String, inclAge: String, pageId: String) -> Parameters
+    {
+        return [METHOD: method,
+                CONTENT_TYPE: contentType,
+                OFFSET: offset,
+                LIMIT: limit,
+                CATID: catId,
+                PCATID: pCatId,
+                AGE: age,
+                INCL_AGE: inclAge,
+                PAGEID: pageId
+        ]
+    }
+
 
     static func getRecommendedVideoListingParameters(method: String, contentType: String, offset: String, limit: String, catId: String, pCatId: String, contentId: String, sequenceType: String, sequenceNumber: String, age: String, inclAge: String, returnedContentType: String, pageId: String, flagItemAtFirstPosition: String) -> Parameters {
         

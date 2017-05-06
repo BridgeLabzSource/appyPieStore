@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AudioCategoryCard: UICollectionViewCell {
+class AudioCategoryCard: BaseCard {
 
     @IBOutlet weak var rootView: UIView!
     
@@ -19,5 +19,31 @@ class AudioCategoryCard: UICollectionViewCell {
     @IBOutlet weak var lblCount: UILabel!
     
     @IBOutlet weak var imgAudio: UIImageView!
+
+    var radius: CGFloat!
+    
+    override func awakeFromNib() {
+        radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 64))
+      
+        viewInfoContainer.layer.cornerRadius = radius
+        viewInfoContainer.clipsToBounds = true
+        
+        rootView.layer.cornerRadius = radius
+        rootView.clipsToBounds = true
+        
+        imgLogo.layer.cornerRadius = radius
+        imgLogo.clipsToBounds = true
+        
+        DimensionManager.setTextSize1280x720(label: lblCount, size: DimensionManager.H3)
+        
+        showShadowRightBottom()
+    }
+    
+    override func fillCard(model: BaseModel) {
+        let audioCategoryModel = model as! AudioCategoryModel
+        let imageUrl = URL(string: audioCategoryModel.imagePath)
+        imgLogo.sd_setImage(with: imageUrl, placeholderImage:#imageLiteral(resourceName: "profile") )
+        lblCount.text = audioCategoryModel.contentCount
+    }
 
 }

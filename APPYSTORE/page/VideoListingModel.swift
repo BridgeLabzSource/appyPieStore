@@ -18,7 +18,7 @@ class VideoListingModel: BaseModel{
     //TODO itemRC to be removed after verification
     public var itemRC = [-1,-1]
     public var childId = ""
-    public var count=""
+    public var count = ""
     //TODO contentTypeId and contentId Diff???
     public var contentTypeId = ""
     public var contentId = ""
@@ -36,6 +36,5 @@ class VideoListingModel: BaseModel{
     public var isVideoDownloadable:Bool = true
     public var isSelected:Bool = false
     public var canonicalName = ""
-    
     
 }

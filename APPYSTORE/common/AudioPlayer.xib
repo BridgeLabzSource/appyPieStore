@@ -117,6 +117,9 @@
                                 <constraint firstAttribute="width" secondItem="Fci-zD-BI1" secondAttribute="height" multiplier="1:1" id="asH-Pw-jZf"/>
                             </constraints>
                             <state key="normal" backgroundImage="video_control_backward"/>
+                            <connections>
+                                <action selector="audioPlayPrev:" destination="-1" eventType="touchUpInside" id="Fgm-od-44c"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cur-0K-1BI" userLabel="play">
                             <rect key="frame" x="369" y="25" width="95" height="95"/>
@@ -125,6 +128,9 @@
                                 <constraint firstAttribute="width" secondItem="cur-0K-1BI" secondAttribute="height" multiplier="1:1" id="iah-2u-FV5"/>
                             </constraints>
                             <state key="normal" backgroundImage="play"/>
+                            <connections>
+                                <action selector="audioPlayPause:" destination="-1" eventType="touchUpInside" id="VfY-ph-AmB"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sg-Ap-Gef" userLabel="nextPlay">
                             <rect key="frame" x="553" y="41" width="63" height="63"/>
@@ -133,6 +139,9 @@
                                 <constraint firstAttribute="width" secondItem="3Sg-Ap-Gef" secondAttribute="height" multiplier="1:1" id="yyf-5t-sVw"/>
                             </constraints>
                             <state key="normal" backgroundImage="video_control_forward"/>
+                            <connections>
+                                <action selector="audioPlayNext:" destination="-1" eventType="touchUpInside" id="JAN-20-f1b"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -168,7 +177,7 @@
                 <constraint firstItem="tSm-kh-uq6" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="544:720" id="x7A-Ca-nDy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-351" y="-753"/>
+            <point key="canvasLocation" x="-464" y="-843"/>
         </view>
     </objects>
     <resources>

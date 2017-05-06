@@ -12,15 +12,15 @@ class MainControllerUIDelegate {
     let mainController: MainController
     var fabButton: KCFloatingActionButton!
     
-//    
-//    lazy var AudioCategoryController: AudioCategoryController = {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let viewController = storyboard.instantiateViewController(withIdentifier: "AudioCategoryController") as! AudioCategoryController
-//        
-//        self.addAsChildViewController(childController: viewController)
-//        return viewController
-//    }()
-//    
+    
+    lazy var audioCategoryController: AudioCategoryController = {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "AudioCategoryController") as! AudioCategoryController
+        
+        self.addAsChildViewController(childController: viewController)
+        return viewController
+    }()
+    
     
     lazy var historyController: HistoryController = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -64,6 +64,7 @@ class MainControllerUIDelegate {
     func setButtonsClickLstener() {
         mainController.topView.btnBack.addTarget(self, action: #selector(handleBackButtonClick), for: .touchUpInside)
         mainController.topView.btnVideo.addTarget(self, action: #selector(showVideoCategoryPage), for: .touchUpInside)
+        mainController.topView.btnAudio.addTarget(self, action: #selector(showAudioCategoryPage), for: .touchUpInside)
         mainController.topView.btnHistory.addTarget(self, action: #selector(showHistoryPage), for: .touchUpInside)
         mainController.topView.btnSearch.addTarget(self, action: #selector(handleSearchButtonClick), for: .touchUpInside)
     }
@@ -89,6 +90,15 @@ class MainControllerUIDelegate {
             removeChildController(childController: mainController.getCurrentViewController())
             videoCategoryController.view.isHidden = false
             mainController.childControllersList?.append(videoCategoryController)
+        }
+    }
+    
+    
+    @objc func showAudioCategoryPage() {
+        if !(mainController.getCurrentViewController() is AudioCategoryController) {
+            removeChildController(childController: mainController.getCurrentViewController())
+            audioCategoryController.view.isHidden = false
+            mainController.childControllersList?.append(audioCategoryController)
         }
     }
     
@@ -140,11 +150,12 @@ class MainControllerUIDelegate {
         childController.mainControllerCommunicator = mainController
     }
     
-    func removeChildController(childController: UIViewController?) {
+    func removeChildController(childController: UIViewController?){
         if  childController != nil {
-            if childController is VideoCategoryController || childController is HistoryController{
-                childController?.view.isHidden = true
-            } else {
+            if childController is VideoCategoryController || childController is HistoryController || childController is AudioCategoryController
+                {
+                    childController?.view.isHidden = true
+                } else {
                 childController?.willMove(toParentViewController: nil)
                 childController?.view.removeFromSuperview()
                 childController?.removeFromParentViewController()

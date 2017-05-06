@@ -17,7 +17,6 @@ class HttpConnection: NSObject{
     static let RESPONSECODE_REQUESTABORT = "210"
     static let RESPONSECODE_REQUESTFAILED = "211"
     
-    
     static let RESPONSECODE_API_KEY_MISSING = "405"
     static let RESPONSECODE_INVALID_API_KEY = "406"
     static let RESPONSECODE_SERVER_ERROR = "500"
@@ -30,12 +29,9 @@ class HttpConnection: NSObject{
     static let RESPONSE_REQUESTABORT = "abort"
     static let RESPONSE_REQUESTFAILED = "failed"
     
-    
-    
-    
     static func post(url: String, params: Parameters, headers: HTTPHeaders, completion:@escaping (_ response: DataResponse<Any>) -> Void) {
         
-        //  print("url:\(url) \n params:\(params) \n headers:\(headers)")
+          print("url:\(url) \n params:\(params) \n headers:\(headers)")
         print("Ganesh : url: \(url) \n params: \(params)")
         Alamofire.request(url, parameters: params, headers: headers).responseJSON{ (response) in
             completion(response)

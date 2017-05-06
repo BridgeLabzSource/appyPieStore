@@ -10,7 +10,6 @@ import UIKit
 
 class AudioListingCard: UICollectionViewCell
 {
-
     @IBOutlet weak var imgThumbnail: UIImageView!
     
     @IBOutlet weak var songIcon: UIImageView!

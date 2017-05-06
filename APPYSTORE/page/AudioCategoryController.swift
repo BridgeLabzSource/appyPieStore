@@ -7,38 +7,71 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
+import Alamofire
+import SwiftyJSON
 
-class AudioCategoryController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
-    var array = [#imageLiteral(resourceName: "search"),#imageLiteral(resourceName: "cartoon"),#imageLiteral(resourceName: "cartoon"),#imageLiteral(resourceName: "cartoon")]
+class AudioCategoryController: BaseListingViewController {
     
-    override func viewDidLoad()
-    {
+    let url = "http://www.appystore.in/appy_app/appyApi_handler.php?"
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        var bundle = [String: Any]()
+//        let audioCategoryModel = dataFetchFramework?.contentList[indexPath.row] as! AudioCategoryModel
+//        bundle[BundleConstants.CATEGORY_ID] = audioCategoryModel.categoryId
+//        bundle[BundleConstants.PARENT_CATEGORY_ID] = audioCategoryModel.parentCategoryId
+//        bundle[BundleConstants.CATEGORY_NAME] = audioCategoryModel.categoryName
+//        NavigationManager.openVideoListingPage(mainControllerCommunicator: mainControllerCommunicator, bundle: bundle)
+    }
+    
+    override func getDataSource() -> DataSource {
+        return DataSource.SERVER
+    }
+    
+    
+    override internal func getPageName() -> String {
+        return PageConstants.AUDIO_CATEGORY_PAGE
+    }
+    
+    override func viewDidLoad() {
+        dataFetchFramework = DataFetchFramework(pageName: getPageName(), pageUniqueId: "",  bundle: bundle)
+    //    dataFromServer()
+
         super.viewDidLoad()
-        let nib = UINib(nibName: "AudioCategoryCard", bundle: nil)
-        collectionView?.register(nib, forCellWithReuseIdentifier: "Cell")
     }
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+    override func registerCard() {
+        self.collectionView.register(UINib(nibName: "AudioCategoryCard", bundle: nil), forCellWithReuseIdentifier: "AudioCategoryCard")
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return array.count
+    override func getCell(indexPath: IndexPath) -> BaseCard {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "AudioCategoryCard", for: indexPath) as! BaseCard
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! AudioCategoryCard
-    //   cell.imgLogo.image = array[indexPath.row]
- 
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    override func getComponentProperties() -> ComponentProperties {
+        let components = ComponentProperties()
+        components.visibleIconsSet = [Item.IV_CHILD, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_SEARCH]
         
-        let height = (self.collectionView?.frame.height)! - 16
-        let width = height * 0.733 //aspect ratio 264/360
+        return components
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: width, height: height)
+                let height = (self.collectionView?.frame.height)! - 16
+                let width = height * 0.733 //aspect ratio 264/360
+        
+                return CGSize(width: width, height: height)
+            }
+    
+    func dataFromServer()
+    {
+        Alamofire.request(url, parameters: HttpRequestBuilder.getAudioCategoryParameters(), headers: HttpRequestBuilder.getHeaders()).responseJSON{ (response) in
+            
+            if let hasData = response.data
+            {
+               let jsonData = JSON(data: hasData)
+               print(jsonData)
+            }
+        }
     }
 }

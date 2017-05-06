@@ -12,6 +12,7 @@ import NVActivityIndicatorView
 class BaseListingViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet var collectionView: UICollectionView!
+    
     var dataFetchFramework: DataFetchFramework?
     let CARD_HEIGHT: CGFloat = 384 - 32
     
@@ -46,6 +47,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     func registerCard() {
         self.collectionView.register(UINib(nibName: "VideoListingCard", bundle: nil), forCellWithReuseIdentifier: "VideoListingCard")
     }
+
     
     //to be overridden if required
     func getDataSource() -> DataSource{

@@ -32,6 +32,14 @@ class NavigationManager {
         viewController.mainControllerCommunicator = mainControllerCommunicator
         mainControllerCommunicator?.addChild(controller: viewController)
     }
+    /////////////
+    static func openAudioCategoryPage(mainControllerCommunicator: MainControllerCommunicator) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "AudioCategoryController") as! AudioCategoryController
+        viewController.mainControllerCommunicator = mainControllerCommunicator
+        mainControllerCommunicator.addChild(controller: viewController)
+    }
+    ////////////////////
     
     static func openHistoryPage(mainControllerCommunicator: MainControllerCommunicator) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

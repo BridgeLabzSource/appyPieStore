@@ -26,21 +26,21 @@
                     <rect key="frame" x="0.0" y="0.0" width="303" height="363"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cartoon" translatesAutoresizingMaskIntoConstraints="NO" id="kYG-9F-rdP">
-                            <rect key="frame" x="8.5" y="7.5" width="282.5" height="348"/>
+                            <rect key="frame" x="9" y="8" width="282" height="347"/>
                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5tQ-j8-sSn" userLabel="lowerLeftView">
-                            <rect key="frame" x="183.5" y="243.5" width="119.5" height="119.5"/>
+                            <rect key="frame" x="184" y="244" width="119" height="119"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="148" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7DK-nT-71G" userLabel="label count">
-                                    <rect key="frame" x="0.0" y="0.0" width="119.5" height="56"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="119" height="55"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" name="KGMissKindyChunky" family="KG Miss Kindy Chunky" pointSize="30"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category_audio_media_type" translatesAutoresizingMaskIntoConstraints="NO" id="ECO-n1-Ngg">
-                                    <rect key="frame" x="27.5" y="56" width="55.5" height="36"/>
+                                    <rect key="frame" x="28" y="55" width="54" height="37"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </imageView>
                             </subviews>
@@ -70,7 +70,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="ROv-wA-tOm" secondAttribute="bottom" id="3f4-kN-oaS"/>
                 <constraint firstItem="ROv-wA-tOm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LZs-2Y-Bh1"/>

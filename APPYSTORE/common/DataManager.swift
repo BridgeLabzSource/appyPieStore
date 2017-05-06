@@ -27,6 +27,13 @@ class DataManager: NSObject {
                 
                 returndata(statusType, result!)
             })
+       
+        case PageConstants.AUDIO_CATEGORY_PAGE:
+            AudioCategoryParser().parse(params: HttpRequestBuilder.getAudioCategoryParameters(), completion:{
+                statusType, result in
+                
+                returndata(statusType, result!)
+            })
             
         case PageConstants.VIDEO_LISTING_PAGE:
             VideoListingParser().parse(params: HttpRequestBuilder.getVideoListingParameters(method: "getContentList", contentType: "videos", offset: String(offset), limit: String(limit), catId: bundle?[BundleConstants.CATEGORY_ID] as! String, pCatId: bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String, age: "1", inclAge: "1", pageId: "videos"), completion:{
@@ -71,6 +78,9 @@ class DataManager: NSObject {
         case PageConstants.VIDEO_CATEGORY_PAGE:
             dataList = VideoDBManager().fetchAll()
             
+        case PageConstants.AUDIO_CATEGORY_PAGE:
+            dataList = AudioDBManager().fetchAll()
+            
         case PageConstants.VIDEO_LISTING_PAGE:
             dataList = VideoListingDBManager().fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: bundle)
         case PageConstants.SEARCH_TAGS_PAGE:
@@ -89,6 +99,10 @@ class DataManager: NSObject {
             count = HistoryDBManager().getRowCount()
         case PageConstants.VIDEO_CATEGORY_PAGE:
             count = VideoDBManager().getRowCount()
+            
+        case PageConstants.AUDIO_CATEGORY_PAGE:
+            count = AudioDBManager().getRowCount()
+            
         case PageConstants.VIDEO_LISTING_PAGE:
             count = VideoListingDBManager().getRowCount(bundle: bundle)
         case PageConstants.SEARCH_TAGS_PAGE:
@@ -107,6 +121,10 @@ class DataManager: NSObject {
             HistoryDBManager().removeAll(bundle: bundle)
         case PageConstants.VIDEO_CATEGORY_PAGE:
             VideoDBManager().removeAll(bundle: bundle)
+            
+        case PageConstants.AUDIO_CATEGORY_PAGE:
+            VideoDBManager().removeAll(bundle: bundle)
+            
         case PageConstants.VIDEO_LISTING_PAGE:
             VideoListingDBManager().removeAll(bundle: bundle)
         case PageConstants.SEARCH_TAGS_PAGE:
@@ -146,6 +164,10 @@ class DataManager: NSObject {
             dataFetchTimePrefKey = PageConstants.KEY_HISTORY_DATA_FETCH_TIME + pageUniqueId
         case PageConstants.VIDEO_CATEGORY_PAGE:
             dataFetchTimePrefKey = PageConstants.KEY_VIDEO_CATEGORY_DATA_FETCH_TIME + pageUniqueId
+        
+        case PageConstants.AUDIO_CATEGORY_PAGE:
+            dataFetchTimePrefKey = PageConstants.KEY_AUDIO_CATEGORY_DATA_FETCH_TIME + pageUniqueId
+            
         case PageConstants.VIDEO_LISTING_PAGE:
             dataFetchTimePrefKey = PageConstants.KEY_VIDEO_LISTING_DATA_FETCH_TIME + pageUniqueId
         case PageConstants.SEARCH_TAGS_PAGE:
@@ -165,6 +187,12 @@ class DataManager: NSObject {
             offsetServerPrefKey = PageConstants.KEY_HISTORY_SERVER_OFFSET + pageUniqueId
         case PageConstants.VIDEO_CATEGORY_PAGE:
             offsetServerPrefKey = PageConstants.KEY_VIDEO_CATEGORY_SERVER_OFFSET + pageUniqueId
+            
+            
+        case PageConstants.AUDIO_CATEGORY_PAGE:
+            offsetServerPrefKey = PageConstants.KEY_AUDIO_CATEGORY_SERVER_OFFSET + pageUniqueId
+            
+            
         case PageConstants.VIDEO_LISTING_PAGE:
             offsetServerPrefKey = PageConstants.KEY_VIDEO_LISTING_SERVER_OFFSET + pageUniqueId
         case PageConstants.SEARCH_TAGS_PAGE:
@@ -183,6 +211,10 @@ class DataManager: NSObject {
             totalCountPrefKey = PageConstants.KEY_HISTORY_TOTAL_CONTENT_COUNT + pageUniqueId
         case PageConstants.VIDEO_CATEGORY_PAGE:
             totalCountPrefKey = PageConstants.KEY_VIDEO_CATEGORY_TOTAL_CONTENT_COUNT + pageUniqueId
+            
+        case PageConstants.AUDIO_CATEGORY_PAGE:
+            totalCountPrefKey = PageConstants.KEY_AUDIO_CATEGORY_TOTAL_CONTENT_COUNT + pageUniqueId
+            
         case PageConstants.VIDEO_LISTING_PAGE:
             totalCountPrefKey = PageConstants.KEY_VIDEO_LISTING_TOTAL_CONTENT_COUNT + pageUniqueId
         case PageConstants.SEARCH_TAGS_PAGE:
