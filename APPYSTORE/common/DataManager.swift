@@ -40,7 +40,7 @@ class DataManager: NSObject {
             print("Recommended data \(bundle?.count)")
             print("Recommended data \(bundle?.keys)")
             print("Recommended data \(bundle?.values)")
-            RecommendedVideoParser().parse(params: HttpRequestBuilder.getRecommendedVideoListingParameters(offset: String(offset), limit: String(limit), catId: bundle?[BundleConstants.CATEGORY_ID] as! String, pCatId: bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String, contentId: bundle?[BundleConstants.CONTENT_ID] as! String, sequenceType: bundle?[BundleConstants.SEQUENCE_TYPE] as! String, sequenceNumber: bundle?[BundleConstants.SEQUENCE_NUMBER] as! String), completion: {
+            RecommendedVideoParser().parse(params: HttpRequestBuilder.getRecommendedVideoListingParameters(offset: String(offset), limit: String(limit), catId: bundle?[BundleConstants.CATEGORY_ID] as! String, pCatId: bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String, contentId: bundle?[BundleConstants.CONTENT_ID] as! String, sequenceType: bundle?[BundleConstants.SEQUENCE_TYPE] as! String, sequenceNumber: bundle?[BundleConstants.SEQUENCE_NUMBER] as! String,lastContentId: bundle?[BundleConstants.LAST_CONTENT_ID] as? String ?? ""), completion: {
                 statusType, result in
                 
                 returndata(statusType, result!)

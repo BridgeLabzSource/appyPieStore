@@ -40,6 +40,7 @@ class BundleConstants: NSObject {
     static let DO_LOGOUT_AFTER_LOGIN = "DO_LOGOUT_AFTER_LOGIN"
     static let CONTENT_NAME = "CONTENT_NAME"
     static let CONTENT_ID = "CONTENT_ID"
+    static let LAST_CONTENT_ID = "LAST_CONTENT_ID"
     static let CANONICAL_CONTENT_NAME = "CANONICAL_CONTENT_NAME"
     static let CHILD_MIN_AGE = "gn_min_age"
     static let CHILD_MAX_AGE = "gn_max_age"

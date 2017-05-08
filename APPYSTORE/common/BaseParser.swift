@@ -23,10 +23,11 @@ class BaseParser: NSObject {
         
         self.params = params
         
-        HttpConnection.post(url: self.url, params: params,
-                            completion: { response in
-                
+        HttpConnection.post(url: self.url, params: params, completion: { response in
+            
             let strongSelf = self
+            print("BaseParser Request params : \(params)")
+            print("BaseParser Request headers : \(HttpRequestBuilder.getHeaders())")
             if response.result.error != nil {
                 completion(BaseParser.CONNECTION_ERROR, nil)
             } else {

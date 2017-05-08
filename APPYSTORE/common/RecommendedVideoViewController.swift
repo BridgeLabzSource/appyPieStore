@@ -26,13 +26,17 @@ class RecommendedVideoViewController: BaseListingViewController {
             bundle1[BundleConstants.CONTENT_ID] = listingModel.contentId
             bundle1[BundleConstants.SEQUENCE_TYPE] = listingModel.sequenceType
             bundle1[BundleConstants.SEQUENCE_NUMBER] = listingModel.sequenceNumber
+            bundle1[BundleConstants.LAST_CONTENT_ID] = ""
         
         
-        
-        dataFetchFramework = DataFetchFramework(pageName: PageConstants.RECOMMENDED_VIDEO_LISTING_PAGE, pageUniqueId: "20087824", bundle: bundle1)
+        dataFetchFramework = DataFetchFramework(pageName: PageConstants.RECOMMENDED_VIDEO_LISTING_PAGE, pageUniqueId: getPageNameUniqueIdentifier(), bundle: bundle1)
         
         super.viewDidLoad()
         
+    }
+    
+    override internal func getPageNameUniqueIdentifier() -> String {
+        return ""
     }
     
     override func getPageName() -> String {
@@ -47,6 +51,19 @@ class RecommendedVideoViewController: BaseListingViewController {
         return collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendedVideoCard", for: indexPath) as! BaseCard
     }
     
+    override func loadData() {
+        let count = dataFetchFramework?.contentList.count ?? -1
+        
+        if count > 0 {
+            if let model = dataFetchFramework?.contentList[count - 1] as? VideoListingModel {
+                dataFetchFramework?.updateBundle(keys: [BundleConstants.LAST_CONTENT_ID], values: [model.contentId])
+            }
+        } else {
+            dataFetchFramework?.updateBundle(keys: [BundleConstants.LAST_CONTENT_ID], values: [listingModel.contentId])
+        }
+        super.loadData()
+        
+    }
     /*
      
      let singleTapPlay = UITapGestureRecognizer(target: self, action: #selector(RecommendedVideoViewController.imageClick))

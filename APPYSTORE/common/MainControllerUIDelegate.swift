@@ -23,7 +23,7 @@ class MainControllerUIDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "HistoryController") as! HistoryController
         
-        self.addAsChildViewController(childController: viewController, area: nil)
+        //self.addAsChildViewController(childController: viewController, area: nil)
         return viewController
     }()
     
@@ -113,8 +113,17 @@ class MainControllerUIDelegate {
         
         if !(mainController.getCurrentViewController() is HistoryController) {
             removeChildController(childController: mainController.getCurrentViewController())
+            
+            // first time viewWillAppear gets called automatically,
+            // but not from second time onwards, hence calling manually
+            if historyController.isViewLoaded {
+                historyController.viewWillAppear(false)
+            }
+            
+            self.addAsChildViewController(childController: historyController, area: nil)
             historyController.view.isHidden = false
             mainController.childControllersList?.append(historyController)
+            
         }
     }
     

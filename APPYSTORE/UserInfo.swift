@@ -19,7 +19,10 @@ class UserInfo: NSObject, NSCopying, NSCoding{
     
     static func getInstance() -> UserInfo{
         if instance == nil {
-            instance = UserInfo()
+            UserInfo.getUserInfoFromUserDefaultsAndUpdateInstance()
+            if instance == nil {
+                instance = UserInfo()
+            }
         }
         
         return instance!
@@ -179,7 +182,7 @@ class UserInfo: NSObject, NSCopying, NSCoding{
         Prefs.getInstance()?.setUserInfo(value: self)
     }
     
-    func getUserInfoFromUserDefaultsAndUpdateInstance() {
+    static func getUserInfoFromUserDefaultsAndUpdateInstance() {
         UserInfo.instance = Prefs.getInstance()?.getUserInfo()
     }
 }

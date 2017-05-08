@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import SwiftyJSON
+import Alamofire
 
 enum PlayerState {
     case PLAY
@@ -71,6 +72,51 @@ protocol VideoDelegate {
     }
     
     func replaceVideo(playerModel: VideoListingModel) {
+        videoModel = playerModel
+        pause()
+        self.unregisteredPlayerItemListener()
+        resetPlayerItem()
+        
+        showVideoThumbnail()
+        if playerModel.payType == "paid" {
+            updateState(state: .LOCK)
+            return
+        }
+        
+        updateState(state: .BUFFERING_START)
+        print("BUFFERING_START replaceVideo")
+        delegate?.onTaskStarted()
+        
+        let url = URL(string: playerModel.downloadUrl)
+        Alamofire.request(url!, parameters: nil, headers: HttpRequestBuilder.getHeaders()).response{ response in
+            
+            Prefs.getInstance()?.setHistoryPageToBeForceRefreshed(forceRefresh: true)
+            print("VideoPlayer : url response: \(response)")
+            print("VideoPlayer : response url \(response.response?.url)")
+            
+            self.delegate?.onTaskCompleted()
+            self.hideVideoThumbnail()
+            
+            self.updateState(state: .BUFFERING_END)
+            if response.response?.statusCode == 200 {
+                print("replaceVideo = \(response.response?.url)")
+                self.unregisteredPlayerItemListener()
+                let url = response.response?.url
+                let playerItem = AVPlayerItem(url: url! as URL)
+                self.avPlayer?.replaceCurrentItem(with: playerItem)
+                self.play()
+                self.registerPlayerItemListener()
+                self.updateTotalDuration()
+            } else if response.error != nil {
+                print("Api request error")
+                self.showVideoThumbnail()
+                self.updateState(state: .PAUSE)
+            }
+            
+        }
+    }
+    
+    func replaceVideo1(playerModel: VideoListingModel) {
         videoModel = playerModel
         print("replaceVideo type = \(playerModel.payType)")
         
