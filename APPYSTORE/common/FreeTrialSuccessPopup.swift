@@ -13,7 +13,8 @@ class FreeTrialSuccessPopup: BasePopUpController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showTitleStackView()
+        showTitleLabel()
+        showContentImage()
         
         setValues()
         setSpacing()
@@ -22,9 +23,14 @@ class FreeTrialSuccessPopup: BasePopUpController {
     
     func setValues() {
         setTitleTextLabel("Your 15 day FREE trial has started!")
+        setImageContent(UIImage(named: "trial_success")!)
     }
     
     func setSpacing() {
         setContentTopSpacing()
+    }
+    
+    override func crossButtonClick() {
+        mainControllerCommunicator?.performBackButtonClick(self)
     }
 }

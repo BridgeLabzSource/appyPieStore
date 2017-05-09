@@ -37,7 +37,9 @@ class VideoListingController: BaseListingViewController {
         print("VideoListingController : select video \(videoListingModel.title)")
         
         if videoListingModel.payType == "paid" {
-            NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!)
+            var bundle = [String: Any]()
+            //NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
+            NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
         } else {
             NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: videoListingModel)
         }

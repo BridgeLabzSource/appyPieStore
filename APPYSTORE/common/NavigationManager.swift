@@ -95,11 +95,12 @@ class NavigationManager {
         mainControllerCommunicator.addChild(controller: subclassObject, area: .FULL)
     }
     
-    static func openTrialPopUp(mainControllerCommunicator: MainControllerCommunicator) {
+    static func openTrialPopUp(mainControllerCommunicator: MainControllerCommunicator, bundle : AndroidBundle) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "FreeTrialController") as! BasePopUpController
         
         object_setClass(viewController, FreeTrialPopUp.self)
+        viewController.bundle = bundle
         viewController.mainControllerCommunicator = mainControllerCommunicator
         let subclassObject = viewController as! FreeTrialPopUp
         mainControllerCommunicator.addChild(controller: subclassObject, area: .FULL)

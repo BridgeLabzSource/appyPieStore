@@ -47,8 +47,9 @@ class HistoryController: BaseListingViewController {
         print("HistoryController : select video \(videoListingModel.title)")
         
         if !AuthenticationUtil.isSubscribedUser() && videoListingModel.payType == "paid" {
+            var bundle = [String: Any]()
             if UserInfo.getInstance().isDeviceEligibleForTrialSubscription {
-                NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!)
+                NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
             }
             
         } else {

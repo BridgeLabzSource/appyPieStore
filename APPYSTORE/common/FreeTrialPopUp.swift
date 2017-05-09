@@ -10,17 +10,18 @@ import UIKit
 import Toaster
 
 class FreeTrialPopUp: BasePopUpController {
+    var mobileNumber = ""
     let trialAlreadySubscribedMessage = "Dear User, you are already a subscriber."
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mobileNumber = bundle?[BundleConstants.MOBILE_NUMBER] as? String ?? ""
         showTitleLabel()
         showSubTitleLabel()
         showCenterEditText()
         showFirstButton()
         showSecondButton()
-        //showBottomLabelOne()
-        showBottomTextView()
+        //showBottomTextView()
         setValues()
     }
     
@@ -29,7 +30,9 @@ class FreeTrialPopUp: BasePopUpController {
         setSubTitleTextLabel("Give your mobile number to unlock all videos")
         setFirstButtonTextLabel("No Thanks")
         setSecondButtonTextLabel("Start Trial")
-        setBottomTextView("privacy statement: We don't share your mobile number with anyone", "")
+        //setBottomTextView("privacy statement: We don't share your mobile number with anyone", "")
+        setCenterEditTextValue(mobileNumber)
+        setCenterEditTextPlaceholder("Enter your mobile number")
 
     }
     
@@ -44,11 +47,17 @@ class FreeTrialPopUp: BasePopUpController {
     override func secondButtonClick() {
         // show otp screen
         let mobileNo = centerEditText.text!
+        
+        if mobileNo.characters.count != 10 {
+            Toast(text: "Please enter valid mobile number").show()
+            return
+        }
+        showProgress()
         FreeTrialParser().parse(params: HttpRequestBuilder.getOtpRequestParameters(method: FreeTrialParser.METHOD_NAME, msisdn: mobileNo, smmKey: "appyt-f", androidId: HttpRequestBuilder.ANDROID_ID_VALUE, imei: HttpRequestBuilder.IMEI_VALUE), completion: {
             statusType, result in
             
             print("FreeTrialPopUp \(result)")
-            
+            self.hideProgress()
             if statusType == BaseParser.REQUEST_SUCCESS {
                 let model = result as! TrialResponseModel
                 print("FreeTrialPopUp user_id  \(model.userId)")
@@ -60,11 +69,13 @@ class FreeTrialPopUp: BasePopUpController {
                 bundle[BundleConstants.MOBILE_NUMBER] = mobileNo
                 //bundle[BundleConstants.OTP] = model.otp
                 bundle[BundleConstants.TRIAL_RESPONSE_MODEL] = model
+                self.mainControllerCommunicator?.performBackButtonClick(self)
                 NavigationManager.openOtpPopUp(mainControllerCommunicator: self.mainControllerCommunicator, bundle: bundle)
                 Toast(text: "Success").show()
             } else if statusType == BaseParser.USER_ALREADY_SUBSCRIBED {
                 self.mainControllerCommunicator?.performBackButtonClick(self)
                 // call login api
+                NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
                 self.callLoginFunction(mobileNo: mobileNo)
                 Toast(text: result as? String).show()
             } else if statusType == BaseParser.REQUEST_FAILURE {
@@ -115,7 +126,7 @@ class FreeTrialPopUp: BasePopUpController {
                         self.mainControllerCommunicator?.refreshAllPages()
                     }
                     
-                    self.mainControllerCommunicator?.performBackButtonClick(self)
+                    //self.mainControllerCommunicator?.performBackButtonClick(self)
                     Toast(text: "Show success Popup").show()
                 }
                 
@@ -127,4 +138,15 @@ class FreeTrialPopUp: BasePopUpController {
         })
     }
     
+    override func showProgress() {
+        super.showProgress()
+        hideFirstButton()
+        hideSecondButton()
+    }
+    
+    override func hideProgress() {
+        super.hideProgress()
+        showFirstButton()
+        showSecondButton()
+    }
 }
