@@ -20,6 +20,12 @@
 		0A80DA221E702CA500939443 /* TopBarOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80DA211E702CA500939443 /* TopBarOverlay.swift */; };
 		0A80DA241E702CC100939443 /* BottomBarOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A80DA231E702CC100939443 /* BottomBarOverlay.xib */; };
 		0A80DA261E702DA700939443 /* BottomBarOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80DA251E702DA700939443 /* BottomBarOverlay.swift */; };
+		0A8991381EC20E7C00C200BC /* ChildProgress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A8991371EC20E7C00C200BC /* ChildProgress.storyboard */; };
+		0A89913E1EC20E9900C200BC /* ChildProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8991391EC20E9900C200BC /* ChildProgressCell.swift */; };
+		0A89913F1EC20E9900C200BC /* ChildProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89913A1EC20E9900C200BC /* ChildProgress.swift */; };
+		0A8991401EC20E9900C200BC /* ChildProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89913B1EC20E9900C200BC /* ChildProgressController.swift */; };
+		0A8991411EC20E9900C200BC /* ChildProgressCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89913C1EC20E9900C200BC /* ChildProgressCollectionView.swift */; };
+		0A8991421EC20E9900C200BC /* ChildProgress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A89913D1EC20E9900C200BC /* ChildProgress.xib */; };
 		0A8A58A61E683F2100A93DD2 /* VideoCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8A58A51E683F2100A93DD2 /* VideoCategoryController.swift */; };
 		0A8F790A1E6971D300720DB8 /* VideoCategoryCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A8F79091E6971D300720DB8 /* VideoCategoryCard.xib */; };
 		0A8F790C1E6971FD00720DB8 /* VideoCategoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F790B1E6971FD00720DB8 /* VideoCategoryCard.swift */; };
@@ -158,6 +164,12 @@
 		0A80DA211E702CA500939443 /* TopBarOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarOverlay.swift; sourceTree = "<group>"; };
 		0A80DA231E702CC100939443 /* BottomBarOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomBarOverlay.xib; sourceTree = "<group>"; };
 		0A80DA251E702DA700939443 /* BottomBarOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomBarOverlay.swift; sourceTree = "<group>"; };
+		0A8991371EC20E7C00C200BC /* ChildProgress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChildProgress.storyboard; sourceTree = "<group>"; };
+		0A8991391EC20E9900C200BC /* ChildProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressCell.swift; sourceTree = "<group>"; };
+		0A89913A1EC20E9900C200BC /* ChildProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgress.swift; sourceTree = "<group>"; };
+		0A89913B1EC20E9900C200BC /* ChildProgressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressController.swift; sourceTree = "<group>"; };
+		0A89913C1EC20E9900C200BC /* ChildProgressCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressCollectionView.swift; sourceTree = "<group>"; };
+		0A89913D1EC20E9900C200BC /* ChildProgress.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildProgress.xib; sourceTree = "<group>"; };
 		0A8A58A51E683F2100A93DD2 /* VideoCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCategoryController.swift; sourceTree = "<group>"; };
 		0A8F79091E6971D300720DB8 /* VideoCategoryCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCategoryCard.xib; sourceTree = "<group>"; };
 		0A8F790B1E6971FD00720DB8 /* VideoCategoryCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCategoryCard.swift; sourceTree = "<group>"; };
@@ -393,6 +405,19 @@
 			name = customView;
 			sourceTree = "<group>";
 		};
+		0A8991361EC20E3A00C200BC /* childProgress */ = {
+			isa = PBXGroup;
+			children = (
+				0A8991371EC20E7C00C200BC /* ChildProgress.storyboard */,
+				0A8991391EC20E9900C200BC /* ChildProgressCell.swift */,
+				0A89913A1EC20E9900C200BC /* ChildProgress.swift */,
+				0A89913B1EC20E9900C200BC /* ChildProgressController.swift */,
+				0A89913C1EC20E9900C200BC /* ChildProgressCollectionView.swift */,
+				0A89913D1EC20E9900C200BC /* ChildProgress.xib */,
+			);
+			name = childProgress;
+			sourceTree = "<group>";
+		};
 		0AAD2EF01E5C48EF00B504A3 = {
 			isa = PBXGroup;
 			children = (
@@ -442,6 +467,7 @@
 		0AD5536D1E5DA958005ECA4A /* page */ = {
 			isa = PBXGroup;
 			children = (
+				0A8991361EC20E3A00C200BC /* childProgress */,
 				738EEE711EA4FEEF00A50038 /* loginAndRegistration */,
 				73754E091E9795F3001DD942 /* search */,
 				70A36E521E6160BD002B9296 /* history */,
@@ -633,6 +659,7 @@
 			files = (
 				0AAD2F0A1E5C48EF00B504A3 /* LaunchScreen.storyboard in Resources */,
 				7370B81D1E9DE2A400D91ABA /* RecommendedVideoCard.xib in Resources */,
+				0A8991381EC20E7C00C200BC /* ChildProgress.storyboard in Resources */,
 				739A82551EA9DF7B008F9001 /* ChildCard.xib in Resources */,
 				0A80DA241E702CC100939443 /* BottomBarOverlay.xib in Resources */,
 				73DA446E1EA6378500EF2C00 /* CrossButton.xib in Resources */,
@@ -645,6 +672,7 @@
 				70A36E4B1E614722002B9296 /* Assets.xcassets in Resources */,
 				0AAD2F021E5C48EF00B504A3 /* Main.storyboard in Resources */,
 				0A80DA201E702C5E00939443 /* TopBarOverlay.xib in Resources */,
+				0A8991421EC20E9900C200BC /* ChildProgress.xib in Resources */,
 				738C89CE1EA5D12C001C9724 /* Login.storyboard in Resources */,
 				73E0BA1F1EB88ADA00E2E34F /* PageData.plist in Resources */,
 			);
@@ -715,6 +743,7 @@
 				7370B8251E9E421300D91ABA /* BaseCard.swift in Sources */,
 				0A80DA221E702CA500939443 /* TopBarOverlay.swift in Sources */,
 				7392672B1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift in Sources */,
+				0A89913F1EC20E9900C200BC /* ChildProgress.swift in Sources */,
 				7365F3951E92612D006B3C75 /* MainController.swift in Sources */,
 				7371FA001E936898009241FF /* KCFloatingActionButton.swift in Sources */,
 				7371FA081E93AC53009241FF /* VideoPlayer.swift in Sources */,
@@ -742,10 +771,13 @@
 				7392A7881E94CEC700A6ED32 /* VideoListingDBManager.swift in Sources */,
 				73C346CC1EAF4BE000814054 /* FreeTrialSuccessPopup.swift in Sources */,
 				7371FA021E936898009241FF /* KCFloatingActionButtonItem.swift in Sources */,
+				0A8991411EC20E9900C200BC /* ChildProgressCollectionView.swift in Sources */,
 				73E0BA1D1EB85F9300E2E34F /* ChildInfoToAvatarModelAdapter.swift in Sources */,
 				7399063C1E8E38CE009501AD /* NavigationManager.swift in Sources */,
 				739DE0CF1EB1B40F00C4B73C /* FreeTrialParser.swift in Sources */,
+				0A8991401EC20E9900C200BC /* ChildProgressController.swift in Sources */,
 				0A65E2601E6EC11400F538B5 /* VideoCategoryParser.swift in Sources */,
+				0A89913E1EC20E9900C200BC /* ChildProgressCell.swift in Sources */,
 				0A72615F1E6D30600023883F /* UIColorExtension.swift in Sources */,
 				738EEE701EA4DD5300A50038 /* NavigationUtil.swift in Sources */,
 				707FD8181E7140A400948BEA /* Util.swift in Sources */,

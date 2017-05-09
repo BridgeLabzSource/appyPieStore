@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ChildProgress" customModule="APPYSTORE" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="176" height="240"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_launcher" translatesAutoresizingMaskIntoConstraints="NO" id="5Ay-Lt-5Sx" userLabel="chilld img">
+                    <rect key="frame" x="16" y="16" width="144" height="144"/>
+                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="5Ay-Lt-5Sx" secondAttribute="height" multiplier="1:1" id="hl1-4K-tuc"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="72"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amrit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcU-R7-hoC" userLabel="child name lbl">
+                    <rect key="frame" x="0.0" y="168" width="176" height="32"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 Year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXm-U1-Zou" userLabel="child age lbl">
+                    <rect key="frame" x="0.0" y="208" width="176" height="32"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="edQ-fh-ysn" userLabel="edit img">
+                    <rect key="frame" x="105" y="84" width="64" height="64"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="edQ-fh-ysn" secondAttribute="height" multiplier="1:1" id="Wmk-5A-pzq"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="TcU-R7-hoC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Oa-DC-MeJ"/>
+                <constraint firstItem="5Ay-Lt-5Sx" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="160:176" id="AxB-eF-kA1"/>
+                <constraint firstItem="hXm-U1-Zou" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="208:240" id="D8s-1K-Ibw"/>
+                <constraint firstItem="TcU-R7-hoC" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="200:240" id="JQn-Ns-xHd"/>
+                <constraint firstItem="5Ay-Lt-5Sx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="16:240" id="TwO-OU-qzD"/>
+                <constraint firstItem="edQ-fh-ysn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="92:240" constant="-8" id="Veh-v7-ptz"/>
+                <constraint firstItem="edQ-fh-ysn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="112:176" constant="-7" id="Yhk-Bi-aJS"/>
+                <constraint firstItem="hXm-U1-Zou" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="etU-dc-KaY"/>
+                <constraint firstItem="5Ay-Lt-5Sx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="16:176" id="ipp-Aj-enh"/>
+                <constraint firstAttribute="bottom" secondItem="hXm-U1-Zou" secondAttribute="bottom" id="l1Y-B8-oEG"/>
+                <constraint firstItem="TcU-R7-hoC" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="nT5-ga-OIx"/>
+                <constraint firstItem="edQ-fh-ysn" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="168:176" constant="1" id="rd9-Ly-fIt"/>
+                <constraint firstAttribute="trailing" secondItem="hXm-U1-Zou" secondAttribute="trailing" id="uyN-cp-uWj"/>
+                <constraint firstItem="TcU-R7-hoC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="168:240" id="x3P-Zm-dVH"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="childimg" destination="5Ay-Lt-5Sx" id="m5x-Q1-IKv"/>
+                <outlet property="editImg" destination="edQ-fh-ysn" id="ObD-gm-AMu"/>
+            </connections>
+            <point key="canvasLocation" x="-634" y="-383"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="edit" width="72" height="72"/>
+        <image name="ic_launcher" width="72" height="72"/>
+    </resources>
+</document>
