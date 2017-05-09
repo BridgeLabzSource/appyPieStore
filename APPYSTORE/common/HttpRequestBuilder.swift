@@ -61,6 +61,7 @@ class HttpRequestBuilder: NSObject {
     static let INCL_AGE = "incl_age"
 
     static let CONTENT_ID = "content_id"
+    static let LAST_CONTENT_ID = "last_content_id"
     static let FLAG_AT_ITEM_AT_FIRST_POSITION = "flag"
     static let SEQUENCE_TYPE = "sequence_type"
     static let SEQUENCE_NUMBER = "sequence_number"
@@ -70,69 +71,88 @@ class HttpRequestBuilder: NSObject {
     static let IGNORE_CAT_ID = "ignore_cat_id"
     static let IS_POPULAR = "is_popular"
     
-    static let MSISDN = "mo"
+    static let MO = "mo"
+    static let MSISDN = "msisdn"
     static let EMAILID = "userEmail"
     
+
+    static let SMM_KEY = "smm_key"
+    static let ANDROID_ID = "android_id"
+    static let IMEI = "imei"
+    
+
+    static let CHILD_NAME = "child_name"
+    static let CHILD_DOB = "child_dob"
+    static let CHILD_AVATAR_ID = "child_avtarid"
+    
+    //dummy values
+    static let IMEI_VALUE = "a5b9d7b7fe1425ea"
+    static let PCP_VALUE = "999"
+    static let CAMPAIGN_VALUE = "8700441600"
+    static let ANDROID_ID_VALUE = "a5b9d7b7fe1425ea5"
+    static let API_KEY_VALUE = "gh610rt23eqwpll"
+    static let USER_ID = "user_id"
+    static let OTP = "otp"
     
     static func getHeaders() -> HTTPHeaders {
         
         let headers: HTTPHeaders = [
-              X_APPY_CONTENT_TYPE:"application/x-www-from-urlencoded",
-               X_APPY_IMEI:"862188036890804",
-               X_APPY_PCP_ID:"999",
-               X_APPY_CAMPAIGN_ID:"8700441600",
-               X_APPY_USERID:"107105246",
-               X_APPY_UTYPE:"O",
+            X_APPY_CONTENT_TYPE:"application/x-www-from-urlencoded",
+               X_APPY_IMEI: IMEI_VALUE,
+               X_APPY_PCP_ID: PCP_VALUE,// get from userdefaults
+               X_APPY_CAMPAIGN_ID: CAMPAIGN_VALUE,
+               X_APPY_USERID: UserInfo.getInstance().id ?? "",//107105246
+               X_APPY_UTYPE: UserInfo.getInstance().type ?? "",
                X_APPY_UserAgent:"Mozilla/5.0 (Linux; Android 5.0.2; Panasonic ELUGA Switch Build/LRX22G; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/56.0.2924.87 Mobile Safari/537.36",
-               X_APPY_DEVICE_WIDTH:"1080",
-               X_APPY_DEVICE_HEIGHT:"1920",
-               X_APPY_ANDROID_ID:"13cfcb08de0d2e84",
-               X_APPY_API_KEY:"gh610rt23eqwpll",
-               X_APPY_CHILD_ID:"29518",
-               ACCEPT:"text/html,application/xhtml+xml,application/xml;q=0.9,*;q=0.8",
-               ACCEPT_ENCODING:"",
-               ACCEPT_LANGUAGE:"en-US,en;q=0.5",
-               X_APPY_CONN_TYPE:"w",
-               X_APPY_TINFO:"",
-               X_APPY_VISITOR_ID:"13cfcb08de0d2e84",
+               X_APPY_DEVICE_WIDTH: "\(AppDelegate.DEVICE_WIDTH)",
+               X_APPY_DEVICE_HEIGHT: "\(AppDelegate.DEVICE_HEIGHT)",
+               X_APPY_ANDROID_ID: ANDROID_ID_VALUE,
+               X_APPY_API_KEY: API_KEY_VALUE,
+               X_APPY_CHILD_ID: UserInfo.getInstance().selectedChild?.id ?? "",//29518
+               ACCEPT: "text/html,application/xhtml+xml,application/xml;q=0.9,*;q=0.8",
+               ACCEPT_ENCODING: "",
+               ACCEPT_LANGUAGE: "en-US,en;q=0.5",
+               X_APPY_CONN_TYPE: Utils.getNetworkConnectionType(),
+               X_APPY_TINFO: UserInfo.getInstance().tInfo ?? "",
+               X_APPY_VISITOR_ID: ANDROID_ID_VALUE,//13cfcb08de0d2e84
                X_APPY_OST:"",
-               X_APPY_USV:"",
-               X_APPY_REG_KEY:"abcd",
-               X_APPY_VERSION:"18",
-               X_APPY_VERSION_NAME:"1.0.7xx",
-               X_APPY_TTR:"10800000",
-               X_APPY_SESSION_ID:"abcd",
-               X_APPY_APP_TYPE:"lite",
+               X_APPY_USV: UserInfo.getInstance().usv ?? "",
+               X_APPY_REG_KEY: "abcd",// gcmregkey
+               X_APPY_VERSION: "18",
+               X_APPY_VERSION_NAME: "1.0.7xx",
+               X_APPY_TTR: "10800000",
+               X_APPY_SESSION_ID: "abcd",
+               X_APPY_APP_TYPE: APPY_LITE,
                
-               X_APPY_IS_NEW_USER:"N",
-               X_APPY_MSISDN:"",
-               X_APPY_SUB_KEY:"",
-               X_APPY_OS:"ios",
-               X_APPY_OS_VERSION:"1.0",
-               X_APPY_GOOGLE_CAMPAIGN_ID:"8700441600",
-               X_APPY_IS_UPGRADED:"false",
-               X_APPY_IS_VERSION_UPGRADE:"false",
-               X_APPY_IS_GOOGLE_BOT:"false",
-               X_APPY_UTM_SOURCE:"abcd",
-               X_APPY_UTM_MEDIUM:"abcd",
-               X_APPY_SCREEN_NAME:"",
+               X_APPY_IS_NEW_USER: "\(UserInfo.getInstance().isNewUser)",
+               X_APPY_MSISDN: UserInfo.getInstance().msisdn ?? "",
+               X_APPY_SUB_KEY: UserInfo.getInstance().smmKey ?? "",
+               X_APPY_OS: "ios",
+               X_APPY_OS_VERSION: "1.0",
+               X_APPY_GOOGLE_CAMPAIGN_ID: "8700441600",// get from userdefaults
+               X_APPY_IS_UPGRADED: "\(UserInfo.getInstance().isUpgraded)",//"false",
+               X_APPY_IS_VERSION_UPGRADE: "\(UserInfo.getInstance().isVersionUpgraded)",//"false",
+               X_APPY_IS_GOOGLE_BOT: "false",
+               X_APPY_UTM_SOURCE: "abcd",
+               X_APPY_UTM_MEDIUM: "abcd",
+               X_APPY_SCREEN_NAME: "",
                                    ]
         return headers
     }
     
     static func getLoginParameters(method: String, msisdn: String, pageId: String, emailId: String) -> Parameters {
         return [METHOD: method,
-                MSISDN: msisdn,
+                MO: msisdn,
                 PAGEID: pageId,
                 EMAILID: emailId
         ]
     }
     
-    static func getHistoryParameters(method: String, childId: String, pageId: String, offset: String, limit: String) -> Parameters {
+    static func getHistoryParameters(offset: String, limit: String) -> Parameters {
         
-        return [METHOD: method,
-                CHILD_ID: childId,
-                PAGEID: pageId,
+        return [METHOD: "getAllHistory",
+                CHILD_ID: (UserInfo.getInstance().selectedChild?.id)!,
+                PAGEID: "History",
                 OFFSET: offset,
                 LIMIT: limit
         ]
@@ -140,10 +160,10 @@ class HttpRequestBuilder: NSObject {
     
     static func getVideoCategoryParameters() -> Parameters
     {
-        return [METHOD:"getCategoryList",
-                LIMIT_START:"0",
-                AGE:"3",
-                INCL_AGE:"1",
+        return [METHOD: "getCategoryList",
+                LIMIT_START: "0",
+                AGE: (UserInfo.getInstance().selectedChild?.age)!,
+                INCL_AGE: "",
                 CONTENT_TYPE:"videos"]
     }
     
@@ -157,16 +177,16 @@ class HttpRequestBuilder: NSObject {
     }
 
     static func getVideoListingParameters(method: String, contentType: String, offset: String, limit: String, catId: String, pCatId: String, age: String, inclAge: String, pageId: String) -> Parameters
-    {
-        return [METHOD: method,
-                CONTENT_TYPE: contentType,
+   {
+        return [METHOD: "getContentList",
+                CONTENT_TYPE: "videos",
                 OFFSET: offset,
                 LIMIT: limit,
                 CATID: catId,
                 PCATID: pCatId,
-                AGE: age,
-                INCL_AGE: inclAge,
-                PAGEID: pageId
+                AGE: (UserInfo.getInstance().selectedChild?.age)!,
+                INCL_AGE: "",
+                PAGEID: "videos"
         ]
     }
     
@@ -185,11 +205,11 @@ class HttpRequestBuilder: NSObject {
     }
 
 
-    static func getRecommendedVideoListingParameters(method: String, contentType: String, offset: String, limit: String, catId: String, pCatId: String, contentId: String, sequenceType: String, sequenceNumber: String, age: String, inclAge: String, returnedContentType: String, pageId: String, flagItemAtFirstPosition: String) -> Parameters {
+    static func getRecommendedVideoListingParameters(offset: String, limit: String, catId: String, pCatId: String, contentId: String, sequenceType: String, sequenceNumber: String, lastContentId: String) -> Parameters {
         
         return [
-            METHOD: method,
-            CONTENT_TYPE: contentType,
+            METHOD: "getRecommendation",
+            CONTENT_TYPE: "videos",
             OFFSET: offset,
             LIMIT: limit,
             CATID: catId,
@@ -197,33 +217,74 @@ class HttpRequestBuilder: NSObject {
             CONTENT_ID: contentId,
             SEQUENCE_TYPE: sequenceType,
             SEQUENCE_NUMBER: sequenceNumber,
-            AGE: age,
-            INCL_AGE: inclAge,
-            RETURN_CONTENT_TYPE: returnedContentType,
-            PAGEID: pageId,
-            FLAG_AT_ITEM_AT_FIRST_POSITION: flagItemAtFirstPosition
+            AGE: (UserInfo.getInstance().selectedChild?.age)!,
+            INCL_AGE: "",
+            RETURN_CONTENT_TYPE: "videos",
+            PAGEID: "videoRecommendation",
+            FLAG_AT_ITEM_AT_FIRST_POSITION: "1",
+            LAST_CONTENT_ID: lastContentId
         ]
     }
-
-    static func getSearchResultParameters(method: String, keyword: String, contentType: String, offset: String, limit: String, age: String, inclAge: String, ignoreCatId: String, pageId: String, isPopular: String) -> Parameters
+    
+    static func getSearchResultParameters(keyword: String, offset: String, limit: String, ignoreCatId: String, isPopular: String) -> Parameters
     {
-        return [METHOD: method,
+        return [METHOD: "search",
                 KEYWORD: keyword,
-                CONTENT_TYPE: contentType,
+                CONTENT_TYPE: "videos",
                 OFFSET: offset,
                 LIMIT: limit,
-                AGE: age,
-                INCL_AGE: inclAge,
+                AGE: (UserInfo.getInstance().selectedChild?.age)!,
+                INCL_AGE: "",
                 IGNORE_CAT_ID: ignoreCatId,
-                PAGEID: pageId,
+                PAGEID: "SearchFragment",
                 IS_POPULAR: isPopular
 
         ]
     }
     
-    static func getSearchTagsParameters(method: String, pageId: String) -> Parameters {
+    static func getSearchTagsParameters() -> Parameters {
+        return [METHOD: "getPopularSearch",
+                PAGEID: "SearchFragment"
+        ]
+    }
+    
+    static func getAvatarParameters() -> Parameters {
+        return [METHOD: AvatarParser.METHOD_NAME,
+                PAGEID: "SelectAvatar"
+        ]
+    }
+
+    static func getOtpRequestParameters(method: String, msisdn: String, smmKey: String, androidId: String, imei: String) -> Parameters {
+        
+        return [
+            METHOD: method,
+            MSISDN: msisdn,
+            SMM_KEY: smmKey,
+            ANDROID_ID: androidId,
+            IMEI: imei
+        ]
+    }
+    
+    static func getOtpVerificationParameters(method: String, userId: String, msisdn: String, otp: String, smmKey: String, androidId: String, imei: String) -> Parameters {
+        
+        return [
+            METHOD: method,
+            USER_ID: userId,
+            MSISDN: msisdn,
+            OTP: otp,
+            SMM_KEY: smmKey,
+            ANDROID_ID: androidId,
+            IMEI: imei
+        ]
+    }
+
+    static func getChildRegistrationParameters(method: String, childName: String, childDob: String, avatarId: String, pageId: String) -> Parameters {
         return [METHOD: method,
-                PAGEID: pageId
+                PAGEID: pageId,
+                CHILD_NAME: childName,
+                CHILD_DOB: childDob,
+                CHILD_AVATAR_ID: avatarId
+
         ]
     }
     

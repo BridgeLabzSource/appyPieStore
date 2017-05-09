@@ -5,19 +5,22 @@ PODS:
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - SwiftyJSON (3.1.1)
+  - Toaster (2.0.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - NVActivityIndicatorView
   - SDWebImage
   - SwiftyJSON
+  - Toaster (~> 2.0)
 
 SPEC CHECKSUMS:
   Alamofire: e266cf991b933498df791e645e0d8ac294492153
   NVActivityIndicatorView: 81953b5e65093ba79edf4fe7268e002039ca5268
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  Toaster: 77c0b03d78e680bbbab0071c9c7ee392b0034010
 
-PODFILE CHECKSUM: a49d6e4234b5a5b6e066189bf0a32e653d5d6529
+PODFILE CHECKSUM: 45442566f1bf9e22941558b1b737c1da52cd17e6
 
 COCOAPODS: 1.2.0

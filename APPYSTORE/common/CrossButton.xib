@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CrossButton" customModule="APPYSTORE" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="PRa-nT-5Jy" id="Y1e-ox-8zV"/>
+                <outlet property="rootView" destination="iN0-l3-epB" id="ehL-An-pQf"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PRa-nT-5Jy">
+                    <rect key="frame" x="20" y="20" width="260" height="260"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross_dark" translatesAutoresizingMaskIntoConstraints="NO" id="zCU-FK-KtU">
+                            <rect key="frame" x="19" y="19" width="223" height="223"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="zCU-FK-KtU" firstAttribute="bottom" secondItem="PRa-nT-5Jy" secondAttribute="bottom" multiplier="260:280" id="4B2-1K-cZl"/>
+                        <constraint firstItem="zCU-FK-KtU" firstAttribute="trailing" secondItem="PRa-nT-5Jy" secondAttribute="trailing" multiplier="260:280" id="CAW-zF-fpr"/>
+                        <constraint firstItem="zCU-FK-KtU" firstAttribute="top" secondItem="PRa-nT-5Jy" secondAttribute="bottom" multiplier="20:280" id="rtm-97-TGL"/>
+                        <constraint firstItem="zCU-FK-KtU" firstAttribute="leading" secondItem="PRa-nT-5Jy" secondAttribute="trailing" multiplier="20:280" id="whY-4e-KQB"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="PRa-nT-5Jy" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="280:300" id="1z4-5T-Kak"/>
+                <constraint firstItem="PRa-nT-5Jy" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="280:300" id="EnG-la-GTJ"/>
+                <constraint firstItem="PRa-nT-5Jy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="20:300" id="cEc-KO-qIY"/>
+                <constraint firstItem="PRa-nT-5Jy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="20:300" id="pNf-tn-b5s"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="cross_dark" width="56" height="56"/>
+    </resources>
+</document>

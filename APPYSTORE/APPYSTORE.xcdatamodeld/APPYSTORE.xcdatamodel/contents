@@ -29,6 +29,9 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="version_id" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="AvatarTable" representedClassName="AvatarTable" syncable="YES" codeGenerationType="class">
+        <attribute name="avatar_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avatar_img" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="HistoryTable" representedClassName="HistoryTable" syncable="YES" codeGenerationType="class">
         <attribute name="child_id" optional="YES" attributeType="String" syncable="YES"/>
@@ -87,5 +90,6 @@
         <element name="HistoryTable" positionX="-63" positionY="-18" width="128" height="300"/>
         <element name="VideoCategoryTable" positionX="-207" positionY="-18" width="128" height="210"/>
         <element name="VideoListingTable" positionX="-126" positionY="117" width="128" height="300"/>
+        <element name="AvatarTable" positionX="-135" positionY="135" width="128" height="75"/>
     </elements>
 </model>

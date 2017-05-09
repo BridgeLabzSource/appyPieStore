@@ -15,7 +15,7 @@ class DataManager: NSObject {
         
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            HistoryParser().parse(params: HttpRequestBuilder.getHistoryParameters(method: "getAllHistory", childId: "29518", pageId: "History", offset: String(offset), limit: String(limit)), completion:{
+            HistoryParser().parse(params: HttpRequestBuilder.getHistoryParameters(offset: String(offset), limit: String(limit)), completion:{
                 statusType, result in
                 
                 returndata(statusType, result!)
@@ -36,7 +36,7 @@ class DataManager: NSObject {
             })
             
         case PageConstants.VIDEO_LISTING_PAGE:
-            VideoListingParser().parse(params: HttpRequestBuilder.getVideoListingParameters(method: "getContentList", contentType: "videos", offset: String(offset), limit: String(limit), catId: bundle?[BundleConstants.CATEGORY_ID] as! String, pCatId: bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String, age: "1", inclAge: "1", pageId: "videos"), completion:{
+            VideoListingParser().parse(params: HttpRequestBuilder.getVideoListingParameters(offset: String(offset), limit: String(limit), catId: bundle?[BundleConstants.CATEGORY_ID] as! String, pCatId: bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String), completion:{
                 statusType, result in
                 
                 returndata(statusType, result!)
@@ -51,7 +51,10 @@ class DataManager: NSObject {
             })
             
         case PageConstants.RECOMMENDED_VIDEO_LISTING_PAGE:
-            RecommendedVideoParser().parse(params: HttpRequestBuilder.getRecommendedVideoListingParameters(method: "getRecommendation", contentType: "videos", offset: String(offset), limit: String(limit), catId: "193", pCatId: "191", contentId: "20087824", sequenceType: "a", sequenceNumber: "501", age: "8", inclAge: "", returnedContentType: "videos", pageId: "videoRecommendation", flagItemAtFirstPosition: "1"), completion: {
+            print("Recommended data \(bundle?.count)")
+            print("Recommended data \(bundle?.keys)")
+            print("Recommended data \(bundle?.values)")
+            RecommendedVideoParser().parse(params: HttpRequestBuilder.getRecommendedVideoListingParameters(offset: String(offset), limit: String(limit), catId: bundle?[BundleConstants.CATEGORY_ID] as! String, pCatId: bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String, contentId: bundle?[BundleConstants.CONTENT_ID] as! String, sequenceType: bundle?[BundleConstants.SEQUENCE_TYPE] as! String, sequenceNumber: bundle?[BundleConstants.SEQUENCE_NUMBER] as! String,lastContentId: bundle?[BundleConstants.LAST_CONTENT_ID] as? String ?? ""), completion: {
                 statusType, result in
                 
                 returndata(statusType, result!)
@@ -59,17 +62,30 @@ class DataManager: NSObject {
             
             
         case PageConstants.SEARCH_RESULT_PAGE:
-            SearchResultParser().parse(params: HttpRequestBuilder.getSearchResultParameters(method: "search", keyword: bundle?[BundleConstants.SEARCH_KEYWORD] as! String, contentType: "videos", offset: String(offset), limit: String(limit), age: "1", inclAge: "", ignoreCatId: "", pageId: "SearchFragment", isPopular: "0"), completion: {
+            SearchResultParser().parse(params: HttpRequestBuilder.getSearchResultParameters(keyword: bundle?[BundleConstants.SEARCH_KEYWORD] as! String, offset: String(offset), limit: String(limit), ignoreCatId: "", isPopular: "0"), completion: {
                 statusType, result in
                 
                 returndata(statusType, result!)
             })
         case PageConstants.SEARCH_TAGS_PAGE:
-            SearchTagsParser().parse(params: HttpRequestBuilder.getSearchTagsParameters(method: "getPopularSearch", pageId: "SearchFragment"), completion: {
+            SearchTagsParser().parse(params: HttpRequestBuilder.getSearchTagsParameters(), completion: {
                 statusType, result in
                 
                 returndata(statusType, result!)
             })
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            AvatarParser().parse(params: HttpRequestBuilder.getAvatarParameters(), completion: {
+                statusType, result in
+                
+                returndata(statusType, result!)
+            })
+        case PageConstants.CHILD_SELECTION_PAGE:
+            //NA
+            break
         default:
             break
         }
@@ -80,10 +96,10 @@ class DataManager: NSObject {
         
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            dataList = HistoryDBManager().fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: nil)
+            dataList = HistoryDBManager.sharedInstance.fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: nil)
             
         case PageConstants.VIDEO_CATEGORY_PAGE:
-            dataList = VideoDBManager().fetchAll()
+            dataList = VideoDBManager.sharedInstance.fetchAll()
             
         case PageConstants.AUDIO_CATEGORY_PAGE:
             dataList = AudioDBManager().fetchAll()
@@ -96,6 +112,15 @@ class DataManager: NSObject {
             
         case PageConstants.SEARCH_TAGS_PAGE:
             dataList = Prefs.getInstance()?.getSearchTags()
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            dataList = AvatarDBManager.sharedInstance.fetchAll()
+        case PageConstants.CHILD_SELECTION_PAGE:
+            dataList = UserInfo.getInstance().childList
+            break
         default:
             break
         }
@@ -107,18 +132,27 @@ class DataManager: NSObject {
         var count: Int = -1
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            count = HistoryDBManager().getRowCount()
+            count = HistoryDBManager.sharedInstance.getRowCount(bundle: bundle)
         case PageConstants.VIDEO_CATEGORY_PAGE:
             count = VideoDBManager().getRowCount()
             
         case PageConstants.AUDIO_CATEGORY_PAGE:
             count = AudioDBManager().getRowCount()
             
-        case PageConstants.VIDEO_LISTING_PAGE:
-            count = VideoListingDBManager().getRowCount(bundle: bundle)
+       case PageConstants.VIDEO_LISTING_PAGE:
+            count = VideoListingDBManager.sharedInstance.getRowCount(bundle: bundle)
         case PageConstants.SEARCH_TAGS_PAGE:
             let tagsList = Prefs.getInstance()?.getSearchTags()
-            count = (tagsList?.count)!
+            count = tagsList?.count ?? 0
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            count = AvatarDBManager.sharedInstance.getRowCount(bundle: bundle)
+        case PageConstants.CHILD_SELECTION_PAGE:
+            count = UserInfo.getInstance().childList.count
+            break
         default:
             break
         }
@@ -129,17 +163,25 @@ class DataManager: NSObject {
     func deleteDataForPage(pageName: String, bundle: AndroidBundle) {
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            HistoryDBManager().removeAll(bundle: bundle)
+            HistoryDBManager.sharedInstance.clearTable(bundle: bundle)
         case PageConstants.VIDEO_CATEGORY_PAGE:
             VideoDBManager().removeAll(bundle: bundle)
             
         case PageConstants.AUDIO_CATEGORY_PAGE:
             VideoDBManager().removeAll(bundle: bundle)
             
-        case PageConstants.VIDEO_LISTING_PAGE:
-            VideoListingDBManager().removeAll(bundle: bundle)
+       case PageConstants.VIDEO_LISTING_PAGE:
+            VideoListingDBManager.sharedInstance.clearTable(bundle: bundle)
         case PageConstants.SEARCH_TAGS_PAGE:
             Prefs.getInstance()?.setSearchTags(value: [])
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            AvatarDBManager.sharedInstance.clearTable(bundle: bundle)
+        case PageConstants.CHILD_SELECTION_PAGE:
+            //NA
             break
         default:
             break
@@ -151,7 +193,7 @@ class DataManager: NSObject {
         
         switch pageName {
         case PageConstants.HISTORY_PAGE:
-            count = HistoryDBManager().insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
+            count = HistoryDBManager.sharedInstance.insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
         case PageConstants.VIDEO_CATEGORY_PAGE:
             count = VideoDBManager().insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
             
@@ -159,11 +201,19 @@ class DataManager: NSObject {
             
             
             
-        case PageConstants.VIDEO_LISTING_PAGE:
-            count = VideoListingDBManager().insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
+       case PageConstants.VIDEO_LISTING_PAGE:
+            count = VideoListingDBManager.sharedInstance.insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
         case PageConstants.SEARCH_TAGS_PAGE:
             Prefs.getInstance()?.setSearchTags(value: dataList as! [SearchTagsModel])
             count = 1
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            count = AvatarDBManager.sharedInstance.insertBulkRecords(userId: UserInfo.getInstance().id, childId: UserInfo.getInstance().selectedChild?.id, modelList: dataList)!
+        case PageConstants.CHILD_SELECTION_PAGE:
+            //NA
             break
         default:
             break
@@ -188,7 +238,15 @@ class DataManager: NSObject {
             dataFetchTimePrefKey = PageConstants.KEY_VIDEO_LISTING_DATA_FETCH_TIME + pageUniqueId
         case PageConstants.SEARCH_TAGS_PAGE:
             dataFetchTimePrefKey = PageConstants.KEY_SEARCH_TAGS_DATA_FETCH_TIME + pageUniqueId
-            
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            dataFetchTimePrefKey = PageConstants.KEY_SELECT_AVATAR_DATA_FETCH_TIME + pageUniqueId
+        case PageConstants.CHILD_SELECTION_PAGE:
+            //NA
+            break
         default:
             break
         }
@@ -213,6 +271,15 @@ class DataManager: NSObject {
             offsetServerPrefKey = PageConstants.KEY_VIDEO_LISTING_SERVER_OFFSET + pageUniqueId
         case PageConstants.SEARCH_TAGS_PAGE:
             offsetServerPrefKey = PageConstants.KEY_SEARCH_TAGS_SERVER_OFFSET + pageUniqueId
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            offsetServerPrefKey = PageConstants.KEY_SELECT_AVATAR_SERVER_OFFSET + pageUniqueId
+        case PageConstants.CHILD_SELECTION_PAGE:
+            //NA
+            break
         default:
             break
         }
@@ -235,7 +302,15 @@ class DataManager: NSObject {
             totalCountPrefKey = PageConstants.KEY_VIDEO_LISTING_TOTAL_CONTENT_COUNT + pageUniqueId
         case PageConstants.SEARCH_TAGS_PAGE:
             totalCountPrefKey = PageConstants.KEY_SEARCH_TAGS_TOTAL_CONTENT_COUNT + pageUniqueId
-            
+        case PageConstants.SELECT_AVATAR_PAGE_NEW:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_ADD:
+            fallthrough
+        case PageConstants.SELECT_AVATAR_PAGE_EDIT:
+            totalCountPrefKey = PageConstants.KEY_SELECT_AVATAR_TOTAL_CONTENT_COUNT + pageUniqueId
+        case PageConstants.CHILD_SELECTION_PAGE:
+            //NA
+            break
         default:
             break
         }

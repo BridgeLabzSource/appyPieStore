@@ -27,7 +27,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="127" height="119"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jCk-SJ-3Bm">
-                            <rect key="frame" x="4" y="5.5" width="119" height="108.5"/>
+                            <rect key="frame" x="8.5" y="8" width="257" height="173"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzr-ic-CEC">
                             <rect key="frame" x="99.5" y="91.5" width="27.5" height="27.5"/>

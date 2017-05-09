@@ -16,10 +16,27 @@ class RecommendedVideoViewController: BaseListingViewController {
     var delegate: RecommendedVideoDelegate?
     var currentIndex = -1
     var isClickedEnable = true
+    var listingModel: VideoListingModel!
     
     override func viewDidLoad() {
-        dataFetchFramework = DataFetchFramework(pageName: PageConstants.RECOMMENDED_VIDEO_LISTING_PAGE, pageUniqueId: "20087824", bundle: bundle)
+        var bundle1 = [String: Any]()
+        
+            bundle1[BundleConstants.CATEGORY_ID] = listingModel.subCategoryId
+            bundle1[BundleConstants.PARENT_CATEGORY_ID] = listingModel.parentCategoryId
+            bundle1[BundleConstants.CONTENT_ID] = listingModel.contentId
+            bundle1[BundleConstants.SEQUENCE_TYPE] = listingModel.sequenceType
+            bundle1[BundleConstants.SEQUENCE_NUMBER] = listingModel.sequenceNumber
+            bundle1[BundleConstants.LAST_CONTENT_ID] = ""
+        
+        
+        dataFetchFramework = DataFetchFramework(pageName: PageConstants.RECOMMENDED_VIDEO_LISTING_PAGE, pageUniqueId: getPageNameUniqueIdentifier(), bundle: bundle1)
+        
         super.viewDidLoad()
+        
+    }
+    
+    override internal func getPageNameUniqueIdentifier() -> String {
+        return ""
     }
     
     override func getPageName() -> String {
@@ -34,6 +51,19 @@ class RecommendedVideoViewController: BaseListingViewController {
         return collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendedVideoCard", for: indexPath) as! BaseCard
     }
     
+    override func loadData() {
+        let count = dataFetchFramework?.contentList.count ?? -1
+        
+        if count > 0 {
+            if let model = dataFetchFramework?.contentList[count - 1] as? VideoListingModel {
+                dataFetchFramework?.updateBundle(keys: [BundleConstants.LAST_CONTENT_ID], values: [model.contentId])
+            }
+        } else {
+            dataFetchFramework?.updateBundle(keys: [BundleConstants.LAST_CONTENT_ID], values: [listingModel.contentId])
+        }
+        super.loadData()
+        
+    }
     /*
      
      let singleTapPlay = UITapGestureRecognizer(target: self, action: #selector(RecommendedVideoViewController.imageClick))
@@ -76,7 +106,7 @@ class RecommendedVideoViewController: BaseListingViewController {
         currentIndex = 0
         let model = dataFetchFramework?.contentList[0] as! VideoListingModel
         model.isSelected = true
-        delegate?.onContentChange(content: model)
+        //delegate?.onContentChange(content: model)
         collectionView.reloadData()
     }
     
@@ -92,6 +122,22 @@ class RecommendedVideoViewController: BaseListingViewController {
         (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = true
         delegate?.onContentChange(content: dataFetchFramework?.contentList[currentIndex ] as! VideoListingModel)
         collectionView.reloadData()
+    }
+    
+    func previousVideo() {
+        if (currentIndex - 1) >= 0 {
+            (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = false
+            
+            if (dataFetchFramework?.contentList[currentIndex - 1] as! VideoListingModel).payType == "paid" {
+                currentIndex = getPreferredIndex()
+            } else {
+                currentIndex -= 1
+            }
+            print("previousVideo currentIndex = \(currentIndex)")
+            (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = true
+            delegate?.onContentChange(content: dataFetchFramework?.contentList[currentIndex ] as! VideoListingModel)
+            collectionView.reloadData()
+        }
     }
     
     func getPreferredIndex() -> Int {

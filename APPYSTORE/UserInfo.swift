@@ -19,7 +19,10 @@ class UserInfo: NSObject, NSCopying, NSCoding{
     
     static func getInstance() -> UserInfo{
         if instance == nil {
-            instance = UserInfo()
+            UserInfo.getUserInfoFromUserDefaultsAndUpdateInstance()
+            if instance == nil {
+                instance = UserInfo()
+            }
         }
         
         return instance!
@@ -30,9 +33,8 @@ class UserInfo: NSObject, NSCopying, NSCoding{
         
         type = aDecoder.decodeObject(forKey: "type") as? String
         email = aDecoder.decodeObject(forKey: "email") as? String
-        childList = aDecoder.decodeObject(forKey: "childList") as? [ChildInfo]
+        childList = aDecoder.decodeObject(forKey: "childList") as! [ChildInfo]
         selectedChild = aDecoder.decodeObject(forKey: "selectedChild") as? ChildInfo
-        childCount = aDecoder.decodeInteger(forKey: "childCount")
         isAddressUpdated = aDecoder.decodeBool(forKey: "isAddressUpdated")
         msisdn = aDecoder.decodeObject(forKey: "msisdn") as? String
         smmKey = aDecoder.decodeObject(forKey: "smmKey") as? String
@@ -67,7 +69,6 @@ class UserInfo: NSObject, NSCopying, NSCoding{
         aCoder.encode(email, forKey: "email")
         aCoder.encode(childList, forKey: "childList")
         aCoder.encode(selectedChild, forKey: "selectedChild")
-        aCoder.encode(childCount, forKey: "childCount")
         aCoder.encode(isAddressUpdated, forKey: "isAddressUpdated")
         aCoder.encode(msisdn, forKey: "msisdn")
         aCoder.encode(smmKey, forKey: "smmKey")
@@ -103,10 +104,9 @@ class UserInfo: NSObject, NSCopying, NSCoding{
         userInfo.email = email
         
         // need to make copy
-        userInfo.childList = childList?.clone()
+        userInfo.childList = childList.clone()
         // need to make copy
         userInfo.selectedChild = selectedChild?.copy() as! ChildInfo?
-        userInfo.childCount = childCount
         userInfo.isAddressUpdated = isAddressUpdated
         userInfo.msisdn = msisdn
         userInfo.smmKey = smmKey
@@ -141,9 +141,8 @@ class UserInfo: NSObject, NSCopying, NSCoding{
     var id: String? = nil
     var type: String? = nil
     var email: String? = nil
-    var childList: [ChildInfo]? = nil
+    var childList: [ChildInfo] = []
     var selectedChild: ChildInfo? = nil
-    var childCount = 0
     var isAddressUpdated = false
     var msisdn: String? = nil
     var smmKey: String? = nil
@@ -173,13 +172,17 @@ class UserInfo: NSObject, NSCopying, NSCoding{
     var sessionId: String? = nil
     
     
-    static func getChildCount(childList: [ChildInfo]?) -> Int{
-        return childList?.count ?? 0
-    }
-    
     func getClone() -> UserInfo? {
         Prefs.getInstance()?.setObject(key: "userInfoObject", value: self)
         
         return Prefs.getInstance()?.getObject(key: "userInfoObject") as? UserInfo
+    }
+    
+    func saveUserInfoToUserDefaults() {
+        Prefs.getInstance()?.setUserInfo(value: self)
+    }
+    
+    static func getUserInfoFromUserDefaultsAndUpdateInstance() {
+        UserInfo.instance = Prefs.getInstance()?.getUserInfo()
     }
 }

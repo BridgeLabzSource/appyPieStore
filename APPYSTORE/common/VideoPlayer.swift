@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import SwiftyJSON
+import Alamofire
 
 enum PlayerState {
     case PLAY
@@ -20,11 +21,12 @@ enum PlayerState {
 }
 
 protocol VideoDelegate {
-    func onVideoMinimize()
-    func onVideoMaximize()
+    func onContainerClick()
     func onVideoCompleted()
     func onTaskStarted()
     func onTaskCompleted()
+    func onNext()
+    func onPrevious()
 }
 
 @IBDesignable class VideoPlayer: UIView {
@@ -42,7 +44,7 @@ protocol VideoDelegate {
     @IBOutlet weak var leftSeek: UIImageView!
     @IBOutlet weak var containerView: UIView!
     
-    let avPlayer = AVPlayer()
+    var avPlayer: AVPlayer? = AVPlayer()
     var avPlayerLayer: AVPlayerLayer!
     var timeObserver: AnyObject!
     var playerRateBeforeSeek: Float = 0
@@ -55,6 +57,9 @@ protocol VideoDelegate {
     
     @IBOutlet weak var lockIcon: UIImageView!
     @IBOutlet weak var videoThumbnail: UIImageView!
+    var currentState: PlayerState!
+    var showControls = true
+    var isParenting = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,6 +72,51 @@ protocol VideoDelegate {
     }
     
     func replaceVideo(playerModel: VideoListingModel) {
+        videoModel = playerModel
+        pause()
+        self.unregisteredPlayerItemListener()
+        resetPlayerItem()
+        
+        showVideoThumbnail()
+        if playerModel.payType == "paid" {
+            updateState(state: .LOCK)
+            return
+        }
+        
+        updateState(state: .BUFFERING_START)
+        print("BUFFERING_START replaceVideo")
+        delegate?.onTaskStarted()
+        
+        let url = URL(string: playerModel.downloadUrl)
+        Alamofire.request(url!, parameters: nil, headers: HttpRequestBuilder.getHeaders()).response{ response in
+            
+            Prefs.getInstance()?.setHistoryPageToBeForceRefreshed(forceRefresh: true)
+            print("VideoPlayer : url response: \(response)")
+            print("VideoPlayer : response url \(response.response?.url)")
+            
+            self.delegate?.onTaskCompleted()
+            self.hideVideoThumbnail()
+            
+            self.updateState(state: .BUFFERING_END)
+            if response.response?.statusCode == 200 {
+                print("replaceVideo = \(response.response?.url)")
+                self.unregisteredPlayerItemListener()
+                let url = response.response?.url
+                let playerItem = AVPlayerItem(url: url! as URL)
+                self.avPlayer?.replaceCurrentItem(with: playerItem)
+                self.play()
+                self.registerPlayerItemListener()
+                self.updateTotalDuration()
+            } else if response.error != nil {
+                print("Api request error")
+                self.showVideoThumbnail()
+                self.updateState(state: .PAUSE)
+            }
+            
+        }
+    }
+    
+    func replaceVideo1(playerModel: VideoListingModel) {
         videoModel = playerModel
         print("replaceVideo type = \(playerModel.payType)")
         
@@ -133,7 +183,7 @@ protocol VideoDelegate {
                     //let url = NSURL(string: stringUrl)
                     let url = response?.url
                     let playerItem = AVPlayerItem(url: url! as URL)
-                    self.avPlayer.replaceCurrentItem(with: playerItem)
+                    self.avPlayer?.replaceCurrentItem(with: playerItem)
                     self.play()
                     self.registerPlayerItemListener()
                     self.updateTotalDuration()
@@ -152,28 +202,28 @@ protocol VideoDelegate {
     }
     
     func resetPlayerItem() {
-        avPlayer.replaceCurrentItem(with: nil)
+        avPlayer?.replaceCurrentItem(with: nil)
         setTotalDuration(duration: 0)
         setPlayTime(timePlayed: 0)
         setSeekValue(seekValue: 0)
     }
     
     func registerPlayerItemListener() {
-        NotificationCenter.default.addObserver(self, selector: #selector(VideoPlayer.playerDidFinish(note:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.avPlayer.currentItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(VideoPlayer.playerDidFinish(note:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.avPlayer?.currentItem)
         
-        self.avPlayer.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
-        self.avPlayer.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
-        self.avPlayer.currentItem?.addObserver(self, forKeyPath: "playbackBufferFull", options: .new, context: nil)
+        self.avPlayer?.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
+        self.avPlayer?.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
+        self.avPlayer?.currentItem?.addObserver(self, forKeyPath: "playbackBufferFull", options: .new, context: nil)
         
-        self.avPlayer.currentItem?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
+        self.avPlayer?.currentItem?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
     }
     
     func unregisteredPlayerItemListener() {
         NotificationCenter.default.removeObserver(self)
-        self.avPlayer.currentItem?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
-        self.avPlayer.currentItem?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
-        self.avPlayer.currentItem?.removeObserver(self, forKeyPath: "playbackBufferFull")
-        self.avPlayer.currentItem?.removeObserver(self, forKeyPath: "status")
+        self.avPlayer?.currentItem?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
+        self.avPlayer?.currentItem?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
+        self.avPlayer?.currentItem?.removeObserver(self, forKeyPath: "playbackBufferFull")
+        self.avPlayer?.currentItem?.removeObserver(self, forKeyPath: "status")
     }
     
     func initialize() {
@@ -191,7 +241,7 @@ protocol VideoDelegate {
         avPlayerLayer.frame = containerView.bounds
         
         let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
-        timeObserver = avPlayer.addPeriodicTimeObserver(forInterval: timeInterval, queue: DispatchQueue.main) {
+        timeObserver = avPlayer?.addPeriodicTimeObserver(forInterval: timeInterval, queue: DispatchQueue.main) {
             (elapsedTime: CMTime) -> Void in
             
             print("elapsedTime now:", CMTimeGetSeconds(elapsedTime))
@@ -205,6 +255,10 @@ protocol VideoDelegate {
         seekbar.addTarget(self, action: #selector(sliderValueChanged),
                              for: .valueChanged)
         
+        let singleTapSeekbar = UITapGestureRecognizer(target: self, action: #selector(VideoPlayer.seekBarClicked))
+        singleTapSeekbar.numberOfTapsRequired = 1 // you can change this value
+        seekbar.addGestureRecognizer(singleTapSeekbar)
+        
         let singleTapPlay = UITapGestureRecognizer(target: self, action: #selector(VideoPlayer.playIconClick))
         singleTapPlay.numberOfTapsRequired = 1 // you can change this value
         playIcon.isUserInteractionEnabled = true
@@ -215,8 +269,8 @@ protocol VideoDelegate {
         pauseIcon.isUserInteractionEnabled = true
         pauseIcon.addGestureRecognizer(singleTapPause)
         
-        avPlayer.addObserver(self, forKeyPath: "status", options: [.new], context: nil)
-        avPlayer.addObserver(self, forKeyPath: "rate", options: [.new], context: nil)
+        avPlayer?.addObserver(self, forKeyPath: "status", options: [.new], context: nil)
+        avPlayer?.addObserver(self, forKeyPath: "rate", options: [.new], context: nil)
         
         let singleTapContainer = UITapGestureRecognizer(target: self, action: #selector(VideoPlayer.containerClick))
         singleTapContainer.numberOfTapsRequired = 1 // you can change this value
@@ -228,11 +282,42 @@ protocol VideoDelegate {
         bottomView.isUserInteractionEnabled = true
         bottomView.addGestureRecognizer(singleTapBottom)
         
-        avPlayer.automaticallyWaitsToMinimizeStalling = false
+        let singleTapNext = UITapGestureRecognizer(target: self, action: #selector(VideoPlayer.nextIconClick))
+        singleTapNext.numberOfTapsRequired = 1 // you can change this value
+        rightSeek.isUserInteractionEnabled = true
+        rightSeek.addGestureRecognizer(singleTapNext)
+        
+        let singleTapPrevious = UITapGestureRecognizer(target: self, action: #selector(VideoPlayer.previousIconClick))
+        singleTapPrevious.numberOfTapsRequired = 1 // you can change this value
+        leftSeek.isUserInteractionEnabled = true
+        leftSeek.addGestureRecognizer(singleTapPrevious)
+        
+        avPlayer?.automaticallyWaitsToMinimizeStalling = false
         hideLockIcon()
         updateState(state: .BUFFERING_START)
         print("BUFFERING_START initialize")
         
+    }
+    
+    func seekBarClicked(gesture: UITapGestureRecognizer) {
+        print("seekBarClicked called")
+        playerRateBeforeSeek = (avPlayer?.rate)!
+        avPlayer?.pause()
+        let pointTapped = gesture.location(in: self.rootView)
+        let positionOfSlider = seekbar.frame.origin
+        let sliderWidth = seekbar.frame.size.width
+        let newValue = (pointTapped.x - positionOfSlider.x) * CGFloat(seekbar.maximumValue)/sliderWidth
+        seekbar.setValue(Float(newValue), animated: true)
+        
+        let videoDuration = CMTimeGetSeconds((avPlayer?.currentItem!.duration)!)
+        let elapsedTime: Float64 = videoDuration * Float64(seekbar.value)
+        updateTimeLabel(elapsedTime: elapsedTime, duration: videoDuration)
+        
+        avPlayer?.seek(to: CMTimeMakeWithSeconds(elapsedTime, 100)) { (completed: Bool) -> Void in
+            if self.playerRateBeforeSeek > 0 {
+                self.play()
+            }
+        }
     }
     
     func bottomContainerClick() {
@@ -241,14 +326,20 @@ protocol VideoDelegate {
     
     func containerClick() {
         print("containerClick")
-        
-        if isMinimize {
-            delegate?.onVideoMaximize()
+        if isParenting {
+            if currentState != PlayerState.BUFFERING_START {
+                showControls = !showControls
+                if showControls {
+                    showParentingControls()
+                } else {
+                    hideParentingControls()
+                }
+            }
+            
         } else {
-            delegate?.onVideoMinimize()
+            delegate?.onContainerClick()
         }
         
-        isMinimize = !isMinimize
     }
     
     func makeDefaultVisibility() {
@@ -259,38 +350,38 @@ protocol VideoDelegate {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "status" && object is AVPlayer {
-            if avPlayer.status == .readyToPlay {
+            if avPlayer?.status == .readyToPlay {
                 print("Ganesh status observer readyToPlay")
-            } else if avPlayer.status == .failed {
+            } else if avPlayer?.status == .failed {
                 print("Ganesh status observer failed")
-            } else if avPlayer.status == .unknown {
+            } else if avPlayer?.status == .unknown {
                 print("Ganesh status observer unknown")
             }
         }
         
         if keyPath == "status" && object is AVPlayerItem {
-            if avPlayer.currentItem?.status == .readyToPlay {
+            if avPlayer?.currentItem?.status == .readyToPlay {
                 print("Ganesh status currentItem observer readyToPlay")
                 
-            } else if avPlayer.currentItem?.status == .failed {
+            } else if avPlayer?.currentItem?.status == .failed {
                 print("Ganesh status currentItem observer failed")
                 showVideoThumbnail()
                 updateState(state: .PAUSE)
                 if videoModel != nil {
                     replaceVideo(playerModel: videoModel)
                 }
-            } else if avPlayer.currentItem?.status == .unknown {
+            } else if avPlayer?.currentItem?.status == .unknown {
                 print("Ganesh status currentItem observer unknown")
             }
         }
         
         if keyPath == "rate" {
             
-            if avPlayer.rate == 0.0 {
-                print("XXXXX Ganesh state is paused rate = \(avPlayer.rate)")
+            if avPlayer?.rate == 0.0 {
+                print("XXXXX Ganesh state is paused rate = \(avPlayer?.rate)")
                 updateState(state: .PAUSE)
             } else {
-                print("XXXXX Ganesh state is play rate = \(avPlayer.rate)")
+                print("XXXXX Ganesh state is play rate = \(avPlayer?.rate)")
                 updateState(state: .PLAY)
             }
         
@@ -300,7 +391,7 @@ protocol VideoDelegate {
             switch keyPath! {
             case "playbackBufferEmpty":
                 print("XXXXX Ganesh show loader playbackBufferEmpty")
-                if avPlayer.currentItem?.status != AVPlayerItemStatus.readyToPlay {
+                if avPlayer?.currentItem?.status != AVPlayerItemStatus.readyToPlay {
                     updateState(state: .PAUSE)
                 } else {
                     updateState(state: .BUFFERING_START)
@@ -309,7 +400,7 @@ protocol VideoDelegate {
                 print("XXXXX Ganesh show loader \(getCurrentItemStatus())")
                 
             case "playbackLikelyToKeepUp":
-                print("XXXXX Ganesh hide loader playbackLikelyToKeepUp = \(avPlayer.currentItem?.isPlaybackLikelyToKeepUp)")
+                print("XXXXX Ganesh hide loader playbackLikelyToKeepUp = \(avPlayer?.currentItem?.isPlaybackLikelyToKeepUp)")
                 updateState(state: .BUFFERING_END)
             case "playbackBufferFull":
                 print("XXXXX Ganesh hide loader playbackBufferFull")
@@ -318,12 +409,14 @@ protocol VideoDelegate {
                 break
             }
         }
-        print("Ganesh timestatus = \(avPlayer.timeControlStatus.rawValue)\n")
+        print("Ganesh timestatus = \(avPlayer?.timeControlStatus.rawValue)\n")
         
         print("Change at keyPath = \(keyPath) for \(object)")
     }
     
     func updateState(state: PlayerState) {
+        showControls = true
+        currentState = state
         switch state {
         case .PLAY:
             print("updateState: PLAY")
@@ -340,6 +433,9 @@ protocol VideoDelegate {
             hideLoader()
             hideLockIcon()
         case .BUFFERING_START:
+            if isParenting {
+                bottomView.isHidden = false
+            }
             print("updateState: BUFFERING_START")
             showLoader()
             hidePlayIcon()
@@ -347,7 +443,7 @@ protocol VideoDelegate {
             
         case .BUFFERING_END:
             print("updateState: BUFFERING_END")
-            if avPlayer.rate == 0 {
+            if avPlayer?.rate == 0 {
                 updateState(state: .PAUSE)
             } else {
                 updateState(state: .PLAY)
@@ -358,6 +454,9 @@ protocol VideoDelegate {
             hidePauseIcon()
             hideLoader()
             hideLockIcon()
+            self.unregisteredPlayerItemListener()
+            resetPlayerItem()
+            showVideoThumbnail()
             //hideVideoThumbnail()
             break
         case .LOCK:
@@ -369,35 +468,35 @@ protocol VideoDelegate {
             break
         }
         
-        if avPlayer.status == .readyToPlay {
+        if avPlayer?.status == .readyToPlay {
             print("Ganesh status readyToPlay")
-        } else if avPlayer.status == .failed {
+        } else if avPlayer?.status == .failed {
             print("Ganesh status failed")
-        } else if avPlayer.status == .unknown {
+        } else if avPlayer?.status == .unknown {
             print("Ganesh status unknown")
         }
         
-        if avPlayer.currentItem?.status == .readyToPlay {
+        if avPlayer?.currentItem?.status == .readyToPlay {
             print("Ganesh status currentItem readyToPlay")
-        } else if avPlayer.currentItem?.status == .failed {
+        } else if avPlayer?.currentItem?.status == .failed {
             print("Ganesh status currentItem failed")
-        } else if avPlayer.currentItem?.status == .unknown {
+        } else if avPlayer?.currentItem?.status == .unknown {
             print("Ganesh status currentItem unknown")
         }
         
-        print("Ganesh status player rate \(avPlayer.rate)")
-        print("Ganesh status error \(avPlayer.error)")
+        print("Ganesh status player rate \(avPlayer?.rate)")
+        print("Ganesh status error \(avPlayer?.error)")
         print("Ganesh status timeControlStatus \(getTimeStatus())")
         
     }
     
     func getCurrentItemStatus() -> String {
         var s = ""
-        if avPlayer.currentItem?.status == .readyToPlay {
+        if avPlayer?.currentItem?.status == .readyToPlay {
             s = "readyToPlay"
-        } else if avPlayer.currentItem?.status == .failed {
+        } else if avPlayer?.currentItem?.status == .failed {
             s = "failed"
-        } else if avPlayer.currentItem?.status == .unknown {
+        } else if avPlayer?.currentItem?.status == .unknown {
             s = "unknown"
         }
         
@@ -406,25 +505,30 @@ protocol VideoDelegate {
     
     func getTimeStatus() -> String {
         var s = ""
-        switch avPlayer.timeControlStatus {
-        case .paused:
-            s = "paused"
-        case .playing:
-            s = "playing"
-        case .waitingToPlayAtSpecifiedRate:
-            s = "waitingToPlayAtSpecifiedRate"
+        if let status = avPlayer?.timeControlStatus {
+            switch status {
+            case .paused:
+                s = "paused"
+            case .playing:
+                s = "playing"
+            case .waitingToPlayAtSpecifiedRate:
+                s = "waitingToPlayAtSpecifiedRate"
+            }
         }
+        
         
         return s
     }
+    
     func playerDidFinish(note: NSNotification) {
         print("Ganesh Video Finished")
+        updateState(state: .STOP)
         delegate?.onVideoCompleted()
     }
     
     func play() {
-        if avPlayer.currentItem != nil {
-            avPlayer.play()
+        if avPlayer?.currentItem != nil {
+            avPlayer?.play()
             print("play() func \(getCurrentItemStatus())")
         } else {
             if videoModel != nil {
@@ -434,19 +538,21 @@ protocol VideoDelegate {
     }
     
     func pause() {
-        avPlayer.pause()
+        avPlayer?.pause()
     }
     
     func trackVideoSeekbar() {
-        let videoDuration = CMTimeGetSeconds(avPlayer.currentItem!.duration)
+        let videoDuration = CMTimeGetSeconds((avPlayer?.currentItem!.duration)!)
         
-        let normalizedTime = Float(CMTimeGetSeconds(avPlayer.currentItem!.currentTime()) * 1.0 / videoDuration)
+        let normalizedTime = Float(CMTimeGetSeconds((avPlayer?.currentItem!.currentTime())!) * 1.0 / videoDuration)
         setSeekValue(seekValue: normalizedTime)
     }
     
     private func setSeekValue(seekValue: Float) {
+        print("VideoPlayer setSeekValue value: \(seekValue)")
         seekbar.value = seekValue
     }
+    
     func playIconClick() {
         print("playIcon Clicked")
         //invisibleButtonTapped()
@@ -457,13 +563,21 @@ protocol VideoDelegate {
     func pauseIconClick() {
         print("pauseIcon Clicked")
         //invisibleButtonTapped()
-        avPlayer.pause()
+        avPlayer?.pause()
+    }
+    
+    func nextIconClick() {
+        delegate?.onNext()
+    }
+    
+    func previousIconClick() {
+        delegate?.onPrevious()
     }
     
     func invisibleButtonTapped() {
-        let playerIsPlaying = avPlayer.rate > 0
+        let playerIsPlaying = (avPlayer?.rate)! > Float.init(integerLiteral: 0)
         if playerIsPlaying {
-            avPlayer.pause()
+            avPlayer?.pause()
         } else {
             play()
         }
@@ -521,16 +635,16 @@ protocol VideoDelegate {
     }
     
     func sliderBeganTracking(slider: UISlider) {
-        playerRateBeforeSeek = avPlayer.rate
-        avPlayer.pause()
+        playerRateBeforeSeek = (avPlayer?.rate)!
+        avPlayer?.pause()
     }
     
     func sliderEndedTracking(slider: UISlider) {
-        let videoDuration = CMTimeGetSeconds(avPlayer.currentItem!.duration)
+        let videoDuration = CMTimeGetSeconds((avPlayer?.currentItem!.duration)!)
         let elapsedTime: Float64 = videoDuration * Float64(seekbar.value)
         updateTimeLabel(elapsedTime: elapsedTime, duration: videoDuration)
         
-        avPlayer.seek(to: CMTimeMakeWithSeconds(elapsedTime, 100)) { (completed: Bool) -> Void in
+        avPlayer?.seek(to: CMTimeMakeWithSeconds(elapsedTime, 100)) { (completed: Bool) -> Void in
             if self.playerRateBeforeSeek > 0 {
                 self.play()
             }
@@ -538,14 +652,14 @@ protocol VideoDelegate {
     }
     
     func sliderValueChanged(slider: UISlider) {
-        let videoDuration = CMTimeGetSeconds(avPlayer.currentItem!.duration)
+        let videoDuration = CMTimeGetSeconds((avPlayer?.currentItem!.duration)!)
         let elapsedTime: Float64 = videoDuration * Float64(seekbar.value)
         updateTimeLabel(elapsedTime: elapsedTime, duration: videoDuration)
     }
     
     private func observeTime(elapsedTime: CMTime) {
-        if avPlayer.currentItem != nil {
-            let duration = CMTimeGetSeconds(avPlayer.currentItem!.duration)
+        if avPlayer?.currentItem != nil {
+            let duration = CMTimeGetSeconds((avPlayer?.currentItem!.duration)!)
             let elapsedTime = CMTimeGetSeconds(elapsedTime)
             updateTimeLabel(elapsedTime: elapsedTime, duration: duration)
             trackVideoSeekbar()
@@ -564,16 +678,32 @@ protocol VideoDelegate {
     }
     
     private func updateTotalDuration() {
-        let duration = CMTimeGetSeconds(avPlayer.currentItem!.asset.duration)
-        setTotalDuration(duration: duration)
+        if avPlayer != nil{
+            let duration = CMTimeGetSeconds((avPlayer?.currentItem!.asset.duration)!)
+            setTotalDuration(duration: duration)
+        }
+        
     }
     
     private func setTotalDuration(duration: Double) {
         totalTimeLabel.text = String(format: "%02d:%02d", ((lround(duration) / 60) % 60), lround(duration) % 60)
     }
     
+    func showParentingControls() {
+        bottomView.isHidden = false
+        updateState(state: currentState)
+    }
+    
+    func hideParentingControls() {
+        bottomView.isHidden = true
+        hideLockIcon()
+        hideLoader()
+        hidePlayIcon()
+        hidePauseIcon()
+    }
+    
     deinit {
-        avPlayer.removeTimeObserver(timeObserver)
+        avPlayer?.removeTimeObserver(timeObserver)
         //avPlayer.removeObserver(self, forKeyPath: "currentItem.playbackLikelyToKeepUp")
     }
     

@@ -13,13 +13,9 @@ import UIKit
     let imageInset = UIEdgeInsetsMake(6, 6, 12, 12)
     var buttonImageView: UIImageView?
     @IBInspectable var buttonImage: UIImage?
+    @IBInspectable var buttonColor: String?
     
-    let subLayercolorList = [
-        ["#808080", "#666666"],
-        ["#cccccc", "#b6b3b3"],
-        ["#66ffffff", "#00ffffff"],
-        ["#ffffff", "#66ffffff"],
-        ]
+    var subLayercolorList = [[String]]()
     
     //Note: try to keep even numbers only otherwise leyers won't be complete round
     let subLayerSizeTruncation: [CGFloat] = [
@@ -38,6 +34,7 @@ import UIKit
     
     func initialize() {
         //the main layer
+        subLayercolorList = LayerColor.getLayerColor(colorName: buttonColor)
         self.layer.backgroundColor = UIColor.white.cgColor
         makeRoundCorner(layer: self.layer)
         
@@ -93,6 +90,8 @@ import UIKit
         
         addSubview(buttonImageView!)
         //self.imageView?.center = CGPoint(x: self.frame.size.width/2 - 5, y: self.frame.height/2 - 5)
+        
+        DimensionManager.setTextSize1280x720(label: self.titleLabel!, size: DimensionManager.H3)
     }
     
     func makeRoundCorner(layer: CALayer){

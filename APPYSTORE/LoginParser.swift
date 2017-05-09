@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class LoginParser: BaseParser{
+class LoginParser: BaseParser {
     
     static let METHOD_NAME = "login"
     private let USERID = "UserId"
@@ -59,6 +59,11 @@ class LoginParser: BaseParser{
         userInfoOld = UserInfo.getInstance().getClone()
     }
     
+    //this api response is not well formed. The required data is not present in "Responsedetails" key, hence overriding
+    override func getResponseData(wholeData: JSON, responseDetail: JSON) -> AnyObject? {
+        return parseJSONData(responseData: wholeData)
+    }
+    
     override func parseJSONData(responseData: JSON) -> AnyObject? {
         
         
@@ -95,7 +100,11 @@ class LoginParser: BaseParser{
             userInfo.msisdn = getValueForKey(inputJson: inputJson, key: MSISDN)
             userInfo.smmKey = getValueForKey(inputJson: inputJson, key: SMM_KEY)
             userInfo.childList = parseChildDetail(jsonChildArray: inputJson[CHILD_LIST].array)
-            userInfo.childCount = UserInfo.getChildCount(childList: userInfo.childList)
+
+            if (userInfo.childList.count) > 0 {
+                userInfo.selectedChild = userInfo.childList[0]
+            }
+
             userInfo.isAddressUpdated = StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: inputJson, key: IS_ADDRESS_UPDATED), secondString: "true")
             userInfo.usv = getValueForKey(inputJson: inputJson, key: USV)
             if inputJson[IS_ELIGIBLE_FOR_TRIAL_SUBSCRIPTION].exists(){
@@ -114,7 +123,7 @@ class LoginParser: BaseParser{
             
             //userInfo.isTrialExpired = StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: inputJson, key: IS_TRIAL_EXPIRED), secondString: "1")
             //
-            
+            userInfo.saveUserInfoToUserDefaults()
             
         }
         

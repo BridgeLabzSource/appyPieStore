@@ -1,33 +1,42 @@
 
-import Foundation
 import CoreData
 import UIKit
 
 var data = [NSManagedObject]()
 
 class HistoryDBManager: BaseDBManager{
-    let TABLE_NAME = "HistoryTable";
     
-    let USER_ID = "user_id";
-    let CHILD_ID = "child_id";
-    let CONTENT_ID = "content_id";
-    let P_CAT_ID = "p_cat_id";
-    let SUB_CAT_ID = "sub_cat_id";
-    let SUB_CAT_TITLE = "sub_cat_title";
-    let SEQ_TYPE = "seq_type";
-    let SEQ_NUMBER = "seq_number";
-    let TITLE = "title";
-    let CONTENT_DURATION = "content_duration";
-    let IMAGE_PATH = "image_path";
-    let VERSION_ID = "version_id";
-    let DOWNLOAD_URL = "dnld_url";
-    let DOWNLOAD_STATUS = "download_status";
-    let DOWNLOADED_FILE_PATH = "downloaded_file_path";
-    let PAY_TYPE = "pay_type";
-    let IS_VIDEO_DOWNLOADABLE = "video_streaming";
+    static let sharedInstance = HistoryDBManager()
+    
+    private override init() {
+        
+    }
+    
+    override var TABLE_NAME: String {
+        get {return "HistoryTable"}
+        set{}
+    }
+    
+    let USER_ID = "user_id"
+    let CHILD_ID = "child_id"
+    let CONTENT_ID = "content_id"
+    let P_CAT_ID = "p_cat_id"
+    let SUB_CAT_ID = "sub_cat_id"
+    let SUB_CAT_TITLE = "sub_cat_title"
+    let SEQ_TYPE = "seq_type"
+    let SEQ_NUMBER = "seq_number"
+    let TITLE = "title"
+    let CONTENT_DURATION = "content_duration"
+    let IMAGE_PATH = "image_path"
+    let VERSION_ID = "version_id"
+    let DOWNLOAD_URL = "dnld_url"
+    let DOWNLOAD_STATUS = "download_status"
+    let DOWNLOADED_FILE_PATH = "downloaded_file_path"
+    let PAY_TYPE = "pay_type"
+    let IS_VIDEO_DOWNLOADABLE = "video_streaming"
     
     
-    func insertBulkRecords(userId: String?, childId: String?, modelList: [BaseModel]?) -> Int?
+    override func insertBulkRecords(userId: String?, childId: String?, modelList: [BaseModel]?) -> Int?
     {
         var result:[VideoListingModel]? = (modelList as? [VideoListingModel])!
         var recordsInserted: Int = 0
@@ -41,7 +50,7 @@ class HistoryDBManager: BaseDBManager{
                     let delegate = (UIApplication.shared.delegate as? AppDelegate)
                     let Context = delegate?.persistentContainer.viewContext
                     
-                    let entity =  NSEntityDescription.entity(forEntityName: self.getTableName(), in:Context!)
+                    let entity =  NSEntityDescription.entity(forEntityName: self.TABLE_NAME, in:Context!)
                     
                     let object = NSManagedObject(entity: entity!,insertInto: Context)
                     
@@ -78,7 +87,7 @@ class HistoryDBManager: BaseDBManager{
         return recordsInserted
     }
     
-    func fetchDataWithLimit(childId: String, offset: Int, limit: Int, bundle: AndroidBundle) -> [BaseModel]?
+    override func fetchDataWithLimit(childId: String, offset: Int, limit: Int, bundle: AndroidBundle) -> [BaseModel]?
     {
         var historylist = [BaseModel]()
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
@@ -98,7 +107,7 @@ class HistoryDBManager: BaseDBManager{
         return historylist
     }
     
-    func fetchAll() -> [BaseModel]? {
+    override func fetchAll() -> [BaseModel]? {
         var historylist = [BaseModel]()
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
@@ -112,7 +121,7 @@ class HistoryDBManager: BaseDBManager{
         return historylist
     }
     
-    func getRowCount() -> Int {
+    override func getRowCount(bundle: AndroidBundle) -> Int {
         var count = 0
         
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
@@ -162,25 +171,20 @@ class HistoryDBManager: BaseDBManager{
         return historyModel
     }
     
-    private func getTableName() -> String
-    {
-        return TABLE_NAME
-    }
-    
-    func removeAll(bundle: AndroidBundle)
-    {
-        let delegate = (UIApplication.shared.delegate as? AppDelegate)
-        let Context = delegate?.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.getTableName())
-        do {
-            let records = try Context?.fetch(fetchRequest) as! [NSManagedObject]
-            for record in records {
-                Context?.delete(record)
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-    }
+//    override func clearTable(bundle: AndroidBundle)
+//    {
+//        let delegate = (UIApplication.shared.delegate as? AppDelegate)
+//        let Context = delegate?.persistentContainer.viewContext
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.TABLE_NAME)
+//        do {
+//            let records = try Context?.fetch(fetchRequest) as! [NSManagedObject]
+//            for record in records {
+//                Context?.delete(record)
+//            }
+//        } catch let error as NSError {
+//            print("Could not fetch \(error), \(error.userInfo)")
+//        }
+//    }
     
 }
 

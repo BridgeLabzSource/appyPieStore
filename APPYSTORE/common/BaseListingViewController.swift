@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 
 class BaseListingViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -18,7 +17,6 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     
     var collectionViewCentreX: CGFloat = 0.0
     var collectionViewCentreY: CGFloat = 0.0
-    var progressView: NVActivityIndicatorView?
     var isRequestInProgress = false
     
     let paginationThreshold = 4
@@ -55,10 +53,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     
     func loadData() {
         isRequestInProgress = true
-        let frame = CGRect(x: Int(collectionViewCentreX - 25), y: Int(collectionViewCentreY / 2), width: 30, height: 30)
-        progressView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballPulse, color: UIColor.orange, padding: CGFloat(0))
-        progressView?.startAnimating()
-        self.collectionView.addSubview(progressView!)
+        mainControllerCommunicator?.showProgressBar()
         
         dataFetchFramework?.onDataReceived = onDataReceived
         dataFetchFramework?.start(dataSource: getDataSource())
@@ -66,12 +61,12 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
 
     func onDataReceived( status: String, result: AnyObject) {
         isRequestInProgress = false
-        progressView?.stopAnimating()
-        progressView?.removeFromSuperview()
-        if status == DataFetchFramework.REQUEST_SUCCESS {
+        mainControllerCommunicator?.hideProgressBar()
+        
+        if status == BaseParser.REQUEST_SUCCESS {
             if let result = result as? [BaseModel] {
-                self.view.setNeedsDisplay()
                 print("onDataReceived called", result.count)
+                self.view.setNeedsDisplay()
                 self.collectionView.reloadData()
             }
         } else if status == DataFetchFramework.END_OF_DATA {
@@ -89,9 +84,14 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         
         let cell = getCell(indexPath: indexPath)
 
-        cell.fillCard(model: (dataFetchFramework?.contentList[indexPath.row])!)
+        cell.fillCard(model: getModelToFillCard(index: indexPath))
         
         return cell
+    }
+    
+    //to be overridden if required
+    func getModelToFillCard(index: IndexPath) -> BaseModel {
+        return (dataFetchFramework?.contentList[index.row])!
     }
     
     //to be overridden if required
@@ -99,6 +99,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         return collectionView.dequeueReusableCell(withReuseIdentifier: "VideoListingCard", for: indexPath) as! BaseCard
     }
     
+    //to be overridden if required
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = DimensionManager.getGeneralizedHeight1280x720(height: CARD_HEIGHT)
         let width = DimensionManager.getGeneralizedWidthIn4isto3Ratio(height: height)
@@ -116,5 +117,11 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
                 loadData()
             }
         }
+    }
+    
+    override func resetPage() {
+        print("resetPage \(getPageName())")
+        dataFetchFramework?.reset()
+        dataFetchFramework?.start(dataSource: getDataSource())
     }
 }

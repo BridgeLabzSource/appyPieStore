@@ -56,7 +56,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="df7-p0-iBS" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
-                    <rect key="frame" x="1145" y="32" width="104" height="104"/>
+                    <rect key="frame" x="1144" y="32" width="104" height="104"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="df7-p0-iBS" secondAttribute="height" multiplier="1:1" id="6m2-ip-nXT"/>
@@ -115,7 +115,7 @@
                 <constraint firstItem="Ezb-eT-Rvp" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="Ib9-PC-NOG"/>
                 <constraint firstItem="UEm-NH-YbS" firstAttribute="height" secondItem="df7-p0-iBS" secondAttribute="height" id="KvV-NZ-Vps"/>
                 <constraint firstItem="df7-p0-iBS" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="OPe-QG-0qo"/>
-                <constraint firstItem="df7-p0-iBS" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="1280:1312" id="PRT-Yo-hnx"/>
+                <constraint firstItem="df7-p0-iBS" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="1248:1280" id="PRT-Yo-hnx"/>
                 <constraint firstItem="7Fb-N5-zdH" firstAttribute="width" secondItem="SkT-Dj-8Bs" secondAttribute="width" id="R42-Wt-E1S"/>
                 <constraint firstItem="vrL-Bc-S1y" firstAttribute="centerX" secondItem="gU4-UX-bvm" secondAttribute="centerX" id="TO9-RJ-SMV"/>
                 <constraint firstItem="7Fb-N5-zdH" firstAttribute="top" secondItem="SkT-Dj-8Bs" secondAttribute="top" id="VOD-GQ-Xhp"/>
@@ -136,7 +136,7 @@
                 <constraint firstItem="7Fb-N5-zdH" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="rwO-li-c2O"/>
                 <constraint firstItem="Ezb-eT-Rvp" firstAttribute="width" secondItem="SkT-Dj-8Bs" secondAttribute="width" id="syv-8h-Hsl"/>
                 <constraint firstItem="UEm-NH-YbS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="168:1280" id="u3Z-Gl-BLD"/>
-                <constraint firstItem="df7-p0-iBS" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="104:200" id="ugI-xe-uXZ"/>
+                <constraint firstItem="df7-p0-iBS" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="104:200" id="ugI-xe-uXZ"/>
                 <constraint firstItem="UEm-NH-YbS" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="1112:1280" id="v3N-Px-zUN"/>
                 <constraint firstItem="UEm-NH-YbS" firstAttribute="top" secondItem="df7-p0-iBS" secondAttribute="top" id="wgj-DP-Wzy"/>
                 <constraint firstItem="gU4-UX-bvm" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="yQL-WQ-HnS"/>

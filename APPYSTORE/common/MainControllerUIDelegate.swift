@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
+
+enum Area {
+    case FULL
+    case MIDDLE
+}
 
 class MainControllerUIDelegate {
     let mainController: MainController
     var fabButton: KCFloatingActionButton!
+    var progressView: NVActivityIndicatorView?
     
     
     lazy var audioCategoryController: AudioCategoryController = {
@@ -26,7 +33,7 @@ class MainControllerUIDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "HistoryController") as! HistoryController
         
-        self.addAsChildViewController(childController: viewController)
+        //self.addAsChildViewController(childController: viewController, area: nil)
         return viewController
     }()
     
@@ -34,7 +41,7 @@ class MainControllerUIDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "VideoCategoryController") as! VideoCategoryController
         
-        self.addAsChildViewController(childController: viewController)
+        self.addAsChildViewController(childController: viewController, area: nil)
         return viewController
     }()
     
@@ -51,14 +58,27 @@ class MainControllerUIDelegate {
         fabButton.paddingX = DimensionManager.getGeneralizedWidth1280x720(width: 32)
         fabButton.paddingY = DimensionManager.getGeneralizedHeight1280x720(height: 32)
         makeFab()
-        
-        Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(self.firstPageLoaderTask), userInfo: nil, repeats: false);
+        initProgressBar()
+    }
+    
+    private func initProgressBar() {
+        print("initProgressBar x = \(mainController.view.center.x) y = \(mainController.view.center.y)")
+        let width = DimensionManager.getGeneralizedWidth1280x720(width: 210)
+        let height = DimensionManager.getGeneralizedHeight1280x720(height: 70)
+        let frame = CGRect(x: CGFloat(mainController.view.center.x - width / 2), y: CGFloat(mainController.view.center.y - height / 2), width: width, height: height)
+        progressView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballPulse, color: UIColor.orange, padding: CGFloat(0))
         
     }
     
-    //for proper alignment of child controller in middleView
-    @objc func firstPageLoaderTask() {
-        showVideoCategoryPage()
+    func showProgressBar() {
+        progressView?.startAnimating()
+        mainController.view.addSubview(progressView!)
+        mainController.view.bringSubview(toFront: progressView!)
+    }
+    
+    func hideProgressBar() {
+        progressView?.stopAnimating()
+        progressView?.removeFromSuperview()
     }
     
     func setButtonsClickLstener() {
@@ -69,15 +89,22 @@ class MainControllerUIDelegate {
         mainController.topView.btnSearch.addTarget(self, action: #selector(handleSearchButtonClick), for: .touchUpInside)
     }
     
-    @objc func handleBackButtonClick() {
+    @objc func handleBackButtonClick(_ controller: AnyObject) {
         let currentViewController = mainController.getCurrentViewController()
-        mainController.childControllersList?.removeLast()
-        removeChildController(childController: currentViewController)
-        mainController.onBackPressed()
-        printBackStack()
+        print("handleBackButtonClick \(currentViewController?.getPageName())")
+        
+        if controller is CustomButton || currentViewController?.getPageName() == (controller as! BaseViewController).getPageName() {
+            mainController.childControllersList?.removeLast()
+            removeChildController(childController: currentViewController)
+            mainController.onBackPressed()
+            printBackStack()
+        }
+        
     }
     
     @objc func handleSearchButtonClick() {
+        //NavigationManager.openTrialPopUp(mainControllerCommunicator: mainController)
+        
         if mainController.topView.tfSearch.isHidden {
             NavigationManager.openSearchTagsPage(mainControllerCommunicator: mainController)
         } else {
@@ -106,8 +133,17 @@ class MainControllerUIDelegate {
         
         if !(mainController.getCurrentViewController() is HistoryController) {
             removeChildController(childController: mainController.getCurrentViewController())
+            
+            // first time viewWillAppear gets called automatically,
+            // but not from second time onwards, hence calling manually
+            if historyController.isViewLoaded {
+                historyController.viewWillAppear(false)
+            }
+            
+            self.addAsChildViewController(childController: historyController, area: nil)
             historyController.view.isHidden = false
             mainController.childControllersList?.append(historyController)
+            
         }
     }
     
@@ -135,17 +171,23 @@ class MainControllerUIDelegate {
         mainController.view.addSubview(fabButton)
     }
     
-    func addChild(controller: BaseViewController) {
-        addAsChildViewController(childController: controller)
+    func addChild(controller: BaseViewController, area: Area?) {
+        addAsChildViewController(childController: controller, area: area)
         mainController.childControllersList?.append(controller)
         printBackStack()
     }
     
-    func addAsChildViewController(childController: BaseViewController){
+    func addAsChildViewController(childController: BaseViewController, area: Area?){
         mainController.getCurrentViewController()?.view.isHidden = true
         mainController.addChildViewController(childController)
         mainController.view.addSubview(childController.view)
-        childController.view.frame = mainController.middleView.frame
+        
+        if(area == nil || area == Area.MIDDLE) {
+            childController.view.frame = mainController.middleView.frame
+        } else {
+            childController.view.frame = mainController.imgFullBgView.frame
+        }
+        
         childController.didMove(toParentViewController: childController)
         childController.mainControllerCommunicator = mainController
     }
@@ -156,7 +198,7 @@ class MainControllerUIDelegate {
                 {
                     childController?.view.isHidden = true
                 } else {
-                childController?.willMove(toParentViewController: nil)
+               childController?.willMove(toParentViewController: nil)
                 childController?.view.removeFromSuperview()
                 childController?.removeFromParentViewController()
             }

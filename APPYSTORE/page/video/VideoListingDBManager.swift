@@ -14,7 +14,17 @@ import UIKit
 //var data = [NSManagedObject]()
 
 class VideoListingDBManager: BaseDBManager{
-    let TABLE_NAME = "VideoListingTable";
+    
+    static let sharedInstance = VideoListingDBManager()
+    
+    private override init() {
+        
+    }
+    
+    override var TABLE_NAME: String {
+        get {return "VideoListingTable"}
+        set{}
+    }
     
     let USER_ID = "user_id";
     let CHILD_ID = "child_id";
@@ -35,7 +45,7 @@ class VideoListingDBManager: BaseDBManager{
     let IS_VIDEO_DOWNLOADABLE = "video_streaming";
     
     
-    func insertBulkRecords(userId: String?, childId: String?, modelList: [BaseModel]?) -> Int?
+    override func insertBulkRecords(userId: String?, childId: String?, modelList: [BaseModel]?) -> Int?
     {
         var result:[VideoListingModel]? = (modelList as? [VideoListingModel])!
         var recordsInserted: Int = 0
@@ -86,7 +96,7 @@ class VideoListingDBManager: BaseDBManager{
         return recordsInserted
     }
     
-    func fetchDataWithLimit(childId: String, offset: Int, limit: Int, bundle: AndroidBundle) -> [BaseModel]?
+    override func fetchDataWithLimit(childId: String, offset: Int, limit: Int, bundle: AndroidBundle) -> [BaseModel]?
     {
         var modelArray = [BaseModel]()
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
@@ -111,7 +121,7 @@ class VideoListingDBManager: BaseDBManager{
         return modelArray
     }
     
-    func fetchAll() -> [BaseModel]? {
+    override func fetchAll() -> [BaseModel]? {
         var historylist = [BaseModel]()
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
@@ -124,23 +134,8 @@ class VideoListingDBManager: BaseDBManager{
         }
         return historylist
     }
-    
-//    func getRowCount() -> Int {
-//        var count = 0
-//        
-//        let delegate = (UIApplication.shared.delegate as? AppDelegate)
-//        let context = delegate?.persistentContainer.viewContext
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TABLE_NAME)
-//        
-//        do {
-//            count = try (context?.count(for: fetchRequest)) ?? 0
-//        } catch let error as NSError {
-//            print("Error : \(error)")
-//        }
-//        return count
-//    }
 
-    func getRowCount(bundle: AndroidBundle) -> Int {
+    override func getRowCount(bundle: AndroidBundle) -> Int {
         var count = 0
         
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
@@ -192,12 +187,16 @@ class VideoListingDBManager: BaseDBManager{
         return videoListingModel
     }
     
-    func removeAll(bundle: AndroidBundle)
+    override func clearTable(bundle: AndroidBundle)
     {
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TABLE_NAME)
-        fetchRequest.predicate = NSPredicate(format: "\(SUB_CAT_ID) == %@", bundle?[BundleConstants.CATEGORY_ID] as! String)
+        
+        if bundle != nil {
+            fetchRequest.predicate = NSPredicate(format: "\(SUB_CAT_ID) == %@", bundle?[BundleConstants.CATEGORY_ID] as! String)
+        }
+        
         do {
             let records = try Context?.fetch(fetchRequest) as! [NSManagedObject]
             for record in records {

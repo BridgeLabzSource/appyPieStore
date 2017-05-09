@@ -16,8 +16,16 @@ import SDWebImage
     @IBOutlet weak var playIcon: UIImageView!
     @IBOutlet weak var downloadButton: UIButton!
     
+    @IBOutlet weak var titleAndDownloadBtnConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
+        
+        //made hidden in first release
+        downloadButton.isHidden = true
+        titleAndDownloadBtnConstraint.isActive = false
+        layoutIfNeeded()
+        
+        
         let radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 64))
         
         imgThumbnail.layer.cornerRadius = radius
@@ -35,7 +43,17 @@ import SDWebImage
         let videoListingModel = model as! VideoListingModel
         let image_path = videoListingModel.imagePath
         let imgurl = URL(string: image_path)
-        imgThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
+        imgThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "place_holder_cards") )
         lblTitle.text = videoListingModel.title
+        
+        if videoListingModel.payType == "paid" {
+            playIcon.image = UIImage(named: "lock_icon")
+            Utils.addFilterToView(imgThumbnail)
+            Utils.addFilterToView(playIcon)
+        } else {
+            playIcon.image = UIImage(named: "video_card_play_icon_unselected")
+            Utils.removeFilterFromView(imgThumbnail)
+            Utils.removeFilterFromView(playIcon)
+        }
     }
 }
