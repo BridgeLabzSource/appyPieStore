@@ -16,18 +16,17 @@ class AudioCategoryController: BaseListingViewController {
     let url = "http://www.appystore.in/appy_app/appyApi_handler.php?"
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        var bundle = [String: Any]()
-//        let audioCategoryModel = dataFetchFramework?.contentList[indexPath.row] as! AudioCategoryModel
-//        bundle[BundleConstants.CATEGORY_ID] = audioCategoryModel.categoryId
-//        bundle[BundleConstants.PARENT_CATEGORY_ID] = audioCategoryModel.parentCategoryId
-//        bundle[BundleConstants.CATEGORY_NAME] = audioCategoryModel.categoryName
-//        NavigationManager.openVideoListingPage(mainControllerCommunicator: mainControllerCommunicator, bundle: bundle)
+        var bundle = [String: Any]()
+        let audioCategoryModel = dataFetchFramework?.contentList[indexPath.row] as! AudioCategoryModel
+        bundle[BundleConstants.CATEGORY_ID] = audioCategoryModel.categoryId
+        bundle[BundleConstants.PARENT_CATEGORY_ID] = audioCategoryModel.parentCategoryId
+        bundle[BundleConstants.CATEGORY_NAME] = audioCategoryModel.categoryName
+        NavigationManager.openAudioListingPage(mainControllerCommunicator: mainControllerCommunicator, bundle: bundle)
     }
     
     override func getDataSource() -> DataSource {
         return DataSource.SERVER
     }
-    
     
     override internal func getPageName() -> String {
         return PageConstants.AUDIO_CATEGORY_PAGE
@@ -63,15 +62,15 @@ class AudioCategoryController: BaseListingViewController {
                 return CGSize(width: width, height: height)
             }
     
-    func dataFromServer()
-    {
-        Alamofire.request(url, parameters: HttpRequestBuilder.getAudioCategoryParameters(), headers: HttpRequestBuilder.getHeaders()).responseJSON{ (response) in
-            
-            if let hasData = response.data
-            {
-               let jsonData = JSON(data: hasData)
-               print(jsonData)
-            }
-        }
-    }
+//    func dataFromServer()
+//    {
+//        Alamofire.request(url, parameters: HttpRequestBuilder.getAudioCategoryParameters(), headers: HttpRequestBuilder.getHeaders()).responseJSON{ (response) in
+//            
+//            if let hasData = response.data
+//            {
+//               let jsonData = JSON(data: hasData)
+//               print(jsonData)
+//            }
+//        }
+//    }
 }

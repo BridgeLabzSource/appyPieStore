@@ -8,37 +8,70 @@
 
 import UIKit
 
-class AudioListingController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    var array1 = [#imageLiteral(resourceName: "search"),#imageLiteral(resourceName: "cartoon"),#imageLiteral(resourceName: "cartoon"),#imageLiteral(resourceName: "cartoon")]
+class AudioListingController: BaseListingViewController {
     
-    override func viewDidLoad()
-    {
+    var catId: String = ""
+    var catName: String = ""
+    var pCatId: String = ""
+    
+    override internal func getPageName() -> String {
+        return PageConstants.AUDIO_LISTING_PAGE
+    }
+    
+    override func viewDidLoad() {
+        self.catId = bundle?[BundleConstants.CATEGORY_ID] as! String
+        self.pCatId = bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String
+        self.catName = bundle?[BundleConstants.CATEGORY_NAME] as! String
+        dataFetchFramework = DataFetchFramework(pageName: PageConstants.AUDIO_LISTING_PAGE, pageUniqueId: catName, bundle: bundle)
         super.viewDidLoad()
-        let nib = UINib(nibName: "AudioListingCard", bundle: nil)
-        collectionView?.register(nib, forCellWithReuseIdentifier: "Cell1")
     }
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+    override func registerCard() {
+        self.collectionView.register(UINib(nibName: "AudioListingCard", bundle: nil), forCellWithReuseIdentifier: "AudioListingCard")
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return array1.count
+    override func getCell(indexPath: IndexPath) -> BaseCard {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "AudioListingCard", for: indexPath) as! BaseCard
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell1", for: indexPath) as! AudioListingCard
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let height = (self.collectionView?.frame.height)! - 16
         let width = height * 0.733 //aspect ratio 264/360
         
         return CGSize(width: width, height: height)
     }
+    
+    override func getComponentProperties() -> ComponentProperties {
+        let components = ComponentProperties()
+        components.visibleIconsSet = [Item.BTN_BACK, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_SEARCH]
+        
+        return components
+    }
+
+//    var array1 = [#imageLiteral(resourceName: "search"),#imageLiteral(resourceName: "cartoon"),#imageLiteral(resourceName: "cartoon"),#imageLiteral(resourceName: "cartoon")]
+//    
+//    override func viewDidLoad()
+//    {
+//        super.viewDidLoad()
+//        let nib = UINib(nibName: "AudioListingCard", bundle: nil)
+//        collectionView?.register(nib, forCellWithReuseIdentifier: "Cell1")
+//    }
+//    
+//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
+//    
+//    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return array1.count
+//    }
+//    
+//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell1", for: indexPath) as! AudioListingCard
+//        
+//        return cell
+//    }
+//    
 
 
 }

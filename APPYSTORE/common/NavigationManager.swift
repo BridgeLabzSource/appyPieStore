@@ -32,12 +32,21 @@ class NavigationManager {
         viewController.mainControllerCommunicator = mainControllerCommunicator
         mainControllerCommunicator?.addChild(controller: viewController)
     }
+    
     /////////////
     static func openAudioCategoryPage(mainControllerCommunicator: MainControllerCommunicator) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "AudioCategoryController") as! AudioCategoryController
         viewController.mainControllerCommunicator = mainControllerCommunicator
         mainControllerCommunicator.addChild(controller: viewController)
+    }
+    
+    static func openAudioListingPage(mainControllerCommunicator: MainControllerCommunicator?, bundle : AndroidBundle) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "AudioListingController") as! AudioListingController
+        viewController.bundle = bundle
+        viewController.mainControllerCommunicator = mainControllerCommunicator
+        mainControllerCommunicator?.addChild(controller: viewController)
     }
     ////////////////////
     

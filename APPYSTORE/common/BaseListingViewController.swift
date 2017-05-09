@@ -47,7 +47,6 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     func registerCard() {
         self.collectionView.register(UINib(nibName: "VideoListingCard", bundle: nil), forCellWithReuseIdentifier: "VideoListingCard")
     }
-
     
     //to be overridden if required
     func getDataSource() -> DataSource{
@@ -118,6 +117,4 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
             }
         }
     }
-
-
 }

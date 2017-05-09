@@ -43,6 +43,13 @@ class DataManager: NSObject {
             })
             
             
+        case PageConstants.AUDIO_LISTING_PAGE:
+            AudioListingParser().parse(params: HttpRequestBuilder.getAudioListingParameters(method: "getContentList", contentType: "audio", offset: String(offset), limit: String(limit), catId: bundle?[BundleConstants.CATEGORY_ID] as! String, pCatId: bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String, age: "1", inclAge: "1", pageId: "audio"), completion:{
+                statusType, result in
+                
+                returndata(statusType, result!)
+            })
+            
         case PageConstants.RECOMMENDED_VIDEO_LISTING_PAGE:
             RecommendedVideoParser().parse(params: HttpRequestBuilder.getRecommendedVideoListingParameters(method: "getRecommendation", contentType: "videos", offset: String(offset), limit: String(limit), catId: "193", pCatId: "191", contentId: "20087824", sequenceType: "a", sequenceNumber: "501", age: "8", inclAge: "", returnedContentType: "videos", pageId: "videoRecommendation", flagItemAtFirstPosition: "1"), completion: {
                 statusType, result in
@@ -83,6 +90,10 @@ class DataManager: NSObject {
             
         case PageConstants.VIDEO_LISTING_PAGE:
             dataList = VideoListingDBManager().fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: bundle)
+    
+        case PageConstants.AUDIO_LISTING_PAGE:
+            dataList = AudioListingDBManager().fetchDataWithLimit(childId: "29518", offset: offset, limit: limit, bundle: bundle)
+            
         case PageConstants.SEARCH_TAGS_PAGE:
             dataList = Prefs.getInstance()?.getSearchTags()
         default:
@@ -143,6 +154,11 @@ class DataManager: NSObject {
             count = HistoryDBManager().insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
         case PageConstants.VIDEO_CATEGORY_PAGE:
             count = VideoDBManager().insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
+            
+            
+            
+            
+            
         case PageConstants.VIDEO_LISTING_PAGE:
             count = VideoListingDBManager().insertBulkRecords(userId: "107105246", childId: "29518", modelList: dataList)!
         case PageConstants.SEARCH_TAGS_PAGE:

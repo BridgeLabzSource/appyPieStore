@@ -77,7 +77,6 @@ class VideoDBManager: BaseDBManager {
         }
         
         return videocategorylist
-        
     }
     
     func fetchAll() -> [BaseModel]? {

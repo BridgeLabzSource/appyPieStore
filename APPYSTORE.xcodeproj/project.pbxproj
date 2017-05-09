@@ -31,6 +31,9 @@
 		0AAD2F021E5C48EF00B504A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD2F001E5C48EF00B504A3 /* Main.storyboard */; };
 		0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2F031E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld */; };
 		0AAD2F0A1E5C48EF00B504A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AAD2F081E5C48EF00B504A3 /* LaunchScreen.storyboard */; };
+		0AEF723B1EC087950085CA88 /* AudioListingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF723A1EC087950085CA88 /* AudioListingParser.swift */; };
+		0AEF723D1EC087FE0085CA88 /* AudioListingDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF723C1EC087FE0085CA88 /* AudioListingDBManager.swift */; };
+		0AEF723F1EC0881E0085CA88 /* AudioListingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF723E1EC0881E0085CA88 /* AudioListingModel.swift */; };
 		0AF26F041EBA027500BC7EF9 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF26F031EBA027500BC7EF9 /* AudioPlayer.swift */; };
 		0AF26F071EBA0CED00BC7EF9 /* AudioPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF26F061EBA0CED00BC7EF9 /* AudioPlayerController.swift */; };
 		0AF47EAC1EBAFE630061FD8B /* MyCustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF47EAB1EBAFE630061FD8B /* MyCustomSlider.swift */; };
@@ -154,6 +157,9 @@
 		0AAD2F041E5C48EF00B504A3 /* APPYSTORE.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = APPYSTORE.xcdatamodel; sourceTree = "<group>"; };
 		0AAD2F091E5C48EF00B504A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AAD2F0B1E5C48EF00B504A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AEF723A1EC087950085CA88 /* AudioListingParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioListingParser.swift; sourceTree = "<group>"; };
+		0AEF723C1EC087FE0085CA88 /* AudioListingDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioListingDBManager.swift; sourceTree = "<group>"; };
+		0AEF723E1EC0881E0085CA88 /* AudioListingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioListingModel.swift; sourceTree = "<group>"; };
 		0AF26F031EBA027500BC7EF9 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioPlayer.swift; path = ../common/AudioPlayer.swift; sourceTree = "<group>"; };
 		0AF26F061EBA0CED00BC7EF9 /* AudioPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerController.swift; sourceTree = "<group>"; };
 		0AF47EAB1EBAFE630061FD8B /* MyCustomSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomSlider.swift; sourceTree = "<group>"; };
@@ -443,6 +449,9 @@
 			isa = PBXGroup;
 			children = (
 				0AF47EB11EBB59340061FD8B /* AudioListingController.swift */,
+				0AEF723A1EC087950085CA88 /* AudioListingParser.swift */,
+				0AEF723C1EC087FE0085CA88 /* AudioListingDBManager.swift */,
+				0AEF723E1EC0881E0085CA88 /* AudioListingModel.swift */,
 			);
 			name = listing;
 			sourceTree = "<group>";
@@ -713,6 +722,7 @@
 				0A82CF591EB0DDDA00987E6D /* AudioListingCard.swift in Sources */,
 				0AF47EB21EBB59350061FD8B /* AudioListingController.swift in Sources */,
 				0AF47EAC1EBAFE630061FD8B /* MyCustomSlider.swift in Sources */,
+				0AEF723D1EC087FE0085CA88 /* AudioListingDBManager.swift in Sources */,
 				73754E0B1E97B027001DD942 /* SearchTagsController.swift in Sources */,
 				73F43B041E82465800D4DD90 /* PageDataPref.swift in Sources */,
 				7392A7881E94CEC700A6ED32 /* VideoListingDBManager.swift in Sources */,
@@ -722,6 +732,7 @@
 				0AF26F071EBA0CED00BC7EF9 /* AudioPlayerController.swift in Sources */,
 				0A65E2601E6EC11400F538B5 /* VideoCategoryParser.swift in Sources */,
 				0A72615F1E6D30600023883F /* UIColorExtension.swift in Sources */,
+				0AEF723F1EC0881E0085CA88 /* AudioListingModel.swift in Sources */,
 				738EEE701EA4DD5300A50038 /* NavigationUtil.swift in Sources */,
 				707FD8181E7140A400948BEA /* Util.swift in Sources */,
 				706B0B9B1E73D392006CF8CA /* AnimationView.swift in Sources */,
@@ -773,6 +784,7 @@
 				0A8A58A61E683F2100A93DD2 /* VideoCategoryController.swift in Sources */,
 				736D42891E9F57DC00ACDD0F /* CustomTextField.swift in Sources */,
 				0A7261631E6D30AE0023883F /* CustomButton.swift in Sources */,
+				0AEF723B1EC087950085CA88 /* AudioListingParser.swift in Sources */,
 				736D42871E9F544F00ACDD0F /* UITextFieldExtension.swift in Sources */,
 				7371A2E31E7BB293009B2894 /* ArrayExtension.swift in Sources */,
 				7360D88A1E7A947500C662DE /* LoginParserListener.swift in Sources */,

@@ -17,5 +17,5 @@ class MyCustomSlider: UISlider
      {
         //set your bounds here
         return CGRect(origin: bounds.origin, size: CGSize(width:bounds.width,height: trackHeight))
-    }
+     }
 }

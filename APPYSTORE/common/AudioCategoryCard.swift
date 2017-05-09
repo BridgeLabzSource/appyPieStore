@@ -25,15 +25,15 @@ class AudioCategoryCard: BaseCard {
     override func awakeFromNib() {
         radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 64))
       
-        viewInfoContainer.layer.cornerRadius = radius
-        viewInfoContainer.clipsToBounds = true
-        
         rootView.layer.cornerRadius = radius
         rootView.clipsToBounds = true
         
         imgLogo.layer.cornerRadius = radius
         imgLogo.clipsToBounds = true
         
+        viewInfoContainer.layer.cornerRadius = radius
+        viewInfoContainer.clipsToBounds = true
+
         DimensionManager.setTextSize1280x720(label: lblCount, size: DimensionManager.H3)
         
         showShadowRightBottom()
