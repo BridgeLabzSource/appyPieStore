@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Recommended Audio View Controller-->
+        <scene sceneID="8hB-mU-PgV">
+            <objects>
+                <viewController id="3Ts-aF-7yI" customClass="RecommendedAudioViewController" customModule="APPYSTORE" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nLW-ae-Yo3"/>
+                        <viewControllerLayoutGuide type="bottom" id="KDt-Y8-n9C"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tUy-Gk-xJM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="McU-1H-EbM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pjp-W6-eYS">
+                                    <size key="itemSize" width="245" height="106"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendedAudioCard" id="XzO-82-7gI" customClass="RecommendedAudioCard" customModule="APPYSTORE" customModuleProvider="target">
+                                        <rect key="frame" x="65" y="0.0" width="245" height="106"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="245" height="106"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="tUy-Gk-xJM" id="Sl9-N3-0L6"/>
+                                    <outlet property="delegate" destination="tUy-Gk-xJM" id="QQL-XY-l1a"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="McU-1H-EbM" secondAttribute="trailing" id="0XT-7I-z1T"/>
+                            <constraint firstItem="McU-1H-EbM" firstAttribute="top" secondItem="tUy-Gk-xJM" secondAttribute="top" id="bu2-3Q-Zmw"/>
+                            <constraint firstItem="KDt-Y8-n9C" firstAttribute="top" secondItem="McU-1H-EbM" secondAttribute="bottom" id="fuA-5B-j8c"/>
+                            <constraint firstItem="McU-1H-EbM" firstAttribute="leading" secondItem="tUy-Gk-xJM" secondAttribute="leading" id="t4z-2u-Qae"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="McU-1H-EbM" id="3yi-DV-Osh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i56-Rg-ES3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="152.80000000000001" y="261.31934032983509"/>
+        </scene>
+    </scenes>
+</document>

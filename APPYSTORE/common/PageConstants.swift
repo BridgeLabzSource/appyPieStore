@@ -41,4 +41,28 @@ class PageConstants: NSObject {
     static let  KEY_SELECT_AVATAR_SERVER_OFFSET = "KEY_SELECT_AVATAR_SERVER_OFFSET"
     
     static let CHILD_SELECTION_PAGE = "Child selection page"
+    
+    
+    
+    
+    ////
+    static let RECOMMENDED_AUDIO_LISTING_PAGE = "Recommended Audio Listing Page"
+    ////
+    /////////
+    static let AUDIO_CATEGORY_PAGE = "Audio category page"
+    static let KEY_AUDIO_CATEGORY_DATA_FETCH_TIME = "KEY_AUDIO_CATEGORY_DATA_FETCH_TIME"
+    static let KEY_AUDIO_CATEGORY_SERVER_OFFSET = "KEY_AUDIO_CATEGORY_SERVER_OFFSET"
+    static let KEY_AUDIO_CATEGORY_TOTAL_CONTENT_COUNT = "KEY_AUDIO_CATEGORY_TOTAL_CONTENT_COUNT"
+    //////////
+    
+    
+    /////////
+    
+    static let AUDIO_LISTING_PAGE = "Audio listing page"
+    static let KEY_AUDIO_LISTING_DATA_FETCH_TIME = "KEY_AUDIO_LISTING_DATA_FETCH_TIME"
+    static let KEY_AUDIO_LISTING_SERVER_OFFSET = "KEY_AUDIO_LISTING_SERVER_OFFSET"
+    static let KEY_AUDIO_LISTING_TOTAL_CONTENT_COUNT = "KEY_AUDIO_LISTING_TOTAL_CONTENT_COUNT"
+    
+    ////////
+
 }
