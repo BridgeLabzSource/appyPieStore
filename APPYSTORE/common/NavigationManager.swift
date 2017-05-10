@@ -19,6 +19,14 @@ class NavigationManager {
         mainControllerCommunicator.addChild(controller: viewController, area: .FULL)
     }
     
+    static func openAudioPlayerPage(mainControllerCommunicator: MainControllerCommunicator, model: AudioListingModel) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "AudioPlayerController") as! AudioPlayerController
+        viewController.mainControllerCommunicator = mainControllerCommunicator
+        viewController.defaultModel = model
+        mainControllerCommunicator.addChild(controller: viewController, area: .FULL)
+    }
+    
     static func openChildSelectionPage(mainControllerCommunicator: MainControllerCommunicator) {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "ChildSelectionController") as! ChildSelectionController

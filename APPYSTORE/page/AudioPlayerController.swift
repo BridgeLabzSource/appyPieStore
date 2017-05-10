@@ -8,12 +8,13 @@
 
 import UIKit
 
-class AudioPlayerController: UIViewController {
+class AudioPlayerController: BaseViewController {
 
     @IBOutlet weak var audioPlayerView: UIView!
     
     @IBOutlet weak var audioListView: UIView!
     
+    var defaultModel: AudioListingModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

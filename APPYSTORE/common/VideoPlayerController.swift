@@ -18,6 +18,7 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
     @IBOutlet weak var backButton: CustomButton!
     @IBOutlet weak var recommendedContainer: UIView!
     @IBOutlet weak var videoPlayer: VideoPlayer!
+    
     var isMinimize = true
     var defaultModel: VideoListingModel?
     

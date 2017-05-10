@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseViewController: UIViewController, BaseViewControllerProtocol {
-   private var pageName: String?
+    private var pageName: String?
     private var pageNameUniqueIdentifier: String?
     
     internal func getPageName() -> String {

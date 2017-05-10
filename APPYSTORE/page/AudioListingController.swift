@@ -42,6 +42,21 @@ class AudioListingController: BaseListingViewController {
         return CGSize(width: width, height: height)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let audioListingModel = dataFetchFramework?.contentList[indexPath.row] as! AudioListingModel
+        print("AudioListingController : select audio \(audioListingModel.title)")
+        
+        if audioListingModel.payType == "paid" {
+            var bundle = [String: Any]()
+            //NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
+            NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
+        } else {
+            NavigationManager.openAudioPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: audioListingModel)
+        }
+
+    }
+    
+    
     override func getComponentProperties() -> ComponentProperties {
         let components = ComponentProperties()
         components.visibleIconsSet = [Item.BTN_BACK, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_SEARCH]
