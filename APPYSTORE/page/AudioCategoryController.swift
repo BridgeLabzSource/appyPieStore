@@ -28,7 +28,7 @@ class AudioCategoryController: BaseListingViewController {
         return DataSource.SERVER
     }
     
-    override internal func getPageName() -> String {
+    override func getPageName() -> String {
         return PageConstants.AUDIO_CATEGORY_PAGE
     }
     

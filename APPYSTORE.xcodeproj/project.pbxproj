@@ -476,7 +476,6 @@
 			isa = PBXGroup;
 			children = (
 				738EEE711EA4FEEF00A50038 /* loginAndRegistration */,
-				0AD5536E1E5DA958005ECA4A /* video */,
 				0AF3DD551EB8B9A70086D44F /* audio */,
 				73754E091E9795F3001DD942 /* search */,
 				70A36E521E6160BD002B9296 /* history */,
@@ -692,7 +691,7 @@
 				TargetAttributes = {
 					0AAD2EF81E5C48EF00B504A3 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = PA2R53J5C8;
+						DevelopmentTeam = 68ER49T9EA;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1049,7 +1048,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = PA2R53J5C8;
+				DEVELOPMENT_TEAM = 68ER49T9EA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -1068,7 +1067,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = PA2R53J5C8;
+				DEVELOPMENT_TEAM = 68ER49T9EA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",

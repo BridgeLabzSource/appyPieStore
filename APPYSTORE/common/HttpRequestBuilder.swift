@@ -175,9 +175,10 @@ class HttpRequestBuilder: NSObject {
                 INCL_AGE:"0",
                 CONTENT_TYPE:"audio"]
     }
+    
 
-    static func getVideoListingParameters(method: String, contentType: String, offset: String, limit: String, catId: String, pCatId: String, age: String, inclAge: String, pageId: String) -> Parameters
-   {
+    static func getVideoListingParameters(offset: String, limit: String, catId: String, pCatId: String) -> Parameters
+    {
         return [METHOD: "getContentList",
                 CONTENT_TYPE: "videos",
                 OFFSET: offset,
@@ -190,20 +191,20 @@ class HttpRequestBuilder: NSObject {
         ]
     }
     
-    static func getAudioListingParameters(method: String, contentType: String, offset: String, limit: String, catId: String, pCatId: String, age: String, inclAge: String, pageId: String) -> Parameters
+    
+    static func getAudioListingParameters(offset: String, limit: String, catId: String, pCatId: String) -> Parameters
     {
-        return [METHOD: method,
-                CONTENT_TYPE: contentType,
+        return [METHOD: "getContentList",
+                CONTENT_TYPE: "audio",
                 OFFSET: offset,
                 LIMIT: limit,
                 CATID: catId,
                 PCATID: pCatId,
-                AGE: age,
-                INCL_AGE: inclAge,
-                PAGEID: pageId
+                AGE: (UserInfo.getInstance().selectedChild?.age)!,
+                INCL_AGE: "",
+                PAGEID: "audio"
         ]
     }
-
 
     static func getRecommendedVideoListingParameters(offset: String, limit: String, catId: String, pCatId: String, contentId: String, sequenceType: String, sequenceNumber: String, lastContentId: String) -> Parameters {
         

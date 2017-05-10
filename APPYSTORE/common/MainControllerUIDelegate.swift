@@ -24,7 +24,7 @@ class MainControllerUIDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "AudioCategoryController") as! AudioCategoryController
         
-        self.addAsChildViewController(childController: viewController)
+        self.addAsChildViewController(childController: viewController, area: nil)
         return viewController
     }()
     

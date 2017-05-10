@@ -161,6 +161,7 @@ class DataFetchFramework {
                 offsetServer = 0
                 print("TimeExpired hence offsetServer: \(offsetServer)")
             }
+           print(pageName)
            DataManager.sharedInstance.getData(pageName: pageName, offset: offsetServer, limit: limit, bundle: bundle, returndata: {
                 statusType, result in
                 

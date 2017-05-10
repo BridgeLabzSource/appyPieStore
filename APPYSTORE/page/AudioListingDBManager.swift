@@ -13,7 +13,11 @@ import UIKit
 //var data = [NSManagedObject]()
 
 class AudioListingDBManager: BaseDBManager{
-    let TABLE_NAME = "AudioListingTable";
+   
+    
+    override var TABLE_NAME: String {
+        get {return "AudioListingTable"}
+        set{}}
     
     let USER_ID = "user_id";
     let CHILD_ID = "child_id";
@@ -34,7 +38,7 @@ class AudioListingDBManager: BaseDBManager{
     let IS_AUDIO_DOWNLOADABLE = "audio_streaming";
     
     
-    func insertBulkRecords(userId: String?, childId: String?, modelList: [BaseModel]?) -> Int?
+    override func insertBulkRecords(userId: String?, childId: String?, modelList: [BaseModel]?) -> Int?
     {
         var result:[AudioListingModel]? = (modelList as? [AudioListingModel])!
         var recordsInserted: Int = 0
@@ -85,7 +89,7 @@ class AudioListingDBManager: BaseDBManager{
         return recordsInserted
     }
     
-    func fetchDataWithLimit(childId: String, offset: Int, limit: Int, bundle: AndroidBundle) -> [BaseModel]?
+    override func fetchDataWithLimit(childId: String, offset: Int, limit: Int, bundle: AndroidBundle) -> [BaseModel]?
     {
         var modelArray = [BaseModel]()
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
@@ -110,7 +114,7 @@ class AudioListingDBManager: BaseDBManager{
         return modelArray
     }
     
-    func fetchAll() -> [BaseModel]? {
+    override func fetchAll() -> [BaseModel]? {
         var historylist = [BaseModel]()
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
@@ -139,7 +143,7 @@ class AudioListingDBManager: BaseDBManager{
     //        return count
     //    }
     
-    func getRowCount(bundle: AndroidBundle) -> Int {
+    override func getRowCount(bundle: AndroidBundle) -> Int {
         var count = 0
         
         let delegate = (UIApplication.shared.delegate as? AppDelegate)

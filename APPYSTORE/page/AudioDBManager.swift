@@ -12,8 +12,12 @@ import UIKit
 
 class AudioDBManager: BaseDBManager {
     
-    let TABLE_NAME = "AudioCategoryTable"
+    static let sharedInstance = AudioDBManager()
     
+    override var TABLE_NAME: String {
+        get {return "AudioCategoryTable"}
+        set{}
+    }
     let USER_ID = "user_id";
     let CHILD_ID = "child_id";
     let CAT_ID = "category_id";
@@ -26,7 +30,7 @@ class AudioDBManager: BaseDBManager {
     let VISIBILITY_STATUS = "visibility_status";
     let CONTENT_COUNT = "content_count";
     
-    func insertBulkRecords(userId: String?, childId: String?, modelList: [BaseModel]?) -> Int? {
+    override func insertBulkRecords(userId: String?, childId: String?, modelList: [BaseModel]?) -> Int? {
         var result:[AudioCategoryModel]? = (modelList as? [AudioCategoryModel])!
         var recordsInserted:Int = 0
         
@@ -67,7 +71,7 @@ class AudioDBManager: BaseDBManager {
         return recordsInserted
     }
     
-    func fetchDataWithLimit(childId: String, offset: Int, limit: Int, bundle: AndroidBundle) -> [BaseModel]? {
+    override func fetchDataWithLimit(childId: String, offset: Int, limit: Int, bundle: AndroidBundle) -> [BaseModel]? {
         var audiocategorylist = [BaseModel]()
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
@@ -86,7 +90,7 @@ class AudioDBManager: BaseDBManager {
         return audiocategorylist
     }
     
-    func fetchAll() -> [BaseModel]? {
+    override func fetchAll() -> [BaseModel]? {
         var audiocategorylist = [BaseModel]()
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let Context = delegate?.persistentContainer.viewContext
