@@ -31,6 +31,7 @@ class MainController: UIViewController, MainControllerCommunicator {
         super.viewDidLoad()
         print("MainController viewDidLoad called")
         print("MainController vendor id : \(UIDevice.current.identifierForVendor?.uuidString)")
+        AppConfigurationHandler().start()
         uiDelegate = MainControllerUIDelegate(mainController: self)
         AppNavigationHandler(mainControllerCommunicator: self).NavigateAtAppOpen()
         uiDelegate?.viewDidLoad()

@@ -36,8 +36,7 @@ class ChildRegistrationController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let radius = DimensionManager.getGeneralizedHeight1280x720(height: 20)
-        containerView.layer.cornerRadius = radius
+        containerView.layer.cornerRadius = BasePopUpController.POPUP_CORNER_RADIUS
         setSpacing()
         setSize()
         

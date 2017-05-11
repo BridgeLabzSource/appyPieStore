@@ -43,7 +43,7 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
     override func secondButtonClick() {
         let otp = centerEditText.text
         if otp != nil {
-            FreeTrialOtpVerificationParser().parse(params: HttpRequestBuilder.getOtpVerificationParameters(method: FreeTrialOtpVerificationParser.METHOD_NAME, userId: trialResponseModel.userId, msisdn: trialResponseModel.msisdn, otp: otp!, smmKey: trialResponseModel.smmKey, androidId: HttpRequestBuilder.ANDROID_ID_VALUE, imei: HttpRequestBuilder.IMEI_VALUE), completion: {
+            FreeTrialOtpVerificationParser().parse(params: HttpRequestBuilder.getOtpVerificationParameters(method: FreeTrialOtpVerificationParser.METHOD_NAME, userId: trialResponseModel.userId, msisdn: trialResponseModel.msisdn, otp: otp!, smmKey: trialResponseModel.smmKey, androidId: AppConstants.VENDOR_ID!, imei: HttpRequestBuilder.IMEI_VALUE), completion: {
                     statusType, result in
                 
                 if statusType == BaseParser.REQUEST_SUCCESS {

@@ -112,7 +112,6 @@ protocol VideoDelegate {
         session = URLSession.shared
         request.httpMethod = "POST"
         request.timeoutInterval = 5
-        request.
         task = session.dataTask(with: request, completionHandler: {
             data, response, error in
             

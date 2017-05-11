@@ -44,7 +44,7 @@ class FreeTrialPopUp: BasePopUpController {
     override func secondButtonClick() {
         // show otp screen
         let mobileNo = centerEditText.text!
-        FreeTrialParser().parse(params: HttpRequestBuilder.getOtpRequestParameters(method: FreeTrialParser.METHOD_NAME, msisdn: mobileNo, smmKey: "appyt-f", androidId: HttpRequestBuilder.ANDROID_ID_VALUE, imei: HttpRequestBuilder.IMEI_VALUE), completion: {
+        FreeTrialParser().parse(params: HttpRequestBuilder.getOtpRequestParameters(method: FreeTrialParser.METHOD_NAME, msisdn: mobileNo, smmKey: "appyt-f", androidId: AppConstants.VENDOR_ID!, imei: HttpRequestBuilder.IMEI_VALUE), completion: {
             statusType, result in
             
             print("FreeTrialPopUp \(result)")

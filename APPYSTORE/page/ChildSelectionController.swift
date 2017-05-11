@@ -10,6 +10,8 @@ import UIKit
 
 class ChildSelectionController: BaseListingViewController {
 
+    @IBOutlet weak var containerView: UIView!
+    
     override internal func getPageName() -> String {
         return PageConstants.CHILD_SELECTION_PAGE
     }
@@ -20,10 +22,16 @@ class ChildSelectionController: BaseListingViewController {
     
     override func viewDidLoad() {
         dataFetchFramework = DataFetchFramework(pageName: getPageName(), pageUniqueId: getPageNameUniqueIdentifier(), bundle: bundle)
+        
+        setViews()
         super.viewDidLoad()
 
     }
 
+    func setViews() {
+        containerView.layer.cornerRadius = BasePopUpController.POPUP_CORNER_RADIUS
+    }
+    
     override func getDataSource() -> DataSource{
         return DataSource.LOCAL
     }
