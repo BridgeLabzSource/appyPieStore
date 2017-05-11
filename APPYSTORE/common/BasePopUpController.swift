@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class BasePopUpController: BaseViewController, UITextViewDelegate {
     
     static let POPUP_CORNER_RADIUS = DimensionManager.getGeneralizedHeight1280x720(height: 24)
     let spacingConstant = AppDelegate.DEVICE_HEIGHT/25
+    var progressView: NVActivityIndicatorView?
+    
     @IBOutlet var rootView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var rootStackView: UIStackView!
@@ -60,6 +63,25 @@ class BasePopUpController: BaseViewController, UITextViewDelegate {
         setListeners()
         setFontSize()
         setTopSpacing()
+        initProgressBar()
+    }
+    
+    private func initProgressBar() {
+        let width = DimensionManager.getGeneralizedWidth1280x720(width: 210)
+        let height = DimensionManager.getGeneralizedHeight1280x720(height: 70)
+        let frame = CGRect(x: CGFloat(buttonStackView.frame.width/2 - width/2), y: 0, width: width, height: height)
+        progressView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballPulse, color: UIColor.orange, padding: CGFloat(0))
+    }
+    
+    func showProgress() {
+        progressView?.startAnimating()
+        buttonStackView.addSubview(progressView!)
+        buttonStackView.bringSubview(toFront: progressView!)
+    }
+    
+    func hideProgress() {
+        progressView?.stopAnimating()
+        progressView?.removeFromSuperview()
     }
     
     func setLabelTwoWithAttributedString(_ text: String, _ clickablePart: String?) {
@@ -232,6 +254,14 @@ class BasePopUpController: BaseViewController, UITextViewDelegate {
         secondButton.isHidden = false
     }
     
+    func hideFirstButton() {
+        firstButton.isHidden = true
+    }
+    
+    func hideSecondButton() {
+        secondButton.isHidden = true
+    }
+    
     func showBottomStackView() {
         bottomStackView.isHidden = false
     }
@@ -269,6 +299,10 @@ class BasePopUpController: BaseViewController, UITextViewDelegate {
     
     func setCenterEditTextValue(_ title: String) {
         centerEditText.text = title
+    }
+    
+    func setCenterEditTextPlaceholder(_ title: String) {
+        centerEditText.placeholder = title
     }
     
     func setFirstButtonTextLabel(_ title: String) {

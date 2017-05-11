@@ -123,7 +123,7 @@ class LoginParser: BaseParser {
             
             //userInfo.isTrialExpired = StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: inputJson, key: IS_TRIAL_EXPIRED), secondString: "1")
             //
-            
+            userInfo.saveUserInfoToUserDefaults()
             
         }
         

@@ -61,6 +61,7 @@ class HttpRequestBuilder: NSObject {
     static let INCL_AGE = "incl_age"
 
     static let CONTENT_ID = "content_id"
+    static let LAST_CONTENT_ID = "last_content_id"
     static let FLAG_AT_ITEM_AT_FIRST_POSITION = "flag"
     static let SEQUENCE_TYPE = "sequence_type"
     static let SEQUENCE_NUMBER = "sequence_number"
@@ -180,7 +181,7 @@ class HttpRequestBuilder: NSObject {
         ]
     }
 
-    static func getRecommendedVideoListingParameters(offset: String, limit: String, catId: String, pCatId: String, contentId: String, sequenceType: String, sequenceNumber: String) -> Parameters {
+    static func getRecommendedVideoListingParameters(offset: String, limit: String, catId: String, pCatId: String, contentId: String, sequenceType: String, sequenceNumber: String, lastContentId: String) -> Parameters {
         
         return [
             METHOD: "getRecommendation",
@@ -196,7 +197,8 @@ class HttpRequestBuilder: NSObject {
             INCL_AGE: "",
             RETURN_CONTENT_TYPE: "videos",
             PAGEID: "videoRecommendation",
-            FLAG_AT_ITEM_AT_FIRST_POSITION: "1"
+            FLAG_AT_ITEM_AT_FIRST_POSITION: "1",
+            LAST_CONTENT_ID: lastContentId
         ]
     }
     

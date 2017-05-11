@@ -271,4 +271,12 @@ class DataFetchFramework {
         }
     }
     
+    func updateBundle(keys:[String], values: [Any]) {
+        var i = 0
+        for key in keys {
+            bundle?[key] = values[i]
+            i += 1
+        }
+    }
+    
 }
