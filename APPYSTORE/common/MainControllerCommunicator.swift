@@ -14,4 +14,5 @@ protocol MainControllerCommunicator {
     func showProgressBar()
     func hideProgressBar()
     func refreshAllPages()
+    func showCenterText(text: String?)
 }

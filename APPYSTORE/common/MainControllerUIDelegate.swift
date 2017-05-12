@@ -71,6 +71,13 @@ class MainControllerUIDelegate {
         progressView?.removeFromSuperview()
     }
     
+    func showCenterText(text: String?) {
+        mainController.lblCentreText.isHidden = false
+        if (text?).characters.count > 0 {
+            mainController.lblCentreText.text = text!
+        }
+    }
+    
     func setButtonsClickLstener() {
         mainController.topView.btnBack.addTarget(self, action: #selector(handleBackButtonClick), for: .touchUpInside)
         mainController.topView.btnVideo.addTarget(self, action: #selector(showVideoCategoryPage), for: .touchUpInside)

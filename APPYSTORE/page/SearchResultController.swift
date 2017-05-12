@@ -32,7 +32,7 @@ class SearchResultController: BaseListingViewController {
         print("VideoListingController : select video \(videoListingModel.title)")
         
         if videoListingModel.payType == "paid" {
-            var bundle = [String: Any]()
+            let bundle = [String: Any]()
             NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
         } else {
             NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: videoListingModel)
