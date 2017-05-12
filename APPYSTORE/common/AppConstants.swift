@@ -16,4 +16,8 @@ class AppConstants {
     
     //static let BASE_URL = "http://www.appystore.in/appy_app/appyApi_handler.php?"
     static let BASE_URL = "http://beta.appystore.in/appy_app/appyApi_handler.php?"
+    
+    static var VENDOR_ID : String? = KeychainManager.getVendorId()
+    
+    static var DATE_FORMAT = "MMM d, yyyy"
 }

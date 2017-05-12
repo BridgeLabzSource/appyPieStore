@@ -49,6 +49,7 @@ class LoginFailurePage: BasePopUpController {
         })
     }
     
+    //login click
     override func onBottomTextClick() {
         print("BottomLabelTwo clicked")
     }

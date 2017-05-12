@@ -10,6 +10,8 @@ import UIKit
 import NVActivityIndicatorView
 
 class BasePopUpController: BaseViewController, UITextViewDelegate {
+    
+    static let POPUP_CORNER_RADIUS = DimensionManager.getGeneralizedHeight1280x720(height: 24)
     let spacingConstant = AppDelegate.DEVICE_HEIGHT/25
     var progressView: NVActivityIndicatorView?
     
@@ -56,8 +58,10 @@ class BasePopUpController: BaseViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let radius = DimensionManager.getGeneralizedHeight1280x720(height: 20)
-        containerView.layer.cornerRadius = radius
+        
+        containerView.layer.cornerRadius = BasePopUpController.POPUP_CORNER_RADIUS
+        containerView.showShadowRightBottom()
+        
         setListeners()
         setFontSize()
         setTopSpacing()
@@ -128,7 +132,7 @@ class BasePopUpController: BaseViewController, UITextViewDelegate {
     
     func setListeners() {
         let singleTapCrossButton = UITapGestureRecognizer(target: self, action: #selector(crossButtonClick))
-        singleTapCrossButton.numberOfTapsRequired = 1 // you can change this value
+        singleTapCrossButton.numberOfTapsRequired = 1
         crossButton.isUserInteractionEnabled = true
         crossButton.addGestureRecognizer(singleTapCrossButton)
         

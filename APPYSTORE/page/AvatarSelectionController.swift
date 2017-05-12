@@ -10,9 +10,11 @@ import UIKit
 
 class AvatarSelectionController: BaseListingViewController {
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var btnSave: CustomButton!
     @IBOutlet weak var btnAdd: CustomButton!
+    @IBOutlet weak var imgCross: UIImageView!
     
     var givenChild: ChildInfo!
     
@@ -25,7 +27,10 @@ class AvatarSelectionController: BaseListingViewController {
     var lastSelectedIndex = 0
     
     
-
+    func onCrossButtonClick() {
+        mainControllerCommunicator?.performBackButtonClick(self)
+    }
+    
     @IBAction func onAddChildTouchUp(_ sender: CustomButton) {
         btnAction = ACTION_ADD
         callRegistrationApiAndNavigate()
@@ -37,7 +42,7 @@ class AvatarSelectionController: BaseListingViewController {
     }
     
     func callRegistrationApiAndNavigate() {
-        let dob = givenChild.dob!.formatDate(originalFormat: "MMM d, yyyy", destinationFormat: "yyyy-MM-dd")
+        let dob = givenChild.dob!.formatDate(originalFormat: AppConstants.DATE_FORMAT, destinationFormat: "yyyy-MM-dd")
         ChildRegistrationParser().parse(params: HttpRequestBuilder.getChildRegistrationParameters(method: ChildRegistrationParser.METHOD_NAME, childName: givenChild.name!, childDob: dob!, avatarId: getValidAvatarId(childInfo: givenChild), pageId: "AvatarSelection"), completion: {
             statusType, result in
             
@@ -89,7 +94,7 @@ class AvatarSelectionController: BaseListingViewController {
     }
     
     override func viewDidLoad() {
-        initializeView()
+        setViews()
         dataFetchFramework = DataFetchFramework(pageName: getPageName(), pageUniqueId: "",  bundle: bundle)
         super.viewDidLoad()
         
@@ -103,10 +108,31 @@ class AvatarSelectionController: BaseListingViewController {
         return avatarId
     }
     
-    func initializeView() {
+    func setViews() {
+        containerView.layer.cornerRadius = BasePopUpController.POPUP_CORNER_RADIUS
+        containerView.showShadowRightBottom()
+        
         DimensionManager.setTextSize1280x720(label: lblTitle, size: DimensionManager.H1)
+        lblTitle.text = "Select avatar for " + givenChild.name!
+        
+        let singleTapCrossButton = UITapGestureRecognizer(target: self, action: #selector(onCrossButtonClick))
+        singleTapCrossButton.numberOfTapsRequired = 1
+        imgCross.isUserInteractionEnabled = true
+        imgCross.addGestureRecognizer(singleTapCrossButton)
+        
+        
+        //todo size constraint not working on these two buttons
+        setButtonSize(btn: btnAdd)
+        setButtonSize(btn: btnSave)
+        //btnAdd.isHidden = true
     }
     
+    func setButtonSize(btn: CustomButton) {
+        btn.heightAnchor.constraint(equalToConstant: DimensionManager.getGeneralizedHeight1280x720(height: 104)).isActive = true
+        
+        btn.widthAnchor.constraint(equalToConstant: DimensionManager.getGeneralizedWidth1280x720(width: 100)).isActive = true
+    }
+
     override func registerCard() {
         self.collectionView.register(UINib(nibName: "ChildCard", bundle: nil), forCellWithReuseIdentifier: "ChildCard")
     }
@@ -120,6 +146,14 @@ class AvatarSelectionController: BaseListingViewController {
         let width = height
         
         return CGSize(width: width, height: height);
+    }
+    
+    override func getModelToFillCard(index: IndexPath) -> BaseModel {
+        let currentModel = dataFetchFramework?.contentList[index.row] as! AvatarModel
+        if lastSelectedIndex == index.row {
+            currentModel.isSelected = true
+        }
+        return currentModel
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
