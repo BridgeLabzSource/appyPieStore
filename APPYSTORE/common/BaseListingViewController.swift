@@ -71,8 +71,13 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         } else if status == DataFetchFramework.END_OF_DATA {
             
         } else {
+            handleRequestFailure()
             print("Ganesh status : \(status) and response : \(result) ")
         }
+    }
+    
+    func handleRequestFailure() {
+        mainControllerCommunicator?.showCenterText(text: "OOPS_SOMETHING_WENT_WRONG_TRY_LATER".localized(lang: AppConstants.LANGUAGE))
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -73,7 +73,7 @@ class MainControllerUIDelegate {
     
     func showCenterText(text: String?) {
         mainController.lblCentreText.isHidden = false
-        if (text?).characters.count > 0 {
+        if (text?.characters.count)! > 0 {
             mainController.lblCentreText.text = text!
         }
     }

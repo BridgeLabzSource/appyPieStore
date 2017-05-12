@@ -20,4 +20,6 @@ class AppConstants {
     static var VENDOR_ID : String? = KeychainManager.getVendorId()
     
     static var DATE_FORMAT = "MMM d, yyyy"
+    
+    static let LANGUAGE = "en"
 }
