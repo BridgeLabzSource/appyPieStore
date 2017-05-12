@@ -88,8 +88,22 @@ protocol VideoDelegate {
         delegate?.onTaskStarted()
         
         let url = URL(string: playerModel.downloadUrl)
-        Alamofire.request(url!, parameters: nil, headers: HttpRequestBuilder.getHeaders()).response{ response in
+        
+        // done now
+        DispatchQueue.global(qos: .background).async {
             
+            self.unregisteredPlayerItemListener()
+            let playerItem = AVPlayerItem(url: url! as URL)
+            self.avPlayer?.replaceCurrentItem(with: playerItem)
+            self.play()
+            self.registerPlayerItemListener()
+        }
+        
+        //self.updateTotalDuration()
+        
+        Alamofire.request(url!, parameters: nil, headers: HttpRequestBuilder.getHeaders()).response{ response in
+            // this code has to be removed as we are playing video directly using download url
+            /*
             Prefs.getInstance()?.setHistoryPageToBeForceRefreshed(forceRefresh: true)
             print("VideoPlayer : url response: \(response)")
             print("VideoPlayer : response url \(response.response?.url)")
@@ -112,7 +126,7 @@ protocol VideoDelegate {
                 self.showVideoThumbnail()
                 self.updateState(state: .PAUSE)
             }
-            
+            */
         }
     }
     
@@ -439,6 +453,8 @@ protocol VideoDelegate {
             
         case .BUFFERING_END:
             print("updateState: BUFFERING_END")
+            self.hideVideoThumbnail()
+            self.delegate?.onTaskCompleted()
             if avPlayer?.rate == 0 {
                 updateState(state: .PAUSE)
             } else {
