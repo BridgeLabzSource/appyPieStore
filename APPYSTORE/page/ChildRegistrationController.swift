@@ -87,6 +87,7 @@ class ChildRegistrationController: BaseViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeStyle = DateFormatter.Style.none
+        dateFormatter.dateFormat = AppConstants.DATE_FORMAT
         tfBirthDate.text = dateFormatter.string(from: sender.date)
     }
     

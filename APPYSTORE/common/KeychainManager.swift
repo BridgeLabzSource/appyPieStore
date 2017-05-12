@@ -42,7 +42,7 @@ public class KeychainManager: NSObject {
     }
     
     public class func getVendorId() -> String? {
-        return self.load(key: vendorKey as NSString) as! String
+        return self.load(key: vendorKey as NSString) as String?
     }
     
     /**

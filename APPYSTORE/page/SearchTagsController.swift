@@ -42,11 +42,19 @@ class SearchTagsController: BaseListingViewController {
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let searchTagsModel = (dataFetchFramework?.contentList[indexPath.row])! as! SearchTagsModel
-        let font = UIFont(name: AppConstants.APP_FONT_NAME, size: DimensionManager.H3)
+
+        /*let font = UIFont(name: AppConstants.APP_FONT_NAME, size: DimensionManager.H3)
         
         let width = searchTagsModel.searchName!.widthOfString(usingFont: font!)
-        let height = searchTagsModel.searchName!.heightOfString(usingFont: font!)
+        let height = searchTagsModel.searchName!.heightOfString(usingFont: font!)*/
         
+        let leftRightPadding = 20
+        let topDownPadding = 16
+        var width: CGFloat = searchTagsModel.searchName!.getApproxWidth(size: DimensionManager.H3) + CGFloat(2 * leftRightPadding)
+        var height: CGFloat = DimensionManager.H3 + CGFloat(2 * topDownPadding)
+        
+        width = DimensionManager.getGeneralizedWidth1280x720(width: CGFloat(width))
+        height = DimensionManager.getGeneralizedHeight1280x720(height: height)
         
         return CGSize(width: width, height: height);
     }

@@ -42,7 +42,7 @@ class AvatarSelectionController: BaseListingViewController {
     }
     
     func callRegistrationApiAndNavigate() {
-        let dob = givenChild.dob!.formatDate(originalFormat: "MMM d, yyyy", destinationFormat: "yyyy-MM-dd")
+        let dob = givenChild.dob!.formatDate(originalFormat: AppConstants.DATE_FORMAT, destinationFormat: "yyyy-MM-dd")
         ChildRegistrationParser().parse(params: HttpRequestBuilder.getChildRegistrationParameters(method: ChildRegistrationParser.METHOD_NAME, childName: givenChild.name!, childDob: dob!, avatarId: getValidAvatarId(childInfo: givenChild), pageId: "AvatarSelection"), completion: {
             statusType, result in
             
@@ -110,6 +110,7 @@ class AvatarSelectionController: BaseListingViewController {
     
     func setViews() {
         containerView.layer.cornerRadius = BasePopUpController.POPUP_CORNER_RADIUS
+        containerView.showShadowRightBottom()
         
         DimensionManager.setTextSize1280x720(label: lblTitle, size: DimensionManager.H1)
         lblTitle.text = "Select avatar for " + givenChild.name!

@@ -60,6 +60,8 @@ class BasePopUpController: BaseViewController, UITextViewDelegate {
         // Do any additional setup after loading the view.
         
         containerView.layer.cornerRadius = BasePopUpController.POPUP_CORNER_RADIUS
+        containerView.showShadowRightBottom()
+        
         setListeners()
         setFontSize()
         setTopSpacing()

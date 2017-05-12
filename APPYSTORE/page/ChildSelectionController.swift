@@ -11,6 +11,7 @@ import UIKit
 class ChildSelectionController: BaseListingViewController {
 
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
     
     override internal func getPageName() -> String {
         return PageConstants.CHILD_SELECTION_PAGE
@@ -30,6 +31,9 @@ class ChildSelectionController: BaseListingViewController {
 
     func setViews() {
         containerView.layer.cornerRadius = BasePopUpController.POPUP_CORNER_RADIUS
+        containerView.showShadowRightBottom()
+        
+        DimensionManager.setTextSize1280x720(label: lblTitle, size: DimensionManager.H1)
     }
     
     override func getDataSource() -> DataSource{
@@ -66,5 +70,20 @@ class ChildSelectionController: BaseListingViewController {
         }
         
         NavigationManager.openVideoCategoryPage(mainControllerCommunicator: mainControllerCommunicator!)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        
+        let CellHeight: Int = Int(collectionView.bounds.size.height)
+        let CellWidth: Int = Int(Float(CellHeight) / Float(1.7))
+        
+        let totalCellWidth = CellWidth * collectionView.numberOfItems(inSection: 0)
+        let totalSpacingWidth = 10 * (collectionView.numberOfItems(inSection: 0) - 1)
+        
+        let leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
+        let rightInset = leftInset
+        
+        return UIEdgeInsetsMake(0, leftInset, 0, rightInset)
+        
     }
 }
