@@ -12,6 +12,7 @@ import SDWebImage
 @IBDesignable class VideoListingCard: BaseCard {
     
     @IBOutlet weak var imgThumbnail: UIImageView!
+    @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var playIcon: UIImageView!
     @IBOutlet weak var downloadButton: UIButton!
@@ -47,13 +48,15 @@ import SDWebImage
         lblTitle.text = videoListingModel.title
         
         if videoListingModel.payType == "paid" {
-            playIcon.image = UIImage(named: "lock_icon")
-            Utils.addFilterToView(imgThumbnail)
-            Utils.addFilterToView(playIcon)
+            playIcon.image = UIImage(named: "video_card_lock_icon")
+            filterView.isHidden = false
+            //Utils.addFilterToView(imgThumbnail)
+            //Utils.addFilterToView(playIcon)
         } else {
             playIcon.image = UIImage(named: "video_card_play_icon_unselected")
-            Utils.removeFilterFromView(imgThumbnail)
-            Utils.removeFilterFromView(playIcon)
+            filterView.isHidden = true
+            //Utils.removeFilterFromView(imgThumbnail)
+            //Utils.removeFilterFromView(playIcon)
         }
     }
 }
