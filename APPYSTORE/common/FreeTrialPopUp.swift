@@ -76,7 +76,6 @@ class FreeTrialPopUp: BasePopUpController {
             } else if statusType == BaseParser.USER_ALREADY_SUBSCRIBED {
                 self.mainControllerCommunicator?.performBackButtonClick(self)
                 // call login api
-                NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
                 self.callLoginFunction(mobileNo: mobileNo)
                 Toast(text: result as? String).show()
             } else if statusType == BaseParser.REQUEST_FAILURE {
@@ -126,7 +125,7 @@ class FreeTrialPopUp: BasePopUpController {
                         NavigationUtil.clearChildSpecificData()
                         self.mainControllerCommunicator?.refreshAllPages()
                     }
-                    
+                    NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
                     //self.mainControllerCommunicator?.performBackButtonClick(self)
                     Toast(text: "Show success Popup").show()
                 }

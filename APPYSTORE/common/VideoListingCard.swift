@@ -31,6 +31,8 @@ import SDWebImage
         
         imgThumbnail.layer.cornerRadius = radius
         imgThumbnail.clipsToBounds = true
+        filterView.layer.cornerRadius = radius
+        filterView.clipsToBounds = true
         
         self.layer.cornerRadius = radius
         self.clipsToBounds = true

@@ -85,16 +85,15 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
                     print("FreeTrialOtpVerificationPopUp user_id  \(model.userId)")
                     UserInfo.getInstance().id = model.userId
                     UserInfo.getInstance().tInfo = model.tInfo
-                    Toast(text: "Success").show()
+                    //Toast(text: "Success").show()
                     self.mainControllerCommunicator?.performBackButtonClick(self)
                     // call login api
-                    NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
+                    
                     self.callLoginFunction(mobileNo: self.mobileNumber)
                 } else if statusType == BaseParser.USER_ALREADY_SUBSCRIBED {
                     self.mainControllerCommunicator?.performBackButtonClick(self)
                     Toast(text: result as? String).show()
                     // call login api
-                    NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
                     self.callLoginFunction(mobileNo: self.mobileNumber)
                 } else if statusType == BaseParser.REQUEST_FAILURE {
                     Toast(text: "Request Failure").show()
@@ -145,9 +144,9 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
                         NavigationUtil.clearChildSpecificData()
                         self.mainControllerCommunicator?.refreshAllPages()
                     }
-                    
+                    NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
                     //self.mainControllerCommunicator?.performBackButtonClick(self)
-                    Toast(text: "Show success Popup").show()
+                    //Toast(text: "Show success Popup").show()
                 }
                 
             } else if statusType == BaseParser.REQUEST_FAILURE {
