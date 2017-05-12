@@ -31,7 +31,7 @@ class MainControllerUIDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "VideoCategoryController") as! VideoCategoryController
         
-        self.addAsChildViewController(childController: viewController, area: nil)
+        //self.addAsChildViewController(childController: viewController, area: nil)
         return viewController
     }()
     
@@ -72,9 +72,12 @@ class MainControllerUIDelegate {
     }
     
     func showCenterText(text: String?) {
+        DimensionManager.setTextSize1280x720(label: mainController.lblCentreText, size: DimensionManager.H3)
         mainController.lblCentreText.isHidden = false
-        if (text?.characters.count)! > 0 {
+        if text != nil && (text?.characters.count)! > 0 {
             mainController.lblCentreText.text = text!
+        } else {
+            mainController.lblCentreText.isHidden = true
         }
     }
     
@@ -111,6 +114,14 @@ class MainControllerUIDelegate {
     @objc func showVideoCategoryPage() {
         if !(mainController.getCurrentViewController() is VideoCategoryController) {
             removeChildController(childController: mainController.getCurrentViewController())
+            
+            // first time viewWillAppear gets called automatically,
+            // but not from second time onwards, hence calling manually
+            if videoCategoryController.isViewLoaded {
+                videoCategoryController.viewWillAppear(false)
+            }
+            
+            self.addAsChildViewController(childController: videoCategoryController, area: nil)
             videoCategoryController.view.isHidden = false
             mainController.childControllersList?.append(videoCategoryController)
         }
