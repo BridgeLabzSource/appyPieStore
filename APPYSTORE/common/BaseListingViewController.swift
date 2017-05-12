@@ -12,6 +12,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     
     @IBOutlet var collectionView: UICollectionView!
     var dataFetchFramework: DataFetchFramework?
+    var status: String? = nil
     let CARD_HEIGHT: CGFloat = 384 - 32
     
     var collectionViewCentreX: CGFloat = 0.0
@@ -33,6 +34,25 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         setScrollDirection()
         
         loadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
+        if status != nil {
+            switch status! {
+            case BaseParser.REQUEST_SUCCESS:
+                break
+            case BaseParser.REQUEST_FAILURE:
+                handleRequestFailure()
+                break
+            case BaseParser.CONNECTION_ERROR:
+                handleConnectionError()
+                break
+            default:
+                break
+            }
+        }
     }
     
     //to be overridden if required
@@ -59,6 +79,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     }
 
     func onDataReceived( status: String, result: AnyObject) {
+        self.status = status
         isRequestInProgress = false
         mainControllerCommunicator?.hideProgressBar()
         
@@ -71,8 +92,21 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         } else if status == DataFetchFramework.END_OF_DATA {
             
         } else {
+            if status == BaseParser.REQUEST_FAILURE {
+                handleRequestFailure()
+            } else if status == BaseParser.CONNECTION_ERROR{
+                handleConnectionError()
+            }
             print("Ganesh status : \(status) and response : \(result) ")
         }
+    }
+    
+    func handleRequestFailure() {
+        mainControllerCommunicator?.showCenterText(text: "OOPS_SOMETHING_WENT_WRONG_TRY_LATER".localized(lang: AppConstants.LANGUAGE))
+    }
+    
+    func handleConnectionError() {
+        mainControllerCommunicator?.showCenterText(text: "OOPS_SOMETHING_WENT_WRONG_TRY_LATER".localized(lang: AppConstants.LANGUAGE))
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
