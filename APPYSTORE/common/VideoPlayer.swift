@@ -455,6 +455,7 @@ protocol VideoDelegate {
             print("updateState: BUFFERING_END")
             self.hideVideoThumbnail()
             self.delegate?.onTaskCompleted()
+            self.updateTotalDuration()
             if avPlayer?.rate == 0 {
                 updateState(state: .PAUSE)
             } else {
