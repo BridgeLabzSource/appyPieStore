@@ -20,19 +20,30 @@
                     <rect key="frame" x="16" y="16" width="480" height="352"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                 </imageView>
+                <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CE5-cL-ro2">
+                    <rect key="frame" x="16" y="16" width="480" height="352"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="1lw-q4-F80" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="368:384" id="Bnm-46-pHR"/>
+                <constraint firstItem="CE5-cL-ro2" firstAttribute="trailing" secondItem="1lw-q4-F80" secondAttribute="trailing" id="VpW-DU-wCG"/>
+                <constraint firstItem="CE5-cL-ro2" firstAttribute="top" secondItem="1lw-q4-F80" secondAttribute="top" id="ZrJ-Nl-ASe"/>
+                <constraint firstItem="CE5-cL-ro2" firstAttribute="bottom" secondItem="1lw-q4-F80" secondAttribute="bottom" id="aqe-oK-o1K"/>
                 <constraint firstItem="1lw-q4-F80" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="16:384" id="e5b-kj-cnh"/>
+                <constraint firstItem="CE5-cL-ro2" firstAttribute="width" secondItem="1lw-q4-F80" secondAttribute="width" id="mxa-ld-IIx"/>
                 <constraint firstItem="1lw-q4-F80" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="496:512" id="tdR-tW-ybb"/>
+                <constraint firstItem="CE5-cL-ro2" firstAttribute="height" secondItem="1lw-q4-F80" secondAttribute="height" id="xNV-Pv-dc8"/>
                 <constraint firstItem="1lw-q4-F80" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="16:512" id="xUa-bv-lks"/>
+                <constraint firstItem="CE5-cL-ro2" firstAttribute="leading" secondItem="1lw-q4-F80" secondAttribute="leading" id="y0h-VH-L8d"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="filterView" destination="CE5-cL-ro2" id="cfa-G6-4vu"/>
                 <outlet property="imgThumbnail" destination="1lw-q4-F80" id="5Qm-Bo-xoH"/>
             </connections>
         </view>

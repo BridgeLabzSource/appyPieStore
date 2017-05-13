@@ -12,12 +12,15 @@ import UIKit
 class RecommendedVideoCard: BaseCard {
 
     @IBOutlet weak var imgThumbnail: UIImageView!
+    @IBOutlet weak var filterView: UIView!
     
     override func awakeFromNib() {
         let radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 64))
         
         imgThumbnail.layer.cornerRadius = radius
         imgThumbnail.clipsToBounds = true
+        filterView.layer.cornerRadius = radius
+        filterView.clipsToBounds = true
         
         self.layer.cornerRadius = radius
         self.clipsToBounds = true
@@ -38,9 +41,11 @@ class RecommendedVideoCard: BaseCard {
         }
         
         if videoListingModel.payType == "paid" {
-            Utils.addFilterToView(imgThumbnail)
+            filterView.isHidden = false
+            //Utils.addFilterToView(imgThumbnail)
         } else {
-            Utils.removeFilterFromView(imgThumbnail)
+            filterView.isHidden = true
+            //Utils.removeFilterFromView(imgThumbnail)
         }
         
     }

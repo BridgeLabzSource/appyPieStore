@@ -95,8 +95,9 @@ class RecommendedVideoViewController: BaseListingViewController {
             (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = false
             currentIndex = indexPath.row
             (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = true
-            delegate?.onContentChange(content: videoListingModel)
             collectionView.reloadData()
+            delegate?.onContentChange(content: videoListingModel)
+            
         }
         
     }

@@ -1,0 +1,11 @@
+/* 
+  Strings.strings
+  APPYSTORE
+
+  Created by ios_dev on 12/05/17.
+  Copyright © 2017 MAUJ MOBILE PVT LTD. All rights reserved.
+*/
+
+"OOPS_SOMETHING_WENT_WRONG_TRY_LATER" = "Oops, something went wrong, try later";
+"NO_RESULT_FOUND" = "No result found";
+"NO_DATA_FOUND" = "No data found";

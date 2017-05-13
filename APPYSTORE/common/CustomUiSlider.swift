@@ -11,7 +11,7 @@ import UIKit
 
 class CustomUiSlider: UISlider {
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
-        let b1 = CGRect(origin: bounds.origin, size: CGSize(width: bounds.width, height: bounds.height/2))
+        let b1 = CGRect(origin: bounds.origin, size: CGSize(width: bounds.width, height: bounds.height))
         
         return b1
     }

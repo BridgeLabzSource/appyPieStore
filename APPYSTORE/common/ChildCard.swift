@@ -41,7 +41,6 @@ class ChildCard: BaseCard {
         imgAvatar.clipsToBounds = true
         
         imgAvatar.layer.borderWidth = 3
-        imgAvatar.layer.borderColor = UIColor.white.cgColor
     }
 
 }

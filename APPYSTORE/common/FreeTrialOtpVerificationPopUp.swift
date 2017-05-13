@@ -73,8 +73,10 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
     override func secondButtonClick() {
         let otp = centerEditText.text
         if otp != nil {
+
             showProgress()
-            FreeTrialOtpVerificationParser().parse(params: HttpRequestBuilder.getOtpVerificationParameters(method: FreeTrialOtpVerificationParser.METHOD_NAME, userId: trialResponseModel.userId, msisdn: trialResponseModel.msisdn, otp: otp!, smmKey: trialResponseModel.smmKey, androidId: HttpRequestBuilder.ANDROID_ID_VALUE, imei: HttpRequestBuilder.IMEI_VALUE), completion: {
+            FreeTrialOtpVerificationParser().parse(params: HttpRequestBuilder.getOtpVerificationParameters(method: FreeTrialOtpVerificationParser.METHOD_NAME, userId: trialResponseModel.userId, msisdn: trialResponseModel.msisdn, otp: otp!, smmKey: trialResponseModel.smmKey, androidId: AppConstants.VENDOR_ID!, imei: HttpRequestBuilder.IMEI_VALUE), completion: {
+
                     statusType, result in
                 
                 self.hideProgress()
@@ -83,16 +85,15 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
                     print("FreeTrialOtpVerificationPopUp user_id  \(model.userId)")
                     UserInfo.getInstance().id = model.userId
                     UserInfo.getInstance().tInfo = model.tInfo
-                    Toast(text: "Success").show()
+                    //Toast(text: "Success").show()
                     self.mainControllerCommunicator?.performBackButtonClick(self)
                     // call login api
-                    NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
+                    
                     self.callLoginFunction(mobileNo: self.mobileNumber)
                 } else if statusType == BaseParser.USER_ALREADY_SUBSCRIBED {
                     self.mainControllerCommunicator?.performBackButtonClick(self)
                     Toast(text: result as? String).show()
                     // call login api
-                    NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
                     self.callLoginFunction(mobileNo: self.mobileNumber)
                 } else if statusType == BaseParser.REQUEST_FAILURE {
                     Toast(text: "Request Failure").show()
@@ -143,9 +144,9 @@ class FreeTrialOtpVerificationPopUp: BasePopUpController {
                         NavigationUtil.clearChildSpecificData()
                         self.mainControllerCommunicator?.refreshAllPages()
                     }
-                    
+                    NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
                     //self.mainControllerCommunicator?.performBackButtonClick(self)
-                    Toast(text: "Show success Popup").show()
+                    //Toast(text: "Show success Popup").show()
                 }
                 
             } else if statusType == BaseParser.REQUEST_FAILURE {
