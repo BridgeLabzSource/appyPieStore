@@ -9,7 +9,7 @@
 import Foundation
 
 
-class RecommendedAudioCard: BaseCard {
+class RecommendedAudioCell: BaseCard {
 
 override func awakeFromNib() {
     let radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 64))

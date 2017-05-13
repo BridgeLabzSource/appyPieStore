@@ -81,7 +81,7 @@ class RecommendedAudioViewController: BaseListingViewController {
      */
     
     override func registerCard() {
-        self.collectionView.register(UINib(nibName: "RecommendedAudioCard", bundle: nil), forCellWithReuseIdentifier: "RecommendedAudioCard")
+        self.collectionView.register(UINib(nibName: "RecommendedAudioCell", bundle: nil), forCellWithReuseIdentifier: "RecommendedAudioCard")
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
