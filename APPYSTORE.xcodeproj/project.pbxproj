@@ -18,6 +18,7 @@
 		0A72615F1E6D30600023883F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72615D1E6D30600023883F /* UIColorExtension.swift */; };
 		0A7261631E6D30AE0023883F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7261621E6D30AE0023883F /* CustomButton.swift */; };
 		0A74B98E1E71143200B7A67D /* UIViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A74B98D1E71143200B7A67D /* UIViewExtention.swift */; };
+		0A7EC59D1EC72F38004A6868 /* ChildProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EC59C1EC72F38004A6868 /* ChildProgressModel.swift */; };
 		0A80DA201E702C5E00939443 /* TopBarOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A80DA1F1E702C5E00939443 /* TopBarOverlay.xib */; };
 		0A80DA221E702CA500939443 /* TopBarOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80DA211E702CA500939443 /* TopBarOverlay.swift */; };
 		0A80DA241E702CC100939443 /* BottomBarOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A80DA231E702CC100939443 /* BottomBarOverlay.xib */; };
@@ -171,6 +172,7 @@
 		0A72615D1E6D30600023883F /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		0A7261621E6D30AE0023883F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		0A74B98D1E71143200B7A67D /* UIViewExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtention.swift; sourceTree = "<group>"; };
+		0A7EC59C1EC72F38004A6868 /* ChildProgressModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressModel.swift; sourceTree = "<group>"; };
 		0A80DA1F1E702C5E00939443 /* TopBarOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopBarOverlay.xib; sourceTree = "<group>"; };
 		0A80DA211E702CA500939443 /* TopBarOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarOverlay.swift; sourceTree = "<group>"; };
 		0A80DA231E702CC100939443 /* BottomBarOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomBarOverlay.xib; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 				0A89913B1EC20E9900C200BC /* ChildProgressController.swift */,
 				0A89913C1EC20E9900C200BC /* ChildProgressCollectionView.swift */,
 				0A89913D1EC20E9900C200BC /* ChildProgress.xib */,
+				0A7EC59C1EC72F38004A6868 /* ChildProgressModel.swift */,
 			);
 			name = childProgress;
 			sourceTree = "<group>";
@@ -848,6 +851,7 @@
 				7381F70D1EBB5C610073F12A /* TrialOtpVerificatioResponsenModel.swift in Sources */,
 				738EEE6E1EA4BF3000A50038 /* AppNavigationHandler.swift in Sources */,
 				0A8F790C1E6971FD00720DB8 /* VideoCategoryCard.swift in Sources */,
+				0A7EC59D1EC72F38004A6868 /* ChildProgressModel.swift in Sources */,
 				7371F9FE1E936898009241FF /* KCFABViewController.swift in Sources */,
 				739A82591EA9EE92008F9001 /* AvatarModel.swift in Sources */,
 				0A5E1C641E701C2D00537F84 /* UILabelExtension.swift in Sources */,
