@@ -11,7 +11,7 @@ class MainController: UIViewController, MainControllerCommunicator {
     var uiDelegate: MainControllerUIDelegate? = nil
     
     var childControllersList: [BaseViewController]? = []
-    
+
     func getCurrentViewController() -> BaseViewController? {
         if childControllersList != nil && (childControllersList?.count)! > 0 {
             return (childControllersList?[(childControllersList?.count)! - 1])!

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,10 +15,13 @@
             <connections>
                 <outlet property="audioCategoryTitle" destination="ILw-U8-Wn8" id="JQX-Tv-MfQ"/>
                 <outlet property="audioImage" destination="K9m-5C-sGz" id="lN8-At-Pbx"/>
-                <outlet property="audioPlayButton" destination="cur-0K-1BI" id="TDH-Jt-8WN"/>
                 <outlet property="audioPlayNextButton" destination="3Sg-Ap-Gef" id="nzz-mJ-zib"/>
                 <outlet property="audioPlayPrevButton" destination="Fci-zD-BI1" id="5VZ-ad-YPv"/>
                 <outlet property="audioTitle" destination="Hp8-fB-Eml" id="X28-qD-nf7"/>
+                <outlet property="loader" destination="6sr-rG-wKL" id="GXs-Fk-oGb"/>
+                <outlet property="lockIcon" destination="9zY-YJ-pDJ" id="C5f-qa-sov"/>
+                <outlet property="pauseIcon" destination="fVO-jC-llN" id="lfM-MC-Imv"/>
+                <outlet property="playIcon" destination="XTT-uF-AQI" id="vug-ib-bHG"/>
                 <outlet property="playTimeLabel" destination="80h-rM-7sO" id="G5Z-aV-GUK"/>
                 <outlet property="playView" destination="aOz-SQ-UeE" id="NWU-3i-1zJ"/>
                 <outlet property="rootView" destination="iN0-l3-epB" id="9lk-MB-dAN"/>
@@ -72,18 +75,22 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MoL-aQ-68x" userLabel="seekerView">
                     <rect key="frame" x="0.0" y="544" width="816" height="32"/>
                     <subviews>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kSz-PJ-Rob">
-                            <rect key="frame" x="130" y="1" width="556" height="31"/>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kSz-PJ-Rob" customClass="MyCustomSlider" customModule="APPYSTORE" customModuleProvider="target">
+                            <rect key="frame" x="130" y="8" width="556" height="17"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="minimumTrackTintColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="maximumTrackTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="thumbTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </slider>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23:50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="80h-rM-7sO" userLabel="currentTime">
+                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:04" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="80h-rM-7sO" userLabel="currentTime">
                             <rect key="frame" x="48" y="0.0" width="72" height="32"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QES-0u-4Pa" userLabel="totalTime">
+                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:53" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QES-0u-4Pa" userLabel="totalTime">
                             <rect key="frame" x="696" y="0.0" width="72" height="32"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -95,16 +102,16 @@
                     <constraints>
                         <constraint firstItem="QES-0u-4Pa" firstAttribute="leading" secondItem="MoL-aQ-68x" secondAttribute="trailing" multiplier="696:816" id="3g6-u9-obV"/>
                         <constraint firstItem="QES-0u-4Pa" firstAttribute="top" secondItem="MoL-aQ-68x" secondAttribute="top" id="4eM-QC-b2b"/>
-                        <constraint firstItem="kSz-PJ-Rob" firstAttribute="centerX" secondItem="MoL-aQ-68x" secondAttribute="centerX" id="57L-rT-yjF"/>
-                        <constraint firstAttribute="trailing" secondItem="kSz-PJ-Rob" secondAttribute="trailing" multiplier="816:684" id="5Es-GN-ubl"/>
-                        <constraint firstItem="kSz-PJ-Rob" firstAttribute="leading" secondItem="MoL-aQ-68x" secondAttribute="trailing" multiplier="132:816" id="AEJ-Na-giA"/>
                         <constraint firstItem="QES-0u-4Pa" firstAttribute="trailing" secondItem="MoL-aQ-68x" secondAttribute="trailing" multiplier="768:816" id="C8v-iG-jge"/>
                         <constraint firstItem="80h-rM-7sO" firstAttribute="trailing" secondItem="MoL-aQ-68x" secondAttribute="trailing" multiplier="120:816" id="DxY-FB-JLz"/>
+                        <constraint firstItem="kSz-PJ-Rob" firstAttribute="leading" secondItem="MoL-aQ-68x" secondAttribute="trailing" multiplier="132:816" id="Jgd-oo-mCa"/>
+                        <constraint firstItem="kSz-PJ-Rob" firstAttribute="bottom" secondItem="MoL-aQ-68x" secondAttribute="bottom" multiplier="24:32" id="OVb-a0-42Y"/>
                         <constraint firstItem="80h-rM-7sO" firstAttribute="top" secondItem="MoL-aQ-68x" secondAttribute="top" id="RNs-wW-5S9"/>
                         <constraint firstAttribute="bottom" secondItem="80h-rM-7sO" secondAttribute="bottom" id="S82-OA-D4f"/>
+                        <constraint firstItem="kSz-PJ-Rob" firstAttribute="trailing" secondItem="MoL-aQ-68x" secondAttribute="trailing" multiplier="684:816" id="VJg-5r-bEJ"/>
+                        <constraint firstItem="kSz-PJ-Rob" firstAttribute="top" secondItem="MoL-aQ-68x" secondAttribute="bottom" multiplier="8:32" id="VyM-WU-9ba"/>
                         <constraint firstAttribute="bottom" secondItem="QES-0u-4Pa" secondAttribute="bottom" id="gfH-Km-fak"/>
                         <constraint firstItem="80h-rM-7sO" firstAttribute="leading" secondItem="MoL-aQ-68x" secondAttribute="trailing" multiplier="48:816" id="jrX-uZ-ynW"/>
-                        <constraint firstItem="kSz-PJ-Rob" firstAttribute="centerY" secondItem="MoL-aQ-68x" secondAttribute="centerY" id="k5L-EU-98c"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOz-SQ-UeE" userLabel="playView">
@@ -121,17 +128,6 @@
                                 <action selector="audioPlayPrev:" destination="-1" eventType="touchUpInside" id="Fgm-od-44c"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cur-0K-1BI" userLabel="play">
-                            <rect key="frame" x="369" y="25" width="95" height="95"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="cur-0K-1BI" secondAttribute="height" multiplier="1:1" id="iah-2u-FV5"/>
-                            </constraints>
-                            <state key="normal" backgroundImage="play"/>
-                            <connections>
-                                <action selector="audioPlayPause:" destination="-1" eventType="touchUpInside" id="VfY-ph-AmB"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sg-Ap-Gef" userLabel="nextPlay">
                             <rect key="frame" x="553" y="41" width="63" height="63"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -143,18 +139,47 @@
                                 <action selector="audioPlayNext:" destination="-1" eventType="touchUpInside" id="JAN-20-f1b"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play" translatesAutoresizingMaskIntoConstraints="NO" id="XTT-uF-AQI">
+                            <rect key="frame" x="360" y="24" width="96" height="96"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="XTT-uF-AQI" secondAttribute="height" multiplier="1:1" id="vrs-te-vOi"/>
+                            </constraints>
+                        </imageView>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="6sr-rG-wKL">
+                            <rect key="frame" x="398" y="62" width="20" height="20"/>
+                        </activityIndicatorView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pause" translatesAutoresizingMaskIntoConstraints="NO" id="fVO-jC-llN">
+                            <rect key="frame" x="360" y="24" width="96" height="96"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="fVO-jC-llN" secondAttribute="height" multiplier="1:1" id="mhI-0v-dxQ"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9zY-YJ-pDJ">
+                            <rect key="frame" x="360" y="24" width="96" height="96"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="9zY-YJ-pDJ" secondAttribute="height" multiplier="1:1" id="cfH-ou-6f2"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="9zY-YJ-pDJ" firstAttribute="trailing" secondItem="aOz-SQ-UeE" secondAttribute="trailing" multiplier="456:816" id="36m-o3-cEF"/>
                         <constraint firstItem="3Sg-Ap-Gef" firstAttribute="top" secondItem="aOz-SQ-UeE" secondAttribute="bottom" multiplier="40:142" id="72H-pN-IhB"/>
                         <constraint firstItem="Fci-zD-BI1" firstAttribute="bottom" secondItem="aOz-SQ-UeE" secondAttribute="bottom" multiplier="102:142" id="7GL-dQ-wwO"/>
-                        <constraint firstItem="cur-0K-1BI" firstAttribute="trailing" secondItem="aOz-SQ-UeE" secondAttribute="trailing" multiplier="464:816" id="7gx-Ka-gDd"/>
+                        <constraint firstItem="6sr-rG-wKL" firstAttribute="centerY" secondItem="aOz-SQ-UeE" secondAttribute="centerY" id="BpH-Dr-lVk"/>
+                        <constraint firstItem="XTT-uF-AQI" firstAttribute="trailing" secondItem="aOz-SQ-UeE" secondAttribute="trailing" multiplier="456:816" id="OH7-Kn-kKd"/>
                         <constraint firstItem="Fci-zD-BI1" firstAttribute="leading" secondItem="aOz-SQ-UeE" secondAttribute="trailing" multiplier="200:816" id="PLa-ur-mEB"/>
-                        <constraint firstItem="cur-0K-1BI" firstAttribute="bottom" secondItem="aOz-SQ-UeE" secondAttribute="bottom" multiplier="118:142" id="VNQ-w2-HWG"/>
+                        <constraint firstItem="6sr-rG-wKL" firstAttribute="centerX" secondItem="aOz-SQ-UeE" secondAttribute="centerX" id="VQs-vX-wZZ"/>
+                        <constraint firstItem="fVO-jC-llN" firstAttribute="bottom" secondItem="aOz-SQ-UeE" secondAttribute="bottom" multiplier="120:144" id="VfM-Pe-l3q"/>
+                        <constraint firstItem="9zY-YJ-pDJ" firstAttribute="top" secondItem="aOz-SQ-UeE" secondAttribute="bottom" multiplier="24:144" id="Vqd-xX-cUO"/>
                         <constraint firstItem="3Sg-Ap-Gef" firstAttribute="trailing" secondItem="aOz-SQ-UeE" secondAttribute="trailing" multiplier="616:816" id="hMk-mX-g2N"/>
                         <constraint firstItem="3Sg-Ap-Gef" firstAttribute="bottom" secondItem="aOz-SQ-UeE" secondAttribute="bottom" multiplier="102:142" id="iTq-5c-R8J"/>
+                        <constraint firstItem="fVO-jC-llN" firstAttribute="top" secondItem="aOz-SQ-UeE" secondAttribute="bottom" multiplier="24:144" id="ian-fo-38e"/>
+                        <constraint firstItem="XTT-uF-AQI" firstAttribute="bottom" secondItem="aOz-SQ-UeE" secondAttribute="bottom" multiplier="120:144" id="k4R-Jd-GeQ"/>
                         <constraint firstItem="Fci-zD-BI1" firstAttribute="top" secondItem="aOz-SQ-UeE" secondAttribute="bottom" multiplier="40:142" id="lb8-la-FtI"/>
-                        <constraint firstItem="cur-0K-1BI" firstAttribute="top" secondItem="aOz-SQ-UeE" secondAttribute="bottom" multiplier="24:142" id="r2R-lJ-Mud"/>
+                        <constraint firstItem="fVO-jC-llN" firstAttribute="trailing" secondItem="aOz-SQ-UeE" secondAttribute="trailing" multiplier="456:816" id="qEz-Kc-gIz"/>
+                        <constraint firstItem="XTT-uF-AQI" firstAttribute="top" secondItem="aOz-SQ-UeE" secondAttribute="bottom" multiplier="24:144" id="sCY-tC-mcd"/>
+                        <constraint firstItem="9zY-YJ-pDJ" firstAttribute="bottom" secondItem="aOz-SQ-UeE" secondAttribute="bottom" multiplier="120:144" id="tcE-yA-c7w"/>
                     </constraints>
                 </view>
             </subviews>
@@ -177,11 +202,13 @@
                 <constraint firstItem="tSm-kh-uq6" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="544:720" id="x7A-Ca-nDy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-464" y="-843"/>
+            <point key="canvasLocation" x="-464" y="-904"/>
         </view>
     </objects>
     <resources>
         <image name="cartoon" width="512" height="512"/>
+        <image name="lock_icon" width="70" height="70"/>
+        <image name="pause" width="105" height="105"/>
         <image name="play" width="105" height="105"/>
         <image name="video_control_backward" width="41" height="41"/>
         <image name="video_control_forward" width="41" height="41"/>

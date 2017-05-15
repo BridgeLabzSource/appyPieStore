@@ -30,6 +30,7 @@ protocol VideoDelegate {
 }
 
 @IBDesignable class VideoPlayer: UIView {
+    
     @IBOutlet weak var rightSeek: UIImageView!
     
     @IBOutlet weak var totalTimeLabel: UILabel!
@@ -57,6 +58,7 @@ protocol VideoDelegate {
     
     @IBOutlet weak var lockIcon: UIImageView!
     @IBOutlet weak var videoThumbnail: UIImageView!
+    
     var currentState: PlayerState!
     var showControls = true
     var isParenting = false
@@ -515,8 +517,7 @@ protocol VideoDelegate {
                 s = "waitingToPlayAtSpecifiedRate"
             }
         }
-        
-        
+    
         return s
     }
     

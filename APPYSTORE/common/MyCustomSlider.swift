@@ -9,13 +9,11 @@
 import Foundation
 import UIKit
 
-class MyCustomSlider: UISlider
+class MyCustomSlider: CustomUiSlider
 {
-    @IBInspectable var trackHeight: CGFloat = 2
-    
-     func trackRectForBounds(bounds: CGRect) -> CGRect
-     {
-        //set your bounds here
-        return CGRect(origin: bounds.origin, size: CGSize(width:bounds.width,height: trackHeight))
-     }
+    override func trackRect(forBounds bounds: CGRect) -> CGRect {
+        let b1 = CGRect(origin: bounds.origin, size: CGSize(width: bounds.width, height: bounds.height))
+        
+        return b1
+    }
 }

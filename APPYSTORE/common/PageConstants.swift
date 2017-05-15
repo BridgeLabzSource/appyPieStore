@@ -27,10 +27,10 @@ class PageConstants: NSObject {
     static let KEY_VIDEO_LISTING_DATA_FETCH_TIME = "KEY_VIDEO_LISTING_DATA_FETCH_TIME"
     static let KEY_VIDEO_LISTING_SERVER_OFFSET = "KEY_VIDEO_LISTING_SERVER_OFFSET"
     static let KEY_VIDEO_LISTING_TOTAL_CONTENT_COUNT = "KEY_VIDEO_LISTING_TOTAL_CONTENT_COUNT"
+ 
+    static let VIDEO_PLAYER_PAGE = "Video player page"
+    static let AUDIO_PLAYER_PAGE = "Audio player page"
     
-   //
-     static let VIDEO_PLAYER_PAGE = "Video player page"
-    //
     static let AUDIO_LISTING_PAGE = "Audio listing page"
     static let KEY_AUDIO_LISTING_DATA_FETCH_TIME = "KEY_AUDIO_LISTING_DATA_FETCH_TIME"
     static let KEY_AUDIO_LISTING_SERVER_OFFSET = "KEY_AUDIO_LISTING_SERVER_OFFSET"
@@ -52,4 +52,9 @@ class PageConstants: NSObject {
     static let  KEY_SELECT_AVATAR_SERVER_OFFSET = "KEY_SELECT_AVATAR_SERVER_OFFSET"
     
     static let CHILD_SELECTION_PAGE = "Child selection page"
+    
+    ////
+    static let RECOMMENDED_AUDIO_LISTING_PAGE = "Recommended Audio Listing Page"
+    ////
+
 }

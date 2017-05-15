@@ -7,18 +7,23 @@
 //
 
 import UIKit
+protocol SendDataProtocol {
+    func getDictionary(bundle:AndroidBundle)
+}
 
 class AudioListingController: BaseListingViewController {
     
     var catId: String = ""
     var catName: String = ""
     var pCatId: String = ""
-    
+    var delegate:SendDataProtocol?
     override internal func getPageName() -> String {
         return PageConstants.AUDIO_LISTING_PAGE
     }
     
+   
     override func viewDidLoad() {
+        
         self.catId = bundle?[BundleConstants.CATEGORY_ID] as! String
         self.pCatId = bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String
         self.catName = bundle?[BundleConstants.CATEGORY_NAME] as! String
@@ -43,7 +48,10 @@ class AudioListingController: BaseListingViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var bundle2 = [String: Any]()
         let audioListingModel = dataFetchFramework?.contentList[indexPath.row] as! AudioListingModel
+        bundle2["dnld_url"] = audioListingModel.downloadUrl
+        
         print("AudioListingController : select audio \(audioListingModel.title)")
         
         if audioListingModel.payType == "paid" {
@@ -51,6 +59,7 @@ class AudioListingController: BaseListingViewController {
             //NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
             NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
         } else {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:"myNotification"), object: self, userInfo: bundle2)
             NavigationManager.openAudioPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: audioListingModel)
         }
 

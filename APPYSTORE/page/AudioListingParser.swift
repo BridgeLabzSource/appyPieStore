@@ -38,6 +38,7 @@ class AudioListingParser: BaseParser {
         let audioContent = responseData["data_array"].array
         
         var listingModelArray = [AudioListingModel]()
+        
         for item in audioContent! {
             let audioListingModel = AudioListingModel()
             audioListingModel.groupId = item[GROUP_ID].string!

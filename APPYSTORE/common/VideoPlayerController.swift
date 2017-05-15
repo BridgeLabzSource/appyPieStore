@@ -170,7 +170,6 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
         isMinimize = true
     }
     
-    
     func onVideoCompleted() {
         recommendedController.nextVideo()
     }

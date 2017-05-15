@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 
 private var playbackLikelyToKeepUpContext = 0
+
 class VideoPlayerViewController: UIViewController {
     let avPlayer = AVPlayer()
     var avPlayerLayer: AVPlayerLayer!
