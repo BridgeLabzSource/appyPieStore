@@ -15,7 +15,6 @@ class HistoryController: BaseListingViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("HistoryController viewWillAppear")
         super.viewWillAppear(false)
         
         if (Prefs.getInstance()?.isHistoryPageToBeForceRefreshed())! && Utils.isInternetAvailable() {
@@ -30,9 +29,8 @@ class HistoryController: BaseListingViewController {
         dataFetchFramework?.start(dataSource: getDataSource())
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("HistoryController viewDidAppear")
-        super.viewDidAppear(animated)
+    override func handleRequestFailure() {
+        mainControllerCommunicator?.showCenterText(text: "NO_DATA_FOUND".localized(lang: AppConstants.LANGUAGE))
     }
     
     override func getComponentProperties() -> ComponentProperties {
@@ -47,7 +45,7 @@ class HistoryController: BaseListingViewController {
         print("HistoryController : select video \(videoListingModel.title)")
         
         if !AuthenticationUtil.isSubscribedUser() && videoListingModel.payType == "paid" {
-            var bundle = [String: Any]()
+            let bundle = [String: Any]()
             if UserInfo.getInstance().isDeviceEligibleForTrialSubscription {
                 NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
             }

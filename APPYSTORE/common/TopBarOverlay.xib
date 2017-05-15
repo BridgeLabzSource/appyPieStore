@@ -134,11 +134,11 @@
                 <constraint firstItem="gU4-UX-bvm" firstAttribute="width" secondItem="SkT-Dj-8Bs" secondAttribute="width" id="qUc-sz-RCC"/>
                 <constraint firstItem="CO8-Kf-e0a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="772:1280" id="rrl-k1-KAi"/>
                 <constraint firstItem="7Fb-N5-zdH" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="rwO-li-c2O"/>
+                <constraint firstItem="UEm-NH-YbS" firstAttribute="trailing" secondItem="df7-p0-iBS" secondAttribute="leading" multiplier="1112:1144" id="sh4-0a-ytt"/>
                 <constraint firstItem="Ezb-eT-Rvp" firstAttribute="width" secondItem="SkT-Dj-8Bs" secondAttribute="width" id="syv-8h-Hsl"/>
-                <constraint firstItem="UEm-NH-YbS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="168:1280" id="u3Z-Gl-BLD"/>
                 <constraint firstItem="df7-p0-iBS" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="104:200" id="ugI-xe-uXZ"/>
-                <constraint firstItem="UEm-NH-YbS" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="1112:1280" id="v3N-Px-zUN"/>
                 <constraint firstItem="UEm-NH-YbS" firstAttribute="top" secondItem="df7-p0-iBS" secondAttribute="top" id="wgj-DP-Wzy"/>
+                <constraint firstItem="UEm-NH-YbS" firstAttribute="leading" secondItem="7Fb-N5-zdH" secondAttribute="trailing" multiplier="168: 136" id="xX2-zE-3xe"/>
                 <constraint firstItem="gU4-UX-bvm" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="yQL-WQ-HnS"/>
                 <constraint firstItem="Ezb-eT-Rvp" firstAttribute="top" secondItem="SkT-Dj-8Bs" secondAttribute="top" id="zDG-zJ-9r2"/>
             </constraints>

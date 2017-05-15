@@ -85,11 +85,11 @@ class HttpRequestBuilder: NSObject {
     static let CHILD_DOB = "child_dob"
     static let CHILD_AVATAR_ID = "child_avtarid"
     
-    //dummy values
+    //dummy values todo
     static let IMEI_VALUE = "a5b9d7b7fe1425ea"
     static let PCP_VALUE = "999"
     static let CAMPAIGN_VALUE = "8700441600"
-    static let ANDROID_ID_VALUE = "a5b9d7b7fe1425ea5"
+    static let ANDROID_ID_VALUE = AppConstants.VENDOR_ID!
     static let API_KEY_VALUE = "gh610rt23eqwpll"
     static let USER_ID = "user_id"
     static let OTP = "otp"
@@ -101,24 +101,24 @@ class HttpRequestBuilder: NSObject {
                X_APPY_IMEI: IMEI_VALUE,
                X_APPY_PCP_ID: PCP_VALUE,// get from userdefaults
                X_APPY_CAMPAIGN_ID: CAMPAIGN_VALUE,
-               X_APPY_USERID: UserInfo.getInstance().id ?? "",//107105246
+               X_APPY_USERID: UserInfo.getInstance().id ?? "",
                X_APPY_UTYPE: UserInfo.getInstance().type ?? "",
                X_APPY_UserAgent:"Mozilla/5.0 (Linux; Android 5.0.2; Panasonic ELUGA Switch Build/LRX22G; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/56.0.2924.87 Mobile Safari/537.36",
                X_APPY_DEVICE_WIDTH: "\(AppDelegate.DEVICE_WIDTH)",
                X_APPY_DEVICE_HEIGHT: "\(AppDelegate.DEVICE_HEIGHT)",
                X_APPY_ANDROID_ID: ANDROID_ID_VALUE,
                X_APPY_API_KEY: API_KEY_VALUE,
-               X_APPY_CHILD_ID: UserInfo.getInstance().selectedChild?.id ?? "",//29518
+               X_APPY_CHILD_ID: UserInfo.getInstance().selectedChild?.id ?? "",
                ACCEPT: "text/html,application/xhtml+xml,application/xml;q=0.9,*;q=0.8",
                ACCEPT_ENCODING: "",
                ACCEPT_LANGUAGE: "en-US,en;q=0.5",
                X_APPY_CONN_TYPE: Utils.getNetworkConnectionType(),
                X_APPY_TINFO: UserInfo.getInstance().tInfo ?? "",
-               X_APPY_VISITOR_ID: ANDROID_ID_VALUE,//13cfcb08de0d2e84
+               X_APPY_VISITOR_ID: ANDROID_ID_VALUE,
                X_APPY_OST:"",
                X_APPY_USV: UserInfo.getInstance().usv ?? "",
-               X_APPY_REG_KEY: "abcd",// gcmregkey
-               X_APPY_VERSION: "18",
+               X_APPY_REG_KEY: "abcd",
+               X_APPY_VERSION: "19",
                X_APPY_VERSION_NAME: "1.0.7xx",
                X_APPY_TTR: "10800000",
                X_APPY_SESSION_ID: "abcd",

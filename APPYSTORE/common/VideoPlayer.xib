@@ -74,24 +74,24 @@
                             </subviews>
                             <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="HUC-Hm-ezC" firstAttribute="centerY" secondItem="1FR-eh-jFf" secondAttribute="centerY" id="1rG-hj-zVD"/>
                                 <constraint firstItem="nKf-aM-nqe" firstAttribute="trailing" secondItem="1FR-eh-jFf" secondAttribute="trailing" multiplier="642:800" id="8Kv-jP-g68"/>
                                 <constraint firstItem="vdf-U8-pVH" firstAttribute="trailing" secondItem="1FR-eh-jFf" secondAttribute="trailing" multiplier="780:800" id="95L-ED-9jo"/>
                                 <constraint firstItem="cPe-pM-dYX" firstAttribute="trailing" secondItem="1FR-eh-jFf" secondAttribute="trailing" multiplier="722:800" id="ASq-pG-dFU"/>
                                 <constraint firstItem="cPe-pM-dYX" firstAttribute="height" secondItem="IvY-yo-njV" secondAttribute="height" id="Byy-jb-3Xa"/>
                                 <constraint firstItem="cPe-pM-dYX" firstAttribute="width" secondItem="IvY-yo-njV" secondAttribute="width" id="Dhg-rs-R1P"/>
-                                <constraint firstItem="vdf-U8-pVH" firstAttribute="centerY" secondItem="HUC-Hm-ezC" secondAttribute="centerY" id="IMe-cE-zpJ"/>
+                                <constraint firstItem="cPe-pM-dYX" firstAttribute="centerY" secondItem="1FR-eh-jFf" secondAttribute="centerY" id="EdW-bh-EET"/>
                                 <constraint firstItem="IvY-yo-njV" firstAttribute="height" secondItem="HUC-Hm-ezC" secondAttribute="height" id="Mu0-C5-9MH"/>
                                 <constraint firstItem="nKf-aM-nqe" firstAttribute="leading" secondItem="1FR-eh-jFf" secondAttribute="trailing" multiplier="158:800" id="OOi-Nm-UKX"/>
+                                <constraint firstItem="HUC-Hm-ezC" firstAttribute="width" secondItem="1FR-eh-jFf" secondAttribute="height" multiplier="1:2" id="QEt-JC-f4Q"/>
                                 <constraint firstItem="HUC-Hm-ezC" firstAttribute="leading" secondItem="1FR-eh-jFf" secondAttribute="trailing" multiplier="20:800" id="VG5-9U-mw9"/>
+                                <constraint firstItem="HUC-Hm-ezC" firstAttribute="centerY" secondItem="1FR-eh-jFf" secondAttribute="centerY" id="amK-ac-0TY"/>
                                 <constraint firstItem="vdf-U8-pVH" firstAttribute="height" secondItem="HUC-Hm-ezC" secondAttribute="height" id="bsh-Nn-f1e"/>
-                                <constraint firstItem="nKf-aM-nqe" firstAttribute="centerY" secondItem="HUC-Hm-ezC" secondAttribute="centerY" id="dYr-II-m4H"/>
                                 <constraint firstItem="vdf-U8-pVH" firstAttribute="width" secondItem="HUC-Hm-ezC" secondAttribute="width" id="k6S-6F-w0K"/>
-                                <constraint firstItem="nKf-aM-nqe" firstAttribute="height" secondItem="HUC-Hm-ezC" secondAttribute="height" id="sRV-ie-nNx"/>
+                                <constraint firstItem="nKf-aM-nqe" firstAttribute="centerY" secondItem="1FR-eh-jFf" secondAttribute="centerY" id="qrn-Oh-rqO"/>
+                                <constraint firstItem="IvY-yo-njV" firstAttribute="centerY" secondItem="1FR-eh-jFf" secondAttribute="centerY" id="vLI-XX-NCK"/>
                                 <constraint firstItem="IvY-yo-njV" firstAttribute="leading" secondItem="1FR-eh-jFf" secondAttribute="trailing" multiplier="78:800" id="wsp-Qd-4Cf"/>
-                                <constraint firstItem="HUC-Hm-ezC" firstAttribute="height" secondItem="1FR-eh-jFf" secondAttribute="height" multiplier="1:2" id="xSv-Ex-PBg"/>
-                                <constraint firstItem="cPe-pM-dYX" firstAttribute="centerY" secondItem="HUC-Hm-ezC" secondAttribute="centerY" id="y2H-AL-qWy"/>
-                                <constraint firstItem="IvY-yo-njV" firstAttribute="centerY" secondItem="HUC-Hm-ezC" secondAttribute="centerY" id="yur-lW-bhK"/>
+                                <constraint firstItem="nKf-aM-nqe" firstAttribute="height" secondItem="1FR-eh-jFf" secondAttribute="height" multiplier="1:3" id="xFa-ah-Ijh"/>
+                                <constraint firstItem="vdf-U8-pVH" firstAttribute="centerY" secondItem="1FR-eh-jFf" secondAttribute="centerY" id="z5c-US-e7O"/>
                             </constraints>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play" translatesAutoresizingMaskIntoConstraints="NO" id="zQe-47-0E4">

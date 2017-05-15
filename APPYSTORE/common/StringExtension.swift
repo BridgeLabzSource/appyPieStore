@@ -96,6 +96,25 @@ extension String {
         return size.height
     }
     
+    func getApproxWidth(size: CGFloat) -> CGFloat {
+        
+        var width: CGFloat = 0
+        for char in self.characters {
+            switch char {
+            case "f", "i", "I", "j", "J", "l", "r", "t":
+                width += size / 2
+            case "m", "w",
+                "A", "B", "C", "D", "E", "F", "G", "H", "K", "L",
+                "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z":
+                width += size
+            default:
+                width += (size * 0.8)
+            }
+        }
+        
+        return width
+    }
+    
     func formatDate(originalFormat: String, destinationFormat: String) -> String! {
         
         // Orginal format :
@@ -116,4 +135,10 @@ extension String {
         
     }
 
+    func localized(lang: String) -> String {
+        let path = Bundle.main.path(forResource: lang, ofType: "lproj")
+        
+        let bundle = Bundle(path: path!)
+        return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
+    }
 }

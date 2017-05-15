@@ -90,8 +90,22 @@ protocol VideoDelegate {
         delegate?.onTaskStarted()
         
         let url = URL(string: playerModel.downloadUrl)
-        Alamofire.request(url!, parameters: nil, headers: HttpRequestBuilder.getHeaders()).response{ response in
+        
+        // done now
+        DispatchQueue.global(qos: .background).async {
             
+            self.unregisteredPlayerItemListener()
+            let playerItem = AVPlayerItem(url: url! as URL)
+            self.avPlayer?.replaceCurrentItem(with: playerItem)
+            self.play()
+            self.registerPlayerItemListener()
+        }
+        
+        //self.updateTotalDuration()
+        
+        Alamofire.request(url!, parameters: nil, headers: HttpRequestBuilder.getHeaders()).response{ response in
+            // this code has to be removed as we are playing video directly using download url
+            /*
             Prefs.getInstance()?.setHistoryPageToBeForceRefreshed(forceRefresh: true)
             print("VideoPlayer : url response: \(response)")
             print("VideoPlayer : response url \(response.response?.url)")
@@ -114,7 +128,7 @@ protocol VideoDelegate {
                 self.showVideoThumbnail()
                 self.updateState(state: .PAUSE)
             }
-            
+            */
         }
     }
     
@@ -153,15 +167,12 @@ protocol VideoDelegate {
         updateState(state: .BUFFERING_START)
         print("BUFFERING_START replaceVideo")
         delegate?.onTaskStarted()
-        if playerModel.downloadUrl.isEmpty {
-            playerModel.downloadUrl = "http://www.appystore.in/Be-Dead-To-The-World--Idiom/dw/G1171Z191E193T9C20087824S1/20087824"
-        }
         
         var request = URLRequest(url: URL(string: playerModel.downloadUrl)!)
         
         print("Request url : \(request.url)")
         session = URLSession.shared
-        request.httpMethod = "GET"
+        request.httpMethod = "POST"
         request.timeoutInterval = 5
         task = session.dataTask(with: request, completionHandler: {
             data, response, error in
@@ -179,7 +190,7 @@ protocol VideoDelegate {
                         print("Description = \(value.description)")
                     }
                     
-                    print("replaceVideo = \(response?.url)")
+                    print("cdn Url = \(response?.url)")
                     
                     self.unregisteredPlayerItemListener()
                     //let url = NSURL(string: stringUrl)
@@ -199,7 +210,6 @@ protocol VideoDelegate {
         })
         
         task.resume()
-        print("cdn url = \(playerModel.downloadUrl)")
     
     }
     
@@ -445,6 +455,9 @@ protocol VideoDelegate {
             
         case .BUFFERING_END:
             print("updateState: BUFFERING_END")
+            self.hideVideoThumbnail()
+            self.delegate?.onTaskCompleted()
+            self.updateTotalDuration()
             if avPlayer?.rate == 0 {
                 updateState(state: .PAUSE)
             } else {

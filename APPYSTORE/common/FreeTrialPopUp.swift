@@ -53,7 +53,8 @@ class FreeTrialPopUp: BasePopUpController {
             return
         }
         showProgress()
-        FreeTrialParser().parse(params: HttpRequestBuilder.getOtpRequestParameters(method: FreeTrialParser.METHOD_NAME, msisdn: mobileNo, smmKey: "appyt-f", androidId: HttpRequestBuilder.ANDROID_ID_VALUE, imei: HttpRequestBuilder.IMEI_VALUE), completion: {
+        FreeTrialParser().parse(params: HttpRequestBuilder.getOtpRequestParameters(method: FreeTrialParser.METHOD_NAME, msisdn: mobileNo, smmKey: "appyt-f", androidId: AppConstants.VENDOR_ID!, imei: HttpRequestBuilder.IMEI_VALUE), completion: {
+
             statusType, result in
             
             print("FreeTrialPopUp \(result)")
@@ -75,7 +76,6 @@ class FreeTrialPopUp: BasePopUpController {
             } else if statusType == BaseParser.USER_ALREADY_SUBSCRIBED {
                 self.mainControllerCommunicator?.performBackButtonClick(self)
                 // call login api
-                NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
                 self.callLoginFunction(mobileNo: mobileNo)
                 Toast(text: result as? String).show()
             } else if statusType == BaseParser.REQUEST_FAILURE {
@@ -125,7 +125,7 @@ class FreeTrialPopUp: BasePopUpController {
                         NavigationUtil.clearChildSpecificData()
                         self.mainControllerCommunicator?.refreshAllPages()
                     }
-                    
+                    NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
                     //self.mainControllerCommunicator?.performBackButtonClick(self)
                     Toast(text: "Show success Popup").show()
                 }

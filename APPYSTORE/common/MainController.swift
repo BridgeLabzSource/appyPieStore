@@ -7,6 +7,7 @@ class MainController: UIViewController, MainControllerCommunicator {
     @IBOutlet var middleView: UIView!
     @IBOutlet var bottomView: BottomBarOverlay!
     @IBOutlet weak var imgFullBgView: UIImageView!
+    @IBOutlet weak var lblCentreText: UILabel!
     
     var uiDelegate: MainControllerUIDelegate? = nil
     
@@ -31,6 +32,7 @@ class MainController: UIViewController, MainControllerCommunicator {
         super.viewDidLoad()
         print("MainController viewDidLoad called")
         print("MainController vendor id : \(UIDevice.current.identifierForVendor?.uuidString)")
+        AppConfigurationHandler().start()
         uiDelegate = MainControllerUIDelegate(mainController: self)
         AppNavigationHandler(mainControllerCommunicator: self).NavigateAtAppOpen()
         uiDelegate?.viewDidLoad()
@@ -81,6 +83,10 @@ class MainController: UIViewController, MainControllerCommunicator {
     
     func hideProgressBar() {
         uiDelegate?.hideProgressBar()
+    }
+    
+    func showCenterText(text: String?) {
+        uiDelegate?.showCenterText(text: text)
     }
     
     func refreshAllPages() {

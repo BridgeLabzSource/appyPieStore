@@ -89,6 +89,10 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
     
     func playVideoContent(content: VideoListingModel) {
         videoPlayer.replaceVideo(playerModel: content)
+        if content.payType == "paid" {
+            let bundle = [String: Any]()
+            NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
+        }
     }
     
     /*
@@ -188,5 +192,11 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
     
     func onPrevious() {
         recommendedController.previousVideo()
+    }
+    
+    override func resetPage() {
+        super.resetPage()
+        //playVideoContent(content: defaultModel!)
+        recommendedController.resetPage()
     }
 }
