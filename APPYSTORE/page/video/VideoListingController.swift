@@ -22,6 +22,7 @@ class VideoListingController: BaseListingViewController {
         self.pCatId = bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String
         self.catName = bundle?[BundleConstants.CATEGORY_NAME] as! String
         dataFetchFramework = DataFetchFramework(pageName: PageConstants.VIDEO_LISTING_PAGE, pageUniqueId: catName, bundle: bundle)
+    
         super.viewDidLoad()
     }
     

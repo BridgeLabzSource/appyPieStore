@@ -43,12 +43,16 @@ class PageConstants: NSObject {
     static let CHILD_SELECTION_PAGE = "Child selection page"
     
     
+    //added
+    static let SELECT_CHILD_LIST_PAGE = "Child list page"
+    static let SELECT_CHILD_PROGRESS_PAGE = "Child progress"
+    //
+    /////
     
-    
-    ////
+    //// added
     static let RECOMMENDED_AUDIO_LISTING_PAGE = "Recommended Audio Listing Page"
     ////
-    /////////
+    ///////// added
     static let AUDIO_CATEGORY_PAGE = "Audio category page"
     static let KEY_AUDIO_CATEGORY_DATA_FETCH_TIME = "KEY_AUDIO_CATEGORY_DATA_FETCH_TIME"
     static let KEY_AUDIO_CATEGORY_SERVER_OFFSET = "KEY_AUDIO_CATEGORY_SERVER_OFFSET"
@@ -56,7 +60,7 @@ class PageConstants: NSObject {
     //////////
     
     
-    /////////
+    /////////added
     
     static let AUDIO_LISTING_PAGE = "Audio listing page"
     static let KEY_AUDIO_LISTING_DATA_FETCH_TIME = "KEY_AUDIO_LISTING_DATA_FETCH_TIME"
@@ -64,5 +68,7 @@ class PageConstants: NSObject {
     static let KEY_AUDIO_LISTING_TOTAL_CONTENT_COUNT = "KEY_AUDIO_LISTING_TOTAL_CONTENT_COUNT"
     
     ////////
+
+  
 
 }

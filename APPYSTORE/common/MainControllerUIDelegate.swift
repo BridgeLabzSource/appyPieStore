@@ -18,6 +18,7 @@ class MainControllerUIDelegate {
     let mainController: MainController
     var fabButton: KCFloatingActionButton!
     var progressView: NVActivityIndicatorView?
+    var tapGesture:UITapGestureRecognizer!
     
     lazy var historyController: HistoryController = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -82,10 +83,20 @@ class MainControllerUIDelegate {
     }
     
     func setButtonsClickLstener() {
+        
+         mainController.topView.imageTapGesture.addTarget(self, action: #selector(handleChildProgressButtonClick))
         mainController.topView.btnBack.addTarget(self, action: #selector(handleBackButtonClick), for: .touchUpInside)
         mainController.topView.btnVideo.addTarget(self, action: #selector(showVideoCategoryPage), for: .touchUpInside)
         mainController.topView.btnHistory.addTarget(self, action: #selector(showHistoryPage), for: .touchUpInside)
         mainController.topView.btnSearch.addTarget(self, action: #selector(handleSearchButtonClick), for: .touchUpInside)
+    }
+    
+    
+    
+    @objc func handleChildProgressButtonClick(_ controller: AnyObject) {
+        
+        NavigationManager.openChildProgressPage(mainControllerCommunicator: mainController)
+        
     }
     
     @objc func handleBackButtonClick(_ controller: AnyObject) {
@@ -192,7 +203,12 @@ class MainControllerUIDelegate {
     
     func removeChildController(childController: UIViewController?) {
         if  childController != nil {
-            if childController is VideoCategoryController || childController is HistoryController {
+            if childController is VideoCategoryController  || childController is HistoryController       ||
+        //Added
+                
+                childController is ChildProgressController
+        ///
+            {
                 childController?.view.isHidden = true
             } else {
                 childController?.willMove(toParentViewController: nil)

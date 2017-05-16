@@ -8,10 +8,11 @@
 
 import UIKit
 
-@IBDesignable class TopBarOverlay: UIView {
+@IBDesignable class TopBarOverlay: UIView,UIGestureRecognizerDelegate {
     
     @IBOutlet var rootView: UIView!
     
+    @IBOutlet var imageTapGesture: UITapGestureRecognizer!
     @IBOutlet var btnBack : CustomButton!
     @IBOutlet var imgChild : UIImageView!
     @IBOutlet var btnVideo : CustomButton!
@@ -35,6 +36,7 @@ import UIKit
         DimensionManager.setTextSize1280x720(label: lblVideos, size: DimensionManager.H3)
         DimensionManager.setTextSize1280x720(label: lblSongs, size: DimensionManager.H3)
         DimensionManager.setTextSize1280x720(label: lblHistory, size: DimensionManager.H3)
+        imgChild.isUserInteractionEnabled = true
     }
     
     override init(frame: CGRect)

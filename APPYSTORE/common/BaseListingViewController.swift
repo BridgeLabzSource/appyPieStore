@@ -78,6 +78,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         dataFetchFramework?.start(dataSource: getDataSource())
     }
 
+    
     func onDataReceived( status: String, result: AnyObject) {
         self.status = status
         isRequestInProgress = false

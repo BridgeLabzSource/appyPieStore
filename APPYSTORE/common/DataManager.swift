@@ -69,9 +69,21 @@ class DataManager: NSObject {
                 
                 returndata(statusType, result!)
             })
+            ////added
         case PageConstants.CHILD_SELECTION_PAGE:
             //NA
-            break
+            ChildProgressParser().parse(params:HttpRequestBuilder.getChildProgressParams(method: "getChildPerformance", childId: "29518", pageId: "ChildPerformance"), completion:{
+            statusType, result in
+            
+            returndata(statusType, result!)
+        })
+
+            
+        
+        case PageConstants.SELECT_CHILD_LIST_PAGE:
+            
+            returndata(BaseParser.REQUEST_SUCCESS, UserInfo.getInstance().childList as AnyObject)
+            ///
         default:
             break
         }

@@ -263,5 +263,13 @@ class HttpRequestBuilder: NSObject {
 
         ]
     }
-    
+    //added
+    static func getChildProgressParams(method:String,childId:String,pageId:String) ->Parameters{
+        
+        //method = "getChildPerformance"
+        //pageid = "ChildPerformance"
+        //child_id = "29518"
+        return [METHOD:method,CHILD_ID:childId,PAGEID:pageId]
+    }
+
 }

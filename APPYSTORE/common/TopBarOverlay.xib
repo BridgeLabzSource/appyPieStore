@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,6 +18,7 @@
                 <outlet property="btnHistory" destination="CO8-Kf-e0a" id="45P-SG-3aI"/>
                 <outlet property="btnSearch" destination="df7-p0-iBS" id="WgU-3P-dcO"/>
                 <outlet property="btnVideo" destination="gU4-UX-bvm" id="ixF-MK-p1H"/>
+                <outlet property="imageTapGesture" destination="XEt-eY-zpQ" id="t4G-Cy-Atb"/>
                 <outlet property="imgChild" destination="SkT-Dj-8Bs" id="gfC-Dh-vv6"/>
                 <outlet property="lblHistory" destination="s4O-MQ-YV6" id="5AN-Ie-Y9S"/>
                 <outlet property="lblSongs" destination="fXW-in-hVp" id="kkY-9S-OqO"/>
@@ -31,8 +32,12 @@
             <rect key="frame" x="0.0" y="0.0" width="1280" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="SkT-Dj-8Bs">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="SkT-Dj-8Bs">
                     <rect key="frame" x="32" y="32" width="104" height="104"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="XEt-eY-zpQ" appends="YES" id="U64-rE-xkM"/>
+                    </connections>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU4-UX-bvm" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
                     <rect key="frame" x="404" y="32" width="104" height="104"/>
@@ -148,6 +153,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-392" y="-210"/>
         </view>
+        <tapGestureRecognizer id="XEt-eY-zpQ"/>
     </objects>
     <resources>
         <image name="audio" width="48" height="48"/>

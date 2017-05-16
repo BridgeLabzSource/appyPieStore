@@ -20,7 +20,10 @@ class DataFetchFramework {
     var limit = 20
     var totalCountOnServer = -1
     var contentList: [BaseModel]
-    
+    /////added
+    var progressList: [ChildProgressApiResponseModel]
+    var childList: [ChildInfo]
+    ////
     var onDataReceived : (String, AnyObject) -> () = {_ in}
     var isExistingDataDirty = false
     var dataFetchTimePrefKey: String?
@@ -37,6 +40,10 @@ class DataFetchFramework {
         self.pageUniqueId = pageUniqueId
         self.bundle = bundle
         contentList = []
+        ////added
+        progressList = []
+        childList = []
+        /////
         fetchPrefsKey()
         offsetServer = getOffsetServerFromPrefs()
         totalCountOnServer = getTotalCountOnServerFromPrefs()
@@ -158,18 +165,38 @@ class DataFetchFramework {
             offsetServer = 0
             print("TimeExpired hence offsetServer: \(offsetServer)")
         }
-        
-        if totalCountOnServer != -1 && offsetServer >= totalCountOnServer {
-            self.handleResponse(statusType: DataFetchFramework.END_OF_DATA, result: "" as AnyObject)
-        } else {
-            DataManager.sharedInstance.getData(pageName: pageName, offset: offsetServer, limit: limit, bundle: bundle, returndata: {
+//        added change it if needed
+//        if totalCountOnServer != -1 && offsetServer >= totalCountOnServer {
+//            self.handleResponse(statusType: DataFetchFramework.END_OF_DATA, result: "" as AnyObject)
+//        } else {
+        /*    DataManager.sharedInstance.getData(pageName: pageName, offset: offsetServer, limit: limit, bundle: bundle, returndata: {
                 statusType, result in
                 
                 self.handleResponse(statusType: statusType, result: result)
             })
         }
+    }   */
+DataManager.sharedInstance.getData(pageName: pageName, offset: offsetServer, limit: limit, bundle: bundle, returndata: {
+    statusType, result in
+    if self.pageName == PageConstants.SELECT_CHILD_PROGRESS_PAGE
+    {
+        self.progressList = result as! [ChildProgressApiResponseModel]
+    }
+    else if self.pageName == PageConstants.SELECT_CHILD_LIST_PAGE
+    {
+        self.childList = result as! [ChildInfo]
+    }
+    else
+    {
+        self.handleResponse(statusType: statusType, result: result)
     }
     
+    
+})
+//    }
+}
+
+
     func handleResponse(statusType: String, result: AnyObject) {
         if statusType == BaseParser.REQUEST_SUCCESS {
             if let resultModel = result as? ContentListingApiResponseModel {
