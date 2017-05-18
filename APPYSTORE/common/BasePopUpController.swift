@@ -387,6 +387,7 @@ class BasePopUpController: BaseViewController, UITextViewDelegate {
         centerEditText.widthAnchor.constraint(equalToConstant: DimensionManager.getGeneralizedWidth1280x720(width: 600)).isActive = true
         centerEditText.layoutIfNeeded()
         centerEditText.layer.cornerRadius = DimensionManager.getGeneralizedHeight1280x720(height: 52)
+        DimensionManager.setTextSize1280x720(textField: centerEditText, size: DimensionManager.H3)
         
     }
     
