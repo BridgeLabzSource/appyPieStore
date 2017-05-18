@@ -86,10 +86,10 @@ class HttpRequestBuilder: NSObject {
     static let CHILD_AVATAR_ID = "child_avtarid"
     
     //dummy values todo
-    static let IMEI_VALUE = "a5b9d7b7fe1425ea"
+    //static let IMEI_VALUE = "a5b9d7b7fe1425ea"
     static let PCP_VALUE = "999"
     static let CAMPAIGN_VALUE = "8700441600"
-    static let ANDROID_ID_VALUE = AppConstants.VENDOR_ID!
+    static let VENDOR_ID_VALUE = AppConstants.VENDOR_ID!
     static let API_KEY_VALUE = "gh610rt23eqwpll"
     static let USER_ID = "user_id"
     static let OTP = "otp"
@@ -98,15 +98,15 @@ class HttpRequestBuilder: NSObject {
         
         let headers: HTTPHeaders = [
             X_APPY_CONTENT_TYPE:"application/x-www-from-urlencoded",
-               X_APPY_IMEI: IMEI_VALUE,
+               X_APPY_IMEI: VENDOR_ID_VALUE,
                X_APPY_PCP_ID: PCP_VALUE,// get from userdefaults
                X_APPY_CAMPAIGN_ID: CAMPAIGN_VALUE,
                X_APPY_USERID: UserInfo.getInstance().id ?? "",
                X_APPY_UTYPE: UserInfo.getInstance().type ?? "",
-               X_APPY_UserAgent:"Mozilla/5.0 (Linux; Android 5.0.2; Panasonic ELUGA Switch Build/LRX22G; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/56.0.2924.87 Mobile Safari/537.36",
+               X_APPY_UserAgent: AppConstants.USER_AGENT,
                X_APPY_DEVICE_WIDTH: "\(AppDelegate.DEVICE_WIDTH)",
                X_APPY_DEVICE_HEIGHT: "\(AppDelegate.DEVICE_HEIGHT)",
-               X_APPY_ANDROID_ID: ANDROID_ID_VALUE,
+               X_APPY_ANDROID_ID: VENDOR_ID_VALUE,
                X_APPY_API_KEY: API_KEY_VALUE,
                X_APPY_CHILD_ID: UserInfo.getInstance().selectedChild?.id ?? "",
                ACCEPT: "text/html,application/xhtml+xml,application/xml;q=0.9,*;q=0.8",
@@ -114,7 +114,7 @@ class HttpRequestBuilder: NSObject {
                ACCEPT_LANGUAGE: "en-US,en;q=0.5",
                X_APPY_CONN_TYPE: Utils.getNetworkConnectionType(),
                X_APPY_TINFO: UserInfo.getInstance().tInfo ?? "",
-               X_APPY_VISITOR_ID: ANDROID_ID_VALUE,
+               X_APPY_VISITOR_ID: VENDOR_ID_VALUE,
                X_APPY_OST:"",
                X_APPY_USV: UserInfo.getInstance().usv ?? "",
                X_APPY_REG_KEY: "abcd",

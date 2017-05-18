@@ -33,7 +33,7 @@ class LoginPage: BasePopUpController {
             if statusType == BaseParser.REQUEST_SUCCESS {
                 NavigationUtil.navigateAsPerChildSize(mainControllerCommunicator: self.mainControllerCommunicator!)
             } else if statusType == BaseParser.REQUEST_FAILURE {
-                NavigationManager.openLoginFailurePage(mainControllerCommunicator: self.mainControllerCommunicator!)
+                NavigationManager.openLoginFailurePage(mainControllerCommunicator: self.mainControllerCommunicator!, mobileNo: self.centerEditText.text!)
             } else if statusType == BaseParser.CONNECTION_ERROR {
                 
             }

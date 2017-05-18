@@ -9,6 +9,9 @@
 import UIKit
 
 class LoginFailurePage: BasePopUpController {
+    
+    var unRegisteredNumber: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +32,12 @@ class LoginFailurePage: BasePopUpController {
         setImageError(UIImage(named: "error_ic")!)
         setErrorTextLabel("We are unable to recognize your number")
         setFirstButtonTextLabel("Try Again")
-        setBottomTextView("OR  ", "Register with xxxxxxxxx")
+        self.centerEditText.text = unRegisteredNumber
+        setRegisterWithText(mobileNo:  unRegisteredNumber)
+    }
+    
+    func setRegisterWithText(mobileNo: String) {
+        setBottomTextView("OR  ", "Register with " + mobileNo)
     }
     
     override func firstButtonClick() {
@@ -42,15 +50,19 @@ class LoginFailurePage: BasePopUpController {
             if statusType == BaseParser.REQUEST_SUCCESS {
                 NavigationUtil.navigateAsPerChildSize(mainControllerCommunicator: self.mainControllerCommunicator!)
             } else if statusType == BaseParser.REQUEST_FAILURE {
-                
+                self.setRegisterWithText(mobileNo:  self.centerEditText.text!)
             } else if statusType == BaseParser.CONNECTION_ERROR {
-                
+                self.setRegisterWithText(mobileNo:  self.centerEditText.text!)
             }
         })
     }
     
     //login click
     override func onBottomTextClick() {
-        print("BottomLabelTwo clicked")
+        AuthenticationUtil.startOtpFlow(mobileNo: self.centerEditText.text!, mainControllerCommunicator: mainControllerCommunicator!, baseViewController: self, completion: onLoginAfterVerification)
+    }
+    
+    func onLoginAfterVerification(status: String) {
+        print(status)
     }
 }

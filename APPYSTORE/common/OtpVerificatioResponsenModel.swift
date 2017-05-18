@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrialOtpVerificatioResponsenModel: BaseModel {
+class OtpVerificatioResponsenModel: BaseModel {
     var orderDetails = ""
     var usv = ""
     var userType = ""

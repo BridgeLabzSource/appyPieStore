@@ -24,8 +24,8 @@ class MainController: UIViewController, MainControllerCommunicator {
         return self
     }
     
-    func addChild(controller: BaseViewController, area: Area?) {
-        uiDelegate?.addChild(controller: controller, area: area)
+    func addChild(controller: BaseViewController, area: Area?, hideCurrentController: Bool) {
+        uiDelegate?.addChild(controller: controller, area: area, hideCurrentController: hideCurrentController)
     }
     
     override func viewDidLoad() {
@@ -71,6 +71,12 @@ class MainController: UIViewController, MainControllerCommunicator {
     
     func performBackButtonClick(_ controller: BaseViewController) {
         uiDelegate?.handleBackButtonClick(controller)
+    }
+    
+    func clearBackStack() {
+        for childController in childControllersList! {
+            performBackButtonClick(childController)
+        }
     }
     
     internal func setUIComponents(components: ComponentProperties?) {

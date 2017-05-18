@@ -34,11 +34,7 @@ class HttpConnection: NSObject{
     
     
     static func post(url: String, params: Parameters, headers: HTTPHeaders, completion:@escaping (_ response: DataResponse<Any>) -> Void) {
-        
-        //  print("url:\(url) \n params:\(params) \n headers:\(headers)")
-        print("Ganesh : url: \(url) \n params: \(params)")
         Alamofire.request(url, parameters: params, headers: headers).responseJSON{ (response) in
-            print("Ganesh : url response: \(response)")
             completion(response)
         }
         
