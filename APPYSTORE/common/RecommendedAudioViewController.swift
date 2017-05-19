@@ -65,6 +65,7 @@ class RecommendedAudioViewController: BaseListingViewController {
         super.loadData()
         
     }
+    
     /*
      
      let singleTapPlay = UITapGestureRecognizer(target: self, action: #selector(RecommendedAudioViewController.imageClick))
@@ -101,7 +102,6 @@ class RecommendedAudioViewController: BaseListingViewController {
             delegate?.onContentChange(content: audioListingModel)
             collectionView.reloadData()
         }
-        
     }
     
     override func onDataReceived(status: String, result: AnyObject) {
@@ -162,13 +162,9 @@ class RecommendedAudioViewController: BaseListingViewController {
         return valueIndex
     }
     
-    
     override func setScrollDirection() {
         self.collectionView.setScrollDirectionVertical()
     }
-    
-    
-    
 }
 
 

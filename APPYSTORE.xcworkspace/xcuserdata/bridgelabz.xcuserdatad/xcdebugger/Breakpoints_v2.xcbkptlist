@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "APPYSTORE/common/AudioPlayer.swift"
-            timestampString = "516553284.187361"
+            timestampString = "516906654.499368"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "initialise()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "APPYSTORE/common/AudioPlayer.swift"
-            timestampString = "516553430.341058"
+            timestampString = "516906660.09508"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "makeDefaultVisibility()"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
+            landmarkName = "previousIconClick()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "APPYSTORE/common/AudioPlayer.swift"
-            timestampString = "516553416.172452"
+            filePath = "APPYSTORE/page/AudioPlayerController.swift"
+            timestampString = "516906672.274959"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "showVideoThumbnail()"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "onPrevious()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "APPYSTORE/common/AudioPlayer.swift"
-            timestampString = "516553469.846511"
+            filePath = "APPYSTORE/common/VideoPlayerController.swift"
+            timestampString = "516908008.942641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "showVideoThumbnail()"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "onPrevious()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "APPYSTORE/page/AudioListingParser.swift"
-            timestampString = "516554021.112007"
+            filePath = "APPYSTORE/common/VideoPlayerController.swift"
+            timestampString = "516908010.750427"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "parseJSONData(responseData:)"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "onNext()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,61 +89,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "APPYSTORE/page/AudioListingModel.swift"
-            timestampString = "516554045.799963"
+            filePath = "APPYSTORE/common/VideoPlayerController.swift"
+            timestampString = "516908109.256247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "AudioListingModel"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "APPYSTORE.AudioListingModel.imagePath.getter : Swift.String"
-                  moduleName = "APPYSTORE"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bridgelabz/Desktop/project/APPYSTORE9May/APPYSTORE/page/AudioListingModel.swift"
-                  timestampString = "516554503.899544"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "53">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "APPYSTORE.AudioListingModel.imagePath.setter : Swift.String"
-                  moduleName = "APPYSTORE"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bridgelabz/Desktop/project/APPYSTORE9May/APPYSTORE/page/AudioListingModel.swift"
-                  timestampString = "516554503.901432"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "95">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "APPYSTORE.AudioListingModel.init () -&gt; APPYSTORE.AudioListingModel"
-                  moduleName = "APPYSTORE"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bridgelabz/Desktop/project/APPYSTORE9May/APPYSTORE/page/AudioListingModel.swift"
-                  timestampString = "516554503.903819"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "912">
-               </Location>
-            </Locations>
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "onContentChange(content:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

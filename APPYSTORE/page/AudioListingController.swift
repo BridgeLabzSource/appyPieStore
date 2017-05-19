@@ -48,9 +48,9 @@ class AudioListingController: BaseListingViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var bundle2 = [String: Any]()
+     //   var bundle2 = [String: Any]()
         let audioListingModel = dataFetchFramework?.contentList[indexPath.row] as! AudioListingModel
-        bundle2["dnld_url"] = audioListingModel.downloadUrl
+     //   bundle2["dnld_url"] = audioListingModel.downloadUrl
         
         print("AudioListingController : select audio \(audioListingModel.title)")
         
@@ -59,12 +59,11 @@ class AudioListingController: BaseListingViewController {
             //NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
             NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
         } else {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue:"myNotification"), object: self, userInfo: bundle2)
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue:"myNotification"), object: self, userInfo: bundle2)
             NavigationManager.openAudioPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: audioListingModel)
         }
 
     }
-    
     
     override func getComponentProperties() -> ComponentProperties {
         let components = ComponentProperties()
@@ -72,30 +71,4 @@ class AudioListingController: BaseListingViewController {
         
         return components
     }
-
-//    var array1 = [#imageLiteral(resourceName: "search"),#imageLiteral(resourceName: "cartoon"),#imageLiteral(resourceName: "cartoon"),#imageLiteral(resourceName: "cartoon")]
-//    
-//    override func viewDidLoad()
-//    {
-//        super.viewDidLoad()
-//        let nib = UINib(nibName: "AudioListingCard", bundle: nil)
-//        collectionView?.register(nib, forCellWithReuseIdentifier: "Cell1")
-//    }
-//    
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-//    
-//    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return array1.count
-//    }
-//    
-//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell1", for: indexPath) as! AudioListingCard
-//        
-//        return cell
-//    }
-//    
-
-
 }

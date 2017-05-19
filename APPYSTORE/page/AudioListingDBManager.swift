@@ -14,7 +14,6 @@ import UIKit
 
 class AudioListingDBManager: BaseDBManager{
    
-    
     override var TABLE_NAME: String {
         get {return "AudioListingTable"}
         set{}}
@@ -71,7 +70,7 @@ class AudioListingDBManager: BaseDBManager{
                     object.setValue(result?[i].subCategoryTitle, forKey: SUB_CAT_TITLE)
                     object.setValue(result?[i].title, forKey: TITLE)
                     object.setValue(result?[i].versionId, forKey: VERSION_ID)
-               //     object.setValue(result?[i].isAudioDownloadable, forKey: IS_AUDIO_DOWNLOADABLE)
+                //    object.setValue(result?[i].isAudioDownloadable, forKey: IS_AUDIO_DOWNLOADABLE)
                     object.setValue(userId, forKey: USER_ID)
                     
                     do {
@@ -191,7 +190,7 @@ class AudioListingDBManager: BaseDBManager{
         audioListingModel.subCategoryTitle = row.value(forKey: SUB_CAT_TITLE) as! String
         audioListingModel.title = row.value(forKey: TITLE) as! String
         audioListingModel.versionId = row.value(forKey: VERSION_ID) as! String
-     //   audioListingModel.isVideoDownloadable = row.value(forKey: IS_AUDIO_DOWNLOADABLE) as! Bool
+      //  audioListingModel.isAudioDownloadable = row.value(forKey: IS_AUDIO_DOWNLOADABLE) as! Bool
         return audioListingModel
     }
     

@@ -29,7 +29,7 @@ class AudioListingParser: BaseParser {
     private let SEQUENCE_TYPE = "sequence_type"
     private let SEQUENCE_NUMBER = "sequence_number"
     private let GROUP_ID = "group_id"
-   // private let IS_AUDIO_DOWNLOADABLE = "audio_streaming"
+    private let IS_AUDIO_DOWNLOADABLE = "audio_streaming"
     
     override func parseJSONData(responseData:JSON) -> AnyObject? {
         
@@ -57,7 +57,7 @@ class AudioListingParser: BaseParser {
             audioListingModel.versionId = String(describing: item[VERSION_ID])
             audioListingModel.sequenceType = item[SEQUENCE_TYPE].string!
             audioListingModel.sequenceNumber = String(item[SEQUENCE_NUMBER].int!)
-       //     audioListingModel.isAudioDownloadable = self.isDownloadable(value:  item[IS_AUDIO_DOWNLOADABLE].string!)
+          //  audioListingModel.isAudioDownloadable = self.isDownloadable(value:  item[IS_AUDIO_DOWNLOADABLE].string!)
             
             listingModelArray.append(audioListingModel)
         }

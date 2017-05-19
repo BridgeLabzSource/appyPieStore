@@ -10,6 +10,9 @@ import UIKit
 
 class AudioListingCard: BaseCard
 {
+    
+    @IBOutlet weak var rootView: UIView!
+    
     @IBOutlet weak var imgThumbnail: UIImageView!
     
     @IBOutlet weak var songIcon: UIImageView!
@@ -18,6 +21,9 @@ class AudioListingCard: BaseCard
     
     override func awakeFromNib() {
         let radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 64))
+        
+        rootView.layer.cornerRadius = radius
+        rootView.clipsToBounds = true
         
         imgThumbnail.layer.cornerRadius = radius
         imgThumbnail.clipsToBounds = true

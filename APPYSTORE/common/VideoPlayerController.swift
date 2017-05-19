@@ -75,6 +75,7 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
     func handleBackButtonClick() {
         print("VideoPlayerController handleBackButtonClick")
         videoPlayer.avPlayer?.pause()
+        MusicHelper.sharedHelper.audioPlayer?.play()
         videoPlayer.avPlayerLayer.removeFromSuperlayer()
         videoPlayer.avPlayer = nil
         //self.dismiss(animated: false, completion: nil)

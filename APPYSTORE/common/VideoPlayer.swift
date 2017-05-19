@@ -32,7 +32,6 @@ protocol VideoDelegate {
 @IBDesignable class VideoPlayer: UIView {
     
     @IBOutlet weak var rightSeek: UIImageView!
-    
     @IBOutlet weak var totalTimeLabel: UILabel!
     @IBOutlet weak var playTimeLabel: UILabel!
     @IBOutlet weak var playIcon: UIImageView!
@@ -256,7 +255,7 @@ protocol VideoDelegate {
         timeObserver = avPlayer?.addPeriodicTimeObserver(forInterval: timeInterval, queue: DispatchQueue.main) {
             (elapsedTime: CMTime) -> Void in
             
-            print("elapsedTime now:", CMTimeGetSeconds(elapsedTime))
+        print("elapsedTime now:", CMTimeGetSeconds(elapsedTime))
             self.observeTime(elapsedTime: elapsedTime)
             } as AnyObject!
         
@@ -542,6 +541,7 @@ protocol VideoDelegate {
     
     func play() {
         if avPlayer?.currentItem != nil {
+            MusicHelper.sharedHelper.audioPlayer?.pause()
             avPlayer?.play()
             print("play() func \(getCurrentItemStatus())")
         } else {
@@ -578,6 +578,7 @@ protocol VideoDelegate {
         print("pauseIcon Clicked")
         //invisibleButtonTapped()
         avPlayer?.pause()
+        MusicHelper.sharedHelper.audioPlayer?.play()
     }
     
     func nextIconClick() {
@@ -696,11 +697,11 @@ protocol VideoDelegate {
             let duration = CMTimeGetSeconds((avPlayer?.currentItem!.asset.duration)!)
             setTotalDuration(duration: duration)
         }
-        
     }
     
     private func setTotalDuration(duration: Double) {
         totalTimeLabel.text = String(format: "%02d:%02d", ((lround(duration) / 60) % 60), lround(duration) % 60)
+        print("total*******time->",totalTimeLabel.text!)
     }
     
     func showParentingControls() {

@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-class AudioPlayerViewController:BaseViewController{
+ class AudioPlayerViewController:BaseViewController{
     
     @IBOutlet weak var audioPlayerView: AudioPlayer!
-    
+    var audioModel : AudioListingModel!
     var playerbundle:AndroidBundle?
     
     override func viewDidLoad() {
@@ -27,9 +27,5 @@ class AudioPlayerViewController:BaseViewController{
     override func getPageNameUniqueIdentifier() -> String {
         return ""
     }
-
-//    func getDictionary(bundle: AndroidBundle) {
-//        self.audioPlayerView.getUrl = bundle?["dnld_url"] as? String
-//    }
 
 }

@@ -26,21 +26,21 @@
                     <rect key="frame" x="0.0" y="0.0" width="251" height="266"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cartoon" translatesAutoresizingMaskIntoConstraints="NO" id="kYG-9F-rdP">
-                            <rect key="frame" x="7.5" y="6" width="233.5" height="254"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <rect key="frame" x="15" y="12" width="221" height="242"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5tQ-j8-sSn" userLabel="lowerLeftView">
-                            <rect key="frame" x="152.5" y="167.5" width="98.5" height="98.5"/>
+                            <rect key="frame" x="153" y="168" width="98" height="98"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="148" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7DK-nT-71G" userLabel="label count">
-                                    <rect key="frame" x="0.0" y="0.0" width="98.5" height="45.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="98" height="46"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" name="KGMissKindyChunky" family="KG Miss Kindy Chunky" pointSize="30"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category_audio_media_type" translatesAutoresizingMaskIntoConstraints="NO" id="ECO-n1-Ngg">
-                                    <rect key="frame" x="23" y="45.5" width="45" height="31"/>
+                                    <rect key="frame" x="22.5" y="46" width="45.5" height="29.5"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </imageView>
                             </subviews>
@@ -58,15 +58,15 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="5tQ-j8-sSn" firstAttribute="trailing" secondItem="ROv-wA-tOm" secondAttribute="trailing" id="9dh-IG-5Cr"/>
                         <constraint firstItem="5tQ-j8-sSn" firstAttribute="width" secondItem="ROv-wA-tOm" secondAttribute="width" multiplier="104:264" id="AKA-oC-Bpd"/>
                         <constraint firstItem="5tQ-j8-sSn" firstAttribute="bottom" secondItem="ROv-wA-tOm" secondAttribute="bottom" id="afQ-xD-xDE"/>
-                        <constraint firstItem="kYG-9F-rdP" firstAttribute="top" secondItem="ROv-wA-tOm" secondAttribute="bottom" multiplier="8:360" id="b7t-mF-6vq"/>
-                        <constraint firstItem="kYG-9F-rdP" firstAttribute="leading" secondItem="ROv-wA-tOm" secondAttribute="trailing" multiplier="8:264" id="bty-dz-wkK"/>
-                        <constraint firstAttribute="trailing" secondItem="kYG-9F-rdP" secondAttribute="trailing" multiplier="264:254" id="eJP-Qm-6MG"/>
-                        <constraint firstAttribute="bottom" secondItem="kYG-9F-rdP" secondAttribute="bottom" multiplier="360:352" id="kif-cA-CNU"/>
+                        <constraint firstItem="kYG-9F-rdP" firstAttribute="top" secondItem="ROv-wA-tOm" secondAttribute="bottom" multiplier="16:360" id="b7t-mF-6vq"/>
+                        <constraint firstItem="kYG-9F-rdP" firstAttribute="leading" secondItem="ROv-wA-tOm" secondAttribute="trailing" multiplier="16:264" id="bty-dz-wkK"/>
+                        <constraint firstAttribute="trailing" secondItem="kYG-9F-rdP" secondAttribute="trailing" multiplier="264:248" id="eJP-Qm-6MG"/>
+                        <constraint firstAttribute="bottom" secondItem="kYG-9F-rdP" secondAttribute="bottom" multiplier="360:344" id="kif-cA-CNU"/>
                     </constraints>
                 </view>
             </subviews>

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0A1C8D331EB966A20094DA3F /* AudioCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1C8D321EB966A20094DA3F /* AudioCategoryController.swift */; };
+		0A2E51E91ECDCB990062EB6F /* backmusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0A2E51E81ECDCB990062EB6F /* backmusic.mp3 */; };
+		0A302B101ECEF0F500C44414 /* MusicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A302B0F1ECEF0F500C44414 /* MusicHelper.swift */; };
+		0A302B141ECF272300C44414 /* background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0A302B111ECF272300C44414 /* background_music.mp3 */; };
+		0A302B151ECF272300C44414 /* button_click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0A302B121ECF272300C44414 /* button_click.mp3 */; };
+		0A302B161ECF272300C44414 /* card_click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0A302B131ECF272300C44414 /* card_click.mp3 */; };
 		0A5374AA1E606B9700F198AD /* DimensionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5374A91E606B9700F198AD /* DimensionManager.swift */; };
 		0A5E1C641E701C2D00537F84 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E1C631E701C2D00537F84 /* UILabelExtension.swift */; };
 		0A5E1C651E7026B800537F84 /* kg_miss_kindy_chunky.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A5E1C611E701ACA00537F84 /* kg_miss_kindy_chunky.ttf */; };
@@ -151,7 +156,6 @@
 		73DA44701EA63BA500EF2C00 /* CrossButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DA446F1EA63BA500EF2C00 /* CrossButton.swift */; };
 		73E0BA1D1EB85F9300E2E34F /* ChildInfoToAvatarModelAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E0BA1C1EB85F9300E2E34F /* ChildInfoToAvatarModelAdapter.swift */; };
 		73E0BA1F1EB88ADA00E2E34F /* PageData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73E0BA1E1EB88ADA00E2E34F /* PageData.plist */; };
-		73EF80811EC5B61D0074DF7C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73EF80831EC5B61D0074DF7C /* Localizable.strings */; };
 		73F43B041E82465800D4DD90 /* PageDataPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F43B031E82465800D4DD90 /* PageDataPlist.swift */; };
 		73F43B061E82739D00D4DD90 /* ContentListingApiResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F43B051E82739D00D4DD90 /* ContentListingApiResponseModel.swift */; };
 		F46267111E77AF0900302ACF /* LoginParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46267101E77AF0900302ACF /* LoginParser.swift */; };
@@ -165,6 +169,11 @@
 
 /* Begin PBXFileReference section */
 		0A1C8D321EB966A20094DA3F /* AudioCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCategoryController.swift; sourceTree = "<group>"; };
+		0A2E51E81ECDCB990062EB6F /* backmusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = backmusic.mp3; path = ../backmusic.mp3; sourceTree = "<group>"; };
+		0A302B0F1ECEF0F500C44414 /* MusicHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicHelper.swift; sourceTree = "<group>"; };
+		0A302B111ECF272300C44414 /* background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background_music.mp3; sourceTree = "<group>"; };
+		0A302B121ECF272300C44414 /* button_click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = button_click.mp3; sourceTree = "<group>"; };
+		0A302B131ECF272300C44414 /* card_click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = card_click.mp3; sourceTree = "<group>"; };
 		0A5374A91E606B9700F198AD /* DimensionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimensionManager.swift; sourceTree = "<group>"; };
 		0A5E1C611E701ACA00537F84 /* kg_miss_kindy_chunky.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kg_miss_kindy_chunky.ttf; sourceTree = "<group>"; };
 		0A5E1C631E701C2D00537F84 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
@@ -349,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				7365F3941E92612D006B3C75 /* MainController.swift */,
+				0A302B0F1ECEF0F500C44414 /* MusicHelper.swift */,
 				0A7261611E6D30880023883F /* customView */,
 				0A72615B1E6D30480023883F /* extension */,
 				70AD5ADD1E6E7129003C2536 /* BaseParser.swift */,
@@ -462,6 +472,7 @@
 				0A656BBE1E5DB73F000E5BB2 /* common */,
 				0AD5536D1E5DA958005ECA4A /* page */,
 				0AAD2EFC1E5C48EF00B504A3 /* AppDelegate.swift */,
+				0A2E51E81ECDCB990062EB6F /* backmusic.mp3 */,
 				70A36E4A1E614722002B9296 /* Assets.xcassets */,
 				0A5E1C611E701ACA00537F84 /* kg_miss_kindy_chunky.ttf */,
 				706B0B9A1E73D392006CF8CA /* AnimationView.swift */,
@@ -529,6 +540,9 @@
 		0AF3DD551EB8B9A70086D44F /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				0A302B111ECF272300C44414 /* background_music.mp3 */,
+				0A302B121ECF272300C44414 /* button_click.mp3 */,
+				0A302B131ECF272300C44414 /* card_click.mp3 */,
 				0AF26F051EBA0CC100BC7EF9 /* player */,
 				0AF3DD571EB8B9BE0086D44F /* category */,
 				0AF3DD561EB8B9B20086D44F /* listing */,
@@ -763,16 +777,20 @@
 				0AAD2F0A1E5C48EF00B504A3 /* LaunchScreen.storyboard in Resources */,
 				0AF812661EB1BC33005C6E14 /* AudioPlayer.xib in Resources */,
 				7370B81D1E9DE2A400D91ABA /* RecommendedVideoCard.xib in Resources */,
+				0A302B161ECF272300C44414 /* card_click.mp3 in Resources */,
 				0AFBD5F01EC57533009FD47B /* song.mp3 in Resources */,
 				739A82551EA9DF7B008F9001 /* ChildCard.xib in Resources */,
 				0A80DA241E702CC100939443 /* BottomBarOverlay.xib in Resources */,
+				0A302B141ECF272300C44414 /* background_music.mp3 in Resources */,
 				73DA446E1EA6378500EF2C00 /* CrossButton.xib in Resources */,
 				736A40FD1E891A3000A4C038 /* VideoListingCard.xib in Resources */,
 				70A36E4D1E6148BE002B9296 /* CommonOverlayView.xib in Resources */,
 				0A5E1C651E7026B800537F84 /* kg_miss_kindy_chunky.ttf in Resources */,
 				736D42911E9FC2F100ACDD0F /* TagsCard.xib in Resources */,
+				0A302B151ECF272300C44414 /* button_click.mp3 in Resources */,
 				0A8F790A1E6971D300720DB8 /* VideoCategoryCard.xib in Resources */,
 				7371FA061E939F1D009241FF /* VideoPlayer.xib in Resources */,
+				0A2E51E91ECDCB990062EB6F /* backmusic.mp3 in Resources */,
 				0A82CF571EB0BC0900987E6D /* AudioListingCard.xib in Resources */,
 				70A36E4B1E614722002B9296 /* Assets.xcassets in Resources */,
 				0AF812681EB20EB4005C6E14 /* AudioCategoryCard.xib in Resources */,
@@ -847,6 +865,7 @@
 				738EC39C1EAE2CCE001575C2 /* ChildRegistrationParser.swift in Sources */,
 				739402821EB081E400AEDB5E /* ChildSelectionController.swift in Sources */,
 				7370B8251E9E421300D91ABA /* BaseCard.swift in Sources */,
+				0A302B101ECEF0F500C44414 /* MusicHelper.swift in Sources */,
 				0A80DA221E702CA500939443 /* TopBarOverlay.swift in Sources */,
 				7392672B1E9E0BCB00D5ABC4 /* BaseViewControllerProtocol.swift in Sources */,
 				7365F3951E92612D006B3C75 /* MainController.swift in Sources */,
