@@ -19,10 +19,10 @@ class AppConfigurationHandler {
         if(vendorId == nil || vendorId?.characters.count == 0) {
             vendorId = UIDevice.current.identifierForVendor?.uuidString
             KeychainManager.saveVendorId(value: vendorId! as NSString)
-            
         }
         print("vendorID:" + vendorId!)
         
+        //hardcode this value to treat as a new user
         AppConstants.VENDOR_ID = vendorId
     }
 }

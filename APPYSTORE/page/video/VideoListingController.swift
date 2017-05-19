@@ -28,7 +28,7 @@ class VideoListingController: BaseListingViewController {
     override func getComponentProperties() -> ComponentProperties {
         let components = ComponentProperties()
         components.visibleIconsSet = [Item.BTN_BACK, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_SEARCH]
-        
+        components.selectedIconsSet = [Item.BTN_VIDEO]
         return components
     }
     
@@ -38,20 +38,9 @@ class VideoListingController: BaseListingViewController {
         
         if videoListingModel.payType == "paid" {
             var bundle = [String: Any]()
-            //NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
             NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
         } else {
             NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: videoListingModel)
         }
-        
-        /*
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "VideoPlayerController") as! VideoPlayerController
-        
-        //mainControllerCommunicator.addChild(controller: viewController)
-        mainControllerCommunicator?.getContext().present(viewController, animated: false, completion: nil)
-        //performSegue(withIdentifier: "same", sender: nil)
-        */
-        
     }
 }

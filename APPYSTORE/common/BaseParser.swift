@@ -33,7 +33,7 @@ class BaseParser: NSObject {
             } else {
                 let result = JSON( response.result.value as! NSDictionary )
                 
-                print("Response Ganesh : \(result)")
+                print("BaseParser Response : \(result)")
                 
                 strongSelf.responseCode = String(describing: result["ResponseCode"].int ?? 0)
                 

@@ -66,8 +66,6 @@ class LoginParser: BaseParser {
     
     override func parseJSONData(responseData: JSON) -> AnyObject? {
         
-        
-        print("Login Parser response = \(responseData)" )
         userInfo = UserInfo.getInstance()
         
         if !StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: responseData, key: USERID), secondString: userInfo?.id) {

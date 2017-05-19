@@ -34,7 +34,6 @@ class HttpConnection: NSObject{
           print("url:\(url) \n params:\(params) \n headers:\(headers)")
         print("Ganesh : url: \(url) \n params: \(params)")
         Alamofire.request(url, parameters: params, headers: headers).responseJSON{ (response) in
-            print("Ganesh : url response: \(response)")
             completion(response)
         }
         

@@ -1,5 +1,5 @@
 //
-//  FreeTrialParser.swift
+//  OtpRequestParser.swift
 //  APPYSTORE
 //
 //  Created by ios_dev on 27/04/17.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class FreeTrialParser: BaseParser {
+class OtpRequestParser: BaseParser {
     static let METHOD_NAME = "sendOtp"
     
     override func callback(_ status: String, _ code: String, _ data: AnyObject?,_ completion: @escaping (_ responseStatus: String, _ listOfData: AnyObject?) -> Void  ){
@@ -22,9 +22,9 @@ class FreeTrialParser: BaseParser {
     }
     
     override func parseJSONData(responseData: JSON) -> AnyObject? {
-        print("FreeTrialParser \(responseData)")
+        print("OtpRequestParser \(responseData)")
         
-        let model = TrialResponseModel()
+        let model = OtpResponseModel()
         model.companyId = String(responseData["company_id"].int!)
         model.msisdn = responseData["msisdn"].string!
         model.circleId = responseData["circle_id"].string!

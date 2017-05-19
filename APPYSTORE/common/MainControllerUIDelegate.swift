@@ -33,7 +33,6 @@ class MainControllerUIDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "HistoryController") as! HistoryController
         
-        //self.addAsChildViewController(childController: viewController, area: nil)
         return viewController
     }()
     
@@ -41,7 +40,6 @@ class MainControllerUIDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "VideoCategoryController") as! VideoCategoryController
         
-        //self.addAsChildViewController(childController: viewController, area: nil)
         return viewController
     }()
     
@@ -109,7 +107,6 @@ class MainControllerUIDelegate {
             mainController.onBackPressed()
             printBackStack()
         }
-        
     }
     
     @objc func handleSearchButtonClick() {
@@ -189,15 +186,20 @@ class MainControllerUIDelegate {
         mainController.view.addSubview(fabButton)
     }
     
-    func addChild(controller: BaseViewController, area: Area?) {
+    func addChild(controller: BaseViewController, area: Area?, hideCurrentController: Bool) {
+        if hideCurrentController {
+            mainController.getCurrentViewController()?.view.isHidden = true
+        }
         addAsChildViewController(childController: controller, area: area)
         mainController.childControllersList?.append(controller)
         printBackStack()
     }
     
     func addAsChildViewController(childController: BaseViewController, area: Area?){
-        mainController.getCurrentViewController()?.view.isHidden = true
+        
         mainController.addChildViewController(childController)
+        
+        childController.mainControllerCommunicator = mainController
         mainController.view.addSubview(childController.view)
         
         if(area == nil || area == Area.MIDDLE) {
@@ -207,7 +209,6 @@ class MainControllerUIDelegate {
         }
         
         childController.didMove(toParentViewController: childController)
-        childController.mainControllerCommunicator = mainController
     }
     
     func removeChildController(childController: UIViewController?){
@@ -227,6 +228,8 @@ class MainControllerUIDelegate {
         if components != nil {
             setAllItemsVisibility(state: false)
             makeItemsVisible(components: components!)
+            makeAllItemsUnSelected()
+            makeItemsSelected(components: components!)
             mainController.topView.tfSearch.text = components?.searchKeyword
         }
     }
@@ -248,7 +251,6 @@ class MainControllerUIDelegate {
             switch item {
             case Item.BTN_BACK:
                 mainController.topView.btnBack.isHidden = false
-                break
             case Item.BTN_VIDEO:
                 mainController.topView.btnVideo.isHidden = false
                 mainController.topView.lblVideos.isHidden = false
@@ -268,9 +270,47 @@ class MainControllerUIDelegate {
         }
     }
     
+    func makeAllItemsUnSelected() {
+        mainController.topView.btnBack.buttonColor = ButtonColor.GREY_COLOR
+        mainController.topView.btnBack.setNeedsDisplay()
+        mainController.topView.btnVideo.buttonColor = ButtonColor.GREY_COLOR
+        mainController.topView.btnVideo.setNeedsDisplay()
+        mainController.topView.btnAudio.buttonColor = ButtonColor.GREY_COLOR
+        mainController.topView.btnAudio.setNeedsDisplay()
+        mainController.topView.btnHistory.buttonColor = ButtonColor.GREY_COLOR
+        mainController.topView.btnHistory.setNeedsDisplay()
+        mainController.topView.btnSearch.buttonColor = ButtonColor.GREY_COLOR
+        mainController.topView.btnSearch.setNeedsDisplay()
+    }
+
+    func makeItemsSelected(components: ComponentProperties) {
+        for item in components.selectedIconsSet {
+            switch item {
+            case Item.BTN_BACK:
+                mainController.topView.btnBack.buttonColor = ButtonColor.ORANGE_COLOR
+                mainController.topView.btnBack.setNeedsDisplay()
+            case Item.BTN_VIDEO:
+                mainController.topView.btnVideo.buttonColor = ButtonColor.ORANGE_COLOR
+                mainController.topView.btnVideo.setNeedsDisplay()
+            case Item.BTN_AUDIO:
+                mainController.topView.btnAudio.buttonColor = ButtonColor.ORANGE_COLOR
+                mainController.topView.btnAudio.setNeedsDisplay()
+            case Item.BTN_HISTORY:
+                mainController.topView.btnHistory.buttonColor = ButtonColor.ORANGE_COLOR
+                mainController.topView.btnHistory.setNeedsDisplay()
+            case Item.BTN_SEARCH:
+                mainController.topView.btnSearch.buttonColor = ButtonColor.ORANGE_COLOR
+                mainController.topView.btnSearch.setNeedsDisplay()
+            default:
+                break
+            }
+        }
+    }
+
     func printBackStack() {
         for childController in mainController.childControllersList! {
             print("printBackStack \(childController.getPageName())")
+            print("===============================================")
         }
     }
     
