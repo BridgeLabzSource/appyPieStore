@@ -23,21 +23,21 @@ enum LayerColorType {
 class CustomViewLayer {
     let imageInset = UIEdgeInsetsMake(6, 6, 12, 12)
     
-    var subLayercolorList = LayerColor.getLayerColor(colorName: "grey")
+    var subLayercolorList = ButtonColor.getLayerColor(colorName: ButtonColor.GREY_COLOR)
     
-    let redLayerColorList = LayerColor.getLayerColor(colorName: "red")
+    let redLayerColorList = ButtonColor.getLayerColor(colorName: ButtonColor.RED_COLOR)
     
-    let blueLayerColorList = LayerColor.getLayerColor(colorName: "blue")
+    let blueLayerColorList = ButtonColor.getLayerColor(colorName: ButtonColor.BLUE_COLOR)
     
-    let greenLayerColorList = LayerColor.getLayerColor(colorName: "green")
+    let greenLayerColorList = ButtonColor.getLayerColor(colorName: ButtonColor.GREEN_COLOR)
     
-    let orangeLayerColorList = LayerColor.getLayerColor(colorName: "orange")
+    let orangeLayerColorList = ButtonColor.getLayerColor(colorName: ButtonColor.ORANGE_COLOR)
     
-    let violetLayerColorList = LayerColor.getLayerColor(colorName: "violet")
+    let violetLayerColorList = ButtonColor.getLayerColor(colorName: ButtonColor.VIOLET_COLOR)
     
-    let yellowLayerColorList = LayerColor.getLayerColor(colorName: "yellow")
+    let yellowLayerColorList = ButtonColor.getLayerColor(colorName: ButtonColor.YELLOW_COLOR)
     
-    let purpleLayerColorList = LayerColor.getLayerColor(colorName: "purple")
+    let purpleLayerColorList = ButtonColor.getLayerColor(colorName: ButtonColor.PURPLE_COLOR)
     
     //Note: try to keep even numbers only otherwise leyers won't be complete round
     let subLayerSizeTruncation: [CGFloat] = [

@@ -36,6 +36,7 @@ class HistoryController: BaseListingViewController {
     override func getComponentProperties() -> ComponentProperties {
         let components = ComponentProperties()
         components.visibleIconsSet = [Item.IV_CHILD, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_SEARCH]
+        components.selectedIconsSet = [Item.BTN_HISTORY]
         
         return components
     }

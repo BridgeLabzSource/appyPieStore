@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrialResponseModel: BaseModel {
+class OtpResponseModel: BaseModel {
     var userId = ""
     var circleId = ""
     var companyId = ""

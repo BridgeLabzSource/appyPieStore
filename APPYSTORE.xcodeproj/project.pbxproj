@@ -80,7 +80,7 @@
 		736D428D1E9FAB2F00ACDD0F /* SearchTagsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D428C1E9FAB2F00ACDD0F /* SearchTagsModel.swift */; };
 		736D42901E9FC2F100ACDD0F /* TagsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D428E1E9FC2F100ACDD0F /* TagsCard.swift */; };
 		736D42911E9FC2F100ACDD0F /* TagsCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736D428F1E9FC2F100ACDD0F /* TagsCard.xib */; };
-		736DC0C21EA9CDC700347CBA /* LayerColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736DC0C11EA9CDC700347CBA /* LayerColor.swift */; };
+		736DC0C21EA9CDC700347CBA /* ButtonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736DC0C11EA9CDC700347CBA /* ButtonColor.swift */; };
 		7370B81D1E9DE2A400D91ABA /* RecommendedVideoCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7370B81C1E9DE2A400D91ABA /* RecommendedVideoCard.xib */; };
 		7370B81F1E9DE99100D91ABA /* RecommendedVideoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7370B81E1E9DE99100D91ABA /* RecommendedVideoCard.swift */; };
 		7370B8211E9DED3B00D91ABA /* RecommendedVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7370B8201E9DED3B00D91ABA /* RecommendedVideoViewController.swift */; };
@@ -104,9 +104,9 @@
 		7376DE701E812D9C00D68BAE /* DataFetchFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */; };
 		737850511EB9E6F700ADE792 /* AuthenticationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737850501EB9E6F700ADE792 /* AuthenticationUtil.swift */; };
 		737E28281E94F409008CEC26 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737E28271E94F409008CEC26 /* PlayerModel.swift */; };
-		7381F7091EBB2AC80073F12A /* FreeTrialOtpVerificationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381F7081EBB2AC80073F12A /* FreeTrialOtpVerificationPopUp.swift */; };
-		7381F70B1EBB5B220073F12A /* FreeTrialOtpVerificationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381F70A1EBB5B220073F12A /* FreeTrialOtpVerificationParser.swift */; };
-		7381F70D1EBB5C610073F12A /* TrialOtpVerificatioResponsenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381F70C1EBB5C610073F12A /* TrialOtpVerificatioResponsenModel.swift */; };
+		7381F7091EBB2AC80073F12A /* OtpVerificationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381F7081EBB2AC80073F12A /* OtpVerificationPopUp.swift */; };
+		7381F70B1EBB5B220073F12A /* OtpVerificationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381F70A1EBB5B220073F12A /* OtpVerificationParser.swift */; };
+		7381F70D1EBB5C610073F12A /* OtpVerificatioResponsenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381F70C1EBB5C610073F12A /* OtpVerificatioResponsenModel.swift */; };
 		738586BF1EB06FC6008C4F8C /* FreeTrialPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738586BE1EB06FC6008C4F8C /* FreeTrialPopUp.swift */; };
 		738586C11EB0A7C9008C4F8C /* BuySubscriptionPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738586C01EB0A7C9008C4F8C /* BuySubscriptionPopUp.swift */; };
 		738C72F61E93E34400A1B4E0 /* VideoListingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C72F51E93E34400A1B4E0 /* VideoListingParser.swift */; };
@@ -134,7 +134,7 @@
 		739A82591EA9EE92008F9001 /* AvatarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739A82581EA9EE92008F9001 /* AvatarModel.swift */; };
 		739A825B1EAA0FA3008F9001 /* AvatarParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739A825A1EAA0FA3008F9001 /* AvatarParser.swift */; };
 		739A825D1EAA19B8008F9001 /* AvatarDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739A825C1EAA19B8008F9001 /* AvatarDBManager.swift */; };
-		739DE0CF1EB1B40F00C4B73C /* FreeTrialParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739DE0CE1EB1B40F00C4B73C /* FreeTrialParser.swift */; };
+		739DE0CF1EB1B40F00C4B73C /* OtpRequestParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739DE0CE1EB1B40F00C4B73C /* OtpRequestParser.swift */; };
 		739DE0D11EB2003600C4B73C /* TrialResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739DE0D01EB2003600C4B73C /* TrialResponseModel.swift */; };
 		73A3BB211E960AEF00D2487A /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3BB201E960AEF00D2487A /* AppConstants.swift */; };
 		73B657521E8BCFAD00E7D582 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B657511E8BCFAD00E7D582 /* BaseViewController.swift */; };
@@ -240,7 +240,7 @@
 		736D428C1E9FAB2F00ACDD0F /* SearchTagsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTagsModel.swift; sourceTree = "<group>"; };
 		736D428E1E9FC2F100ACDD0F /* TagsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsCard.swift; sourceTree = "<group>"; };
 		736D428F1E9FC2F100ACDD0F /* TagsCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagsCard.xib; sourceTree = "<group>"; };
-		736DC0C11EA9CDC700347CBA /* LayerColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerColor.swift; sourceTree = "<group>"; };
+		736DC0C11EA9CDC700347CBA /* ButtonColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonColor.swift; sourceTree = "<group>"; };
 		7370B81C1E9DE2A400D91ABA /* RecommendedVideoCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendedVideoCard.xib; sourceTree = "<group>"; };
 		7370B81E1E9DE99100D91ABA /* RecommendedVideoCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedVideoCard.swift; sourceTree = "<group>"; };
 		7370B8201E9DED3B00D91ABA /* RecommendedVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedVideoViewController.swift; sourceTree = "<group>"; };
@@ -265,9 +265,9 @@
 		7376DE6F1E812D9C00D68BAE /* DataFetchFramework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchFramework.swift; sourceTree = "<group>"; };
 		737850501EB9E6F700ADE792 /* AuthenticationUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationUtil.swift; sourceTree = "<group>"; };
 		737E28271E94F409008CEC26 /* PlayerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
-		7381F7081EBB2AC80073F12A /* FreeTrialOtpVerificationPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeTrialOtpVerificationPopUp.swift; sourceTree = "<group>"; };
-		7381F70A1EBB5B220073F12A /* FreeTrialOtpVerificationParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeTrialOtpVerificationParser.swift; sourceTree = "<group>"; };
-		7381F70C1EBB5C610073F12A /* TrialOtpVerificatioResponsenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialOtpVerificatioResponsenModel.swift; sourceTree = "<group>"; };
+		7381F7081EBB2AC80073F12A /* OtpVerificationPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtpVerificationPopUp.swift; sourceTree = "<group>"; };
+		7381F70A1EBB5B220073F12A /* OtpVerificationParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtpVerificationParser.swift; sourceTree = "<group>"; };
+		7381F70C1EBB5C610073F12A /* OtpVerificatioResponsenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtpVerificatioResponsenModel.swift; sourceTree = "<group>"; };
 		738586BE1EB06FC6008C4F8C /* FreeTrialPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeTrialPopUp.swift; sourceTree = "<group>"; };
 		738586C01EB0A7C9008C4F8C /* BuySubscriptionPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuySubscriptionPopUp.swift; sourceTree = "<group>"; };
 		738C72F51E93E34400A1B4E0 /* VideoListingParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListingParser.swift; sourceTree = "<group>"; };
@@ -295,7 +295,7 @@
 		739A82581EA9EE92008F9001 /* AvatarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarModel.swift; sourceTree = "<group>"; };
 		739A825A1EAA0FA3008F9001 /* AvatarParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarParser.swift; sourceTree = "<group>"; };
 		739A825C1EAA19B8008F9001 /* AvatarDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarDBManager.swift; sourceTree = "<group>"; };
-		739DE0CE1EB1B40F00C4B73C /* FreeTrialParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeTrialParser.swift; sourceTree = "<group>"; };
+		739DE0CE1EB1B40F00C4B73C /* OtpRequestParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtpRequestParser.swift; sourceTree = "<group>"; };
 		739DE0D01EB2003600C4B73C /* TrialResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialResponseModel.swift; sourceTree = "<group>"; };
 		73A3BB201E960AEF00D2487A /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		73B657511E8BCFAD00E7D582 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -373,16 +373,16 @@
 				73DA446B1EA61DFF00EF2C00 /* BasePopUpController.swift */,
 				738EEE6D1EA4BF3000A50038 /* AppNavigationHandler.swift */,
 				738EEE6F1EA4DD5300A50038 /* NavigationUtil.swift */,
-				736DC0C11EA9CDC700347CBA /* LayerColor.swift */,
+				736DC0C11EA9CDC700347CBA /* ButtonColor.swift */,
 				73C346CB1EAF4BE000814054 /* FreeTrialSuccessPopup.swift */,
 				738586BE1EB06FC6008C4F8C /* FreeTrialPopUp.swift */,
 				738586C01EB0A7C9008C4F8C /* BuySubscriptionPopUp.swift */,
-				739DE0CE1EB1B40F00C4B73C /* FreeTrialParser.swift */,
+				739DE0CE1EB1B40F00C4B73C /* OtpRequestParser.swift */,
 				739DE0D01EB2003600C4B73C /* TrialResponseModel.swift */,
 				737850501EB9E6F700ADE792 /* AuthenticationUtil.swift */,
-				7381F7081EBB2AC80073F12A /* FreeTrialOtpVerificationPopUp.swift */,
-				7381F70A1EBB5B220073F12A /* FreeTrialOtpVerificationParser.swift */,
-				7381F70C1EBB5C610073F12A /* TrialOtpVerificatioResponsenModel.swift */,
+				7381F7081EBB2AC80073F12A /* OtpVerificationPopUp.swift */,
+				7381F70A1EBB5B220073F12A /* OtpVerificationParser.swift */,
+				7381F70C1EBB5C610073F12A /* OtpVerificatioResponsenModel.swift */,
 				736BF5AA1EC1DA900027FEC2 /* KeychainManager.swift */,
 				736BF5AC1EC2EB160027FEC2 /* AppConfigurationHandler.swift */,
 				73EF80831EC5B61D0074DF7C /* Localizable.strings */,
@@ -850,11 +850,11 @@
 				73F43B061E82739D00D4DD90 /* ContentListingApiResponseModel.swift in Sources */,
 				706B34FA1E6FE9F4008474EA /* BaseDBManager.swift in Sources */,
 				70AD5AE81E6E7129003C2536 /* HttpConnection.swift in Sources */,
-				736DC0C21EA9CDC700347CBA /* LayerColor.swift in Sources */,
+				736DC0C21EA9CDC700347CBA /* ButtonColor.swift in Sources */,
 				73B657521E8BCFAD00E7D582 /* BaseViewController.swift in Sources */,
 				7392A7861E94C96200A6ED32 /* VideoDBManager.swift in Sources */,
 				736BF5AB1EC1DA900027FEC2 /* KeychainManager.swift in Sources */,
-				7381F70D1EBB5C610073F12A /* TrialOtpVerificatioResponsenModel.swift in Sources */,
+				7381F70D1EBB5C610073F12A /* OtpVerificatioResponsenModel.swift in Sources */,
 				738EEE6E1EA4BF3000A50038 /* AppNavigationHandler.swift in Sources */,
 				0A8F790C1E6971FD00720DB8 /* VideoCategoryCard.swift in Sources */,
 				7371F9FE1E936898009241FF /* KCFABViewController.swift in Sources */,
@@ -871,7 +871,7 @@
 				736BF5AD1EC2EB160027FEC2 /* AppConfigurationHandler.swift in Sources */,
 				7370B8231E9DF4F600D91ABA /* RecommendedVideoParser.swift in Sources */,
 				736D428B1E9FA45700ACDD0F /* SearchTagsParser.swift in Sources */,
-				7381F70B1EBB5B220073F12A /* FreeTrialOtpVerificationParser.swift in Sources */,
+				7381F70B1EBB5B220073F12A /* OtpVerificationParser.swift in Sources */,
 				0AAD2EFD1E5C48EF00B504A3 /* AppDelegate.swift in Sources */,
 				70AD5AE41E6E7129003C2536 /* BaseModel.swift in Sources */,
 				7365F3931E92603A006B3C75 /* VideoListingController.swift in Sources */,

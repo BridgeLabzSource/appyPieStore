@@ -33,8 +33,18 @@ import UIKit
     ]
     
     func initialize() {
+        
+        if self.layer.sublayers != nil {
+            for subLayer in self.layer.sublayers! {
+                //remove only gradient layer
+                if subLayer is CAGradientLayer  {
+                    subLayer.removeFromSuperlayer()
+                }
+            }
+        }
+        
         //the main layer
-        subLayercolorList = LayerColor.getLayerColor(colorName: buttonColor)
+        subLayercolorList = ButtonColor.getLayerColor(colorName: buttonColor)
         self.layer.backgroundColor = UIColor.white.cgColor
         makeRoundCorner(layer: self.layer)
         
@@ -63,19 +73,6 @@ import UIKit
             layer.insertSublayer(gradient as CALayer, at: UInt32(i))
         }
         
-        bringSubview(toFront: self.imageView!)
-        //self.imageEdgeInsets = imageInset;
-        
-        imageView?.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: DimensionManager.getGeneralizedHeight1280x720(height: 20),
-            height: DimensionManager.getGeneralizedHeight1280x720(height: 20)
-        )
-        
-        buttonImageView?.removeFromSuperview()
-        
-        
         buttonImageView = UIImageView(image: buttonImage)
         
         
@@ -87,11 +84,10 @@ import UIKit
         )
         
         buttonImageView?.center = CGPoint(x: layer.frame.size.width/2 - 5, y: layer.frame.height/2 - 5)
-        
         addSubview(buttonImageView!)
-        //self.imageView?.center = CGPoint(x: self.frame.size.width/2 - 5, y: self.frame.height/2 - 5)
         
         DimensionManager.setTextSize1280x720(label: self.titleLabel!, size: DimensionManager.H3)
+        
     }
     
     func makeRoundCorner(layer: CALayer){

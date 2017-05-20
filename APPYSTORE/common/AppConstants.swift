@@ -17,9 +17,14 @@ class AppConstants {
     //static let BASE_URL = "http://www.appystore.in/appy_app/appyApi_handler.php?"
     static let BASE_URL = "http://beta.appystore.in/appy_app/appyApi_handler.php?"
     
-    static var VENDOR_ID : String? = KeychainManager.getVendorId()
+    //value is assigned in AppConfigurationHandler
+    static var VENDOR_ID : String?
     
     static var DATE_FORMAT = "MMM d, yyyy"
-    
     static let LANGUAGE = "en"
+    
+    static let SMM_KEY_TRIAL_NEW_USER = "appyt-f"
+    static let SMM_KEY_TRIAL_EXISTING_USER = "appyt-m"
+    
+    static let USER_AGENT = UIWebView().stringByEvaluatingJavaScript(from: "navigator.userAgent")!
 }

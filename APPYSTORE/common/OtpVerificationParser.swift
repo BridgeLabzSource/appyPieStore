@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class FreeTrialOtpVerificationParser: BaseParser {
+class OtpVerificationParser: BaseParser {
     static let METHOD_NAME = "verifyOtpSub"
     
     override func callback(_ status: String, _ code: String, _ data: AnyObject?,_ completion: @escaping (_ responseStatus: String, _ listOfData: AnyObject?) -> Void  ){
@@ -24,7 +24,7 @@ class FreeTrialOtpVerificationParser: BaseParser {
     override func parseJSONData(responseData: JSON) -> AnyObject? {
         print("FreeTrialOtpVerificationParser \(responseData)")
         
-        let model = TrialOtpVerificatioResponsenModel()
+        let model = OtpVerificatioResponsenModel()
         model.orderDetails = responseData["order_details"].string ?? ""
         model.usv = responseData["usv"].string!
         model.userType = responseData["Utype"].string!
