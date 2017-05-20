@@ -13,6 +13,9 @@ import SwiftyJSON
 class ChildProgressController: BaseListingViewController{
     
     
+    
+    
+    @IBOutlet weak var ChildSelectionInChildProgressControllerContainer: UIView!
     @IBOutlet weak var backBtn: UIButton!
     
     @IBOutlet weak var videoCategoryBtnView: UIView!
@@ -35,8 +38,12 @@ class ChildProgressController: BaseListingViewController{
     var viewHeight:CGFloat!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+       
+       
+        addAsChildViewController(childController: childSelectionInChildProgressController)
+        //childSelectionInChildProgressController.delegate = self
         dataFetchFramework = DataFetchFramework(pageName: getPageName(), pageUniqueId: "",  bundle: bundle)
+        super.viewDidLoad()
         
         self.bottumView.layer.cornerRadius = 15
         self.bottumView.layer.masksToBounds = true
@@ -59,20 +66,41 @@ class ChildProgressController: BaseListingViewController{
         
         self.view.bringSubview(toFront: backBtn)
         backBtn.addTarget(self, action: #selector(handleBackButtonClick), for: .touchUpInside)
-        
+        DimensionManager.setTextSize1280x720(label: label, size: DimensionManager.H3)
     }
     
+    lazy var childSelectionInChildProgressController: ChildSelectionInChildProgressController = {
+        print("child selection in child Controller lazyload")
+        let storyboard = UIStoryboard(name: "ChildProgress", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ChildSelectionInChildProgressController") as! ChildSelectionInChildProgressController
+        self.addChildViewController(viewController)
+        return viewController
+    }()
+    
+    
+  
+ func addAsChildViewController(childController: BaseViewController){
+        print("ChildSelectionInChildProgressController addAsChildViewController")
+        addChildViewController(childController)
+        ChildSelectionInChildProgressControllerContainer.addSubview(childController.view)
+        
+        childController.view.frame = ChildSelectionInChildProgressControllerContainer.bounds
+        childController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+       childController.didMove(toParentViewController: self)
+        
+    }
+
     func handleBackButtonClick() {
         print("childProgressController handleBackButtonClick")
         mainControllerCommunicator?.performBackButtonClick(self)
+        mainControllerCommunicator?.hideProgressBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-                self.collectionHeightConstraint.constant = self.collectionView.collectionViewLayout.collectionViewContentSize.height
         
         
-                collectionView.reloadData()
+              //  collectionView.reloadData()
     }
     
     override func getPageName() -> String {
@@ -80,12 +108,16 @@ class ChildProgressController: BaseListingViewController{
     }
     
     override func getDataSource() -> DataSource{
+       
         return DataSource.SERVER
     }
 
     //to be overridden if required
     override func getModelToFillCard(index: IndexPath) -> BaseModel {
-        return (dataFetchFramework?.progressList[0].videoList[index.row])!
+     let m = (dataFetchFramework?.contentList[0])! as! ContentListingApiResponseModel
+     let c = m as! ChildProgressApiResponseModel
+     let h = c.videoList
+     return h[index.row]
     
     }
     
@@ -96,19 +128,35 @@ class ChildProgressController: BaseListingViewController{
         return components
     }
 
- /*
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+ 
+  override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-    return 10
+        if (dataFetchFramework?.contentList.count)! == 1
+    {
+         let m = (dataFetchFramework?.contentList[0])! as! ContentListingApiResponseModel
+         let c = m as! ChildProgressApiResponseModel
+         // let h = c.videoList
+         return c.videoList.count }
+        else
+    {
         
+        return 0 }
+         
+     
+    }
+ 
+    override func getCell(indexPath: IndexPath) -> BaseCard {
+       
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "ChildProgressCustomCell", for: indexPath) as! ChildProgressCustomCell
     }
     
-    
-     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
        
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ChildProgressCell
-        cell.topPB.backgroundColor = UIColor.red
+   // let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChildProgressCustomCell", for: indexPath) as! ChildProgressCustomCell
+       // getModelToFillCard(index:indexPath)
+     /*   cell.topPB.backgroundColor = UIColor.red
+        
         let value = cell.buttomPB.frame.size.width/100
         
         cell.ChildProgressWidthConstraint.constant = value*50
@@ -118,12 +166,18 @@ class ChildProgressController: BaseListingViewController{
         cell.buttomPB.layer.borderWidth = 1
         //cell.topPB.layer.borderWidth = 3
         cell.buttomPB.layer.borderColor = UIColor.gray.cgColor
+     */
+        
+        let cell = getCell(indexPath: indexPath)
+        
+        cell.fillCard(model: getModelToFillCard(index: indexPath))
 
+        changeCVHeight()
         return cell
     }
  
- */
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+ 
+ /*  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
         let c = viewHeight
         
@@ -138,7 +192,7 @@ class ChildProgressController: BaseListingViewController{
         let   d = (c!*48)/720
         return  d/4
     }
-    
+ */
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let c = viewHeight
         
@@ -148,17 +202,35 @@ class ChildProgressController: BaseListingViewController{
         
         return CGSize(width: self.collectionView.frame.width, height: d)
     }
-    
+ 
+ 
     override func setScrollDirection() {
         self.collectionView.setScrollDirectionVertical()
     }
+    override func registerCard() {
+        //NA
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        print("---------->child//in//in///Controller viewDidAppear")
+    /*
+        childSelectionInChildProgressController.view.frame = self.ChildSelectionInChildProgressControllerContainer.frame
+        childSelectionInChildProgressController.view.bounds = self.ChildSelectionInChildProgressControllerContainer.bounds
+     */   
+        
+        
+    }
+    func changeCVHeight(){
+        self.collectionHeightConstraint.constant = self.collectionView.collectionViewLayout.collectionViewContentSize.height
+    }
+    
 }
 
 extension UIView{
 func roundCornersWithLayerMask(cornerRadii: CGFloat, corners: UIRectCorner) {
-    //       let path = UIBezierPath(roundedRect: self.bounds,
-    //                                byRoundingCorners: corners,
-    //                                cornerRadii: CGSize(width: cornerRadii, height: cornerRadii))
+ 
     let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: cornerRadii, height: cornerRadii))
     
     let maskLayer = CAShapeLayer()

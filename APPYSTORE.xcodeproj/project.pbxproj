@@ -22,11 +22,10 @@
 		0A7EC5A71EC74C8A004A6868 /* ChildProgressParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EC5A21EC74C8A004A6868 /* ChildProgressParser.swift */; };
 		0A7EC5A81EC74C8A004A6868 /* ChildSelectionInChildProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EC5A31EC74C8A004A6868 /* ChildSelectionInChildProgressController.swift */; };
 		0A7EC5A91EC74C8A004A6868 /* ChildProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EC5A41EC74C8A004A6868 /* ChildProgressController.swift */; };
-		0A7EC5AA1EC74C8A004A6868 /* ChildProgressController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EC5A51EC74C8A004A6868 /* ChildProgressController3.swift */; };
 		0A7EC5AB1EC74C8A004A6868 /* ChildProgress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7EC5A61EC74C8A004A6868 /* ChildProgress.storyboard */; };
 		0A7EC5AF1EC74CB9004A6868 /* ChildProgress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7EC5AC1EC74CB9004A6868 /* ChildProgress.xib */; };
 		0A7EC5B01EC74CB9004A6868 /* ChildProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EC5AD1EC74CB9004A6868 /* ChildProgress.swift */; };
-		0A7EC5B11EC74CB9004A6868 /* ChildProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EC5AE1EC74CB9004A6868 /* ChildProgressCell.swift */; };
+		0A7EC5B11EC74CB9004A6868 /* ChildProgressCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EC5AE1EC74CB9004A6868 /* ChildProgressCustomCell.swift */; };
 		0A7EC5B31EC75B0C004A6868 /* ChildProgressApiResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EC5B21EC75B0C004A6868 /* ChildProgressApiResponseModel.swift */; };
 		0A80DA201E702C5E00939443 /* TopBarOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A80DA1F1E702C5E00939443 /* TopBarOverlay.xib */; };
 		0A80DA221E702CA500939443 /* TopBarOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80DA211E702CA500939443 /* TopBarOverlay.swift */; };
@@ -179,11 +178,10 @@
 		0A7EC5A21EC74C8A004A6868 /* ChildProgressParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressParser.swift; sourceTree = "<group>"; };
 		0A7EC5A31EC74C8A004A6868 /* ChildSelectionInChildProgressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildSelectionInChildProgressController.swift; sourceTree = "<group>"; };
 		0A7EC5A41EC74C8A004A6868 /* ChildProgressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressController.swift; sourceTree = "<group>"; };
-		0A7EC5A51EC74C8A004A6868 /* ChildProgressController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressController3.swift; sourceTree = "<group>"; };
 		0A7EC5A61EC74C8A004A6868 /* ChildProgress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChildProgress.storyboard; sourceTree = "<group>"; };
 		0A7EC5AC1EC74CB9004A6868 /* ChildProgress.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildProgress.xib; sourceTree = "<group>"; };
 		0A7EC5AD1EC74CB9004A6868 /* ChildProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgress.swift; sourceTree = "<group>"; };
-		0A7EC5AE1EC74CB9004A6868 /* ChildProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressCell.swift; sourceTree = "<group>"; };
+		0A7EC5AE1EC74CB9004A6868 /* ChildProgressCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressCustomCell.swift; sourceTree = "<group>"; };
 		0A7EC5B21EC75B0C004A6868 /* ChildProgressApiResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressApiResponseModel.swift; sourceTree = "<group>"; };
 		0A80DA1F1E702C5E00939443 /* TopBarOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopBarOverlay.xib; sourceTree = "<group>"; };
 		0A80DA211E702CA500939443 /* TopBarOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarOverlay.swift; sourceTree = "<group>"; };
@@ -456,12 +454,11 @@
 				0A7EC5A21EC74C8A004A6868 /* ChildProgressParser.swift */,
 				0A7EC5A31EC74C8A004A6868 /* ChildSelectionInChildProgressController.swift */,
 				0A7EC5A41EC74C8A004A6868 /* ChildProgressController.swift */,
-				0A7EC5A51EC74C8A004A6868 /* ChildProgressController3.swift */,
 				0A7EC5A61EC74C8A004A6868 /* ChildProgress.storyboard */,
 				0A7EC5A01EC74C67004A6868 /* ChildProgressModel.swift */,
 				0A7EC5AC1EC74CB9004A6868 /* ChildProgress.xib */,
 				0A7EC5AD1EC74CB9004A6868 /* ChildProgress.swift */,
-				0A7EC5AE1EC74CB9004A6868 /* ChildProgressCell.swift */,
+				0A7EC5AE1EC74CB9004A6868 /* ChildProgressCustomCell.swift */,
 				0A7EC5B21EC75B0C004A6868 /* ChildProgressApiResponseModel.swift */,
 			);
 			name = childProgress;
@@ -792,7 +789,7 @@
 				7371F9FD1E936898009241FF /* KCFABManager.swift in Sources */,
 				0A7EC5A91EC74C8A004A6868 /* ChildProgressController.swift in Sources */,
 				F48798F21E77E9AF0060932F /* AbsPrefs.swift in Sources */,
-				0A7EC5B11EC74CB9004A6868 /* ChildProgressCell.swift in Sources */,
+				0A7EC5B11EC74CB9004A6868 /* ChildProgressCustomCell.swift in Sources */,
 				739A825D1EAA19B8008F9001 /* AvatarDBManager.swift in Sources */,
 				738EC39C1EAE2CCE001575C2 /* ChildRegistrationParser.swift in Sources */,
 				739402821EB081E400AEDB5E /* ChildSelectionController.swift in Sources */,
@@ -853,7 +850,6 @@
 				73F43B061E82739D00D4DD90 /* ContentListingApiResponseModel.swift in Sources */,
 				706B34FA1E6FE9F4008474EA /* BaseDBManager.swift in Sources */,
 				70AD5AE81E6E7129003C2536 /* HttpConnection.swift in Sources */,
-				0A7EC5AA1EC74C8A004A6868 /* ChildProgressController3.swift in Sources */,
 				736DC0C21EA9CDC700347CBA /* LayerColor.swift in Sources */,
 				73B657521E8BCFAD00E7D582 /* BaseViewController.swift in Sources */,
 				7392A7861E94C96200A6ED32 /* VideoDBManager.swift in Sources */,

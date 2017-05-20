@@ -27,7 +27,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         collectionViewCentreX = self.collectionView.center.x
         collectionViewCentreY = self.collectionView.center.y
 
-        self.collectionView.showsHorizontalScrollIndicator = false
+        self.collectionView.showsHorizontalScrollIndicator = true//false
         //self.collectionView.delegate = self
         
         self.collectionView.addSpacingBetweenCell()
@@ -89,6 +89,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
                 print("onDataReceived called", result.count)
                 self.view.setNeedsDisplay()
                 self.collectionView.reloadData()
+                
             }
         } else if status == DataFetchFramework.END_OF_DATA {
             
@@ -111,6 +112,11 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       
+        
+        print("======================>",(dataFetchFramework?.contentList.count)!)
+        
+        
         return (dataFetchFramework?.contentList.count)!
     }
     

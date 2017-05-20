@@ -21,19 +21,28 @@ class ChildProgressParser: BaseParser
     private let CONTENT_TYPE_LABEL = "content_type_label";
     private let TRANS_COUNT = "trans_count";
     
-    var responseModelList = [ChildProgressApiResponseModel]()
     var childProgressApiResponseModel = ChildProgressApiResponseModel();
-    
+    var responseModelList = [ChildProgressApiResponseModel]()
+   ///
+    var apiResponseModel = ContentListingApiResponseModel()
+    var avatarList = [ContentListingApiResponseModel]()
+    ////
    override func parseJSONData(responseData:JSON) -> AnyObject{
-        do
+    
+    do
         {
             let responseDetail = responseData
             //let responseDetail = response?["Responsedetails"]?.dictionary
            // parseJsonAndUpdateResponseModelList(jsonObjectResponseDetails: responseDetail, key: ChildProgressModel.CONTENT_TYPE_AUDIO)
             parseJsonAndUpdateResponseModelList(jsonObjectResponseDetails: responseDetail, key: ChildProgressModel.CONTENT_TYPE_VIDEO)
             responseModelList.append(childProgressApiResponseModel)
+          //  apiResponseModel.contentList = [ChildProgressApiResponseModel() as! BaseModel]
+            avatarList.append(childProgressApiResponseModel as ContentListingApiResponseModel)
         }
-        return responseModelList as AnyObject
+    apiResponseModel.contentList = avatarList
+    apiResponseModel.totalCount = String(responseData.arrayValue.count)
+    return apiResponseModel as AnyObject
+       // return responseModelList as AnyObject
     }
     
     func parseJsonAndUpdateResponseModelList(jsonObjectResponseDetails:JSON,key:String){

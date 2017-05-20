@@ -72,14 +72,23 @@ class DataManager: NSObject {
             ////added
         case PageConstants.CHILD_SELECTION_PAGE:
             //NA
-            ChildProgressParser().parse(params:HttpRequestBuilder.getChildProgressParams(method: "getChildPerformance", childId: "29518", pageId: "ChildPerformance"), completion:{
+            break
+          /*  ChildProgressParser().parse(params:HttpRequestBuilder.getChildProgressParams(method: "getChildPerformance", childId: "29518", pageId: "ChildPerformance"), completion:{
             statusType, result in
             
             returndata(statusType, result!)
         })
-
+          */////testing..
+        case PageConstants.SELECT_CHILD_PROGRESS_PAGE:
+           let dataList = UserInfo.getInstance().selectedChild
+           
+            ChildProgressParser().parse(params:HttpRequestBuilder.getChildProgressParams(method: "getChildPerformance", childId: (dataList?.id!)!/*"29518"*/, pageId: "childPerformance"), completion:{
+                statusType, result in
+                
+                returndata(statusType, result!)
+            })
             
-        
+        /////////
         case PageConstants.SELECT_CHILD_LIST_PAGE:
             
             returndata(BaseParser.REQUEST_SUCCESS, UserInfo.getInstance().childList as AnyObject)
@@ -111,6 +120,8 @@ class DataManager: NSObject {
             dataList = AvatarDBManager.sharedInstance.fetchAll()
         case PageConstants.CHILD_SELECTION_PAGE:
             dataList = UserInfo.getInstance().childList
+        case PageConstants.SELECT_CHILD_LIST_PAGE:
+            dataList = UserInfo.getInstance().childList
             break
         default:
             break
@@ -139,6 +150,11 @@ class DataManager: NSObject {
             count = AvatarDBManager.sharedInstance.getRowCount(bundle: bundle)
         case PageConstants.CHILD_SELECTION_PAGE:
             count = UserInfo.getInstance().childList.count
+        case PageConstants.SELECT_CHILD_LIST_PAGE:
+            count = UserInfo.getInstance().childList.count
+            ///////testing...
+        case PageConstants.SELECT_CHILD_PROGRESS_PAGE:
+             print("SELECT_CHILD_PROGRESS_PAG")
             break
         default:
             break

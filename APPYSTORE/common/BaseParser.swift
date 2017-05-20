@@ -27,6 +27,7 @@ class BaseParser: NSObject {
             
             let strongSelf = self
             print("BaseParser Request params : \(params)")
+           
             print("BaseParser Request headers : \(HttpRequestBuilder.getHeaders())")
             if response.result.error != nil {
                 completion(BaseParser.CONNECTION_ERROR, nil)

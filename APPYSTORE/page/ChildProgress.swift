@@ -40,13 +40,30 @@ class ChildProgress: BaseCard {
     override func fillCard(model: BaseModel) {
         let childModel = model as! ChildInfo
             childName.text = childModel.name
-            childAge.text = childModel.age
-            let url = URL(string: childModel.avatarImage!)
-            childimg.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "lock_icon"))
+        if (Int)(childModel.age!)  == 0
+        {  var month =  childModel.month!
+            month += " month"
+            print("month +======= " ,month)
+            childAge.text = month
+        }else{
+        childAge.text = childModel.age!+" year"
+        }
+            //let url = URL(string: childModel.avatarImage!)
+            //childimg.sd_setImage(with: url, placeholderImage: )
         
+        childimg.image = #imageLiteral(resourceName: "lock_icon")
+       // setCardSelection(childModel: childModel)
         
     }
     
+    func setCardSelection(childModel: AvatarModel) {
+        if(childModel.isSelected) {
+            childimg.layer.borderColor = UIColor.red.cgColor
+        } else {
+            childimg.layer.borderColor = UIColor.white.cgColor
+        }
+    }
+   
     
     
     

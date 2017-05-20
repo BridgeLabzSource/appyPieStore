@@ -95,7 +95,7 @@ class HttpRequestBuilder: NSObject {
     static let OTP = "otp"
     
     static func getHeaders() -> HTTPHeaders {
-        
+
         let headers: HTTPHeaders = [
             X_APPY_CONTENT_TYPE:"application/x-www-from-urlencoded",
                X_APPY_IMEI: IMEI_VALUE,
@@ -137,6 +137,49 @@ class HttpRequestBuilder: NSObject {
                X_APPY_UTM_MEDIUM: "abcd",
                X_APPY_SCREEN_NAME: "",
                                    ]
+/*
+        let headers: HTTPHeaders = [
+            X_APPY_CONTENT_TYPE:"application/x-www-from-urlencoded",
+            X_APPY_IMEI:"862188036890804",
+            X_APPY_PCP_ID:"999",
+            X_APPY_CAMPAIGN_ID:"8700441600",
+            X_APPY_USERID:"107105246",
+            X_APPY_UTYPE:"O",
+            X_APPY_UserAgent:"Mozilla/5.0 (Linux; Android 5.0.2; Panasonic ELUGA Switch Build/LRX22G; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/56.0.2924.87 Mobile Safari/537.36",
+            X_APPY_DEVICE_WIDTH:"1080",
+            X_APPY_DEVICE_HEIGHT:"1920",
+            X_APPY_ANDROID_ID:"13cfcb08de0d2e84",
+            X_APPY_API_KEY:"gh610rt23eqwpll",
+            X_APPY_CHILD_ID:"29518",
+            ACCEPT:"text/html,application/xhtml+xml,application/xml;q=0.9,*;q=0.8",
+            ACCEPT_ENCODING:"",
+            ACCEPT_LANGUAGE:"en-US,en;q=0.5",
+            X_APPY_CONN_TYPE:"w",
+            X_APPY_TINFO:"",
+            X_APPY_VISITOR_ID:"13cfcb08de0d2e84",
+            X_APPY_OST:"",
+            X_APPY_USV:"",
+            X_APPY_REG_KEY:"abcd",
+            X_APPY_VERSION:"19",
+            X_APPY_VERSION_NAME:"1.0.7xx",
+            X_APPY_TTR:"10800000",
+            X_APPY_SESSION_ID:"abcd",
+            X_APPY_APP_TYPE:"lite",
+            
+            X_APPY_IS_NEW_USER:"N",
+            X_APPY_MSISDN:"",
+            X_APPY_SUB_KEY:"",
+            X_APPY_OS:"ios",
+            X_APPY_OS_VERSION:"1.0",
+            X_APPY_GOOGLE_CAMPAIGN_ID:"8700441600",
+            X_APPY_IS_UPGRADED:"false",
+            X_APPY_IS_VERSION_UPGRADE:"false",
+            X_APPY_IS_GOOGLE_BOT:"false",
+            X_APPY_UTM_SOURCE:"abcd",
+            X_APPY_UTM_MEDIUM:"abcd",
+            X_APPY_SCREEN_NAME:"",
+            ]
+*/
         return headers
     }
     
@@ -270,6 +313,9 @@ class HttpRequestBuilder: NSObject {
         //pageid = "ChildPerformance"
         //child_id = "29518"
         return [METHOD:method,CHILD_ID:childId,PAGEID:pageId]
+     /* return ["method": "getChildPerformance",
+                "child_id": "29518",
+                "page_id": "ChildPerformance"]  */
     }
 
 }

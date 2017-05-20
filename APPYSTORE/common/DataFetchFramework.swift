@@ -180,7 +180,8 @@ DataManager.sharedInstance.getData(pageName: pageName, offset: offsetServer, lim
     statusType, result in
     if self.pageName == PageConstants.SELECT_CHILD_PROGRESS_PAGE
     {
-        self.progressList = result as! [ChildProgressApiResponseModel]
+        self.handleResponse(statusType: statusType, result: result)
+       // self.progressList.append(result as! ChildProgressApiResponseModel)//  as! [ChildProgressApiResponseModel]
     }
     else if self.pageName == PageConstants.SELECT_CHILD_LIST_PAGE
     {
@@ -199,7 +200,7 @@ DataManager.sharedInstance.getData(pageName: pageName, offset: offsetServer, lim
 
     func handleResponse(statusType: String, result: AnyObject) {
         if statusType == BaseParser.REQUEST_SUCCESS {
-            if let resultModel = result as? ContentListingApiResponseModel {
+                        if let resultModel = result as? ContentListingApiResponseModel {
                 if !resultModel.contentList.isEmpty {
                     let result = resultModel.contentList
                     

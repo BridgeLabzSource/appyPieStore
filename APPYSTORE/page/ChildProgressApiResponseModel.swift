@@ -8,8 +8,9 @@
 
 import Foundation
 
-class ChildProgressApiResponseModel:BaseModel{
+class ChildProgressApiResponseModel:ContentListingApiResponseModel{
     
     var videoList: [ChildProgressModel] = []
     var audioList: [BaseModel] = []
+ 
 }

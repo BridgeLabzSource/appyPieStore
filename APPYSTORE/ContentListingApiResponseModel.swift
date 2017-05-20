@@ -9,6 +9,8 @@
 import Foundation
 
 class ContentListingApiResponseModel: BaseModel {
-    var contentList: [BaseModel] = []
+     var contentList: [BaseModel] = []
+  /*   var videoList: [BaseModel] = []
+       var audioList: [BaseModel] = []  */
     var totalCount = ""
 }
