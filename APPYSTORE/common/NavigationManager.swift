@@ -16,7 +16,7 @@ class NavigationManager {
         let storyboard = UIStoryboard(name: "ChildProgress", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "ChildProgressController") as! ChildProgressController
         viewController.mainControllerCommunicator = mainControllerCommunicator
-        mainControllerCommunicator.addChild(controller: viewController, area: .FULL)
+        mainControllerCommunicator.addChild(controller: viewController, area: .FULL, hideCurrentController: true)
     }
 
     
