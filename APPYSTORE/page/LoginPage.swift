@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toaster
 
 class LoginPage: BasePopUpController {
     override func viewDidLoad() {
@@ -25,6 +26,12 @@ class LoginPage: BasePopUpController {
     }
     
     override func firstButtonClick() {
+        let mobileNo = centerEditText.text!
+        if mobileNo.characters.count != 10 {
+            Toast(text: "ENTER_VALID_MOBILE_NUMBER".localized(lang: AppConstants.LANGUAGE)).show()
+            return
+        }
+        
         self.mainControllerCommunicator?.showProgressBar()
         //todo email id
         LoginParser().parse(params: HttpRequestBuilder.getLoginParameters(method: LoginParser.METHOD_NAME, msisdn: centerEditText.text!, pageId: "login", emailId: ""), completion: {

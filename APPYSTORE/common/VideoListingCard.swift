@@ -19,6 +19,8 @@ import SDWebImage
     
     @IBOutlet weak var titleAndDownloadBtnConstraint: NSLayoutConstraint!
     
+    var videoListingModel: VideoListingModel!
+    
     override func awakeFromNib() {
         
         //made hidden in first release
@@ -40,16 +42,33 @@ import SDWebImage
         DimensionManager.setTextSize1280x720(label: lblTitle, size: DimensionManager.H3)
         
         showShadowRightBottom()
+        
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(onCardClick))
+        singleTapGesture.numberOfTapsRequired = 1
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(singleTapGesture)
+    }
+    
+    func onCardClick() {
+        if !AuthenticationUtil.isSubscribedUser() && videoListingModel.payType == AppConstants.PAID {
+            let bundle = [String: Any]()
+            if UserInfo.getInstance().isDeviceEligibleForTrialSubscription {
+                NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator, bundle: bundle)
+            }
+            
+        } else {
+            NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator, model: videoListingModel)
+        }
     }
     
     override func fillCard(model: BaseModel) {
-        let videoListingModel = model as! VideoListingModel
+        self.videoListingModel = model as! VideoListingModel
         let image_path = videoListingModel.imagePath
         let imgurl = URL(string: image_path)
-        imgThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "place_holder_cards") )
+        imgThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "place_holder_cards"))
         lblTitle.text = videoListingModel.title
         
-        if videoListingModel.payType == "paid" {
+        if videoListingModel.payType == AppConstants.PAID {
             playIcon.image = UIImage(named: "video_card_lock_icon")
             filterView.isHidden = false
             //Utils.addFilterToView(imgThumbnail)

@@ -65,12 +65,11 @@ class OtpVerificationPopUp: BasePopUpController {
     }
     
     
-    override func crossButtonClick() {
-        mainControllerCommunicator?.performBackButtonClick(self)
-        var bundle = [String: Any]()
-        bundle[BundleConstants.MOBILE_NUMBER] = mobileNumber
-        NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
-    }
+//    override func crossButtonClick() {
+//        mainControllerCommunicator?.performBackButtonClick(self)
+//        var bundle = [String: Any]()
+//        bundle[BundleConstants.MOBILE_NUMBER] = mobileNumber
+//    }
     
     override func secondButtonClick() {
         let otp = centerEditText.text

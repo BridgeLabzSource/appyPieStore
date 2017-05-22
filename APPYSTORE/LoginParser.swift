@@ -106,7 +106,7 @@ class LoginParser: BaseParser {
             userInfo.isAddressUpdated = StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: inputJson, key: IS_ADDRESS_UPDATED), secondString: "true")
             userInfo.usv = getValueForKey(inputJson: inputJson, key: USV)
             if inputJson[IS_ELIGIBLE_FOR_TRIAL_SUBSCRIPTION].exists(){
-                let isEligibleForTrial = StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: inputJson, key: IS_ELIGIBLE_FOR_TRIAL_SUBSCRIPTION), secondString: "1")
+                let isEligibleForTrial = !(StringUtil.compareIgnoreCase(firstString: getValueForKey(inputJson: inputJson, key: IS_ELIGIBLE_FOR_TRIAL_SUBSCRIPTION), secondString: "1"))
                 
                 userInfo.isDeviceEligibleForTrialSubscription = isEligibleForTrial
             }

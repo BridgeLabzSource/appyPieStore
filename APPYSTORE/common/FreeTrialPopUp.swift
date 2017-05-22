@@ -46,7 +46,7 @@ class FreeTrialPopUp: BasePopUpController {
     override func secondButtonClick() {
         let mobileNo = centerEditText.text!
         if mobileNo.characters.count != 10 {
-            Toast(text: "Please enter valid mobile number").show()
+            Toast(text: "ENTER_VALID_MOBILE_NUMBER".localized(lang: AppConstants.LANGUAGE)).show()
             return
         }
         
@@ -58,6 +58,7 @@ class FreeTrialPopUp: BasePopUpController {
     func onLoginAfterVerification(status: String) {
         //todo nothing
         print(status)
+        hideProgress()
     }
     
     override func showProgress() {

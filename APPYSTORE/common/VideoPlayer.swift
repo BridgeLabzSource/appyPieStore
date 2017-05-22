@@ -78,7 +78,7 @@ protocol VideoDelegate {
         resetPlayerItem()
         
         showVideoThumbnail()
-        if playerModel.payType == "paid" {
+        if playerModel.payType == AppConstants.PAID {
             updateState(state: .LOCK)
             return
         }
@@ -157,7 +157,7 @@ protocol VideoDelegate {
         
         
         showVideoThumbnail()
-        if playerModel.payType == "paid" {
+        if playerModel.payType == AppConstants.PAID {
             updateState(state: .LOCK)
             return
         }

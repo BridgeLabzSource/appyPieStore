@@ -40,7 +40,7 @@ class RecommendedVideoCard: BaseCard {
             self.backgroundColor = UIColor.white
         }
         
-        if videoListingModel.payType == "paid" {
+        if videoListingModel.payType == AppConstants.PAID {
             filterView.isHidden = false
             //Utils.addFilterToView(imgThumbnail)
         } else {

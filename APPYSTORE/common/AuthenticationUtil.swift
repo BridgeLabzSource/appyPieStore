@@ -30,20 +30,23 @@ class AuthenticationUtil {
                 let model = result as! OtpResponseModel
                 
                 // open the otp dialog
+                mainControllerCommunicator.performBackButtonClick(baseViewController)
+                
                 var bundle = [String: Any]()
                 bundle[BundleConstants.MOBILE_NUMBER] = mobileNo
                 bundle[BundleConstants.OTP_RESPONSE_MODEL] = model
-                mainControllerCommunicator.performBackButtonClick(baseViewController)
                 NavigationManager.openOtpPopUp(mainControllerCommunicator:mainControllerCommunicator, bundle: bundle, completion: completion)
-                Toast(text: "Success").show()
+                
             } else if statusType == BaseParser.USER_ALREADY_SUBSCRIBED {
                 mainControllerCommunicator.performBackButtonClick(baseViewController)
                 AuthenticationUtil.callLoginFunction(mobileNo: mobileNo, mainControllerCommunicator: mainControllerCommunicator, completion: completion)
                 Toast(text: result as? String).show()
             } else if statusType == BaseParser.REQUEST_FAILURE {
-                Toast(text: "Request Failure").show()
+                Toast(text: result as? String).show()
+                completion(statusType)
             } else if statusType == BaseParser.CONNECTION_ERROR  {
                 Toast(text: "Connection Error").show()
+                completion(statusType)
             }
         })
     }
