@@ -33,15 +33,15 @@ class VideoListingController: BaseListingViewController {
         return components
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let videoListingModel = dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel
-        print("VideoListingController : select video \(videoListingModel.title)")
-        
-        if videoListingModel.payType == "paid" {
-            var bundle = [String: Any]()
-            NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
-        } else {
-            NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: videoListingModel)
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let videoListingModel = dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel
+//        print("VideoListingController : select video \(videoListingModel.title)")
+//        
+//        if videoListingModel.payType == "paid" {
+//            var bundle = [String: Any]()
+//            NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
+//        } else {
+//            NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: videoListingModel)
+//        }
+//    }
 }
