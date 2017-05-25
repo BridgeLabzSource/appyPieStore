@@ -20,20 +20,24 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     var isRequestInProgress = false
     
     let paginationThreshold = 4
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCard()
         collectionViewCentreX = self.collectionView.center.x
         collectionViewCentreY = self.collectionView.center.y
 
-        self.collectionView.showsHorizontalScrollIndicator = true//false
+        self.collectionView.showsHorizontalScrollIndicator = false
         //self.collectionView.delegate = self
         
         self.collectionView.addSpacingBetweenCell()
         setScrollDirection()
         
         loadData()
+       
+        
+        
+        
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,8 +76,8 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     
     func loadData() {
         isRequestInProgress = true
-        mainControllerCommunicator?.showProgressBar()
         
+        mainControllerCommunicator?.showProgressBar()
         dataFetchFramework?.onDataReceived = onDataReceived
         dataFetchFramework?.start(dataSource: getDataSource())
     }
@@ -82,6 +86,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     func onDataReceived( status: String, result: AnyObject) {
         self.status = status
         isRequestInProgress = false
+        
         mainControllerCommunicator?.hideProgressBar()
         
         if status == BaseParser.REQUEST_SUCCESS {
@@ -89,7 +94,6 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
                 print("onDataReceived called", result.count)
                 self.view.setNeedsDisplay()
                 self.collectionView.reloadData()
-                
             }
         } else if status == DataFetchFramework.END_OF_DATA {
             
@@ -113,10 +117,6 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
-        
-        print("======================>",(dataFetchFramework?.contentList.count)!)
-        
-        
         return (dataFetchFramework?.contentList.count)!
     }
     

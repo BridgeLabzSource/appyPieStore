@@ -21,8 +21,8 @@ class DataFetchFramework {
     var totalCountOnServer = -1
     var contentList: [BaseModel]
     /////added
-    var progressList: [ChildProgressApiResponseModel]
-    var childList: [ChildInfo]
+  //  var progressList: [ChildProgressApiResponseModel]
+  //  var childList: [ChildInfo]
     ////
     var onDataReceived : (String, AnyObject) -> () = {_ in}
     var isExistingDataDirty = false
@@ -41,8 +41,8 @@ class DataFetchFramework {
         self.bundle = bundle
         contentList = []
         ////added
-        progressList = []
-        childList = []
+       // progressList = []
+       // childList = []
         /////
         fetchPrefsKey()
         offsetServer = getOffsetServerFromPrefs()
@@ -178,23 +178,9 @@ class DataFetchFramework {
     }   */
 DataManager.sharedInstance.getData(pageName: pageName, offset: offsetServer, limit: limit, bundle: bundle, returndata: {
     statusType, result in
-    if self.pageName == PageConstants.SELECT_CHILD_PROGRESS_PAGE
-    {
-        self.handleResponse(statusType: statusType, result: result)
-       // self.progressList.append(result as! ChildProgressApiResponseModel)//  as! [ChildProgressApiResponseModel]
-    }
-    else if self.pageName == PageConstants.SELECT_CHILD_LIST_PAGE
-    {
-        self.childList = result as! [ChildInfo]
-    }
-    else
-    {
-        self.handleResponse(statusType: statusType, result: result)
-    }
     
-    
-})
-//    }
+        self.handleResponse(statusType: statusType, result: result)})
+
 }
 
 
@@ -295,7 +281,11 @@ DataManager.sharedInstance.getData(pageName: pageName, offset: offsetServer, lim
     
     func addToContentList(contentList: [BaseModel]) {
         if contentList.count > 0 {
-            self.contentList.append(contentsOf: contentList)
+            if pageName == PageConstants.SELECT_CHILD_PROGRESS_PAGE
+            {   self.contentList.removeAll()
+                self.contentList.append(contentsOf: contentList)
+            }else
+            {self.contentList.append(contentsOf: contentList)}
         }
     }
     

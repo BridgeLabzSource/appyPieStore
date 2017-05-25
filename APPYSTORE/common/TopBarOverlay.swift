@@ -12,6 +12,9 @@ import UIKit
     
     @IBOutlet var rootView: UIView!
     
+    
+    @IBOutlet weak var childNameLbl: UILabel!
+    
     @IBOutlet var imageTapGesture: UITapGestureRecognizer!
     @IBOutlet var btnBack : CustomButton!
     @IBOutlet var imgChild : UIImageView!
@@ -37,6 +40,18 @@ import UIKit
         DimensionManager.setTextSize1280x720(label: lblSongs, size: DimensionManager.H3)
         DimensionManager.setTextSize1280x720(label: lblHistory, size: DimensionManager.H3)
         imgChild.isUserInteractionEnabled = true
+        
+        let selectedChildImage = UserInfo.getInstance().selectedChild?.avatarImage
+        let SelectedChildName  = UserInfo.getInstance().selectedChild?.name
+        
+        if let image_url = selectedChildImage{
+            let  url = URL(string: image_url)
+            imgChild.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "profile") )
+            childNameLbl.text = SelectedChildName
+            DimensionManager.setTextSize1280x720(label: childNameLbl, size: DimensionManager.H3)
+        }else{
+            imgChild.image = #imageLiteral(resourceName: "profile")
+        }
     }
     
     override init(frame: CGRect)

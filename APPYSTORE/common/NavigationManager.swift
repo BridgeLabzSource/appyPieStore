@@ -9,7 +9,6 @@
 import UIKit
 
 class NavigationManager {
-    
 
     
     static func openChildProgressPage(mainControllerCommunicator: MainControllerCommunicator) {

@@ -8,9 +8,13 @@
 
 import UIKit
 
+protocol ChildSelectionInChildProgressControllerDelegate{
+func changeChildOnSelect(indexPath : IndexPath)
+}
+
 class ChildSelectionInChildProgressController: BaseListingViewController{
-    
-    
+    var count:Int = 0
+    var delegate : ChildSelectionInChildProgressControllerDelegate?
     
     override func viewDidLoad() {
         
@@ -29,7 +33,7 @@ class ChildSelectionInChildProgressController: BaseListingViewController{
     }
    
     
-    // Overridden
+    
     override func setScrollDirection() {
         self.collectionView.setScrollDirectionHorizontal()
     }
@@ -48,25 +52,23 @@ class ChildSelectionInChildProgressController: BaseListingViewController{
     override func getModelToFillCard(index: IndexPath) -> BaseModel {
         
         let childModel = (dataFetchFramework?.contentList[index.row])! as! ChildInfo
-     /*   let avatarModel: AvatarModel = ChildInfoToAvatarModelAdapter(childInfo: childModel)
-        let avatarModel = AvatarModel()*/
         return childModel
         
     }
     
     
-    override func getCell(indexPath: IndexPath) -> BaseCard {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "ChildProgress", for: indexPath) as! BaseCard
+    override func getCell(indexPath: IndexPath) -> ChildProgress {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "ChildProgress", for: indexPath) as! ChildProgress
        
     }
     
+   
     override func getComponentProperties() -> ComponentProperties {
         let components = ComponentProperties()
-        components.visibleIconsSet = []
+        components.visibleIconsSet = [Item.BTN_BACK]
         
         return components
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = collectionView.bounds.size.height - 20
@@ -76,15 +78,48 @@ class ChildSelectionInChildProgressController: BaseListingViewController{
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        var bundle = [String: Any]()
-        //        let videoCategoryModel = dataFetchFramework?.contentList[indexPath.row] as! VideoCategoryModel
-        //        bundle[BundleConstants.CATEGORY_ID] = videoCategoryModel.categoryId
-        //        bundle[BundleConstants.PARENT_CATEGORY_ID] = videoCategoryModel.parentCategoryId
-        //        bundle[BundleConstants.CATEGORY_NAME] = videoCategoryModel.categoryName
-        //        NavigationManager.openVideoListingPage(mainControllerCommunicator: mainControllerCommunicator, bundle: bundle)
+       if indexPath.row < (dataFetchFramework?.contentList.count)!
+       {  let childModel = dataFetchFramework?.contentList[indexPath.row] as! ChildInfo
+        if(childModel.id != UserInfo.getInstance().selectedChild?.id) {
+            
+            NavigationUtil.onChildChangeOrUpdate(currentChild: childModel)
+            setScrollDirection()
+            collectionView.reloadData()
+            delegate?.changeChildOnSelect(indexPath : indexPath)
+        }else{
+                NavigationManager.openRegistrationPage(mainControllerCommunicator: self.mainControllerCommunicator!, pageType: BundleConstants.PAGE_TYPE_REGISTER_ADD)
+        
+        }
+       }else{
+        NavigationManager.openRegistrationPage(mainControllerCommunicator: self.mainControllerCommunicator!, pageType: BundleConstants.PAGE_TYPE_REGISTER_ADD)
+        }
     }
+        
+    
 
-
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (dataFetchFramework?.contentList.count)! + 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = getCell(indexPath: indexPath)
+        if indexPath.row >= (dataFetchFramework?.contentList.count)! {
+            cell.childimg.image =  #imageLiteral(resourceName: "icon_plus_addchild")
+            cell.childName.text = "Add Child"
+            cell.childAge.text = ""
+            DimensionManager.setTextSize1280x720(label: cell.childName, size: DimensionManager.H3)
+            cell.editImg.isHidden = true
+            cell.childimg.layer.borderColor = UIColor.white.cgColor
+            cell.childimg.layer.backgroundColor = UIColor.clear.cgColor
+            cell.childimg.layer.borderWidth = 0
+        }else{
+        cell.fillCard(model: getModelToFillCard(index: indexPath))
+        }
+        return cell
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         
         let CellHeight: Int = Int(collectionView.bounds.size.height)
@@ -96,7 +131,7 @@ class ChildSelectionInChildProgressController: BaseListingViewController{
         let leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
         let rightInset = leftInset
         
-        return UIEdgeInsetsMake(20, leftInset, 20, rightInset)
+        return UIEdgeInsetsMake(20, 40, 20, rightInset)
         
     }
 

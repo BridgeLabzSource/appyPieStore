@@ -110,9 +110,18 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </stackView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross_dark" translatesAutoresizingMaskIntoConstraints="NO" id="DWu-DR-NnM" userLabel="imgCross">
+                                        <rect key="frame" x="1005.5" y="13" width="53" height="52.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="DWu-DR-NnM" secondAttribute="height" multiplier="1:1" id="Spk-E1-zHM"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.80641073894584436" blue="0.188197823937859" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="DWu-DR-NnM" firstAttribute="height" secondItem="WGj-ue-hXv" secondAttribute="height" multiplier="64:720" id="Me5-zh-i6Q"/>
+                                    <constraint firstItem="DWu-DR-NnM" firstAttribute="top" secondItem="WGj-ue-hXv" secondAttribute="bottom" multiplier="16:720" id="U9c-ac-UQo"/>
+                                    <constraint firstItem="DWu-DR-NnM" firstAttribute="trailing" secondItem="WGj-ue-hXv" secondAttribute="trailing" multiplier="1264:1280" id="a8H-SR-Hp5"/>
                                     <constraint firstAttribute="trailing" secondItem="Kxz-vA-afg" secondAttribute="trailing" id="ajS-Hn-Hd6"/>
                                     <constraint firstItem="Kxz-vA-afg" firstAttribute="leading" secondItem="WGj-ue-hXv" secondAttribute="leading" id="gsK-Xt-rmt"/>
                                     <constraint firstItem="Kxz-vA-afg" firstAttribute="centerY" secondItem="WGj-ue-hXv" secondAttribute="centerY" id="kMW-4e-uxz"/>
@@ -141,6 +150,7 @@
                         <outlet property="containerView" destination="WGj-ue-hXv" id="cjr-Hp-Mml"/>
                         <outlet property="contentStackView" destination="4EU-Eb-pWp" id="dtK-ud-qkK"/>
                         <outlet property="firstButton" destination="SPZ-Ae-JUl" id="paI-7l-WMc"/>
+                        <outlet property="imgCross" destination="DWu-DR-NnM" id="aMZ-bh-xT9"/>
                         <outlet property="rootStackView" destination="Kxz-vA-afg" id="MKS-da-WvI"/>
                         <outlet property="rootView" destination="tDV-7x-f1c" id="9af-2c-jnB"/>
                         <outlet property="subTitleStackView" destination="iPV-NG-N1h" id="E7a-qD-eLR"/>
@@ -153,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XcN-x5-P8G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="407" y="2202"/>
+            <point key="canvasLocation" x="760" y="2202"/>
         </scene>
         <!--Child Selection Controller-->
         <scene sceneID="saA-3S-CnD">
@@ -228,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcR-bm-7tZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="432" y="3367"/>
+            <point key="canvasLocation" x="485" y="3233"/>
         </scene>
         <!--Avatar Selection Controller-->
         <scene sceneID="qTI-qd-oWH">

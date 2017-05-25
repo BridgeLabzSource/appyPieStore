@@ -34,7 +34,7 @@ class ChildProgressCustomCell: BaseCard{
     }
     override func draw(_ rect: CGRect) {
         
-         DimensionManager.setTextSize1280x720(label: categoryNameLabel, size: DimensionManager.H4)
+         DimensionManager.setTextSize1280x720(label: categoryNameLabel, size: DimensionManager.H3)
          DimensionManager.setTextSize1280x720(label: transCountLabel, size: DimensionManager.H3)
         setCustomProgressBar()
         setRandomColorForProgressBar()

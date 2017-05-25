@@ -22,9 +22,9 @@ class ChildProgress: BaseCard {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        childimg.layer.borderWidth = 5
-        childimg.layer.borderColor = UIColor.white.cgColor
-        editImg.layer.borderWidth = 5
+        childimg.layer.borderWidth = 3
+     //   childimg.layer.borderColor = UIColor.white.cgColor
+        editImg.layer.borderWidth = 3
         editImg.layer.borderColor = UIColor.white.cgColor
         childimg.layer.cornerRadius = childimg.frame.width/2
         //childimg.clipsToBounds = true
@@ -35,7 +35,7 @@ class ChildProgress: BaseCard {
     override func awakeFromNib() {
         DimensionManager.setTextSize1280x720(label: childName, size: DimensionManager.H3)
         DimensionManager.setTextSize1280x720(label: childAge, size: DimensionManager.H3)
-    }
+            }
     
     override func fillCard(model: BaseModel) {
         let childModel = model as! ChildInfo
@@ -46,20 +46,30 @@ class ChildProgress: BaseCard {
             print("month +======= " ,month)
             childAge.text = month
         }else{
-        childAge.text = childModel.age!+" year"
+            if Int(childModel.age!)! > 1{
+                    childAge.text = childModel.age!+" years"
+            }else{
+                    childAge.text = childModel.age!+" year"
+            }
         }
-            //let url = URL(string: childModel.avatarImage!)
-            //childimg.sd_setImage(with: url, placeholderImage: )
-        
-        childimg.image = #imageLiteral(resourceName: "lock_icon")
-       // setCardSelection(childModel: childModel)
+        if let image_url = childModel.avatarImage{
+          let  url = URL(string: image_url)
+            childimg.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "profile") )
+        }else{
+            childimg.image = #imageLiteral(resourceName: "avatar_placeholder")
+        }
+       editImg.image = #imageLiteral(resourceName: "icon_edit")
+      //  let avatarModel: AvatarModel = ChildInfoToAvatarModelAdapter(childInfo: childModel)
+        setCardSelection(childModel: childModel)
         
     }
     
-    func setCardSelection(childModel: AvatarModel) {
-        if(childModel.isSelected) {
-            childimg.layer.borderColor = UIColor.red.cgColor
+    func setCardSelection(childModel: ChildInfo) {
+        if(childModel.id == UserInfo.getInstance().selectedChild?.id) {
+            childimg.layer.borderColor = UIColor.green.cgColor
+            editImg.isHidden = false
         } else {
+            editImg.isHidden = true
             childimg.layer.borderColor = UIColor.white.cgColor
         }
     }

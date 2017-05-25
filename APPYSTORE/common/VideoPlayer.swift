@@ -136,7 +136,7 @@ protocol VideoDelegate {
         
         print("VideoPlayer content change")
         pause()
-        self.unregisteredPlayerItemListener()
+   //     self.unregisteredPlayerItemListener()
         resetPlayerItem()
         
         if task != nil {

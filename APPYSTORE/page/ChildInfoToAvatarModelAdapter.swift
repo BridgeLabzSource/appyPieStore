@@ -15,7 +15,7 @@ class ChildInfoToAvatarModelAdapter: AvatarModel {
         self.id = childInfo.id!
     //self.imagePath = childInfo.avatarImage!
         self.name = childInfo.name!
-        //isSelected = childInfo.chi
+        isSelected = childInfo.isInValidData
         
         
     }

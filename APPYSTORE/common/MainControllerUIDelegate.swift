@@ -48,6 +48,7 @@ class MainControllerUIDelegate {
         fabButton.paddingY = DimensionManager.getGeneralizedHeight1280x720(height: 32)
         makeFab()
         initProgressBar()
+        
     }
     
     private func initProgressBar() {
@@ -58,6 +59,7 @@ class MainControllerUIDelegate {
         progressView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.ballPulse, color: UIColor.orange, padding: CGFloat(0))
         
     }
+    
     
     func showProgressBar() {
         progressView?.startAnimating()
@@ -246,6 +248,7 @@ class MainControllerUIDelegate {
             switch item {
             case Item.BTN_BACK:
                 mainController.topView.btnBack.isHidden = false
+                mainController.topView.childNameLbl.isHidden = true
             case Item.BTN_VIDEO:
                 mainController.topView.btnVideo.isHidden = false
                 mainController.topView.lblVideos.isHidden = false
@@ -259,6 +262,18 @@ class MainControllerUIDelegate {
                 mainController.topView.tfSearch.isHidden = false
             case Item.BTN_SEARCH:
                 mainController.topView.btnSearch.isHidden = false
+            case Item.IMG_CHILD:
+                let selectedChildImage = UserInfo.getInstance().selectedChild?.avatarImage
+                let SelectedChildName  = UserInfo.getInstance().selectedChild?.name
+                if let image_url = selectedChildImage{
+                    let  url = URL(string: image_url)
+                    mainController.topView.imgChild.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "profile") )
+                    mainController.topView.childNameLbl.text = SelectedChildName
+                    DimensionManager.setTextSize1280x720(label: mainController.topView.childNameLbl, size: DimensionManager.H3)
+                }else{
+                    mainController.topView.imgChild.image = #imageLiteral(resourceName: "profile")
+                }
+                mainController.topView.childNameLbl.isHidden = false
             default:
                 break
             }

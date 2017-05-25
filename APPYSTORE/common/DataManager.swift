@@ -80,9 +80,9 @@ class DataManager: NSObject {
         })
           */////testing..
         case PageConstants.SELECT_CHILD_PROGRESS_PAGE:
-           let dataList = UserInfo.getInstance().selectedChild
+           let selectedChild = UserInfo.getInstance().selectedChild
            
-            ChildProgressParser().parse(params:HttpRequestBuilder.getChildProgressParams(method: "getChildPerformance", childId: (dataList?.id!)!/*"29518"*/, pageId: "childPerformance"), completion:{
+            ChildProgressParser().parse(params:HttpRequestBuilder.getChildProgressParams(method: "getChildPerformance", childId: (selectedChild?.id!)!, pageId: "childPerformance"), completion:{
                 statusType, result in
                 
                 returndata(statusType, result!)

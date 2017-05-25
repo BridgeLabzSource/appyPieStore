@@ -11,6 +11,9 @@ import Toaster
 
 class ChildRegistrationController: BaseViewController {
     let spacingConstant = AppDelegate.DEVICE_HEIGHT/25
+    
+    @IBOutlet weak var imgCross: UIImageView!
+    
     @IBOutlet weak var rootStackView: UIStackView!
     
     @IBOutlet weak var bottomLabelTwo: UILabel!
@@ -41,8 +44,24 @@ class ChildRegistrationController: BaseViewController {
         setSize()
         
         setClickListener()
+        setViews()
+    }
+    func setViews() {
+       // containerView.layer.cornerRadius = BasePopUpController.POPUP_CORNER_RADIUS
+       // containerView.showShadowRightBottom()
+        
+        DimensionManager.setTextSize1280x720(label: titleLabel, size: DimensionManager.H1)
+        titleLabel.text = " Edit child's details"
+        
+        let singleTapCrossButton = UITapGestureRecognizer(target: self, action: #selector(onCrossButtonClick))
+        singleTapCrossButton.numberOfTapsRequired = 1
+        imgCross.isUserInteractionEnabled = true
+        imgCross.addGestureRecognizer(singleTapCrossButton)
     }
     
+    func onCrossButtonClick() {
+        mainControllerCommunicator?.performBackButtonClick(self)
+    }
     func setClickListener() {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(handleLoginClick))
         gesture.numberOfTapsRequired = 1
