@@ -12,6 +12,10 @@ import SwiftyJSON
 import Alamofire
 import AVKit
 
+var currentContentId = "0000"
+var unregister = false
+var count = 0
+
 enum AudioPlayerState {
     case PLAY
     case PAUSE
@@ -64,12 +68,10 @@ protocol AudioDelegate {
     @IBOutlet weak var seekerView: UIView!
     
     @IBOutlet weak var playView: UIView!
-    
-    var avPlayer: AVPlayer? = AVPlayer()
+  
     var avPlayerLayer: AVPlayerLayer!
     var timeObserver: AnyObject!
     var playerRateBeforeSeek: Float = 0
-    var isMinimize = false
     var delegate: AudioDelegate?
     var task: URLSessionDataTask!
     var session: URLSession!
@@ -78,7 +80,6 @@ protocol AudioDelegate {
     
     var currentState: AudioPlayerState!
     var showControls = true
-    var isParenting = false
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,69 +91,22 @@ protocol AudioDelegate {
         initialise()
     }
     
-    func replaceAudio(playerModel: AudioListingModel) {
-        audioModel = playerModel
-     //   pause()
-        self.unregisteredPlayerItemListener()
-        self.resetPlayerItem()
-        
-        showAudioThumbnail()
-        showAudioTitle()
-        showAudioCategoryTitle()
-        
-        if playerModel.payType == "paid" {
-            updateState(state: .LOCK)
-            return
-        }
-        
-        updateState(state: .BUFFERING_START)
-        print("BUFFERING_START replaceAudio")
-        delegate?.onTaskStarted()
-        
-        let url = URL(string: playerModel.downloadUrl)
-
-        // done now
-        DispatchQueue.global(qos: .background).async {
-            
-            self.unregisteredPlayerItemListener()
-            let playerItem = AVPlayerItem(url: url! as URL)
-            self.avPlayer?.replaceCurrentItem(with: playerItem)
-            self.play()
-            self.registerPlayerItemListener()
-        }
-    }
-    
-    func resetPlayerItem() {
-        avPlayer?.replaceCurrentItem(with: nil)
-        setTotalDuration(duration: 0)
-        setPlayTime(timePlayed: 0)
-        setSeekValue(seekValue: 0)
-    }
-    
-    func unregisteredPlayerItemListener() {
-        NotificationCenter.default.removeObserver(self)
-        self.avPlayer?.currentItem?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
-        self.avPlayer?.currentItem?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
-        self.avPlayer?.currentItem?.removeObserver(self, forKeyPath: "playbackBufferFull")
-        self.avPlayer?.currentItem?.removeObserver(self, forKeyPath: "status")
-    }
-    
-    func registerPlayerItemListener() {
-        NotificationCenter.default.addObserver(self, selector: #selector(AudioPlayer.playerDidFinish(note:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.avPlayer?.currentItem)
-        
-        self.avPlayer?.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
-        self.avPlayer?.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
-        self.avPlayer?.currentItem?.addObserver(self, forKeyPath: "playbackBufferFull", options: .new, context: nil)
-        
-        self.avPlayer?.currentItem?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
-    }
-
     func initialise(){
+        
+        self.setNeedsLayout()
+        self.setNeedsDisplay()
+        self.layoutSubviews()
+        self.clipsToBounds = true
+        
+        print("cout=>",count)
+        if count != 1
+        {
+     
         UINib(nibName: "AudioPlayer", bundle: nil).instantiate(withOwner: self, options: nil)
         makeDefaultVisibility()
         
-   //   avPlayerLayer = AVPlayerLayer(player: avPlayer)
-   //   view.layer.insertSublayer(avPlayerLayer, at: 0)
+        avPlayerLayer = AVPlayerLayer(player: AudioPlayerHelper.sharedHelper.audioPlayer)
+        view.layer.insertSublayer(avPlayerLayer, at: 0)
         
         let radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 64))
         
@@ -165,23 +119,23 @@ protocol AudioDelegate {
         DimensionManager.setTextSize1280x720(label: audioTitle, size: DimensionManager.H3)
         
         DimensionManager.setTextSize1280x720(label: audioCategoryTitle, size: DimensionManager.H3)
-    
-  //    avPlayerLayer.frame = view.bounds
-
+        
+        avPlayerLayer.frame = view.bounds
+        
         showShadowRightBottom()
-     
         addSubview(rootView)
         
         DimensionManager.setTextSize1280x720(label: playTimeLabel, size: DimensionManager.H3)
         DimensionManager.setTextSize1280x720(label: totalTimeLabel, size: DimensionManager.H3)
         
         rootView.frame = self.bounds
+    
+        }
         
         let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
-        timeObserver = avPlayer?.addPeriodicTimeObserver(forInterval: timeInterval, queue: DispatchQueue.main) {
+        timeObserver =  AudioPlayerHelper.sharedHelper.audioPlayer?.addPeriodicTimeObserver(forInterval: timeInterval, queue: DispatchQueue.main) {
             (elapsedTime: CMTime) -> Void in
-            
-        print("elapsedTime now:", CMTimeGetSeconds(elapsedTime))
+            print("elapsedTime now:", CMTimeGetSeconds(elapsedTime))
             self.observeTime(elapsedTime: elapsedTime)
             } as AnyObject!
         
@@ -195,7 +149,7 @@ protocol AudioDelegate {
         let singleTapSeekbar = UITapGestureRecognizer(target: self, action: #selector(AudioPlayer.seekBarClicked))
         singleTapSeekbar.numberOfTapsRequired = 1 // you can change this value
         seekbar.addGestureRecognizer(singleTapSeekbar)
-
+        
         let singleTapPlay = UITapGestureRecognizer(target: self, action: #selector(AudioPlayer.playIconClick))
         singleTapPlay.numberOfTapsRequired = 1 // you can change this value
         playIcon.isUserInteractionEnabled = true
@@ -205,10 +159,10 @@ protocol AudioDelegate {
         singleTapPause.numberOfTapsRequired = 1 // you can change this value
         pauseIcon.isUserInteractionEnabled = true
         pauseIcon.addGestureRecognizer(singleTapPause)
-
-        avPlayer?.addObserver(self, forKeyPath: "status", options: [.new], context: nil)
-        avPlayer?.addObserver(self, forKeyPath: "rate", options: [.new], context: nil)
-    
+        
+        AudioPlayerHelper.sharedHelper.audioPlayer?.addObserver(self, forKeyPath: "status", options: [.new], context: nil)
+        AudioPlayerHelper.sharedHelper.audioPlayer?.addObserver(self, forKeyPath: "rate", options: [.new], context: nil)
+        
         let singleTapNext = UITapGestureRecognizer(target: self, action: #selector(AudioPlayer.nextIconClick))
         singleTapNext.numberOfTapsRequired = 1 // you can change this value
         rightSeek.isUserInteractionEnabled = true
@@ -218,28 +172,113 @@ protocol AudioDelegate {
         singleTapPrevious.numberOfTapsRequired = 1 // you can change this value
         leftSeek.isUserInteractionEnabled = true
         leftSeek.addGestureRecognizer(singleTapPrevious)
-
-        avPlayer?.automaticallyWaitsToMinimizeStalling = false
+        
+        AudioPlayerHelper.sharedHelper.audioPlayer?.automaticallyWaitsToMinimizeStalling = true
         hideLockIcon()
         updateState(state: .BUFFERING_START)
         print("BUFFERING_START initialize")
+        
+    }
+
+    func replaceAudio(playerModel: AudioListingModel) {
+
+        audioModel = playerModel
+        seekbar.layer.cornerRadius = 5
+        showAudioThumbnail()
+        showAudioTitle()
+        showAudioCategoryTitle()
+        
+        
+        if playerModel.payType == "paid" {
+            updateState(state: .LOCK)
+            return
+        }
+        
+        if playerModel.contentId == currentContentId
+        {
+             updateState(state: .PLAY)
+        }
+        else{
+        stopCurrentAudio()
+        resetPlayerItem()
+        updateState(state: .BUFFERING_START)
+        print("BUFFERING_START replaceAudio")
+        delegate?.onTaskStarted()
+        
+        let geturl = URL(string:playerModel.downloadUrl)
+        
+        //"https:s3.amazonaws.com/kargopolov/kukushka.mp3"
+        //"http://files.songscdn.com/files/sfd32/15689/Independence%20Flute(SurMaza.com).mp3"
+        //playerModel.downloadUrl)
+            
+        currentContentId = playerModel.contentId
+
+        // done now
+        DispatchQueue.global(qos: .background).async {
+            
+        if unregister
+        {
+            self.unregisteredPlayerItemListener()
+        }
+     
+        do{
+            let playerItem = AVPlayerItem(url: geturl!)
+            print("playerItem",playerItem)
+            AudioPlayerHelper.sharedHelper.audioPlayer =  AVPlayer(playerItem: playerItem)
+          }
+        self.play()
+        self.registerPlayerItemListener()
+        count = count+1
+        self.initialise()
+        }
+        }
     }
     
+    func resetPlayerItem() {
+        setTotalDuration(duration: 0)
+        setPlayTime(timePlayed: 0)
+        setSeekValue(seekValue: 0)
+    }
+    
+    func registerPlayerItemListener() {
+        NotificationCenter.default.addObserver(self, selector: #selector(AudioPlayer.playerDidFinish(note:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object:  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem)
+        AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
+         AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
+         AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.addObserver(self, forKeyPath: "playbackBufferFull", options: .new, context: nil)
+        
+         AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
+        
+        unregister = true
+    }
+    
+    func unregisteredPlayerItemListener() {
+        NotificationCenter.default.removeObserver(self)
+        AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
+        AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
+        AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.removeObserver(self, forKeyPath: "playbackBufferFull")
+        AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.removeObserver(self, forKeyPath: "status")
+          AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.removeObserver(self, forKeyPath: "rate")
+        avPlayerLayer = nil
+        unregister = false
+    }
+
     func seekBarClicked(gesture: UITapGestureRecognizer) {
         print("seekBarClicked called")
-        playerRateBeforeSeek = (avPlayer?.rate)!
-        avPlayer?.pause()
+        playerRateBeforeSeek = ( AudioPlayerHelper.sharedHelper.audioPlayer?.rate)!
+        AudioPlayerHelper.sharedHelper.audioPlayer?.pause()
         let pointTapped = gesture.location(in: self.rootView)
         let positionOfSlider = seekbar.frame.origin
         let sliderWidth = seekbar.frame.size.width
+       // self.layoutIfNeeded()
+       // self.layoutSubviews()
         let newValue = (pointTapped.x - positionOfSlider.x) * CGFloat(seekbar.maximumValue)/sliderWidth
         seekbar.setValue(Float(newValue), animated: true)
         
-        let audioDuration = CMTimeGetSeconds((avPlayer?.currentItem!.duration)!)
+        let audioDuration = (CMTimeGetSeconds(( AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem!.duration)!)/2.29)
         let elapsedTime: Float64 = audioDuration * Float64(seekbar.value)
         updateTimeLabel(elapsedTime: elapsedTime, duration: audioDuration)
         
-        avPlayer?.seek(to: CMTimeMakeWithSeconds(elapsedTime, 100)) { (completed: Bool) -> Void in
+         AudioPlayerHelper.sharedHelper.audioPlayer?.seek(to: CMTimeMakeWithSeconds(elapsedTime, 100)) { (completed: Bool) -> Void in
             if self.playerRateBeforeSeek > 0 {
                 self.play()
             }
@@ -254,37 +293,38 @@ protocol AudioDelegate {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
         if keyPath == "status" && object is AVPlayer {
-            if avPlayer?.status == .readyToPlay {
+            if  AudioPlayerHelper.sharedHelper.audioPlayer?.status == .readyToPlay {
                 print("Ganesh status observer readyToPlay")
-            } else if avPlayer?.status == .failed {
+            } else if  AudioPlayerHelper.sharedHelper.audioPlayer?.status == .failed {
                 print("Ganesh status observer failed")
-            } else if avPlayer?.status == .unknown {
+            } else if  AudioPlayerHelper.sharedHelper.audioPlayer?.status == .unknown {
                 print("Ganesh status observer unknown")
             }
         }
         
         if keyPath == "status" && object is AVPlayerItem {
-            if avPlayer?.currentItem?.status == .readyToPlay {
+            if  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.status == .readyToPlay {
                 print("Ganesh status currentItem observer readyToPlay")
                 
-            } else if avPlayer?.currentItem?.status == .failed {
+            } else if  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.status == .failed {
                 print("Ganesh status currentItem observer failed")
                 updateState(state: .PAUSE)
                 if audioModel != nil {
                     replaceAudio(playerModel: audioModel)
                 }
-            } else if avPlayer?.currentItem?.status == .unknown {
+            } else if  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.status == .unknown {
                 print("Ganesh status currentItem observer unknown")
             }
         }
         
         if keyPath == "rate" {
-            if avPlayer?.rate == 0.0 {
-                print("XXXXX Ganesh state is paused rate = \(avPlayer?.rate)")
+            if  AudioPlayerHelper.sharedHelper.audioPlayer?.rate == 0.0 {
+                print("XXXXX Ganesh state is paused rate = \( AudioPlayerHelper.sharedHelper.audioPlayer?.rate)")
                 updateState(state: .PAUSE)
             } else {
-                print("XXXXX Ganesh state is play rate = \(avPlayer?.rate)")
+                print("XXXXX Ganesh state is play rate = \( AudioPlayerHelper.sharedHelper.audioPlayer?.rate)")
                 updateState(state: .PLAY)
             }
         }
@@ -293,7 +333,7 @@ protocol AudioDelegate {
             switch keyPath! {
             case "playbackBufferEmpty":
                 print("XXXXX Ganesh show loader playbackBufferEmpty")
-                if avPlayer?.currentItem?.status != AVPlayerItemStatus.readyToPlay {
+                if  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.status != AVPlayerItemStatus.readyToPlay {
                     updateState(state: .PAUSE)
                 } else {
                     updateState(state: .BUFFERING_START)
@@ -302,7 +342,7 @@ protocol AudioDelegate {
                 print("XXXXX Ganesh show loader \(getCurrentItemStatus())")
                 
             case "playbackLikelyToKeepUp":
-                print("XXXXX Ganesh hide loader playbackLikelyToKeepUp = \(avPlayer?.currentItem?.isPlaybackLikelyToKeepUp)")
+                print("XXXXX Ganesh hide loader playbackLikelyToKeepUp = \( AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.isPlaybackLikelyToKeepUp)")
                 updateState(state: .BUFFERING_END)
             case "playbackBufferFull":
                 print("XXXXX Ganesh hide loader playbackBufferFull")
@@ -311,7 +351,7 @@ protocol AudioDelegate {
                 break
             }
         }
-        print("Ganesh timestatus = \(avPlayer?.timeControlStatus.rawValue)\n")
+        print("Ganesh timestatus = \( AudioPlayerHelper.sharedHelper.audioPlayer?.timeControlStatus.rawValue)\n")
         
         print("Change at keyPath = \(keyPath) for \(object)")
     }
@@ -337,12 +377,11 @@ protocol AudioDelegate {
             showLoader()
             hidePlayIcon()
             hidePauseIcon()
-            
         case .BUFFERING_END:
             print("updateState: BUFFERING_END")
             self.delegate?.onTaskCompleted()
-            self.updateTotalDuration()
-            if avPlayer?.rate == 0 {
+            self.sliderValueChanged(slider: seekbar)
+            if AudioPlayerHelper.sharedHelper.audioPlayer?.rate == 0 {
                 updateState(state: .PAUSE)
             } else {
                 updateState(state: .PLAY)
@@ -353,7 +392,6 @@ protocol AudioDelegate {
             hidePauseIcon()
             hideLoader()
             hideLockIcon()
-            self.unregisteredPlayerItemListener()
             resetPlayerItem()
             break
         case .LOCK:
@@ -365,43 +403,42 @@ protocol AudioDelegate {
             break
         }
         
-        if avPlayer?.status == .readyToPlay {
+        if  AudioPlayerHelper.sharedHelper.audioPlayer?.status == .readyToPlay {
             print("Ganesh status readyToPlay")
-        } else if avPlayer?.status == .failed {
+        } else if  AudioPlayerHelper.sharedHelper.audioPlayer?.status == .failed {
             print("Ganesh status failed")
-        } else if avPlayer?.status == .unknown {
+        } else if  AudioPlayerHelper.sharedHelper.audioPlayer?.status == .unknown {
             print("Ganesh status unknown")
         }
         
-        if avPlayer?.currentItem?.status == .readyToPlay {
+        if  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.status == .readyToPlay {
             print("Ganesh status currentItem readyToPlay")
-        } else if avPlayer?.currentItem?.status == .failed {
+        } else if  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.status == .failed {
             print("Ganesh status currentItem failed")
-        } else if avPlayer?.currentItem?.status == .unknown {
+        } else if  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.status == .unknown {
             print("Ganesh status currentItem unknown")
         }
         
-        print("Ganesh status player rate \(avPlayer?.rate)")
-        print("Ganesh status error \(avPlayer?.error)")
+        print("Ganesh status player rate \( AudioPlayerHelper.sharedHelper.audioPlayer?.rate)")
+        print("Ganesh status error \( AudioPlayerHelper.sharedHelper.audioPlayer?.error)")
         print("Ganesh status timeControlStatus \(getTimeStatus())")
     }
     
     func getCurrentItemStatus() -> String {
         var s = ""
-        if avPlayer?.currentItem?.status == .readyToPlay {
+        if  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.status == .readyToPlay {
             s = "readyToPlay"
-        } else if avPlayer?.currentItem?.status == .failed {
+        } else if  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.status == .failed {
             s = "failed"
-        } else if avPlayer?.currentItem?.status == .unknown {
+        } else if  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.status == .unknown {
             s = "unknown"
         }
-        
         return s
     }
 
     func getTimeStatus() -> String {
         var s = ""
-        if let status = avPlayer?.timeControlStatus {
+        if let status =  AudioPlayerHelper.sharedHelper.audioPlayer?.timeControlStatus {
             switch status {
             case .paused:
                 s = "paused"
@@ -418,13 +455,16 @@ protocol AudioDelegate {
         print("Ganesh Audio Finished")
         updateState(state: .STOP)
         delegate?.onAudioCompleted()
+     //   NotificationCenter.default.removeObserver(self)
+
     }
 
     func play() {
-        if avPlayer?.currentItem != nil {
+        if  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem != nil {
             MusicHelper.sharedHelper.audioPlayer?.pause()
 
-            avPlayer?.play()
+            AudioPlayerHelper.sharedHelper.audioPlayer?.play()
+            
             print("play() func \(getCurrentItemStatus())")
         } else {
             if audioModel != nil {
@@ -432,21 +472,20 @@ protocol AudioDelegate {
             }
         }
     }
-
-    func pause() {
-        avPlayer?.pause()
-        MusicHelper.sharedHelper.audioPlayer?.play()
-    }
     
-//    func stop(){
-//        avPlayer?.replaceCurrentItem(with: nil)
-//   //     MusicHelper.sharedHelper.audioPlayer?.play()
-//    }
+    func stopCurrentAudio(){
+         //avPlayerLayer.removeFromSuperlayer()
+         AudioPlayerHelper.sharedHelper.audioPlayer?.pause()
+         AudioPlayerHelper.sharedHelper.audioPlayer = nil
+         AudioPlayerHelper.sharedHelper.audioPlayer?.replaceCurrentItem(with: nil)
+//         AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.cancelPendingSeeks()
+//         AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.asset.cancelLoading()
+             }
     
     func trackAudioSeekbar() {
-        let audioDuration = CMTimeGetSeconds((avPlayer?.currentItem!.duration)!)
+        let audioDuration = (CMTimeGetSeconds(( AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem!.duration)!)/2.29)
         
-        let normalizedTime = Float(CMTimeGetSeconds((avPlayer?.currentItem!.currentTime())!) * 1.0 / audioDuration)
+        let normalizedTime = Float(CMTimeGetSeconds(( AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem!.currentTime())!) * 1.0 / audioDuration)
         setSeekValue(seekValue: normalizedTime)
     }
 
@@ -458,12 +497,11 @@ protocol AudioDelegate {
     func playIconClick() {
         print("playIcon Clicked")
         play()
-        
     }
     
     func pauseIconClick() {
         print("pauseIcon Clicked")
-        avPlayer?.pause()
+        AudioPlayerHelper.sharedHelper.audioPlayer?.pause()
         MusicHelper.sharedHelper.audioPlayer?.play()
     }
 
@@ -514,6 +552,7 @@ protocol AudioDelegate {
     {
         if audioModel != nil {
             print("updateState : showAudioTitle")
+            print("updateState : showAudioTitle")
             audioTitle.text = audioModel.title
         }
     }
@@ -538,16 +577,16 @@ protocol AudioDelegate {
     }
     
     func sliderBeganTracking(slider: UISlider) {
-        playerRateBeforeSeek = (avPlayer?.rate)!
-        avPlayer?.pause()
+        playerRateBeforeSeek = ( AudioPlayerHelper.sharedHelper.audioPlayer?.rate)!
+        AudioPlayerHelper.sharedHelper.audioPlayer?.pause()
     }
 
     func sliderEndedTracking(slider: UISlider) {
-        let audioDuration = CMTimeGetSeconds((avPlayer?.currentItem!.duration)!)
+        let audioDuration = (CMTimeGetSeconds(( AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem!.duration)!)/2.29)
         let elapsedTime: Float64 = audioDuration * Float64(seekbar.value)
         updateTimeLabel(elapsedTime: elapsedTime, duration: audioDuration)
         
-        avPlayer?.seek(to: CMTimeMakeWithSeconds(elapsedTime, 100)) { (completed: Bool) -> Void in
+         AudioPlayerHelper.sharedHelper.audioPlayer?.seek(to: CMTimeMakeWithSeconds(elapsedTime, 100)) { (completed: Bool) -> Void in
             if self.playerRateBeforeSeek > 0 {
                 self.play()
             }
@@ -555,49 +594,55 @@ protocol AudioDelegate {
     }
 
     func sliderValueChanged(slider: UISlider) {
-        let audioDuration = CMTimeGetSeconds((avPlayer?.currentItem!.duration)!)
+        let audioDuration = (CMTimeGetSeconds(( AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem!.duration)!)/2.29)
+        print(seekbar.value)
         let elapsedTime: Float64 = audioDuration * Float64(seekbar.value)
+        print(elapsedTime)
         updateTimeLabel(elapsedTime: elapsedTime, duration: audioDuration)
     }
 
     private func observeTime(elapsedTime: CMTime) {
-        if avPlayer?.currentItem != nil {
-            let duration = CMTimeGetSeconds((avPlayer?.currentItem!.duration)!)
+        if  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem != nil {
+            let duration = (CMTimeGetSeconds(( AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem!.duration)!)/2.29)
             let elapsedTime = CMTimeGetSeconds(elapsedTime)
             updateTimeLabel(elapsedTime: elapsedTime, duration: duration)
             trackAudioSeekbar()
         }
     }
     
-    private func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
+    private func updateTimeLabel(elapsedTime: Float64, duration: Float64){
         let timePlayed: Float64 = elapsedTime
         
         setPlayTime(timePlayed: timePlayed)
-        //updateTotalDuration()
+        updateTotalDuration()
     }
     
     private func setPlayTime(timePlayed: Double) {
         playTimeLabel.text = String(format: "%02d:%02d", ((lround(timePlayed) / 60) % 60), lround(timePlayed) % 60)
+        print("Play time=>",playTimeLabel.text)
     }
     
     private func updateTotalDuration() {
-        if avPlayer != nil{
+        if  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem != nil{
             
-            print("Current time in duration:",((avPlayer?.currentItem?.currentTime().seconds)! as Double))
-            print("Total time in duration:",(avPlayer?.currentItem?.duration.seconds)! as Double)
-            let duration = CMTimeGetSeconds((avPlayer?.currentItem!.asset.duration)!)
-            print("************",(avPlayer?.currentItem)!)
+            print("Current time in duration:",(( AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.currentTime().seconds)! as Double))
+            print("Total time in duration:",( AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.duration.seconds)! as Double)
+            //duration - 2.29 because actual duration of Row Row song is 53 seconds and url returns 121.62 so 121.62/53 = 2.29 and every song having this ratio difference so 121.62/2.29 = 53 seconds
+            let duration = (CMTimeGetSeconds(( AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem!.asset.duration)!)/2.29)
+
+            print("************",( AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem)!)
+            
             setTotalDuration(duration: duration)
         }
     }
 
     private func setTotalDuration(duration: Double) {
         totalTimeLabel.text = String(format: "%02d:%02d", ((lround(duration) / 60) % 60), lround(duration) % 60)
+    
         print("total*******time->",totalTimeLabel.text!)
     }
     
     deinit {
-        avPlayer?.removeTimeObserver(timeObserver)
-        //avPlayer.removeObserver(self, forKeyPath: "currentItem.playbackLikelyToKeepUp")
+        AudioPlayerHelper.sharedHelper.audioPlayer?.removeTimeObserver(timeObserver)
     }
 }

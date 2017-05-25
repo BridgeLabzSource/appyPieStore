@@ -11,7 +11,7 @@ protocol SendDataProtocol {
     func getDictionary(bundle:AndroidBundle)
 }
 
-class AudioListingController: BaseListingViewController {
+class AudioListingController: BaseListingViewController{
     
     var catId: String = ""
     var catName: String = ""
@@ -48,18 +48,20 @@ class AudioListingController: BaseListingViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-     //   var bundle2 = [String: Any]()
+        
+        //AudioPlayer.sharedHelper1.avPlayer?.replaceCurrentItem(with: nil)
+        
+        
         let audioListingModel = dataFetchFramework?.contentList[indexPath.row] as! AudioListingModel
-     //   bundle2["dnld_url"] = audioListingModel.downloadUrl
         
         print("AudioListingController : select audio \(audioListingModel.title)")
         
         if audioListingModel.payType == "paid" {
             var bundle = [String: Any]()
-            //NavigationManager.openTrialSuccess(mainControllerCommunicator: self.mainControllerCommunicator!)
+     
             NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
         } else {
-//            NotificationCenter.default.post(name: NSNotification.Name(rawValue:"myNotification"), object: self, userInfo: bundle2)
+
             NavigationManager.openAudioPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: audioListingModel)
         }
 
@@ -68,7 +70,10 @@ class AudioListingController: BaseListingViewController {
     override func getComponentProperties() -> ComponentProperties {
         let components = ComponentProperties()
         components.visibleIconsSet = [Item.BTN_BACK, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_SEARCH]
+        components.selectedIconsSet = [Item.BTN_AUDIO]
         
         return components
     }
+    
+    
 }

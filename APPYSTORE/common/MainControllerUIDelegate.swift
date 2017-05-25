@@ -135,7 +135,6 @@ class MainControllerUIDelegate {
         }
     }
     
-    
     @objc func showAudioCategoryPage() {
         if !(mainController.getCurrentViewController() is AudioCategoryController) {
             removeChildController(childController: mainController.getCurrentViewController())
@@ -273,12 +272,16 @@ class MainControllerUIDelegate {
     func makeAllItemsUnSelected() {
         mainController.topView.btnBack.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnBack.setNeedsDisplay()
+        
         mainController.topView.btnVideo.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnVideo.setNeedsDisplay()
+        
         mainController.topView.btnAudio.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnAudio.setNeedsDisplay()
+        
         mainController.topView.btnHistory.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnHistory.setNeedsDisplay()
+        
         mainController.topView.btnSearch.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnSearch.setNeedsDisplay()
     }
