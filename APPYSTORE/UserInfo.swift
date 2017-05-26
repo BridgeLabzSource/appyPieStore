@@ -171,7 +171,6 @@ class UserInfo: NSObject, NSCopying, NSCoding{
     var visitorId: String? = nil
     var sessionId: String? = nil
     
-    
     func getClone() -> UserInfo? {
         Prefs.getInstance()?.setObject(key: "userInfoObject", value: self)
         

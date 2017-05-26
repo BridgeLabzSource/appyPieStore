@@ -11,21 +11,20 @@ import UIKit
 
  class AudioPlayerViewController:BaseViewController{
     
-    @IBOutlet weak var audioPlayerView: AudioPlayer!
-    var audioModel : AudioListingModel!
-    var playerbundle:AndroidBundle?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-   
-    override func getPageName() -> String {
-        return PageConstants.AUDIO_PLAYER_PAGE
-    }
-    
-    override func getPageNameUniqueIdentifier() -> String {
-        return ""
-    }
+//    @IBOutlet weak var audioPlayerView: AudioPlayer!
+//    var audioModel : AudioListingModel!
+//    var playerbundle:AndroidBundle?
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//    }
+//   
+//    override func getPageName() -> String {
+//        return PageConstants.AUDIO_PLAYER_PAGE
+//    }
+//    
+//    override func getPageNameUniqueIdentifier() -> String {
+//        return ""
+//    }
 
 }

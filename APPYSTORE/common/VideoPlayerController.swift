@@ -144,7 +144,6 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
         
     }
  
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

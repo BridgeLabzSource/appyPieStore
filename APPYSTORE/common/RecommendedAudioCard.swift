@@ -64,7 +64,7 @@ class RecommendedAudioCard: BaseCard {
         rootView.layer.masksToBounds = false
         rootView.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
         //////
-        let radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 164))
+        let radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 100))
         DimensionManager.setTextSize1280x720(label: audioTitle, size: DimensionManager.H4)
         rootView.layer.cornerRadius = radius
         showShadowRightBottom()
