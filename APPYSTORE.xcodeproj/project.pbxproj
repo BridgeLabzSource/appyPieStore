@@ -223,7 +223,7 @@
 		0AF812671EB20EB4005C6E14 /* AudioCategoryCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioCategoryCard.xib; sourceTree = "<group>"; };
 		0AFBD5EC1EC4297F009FD47B /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
 		0AFBD5EF1EC57533009FD47B /* song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song.mp3; sourceTree = "<group>"; };
-		0AFEFA7F1ECFFC2F001F350C /* AudioPlayerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerHelper.swift; sourceTree = "<group>"; };
+		0AFEFA7F1ECFFC2F001F350C /* AudioPlayerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioPlayerHelper.swift; path = ../common/AudioPlayerHelper.swift; sourceTree = "<group>"; };
 		4235255AFD5AB3DCC9C949D5 /* Pods-APPYSTORE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APPYSTORE.release.xcconfig"; path = "Pods/Target Support Files/Pods-APPYSTORE/Pods-APPYSTORE.release.xcconfig"; sourceTree = "<group>"; };
 		449AB76A8F3659A0A4381CF8 /* Pods-APPYSTORE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APPYSTORE.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APPYSTORE/Pods-APPYSTORE.debug.xcconfig"; sourceTree = "<group>"; };
 		4E463C3A36DD3D2DE33CC294 /* Pods_APPYSTORE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APPYSTORE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -374,7 +374,6 @@
 			children = (
 				7365F3941E92612D006B3C75 /* MainController.swift */,
 				0A302B0F1ECEF0F500C44414 /* MusicHelper.swift */,
-				0AFEFA7F1ECFFC2F001F350C /* AudioPlayerHelper.swift */,
 				0A7261611E6D30880023883F /* customView */,
 				0A72615B1E6D30480023883F /* extension */,
 				70AD5ADD1E6E7129003C2536 /* BaseParser.swift */,
@@ -547,6 +546,7 @@
 		0AF26F051EBA0CC100BC7EF9 /* player */ = {
 			isa = PBXGroup;
 			children = (
+				0AFEFA7F1ECFFC2F001F350C /* AudioPlayerHelper.swift */,
 				0AF26F061EBA0CED00BC7EF9 /* AudioPlayerController.swift */,
 				0AFBD5EC1EC4297F009FD47B /* AudioPlayerViewController.swift */,
 			);
