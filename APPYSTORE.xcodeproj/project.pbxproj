@@ -374,6 +374,7 @@
 			children = (
 				7365F3941E92612D006B3C75 /* MainController.swift */,
 				0A302B0F1ECEF0F500C44414 /* MusicHelper.swift */,
+				0AFEFA7F1ECFFC2F001F350C /* AudioPlayerHelper.swift */,
 				0A7261611E6D30880023883F /* customView */,
 				0A72615B1E6D30480023883F /* extension */,
 				70AD5ADD1E6E7129003C2536 /* BaseParser.swift */,

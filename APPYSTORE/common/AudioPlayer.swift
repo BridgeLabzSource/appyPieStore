@@ -73,7 +73,6 @@ protocol AudioDelegate {
     var avPlayerLayer: AVPlayerLayer!
     var timeObserver: AnyObject!
     var playerRateBeforeSeek: Float = 0
-    
     var delegate: AudioDelegate?
     var task: URLSessionDataTask!
     var session: URLSession!
@@ -179,6 +178,61 @@ protocol AudioDelegate {
         hideLockIcon()
         updateState(state: .BUFFERING_START)
         print("BUFFERING_START initialize")
+        
+    }
+
+    func replaceAudio(playerModel: AudioListingModel) {
+
+        audioModel = playerModel
+        seekbar.layer.cornerRadius = 5
+        showAudioThumbnail()
+        showAudioTitle()
+        showAudioCategoryTitle()
+        
+        
+        if playerModel.payType == "paid" {
+            updateState(state: .LOCK)
+            return
+        }
+        
+        if playerModel.contentId == currentContentId
+        {
+             updateState(state: .PLAY)
+        }
+        else{
+        stopCurrentAudio()
+        resetPlayerItem()
+        updateState(state: .BUFFERING_START)
+        print("BUFFERING_START replaceAudio")
+        delegate?.onTaskStarted()
+        
+        let geturl = URL(string:playerModel.downloadUrl)
+        
+        //"https:s3.amazonaws.com/kargopolov/kukushka.mp3"
+        //"http://files.songscdn.com/files/sfd32/15689/Independence%20Flute(SurMaza.com).mp3"
+        //playerModel.downloadUrl)
+            
+        currentContentId = playerModel.contentId
+
+        // done now
+        DispatchQueue.global(qos: .background).async {
+            
+        if unregister
+        {
+            self.unregisteredPlayerItemListener()
+        }
+     
+        do{
+            let playerItem = AVPlayerItem(url: geturl!)
+            print("playerItem",playerItem)
+            AudioPlayerHelper.sharedHelper.audioPlayer =  AVPlayer(playerItem: playerItem)
+          }
+        self.play()
+        self.registerPlayerItemListener()
+        count = count+1
+        self.initialise()
+        }
+        }
     }
 
     func replaceAudio(playerModel: AudioListingModel) {
@@ -241,6 +295,12 @@ protocol AudioDelegate {
         self.initialise()
         }
         }
+    }
+    
+    func resetPlayerItem() {
+        setTotalDuration(duration: 0)
+        setPlayTime(timePlayed: 0)
+        setSeekValue(seekValue: 0)
     }
     
     func resetPlayerItem() {
@@ -480,10 +540,6 @@ protocol AudioDelegate {
                 replaceAudio(playerModel: audioModel)
             }
         }
-    }
-
-    func pause() {
-    
     }
     
     func stopCurrentAudio(){
