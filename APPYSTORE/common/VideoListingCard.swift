@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import Toaster
 
 @IBDesignable class VideoListingCard: BaseCard {
     
@@ -50,15 +51,20 @@ import SDWebImage
     }
     
     func onCardClick() {
-        if !AuthenticationUtil.isSubscribedUser() && videoListingModel.payType == AppConstants.PAID {
-            let bundle = [String: Any]()
-            if UserInfo.getInstance().isDeviceEligibleForTrialSubscription {
-                NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator, bundle: bundle)
+        if Utils.isInternetAvailable() {
+            if !AuthenticationUtil.isSubscribedUser() && videoListingModel.payType == AppConstants.PAID {
+                let bundle = [String: Any]()
+                if UserInfo.getInstance().isDeviceEligibleForTrialSubscription {
+                    NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator, bundle: bundle)
+                }
+                
+            } else {
+                NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator, model: videoListingModel)
             }
-            
         } else {
-            NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator, model: videoListingModel)
+            Toast(text: "NO_INTERNET_CONNECTION".localized(lang: AppConstants.LANGUAGE)).show()
         }
+        
     }
     
     override func fillCard(model: BaseModel) {

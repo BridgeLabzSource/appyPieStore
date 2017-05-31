@@ -541,6 +541,7 @@ protocol VideoDelegate {
     
     func play() {
         if avPlayer?.currentItem != nil {
+            //avPlayer?.currentItem?.seek(to: (avPlayer?.currentItem?.currentTime())!)
             avPlayer?.play()
             print("play() func \(getCurrentItemStatus())")
         } else {
@@ -626,7 +627,7 @@ protocol VideoDelegate {
         if videoModel != nil {
             print("updateState : showVideoThumbnail")
             let imgurl = URL(string: videoModel.imagePath)
-            videoThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
+            videoThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "place_holder_cards") )
             videoThumbnail.isHidden = false
         }
     }

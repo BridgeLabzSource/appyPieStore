@@ -34,8 +34,13 @@ class MainController: UIViewController, MainControllerCommunicator {
         print("MainController vendor id : \(UIDevice.current.identifierForVendor?.uuidString)")
         AppConfigurationHandler().start()
         uiDelegate = MainControllerUIDelegate(mainController: self)
-        AppNavigationHandler(mainControllerCommunicator: self).NavigateAtAppOpen()
         uiDelegate?.viewDidLoad()
+        
+        // this is to make sure that maincontroller view is loaded completly (i.e viewDidLoad finished) before layouting the child controller (specifically registration page)
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+            AppNavigationHandler(mainControllerCommunicator: self).NavigateAtAppOpen()
+        })
+        
     }
     
     // Called when the view is about to made visible. Default does nothing
@@ -79,6 +84,9 @@ class MainController: UIViewController, MainControllerCommunicator {
         }
     }
     
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .landscapeRight
+    }
     internal func setUIComponents(components: ComponentProperties?) {
         uiDelegate?.setUIComponents(components: components)
     }

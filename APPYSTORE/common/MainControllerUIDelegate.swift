@@ -14,7 +14,7 @@ enum Area {
     case MIDDLE
 }
 
-class MainControllerUIDelegate {
+class MainControllerUIDelegate: NSObject, UITextFieldDelegate {
     let mainController: MainController
     var fabButton: KCFloatingActionButton!
     var progressView: NVActivityIndicatorView?
@@ -80,10 +80,27 @@ class MainControllerUIDelegate {
     }
     
     func setButtonsClickLstener() {
+        
         mainController.topView.btnBack.addTarget(self, action: #selector(handleBackButtonClick), for: .touchUpInside)
         mainController.topView.btnVideo.addTarget(self, action: #selector(showVideoCategoryPage), for: .touchUpInside)
         mainController.topView.btnHistory.addTarget(self, action: #selector(showHistoryPage), for: .touchUpInside)
         mainController.topView.btnSearch.addTarget(self, action: #selector(handleSearchButtonClick), for: .touchUpInside)
+        
+        mainController.topView.tfSearch.delegate = self
+        //mainController.topView.tfSearch.addTarget(self, action: #selector(searchTextFieldChanged), for: .editingDidEnd)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let count = (textField.text?.characters.count)! + string.characters.count - range.length
+        if count > 0 {
+            print(" if searchTextFieldChanged \(count) and range \(range.length)")
+            // hide cross icon
+        } else {
+            print(" else searchTextFieldChanged and range \(range.length)")
+            // show cross icon
+        }
+        
+        return true
     }
     
     @objc func handleBackButtonClick(_ controller: AnyObject) {
