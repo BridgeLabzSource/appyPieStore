@@ -59,7 +59,7 @@ open class KCFloatingActionButtonItem: UIView {
     open var handler: ((KCFloatingActionButtonItem) -> Void)? = nil
 
     open var imageOffset: CGPoint = CGPoint.zero
-    open var imageSize: CGSize = CGSize(width: DimensionManager.getGeneralizedHeight1280x720(height: 80), height: DimensionManager.getGeneralizedHeight1280x720(height: 80)){//CGSize(width: 25, height: 25) {
+    open var imageSize: CGSize = CGSize(width: DimensionManager.getGeneralizedHeight1280x720(height: 60), height: DimensionManager.getGeneralizedHeight1280x720(height: 60)){//CGSize(width: 25, height: 25) {
         didSet {
             _iconImageView?.frame = CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height)
         }
@@ -126,7 +126,7 @@ open class KCFloatingActionButtonItem: UIView {
         get {
             if _iconImageView == nil {
                 _iconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height))
-                //_iconImageView?.center = CGPoint(x: size/2, y: size/2) + imageOffset
+                _iconImageView?.center = CGPoint(x: size/2, y: size/2) + imageOffset
                 //_iconImageView?.contentMode = UIViewContentMode.scaleAspectFill
                 addSubview(_iconImageView!)
                 
