@@ -10,8 +10,8 @@ import UIKit
 import AVFoundation
 import WebKit
 
-class AudioPlayerController: BaseViewController, AudioDelegate{
-
+class AudioPlayerController: BaseViewController, AudioDelegate,RecommendedAudioDelegate {
+    
     @IBOutlet weak var audioPlayer: AudioPlayer!
     
     @IBOutlet weak var backButton: CustomButton!
@@ -19,14 +19,15 @@ class AudioPlayerController: BaseViewController, AudioDelegate{
     @IBOutlet weak var audioListView: UIView!
     
     var defaultModel: AudioListingModel?
-    
+    var bottomBar1 = BottomBarOverlay()
+
     lazy var recommendedController: RecommendedAudioViewController = {
         print("AudioPlayerController lazyload")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "RecommendedAudioViewController") as! RecommendedAudioViewController
         
         viewController.listingModel = self.defaultModel
-        //self.addAsChildViewController(childController: viewController)
+        self.addAsChildViewController(childController: viewController)
         self.addChildViewController(viewController)
         return viewController
     }()
@@ -39,7 +40,6 @@ class AudioPlayerController: BaseViewController, AudioDelegate{
         childController.view.frame = audioListView.bounds
         childController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         childController.didMove(toParentViewController: self)
-        
     }
 
     override func getPageName() -> String {
@@ -56,37 +56,37 @@ class AudioPlayerController: BaseViewController, AudioDelegate{
         
         return components
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         audioPlayer.delegate = self
-
-    //  playAudioContent(content: defaultModel!)
+        
+        addAsChildViewController(childController: recommendedController)
         
         print("AudioPlayerController viewDidLoad====",defaultModel?.imagePath)
   
-    // playerController = AudioPlayerViewController()
-      //  print(bundle!)
-       // playerController?.playerbundle = bundle
-        //  NotificationCenter.default.post(name: NSNotification.Name(rawValue: "audioData"), object: nil, userInfo: bundle)
-        // let ss = bundle[BundleConstants.]
+         recommendedController.delegate = self
         
         self.view.bringSubview(toFront: backButton)
         backButton.addTarget(self, action: #selector(handleBackButtonClick), for: .touchUpInside)
-        
     }
 
     func handleBackButtonClick() {
         print("AudioPlayerController handleBackButtonClick")
-//audioPlayer.avPlayer?.pause()
+          
+        displayAudioTitle(content: defaultModel!)
+        
+//        audioPlayer.avPlayer?.pause()
 //        audioPlayer.avPlayerLayer.removeFromSuperlayer()
 //        audioPlayer.avPlayer = nil
 
-        
+//        NavigationManager.openAudioListingPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, bundle: AudioListingModel)
+        count = 0
         mainControllerCommunicator?.performBackButtonClick(self)
     }
     
     func playAudioContent(content: AudioListingModel) {
+        print(content.downloadUrl)
         audioPlayer?.replaceAudio(playerModel: content)
         if content.payType == "paid" {
             let bundle = [String: Any]()
@@ -94,12 +94,15 @@ class AudioPlayerController: BaseViewController, AudioDelegate{
         }
     }
 
+    func displayAudioTitle(content: AudioListingModel) {
+        print(content.downloadUrl)
+        bottomBar1.setSongTitle(playerModel: content)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("AudioPlayerController viewDidAppear")
-        
         playAudioContent(content: defaultModel!)
-        
     }
     
     func onAudioCompleted() {
@@ -124,7 +127,11 @@ class AudioPlayerController: BaseViewController, AudioDelegate{
     
     override func resetPage() {
         super.resetPage()
-        //playVideoContent(content: defaultModel!)
         recommendedController.resetPage()
     }
+    
+    func onContentChange(content: AudioListingModel) {
+      playAudioContent(content: content)
+    }
+    
 }

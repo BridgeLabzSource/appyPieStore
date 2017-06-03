@@ -48,6 +48,7 @@ class MainController: UIViewController, MainControllerCommunicator {
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("MainController viewDidAppear called")
+
     }
     
     // Called just before the view controller's view's layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.

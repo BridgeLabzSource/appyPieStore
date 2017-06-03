@@ -19,7 +19,6 @@ class MainControllerUIDelegate {
     var fabButton: KCFloatingActionButton!
     var progressView: NVActivityIndicatorView?
     
-    
     lazy var audioCategoryController: AudioCategoryController = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "AudioCategoryController") as! AudioCategoryController
@@ -27,7 +26,6 @@ class MainControllerUIDelegate {
         self.addAsChildViewController(childController: viewController, area: nil)
         return viewController
     }()
-    
     
     lazy var historyController: HistoryController = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -134,7 +132,6 @@ class MainControllerUIDelegate {
             mainController.childControllersList?.append(videoCategoryController)
         }
     }
-    
     
     @objc func showAudioCategoryPage() {
         if !(mainController.getCurrentViewController() is AudioCategoryController) {
@@ -273,12 +270,16 @@ class MainControllerUIDelegate {
     func makeAllItemsUnSelected() {
         mainController.topView.btnBack.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnBack.setNeedsDisplay()
+        
         mainController.topView.btnVideo.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnVideo.setNeedsDisplay()
+        
         mainController.topView.btnAudio.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnAudio.setNeedsDisplay()
+        
         mainController.topView.btnHistory.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnHistory.setNeedsDisplay()
+        
         mainController.topView.btnSearch.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnSearch.setNeedsDisplay()
     }
