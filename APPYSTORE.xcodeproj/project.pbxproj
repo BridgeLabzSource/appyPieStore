@@ -229,7 +229,11 @@
 		0AF812671EB20EB4005C6E14 /* AudioCategoryCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioCategoryCard.xib; sourceTree = "<group>"; };
 		0AFBD5EC1EC4297F009FD47B /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
 		0AFBD5EF1EC57533009FD47B /* song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song.mp3; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		0AFEFA7F1ECFFC2F001F350C /* AudioPlayerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerHelper.swift; sourceTree = "<group>"; };
+=======
+		0AFEFA7F1ECFFC2F001F350C /* AudioPlayerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioPlayerHelper.swift; path = ../common/AudioPlayerHelper.swift; sourceTree = "<group>"; };
+>>>>>>> b30ae4b8df6128335f2277a2b6e9dfc0b7ca6eb7
 		4235255AFD5AB3DCC9C949D5 /* Pods-APPYSTORE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APPYSTORE.release.xcconfig"; path = "Pods/Target Support Files/Pods-APPYSTORE/Pods-APPYSTORE.release.xcconfig"; sourceTree = "<group>"; };
 		449AB76A8F3659A0A4381CF8 /* Pods-APPYSTORE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APPYSTORE.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APPYSTORE/Pods-APPYSTORE.debug.xcconfig"; sourceTree = "<group>"; };
 		4E463C3A36DD3D2DE33CC294 /* Pods_APPYSTORE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APPYSTORE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -364,6 +368,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+<<<<<<< HEAD
 		0A2A6CD31ED7F07C00C7F342 /* PlayerStateCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +378,8 @@
 			name = PlayerStateCard;
 			sourceTree = "<group>";
 		};
+=======
+>>>>>>> b30ae4b8df6128335f2277a2b6e9dfc0b7ca6eb7
 		0A302B171ECF6EF500C44414 /* Recommandation */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,7 +534,10 @@
 		0AD5536D1E5DA958005ECA4A /* page */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				0A2A6CD31ED7F07C00C7F342 /* PlayerStateCard */,
+=======
+>>>>>>> b30ae4b8df6128335f2277a2b6e9dfc0b7ca6eb7
 				0A302B171ECF6EF500C44414 /* Recommandation */,
 				738EEE711EA4FEEF00A50038 /* loginAndRegistration */,
 				0AD5536E1E5DA958005ECA4A /* video */,
@@ -563,6 +573,7 @@
 		0AF26F051EBA0CC100BC7EF9 /* player */ = {
 			isa = PBXGroup;
 			children = (
+				0AFEFA7F1ECFFC2F001F350C /* AudioPlayerHelper.swift */,
 				0AF26F061EBA0CED00BC7EF9 /* AudioPlayerController.swift */,
 				0AFBD5EC1EC4297F009FD47B /* AudioPlayerViewController.swift */,
 				0A0A4F3C1ED9AB5500304080 /* ProtocolDefinedFunc.swift */,

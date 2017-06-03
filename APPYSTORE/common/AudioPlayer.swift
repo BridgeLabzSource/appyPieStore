@@ -72,7 +72,6 @@ protocol AudioDelegate {
     var avPlayerLayer: AVPlayerLayer!
     var timeObserver: AnyObject!
     var playerRateBeforeSeek: Float = 0
-    
     var delegate: AudioDelegate?
     var task: URLSessionDataTask!
     var session: URLSession!
@@ -94,8 +93,12 @@ protocol AudioDelegate {
     
     func initialise(){
         
-        print("cout=>",count)
+        self.setNeedsLayout()
+        self.setNeedsDisplay()
+        self.layoutSubviews()
+        self.clipsToBounds = true
         
+        print("cout=>",count)
         if count != 1
         {
      
@@ -175,6 +178,146 @@ protocol AudioDelegate {
         hideLockIcon()
         updateState(state: .BUFFERING_START)
         print("BUFFERING_START initialize")
+        
+    }
+
+    func replaceAudio(playerModel: AudioListingModel) {
+
+        audioModel = playerModel
+        seekbar.layer.cornerRadius = 5
+        showAudioThumbnail()
+        showAudioTitle()
+        showAudioCategoryTitle()
+        
+        
+        if playerModel.payType == "paid" {
+            updateState(state: .LOCK)
+            return
+        }
+        
+        if playerModel.contentId == currentContentId
+        {
+             updateState(state: .PLAY)
+        }
+        else{
+        stopCurrentAudio()
+        resetPlayerItem()
+        updateState(state: .BUFFERING_START)
+        print("BUFFERING_START replaceAudio")
+        delegate?.onTaskStarted()
+        
+        let geturl = URL(string:playerModel.downloadUrl)
+        
+        //"https:s3.amazonaws.com/kargopolov/kukushka.mp3"
+        //"http://files.songscdn.com/files/sfd32/15689/Independence%20Flute(SurMaza.com).mp3"
+        //playerModel.downloadUrl)
+            
+        currentContentId = playerModel.contentId
+
+        // done now
+        DispatchQueue.global(qos: .background).async {
+            
+        if unregister
+        {
+            self.unregisteredPlayerItemListener()
+        }
+     
+        do{
+            let playerItem = AVPlayerItem(url: geturl!)
+            print("playerItem",playerItem)
+            AudioPlayerHelper.sharedHelper.audioPlayer =  AVPlayer(playerItem: playerItem)
+          }
+        self.play()
+        self.registerPlayerItemListener()
+        count = count+1
+        self.initialise()
+        }
+        }
+    }
+
+    func replaceAudio(playerModel: AudioListingModel) {
+
+        audioModel = playerModel
+        seekbar.layer.cornerRadius = 5
+        showAudioThumbnail()
+        showAudioTitle()
+        showAudioCategoryTitle()
+        
+        if playerModel.payType == "paid" {
+            updateState(state: .LOCK)
+            return
+        }
+        
+        if playerModel.contentId == currentContentId
+        {
+            if pauseIconActive == true
+            {
+                updateState(state: .PAUSE)
+                AudioPlayerHelper.sharedHelper.audioPlayer?.play()
+                AudioPlayerHelper.sharedHelper.audioPlayer?.pause()
+                pauseIconActive = false
+            }else
+            {
+                updateState(state: .PLAY)
+            }
+        }
+        else{
+        stopCurrentAudio()
+        resetPlayerItem()
+        updateState(state: .BUFFERING_START)
+        print("BUFFERING_START replaceAudio")
+        delegate?.onTaskStarted()
+        
+        let geturl = URL(string:playerModel.downloadUrl)
+        
+        //"https:s3.amazonaws.com/kargopolov/kukushka.mp3"
+        //"http://files.songscdn.com/files/sfd32/15689/Independence%20Flute(SurMaza.com).mp3"
+        //playerModel.downloadUrl)
+            
+        currentContentId = playerModel.contentId
+
+        // done now
+        DispatchQueue.global(qos: .background).async {
+            
+        if unregister
+        {
+            self.unregisteredPlayerItemListener()
+        }
+     
+        do{
+            let playerItem = AVPlayerItem(url: geturl!)
+            print("playerItem",playerItem)
+            AudioPlayerHelper.sharedHelper.audioPlayer =  AVPlayer(playerItem: playerItem)
+          }
+        self.play()
+        self.registerPlayerItemListener()
+        count = count+1
+        self.initialise()
+        }
+        }
+    }
+    
+    func resetPlayerItem() {
+        setTotalDuration(duration: 0)
+        setPlayTime(timePlayed: 0)
+        setSeekValue(seekValue: 0)
+    }
+    
+    func resetPlayerItem() {
+        setTotalDuration(duration: 0)
+        setPlayTime(timePlayed: 0)
+        setSeekValue(seekValue: 0)
+    }
+    
+    func registerPlayerItemListener() {
+        NotificationCenter.default.addObserver(self, selector: #selector(AudioPlayer.playerDidFinish(note:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object:  AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem)
+        AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
+         AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
+         AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.addObserver(self, forKeyPath: "playbackBufferFull", options: .new, context: nil)
+        
+         AudioPlayerHelper.sharedHelper.audioPlayer?.currentItem?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
+        
+        unregister = true
     }
 
     func replaceAudio(playerModel: AudioListingModel) {
@@ -272,6 +415,8 @@ protocol AudioDelegate {
         let pointTapped = gesture.location(in: self.rootView)
         let positionOfSlider = seekbar.frame.origin
         let sliderWidth = seekbar.frame.size.width
+       // self.layoutIfNeeded()
+       // self.layoutSubviews()
         let newValue = (pointTapped.x - positionOfSlider.x) * CGFloat(seekbar.maximumValue)/sliderWidth
         seekbar.setValue(Float(newValue), animated: true)
         

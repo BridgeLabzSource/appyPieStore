@@ -676,7 +676,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="259" height="192"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+<<<<<<< HEAD
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="5AC733A8-BE9B-4652-91CD-093033C698A2" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
+=======
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="2B5BCFE7-91EC-4B30-814F-E851855058A7" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-PH-fhB">
+>>>>>>> b30ae4b8df6128335f2277a2b6e9dfc0b7ca6eb7
                                                     <rect key="frame" x="8" y="8" width="243" height="116"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="116" id="HfT-XT-9p0"/>
