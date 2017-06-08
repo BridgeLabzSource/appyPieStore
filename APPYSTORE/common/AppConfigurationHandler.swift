@@ -15,7 +15,7 @@ class AppConfigurationHandler {
     }
     
     func setVendorId() {
-        var vendorId: String? = KeychainManager.getVendorId()
+        var vendorId: String? = "a5b9d7b7fe1425ea"//KeychainManager.getVendorId()
         if(vendorId == nil || vendorId?.characters.count == 0) {
             vendorId = UIDevice.current.identifierForVendor?.uuidString
             KeychainManager.saveVendorId(value: vendorId! as NSString)

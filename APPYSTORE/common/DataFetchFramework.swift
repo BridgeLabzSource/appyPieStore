@@ -222,7 +222,7 @@ DataManager.sharedInstance.getData(pageName: pageName, offset: offsetServer, lim
             }
         } else {
             //if due to some reason server fails to repond data, atleast show data from local storage if available
-            if statusType == BaseParser.CONNECTION_ERROR || statusType == BaseParser.REQUEST_FAILURE {
+            if statusType == BaseParser.CONNECTION_ERROR || statusType == BaseParser.REQUEST_FAILURE  {
                 if dataSource == .BOTH && isLocalDataAvailable() {
                     getDataFromLocalStorage()
                 } else {

@@ -58,6 +58,12 @@ class ChildRegistrationController: BaseViewController {
         imgCross.isUserInteractionEnabled = true
         imgCross.addGestureRecognizer(singleTapCrossButton)
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setChildTextSize()
+        setDateOfBirthTextSize()
+        view.setNeedsDisplay()
+    }
     
     func onCrossButtonClick() {
         mainControllerCommunicator?.performBackButtonClick(self)
@@ -121,10 +127,14 @@ class ChildRegistrationController: BaseViewController {
         } else if StringUtil.isEmptyOrNullString(stringToCheck: tfBirthDate.text) {
             Toast(text: "Please Select Your Child's Birth Date").show()
         } else {
-            let givenChild = ChildInfo()
-            givenChild.name = tfName.text
-            givenChild.dob = tfBirthDate.text
-            NavigationManager.openAvatarSelectionPage(mainControllerCommunicator: mainControllerCommunicator!, pageType: pageType, givenChild: givenChild)
+            if Utils.isInternetAvailable() {
+                let givenChild = ChildInfo()
+                givenChild.name = tfName.text
+                givenChild.dob = tfBirthDate.text
+                NavigationManager.openAvatarSelectionPage(mainControllerCommunicator: mainControllerCommunicator!, pageType: pageType, givenChild: givenChild)
+            } else {
+                Toast(text: "NO_INTERNET_CONNECTION".localized(lang: AppConstants.LANGUAGE)).show()
+            }
         }
     }
     
@@ -172,10 +182,13 @@ class ChildRegistrationController: BaseViewController {
         
         //let height = 3*tfBirthDate.bounds.height/4
         let image = UIImage(named: "calendar")
-        let imageView = UIImageView(frame: CGRect(x:0, y:0, width: (image?.size.width)! + DimensionManager.getGeneralizedWidth1280x720(width: 30), height:(image?.size.height)!) )
+        let imageView = UIImageView(frame: CGRect(x:0, y:0, width: DimensionManager.getGeneralizedWidth1280x720(width: 40), height:DimensionManager.getGeneralizedWidth1280x720(width: 40)) )
+        
+        var size = DimensionManager.getGeneralizedWidth1280x720(width: 50)
         
         imageView.image = image
-        imageView.contentMode = UIViewContentMode.center
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        //imageView.backgroundColor = UIColor.yellow
         
         tfBirthDate.rightView = imageView
         

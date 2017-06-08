@@ -10,3 +10,4 @@
 "NO_RESULT_FOUND" = "No result found";
 "NO_DATA_FOUND" = "No data found";
 "ENTER_VALID_MOBILE_NUMBER" = "Please enter valid mobile number";
+"NO_INTERNET_CONNECTION" = "Please check your internet connection";
