@@ -40,8 +40,6 @@ class AppNavigationHandler {
             statusType, result in
             
             if statusType == BaseParser.REQUEST_SUCCESS {
-                NavigationUtil.navigateAsPerChildSize(mainControllerCommunicator: self.mainControllerCommunicator)
-                
                 //self.mainControllerCommunicator.getContext().uiDelegate?.showVideoCategoryPage()
 
             } else if statusType == BaseParser.REQUEST_FAILURE {
@@ -49,6 +47,8 @@ class AppNavigationHandler {
             } else if statusType == BaseParser.CONNECTION_ERROR {
                 
             }
+            
+            NavigationUtil.navigateAsPerChildSize(mainControllerCommunicator: self.mainControllerCommunicator)
         })
     }
 }

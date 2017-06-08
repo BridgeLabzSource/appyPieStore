@@ -39,6 +39,11 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>Toaster.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -117,11 +122,14 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+<<<<<<< HEAD
 		<key>CEBB7D8B148E4946515FD8DFEDB37952</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+=======
+>>>>>>> 6527ae3a8309374e937d44aab2d31011882a2027
 		<key>EB0ACB5E5E55675FDCBBE2A4A1322376</key>
 		<dict>
 			<key>primary</key>

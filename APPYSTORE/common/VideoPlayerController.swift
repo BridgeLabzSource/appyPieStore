@@ -23,12 +23,11 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
     var defaultModel: VideoListingModel?
     
     lazy var recommendedController: RecommendedVideoViewController = {
-        print("VideoPlayerController lazyload")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "RecommendedVideoViewController") as! RecommendedVideoViewController
         
+        viewController.mainControllerCommunicator = self.mainControllerCommunicator
         viewController.listingModel = self.defaultModel
-        //self.addAsChildViewController(childController: viewController)
         self.addChildViewController(viewController)
         return viewController
     }()
@@ -90,7 +89,7 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
     
     func playVideoContent(content: VideoListingModel) {
         videoPlayer.replaceVideo(playerModel: content)
-        if content.payType == "paid" {
+        if content.payType == AppConstants.PAID {
             let bundle = [String: Any]()
             NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
         }

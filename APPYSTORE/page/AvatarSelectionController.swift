@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toaster
 
 class AvatarSelectionController: BaseListingViewController {
     
@@ -32,13 +33,21 @@ class AvatarSelectionController: BaseListingViewController {
     }
     
     @IBAction func onAddChildTouchUp(_ sender: CustomButton) {
-        btnAction = ACTION_ADD
-        callRegistrationApiAndNavigate()
+        if Utils.isInternetAvailable() {
+            btnAction = ACTION_ADD
+            callRegistrationApiAndNavigate()
+        } else {
+            Toast(text: "NO_INTERNET_CONNECTION".localized(lang: AppConstants.LANGUAGE)).show()
+        }
     }
     
     @IBAction func onSaveContinueTouchUp(_ sender: CustomButton) {
-        btnAction = ACTION_SAVE
-        callRegistrationApiAndNavigate()
+        if Utils.isInternetAvailable() {
+            btnAction = ACTION_SAVE
+            callRegistrationApiAndNavigate()
+        } else {
+            Toast(text: "NO_INTERNET_CONNECTION".localized(lang: AppConstants.LANGUAGE)).show()
+        }
     }
     
     func callRegistrationApiAndNavigate() {

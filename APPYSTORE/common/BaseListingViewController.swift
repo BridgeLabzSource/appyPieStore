@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toaster
 
 class BaseListingViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -27,7 +28,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         registerCard()
         collectionViewCentreX = self.collectionView.center.x
         collectionViewCentreY = self.collectionView.center.y
-
+        
         self.collectionView.showsHorizontalScrollIndicator = false
         //self.collectionView.delegate = self
         
@@ -78,7 +79,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         dataFetchFramework?.onDataReceived = onDataReceived
         dataFetchFramework?.start(dataSource: getDataSource())
     }
-
+    
     func onDataReceived( status: String, result: AnyObject) {
         self.status = status
         isRequestInProgress = false
@@ -117,7 +118,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = getCell(indexPath: indexPath)
-
+        
         cell.fillCard(model: getModelToFillCard(index: indexPath))
         
         return cell

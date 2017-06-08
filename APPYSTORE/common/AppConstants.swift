@@ -27,4 +27,6 @@ class AppConstants {
     static let SMM_KEY_TRIAL_EXISTING_USER = "appyt-m"
     
     static let USER_AGENT = UIWebView().stringByEvaluatingJavaScript(from: "navigator.userAgent")!
+    
+    static let PAID = "paid"
 }

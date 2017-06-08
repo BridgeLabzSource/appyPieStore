@@ -79,7 +79,7 @@ protocol VideoDelegate {
         resetPlayerItem()
         
         showVideoThumbnail()
-        if playerModel.payType == "paid" {
+        if playerModel.payType == AppConstants.PAID {
             updateState(state: .LOCK)
             return
         }
@@ -158,7 +158,7 @@ protocol VideoDelegate {
         
         
         showVideoThumbnail()
-        if playerModel.payType == "paid" {
+        if playerModel.payType == AppConstants.PAID {
             updateState(state: .LOCK)
             return
         }
@@ -628,7 +628,7 @@ protocol VideoDelegate {
         if videoModel != nil {
             print("updateState : showVideoThumbnail")
             let imgurl = URL(string: videoModel.imagePath)
-            videoThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "profile") )
+            videoThumbnail.sd_setImage(with:imgurl, placeholderImage:#imageLiteral(resourceName: "place_holder_cards") )
             videoThumbnail.isHidden = false
         }
     }

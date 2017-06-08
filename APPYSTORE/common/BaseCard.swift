@@ -9,6 +9,8 @@
 import UIKit
 
 class BaseCard: UICollectionViewCell {
+    var mainControllerCommunicator: MainControllerCommunicator!
+    
     func fillCard(model: BaseModel) {
         
     }
