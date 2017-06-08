@@ -31,7 +31,6 @@ import UIKit
         addSubview(rootView)
         rootView.frame = self.bounds
         
-        
         DimensionManager.setTextSize1280x720(label: lblVideos, size: DimensionManager.H3)
         DimensionManager.setTextSize1280x720(label: lblSongs, size: DimensionManager.H3)
         DimensionManager.setTextSize1280x720(label: lblHistory, size: DimensionManager.H3)
@@ -48,6 +47,5 @@ import UIKit
         super.init(coder: aDecoder)
         initialize()
     }
-
 }
 

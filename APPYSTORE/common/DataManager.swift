@@ -62,6 +62,18 @@ class DataManager: NSObject {
             })
             
             
+        ///////changed.mohan
+        case PageConstants.RECOMMENDED_AUDIO_LISTING_PAGE:
+            print("Recommended data \(bundle?.count)")
+            print("Recommended data \(bundle?.keys)")
+            print("Recommended data \(bundle?.values)")
+            RecommendedAudioParser().parse(params: HttpRequestBuilder.getRecommendedAudioListingParameters(offset: String(offset), limit: String(limit), catId: bundle?[BundleConstants.CATEGORY_ID] as! String, pCatId: bundle?[BundleConstants.PARENT_CATEGORY_ID] as! String, contentId: bundle?[BundleConstants.CONTENT_ID] as! String, sequenceType: bundle?[BundleConstants.SEQUENCE_TYPE] as! String, sequenceNumber: bundle?[BundleConstants.SEQUENCE_NUMBER] as! String,lastContentId: bundle?[BundleConstants.LAST_CONTENT_ID] as? String ?? ""), completion: {
+                statusType, result in
+                
+                returndata(statusType, result!)
+            })
+            ///////////
+            
         case PageConstants.SEARCH_RESULT_PAGE:
             SearchResultParser().parse(params: HttpRequestBuilder.getSearchResultParameters(keyword: bundle?[BundleConstants.SEARCH_KEYWORD] as! String, offset: String(offset), limit: String(limit), ignoreCatId: "", isPopular: "0"), completion: {
                 statusType, result in

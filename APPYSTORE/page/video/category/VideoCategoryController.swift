@@ -39,7 +39,13 @@ class VideoCategoryController: BaseListingViewController {
     
     override func getComponentProperties() -> ComponentProperties {
         let components = ComponentProperties()
-        components.visibleIconsSet = [Item.IV_CHILD, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_SEARCH]
+        let childAge = Int((UserInfo.getInstance().selectedChild?.age)!)
+        if childAge! > 1
+        {
+           components.visibleIconsSet = [Item.IV_CHILD, Item.BTN_VIDEO, Item.BTN_HISTORY , Item.BTN_SEARCH]
+        }else{
+            components.visibleIconsSet = [Item.IV_CHILD, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_SEARCH]
+        }
         components.selectedIconsSet = [Item.BTN_VIDEO]
         return components
     }
