@@ -49,6 +49,7 @@ class ChildProgressController: BaseListingViewController,ChildSelectionInChildPr
     
     @IBOutlet weak var bottomView: UIView!
     
+   
     
     var whichCatagoryBtnIsEnabled = "video"
     var progressStatus:NVActivityIndicatorView?
@@ -77,7 +78,8 @@ class ChildProgressController: BaseListingViewController,ChildSelectionInChildPr
         backBtnAction()
         setSelectedChildNameForView()
         setAllLblSize()
-        
+        hideBtn(type: AUDIO, isHidden: true)
+        hideBtn(type: VIDEO, isHidden: true)
     }
   /*  func setCornerRaduis(){
     setCornerRaduisForViews(forWhichView: FORALL)
@@ -220,7 +222,8 @@ class ChildProgressController: BaseListingViewController,ChildSelectionInChildPr
             }
         
         }
-        
+        let size = DimensionManager.getGeneralizedHeight1280x720(height: 75)
+        collectionHeightConstraint.constant = size
         return 0
     }
     
@@ -304,7 +307,7 @@ class ChildProgressController: BaseListingViewController,ChildSelectionInChildPr
                 print("onDataReceived called", result.count)
                 self.view.setNeedsDisplay()
                 self.collectionView.reloadData()
-                self.collectionView.reloadData()
+                
             }
         } else if status == DataFetchFramework.END_OF_DATA {
             
@@ -321,6 +324,8 @@ class ChildProgressController: BaseListingViewController,ChildSelectionInChildPr
     override func handleRequestFailure() {
         //NA
         self.collectionView.reloadData()
+        DimensionManager.setTextSize1280x720(label: progressStatusLbl, size: DimensionManager.H2)
+        progressStatusLbl.text = "No Data found"
     }
     
     override func handleConnectionError() {
@@ -329,6 +334,9 @@ class ChildProgressController: BaseListingViewController,ChildSelectionInChildPr
     
     // delegate method of ChildSelectionInChildProgessVC ehwn any other child selected data is loaded for selected child
     func changeChildOnSelect(indexPath : IndexPath) {
+        progressStatusLbl.text = ""
+        dataFetchFramework?.contentList.removeAll()
+        collectionView.reloadData()
         loadData()
         setSelectedChildNameForView()
     }
@@ -440,6 +448,7 @@ class ChildProgressController: BaseListingViewController,ChildSelectionInChildPr
     //Imp method for Dynamically changing the collection view height as per the number of cell present
     func changeProgressCollectionViewHeight(){
         self.collectionHeightConstraint.constant = self.collectionView.collectionViewLayout.collectionViewContentSize.height
+        
         self.bottomView.layer.masksToBounds = true
         self.collectionView.layer.masksToBounds = true
     }
