@@ -13,11 +13,22 @@ class VideoCategoryController: BaseListingViewController {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var bundle = [String: Any]()
-        let videoCategoryModel = dataFetchFramework?.contentList[indexPath.row] as! VideoCategoryModel
+        tap1(indexPath: indexPath) { _ in
+            
+            let videoCategoryModel = self.dataFetchFramework?.contentList[indexPath.row] as! VideoCategoryModel
+            bundle[BundleConstants.CATEGORY_ID] = videoCategoryModel.categoryId
+            bundle[BundleConstants.PARENT_CATEGORY_ID] = videoCategoryModel.parentCategoryId
+            bundle[BundleConstants.CATEGORY_NAME] = videoCategoryModel.categoryName
+            NavigationManager.openVideoListingPage(mainControllerCommunicator: self.mainControllerCommunicator, bundle: bundle)
+        }
+        
+      /*  //////
+        let videoCategoryModel = self.dataFetchFramework?.contentList[indexPath.row] as! VideoCategoryModel
         bundle[BundleConstants.CATEGORY_ID] = videoCategoryModel.categoryId
         bundle[BundleConstants.PARENT_CATEGORY_ID] = videoCategoryModel.parentCategoryId
         bundle[BundleConstants.CATEGORY_NAME] = videoCategoryModel.categoryName
-        NavigationManager.openVideoListingPage(mainControllerCommunicator: mainControllerCommunicator, bundle: bundle)
+        NavigationManager.openVideoListingPage(mainControllerCommunicator: self.mainControllerCommunicator, bundle: bundle)
+        /////  */
     }
 
     override internal func getPageName() -> String {
@@ -27,6 +38,7 @@ class VideoCategoryController: BaseListingViewController {
     override func viewDidLoad() {
         dataFetchFramework = DataFetchFramework(pageName: getPageName(), pageUniqueId: "",  bundle: bundle)
         super.viewDidLoad()
+        
     }
     
     override func registerCard() {

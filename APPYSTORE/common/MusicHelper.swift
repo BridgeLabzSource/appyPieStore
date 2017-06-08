@@ -13,7 +13,7 @@ class MusicHelper {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url!)
             audioPlayer!.numberOfLoops = -1
-            audioPlayer?.volume = 1.5
+            audioPlayer?.volume = 3
             audioPlayer!.prepareToPlay()
             audioPlayer!.play()
         } catch {

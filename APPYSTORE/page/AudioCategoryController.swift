@@ -17,11 +17,15 @@ class AudioCategoryController: BaseListingViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var bundle = [String: Any]()
-        let audioCategoryModel = dataFetchFramework?.contentList[indexPath.row] as! AudioCategoryModel
-        bundle[BundleConstants.CATEGORY_ID] = audioCategoryModel.categoryId
-        bundle[BundleConstants.PARENT_CATEGORY_ID] = audioCategoryModel.parentCategoryId
-        bundle[BundleConstants.CATEGORY_NAME] = audioCategoryModel.categoryName
-        NavigationManager.openAudioListingPage(mainControllerCommunicator: mainControllerCommunicator, bundle: bundle)
+        
+        tap1(indexPath: indexPath) { _ in
+            let audioCategoryModel = self.dataFetchFramework?.contentList[indexPath.row] as! AudioCategoryModel
+            bundle[BundleConstants.CATEGORY_ID] = audioCategoryModel.categoryId
+            bundle[BundleConstants.PARENT_CATEGORY_ID] = audioCategoryModel.parentCategoryId
+            bundle[BundleConstants.CATEGORY_NAME] = audioCategoryModel.categoryName
+            NavigationManager.openAudioListingPage(mainControllerCommunicator: self.mainControllerCommunicator, bundle: bundle)
+        }
+     
     }
     
     override func getDataSource() -> DataSource {
@@ -50,6 +54,7 @@ class AudioCategoryController: BaseListingViewController {
     override func getComponentProperties() -> ComponentProperties {
         let components = ComponentProperties()
         components.visibleIconsSet = [Item.IV_CHILD, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_SEARCH]
+        components.selectedIconsSet = [Item.BTN_AUDIO]
         
         return components
     }
@@ -73,4 +78,5 @@ class AudioCategoryController: BaseListingViewController {
 //            }
 //        }
 //    }
+    
 }

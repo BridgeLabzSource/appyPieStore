@@ -19,12 +19,13 @@ class NavigationManager {
         mainControllerCommunicator.addChild(controller: viewController, area: .FULL, hideCurrentController: true)
     }
     
+    
     static func openAudioPlayerPage(mainControllerCommunicator: MainControllerCommunicator, model: AudioListingModel) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "AudioPlayerController") as! AudioPlayerController
         viewController.mainControllerCommunicator = mainControllerCommunicator
         viewController.defaultModel = model
-        mainControllerCommunicator.addChild(controller: viewController, area: .FULL)
+        mainControllerCommunicator.addChild(controller: viewController, area: .FULL, hideCurrentController: true)
     }
     
     static func openChildSelectionPage(mainControllerCommunicator: MainControllerCommunicator) {
@@ -71,7 +72,7 @@ class NavigationManager {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "AudioCategoryController") as! AudioCategoryController
         viewController.mainControllerCommunicator = mainControllerCommunicator
-        mainControllerCommunicator.addChild(controller: viewController, area:nil)
+        mainControllerCommunicator.addChild(controller: viewController, area:nil, hideCurrentController: true)
     }
     
     static func openAudioListingPage(mainControllerCommunicator: MainControllerCommunicator?, bundle : AndroidBundle) {
@@ -79,8 +80,18 @@ class NavigationManager {
         let viewController = storyboard.instantiateViewController(withIdentifier: "AudioListingController") as! AudioListingController
         viewController.bundle = bundle
         viewController.mainControllerCommunicator = mainControllerCommunicator
-        mainControllerCommunicator?.addChild(controller: viewController, area: nil)
+        mainControllerCommunicator?.addChild(controller: viewController, area: nil, hideCurrentController: true)
     }
+    
+    
+    static func openAudioListingPlayerPage(mainControllerCommunicator: MainControllerCommunicator?, bundle : AndroidBundle) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "AudioListingController") as! AudioListingController
+        viewController.bundle = bundle
+        viewController.mainControllerCommunicator = mainControllerCommunicator
+        mainControllerCommunicator?.addChild(controller: viewController, area: nil, hideCurrentController: true)
+    }
+
     ////////////////////
     
     static func openHistoryPage(mainControllerCommunicator: MainControllerCommunicator) {

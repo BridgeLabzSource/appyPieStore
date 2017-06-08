@@ -227,6 +227,30 @@ class HttpRequestBuilder: NSObject {
         ]
     }
     
+    //////////changed.mohan
+    static func getRecommendedAudioListingParameters(offset: String, limit: String, catId: String, pCatId: String, contentId: String, sequenceType: String, sequenceNumber: String, lastContentId: String) -> Parameters {
+        
+        return [
+            METHOD: "getRecommendation",
+            CONTENT_TYPE: "audios",
+            OFFSET: offset,
+            LIMIT: limit,
+            CATID: catId,
+            PCATID: pCatId,
+            CONTENT_ID: contentId,
+            SEQUENCE_TYPE: sequenceType,
+            SEQUENCE_NUMBER: sequenceNumber,
+            AGE: (UserInfo.getInstance().selectedChild?.age)!,
+            INCL_AGE: "",
+            RETURN_CONTENT_TYPE: "audios",
+            PAGEID: "audioRecommendation",
+            FLAG_AT_ITEM_AT_FIRST_POSITION: "1",
+            LAST_CONTENT_ID: lastContentId
+        ]
+    }
+    
+    ////////////////
+    
     static func getSearchResultParameters(keyword: String, offset: String, limit: String, ignoreCatId: String, isPopular: String) -> Parameters
     {
         return [METHOD: "search",

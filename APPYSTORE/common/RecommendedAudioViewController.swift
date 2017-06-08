@@ -13,12 +13,13 @@ protocol RecommendedAudioDelegate {
 }
 
 class RecommendedAudioViewController: BaseListingViewController {
-    
+    var test : Bool = true
     var delegate: RecommendedAudioDelegate?
     var currentIndex = -1
     var isClickedEnable = true
     var listingModel: AudioListingModel!
-    
+    var `as` = NSIndexPath()
+    var currentIndexPath = IndexPath()
     override func viewDidLoad() {
         var bundle1 = [String: Any]()
         
@@ -33,8 +34,13 @@ class RecommendedAudioViewController: BaseListingViewController {
         dataFetchFramework = DataFetchFramework(pageName: PageConstants.RECOMMENDED_AUDIO_LISTING_PAGE, pageUniqueId: getPageNameUniqueIdentifier(), bundle: bundle1)
         registerCard()
         super.viewDidLoad()
+      
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        
         
     }
+    
     
     override internal func getPageNameUniqueIdentifier() -> String {
         return ""
@@ -48,8 +54,8 @@ class RecommendedAudioViewController: BaseListingViewController {
         return DataSource.SERVER
     }
     
-    override func getCell(indexPath: IndexPath) -> BaseCard {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendedAudioCard", for: indexPath) as! BaseCard
+    override func getCell(indexPath: IndexPath) -> RecommendedAudioCard {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendedAudioCard", for: indexPath) as! RecommendedAudioCard
     }
     
     override func loadData() {
@@ -83,10 +89,19 @@ class RecommendedAudioViewController: BaseListingViewController {
     override func registerCard() {
         self.collectionView.register(UINib(nibName: "RecommendedAudioCard", bundle: nil), forCellWithReuseIdentifier: "RecommendedAudioCard")
     }
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = getCell(indexPath: indexPath)
+        
+    
+        cell.fillCard(model: getModelToFillCard(index: indexPath))
+           
+        return cell
+    }
+
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //  let height = collectionView.frame.size.height - DimensionManager.getGeneralizedHeight1280x720(height: 48)
-        //  let width = DimensionManager.getGeneralizedWidthIn16isto9Ratio(height: height)
+        
         let   height = 0.144*(collectionView.frame.size.height)
         let  width = 0.884*collectionView.frame.size.width
         
@@ -94,14 +109,23 @@ class RecommendedAudioViewController: BaseListingViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if isClickedEnable {
+      if isClickedEnable
+      {
             let audioListingModel = dataFetchFramework?.contentList[indexPath.row] as! AudioListingModel
+        if !audioListingModel.isSelected{
             (dataFetchFramework?.contentList[currentIndex] as! AudioListingModel).isSelected = false
             currentIndex = indexPath.row
             (dataFetchFramework?.contentList[currentIndex] as! AudioListingModel).isSelected = true
             delegate?.onContentChange(content: audioListingModel)
+            
             collectionView.reloadData()
+            
         }
+        
+        
+         
+    }
+
     }
     
     override func onDataReceived(status: String, result: AnyObject) {
@@ -109,7 +133,8 @@ class RecommendedAudioViewController: BaseListingViewController {
         currentIndex = 0
         let model = dataFetchFramework?.contentList[0] as! AudioListingModel
         model.isSelected = true
-        //delegate?.onContentChange(content: model)
+        
+       // delegate?.onContentChange(content: model)
         collectionView.reloadData()
     }
     
@@ -165,6 +190,47 @@ class RecommendedAudioViewController: BaseListingViewController {
     override func setScrollDirection() {
         self.collectionView.setScrollDirectionVertical()
     }
+    func  hideAudioEquilizerAnimation(){
+       let count = dataFetchFramework?.contentList.count
+        for  i in 0 ..< count!
+        {
+            if (dataFetchFramework?.contentList[i] as! AudioListingModel).isSelected == true
+            {let index = IndexPath(row:i,section:0)
+               if let cell = collectionView.cellForItem(at: index) as? RecommendedAudioCard
+               {  cell.hideAudioEqualizer()
+                cell.playImg.image = #imageLiteral(resourceName: "pauseAudioEquilizer")}
+            }
+        }
+ 
+    }
+    func showAudioEquilizerAnimation(){
+    let count = dataFetchFramework?.contentList.count
+        for  i in 0 ..< count!
+        {   let index = IndexPath(row:i,section:0)
+            if (dataFetchFramework?.contentList[i] as! AudioListingModel).isSelected == true
+            {
+           if let cell = collectionView.cellForItem(at: index) as? RecommendedAudioCard
+           {
+                cell.playImg.image = nil
+                cell.showAudioEqualizer()
+          
+           }
+            }else{
+                if let cell = collectionView.cellForItem(at: index) as? RecommendedAudioCard{
+                cell.hideAudioEqualizer()
+                }
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        
+        let size = DimensionManager.getGeneralizedHeight1280x720(height: 24)
+    return UIEdgeInsetsMake(size,size,size,size)
+        
+    }
+   
+    
 }
 
 

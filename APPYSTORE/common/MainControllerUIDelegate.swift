@@ -59,7 +59,7 @@ class MainControllerUIDelegate {
         initProgressBar()
     }
     
-    private func initProgressBar() {
+    func initProgressBar() {
         print("initProgressBar x = \(mainController.view.center.x) y = \(mainController.view.center.y)")
         let width = DimensionManager.getGeneralizedWidth1280x720(width: 210)
         let height = DimensionManager.getGeneralizedHeight1280x720(height: 70)
@@ -134,7 +134,6 @@ class MainControllerUIDelegate {
             mainController.childControllersList?.append(videoCategoryController)
         }
     }
-    
     
     @objc func showAudioCategoryPage() {
         if !(mainController.getCurrentViewController() is AudioCategoryController) {
@@ -273,12 +272,16 @@ class MainControllerUIDelegate {
     func makeAllItemsUnSelected() {
         mainController.topView.btnBack.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnBack.setNeedsDisplay()
+        
         mainController.topView.btnVideo.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnVideo.setNeedsDisplay()
+        
         mainController.topView.btnAudio.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnAudio.setNeedsDisplay()
+        
         mainController.topView.btnHistory.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnHistory.setNeedsDisplay()
+        
         mainController.topView.btnSearch.buttonColor = ButtonColor.GREY_COLOR
         mainController.topView.btnSearch.setNeedsDisplay()
     }
