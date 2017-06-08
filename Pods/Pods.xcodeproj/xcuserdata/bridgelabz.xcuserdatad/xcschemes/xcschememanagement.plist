@@ -34,10 +34,20 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>Toaster.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>0B73E7C4CB774F575DDE09E026169DFC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1308C94D81BA1F39BDD16159D32D87B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,7 +97,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A8ABB495B6C61AED93CFA0B24A5D1762</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C61A18B3EE340EBE3649533134F4B18D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB0ACB5E5E55675FDCBBE2A4A1322376</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FCC52AF734C451F3103953A19C129CDC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
