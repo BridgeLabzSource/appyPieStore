@@ -10,6 +10,14 @@ import UIKit
 
 class NavigationManager {
     
+    
+    static func openChildProgressPage(mainControllerCommunicator: MainControllerCommunicator) {
+        let storyboard = UIStoryboard(name: "ChildProgress", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ChildProgressController") as! ChildProgressController
+        viewController.mainControllerCommunicator = mainControllerCommunicator
+        mainControllerCommunicator.addChild(controller: viewController, area: .FULL, hideCurrentController: true)
+    }
+    
     static func openVideoPlayerPage(mainControllerCommunicator: MainControllerCommunicator, model: VideoListingModel) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "VideoPlayerController") as! VideoPlayerController

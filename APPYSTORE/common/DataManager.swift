@@ -99,6 +99,21 @@ class DataManager: NSObject {
         case PageConstants.CHILD_SELECTION_PAGE:
             //NA
             break
+            
+        case PageConstants.SELECT_CHILD_PROGRESS_PAGE:
+            let selectedChild = UserInfo.getInstance().selectedChild
+            
+            ChildProgressParser().parse(params:HttpRequestBuilder.getChildProgressParams(method: "getChildPerformance", childId: (selectedChild?.id!)!, pageId: "childPerformance"), completion:{
+                statusType, result in
+                
+                returndata(statusType, result!)
+            })
+            
+            
+        case PageConstants.SELECT_CHILD_LIST_PAGE:
+            
+            returndata(BaseParser.REQUEST_SUCCESS, UserInfo.getInstance().childList as AnyObject)
+        // 
         default:
             break
         }
@@ -130,6 +145,9 @@ class DataManager: NSObject {
             dataList = AvatarDBManager.sharedInstance.fetchAll()
         case PageConstants.CHILD_SELECTION_PAGE:
             dataList = UserInfo.getInstance().childList
+            
+        case PageConstants.SELECT_CHILD_LIST_PAGE:
+            dataList = UserInfo.getInstance().childList
             break
         default:
             break
@@ -160,6 +178,8 @@ class DataManager: NSObject {
         case PageConstants.SELECT_AVATAR_PAGE_EDIT:
             count = AvatarDBManager.sharedInstance.getRowCount(bundle: bundle)
         case PageConstants.CHILD_SELECTION_PAGE:
+            count = UserInfo.getInstance().childList.count
+        case PageConstants.SELECT_CHILD_LIST_PAGE:
             count = UserInfo.getInstance().childList.count
             break
         default:

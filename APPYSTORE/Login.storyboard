@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -52,16 +53,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4EU-Eb-pWp">
-                                                <rect key="frame" x="401" y="41" width="270" height="30"/>
+                                                <rect key="frame" x="427" y="41" width="218" height="30"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Child's name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VQs-bU-x4Z" customClass="CustomTextField" customModule="APPYSTORE" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="104" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date of birth" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FSY-yU-VZ7" customClass="CustomTextField" customModule="APPYSTORE" customModuleProvider="target">
-                                                        <rect key="frame" x="140" y="0.0" width="130" height="30"/>
+                                                        <rect key="frame" x="114" y="0.0" width="104" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -109,9 +110,18 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </stackView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross_dark" translatesAutoresizingMaskIntoConstraints="NO" id="Ldt-Ks-D70">
+                                        <rect key="frame" x="1005.5" y="13" width="53" height="53"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Ldt-Ks-D70" secondAttribute="height" multiplier="1:1" id="7WP-C6-Frs"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.80641073894584436" blue="0.188197823937859" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Ldt-Ks-D70" firstAttribute="height" secondItem="WGj-ue-hXv" secondAttribute="height" multiplier="64:720" id="7bB-3x-iiX"/>
+                                    <constraint firstItem="Ldt-Ks-D70" firstAttribute="top" secondItem="WGj-ue-hXv" secondAttribute="bottom" multiplier="16:720" id="DEa-fl-b9F"/>
+                                    <constraint firstItem="Ldt-Ks-D70" firstAttribute="trailing" secondItem="WGj-ue-hXv" secondAttribute="trailing" multiplier="1264:1280" id="MFQ-P2-Q9j"/>
                                     <constraint firstAttribute="trailing" secondItem="Kxz-vA-afg" secondAttribute="trailing" id="ajS-Hn-Hd6"/>
                                     <constraint firstItem="Kxz-vA-afg" firstAttribute="leading" secondItem="WGj-ue-hXv" secondAttribute="leading" id="gsK-Xt-rmt"/>
                                     <constraint firstItem="Kxz-vA-afg" firstAttribute="centerY" secondItem="WGj-ue-hXv" secondAttribute="centerY" id="kMW-4e-uxz"/>
@@ -140,6 +150,7 @@
                         <outlet property="containerView" destination="WGj-ue-hXv" id="cjr-Hp-Mml"/>
                         <outlet property="contentStackView" destination="4EU-Eb-pWp" id="dtK-ud-qkK"/>
                         <outlet property="firstButton" destination="SPZ-Ae-JUl" id="paI-7l-WMc"/>
+                        <outlet property="imgCross" destination="Ldt-Ks-D70" id="1I4-X9-kgR"/>
                         <outlet property="rootStackView" destination="Kxz-vA-afg" id="MKS-da-WvI"/>
                         <outlet property="rootView" destination="tDV-7x-f1c" id="9af-2c-jnB"/>
                         <outlet property="subTitleStackView" destination="iPV-NG-N1h" id="E7a-qD-eLR"/>

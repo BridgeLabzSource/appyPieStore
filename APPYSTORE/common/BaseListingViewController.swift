@@ -159,4 +159,26 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
         dataFetchFramework?.reset()
         dataFetchFramework?.start(dataSource: getDataSource())
     }
+    
+    func showAnimationOnClick(indexPath : IndexPath,completion: @escaping () -> Void)    {
+        
+        let cell = self.collectionView?.cellForItem(at: indexPath)
+        
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: [],
+                       animations: {
+                        cell!.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                        
+        },
+                       completion: { finished in
+                        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: .curveEaseInOut,
+                                       animations: {
+                                        cell!.transform = CGAffineTransform(scaleX: 1, y: 1)
+                        },
+                                       completion: nil
+                        )
+                        completion()
+        }
+        )
+    }
+
 }

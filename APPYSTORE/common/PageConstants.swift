@@ -52,6 +52,10 @@ class PageConstants: NSObject {
     static let  KEY_SELECT_AVATAR_SERVER_OFFSET = "KEY_SELECT_AVATAR_SERVER_OFFSET"
     
     static let CHILD_SELECTION_PAGE = "Child selection page"
+    //added
+    static let SELECT_CHILD_LIST_PAGE = "Child list page"
+    static let SELECT_CHILD_PROGRESS_PAGE = "Child progress"
+    //
     
     static let RECOMMENDED_AUDIO_LISTING_PAGE = "Recommended Audio Listing Page"
 

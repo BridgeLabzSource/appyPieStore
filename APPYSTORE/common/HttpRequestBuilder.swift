@@ -96,7 +96,8 @@ class HttpRequestBuilder: NSObject {
     
     static func getHeaders() -> HTTPHeaders {
         
-        let headers: HTTPHeaders = [
+        
+            let headers: HTTPHeaders = [
             X_APPY_CONTENT_TYPE:"application/x-www-from-urlencoded",
                X_APPY_IMEI: VENDOR_ID_VALUE,
                X_APPY_PCP_ID: PCP_VALUE,// get from userdefaults
@@ -136,7 +137,7 @@ class HttpRequestBuilder: NSObject {
                X_APPY_UTM_SOURCE: "abcd",
                X_APPY_UTM_MEDIUM: "abcd",
                X_APPY_SCREEN_NAME: "",
-                                   ]
+                                   ] 
         return headers
     }
     
@@ -312,5 +313,13 @@ class HttpRequestBuilder: NSObject {
 
         ]
     }
+    //added
+    static func getChildProgressParams(method:String,childId:String,pageId:String) ->Parameters{
+        
+        
+        return [METHOD:method,CHILD_ID:childId,PAGEID:pageId]
+        
+    }
+
     
 }

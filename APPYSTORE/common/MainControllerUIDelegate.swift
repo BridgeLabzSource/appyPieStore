@@ -88,7 +88,7 @@ class MainControllerUIDelegate: NSObject, UITextFieldDelegate {
     }
     
     func setButtonsClickLstener() {
-        
+        mainController.topView.imageTapGesture.addTarget(self, action: #selector(handleChildProgressButtonClick))
         mainController.topView.btnBack.addTarget(self, action: #selector(handleBackButtonClick), for: .touchUpInside)
         mainController.topView.btnVideo.addTarget(self, action: #selector(showVideoCategoryPage), for: .touchUpInside)
         mainController.topView.btnAudio.addTarget(self, action: #selector(showAudioCategoryPage), for: .touchUpInside)
@@ -111,6 +111,14 @@ class MainControllerUIDelegate: NSObject, UITextFieldDelegate {
         
         return true
     }
+    
+    
+    @objc func handleChildProgressButtonClick(_ controller: AnyObject) {
+        
+        NavigationManager.openChildProgressPage(mainControllerCommunicator: mainController)
+        
+    }
+
     
     @objc func handleBackButtonClick(_ controller: AnyObject) {
         let currentViewController = mainController.getCurrentViewController()
@@ -255,7 +263,12 @@ class MainControllerUIDelegate: NSObject, UITextFieldDelegate {
     
     func removeChildController(childController: UIViewController?){
         if  childController != nil {
-            if childController is VideoCategoryController || childController is HistoryController || childController is AudioCategoryController
+            if childController is VideoCategoryController || childController is HistoryController || childController is AudioCategoryController ||
+            //Added
+            
+            childController is ChildProgressController
+            ///
+
                 {
                     childController?.view.isHidden = true
                 } else {
@@ -309,6 +322,19 @@ class MainControllerUIDelegate: NSObject, UITextFieldDelegate {
                 mainController.topView.btnSearch.isHidden = false
             case Item.BTN_FAB:
                 fabButton.isHidden = false
+            case Item.IMG_CHILD:
+                let selectedChildImage = UserInfo.getInstance().selectedChild?.avatarImage
+                let SelectedChildName  = UserInfo.getInstance().selectedChild?.name
+                if let image_url = selectedChildImage{
+                    let  url = URL(string: image_url)
+                    mainController.topView.imgChild.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "profile") )
+                    mainController.topView.childNameLbl.text = SelectedChildName
+                    DimensionManager.setTextSize1280x720(label: mainController.topView.childNameLbl, size: DimensionManager.H3)
+                }else{
+                    mainController.topView.imgChild.image = #imageLiteral(resourceName: "profile")
+                }
+                mainController.topView.childNameLbl.isHidden = false
+
             default:
                 break
             }

@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		0A0A4F3D1ED9AB5500304080 /* ProtocolDefinedFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0A4F3C1ED9AB5500304080 /* ProtocolDefinedFunc.swift */; };
 		0A1C8D331EB966A20094DA3F /* AudioCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1C8D321EB966A20094DA3F /* AudioCategoryController.swift */; };
+		0A22E3581F03CEC500B79B65 /* ChildProgressParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A22E34F1F03CEC500B79B65 /* ChildProgressParser.swift */; };
+		0A22E3591F03CEC500B79B65 /* ChildSelectionInChildProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A22E3501F03CEC500B79B65 /* ChildSelectionInChildProgressController.swift */; };
+		0A22E35A1F03CEC500B79B65 /* ChildProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A22E3511F03CEC500B79B65 /* ChildProgressController.swift */; };
+		0A22E35B1F03CEC500B79B65 /* ChildProgress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A22E3521F03CEC500B79B65 /* ChildProgress.storyboard */; };
+		0A22E35C1F03CEC500B79B65 /* ChildProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A22E3531F03CEC500B79B65 /* ChildProgressModel.swift */; };
+		0A22E35D1F03CEC500B79B65 /* ChildProgress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A22E3541F03CEC500B79B65 /* ChildProgress.xib */; };
+		0A22E35E1F03CEC500B79B65 /* ChildProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A22E3551F03CEC500B79B65 /* ChildProgress.swift */; };
+		0A22E35F1F03CEC500B79B65 /* ChildProgressCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A22E3561F03CEC500B79B65 /* ChildProgressCustomCell.swift */; };
+		0A22E3601F03CEC500B79B65 /* ChildProgressApiResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A22E3571F03CEC500B79B65 /* ChildProgressApiResponseModel.swift */; };
 		0A2A6CD51ED7F11100C7F342 /* PlayerStateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2A6CD41ED7F11100C7F342 /* PlayerStateCard.swift */; };
 		0A2E51E91ECDCB990062EB6F /* backmusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0A2E51E81ECDCB990062EB6F /* backmusic.mp3 */; };
 		0A302B101ECEF0F500C44414 /* MusicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A302B0F1ECEF0F500C44414 /* MusicHelper.swift */; };
@@ -174,6 +183,15 @@
 /* Begin PBXFileReference section */
 		0A0A4F3C1ED9AB5500304080 /* ProtocolDefinedFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtocolDefinedFunc.swift; sourceTree = "<group>"; };
 		0A1C8D321EB966A20094DA3F /* AudioCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCategoryController.swift; sourceTree = "<group>"; };
+		0A22E34F1F03CEC500B79B65 /* ChildProgressParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressParser.swift; sourceTree = "<group>"; };
+		0A22E3501F03CEC500B79B65 /* ChildSelectionInChildProgressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildSelectionInChildProgressController.swift; sourceTree = "<group>"; };
+		0A22E3511F03CEC500B79B65 /* ChildProgressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressController.swift; sourceTree = "<group>"; };
+		0A22E3521F03CEC500B79B65 /* ChildProgress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChildProgress.storyboard; sourceTree = "<group>"; };
+		0A22E3531F03CEC500B79B65 /* ChildProgressModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressModel.swift; sourceTree = "<group>"; };
+		0A22E3541F03CEC500B79B65 /* ChildProgress.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildProgress.xib; sourceTree = "<group>"; };
+		0A22E3551F03CEC500B79B65 /* ChildProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgress.swift; sourceTree = "<group>"; };
+		0A22E3561F03CEC500B79B65 /* ChildProgressCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressCustomCell.swift; sourceTree = "<group>"; };
+		0A22E3571F03CEC500B79B65 /* ChildProgressApiResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProgressApiResponseModel.swift; sourceTree = "<group>"; };
 		0A2A6CD41ED7F11100C7F342 /* PlayerStateCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStateCard.swift; sourceTree = "<group>"; };
 		0A2E51E81ECDCB990062EB6F /* backmusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = backmusic.mp3; path = ../backmusic.mp3; sourceTree = "<group>"; };
 		0A302B0F1ECEF0F500C44414 /* MusicHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicHelper.swift; sourceTree = "<group>"; };
@@ -362,6 +380,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A22E34E1F03CE9F00B79B65 /* ChildProgress */ = {
+			isa = PBXGroup;
+			children = (
+				0A22E34F1F03CEC500B79B65 /* ChildProgressParser.swift */,
+				0A22E3501F03CEC500B79B65 /* ChildSelectionInChildProgressController.swift */,
+				0A22E3511F03CEC500B79B65 /* ChildProgressController.swift */,
+				0A22E3521F03CEC500B79B65 /* ChildProgress.storyboard */,
+				0A22E3531F03CEC500B79B65 /* ChildProgressModel.swift */,
+				0A22E3541F03CEC500B79B65 /* ChildProgress.xib */,
+				0A22E3551F03CEC500B79B65 /* ChildProgress.swift */,
+				0A22E3561F03CEC500B79B65 /* ChildProgressCustomCell.swift */,
+				0A22E3571F03CEC500B79B65 /* ChildProgressApiResponseModel.swift */,
+			);
+			name = ChildProgress;
+			sourceTree = "<group>";
+		};
 		0A2A6CD31ED7F07C00C7F342 /* PlayerStateCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,6 +559,7 @@
 		0AD5536D1E5DA958005ECA4A /* page */ = {
 			isa = PBXGroup;
 			children = (
+				0A22E34E1F03CE9F00B79B65 /* ChildProgress */,
 				0A2A6CD31ED7F07C00C7F342 /* PlayerStateCard */,
 				0A302B171ECF6EF500C44414 /* Recommandation */,
 				738EEE711EA4FEEF00A50038 /* loginAndRegistration */,
@@ -813,6 +848,7 @@
 				736A40FD1E891A3000A4C038 /* VideoListingCard.xib in Resources */,
 				70A36E4D1E6148BE002B9296 /* CommonOverlayView.xib in Resources */,
 				0A6262D51ED7F3AE008AA5E1 /* PlayerStateCard.xib in Resources */,
+				0A22E35B1F03CEC500B79B65 /* ChildProgress.storyboard in Resources */,
 				0A5E1C651E7026B800537F84 /* kg_miss_kindy_chunky.ttf in Resources */,
 				736D42911E9FC2F100ACDD0F /* TagsCard.xib in Resources */,
 				0A302B151ECF272300C44414 /* button_click.mp3 in Resources */,
@@ -826,6 +862,7 @@
 				0A80DA201E702C5E00939443 /* TopBarOverlay.xib in Resources */,
 				738C89CE1EA5D12C001C9724 /* Login.storyboard in Resources */,
 				73E0BA1F1EB88ADA00E2E34F /* PageData.plist in Resources */,
+				0A22E35D1F03CEC500B79B65 /* ChildProgress.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -914,6 +951,7 @@
 				7370B8211E9DED3B00D91ABA /* RecommendedVideoViewController.swift in Sources */,
 				73A3BB211E960AEF00D2487A /* AppConstants.swift in Sources */,
 				70AD5AF01E6E71CD003C2536 /* HistoryParser.swift in Sources */,
+				0A22E35E1F03CEC500B79B65 /* ChildProgress.swift in Sources */,
 				70AD5AE71E6E7129003C2536 /* DataManager.swift in Sources */,
 				7371FA011E936898009241FF /* KCFloatingActionButtonDelegate.swift in Sources */,
 				0A80DA261E702DA700939443 /* BottomBarOverlay.swift in Sources */,
@@ -957,10 +995,12 @@
 				736DC0C21EA9CDC700347CBA /* ButtonColor.swift in Sources */,
 				73B657521E8BCFAD00E7D582 /* BaseViewController.swift in Sources */,
 				7392A7861E94C96200A6ED32 /* VideoDBManager.swift in Sources */,
+				0A22E35F1F03CEC500B79B65 /* ChildProgressCustomCell.swift in Sources */,
 				736BF5AB1EC1DA900027FEC2 /* KeychainManager.swift in Sources */,
 				7381F70D1EBB5C610073F12A /* OtpVerificatioResponsenModel.swift in Sources */,
 				738EEE6E1EA4BF3000A50038 /* AppNavigationHandler.swift in Sources */,
 				0A8F790C1E6971FD00720DB8 /* VideoCategoryCard.swift in Sources */,
+				0A22E3601F03CEC500B79B65 /* ChildProgressApiResponseModel.swift in Sources */,
 				7371F9FE1E936898009241FF /* KCFABViewController.swift in Sources */,
 				739A82591EA9EE92008F9001 /* AvatarModel.swift in Sources */,
 				0A5E1C641E701C2D00537F84 /* UILabelExtension.swift in Sources */,
@@ -985,6 +1025,7 @@
 				0A5374AA1E606B9700F198AD /* DimensionManager.swift in Sources */,
 				0AAD2F051E5C48EF00B504A3 /* APPYSTORE.xcdatamodeld in Sources */,
 				0A72615E1E6D30600023883F /* StringExtension.swift in Sources */,
+				0A22E35C1F03CEC500B79B65 /* ChildProgressModel.swift in Sources */,
 				0AF47EB01EBB3E4D0061FD8B /* AudioCategoryCard.swift in Sources */,
 				7368B41F1EADB40C00EFAF06 /* CustomUiSlider.swift in Sources */,
 				70AD5AF21E6E7360003C2536 /* SearchResultController.swift in Sources */,
@@ -994,6 +1035,7 @@
 				73638FAC1E8A57EC0089619B /* CustomViewLayer.swift in Sources */,
 				0AFEFA801ECFFC2F001F350C /* AudioPlayerHelper.swift in Sources */,
 				70AD5AE61E6E7129003C2536 /* HttpRequestBuilder.swift in Sources */,
+				0A22E3581F03CEC500B79B65 /* ChildProgressParser.swift in Sources */,
 				7392A7841E94C95900A6ED32 /* HistoryDBManager.swift in Sources */,
 				736A40FC1E891A3000A4C038 /* VideoListingCard.swift in Sources */,
 				F46267131E77AF7000302ACF /* UserInfo.swift in Sources */,
@@ -1003,6 +1045,7 @@
 				737850511EB9E6F700ADE792 /* AuthenticationUtil.swift in Sources */,
 				7366E8951E8D23BA002A09F2 /* CustomLabel.swift in Sources */,
 				70AD5AEE1E6E71CD003C2536 /* VideoListingModel.swift in Sources */,
+				0A22E3591F03CEC500B79B65 /* ChildSelectionInChildProgressController.swift in Sources */,
 				0A8A58A61E683F2100A93DD2 /* VideoCategoryController.swift in Sources */,
 				7381F7091EBB2AC80073F12A /* OtpVerificationPopUp.swift in Sources */,
 				0A0A4F3D1ED9AB5500304080 /* ProtocolDefinedFunc.swift in Sources */,
@@ -1010,6 +1053,7 @@
 				0A7261631E6D30AE0023883F /* CustomButton.swift in Sources */,
 				0AEF723B1EC087950085CA88 /* AudioListingParser.swift in Sources */,
 				736D42871E9F544F00ACDD0F /* UITextFieldExtension.swift in Sources */,
+				0A22E35A1F03CEC500B79B65 /* ChildProgressController.swift in Sources */,
 				7371A2E31E7BB293009B2894 /* ArrayExtension.swift in Sources */,
 				7360D88A1E7A947500C662DE /* LoginParserListener.swift in Sources */,
 				73967E7D1E893BF100A9A81B /* UICollectionViewExtension.swift in Sources */,

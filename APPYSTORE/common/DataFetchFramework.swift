@@ -267,9 +267,12 @@ class DataFetchFramework {
     
     func addToContentList(contentList: [BaseModel]) {
         if contentList.count > 0 {
-            self.contentList.append(contentsOf: contentList)
-        }
-    }
+            if pageName == PageConstants.SELECT_CHILD_PROGRESS_PAGE
+            {   self.contentList.removeAll()
+                self.contentList.append(contentsOf: contentList)
+            }else
+            {self.contentList.append(contentsOf: contentList)}
+        }    }
     
     func updateBundle(keys:[String], values: [Any]) {
         var i = 0

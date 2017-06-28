@@ -9,7 +9,7 @@
 import Foundation
 
 enum Item {
-    case BTN_BACK; case BTN_SEARCH; case BTN_FAB; case BTN_CART; case BTN_VIDEO; case BTN_AUDIO;case BTN_HISTORY; case BTN_WORKSHEET; case TV_PAGE_TITLE; case TF_SEARCH; case IV_CHILD
+    case BTN_BACK; case BTN_SEARCH; case BTN_FAB; case BTN_CART; case BTN_VIDEO; case BTN_AUDIO;case BTN_HISTORY; case BTN_WORKSHEET; case TV_PAGE_TITLE; case TF_SEARCH; case IV_CHILD; case IMG_CHILD
 }
 
 enum FabItem {

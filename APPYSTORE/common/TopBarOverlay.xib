@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,6 +18,8 @@
                 <outlet property="btnHistory" destination="CO8-Kf-e0a" id="45P-SG-3aI"/>
                 <outlet property="btnSearch" destination="df7-p0-iBS" id="WgU-3P-dcO"/>
                 <outlet property="btnVideo" destination="gU4-UX-bvm" id="ixF-MK-p1H"/>
+                <outlet property="childNameLbl" destination="7sO-fH-ztk" id="ILr-EI-voI"/>
+                <outlet property="imageTapGesture" destination="lke-ZE-KPz" id="F9Y-NJ-1bq"/>
                 <outlet property="imgChild" destination="SkT-Dj-8Bs" id="gfC-Dh-vv6"/>
                 <outlet property="lblHistory" destination="s4O-MQ-YV6" id="5AN-Ie-Y9S"/>
                 <outlet property="lblSongs" destination="fXW-in-hVp" id="kkY-9S-OqO"/>
@@ -33,6 +35,10 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="SkT-Dj-8Bs">
                     <rect key="frame" x="32" y="32" width="104" height="104"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="lke-ZE-KPz" appends="YES" id="3Oj-RN-i3m"/>
+                    </connections>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU4-UX-bvm" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
                     <rect key="frame" x="404" y="32" width="104" height="104"/>
@@ -99,10 +105,17 @@
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Fb-N5-zdH" customClass="CustomButton" customModule="APPYSTORE" customModuleProvider="target">
                     <rect key="frame" x="32" y="32" width="104" height="104"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="back"/>
                     </userDefinedRuntimeAttributes>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sO-fH-ztk">
+                    <rect key="frame" x="6" y="152" width="156" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <constraints>
                 <constraint firstItem="SkT-Dj-8Bs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="32:1280" id="1se-JS-Tty"/>
@@ -110,6 +123,7 @@
                 <constraint firstItem="CO8-Kf-e0a" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="6TR-W7-aGG"/>
                 <constraint firstItem="s4O-MQ-YV6" firstAttribute="centerX" secondItem="CO8-Kf-e0a" secondAttribute="centerX" id="ARv-Z1-kXx"/>
                 <constraint firstItem="s4O-MQ-YV6" firstAttribute="top" secondItem="vrL-Bc-S1y" secondAttribute="top" id="DIe-u1-SJP"/>
+                <constraint firstItem="7sO-fH-ztk" firstAttribute="width" secondItem="7Fb-N5-zdH" secondAttribute="width" multiplier="1.5" id="FyW-au-Mho"/>
                 <constraint firstItem="gU4-UX-bvm" firstAttribute="top" secondItem="SkT-Dj-8Bs" secondAttribute="top" id="Goz-vr-boN"/>
                 <constraint firstItem="Ezb-eT-Rvp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="588:1280" id="HDi-QJ-Pmb"/>
                 <constraint firstItem="Ezb-eT-Rvp" firstAttribute="height" secondItem="SkT-Dj-8Bs" secondAttribute="height" id="Ib9-PC-NOG"/>
@@ -125,11 +139,13 @@
                 <constraint firstItem="df7-p0-iBS" firstAttribute="width" secondItem="SkT-Dj-8Bs" secondAttribute="width" id="ZKe-pX-3Zi"/>
                 <constraint firstItem="CO8-Kf-e0a" firstAttribute="top" secondItem="SkT-Dj-8Bs" secondAttribute="top" id="baq-BH-iLQ"/>
                 <constraint firstItem="gU4-UX-bvm" firstAttribute="top" secondItem="vrL-Bc-S1y" secondAttribute="top" multiplier="32:152" id="fYT-JX-qJu"/>
+                <constraint firstItem="7sO-fH-ztk" firstAttribute="centerX" secondItem="7Fb-N5-zdH" secondAttribute="centerX" id="gU2-Yb-XhF"/>
                 <constraint firstItem="CO8-Kf-e0a" firstAttribute="width" secondItem="SkT-Dj-8Bs" secondAttribute="width" id="hUo-00-HFu"/>
                 <constraint firstItem="fXW-in-hVp" firstAttribute="top" secondItem="vrL-Bc-S1y" secondAttribute="top" id="jYD-EK-dqH"/>
                 <constraint firstItem="fXW-in-hVp" firstAttribute="centerX" secondItem="Ezb-eT-Rvp" secondAttribute="centerX" id="kRe-QI-Ahe"/>
                 <constraint firstItem="fXW-in-hVp" firstAttribute="width" secondItem="Ezb-eT-Rvp" secondAttribute="width" multiplier="1.5" id="nJ4-BF-h3R"/>
                 <constraint firstItem="df7-p0-iBS" firstAttribute="top" secondItem="SkT-Dj-8Bs" secondAttribute="top" id="nRw-8c-hAJ"/>
+                <constraint firstItem="7sO-fH-ztk" firstAttribute="top" secondItem="vrL-Bc-S1y" secondAttribute="top" id="ny6-Cn-LfA"/>
                 <constraint firstItem="s4O-MQ-YV6" firstAttribute="width" secondItem="CO8-Kf-e0a" secondAttribute="width" multiplier="1.5" id="ok2-6g-5BR"/>
                 <constraint firstItem="gU4-UX-bvm" firstAttribute="width" secondItem="SkT-Dj-8Bs" secondAttribute="width" id="qUc-sz-RCC"/>
                 <constraint firstItem="CO8-Kf-e0a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="772:1280" id="rrl-k1-KAi"/>
@@ -148,6 +164,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-392" y="-210"/>
         </view>
+        <tapGestureRecognizer id="lke-ZE-KPz"/>
     </objects>
     <resources>
         <image name="audio" width="48" height="48"/>
