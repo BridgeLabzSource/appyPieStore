@@ -14,7 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BottomBarOverlay" customModule="APPYSTORE" customModuleProvider="target">
             <connections>
                 <outlet property="imageIcon" destination="h50-OM-BvM" id="HoU-fh-gIL"/>
-                <outlet property="playerButton" destination="9jT-Ht-fdZ" id="E6Z-Hn-X8H"/>
+                <outlet property="playerButton" destination="9jT-Ht-fdZ" id="dFW-HJ-gmo"/>
                 <outlet property="playerView" destination="R4Y-aa-yNi" id="jtw-zl-S3N"/>
                 <outlet property="rootView" destination="iN0-l3-epB" id="g9O-fO-vI9"/>
                 <outlet property="songTitle" destination="DIF-SN-u0s" id="eks-3n-fwP"/>
@@ -42,22 +42,25 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jT-Ht-fdZ">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jT-Ht-fdZ">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="92"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="playButton:" destination="-1" eventType="touchUpInside" id="Ka5-Hq-e09"/>
+                                <action selector="playButton:" destination="-1" eventType="touchUpInside" id="TeW-sW-r0I"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.52623922413793101" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="9jT-Ht-fdZ" firstAttribute="leading" secondItem="R4Y-aa-yNi" secondAttribute="leading" id="6yg-O0-YlX"/>
                         <constraint firstItem="h50-OM-BvM" firstAttribute="bottom" secondItem="R4Y-aa-yNi" secondAttribute="bottom" multiplier="84:92" id="8U5-8M-fF9"/>
+                        <constraint firstAttribute="bottom" secondItem="9jT-Ht-fdZ" secondAttribute="bottom" id="C6b-i1-WCR"/>
                         <constraint firstItem="DIF-SN-u0s" firstAttribute="bottom" secondItem="R4Y-aa-yNi" secondAttribute="bottom" multiplier="84:92" id="IWO-H0-U8e"/>
                         <constraint firstItem="DIF-SN-u0s" firstAttribute="top" secondItem="R4Y-aa-yNi" secondAttribute="bottom" multiplier="8:92" id="P8a-KE-Ofn"/>
+                        <constraint firstItem="9jT-Ht-fdZ" firstAttribute="top" secondItem="R4Y-aa-yNi" secondAttribute="top" id="Xq2-j1-LBc"/>
                         <constraint firstItem="h50-OM-BvM" firstAttribute="top" secondItem="R4Y-aa-yNi" secondAttribute="bottom" multiplier="8:92" id="igw-iU-49B"/>
                         <constraint firstItem="h50-OM-BvM" firstAttribute="leading" secondItem="R4Y-aa-yNi" secondAttribute="trailing" multiplier="8:480" id="kqy-aj-7v1"/>
+                        <constraint firstAttribute="trailing" secondItem="9jT-Ht-fdZ" secondAttribute="trailing" id="oSq-Fd-xBv"/>
                         <constraint firstItem="DIF-SN-u0s" firstAttribute="trailing" secondItem="R4Y-aa-yNi" secondAttribute="trailing" multiplier="360:480" id="uVs-ZE-0Hx"/>
                         <constraint firstItem="DIF-SN-u0s" firstAttribute="leading" secondItem="R4Y-aa-yNi" secondAttribute="trailing" multiplier="92:480" id="wDM-SS-uHF"/>
                     </constraints>

@@ -26,23 +26,25 @@ var hideMusicEquilizer = true
     @IBOutlet weak var songTitle: UILabel!
     
     var audioEqualizerView: NVActivityIndicatorView?
-    
+
     func initialize()
     {
-       
+        
         UINib(nibName: "BottomBarOverlay", bundle: nil).instantiate(withOwner: self, options: nil)
         
         _ = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(self.updatePlayerView), userInfo: nil, repeats: true);
         
+        self.playerView.bringSubview(toFront: playerButton)
+        
         self.playerView.updateFocusIfNeeded()
         self.playerView.updateConstraints()
-
+        
         playerView.layer.cornerRadius = 25
         playerButton.layer.cornerRadius = 25
         playerView.clipsToBounds = true
         
         DimensionManager.setTextSize1280x720(label: songTitle, size: DimensionManager.H3)
-
+        
         addSubview(rootView)
         rootView.frame = self.bounds
     }
@@ -60,18 +62,17 @@ var hideMusicEquilizer = true
     required init?(coder aDecoder: NSCoder)
     {
         print("In required init")
-
+        
         super.init(coder: aDecoder)
         initialize()
         initAudioEqualizerProgress()
     }
     
     @IBAction func playButton(_ sender: UIButton) {
-
-    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
         
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
     }
-
+    
     func setSongTitle(playerModel: AudioListingModel)
     {
         print("Song Name===========>",playerModel.title)
@@ -84,10 +85,10 @@ var hideMusicEquilizer = true
         let frame = CGRect(x: 170, y: 10, width: self.rootView.frame.width, height: self.rootView.frame.height * 0.3)
         
         print("\n size:",frame)
-
+        
         audioEqualizerView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.audioEqualizer, color: UIColor.green, padding: CGFloat(0))
     }
-
+    
     func updatePlayerView() {
         if songname == ""
         {
@@ -125,3 +126,4 @@ var hideMusicEquilizer = true
         rootView.addSubview(audioEqualizerView!)
     }
 }
+

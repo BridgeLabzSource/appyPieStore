@@ -20,7 +20,7 @@ class AudioPlayerController: BaseViewController, AudioDelegate,RecommendedAudioD
     
     var defaultModel: AudioListingModel?
     var bottomBar1 = BottomBarOverlay()
-
+    
     lazy var recommendedController: RecommendedAudioViewController = {
         print("AudioPlayerController lazyload")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -31,7 +31,7 @@ class AudioPlayerController: BaseViewController, AudioDelegate,RecommendedAudioD
         self.addChildViewController(viewController)
         return viewController
     }()
-
+    
     func addAsChildViewController(childController: BaseViewController){
         print("VideoPlayerController addAsChildViewController")
         addChildViewController(childController)
@@ -41,7 +41,7 @@ class AudioPlayerController: BaseViewController, AudioDelegate,RecommendedAudioD
         childController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         childController.didMove(toParentViewController: self)
     }
-
+    
     override func getPageName() -> String {
         return PageConstants.AUDIO_PLAYER_PAGE
     }
@@ -56,24 +56,22 @@ class AudioPlayerController: BaseViewController, AudioDelegate,RecommendedAudioD
         
         return components
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         audioPlayer.delegate = self
         
         addAsChildViewController(childController: recommendedController)
         
-        print("AudioPlayerController viewDidLoad====",defaultModel?.imagePath)
-  
-         recommendedController.delegate = self
+        recommendedController.delegate = self
         
         self.view.bringSubview(toFront: backButton)
         backButton.addTarget(self, action: #selector(handleBackButtonClick), for: .touchUpInside)
     }
-
+    
     func handleBackButtonClick() {
         print("AudioPlayerController handleBackButtonClick")
-          
+        
         displayAudioTitle(content: defaultModel!)
         count = 0
         mainControllerCommunicator?.performBackButtonClick(self)
@@ -87,7 +85,7 @@ class AudioPlayerController: BaseViewController, AudioDelegate,RecommendedAudioD
             NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
         }
     }
-
+    
     func displayAudioTitle(content: AudioListingModel) {
         print(content.downloadUrl)
         bottomBar1.setSongTitle(playerModel: content)
@@ -125,7 +123,7 @@ class AudioPlayerController: BaseViewController, AudioDelegate,RecommendedAudioD
     }
     
     func onContentChange(content: AudioListingModel) {
-      playAudioContent(content: content)
+        playAudioContent(content: content)
     }
     
 }
