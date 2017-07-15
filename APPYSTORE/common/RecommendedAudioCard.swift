@@ -8,10 +8,11 @@
 
 import Foundation
 import UIKit
+import NVActivityIndicatorView
 
-class RecommendedAudioCard: BaseCard {
+ class RecommendedAudioCard: BaseCard {
     
-    
+    var audioEqualizer : NVActivityIndicatorView?
     
     @IBOutlet weak var rootView: UIView!
     
@@ -24,35 +25,49 @@ class RecommendedAudioCard: BaseCard {
     
     override func awakeFromNib() {
         
+         initProgressBar()
         
         
     }
+    
     
     override func fillCard(model: BaseModel) {
         let audioListingModel = model as! AudioListingModel
-        playImg.image = #imageLiteral(resourceName: "song_icon_white")
+        
         audioTitle.text = audioListingModel.title
         if audioListingModel.isSelected {
-            //self.backgroundColor = UIColor.green
+            self.audioTitle.textColor = UIColor.green
         } else {
-            // self.backgroundColor = UIColor.white
+             self.audioTitle.textColor = UIColor.black
         }
         
         if audioListingModel.payType == "paid" {
-            // Utils.addFilterToView(imgThumbnail)
-        } else {
-            // Utils.removeFilterFromView(imgThumbnail)
+          
+             audioTitle.textColor = UIColor.lightGray
+             playImg.image = #imageLiteral(resourceName: "lock_icon")
+        } else {playImg.image = nil
+            if !audioListingModel.isSelected{
+                playImg.image = #imageLiteral(resourceName: "song_icon_white")
+            }
+            
+        }
+        if audioListingModel.isSelected && audioListingModel.payType != "paid"{
+        showAudioEqualizer()
+        }else{
+        hideAudioEqualizer()
         }
         
+      
     }
     
-    
+    func currentAudio(){
+    }
+    func nextAudio(){
+        
+    }
     override func draw(_ rect: CGRect) {
         
-        
-        
-        ////////
-        rootView.layer.cornerRadius = 2.0
+        rootView.layer.cornerRadius = rootView.frame.height/2
         rootView.layer.borderWidth = 1.0
         rootView.layer.borderColor = UIColor.clear.cgColor
         rootView.layer.masksToBounds = true
@@ -60,20 +75,33 @@ class RecommendedAudioCard: BaseCard {
         rootView.layer.shadowColor = UIColor.lightGray.cgColor
         rootView.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         rootView.layer.shadowRadius = 0
-        // rootView.layer.shadowOpacity = 1.0
+        
         rootView.layer.masksToBounds = false
         rootView.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
-        //////
-        let radius = DimensionManager.convertPixelToPoint(pixel: DimensionManager.getGeneralizedHeight1280x720(height: 164))
+       
         DimensionManager.setTextSize1280x720(label: audioTitle, size: DimensionManager.H4)
-        rootView.layer.cornerRadius = radius
-        showShadowRightBottom()
-        //////
-        //imageView.image = #imageLiteral(resourceName: "slashScreenpic")
-        //        playImg.layer.cornerRadius = playImg.frame.width/2
-        //        playImg.layer.borderWidth = 2
-        //        playImg.layer.borderColor =  UIColor.orange.cgColor
-        //        
+      
+        
+        
+        
+    }
+     func initProgressBar() {
+     
+        let x = DimensionManager.getGeneralizedWidthIn4isto3Ratio(height: 1.4)
+        let y = DimensionManager.getGeneralizedHeight1280x720(height: 4)
+        let size = DimensionManager.getGeneralizedHeight1280x720(height: 50)
+        let frame = CGRect(x: x, y: y, width: size, height: size)
+        
+        audioEqualizer = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType.audioEqualizer, color: UIColor.green, padding: CGFloat(0))
+    }
+    func showAudioEqualizer(){
+        
+        self.audioEqualizer?.startAnimating()
+        self.playImg?.addSubview(self.audioEqualizer!)
+    }
+    func hideAudioEqualizer(){
+        self.audioEqualizer?.stopAnimating()
+        self.audioEqualizer?.removeFromSuperview()
     }
     
 }

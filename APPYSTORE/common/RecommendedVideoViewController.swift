@@ -91,6 +91,7 @@ class RecommendedVideoViewController: BaseListingViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if isClickedEnable {
+          
             let videoListingModel = dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel
             (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = false
             currentIndex = indexPath.row

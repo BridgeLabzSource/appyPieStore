@@ -13,11 +13,22 @@ class VideoCategoryController: BaseListingViewController {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var bundle = [String: Any]()
-        let videoCategoryModel = dataFetchFramework?.contentList[indexPath.row] as! VideoCategoryModel
+        tap1(indexPath: indexPath) { _ in
+            
+            let videoCategoryModel = self.dataFetchFramework?.contentList[indexPath.row] as! VideoCategoryModel
+            bundle[BundleConstants.CATEGORY_ID] = videoCategoryModel.categoryId
+            bundle[BundleConstants.PARENT_CATEGORY_ID] = videoCategoryModel.parentCategoryId
+            bundle[BundleConstants.CATEGORY_NAME] = videoCategoryModel.categoryName
+            NavigationManager.openVideoListingPage(mainControllerCommunicator: self.mainControllerCommunicator, bundle: bundle)
+        }
+        
+      /*  //////
+        let videoCategoryModel = self.dataFetchFramework?.contentList[indexPath.row] as! VideoCategoryModel
         bundle[BundleConstants.CATEGORY_ID] = videoCategoryModel.categoryId
         bundle[BundleConstants.PARENT_CATEGORY_ID] = videoCategoryModel.parentCategoryId
         bundle[BundleConstants.CATEGORY_NAME] = videoCategoryModel.categoryName
-        NavigationManager.openVideoListingPage(mainControllerCommunicator: mainControllerCommunicator, bundle: bundle)
+        NavigationManager.openVideoListingPage(mainControllerCommunicator: self.mainControllerCommunicator, bundle: bundle)
+        /////  */
     }
 
     override internal func getPageName() -> String {
@@ -27,6 +38,7 @@ class VideoCategoryController: BaseListingViewController {
     override func viewDidLoad() {
         dataFetchFramework = DataFetchFramework(pageName: getPageName(), pageUniqueId: "",  bundle: bundle)
         super.viewDidLoad()
+        
     }
     
     override func registerCard() {
@@ -39,7 +51,16 @@ class VideoCategoryController: BaseListingViewController {
     
     override func getComponentProperties() -> ComponentProperties {
         let components = ComponentProperties()
-        components.visibleIconsSet = [Item.IV_CHILD, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_SEARCH]
+        let childAge = Int((UserInfo.getInstance().selectedChild?.age)!)
+        
+        //Check Child Age
+        if childAge! > 2
+        {
+            components.visibleIconsSet = [Item.IV_CHILD, Item.BTN_VIDEO, Item.BTN_HISTORY , Item.BTN_SEARCH]
+        }else{
+            components.visibleIconsSet = [Item.IV_CHILD, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_SEARCH]
+        }
+        
         components.selectedIconsSet = [Item.BTN_VIDEO]
         return components
     }

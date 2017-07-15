@@ -69,9 +69,11 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
         recommendedController.delegate = self
         
         backButton.addTarget(self, action: #selector(handleBackButtonClick), for: .touchUpInside)
+        ////////////
         
+        ///////////
     }
-    
+       
     func handleBackButtonClick() {
         print("VideoPlayerController handleBackButtonClick")
         videoPlayer.avPlayer?.pause()
@@ -200,4 +202,4 @@ class VideoPlayerController: BaseViewController, VideoDelegate, RecommendedVideo
         //playVideoContent(content: defaultModel!)
         recommendedController.resetPage()
     }
-}
+ }
