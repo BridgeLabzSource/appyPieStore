@@ -21,16 +21,16 @@ class SearchResultController: BaseListingViewController {
         super.viewDidLoad()
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let videoListingModel = dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel
-        
-        if videoListingModel.payType == "paid" {
-            let bundle = [String: Any]()
-            NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
-        } else {
-            NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: videoListingModel)
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let videoListingModel = dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel
+//        
+//        if videoListingModel.payType == "paid" {
+//            let bundle = [String: Any]()
+//            NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
+//        } else {
+//            NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: videoListingModel)
+//        }
+//    }
 
     override func getDataSource() -> DataSource{
         return DataSource.SERVER

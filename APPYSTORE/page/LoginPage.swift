@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toaster
 
 class LoginPage: BasePopUpController {
     override func viewDidLoad() {
@@ -25,19 +26,29 @@ class LoginPage: BasePopUpController {
     }
     
     override func firstButtonClick() {
-        self.mainControllerCommunicator?.showProgressBar()
-        //todo email id
-        LoginParser().parse(params: HttpRequestBuilder.getLoginParameters(method: LoginParser.METHOD_NAME, msisdn: centerEditText.text!, pageId: "login", emailId: ""), completion: {
-            statusType, result in
-            self.mainControllerCommunicator?.hideProgressBar()
-            if statusType == BaseParser.REQUEST_SUCCESS {
-                NavigationUtil.navigateAsPerChildSize(mainControllerCommunicator: self.mainControllerCommunicator!)
-            } else if statusType == BaseParser.REQUEST_FAILURE {
-                NavigationManager.openLoginFailurePage(mainControllerCommunicator: self.mainControllerCommunicator!, mobileNo: self.centerEditText.text!)
-            } else if statusType == BaseParser.CONNECTION_ERROR {
-                
-            }
-        })
-
+        let mobileNo = centerEditText.text!
+        if mobileNo.characters.count != 10 {
+            Toast(text: "ENTER_VALID_MOBILE_NUMBER".localized(lang: AppConstants.LANGUAGE)).show()
+            return
+        }
+        
+        if Utils.isInternetAvailable() {
+            self.mainControllerCommunicator?.showProgressBar()
+            //todo email id
+            LoginParser().parse(params: HttpRequestBuilder.getLoginParameters(method: LoginParser.METHOD_NAME, msisdn: centerEditText.text!, pageId: "login", emailId: ""), completion: {
+                statusType, result in
+                self.mainControllerCommunicator?.hideProgressBar()
+                if statusType == BaseParser.REQUEST_SUCCESS {
+                    NavigationUtil.navigateAsPerChildSize(mainControllerCommunicator: self.mainControllerCommunicator!)
+                } else if statusType == BaseParser.REQUEST_FAILURE {
+                    NavigationManager.openLoginFailurePage(mainControllerCommunicator: self.mainControllerCommunicator!, mobileNo: self.centerEditText.text!)
+                } else if statusType == BaseParser.CONNECTION_ERROR {
+                    
+                }
+            })
+        } else {
+            Toast(text: "NO_INTERNET_CONNECTION".localized(lang: AppConstants.LANGUAGE)).show()
+        }
+        
     }
 }

@@ -49,7 +49,7 @@ open class KCFloatingActionButton: UIView {
             self.setNeedsDisplay()
         }
     }
-    open var paddingY: CGFloat = 14 {
+    open var paddingY: CGFloat = DimensionManager.getGeneralizedHeight1280x720(height: 32) {//14
         didSet {
             self.setNeedsDisplay()
         }
@@ -91,7 +91,7 @@ open class KCFloatingActionButton: UIView {
     /**
         Background overlaying color.
     */
-    @IBInspectable open var overlayColor: UIColor = UIColor.black.withAlphaComponent(0.3)
+    @IBInspectable open var overlayColor: UIColor = UIColor.black.withAlphaComponent(0.65)
 
     /**
         The space between the item and item.
@@ -619,14 +619,14 @@ open class KCFloatingActionButton: UIView {
         if superview == nil {
             frame = CGRect(
                 x: (UIScreen.main.bounds.size.width - size) - paddingX,
-                y: (UIScreen.main.bounds.size.height - size - keyboardSize) - paddingY,
+                y: paddingY,//(UIScreen.main.bounds.size.height - size - keyboardSize) - paddingY,
                 width: size,
                 height: size
             )
         } else {
             frame = CGRect(
                 x: (superview!.bounds.size.width-size) - paddingX,
-                y: (superview!.bounds.size.height-size-keyboardSize) - paddingY,
+                y: paddingY,//(superview!.bounds.size.height-size-keyboardSize) - paddingY,
                 width: size,
                 height: size
             )
@@ -785,6 +785,12 @@ extension KCFloatingActionButton {
         Pop animation
      */
     fileprivate func popAnimationWithOpen() {
+        overlayView.superview?.bringSubview(toFront: overlayView)
+        self.superview?.bringSubview(toFront: self)
+        circleLayer.isHidden = true
+        plusLayer.isHidden = true
+        buttonImageView.isHidden = true
+        layer.backgroundColor = UIColor.clear.cgColor
         var itemHeight: CGFloat = 0
         var delay = 0.0
         
@@ -792,9 +798,12 @@ extension KCFloatingActionButton {
         
         var i = 1
         for item in items {
+            item.layer.zPosition = 1
+            item.superview?.bringSubview(toFront: item)
+            item.isUserInteractionEnabled = true
             let angle = 2 * M_PI/Double(numberOfCircle) * Double(i)
             let circleX = radius * cos(CGFloat(angle))
-            let circleY = radius * sin(CGFloat(angle))
+            let circleY = -size + radius * sin(CGFloat(angle))
             if item.isHidden == true { continue }
             
             itemHeight += item.size + itemSpace
@@ -806,8 +815,8 @@ extension KCFloatingActionButton {
             item.frame.origin.y = -itemHeight
             */
             
-            item.frame.origin.x = circleX - radius
-            item.frame.origin.y = -circleY
+            item.frame.origin.x = big/2-small/2//circleX - radius
+            item.frame.origin.y = itemHeight - size - itemSpace //-circleY
             
             print("Ganesh radius = \(radius) and angle = \(angle)")
             print("Ganesh circleX = \(circleX) and circleY = \(circleY)")
@@ -830,6 +839,10 @@ extension KCFloatingActionButton {
     }
     
     fileprivate func popAnimationWithClose() {
+        circleLayer.isHidden = false
+        plusLayer.isHidden = false
+        buttonImageView.isHidden = false
+        layer.backgroundColor = UIColor.white.cgColor
         var delay = 0.0
         for item in items.reversed() {
             if item.isHidden == true { continue }

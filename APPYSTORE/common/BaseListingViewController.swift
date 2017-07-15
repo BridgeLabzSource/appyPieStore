@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toaster
 
 class BaseListingViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate{
     
@@ -109,6 +110,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     
     func handleConnectionError() {
         mainControllerCommunicator?.showCenterText(text: "OOPS_SOMETHING_WENT_WRONG_TRY_LATER".localized(lang: AppConstants.LANGUAGE))
+        Toast(text: "NO_INTERNET_CONNECTION".localized(lang: AppConstants.LANGUAGE)).show()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -118,7 +120,7 @@ class BaseListingViewController: BaseViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = getCell(indexPath: indexPath)
-
+        cell.mainControllerCommunicator = self.mainControllerCommunicator!
         cell.fillCard(model: getModelToFillCard(index: indexPath))
         
         return cell

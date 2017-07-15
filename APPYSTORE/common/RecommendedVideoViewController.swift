@@ -115,7 +115,7 @@ class RecommendedVideoViewController: BaseListingViewController {
     func nextVideo() {
         (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = false
         
-        if (dataFetchFramework?.contentList[currentIndex + 1] as! VideoListingModel).payType == "paid" {
+        if (dataFetchFramework?.contentList[currentIndex + 1] as! VideoListingModel).payType == AppConstants.PAID {
             currentIndex = getPreferredIndex()
         } else {
             currentIndex += 1
@@ -130,7 +130,7 @@ class RecommendedVideoViewController: BaseListingViewController {
         if (currentIndex - 1) >= 0 {
             (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel).isSelected = false
             
-            if (dataFetchFramework?.contentList[currentIndex - 1] as! VideoListingModel).payType == "paid" {
+            if (dataFetchFramework?.contentList[currentIndex - 1] as! VideoListingModel).payType == AppConstants.PAID {
                 currentIndex = getPreferredIndex()
             } else {
                 currentIndex -= 1
@@ -148,7 +148,7 @@ class RecommendedVideoViewController: BaseListingViewController {
         print("getPreferredIndex start index \(index)")
         while index >= 0 {
             let model = (dataFetchFramework?.contentList[currentIndex] as! VideoListingModel);
-            if model.payType == "paid" {
+            if model.payType == AppConstants.PAID {
                 print("getPreferredIndex index = \(index) pay type = \(model.payType)")
                 break
             } else {

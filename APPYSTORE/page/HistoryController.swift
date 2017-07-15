@@ -9,7 +9,6 @@ class HistoryController: BaseListingViewController {
     
     override func viewDidLoad() {
         let bundle1 = [String: Any]()
-        print("HistoryController viewDidLoad")
         dataFetchFramework = DataFetchFramework(pageName: getPageName(), pageUniqueId: "",  bundle: bundle1)
         super.viewDidLoad()
     }
@@ -35,24 +34,24 @@ class HistoryController: BaseListingViewController {
     
     override func getComponentProperties() -> ComponentProperties {
         let components = ComponentProperties()
-        components.visibleIconsSet = [Item.IV_CHILD, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_SEARCH]
+        components.visibleIconsSet = [Item.IV_CHILD, Item.BTN_VIDEO, Item.BTN_AUDIO, Item.BTN_HISTORY , Item.BTN_FAB]
         components.selectedIconsSet = [Item.BTN_HISTORY]
         
         return components
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let videoListingModel = dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel
-        print("HistoryController : select video \(videoListingModel.title)")
-        
-        if !AuthenticationUtil.isSubscribedUser() && videoListingModel.payType == "paid" {
-            let bundle = [String: Any]()
-            if UserInfo.getInstance().isDeviceEligibleForTrialSubscription {
-                NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
-            }
-            
-        } else {
-            NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: videoListingModel)
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let videoListingModel = dataFetchFramework?.contentList[indexPath.row] as! VideoListingModel
+//        print("HistoryController : select video \(videoListingModel.title)")
+//        
+//        if !AuthenticationUtil.isSubscribedUser() && videoListingModel.payType == "paid" {
+//            let bundle = [String: Any]()
+//            if UserInfo.getInstance().isDeviceEligibleForTrialSubscription {
+//                NavigationManager.openTrialPopUp(mainControllerCommunicator: mainControllerCommunicator!, bundle: bundle)
+//            }
+//            
+//        } else {
+//            NavigationManager.openVideoPlayerPage(mainControllerCommunicator: mainControllerCommunicator!, model: videoListingModel)
+//        }
+//    }
 }

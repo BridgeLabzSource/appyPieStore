@@ -59,7 +59,7 @@ open class KCFloatingActionButtonItem: UIView {
     open var handler: ((KCFloatingActionButtonItem) -> Void)? = nil
 
     open var imageOffset: CGPoint = CGPoint.zero
-    open var imageSize: CGSize = CGSize(width: 25, height: 25) {
+    open var imageSize: CGSize = CGSize(width: DimensionManager.getGeneralizedHeight1280x720(height: 60), height: DimensionManager.getGeneralizedHeight1280x720(height: 60)){//CGSize(width: 25, height: 25) {
         didSet {
             _iconImageView?.frame = CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height)
         }
@@ -104,15 +104,17 @@ open class KCFloatingActionButtonItem: UIView {
             titleLabel.clipsToBounds = true
             
             titleLabel.text = title
-            titleLabel.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.06)
+            titleLabel.textAlignment = .center
+            titleLabel.backgroundColor = UIColor.black//UIColor(red: 0, green: 0, blue: 0, alpha: 0.06)
             titleLabel.sizeToFit()
+            DimensionManager.setTextSize1280x720(label: titleLabel, size: DimensionManager.H3)
             titleLabel.adjustsFontSizeToFitWidth = true
             titleLabel.frame.origin.x = -titleLabel.frame.size.width - textLabelXOffset
             //titleLabel.frame.origin.x = -titleLabel.frame.size.width - 10
             titleLabel.frame.origin.y = self.size/2-titleLabel.frame.size.height/2
             //titleLabel.frame.origin.y = self.size/2-titleLabel.frame.size.height/2
             titleLabel.frame.size.width += 20
-            titleLabel.frame.size.height += 10
+            //titleLabel.frame.size.height += 10
         }
     }
 
@@ -125,7 +127,7 @@ open class KCFloatingActionButtonItem: UIView {
             if _iconImageView == nil {
                 _iconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height))
                 _iconImageView?.center = CGPoint(x: size/2, y: size/2) + imageOffset
-                _iconImageView?.contentMode = UIViewContentMode.scaleAspectFill
+                //_iconImageView?.contentMode = UIViewContentMode.scaleAspectFill
                 addSubview(_iconImageView!)
                 
             }
@@ -194,8 +196,8 @@ open class KCFloatingActionButtonItem: UIView {
             _iconImageView?.frame = CGRect(
                 x: imageSize.width/2 - imageInset,
                 y: imageSize.height/2 - imageInset,
-                width: (imageSize.width),
-                height: (imageSize.width)
+                width: (DimensionManager.getGeneralizedHeight1280x720(height: 60)),
+                height: (DimensionManager.getGeneralizedHeight1280x720(height: 60))
             )
         }
     }
@@ -209,7 +211,7 @@ open class KCFloatingActionButtonItem: UIView {
         CustomViewLayer().initialize(layer: circleLayer,bounds: self.bounds, layerColor: layerColor)
         let x = circleLayer.frame.origin.x + (size / 2 - (iconImageView.frame.size.width) / 2)
         let y = circleLayer.frame.origin.y + (size / 2 - (iconImageView.frame.size.height) / 2)
-        imageSize = CGSize(width: circleLayer.frame.size.width/2, height: circleLayer.frame.size.height/2)
+        //imageSize = CGSize(width: circleLayer.frame.size.width/2, height: circleLayer.frame.size.height/2)
     
         //_iconImageView?.center = CGPoint(x: imageSize.width/2, y: imageSize.height/2)
         layer.addSublayer(circleLayer)
@@ -219,7 +221,7 @@ open class KCFloatingActionButtonItem: UIView {
         //        tintLayer.frame = CGRectMake(frame.size.width - size, 0, size, size)
         let castParent : KCFloatingActionButton = superview as! KCFloatingActionButton
         tintLayer.frame = CGRect(x: castParent.itemSize/2 - (size/2), y: 0, width: size, height: size)
-        tintLayer.backgroundColor = UIColor.white.withAlphaComponent(0.2).cgColor
+        tintLayer.backgroundColor = UIColor.white.cgColor//UIColor.white.withAlphaComponent(0.2).cgColor
         tintLayer.cornerRadius = size/2
         layer.addSublayer(tintLayer)
     }
@@ -233,7 +235,7 @@ open class KCFloatingActionButtonItem: UIView {
         titleLabel.layer.shadowOffset = CGSize(width: 1, height: 1)
         titleLabel.layer.shadowRadius = 2
         titleLabel.layer.shadowColor = titleShadowColor.cgColor
-        titleLabel.layer.shadowOpacity = 0.4
+        //titleLabel.layer.shadowOpacity = 0.4
     }
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
